@@ -199,6 +199,40 @@
 
 \section{1-forms}
 
+    A 1-form is a linear functional $w$ acting on a vector $w \colon T_P \rightarrow \mathbb R$ such that $w(\alpha v + \beta u) = \alpha w(v) + \beta w(u)$ and $(\alpha w + \alpha z)(v) = \alpha w(v) + \beta z(v)$. Linearity implies that the action of a 1-form is completely determined by the action on a basis of $T_P$. 1-forms acting on the same $T_P$ form a linear space $T^*_P$, called the cotangent space. A cotangent bundle is the set of all cotangent space at each point together with the manifold itself $\mathcal T^* \mathcal M = \{\mathcal M, ~\{T^*_P \colon \forall P \in \mathcal M \}\}$. A 1-form field is a map associates a 1-form of $T^*P$ to each point $P \in \mathcal M$.
+
+    One way of thinking 1-forms is in the following way: given an arbitrary function, a vector field is defined by $V(f) = \dv{f}{\lambda}$ whereas given an arbitrary vector field, a 1-form is defined by $V(f) = \dv{f}{\lambda} = df (\dv{}{\lambda})$. The difference is the in the former $V$ is fixed and $f$ is arbitrary, whereas in the latter $f$ is fixed and $V$ is arbitrary. Introducing a chart $x^i$
+    \begin{equation*}
+        \dv{f}{\lambda} = \pdv{f}{x^i} \dv{x^i}{\lambda} = \nabla_i f \dv{x^i}{\lambda} = df_i \dv{x^i}{\lambda}
+    \end{equation*}
+    where $df_i$ are the components of the 1-form $df$, called the gradient of $f$.
     
+    Geometrically, the gradient of a function can be seen as the number of contour lines that a vector $V$ crosses in a neighbourhood of $P$. Generalizing for 1-forms, they can be seen as a set of level surfaces whose action on a vector is the number of surface the vector crosses. 
+
+    Let $\{e_i\}$ be a basis of $T_P$. A basis of $T^*_P$ is not related to it, however it is convenient to choose the dual basis, which completely defined a basis of $T^*P$ by a basis in $T_P$ in the following way
+    \begin{equation*}
+        e^i(e_j) = \delta^i_{\phantom i j}
+    \end{equation*}
+    or, equivalently, applying it to a vector $v$
+    \begin{equation*}
+        e^i(v) = e^i(v^j e_j) = v^j e^i(e_j) = v^j \delta^i_{\phantom i j} = v^i
+    \end{equation*}
+
+    Consequently, $\mathcal M$, $T_P$ and $T^*_P$ have the same dimension $n$. $\{e^i\}$ are actually a basis of $T^*_P$, since given an arbitrary 1-form $q$
+    \begin{equation*}
+        q(v) = q(v^i e_i) = v^i q(e_i) = v^i q_i
+    \end{equation*}
+    and
+    \begin{equation*}
+        v^i q_i = q_i e^i(v)
+    \end{equation*}
+
+    Remember that under a change of coordinates, vectors or 1-forms do not change, only their components and basis change, the latter inversely.
+
+    Differentials are the basis 1-form dual to the coordinate basis vectors 
+    \begin{equation*}
+        \dv{f}{\lambda} = \pdv{f}{x^i} \dv{x^i}{\lambda} = \pdv{f}{x^i} dx^i \Big(\dv{x^j}{\lambda} \pdv{}{x^j} \Big) = \pdv{f}{x^i} \dv{x^j}{\lambda} dx^i \Big ( \pdv{}{x^j} \Big) = \pdv{f}{x^i} \pdv{x^j}{\lambda} \delta^i_{\phantom i j} = \pdv{f}{x^i} \pdv{x^i}{\lambda}
+    \end{equation*}
+    where it has been used the dual basis.
 
 \section{Tensors}
