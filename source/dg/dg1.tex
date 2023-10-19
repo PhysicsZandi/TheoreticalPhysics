@@ -1,0 +1,204 @@
+\part{Manifolds}
+
+\chapter{Manifolds and tensors}
+
+\section{Differentiable Manifolds}
+
+    A differential manifold $\mathcal M$ is a topological space which looks locally like $\mathbb R^N$.
+
+    In a topological space, the notions of contiguity and continuity are well defined. A topological space $(\mathcal M, ~\{A_i\})$ is a set of points $\mathcal M$ in which is defined a family of open sets $\{A_i\}$ such that $\{ \emptyset, ~\mathcal M, ~ \cup_i A_i, ~ \cap_{i < \infty} A_i\} \in \{A_i\}$. In particular, an Haussdorf space has the property that $\forall P, ~Q \in \mathcal M \quad \exists U \in P, ~V \in Q \quad \colon \quad U \cap V = \emptyset$. Two points are contiguous if they belong to the same open subset, called neighbourhood. A map is an application $\phi \colon D \subset \mathcal M \rightarrow \mathbb R^n$. In a topological space, a map is continuous if maps open sets into open sets. 
+
+    A chart is a pair $A, ~\phi$, where $A \subset \mathcal M$ and $\phi \colon A \rightarrow \mathbb R^n$ invertible continuous, which associates a set of $n$ real coordinates $x^i = \phi$ for the open set $A$. An atlas is a colection of charts that covers entirely the manifold $\mathcal A = \{\{(A_i ~\phi_i)\} \colon \cup_i A_i \supseteq \mathcal M \} $. A consistency map between two charts $\phi_1$ and $\phi_2$, over a point $P \in A_1 \cap A_2$, is $\phi \colon \phi(A_2) \subseteq \mathbb R^n \rightarrow \psi(A_2) \subseteq \mathbb R^n $ invertible such that $\psi(\phi_1(P)) = \phi_2(P)$ or $(\phi_2^{-1} \circ \psi \circ \phi_1) = \mathbb I$ or, equivalently, $\psi^{-1} (\phi_2(P)) = \phi_1(P)$ or $(\phi_1^{-1} \circ \psi \circ \phi_2) = \mathbb I$. $\psi$ is a change of coordinates in $\mathbb R^n$. It follows that the dimension $n$ must be the same for all charts, hence it is the dimension of the manifold. If $\psi \in C^p(\mathbb R^n)$, the manifold is a p-differentiable manifold.
+
+    A manifold is an equivalence class of atlases, where two atlases are equivalent if there exists a bijective correspondence between them.
+
+\section{Curves}
+
+    A curve is a continuous map $\gamma \colon I \subseteq \mathbb R \rightarrow \mathcal M$. Introducing a chart $\phi \circ \gamma \colon I \subseteq \mathbb R \rightarrow \mathbb R^n$, or $x^i = x^i(\lambda)$, where $\lambda$ is a real parameter. If $x^i(\lambda) \in C^p(\mathbb R)$, then $gamma$ is p-differentiable. A reparameterization $\gamma' = \gamma'(\gamma)$ defines a different curve, although the images of the curves coincide.
+
+\section{Scalars}
+
+    A function is a map $f \colon \mathcal M \rightarrow \mathbb R$. Introducting a chart $f \circ \phi^{-1} \colon \mathbb R^n \rightarrow \mathbb R$, or $f = f(x^i)$. If $\phi'$ is another chart, then $f'(x'(P)) = f(x(P))$, showing that it is indeed a scalar. 
+
+\section{Vectors}
+
+    A vector at a point $P \in \mathcal M$ is a map that associates to the derivative to a function defined in a neighbourhood of $P$ $v_{\gamma} \colon f \rightarrow v_\gamma(f) = \dvin{f}{\lambda}{\lambda_P} \in \mathbb R$, where $\gamma(\lambda_P) = P$. Introducing a chart 
+    \begin{equation*}
+    \begin{aligned}
+        v_{\gamma, ~P} (f) & = \dvin{(f \circ \gamma)}{\lambda}{\lambda_P} \\ & = \dv{}{\lambda} (f \circ \mathbb I \circ \gamma) \Big\vert_{lambda_P} \\ & = \dv{}{\lambda} (f \circ \phi^{-1} \circ \phi \circ \gamma) \Big\vert_{lambda_P} \\ & = \dv{}{\lambda} (f(x^i) \circ x^i(\lambda)) \Big\vert_{\lambda_P} \\ & = \dv{}{\lambda} f(x^i(\lambda)) \Big\vert_{\lambda_P} = \pdv{f}{x^i} \dv{x^i}{\lambda}
+    \end{aligned}
+    \end{equation*}
+    and since it is true $\forall f$
+    \begin{equation}\label{vector}
+        v_\gamma = dv{}{\lambda} = \dv{x^i}{\lambda} \pdv{}{x^i}
+    \end{equation}
+    which means that a vector is the tangent to a curve $\gamma$ at a point $P$.
+
+    By definition a vector is a linear functional
+    \begin{equation*}
+        v_\gamma (af + bg) = \dv{}{\lambda} (af+bg) = a \dv{f}{\lambda} + b \dv{g}{\lambda}
+    \end{equation*}
+
+    From~\eqref{vector}
+    \begin{equation*}
+        v = \underbrace{\dv{x^i}{\lambda}}_{v_i} \underbrace{\pdv{}{x^i}}_{e_i} = v^i e_i
+    \end{equation*}
+    where $v^i$ are the components and $e_i$ are the coordinate basis vectors, whose vectors tangent to the coordinate line defined by constant $x^j$ for $i \neq j$.
+
+    Under a change of coordinates
+    \begin{equation*}
+        y^i = y^i(x^j)
+    \end{equation*}
+    components transform by 
+    \begin{equation*}
+        v^i = \dv{x^i}{\lambda} = \pdv{x^i}{y^{j'}} \dv{y^{j'}}{\lambda} = \pdv{x^i}{y^{j'}} v^{j'}
+    \end{equation*}
+    and basis vectors transform by 
+    \begin{equation*}
+        e_i = \pdv{}{x^i} = \pdv{y^{j'}}{x^i} \pdv{}{y^{j'}} = \pdv{y^{j'}}{x^i} e_{j'}
+    \end{equation*}
+
+    Remember that components transform but basis change too, inversely, then the vector remains the same.
+
+    A vector field in an open set $U \subseteq \mathcal M$ is map from each point $P \in U$ into a vector $v(P)$. Introducing a chart, $v (x^i) = v \circ \phi^{-1}$.
+
+    The coordinate vectors $e_i = \pdv{}{x^i}$ form a basis of a linear space composed by all the vectors tangent to a point $P$, called the tangent space $T_P$.
+
+    \begin{proof}
+    First, every tangent vector can be expressed as linear combination.
+    
+    Consider two curves, parametrized by $\lambda$ and $\sigma$, across a point $P$ which generate two vectors $v = \pdv{}{\lambda}$ and $w = \dv{}{\sigma}$. Hence, a generic linear combination of them
+    \begin{equation*}
+        a v + b w = a \dv{}{\lambda} + b \dv{}{\sigma} = a \pdv{x^i}{\lambda} \pdv{}{x^i} + b \dv{x^i}{\sigma} \pdv{}{x^i} = \Big ( a \pdv{x^i}{\lambda} + b \dv{x^i}{\sigma} \Big ) \pdv{}{x^i} = \Big ( a \pdv{x^i}{\lambda} + b \dv{x^i}{\sigma} \Big ) e_i
+    \end{equation*}
+    Since there are $n$ coordinates $x^i$, we have $n$ indipendent curves.
+
+    Second, the coordinate basis vectors are linearly independent. 
+    
+    The determinant of the jacobian matrix of $y^i = y^i(x^j)$ must not vanish
+    \begin{equation*}
+        \det J = \det 
+        \begin{pmatrix}
+            \pdv{y^1}{x^1} & \cdots & \pdv{y^1}{x^n} \\
+            \cdots & \cdots & \cdots \\
+            \pdv{y^n}{x^1} & \cdots & \pdv{y^n}{x^n} \\
+        \end{pmatrix}
+    \end{equation*}
+    hence, there are $n$ columns (or rows) which are linearly independent and also $n$ basis vector
+    \begin{equation*}
+        e_i = \pdv{}{x^i} = \pdv{y^j}{x^i} \pdv{}{y^j}
+    \end{equation*}
+
+    \end{proof}
+
+    It is important to remark that coordinate basis vectors at different points belong to different tangent space and cannot be linearly combined.
+
+\section{Fiber bundles}
+
+    A tangent bundle is the set of all tangent space at each point together with the manifold itself $\mathcal T \mathcal M = \{\mathcal M, ~\{T_P \colon \forall P \in \mathcal M \}\}$. It can be shown that $\mathcal T \mathcal M$ is a manifold too.
+
+\section{Exponential map}
+
+    An integral curve $\gamma = \gamma(\lambda)$ of a vector field $V$ is the curve which as tangent vector $\dv{}{\lambda}$ has the element of $V$ in $P \in \gamma$, i.e. 
+    \begin{equation*}
+        V = \dv{}{\lambda}
+    \end{equation*}
+
+    Introducing a point $P_0$ and a chart $x^i$
+    \begin{equation} \label{cauchy}
+        \begin{split}
+            V^i(\lambda) = \dv{x^i(\lambda)}{\lambda} \\
+            x^i(P_0) = x^i(\lambda_0)
+        \end{split}
+    \end{equation}
+    which are a system of $n$ Cauchy problems and the components of $V$ at an arbitrary point $ P = \phi^{-1}(x^i(\lambda))$ are $V(P) = V^i(x^j(\lambda)) \pdv{}{x^i} = V^i(\lambda) \pdv{}{x^i}$. 
+    
+    Theorems of calculus in $\mathbb R^n$ ensure that locally tha solution of~\eqref{cauchy} always exists, which is indeed the integral curve $\gamma(\lambda)$.
+
+    Formally, the solution of~\eqref{cauchy} is the exponential map
+    \begin{equation*}
+        x^i(\lambda) = \exp((\lambda - \lambda_0)V) x^i \Big\vert_{\lambda_0}
+    \end{equation*}
+    which describes the flow of $V$ in a neighbourhood of $P$.
+
+    \begin{proof}
+        Let $V = \dv{}{\lambda}$ be a vector fields with integral curve $\gamma = \gamma (\lambda)$. Introducing a chart $x^i$ and Taylor expanding around $P_0$ along $\gamma$
+        \begin{equation*}
+        \begin{aligned}
+            x^i(\lambda_0 + \epsilon) & = x^i(\lambda_0) + \epsilon \dv{x^i}{\lambda} \Big\vert_{\lambda_0} + \frac{\epsilon^2}{2} \dvd{x^i}{\lambda} \Big\vert_{\lambda_0} + \ldots \\ & = \Big (1 + \epsilon \dv{}{\lambda} \Big\vert_{\lambda_0} + \frac{\epsilon^2}{2} \dvd{}{\lambda} \Big\vert_{\lambda_0} + \ldots \Big) ~ x^i(\lambda_0) \\ & = \exp(\epsilon \dv{}{\lambda}) ~ x^i \Big\vert_{\lambda_0} \\ & = \exp(\epsilon V) ~ x^i \Big\vert_{\lambda_0} 
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    
+    For an arbitrary function $f$ in a neighbourhood of $P$
+    \begin{equation*}
+        f(\lambda_0 + \epsilon) = \exp \Big(\epsilon \dv{}{\lambda} \Big) ~ f \Big\vert_{\lambda_0} = \exp (\epsilon V ) ~ f \Big\vert_{\lambda_0}
+    \end{equation*}
+
+\section{Lie brackets}
+
+    Introducing a chart $x^i$, the Lie brackets of two vector fields $V = \dv{}{\lambda} = v^i \pdv{}{x^i}$ and $W = \dv{}{\mu} = w^i \pdv{}{x^i}$ are 
+    \begin{equation*}
+    \begin{aligned}
+        [V, ~W] & = \dv{}{\lambda} \dv{}{\mu} - \dv{}{\mu} \dv{}{\lambda} \\ & = v^i \pdv{}{x^i} \Big( w^j \pdv{}{x^j} \Big) - w^i \pdv{}{x^i} \Big( v^j \pdv{}{x^j} \Big) \\ & = \cancel{v^i w^j \pdv{}{x^i} \pdv{}{x^j}} + v^i \pdv{w^j}{x^i} \pdv{}{x^j} - \cancel{v^j w^i \pdv{}{x^i} \pdv{}{x^j}} - w^i \pdv{v^j}{x^i} \pdv{}{x^j} \\ & = \Big ( v^i \pdv{w^j}{x^i} - w^i \pdv{v^j}{x^i} \Big ) \pdv{}{x^j} 
+    \end{aligned}
+    \end{equation*}
+    where it is used the facf that the partial derivatives commute. Hence the commutator of two vectors is still a vector. 
+
+    The geometrical meaning of the commutator is the following: consider two vector fields $V = \dv{}{\lambda}$ and $W = \dv{}{\mu}$. Using the exponential map, the coordinates of A, moving before along $V$ and then along $W$, are 
+    \begin{equation*}
+        x^i(A) = \exp \Big ( \epsilon_2 \dv{}{\mu} \Big) \exp \Big ( \epsilon_1 \dv{}{\lambda} \Big) ~ x^i \Big\vert_P
+    \end{equation*}
+    whereas the coordinates of B, moving before along $W$ and then along $Y$, are 
+    \begin{equation*}
+        x^i(B) = \exp \Big ( \epsilon_1 \dv{}{\lambda} \Big) \exp \Big ( \epsilon_2 \dv{}{\mu} \Big) ~ x^i \Big\vert_P
+    \end{equation*}
+    Computing the difference
+    \begin{equation*}
+        x^i(B) - x^i(A) = \epsilon_1 \epsilon_2 \Big [\dv{}{\lambda}, ~\dv{}{\mu} \Big ] ~ x^i \Big\vert_P + O(\epsilon^3)
+    \end{equation*}
+
+    Hence, if the commutator does not vanish, the final points are different $A \neq B$ and the path $PA \cup PB$ does not close. 
+
+    A sufficient and necessary condition for a set of fields to be coordinate vectors is that their commutator vanishes. 
+    \begin{proof}
+    First, the sufficient condition. Consider two coordinate vector fields $V = \pdv{}{x^1}$ and $W = \pdv{}{x^2}$. Then $v^i = \delta^i_{\phantom i 1}$, $w^j = \delta^j_{\phantom j 2}$ and the commutator vanishes, since the derivative of a constant is so. 
+
+    Second, the necessary condition. Consider two commuting vector fields $V = \pdv{}{x^1}$ and $W = \pdv{}{x^2}$. Suppose also that they are linearly independent
+    \begin{equation} \label{proof2}
+        a V(P) + b W(P) = 0 \quad \iff \quad a = b = 0.
+    \end{equation}
+    Introducing a chart $x^i$, moving from $P$ along $V$ by $\Delta \lambda = \alpha$ to a point $R$
+    \begin{equation*}
+        x^(R) = \exp \Big (\alpha \dv{}{\lambda} \Big) ~ x^i \Big\vert_P
+    \end{equation*}
+    and then along $W$ by $\Delta \mu = \beta$ to a point $Q$
+    \begin{equation}\label{proof1}
+        x^(Q) = \exp \Big (\beta \dv{}{\mu} \Big) \exp \Big (\alpha \dv{}{\lambda} \Big) ~ x^i \Big\vert_P
+    \end{equation}
+    If $\alpha$ and $\beta$ are coordinates, the corresponding basis vectors are $\pdv{}{\alpha} = \pdv{x^i}{\alpha}$ and $\pdv{}{\beta} = \pdv{x^i}{\beta}$.
+    Hence, using~\eqref{proof1}
+    \begin{equation*}
+    \begin{aligned}
+        \pdv{x^i}{\alpha} & = \pdv{}{\alpha} \Big ( \exp \Big( \beta \dv{}{\mu} \Big) \exp \Big( \alpha \dv{}{\lambda} \Big) ~ x^i \Big\vert_P \Big) \\ & = \exp \Big( \beta \dv{}{\mu} \Big) \pdv{}{\alpha} \Big ( \exp \Big( \alpha \dv{}{\lambda} \Big) ~ x^i \Big\vert_P \Big) \\ & = \exp \Big( \beta \dv{}{\mu} \Big) \exp \Big( \alpha \dv{}{\lambda} \Big) ~ \dv{x^i}{\lambda} \Big\vert_P
+    \end{aligned}
+    \end{equation*}
+    and, similarly, 
+    \begin{equation*}
+        \pdv{x^i}{\beta} = \exp \Big( \beta \dv{}{\mu} \Big) \exp \Big( \alpha \dv{}{\lambda} \Big) ~ \dv{x^i}{\mu} \Big\vert_P
+    \end{equation*}
+    This shows that $\pdv{}{\alpha}$ and $\pdv{}{\beta}$ are respectively the vector fields $\dv{}{\lambda}$ and $\pdv{}{\mu}$ evaluated in $Q$, using the fact that the commutator is vanishing. Then the determinant of the Jacobians is not zero
+    \begin{equation*}
+        \det J = \det \begin{bmatrix}
+            \pdv{x^1}{\alpha} & \pdv{x^2}{\alpha} \\
+            \pdv{x^1}{\beta} & \pdv{x^2}{\beta} \\
+        \end{bmatrix} \neq 0
+    \end{equation*}
+    since we assumed the linearly independence of $\dv{}{\lambda}$ and $\dv{}{\mu}$.
+    \end{proof} 
+
+\section{1-forms}
+
+    
+
+\section{Tensors}
