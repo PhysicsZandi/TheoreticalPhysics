@@ -210,9 +210,9 @@
     Geometrically, the gradient of a function can be seen as the number of contour lines that a vector $V$ crosses in a neighbourhood of $P$. Generalizing for 1-forms, they can be seen as a set of level surfaces whose action on a vector is the number of surface the vector crosses. 
 
     Let $\{e_i\}$ be a basis of $T_P$. A basis of $T^*_P$ is not related to it, however it is convenient to choose the dual basis, which completely defined a basis of $T^*P$ by a basis in $T_P$ in the following way
-    \begin{equation*}
+    \begin{equation}\label{dual}
         e^i(e_j) = \delta^i_{\phantom i j}
-    \end{equation*}
+    \end{equation}
     or, equivalently, applying it to a vector $v$
     \begin{equation*}
         e^i(v) = e^i(v^j e_j) = v^j e^i(e_j) = v^j \delta^i_{\phantom i j} = v^i
@@ -235,4 +235,271 @@
     \end{equation*}
     where it has been used the dual basis.
 
-\section{Tensors}
+\section{Tensors}  
+
+    A tensor (n, m) at $P$ is a linear functional that maps $n$ 1-forms and $m$ vectors into a real number 
+    \begin{equation*}
+        T \colon \underbrace{T^*_P \otimes \cdots \otimes T^*_P}_{n~times} \otimes \underbrace{T_P \otimes \cdots \otimes T_P}_{m~times} \rightarrow \mathbb R
+    \end{equation*}
+
+    A tensor can be also seen as the outer product of 1-forms and vectors. A tensor (1, 0) is a vector and a tensor (0, 1) is a 1-form. A tensor (n, m) can be written in terms of the dual basis
+    \begin{equation*}
+        T = T^{i_1 \cdots i_n}_{j_1 \cdots j_m} e_{i_1} \otimes \cdots \otimes e_{i_n} \otimes e^{j_1} \otimes \cdots \otimes e^{j_m}
+    \end{equation*}
+    where the components are
+    \begin{equation*}
+        T^{i_1 \cdots i_n}_{j_1 \cdots j_m} = T(e^{i_1}, ~\cdots, ~e^{i_n}, ~e_{j_1}, ~\cdots, ~e^{j_m})
+    \end{equation*}
+
+    A change of basis is determined by a $4 \times 4$ non-degenerate matrix $\Lambda \in GL(n)$. On a vector basis, it acts as 
+    \begin{equation}\label{proof4}
+        {e'}_j = \Lambda^i_{\phantom i j} e_i
+    \end{equation}
+    This transformation has no effects on the dual space, however, in order to keep the duality of the basis, it must induce a transformation with the inverse matrix 
+    \begin{equation*}
+        {e'}^j = \Lambda^j_{\phantom j i} e^i
+    \end{equation*}
+
+    \begin{proof}
+        Recalling~\eqref{dual}, to preserve the duality, also the transformed dual basis must obey 
+        \begin{equation}\label{proof3}
+            {e'}^i ({e'}_j) = \delta^i_{\phantom i j}
+        \end{equation}
+        Hence, given an arbitrary transformation matrix, 
+        \begin{equation*}
+            {e'}^i = M^i_{\phantom i k} e^k
+        \end{equation*}
+        and putting into~\eqref{proof3}, using\eqref{proof4}
+        \begin{equation*}
+            \delta^i_{\phantom i j} = {e'}^i ({e'}_j) = M^i_{\phantom i k} e^k (\Lambda^l_{\phantom l j} e_l) = M^i_{\phantom i k} \Lambda^l_{\phantom l j} e^k(e_l) = M^i_{\phantom i k} \Lambda^l_{\phantom l j} \delta^k_{\phantom k l} = M^i_{\phantom i k} \Lambda^k_{\phantom k j}
+        \end{equation*}
+        then, $M$ must satisfy
+        \begin{equation*}
+            M^i_{\phantom i k} \Lambda^k_{\phantom k j} = \delta^i_{\phantom j} 
+        \end{equation*}
+        and it is indeed the inverse matrix.
+    \end{proof}
+
+    It is possible to perform several operations on tensors at $P$:
+    \begin{enumerate}
+        \item scalar multiplication, i.e. 
+            \begin{equation*}
+                S^{(n,m)} = a T^{(n,m)} \quad \forall a \in \mathbb R
+            \end{equation*}
+        \item addition, i.e. 
+            \begin{equation*}
+                S^{(n,m)} = T^{(n,m)} + Q^{(n,m)}
+            \end{equation*}
+        \item outer product, i.e. 
+            \begin{equation*}
+                S^{(n+p,m+q)} = T^{(n,m)} \otimes Q^{(p,q)}
+            \end{equation*}
+        \item saturation with 1-forms, i.e. 
+            \begin{equation*}
+                T^{(n-1,m)} = T^{(n,m)} (\ldots, ~w, ~\ldots)
+            \end{equation*}
+        \item saturation with vector, i.e. 
+            \begin{equation*}
+                T^{(n,m-1)} = T^{(n,m)} (\ldots, ~v, ~\ldots)
+            \end{equation*}
+    \end{enumerate}
+    The last two can be generalised to an arbitrary saturation of a $(n,m)$ tensor with a $(p<n, q<m)$ tensor. 
+
+    For a change of basis in the tangent space to correspond a change of coordinates on the manifold, the transformation matrix must obey the condition
+    \begin{equation}\label{proof8}
+        \pdv{\Lambda^j_{\phantom j i}}{x^k} = \pdv{\Lambda^j_{\phantom j k}}{x^i}
+    \end{equation}
+
+    \begin{proof}
+        Consider two charts $x^i$ and $y^i$ that overlap at $P$. The transformation matrix between basis is 
+        \begin{equation*}
+            \Lambda^i_{\phantom i j} = \pdv{x^i}{y^j}
+        \end{equation*}
+        and the inverse is 
+        \begin{equation*}
+            \Lambda^j_{\phantom j i} = \pdv{y^j}{x^i}
+        \end{equation*}
+
+        If we move continuously to another point $Q$ insider the charts, the matrix transformation will become a field $\Lambda(Q) = \Lambda(x^i(Q)) = \Lambda(y^i(Q))$ and, since the partial derivatives commute
+        \begin{equation*}
+            \pdv{\Lambda^j_{\phantom j i}}{x^k} = \pdv{}{x^k} pdv{y^j}{x^i} = \pdv{}{x^i} pdv{y^j}{x^k} = \pdv{\Lambda^j_{\phantom j k}}{x^i}
+        \end{equation*}
+    \end{proof}
+
+\section{Metric tensor}
+
+    The notions of lenght and angles on a manifold can be introduced with the metric tensor.
+
+    A metric tensor $g$ is a $(2,0)$ tensor which maps two vectors into a real number, satisfying the following properties
+    \begin{enumerate}
+        \item symmetry, i.e.
+            \begin{equation*}
+                g(v,w) = g(w, v) = g(v^i e_i, w^j e_j) = g(e_i, e_j) v^i w^j = g_{ij} v^i v^j \quad \forall v, ~w \in T_P
+            \end{equation*}
+        \item non-degeneracy, i.i 
+            \begin{equation*}
+                g(v, w) = 0 \quad \forall w \in T_P \quad \iff \quad v=0 
+            \end{equation*}
+            or, equivalenlty, if $\det g_{ij} \neq 0$
+    \end{enumerate}
+
+    A metric tensor defines a scalar product 
+    \begin{equation*}
+        g(v, w) = v \cdot w
+    \end{equation*}
+    and introduces the notions of norm of a vector 
+    \begin{equation*}
+        v^2 = g(v,v) = v \cdot v = g_{ij} v^i v^j
+    \end{equation*}
+    and angle between two vectors 
+    \begin{equation*}
+        g(v, w) = v w \cos \theta
+    \end{equation*}
+    Although, the latter only with Riemannian metrics.
+
+    The metric tensor, under a change of basis $\Lambda$, change 
+    \begin{equation*}
+        g' = \Lambda^T g \Lambda
+    \end{equation*}
+    where ${g'}_{ij} = g({e'}_i, {e'}_j)$. Since it is symmetric, it can be always possible to find two matrices $O^{-1} = O^{T}$ and $D = D^T = diag(\frac{1}{\sqrt{|g_{ii}^{(diag)}|}})$ such that 
+    \begin{equation*}
+        g' = D^T O^T g O D = D g^{(diag)} D 
+    \end{equation*} 
+    and put in canonical form
+    \begin{equation*}
+        {g'}_{ij} = \pm \delta_{ij}
+    \end{equation*}
+    which defines an orthonormal basis at $P$, i.e. $g(e_i, e_j) = \pm \delta_{ij}$. 
+
+    The $\pm$ cannot be eliminated and the sum of the diagonal element is called the signature. A sign inversion does not affect the signature. The diagonal elements can classify the metric in the following way:
+    \begin{enumerate}
+        \item Riemannian metric, i.e. all of the same sign
+        \item pseduo-Riemannian metric, i.e. both signs appear (Lorentzian metric if one is of one kind and all the others of the other kind)
+    \end{enumerate}
+
+    Metric tensors define a map between $T_P$ and $T^*_P$, to lower indices and the inverse to raise them. Infact, a vector $v \in T_P$ can be mapped into a 1-form
+    \begin{equation*}
+        v_i = v(e_i) = g(v^j e_j, e_i) = v^i g(e_j, e_i) = v^i g_{ij}
+    \end{equation*}
+    and a 1-form $w \in T^*_P$ can be mapped into a vector 
+    \begin{equation*}
+        w^i = e^i(w) = g(e^i, w_j e^j) = w_j g(e^i, e^j) = w_j g^{ij}
+    \end{equation*}
+    Consequently, at $P$ a vector and a 1-form are equivalent.
+
+    
+    The inverse metric tensor in defined by 
+    \begin{equation*}
+        g^{-1}_{ij} = g^{ij} \quad g_{ij} g^{jk} = \delta^k_{\phantom k i}
+    \end{equation*}
+
+    If the metric is in canonical form, the dual basis will be orthonormal. 
+
+    A metric tensor field is a map that associates each point of $\mathcal M$ into a metric tensor. The manifold becomes a metric manifold $(\mathcal M, ~g)$. The metric tensor field in terms of coordinate vectors and dual basis is 
+    \begin{equation*}
+        g(x) = g_{ij}(x) dx^i \otimes dx^j
+    \end{equation*}
+    which is written as line element
+    \begin{equation*}
+        ds^2 = g_{ij}(x) dx^i dx^j
+    \end{equation*}
+
+    Consider the integral curve $\gamma$ of a vector field $v = \dv{}{\lambda}$. The scalar infinitesimal displacement along $v$ is 
+    \begin{equation*}
+        ds^2 = dx \cdot dx = g(dx, dx) = g(v d\lambda, v d\lambda) = g(v,v) d\lambda^2
+    \end{equation*}
+
+    Integrating along $\gamma$, the length of the path between $\lambda_1$ and $\lambda_2$ is 
+    \begin{equation*}
+        s(\lambda_1, \lambda_2) = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g(v,v)} = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g_{ij}(\lambda) v^i(\lambda) v^j(\lambda)}
+    \end{equation*}
+
+    Introducing a chart $x^i$, 
+    \begin{equation*}
+        s(\lambda_1, \lambda_2) = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g_{ij}(\lambda) \dv{x^i}{\lambda} \dv{x^j}{\lambda}}
+    \end{equation*}
+
+
+    It is always possible to find a change of coordinate that put the metric tensor field in the locally canonical form
+    \begin{equation*}
+        g_{ij} (x) = \pm \delta_{ij} + \frac{1}{2} \pdvd{g_{ij}}{x^k}{x^l} \Big\vert_{x_P} \delta x^k \delta x^l
+    \end{equation*}
+    which means to find a locally orthogonal coordinates $x^i$ such that $g(\pdv{}{x^i}, \pdv{}{x^j}) = \pm \delta_{ij}$. However, this holds only locally, not on the entire manifold.
+
+    \begin{proof}
+        Around $P$, the metric tensor field $g_{ij}$ can be Taylor expanded in $x = x_P + \delta x$
+        \begin{equation} \label{proof5}
+            g_{ij} = g_{ij} (x_P) + \pdv{g_{ij}}{x^k} \Big\vert_{x_P} \delta x^k + \frac{1}{2} \pdvd{g_{ij}}{x^k}{x^l} \Big\vert_{x_P} \delta x^k \delta x^l + \ldots
+        \end{equation}
+        as well as the transformation matrix 
+        \begin{equation}\label{proof6}
+            \pdv{x^i}{y^j} (x) = \pdv{x^i}{y^j} (x_P) + \pdv{}{x^k} \pdv{x^i}{y^j} \Big\vert_{x_P} \delta x^k + \frac{1}{2} \pdvd{}{x^k}{x^l} \pdv{x^i}{y^j} \Big\vert_{x_P} \delta x^k \delta x^l + \ldots
+        \end{equation}
+        and the metric in the new coordinates
+        \begin{equation} \label{proof7}
+            {g'}_{ij} = {g'}_{ij} (y_P) + \pdv{{g'}_{ij}}{y^k} \Big\vert_{y_P} \delta y^k + \frac{1}{2} \pdvd{{g'}_{ij}}{y^k}{y^l} \Big\vert_{y_P} \delta y^k \delta y^l + \ldots
+        \end{equation}
+
+        Using  
+        \begin{equation*}
+            {g'}_{ij} = \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl}
+        \end{equation*}
+        then the left-handed side is
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} & = 
+            \Big ( \pdv{x^k}{y^i} + \pdv{}{x^a} \pdv{x^k}{y^i} \delta x^a + \frac{1}{2} \pdvd{}{x^a}{x^e} \pdv{x^k}{y^i} \delta x^a \delta x^e + \ldots \Big ) \\ & \quad
+            \Big ( \pdv{x^l}{y^j} + \pdv{}{x^b} \pdv{x^l}{y^j} \delta x^b + \frac{1}{2} \pdvd{}{x^b}{x^f} \pdv{x^l}{y^j} \delta x^b \delta x^f  + \ldots \Big ) \\ & \quad
+            \Big ( g_{kl} + \pdv{g_{kl}}{x^c}  \delta x^c + \frac{1}{2} \pdvd{g_{kl}}{x^c}{x^d} \delta x^c \delta x^d + \ldots \Big ) 
+            \\ & = 
+            \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} 
+            + \pdv{x^k}{y^i} \pdv{}{x^b} \pdv{x^l}{y^j} \delta x^b g_{kl} 
+            + \pdv{x^k}{y^i} \pdv{}{x^b} \pdv{x^l}{y^j} \delta x^b \pdv{g_{kl}}{x^c} \delta x^c 
+            + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^c}  \delta x^c \\ & \quad 
+            + \pdv{}{x^a} \pdv{x^k}{y^i} \delta x^a  \pdv{x^l}{y^j} g_{kl} 
+            + \pdv{}{x^a} \pdv{x^k}{y^i} \delta x^a \pdv{}{x^b} \pdv{x^l}{y^j} \delta x^b g_{kl}
+            + \pdv{}{x^a} \pdv{x^k}{y^i} \delta x^a  \pdv{x^l}{y^j} \pdv{g_{kl}}{x^c} \delta x^c \\ & \quad 
+            + \frac{1}{2} \pdvd{}{x^a}{x^e} \pdv{x^k}{y^i} \delta x^a \delta x^e \pdv{x^l}{y^j} g_{kl} 
+            + \pdv{x^k}{y^i} \frac{1}{2} \pdvd{}{x^b}{x^f} \pdv{x^l}{y^j} \delta x^b \delta x^f g_{kl} \\ & \quad 
+            + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \frac{1}{2} \pdvd{g_{kl}}{x^c}{x^d} \delta x^c \delta x^d + \ldots 
+            \\ & = \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} + \delta x^a \Big( \pdv{x^k}{y^i} \pdv{}{x^a} \pdv{x^l}{y^j} g_{kl} + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^a} + \pdv{}{x^a} \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} \Big) 
+            \\ & \quad + \delta x^a \delta x^b \Big(
+            \pdv{x^k}{y^i} \pdv{}{x^a} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^b}
+            + \pdv{}{x^a} \pdv{x^k}{y^i}\pdv{}{x^b} \pdv{x^l}{y^j} g_{kl}
+            + \pdv{}{x^a} \pdv{x^k}{y^i} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^b}
+            \\ & \qquad \qquad \qquad + \frac{1}{2} \pdvd{}{x^a}{x^b} \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} 
+            + \pdv{x^k}{y^i} \frac{1}{2} \pdvd{}{x^a}{x^b} \pdv{x^l}{y^j} g_{kl}
+            + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \frac{1}{2} \pdvd{g_{kl}}{x^a}{x^b} \Big)
+        \end{aligned}
+        \end{equation*}
+
+        Comparing infinitesimal of the same order
+        \begin{equation*}
+            \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} = {g'}_{ij}
+        \end{equation*}
+        \begin{equation*}
+            \pdv{x^k}{y^i} \pdv{}{x^a} \pdv{x^l}{y^j} g_{kl} + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^a} + \pdv{}{x^a} \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} = \pdv{{g'}_{ij}}{y^k}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            & \pdv{x^k}{y^i} \pdv{}{x^a} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^b}
+            + \pdv{}{x^a} \pdv{x^k}{y^i}\pdv{}{x^b} \pdv{x^l}{y^j} g_{kl}
+            + \pdv{}{x^a} \pdv{x^k}{y^i} \pdv{x^l}{y^j} \pdv{g_{kl}}{x^b} \\ & \quad + \frac{1}{2} \pdvd{}{x^a}{x^b} \pdv{x^k}{y^i} \pdv{x^l}{y^j} g_{kl} 
+            + \pdv{x^k}{y^i} \frac{1}{2} \pdvd{}{x^a}{x^b} \pdv{x^l}{y^j} g_{kl}
+            + \pdv{x^k}{y^i} \pdv{x^l}{y^j} \frac{1}{2} \pdvd{g_{kl}}{x^a}{x^b} = \frac{1}{2} \pdvd{{g'}_{ij}}{y^k}{y^l}
+        \end{aligned}
+        \end{equation*}
+
+        Looking at this system of equations, we find 1 degree of freedom for the first one, $n$ for the second one and $n^2$ for the third one. Hence, since $\Lambda$ has $n^2 - 1$ degrees of freedom with $-1$ coming from~\eqref{proof8}, we only have enough degree of freedom to put 
+        \begin{equation*}
+            {g'}_{ij} (y_P) = \pm \delta_{ij}
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \pdv{g_{ij}}{y^k} \Big\vert_{y_P} = 0
+        \end{equation*}
+        but not enough to put 
+        \begin{equation*}
+            \pdvd{g_{ij}}{x^k}{x^l} \Big\vert_{y_P} = 0
+        \end{equation*}
+    \end{proof}
