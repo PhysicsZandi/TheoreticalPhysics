@@ -1,0 +1,396 @@
+\part{Classical statistical mechanics}
+
+\chapter{Classical mechanics}
+
+    \begin{equation}\label{norm}
+        \int_{\mathcal M^N} \rho = 1
+    \end{equation}
+    \begin{equation}\label{T}
+        \pdv{S}{E} = \frac{1}{T}
+    \end{equation}
+    \begin{equation}\label{F}
+        \pdv{F}{T} = - S
+    \end{equation}
+
+\chapter{Microcanonical ensemble}
+
+    A microcanonical ensemble is a system which is isolated from the environment, i.e. it cannot exchange neither energy nor matter, so $E$, $N$ and $V$ are fixed. Since energy is conserved and the hamiltonian is time-independent, the trajectory of motion is restricted on the surface $S_E$ and not on all the phase space.
+    
+    Assume an a-priory uniform probability 
+    \begin{equation*}
+        \rho_{mc}(q^i, ~p_i) = C \delta (\mathcal H(q^i, p_i) - E)
+    \end{equation*}
+    where $C$ is a normalisation constant, which can be evaluated by~\eqref{norm}
+    \begin{equation*}
+        1 = \int_{\mathcal M^N} d\Omega \rho_{mc} = \int_{\mathcal M^N} d\Omega C \delta(\mathcal H - E) = C \int_{\mathcal M^N} d\Omega \delta(\mathcal H - E) = C \omega(E)
+    \end{equation*}
+
+    Hence
+    \begin{equation*}
+        \rho_{mc}(q^i, ~p_i) = \frac{1}{\omega(E)} \delta (\mathcal H(q^i, p_i) - E)
+    \end{equation*}
+
+    Consider a displacement on an infinitesimal displacement of energy $\Delta E \ll 1$, then 
+    \begin{equation*}
+        \Gamma (E) = \integ{E}{E+dE}{E'} \omega(E') \simeq \omega(E) \Delta E
+    \end{equation*}
+    and the distribution is 
+    \begin{equation*}
+        \rho_{mc}(q^i, p_i) = \begin{cases}
+            \frac{1}{\Gamma(E)} & \mathcal H \in [E, E + \Delta E] \\
+            0 & otherwise
+        \end{cases}
+    \end{equation*}
+
+    Let $f(q^i, p_i)$ be an observable, then its microcanonical average is 
+    \begin{equation}\label{obs}
+        \avp{f(q^i, p_i)}{mc} = \int_{\mathcal M} d\Omega ~ \rho_{mc} f = \int_{\mathcal M} d\Omega ~ \frac{1}{\omega(E)} \delta (\mathcal H - E) f = \frac{1}{\omega(E)} \int_{S_E} dS_E ~ f = \avp{f}{E} 
+    \end{equation}
+
+\section{Thermodynamics potentials}
+
+    The microcanonical entropy $S_{mc}$ is defined by 
+    \begin{equation*}
+        S_{mc} (E, V, N) = k_B \ln \omega(E)
+    \end{equation*}
+
+    The logarithm is justified by the fact that the volume of a N-particle phase space is $(W_1)^N$, where $W_1$ is the volume of a single particle phase space. According to the properties of the logarithm, entropy becomes extensive.
+
+    In the thermodynamic limit, the following equations hold 
+    \begin{equation*}
+        s_{mc} = \lim_{td} \frac{S_{mc}}{N} = k_B \lim_{td} \frac{\log \omega(E)}{N} = \underbrace{k_B \lim_{td} \frac{\log \Sigma(E)}{N}}_{\mathcal H \in [0, E]} = \underbrace{k_B \lim_{td} \frac{\log \Gamma(E)}{N}}_{\mathcal H \in [E, E + \Delta E]}
+    \end{equation*}
+
+    Entropy is additive, so given two sistems $1$ and $2$
+    \begin{equation*}
+        s_{mc}^{tot} = s_{mc}^{(1)} + s_{mc}^{(2)}
+    \end{equation*}
+
+    \begin{proof}
+        Consider two isolated systems in contact at equilibrium with the same temperature $T = T_1 = T_2$. The total energy is $E = E_1 + E_2 + E_{surface}$ but, in the thermodynamic limit, the energy exchanged by the surface is a subleading term ($E_1$ and $E_2$ go as $L^3$ whereas $E_{surface}$ goes as $L^2$) and can be neglected. The energy density is 
+        \begin{equation*}
+        \begin{aligned}
+            \omega(E) & = \int_{\mathcal M^N} d\Gamma_1 d\Gamma_2 \delta(\mathcal H - E) \\ & = \int dE_1 \int dS_{E_1} \int dE_2 \int dS_{E_2} \delta (E - E_1 - E_2) \\ & = \int dE_1 \int dE_2 \omega_1(E_1) \omega_2(E_2) \delta (E - E_1 - E_2) \\ & = \integ{0}{E}{E_1} \omega_1(E_1) \omega_2(E_2 = E - E_1)
+        \end{aligned}
+        \end{equation*}
+        Since the integrand is a positive function with a maximum in $_1 \in [0, E]$
+        \begin{equation}\label{proof1}
+        \begin{aligned}
+            \integ{0}{E}{E_1} \omega_1(E_1) \omega_2(E_2 = E - E_1) & \leq \omega_1(E^*_1) \omega_2(E^*_2 = E - E^*_1) \integ{0}{E}{E_1} \\ & = \omega_1(E^*_1) \omega_2(E^*_2 = E - E^*_1) E
+        \end{aligned}
+        \end{equation}
+
+        On the other hand, it is always possible to find a value for $\Delta E$ in order to have 
+        \begin{equation} \label{proof2}
+            \Delta E \omega_1(E^*_1) \omega_2(E^*_2) \leq \omega(E)
+        \end{equation}
+
+        Putting together~\eqref{proof1} and~\eqref{proof2}
+        \begin{equation*}
+            \Delta E \omega_1(E^*_1) \omega_2(E^*_2) \leq \omega(E) \leq \omega_1(E^*_1) \omega_2(E^*_2) E
+        \end{equation*}
+        \begin{equation*}
+            \omega_1(E^*_1) \Delta E \omega_2(E^*_2) \Delta E \leq \omega(E) \Delta E \leq \frac{E}{\Delta E} \omega_1(E^*_1) \Delta E \omega_2(E^*_2) \Delta E
+        \end{equation*}
+        \begin{equation*}
+            \Gamma_1(E^*_1) \Gamma(E^*_2) \leq \Gamma(E) \leq \frac{E}{\Delta E}\Gamma(E^*_1) \Gamma(E^*_2)
+        \end{equation*}
+        Since the logarithm is a monotomic function
+        \begin{equation*}
+            \log \Big ( \Gamma_1(E^*_1) \Gamma(E^*_2) \Big ) \leq \log \Gamma(E) \leq \log \Big ( \frac{E}{\Delta E}\Gamma(E^*_1) \Gamma(E^*_2) \Big )
+        \end{equation*}
+        \begin{equation*}
+            k_B \log \Big ( \Gamma_1(E^*_1) \Gamma(E^*_2) \Big ) \leq k_B \log \Gamma(E) \leq k_B \log \Big ( \frac{E}{\Delta E}\Gamma(E^*_1) \Gamma(E^*_2) \Big )
+        \end{equation*}
+        \begin{equation*}
+            k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2) \leq k_B \log \Gamma(E) \leq k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)
+        \end{equation*}
+        \begin{equation*}
+            \frac{k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2)}{N} \leq \frac{k_B \log \Gamma(E)}{N} \leq \frac{k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)}{N}
+        \end{equation*}
+
+        In the thermodynamic limit, the last term vanishes, since $\lim_{td} \frac{1}{N} \log \frac{N}{\Delta N} = 0$. Hence 
+        \begin{equation*}
+            s_{mc}(E) = s_{mc}^{(1)} + s_{mc}^{(2)}
+        \end{equation*}
+ 
+    \end{proof}
+
+    The last result tells also that at equilibrium entropy is maximum.
+
+    In the thermodynamic limit, microcanonical entropy coincides with the thermodynamical one 
+    \begin{equation*}
+        s_{mc} = s_{td}
+    \end{equation*}
+
+    \begin{proof}
+        Since entropy is maximum at equilibrium, also $\Gamma_1(E_1) \Gamma_2(E_2)$ is so and
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \delta (\Gamma_1(E^*_1) \Gamma_2(E^*_2 = E - E^*_1)) \\ & = \delta \Gamma_1(E^*_1) \Gamma_2 (E^*_2) + \Gamma_1(E^*_1) \delta \Gamma_2 (E^*_2) \\ & = \pdv{\Gamma_1}{E_1} \Big\vert_{E^*_1} \delta E_1 \Gamma_2 (E^*_2) + \Gamma_1(E^*_1) \pdv{\Gamma_2}{E_2} \Big\vert_{E^*_2} \delta E_2 
+        \end{aligned}
+        \end{equation*}
+
+        Since $E = const$, $0 = \delta E = \delta E_1 + \delta E_2$, $\delta E_2 = \delta E_1$ and
+        \begin{equation*}
+            0 = \pdv{\Gamma_1}{E_1} \Big\vert_{E^*_1} \delta E_1 \Gamma_2 (E^*_2) - \Gamma_1(E^*_1) \pdv{\Gamma_2}{E_2} \Big\vert_{E^*_2} \delta E_1 
+        \end{equation*}
+        \begin{equation*}
+            0 = \pdv{\Gamma_1}{E_1} \Big\vert_{E^*_1} \Gamma_2 (E^*_2) - \Gamma_1(E^*_1) \pdv{\Gamma_2}{E_2} \Big\vert_{E^*_2} 
+        \end{equation*}
+        \begin{equation*}
+            \pdv{\Gamma_1}{E_1} \Big\vert_{E^*_1} \Gamma_2 (E^*_2) = \Gamma_1(E^*_1) \pdv{\Gamma_2}{E_2} \Big\vert_{E^*_2} 
+        \end{equation*}
+        \begin{equation*}
+            \frac{1}{\Gamma_1 (E^*_1)} \pdv{\Gamma_1}{E_1} \Big\vert_{E^*_1} = \frac{1}{\Gamma_2 (E^*_2)} \pdv{\Gamma_2}{E_2} \Big\vert_{E^*_2} 
+        \end{equation*}
+        \begin{equation*}
+            \pdv{\log \Gamma_1}{E_1} \Big\vert_{E^*_1} = \pdv{\log \Gamma_2}{E_2} \Big\vert_{E^*_2} 
+        \end{equation*}
+
+        Using the thermodynamical relation~\eqref{T}
+        \begin{equation*}
+            S_{mc} (E) = S_{td} (E) \times const
+        \end{equation*}
+        where the constant can be chosen in order to have $k_B$ in the same unit.
+    \end{proof}
+
+    The universal Boltzmann's formula is 
+    \begin{equation*}
+        s_{mc} = s_{td} = k_B \log \omega(E) = - k_B \avp{\log \rho_{mc}}{mc}
+    \end{equation*}
+
+    \begin{proof}
+        
+    Using~\eqref{obs}, 
+    \begin{equation*}
+    \begin{aligned}
+        \avp{\log \rho_{mc}}{mc} & = \int d\Gamma \rho_{mc} \log \rho_{mc} \\ & = \int d\Gamma \frac{1}{\omega(E)} \delta (\mathcal H - E) \log \Big ( \frac{1}{\omega(E)} \delta (\mathcal H - E) \Big) \\ & = \int dS_E \frac{1}{\omega(E)} \log \frac{1}{\omega(E)} \\ & = - \frac{1}{\omega(E)} \log \omega(E) \int dS_E \\ & = - \log \omega (E)
+    \end{aligned}
+    \end{equation*}
+    \end{proof}
+
+
+
+\chapter{Canonical ensemble}
+
+    A canionical ensemble is a system which is immersed in a bigger environment or reservoir, which can exchange energy but not matter, so $T$, $N$ and $V$ are fixed. Globally, energy is conserved, since the universe composed by the union of the system and the environment can be considered as a microcanonical ensemble. 
+
+    The canonical probability density distribution is 
+    \begin{equation*}
+        \rho_c (q^i, p_i) = \frac{1}{Z_N} \exp (-\beta \mathcal H(q^i, p_i))
+    \end{equation*}
+    where $\beta$ is 
+    \begin{equation*}
+        \beta = \frac{1}{k_B T}
+    \end{equation*}
+    and $Z_N$ is the partition function 
+    \begin{equation}
+        Z_N[V, T] = \int_{\mathcal M^N} d\Omega ~\exp (-\beta \mathcal H(q^i, p_i))
+    \end{equation}
+    which depends on the temperature through $\beta$ and volume and temperature due to the integration domain $\mathcal M^N = V \otimes \mathbb R^d$.
+
+    Notice that the probability is a function of the hamiltonian, like Liouville's theorem said.
+
+    \begin{proof}
+        Consider the universe as a microcanonical ensemble. Its probability density distribution is 
+        \begin{equation*}
+            \rho_{mc} (q_i^{(1)}, p_i^{(1)}, q_i^{(2)}, p_i^{(2)}) = \frac{1}{\omega(E)} \delta (\mathcal H (q_i^{(1)}, p_i^{(1)}, q_i^{(2)}, p_i^{(2)}) - E)
+        \end{equation*}
+        where the total hamiltonian is 
+        \begin{equation*}
+            \mathcal H (q_i^{(1)}, p_i^{(1)}, q_i^{(2)}, p_i^{(2)}) = \mathcal H_1 (q_i^{(1)}, p_i^{(1)}) + \mathcal H_2 (q_i^{(2)}, p_i^{(2)})
+        \end{equation*}
+
+        Integrating it to all the possible state in the environment
+        \begin{equation*}
+            \rho^{(1)} = \int d\Omega_2  \rho_{mc} = \int d\Omega_2 \frac{1}{\omega(E)} \delta(\mathcal H - E) = \frac{1}{\omega(E)} \int dS_{E_2} = \frac{1}{\omega(E)} \omega(E_2 = E - E_1)
+        \end{equation*}
+        and the corresponding entropy is 
+        \begin{equation*}
+            S_2 (E_2) = k_B \ln \omega_2 (E_2)
+        \end{equation*}
+
+        Applying small variation $\delta E_1$ to $E_1$ to preserve equilibrium, the entropy trasforms, using~\eqref{T}
+        \begin{equation*}
+            k_B \ln \omega_2 (E_2) = S_{mc}(E) - E_1 \pdv{S_{mc}}{E} \Big \vert_{E_2} = S_{mc}(E) - E_1 \frac{1}{T} 
+        \end{equation*}
+        \begin{equation*}
+            \ln \omega_2 (E_2) = \frac{S_{mc}(E)}{k_B} - E_1 \frac{1}{k_B T} 
+        \end{equation*}
+        \begin{equation*}
+            \omega_2 (E_2) = \exp (\frac{S_{mc}(E)}{k_B} - E_1 \frac{1}{k_B T}) = \exp (\frac{S_{mc}(E)}{k_B}) \exp (- \frac{E_1}{k_B T}) 
+        \end{equation*}
+
+        Putting together, dropping the indices
+        \begin{equation}
+            \rho_c = \frac{\omega(2)(E_2)}{\omega(E)} = \frac{1}{\omega(E)} \exp (\frac{S_{mc}(E)}{k_B}) \exp (- \frac{E_1}{k_B T}) = C \exp (- \frac{E_1}{k_B T})
+        \end{equation}
+        where $C$ is a normalisation constant, which can be evaluated by~\eqref{norm}
+        \begin{equation*}
+            1 = \int_{\mathcal M^N} d\Omega \rho = \int_{\mathcal M^N} d\Omega C \exp (- \frac{E_1}{k_B T}) = C \int_{\mathcal M^N} d\Omega \exp (- \frac{E_1}{k_B T}) 
+        \end{equation*}
+    \end{proof}
+
+    The partition function can also be written as 
+    \begin{equation*}
+        Z_N[T, V] = \integ{0}{\infty}{E} \omega(E) \exp (-\beta E)
+    \end{equation*}
+
+    \begin{proof}
+        Foliating the phase space in energy hyper-surfaces 
+        \begin{equation*}
+            Z_N = \int_{\mathcal M^N} d\Omega \exp (- \beta \mathcal H) = \integ{0}{\infty}{E} \int dS_E ~ \exp (-\beta \mathcal H) = \integ{0}{\infty}{E} \omega(E) \exp (-\beta E)
+        \end{equation*}
+    \end{proof}
+
+    Taking also in consideration indistinguishable particles, the partition function 
+    \begin{equation*}
+        Z_N = \int \frac{\prod_{i=1}^N d^d q^i d^d p^i}{h^{dN} \zeta_N} \exp (- \beta \mathcal H) 
+    \end{equation*}
+    where $\zeta_N$ is 
+    \begin{equation*}
+        \zeta_N = \begin{cases}
+            1 & \textnormal{distinguishable} \\
+            N! & \textnormal{indistinguishable}
+        \end{cases}
+    \end{equation*}
+
+    The partition function of two systems is the multiplication of the single system ones
+    \begin{equation}
+        Z_N = Z_{N_1} Z_{N_2}
+    \end{equation}
+
+    \begin{proof}
+        Since $\mathcal H = \mathcal H_1 + \mathcal H_2$, 
+        \begin{equation*}
+        \begin{aligned}
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    If the hamiltonian is the sum of $N$ identical ones, like $N$ non-interacting particles
+    \begin{equation*}
+        \mathcal H = \sum_{i = 1}^{N} \mathcal H_i
+    \end{equation*} 
+    the partition function becomes 
+    \begin{equation*}
+        Z_N = \frac{(Z_1)^N}{\zeta_N}
+    \end{equation*}
+
+    \begin{proof}
+        Denominating $Z_1$ the single-particle partition function
+        \begin{equation*}
+        \begin{aligned}
+            Z_N & = \int_{\mathcal M^N = \mathcal M^{(1)} \otimes \ldots \otimes \mathcal M^{(1)}} \prod_{i=1}^N \frac{d^d q^i d^d p^i}{h^{dN} \zeta_N} \exp (-\beta \mathcal H) \\ & = \int_{\mathcal M^N = \mathcal M^{(1)} \otimes \ldots \otimes \mathcal M^{(1)}} \prod_{i=1}^N \frac{d^d q^i d^d p^i}{h^{dN} \zeta_N} \exp (-\beta \sum_{i = 1}^{N} \mathcal H_i) \\ & = \int_{\mathcal M^N = \mathcal M^{(1)} \otimes \ldots \otimes \mathcal M^{(1)}} \prod_{i=1}^N \frac{d^d q^i d^d p^i}{h^{dN} \zeta_N} \prod_{i=1}^{N}\exp (-\beta \mathcal H_i) \\ & = \int_{\mathcal M^N = \mathcal M^{(1)} \otimes \ldots \otimes \mathcal M^{(1)}} \prod_{i=1}^N \frac{d^d q^i d^d p^i}{h^{dN} \zeta_N} \exp (-\beta \mathcal H_i) \\ & = \frac{Z_1 Z_1 \ldots Z_1}{\zeta_N} = \frac{(Z_1)^N}{\zeta_N}
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Let $f(q^i, p_i)$ be an observable, then its canonical average is 
+    \begin{equation*}\label{obsc}
+        \avp{f(q^i, p_i)}{c} = \int_{\mathcal M} d\Omega ~ \rho_{c} f = \int_{\mathcal M} d\Omega ~ \frac{\exp (-\beta \mathcal H)}{Z_N} f
+    \end{equation*}
+
+\section{Thermodynamics variable}
+
+    The canonical Helmotz free energy $F$ is defined by 
+    \begin{equation*}
+        Z_[V, T] = \exp(-\beta F[N, V, T])
+    \end{equation*}
+    or, equivalently,
+    \begin{equation}\label{Fc}
+        F[V, N ,T] = -\frac{1}{\beta} \ln Z_N
+    \end{equation}
+
+    Furthermore, the canonical internal energy is 
+    \begin{equation}\label{Ec}
+        E = \avp{\mathcal H}{c} = \int d\Omega \frac{\exp(-\beta (\mathcal H))}{Z_N} \mathcal H
+    \end{equation}
+
+    \begin{proof}
+        By normalisation condition 
+        \begin{equation*}
+            1 = \int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N} = \int d\Omega \frac{\exp(-\beta \mathcal H)}{\exp(-\beta F)} = \int d\Omega \exp (- \beta (\mathcal H - F))
+        \end{equation*}
+
+        Since $F$ depends on the temperature, it is possible to derive with respect to $\beta$
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \pdv{}{\beta} \Big ( \int d\Omega \exp (- \beta (\mathcal H - F)) \Big) \\ & = \int d\Omega \exp (-\beta (\mathcal H - F)) \Big (-(\mathcal H - F) + \beta \pdv{F}{\beta}) \\ & = - \underbrace{\int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N} \mathcal H}_{E} + F \underbrace{\int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N}}_{1} + \beta \pdv{F}{\beta} \underbrace{\int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N}}_{1} \\ & = - E + F + \beta \pdv{F}{\beta}
+        \end{aligned}
+        \end{equation*}
+        Hence, using~\eqref{F}
+        \begin{equation*}
+            F = E + \beta \pdv{F}{\beta} = E + T \pdv{F}{T} = E - TS
+        \end{equation*}
+        showing that is indeed the Helmotz free energy.
+    \end{proof}
+
+    Notice that in the last result, the entropy can be also written as 
+    \begin{equation} \label{Sc}
+        S_c = \frac{E - F}{T}
+    \end{equation}
+    
+    The internal energy can also be written as 
+    \begin{equation*}
+        E = - \pdv{}{\beta} \ln Z_N
+    \end{equation*}
+
+    \begin{proof}
+        Using~\eqref{Ec},
+        \begin{equation*}
+            - \pdv{}{\beta} \ln Z_N = - \frac{1}{Z_N} \pdv{Z_N}{\beta} = - \frac{1}{Z_N} \pdv{}{\beta} \int d\Omega \exp (-\beta \mathcal H) = \int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N}  \mathcal H = \avp{\mathcal H}{c} = E
+        \end{equation*}
+    \end{proof}
+
+    The universal Boltzmann's formula is still valid
+    \begin{equation*}
+        S_c = -k_B \avp{\ln \rho_c}{c} 
+    \end{equation*}
+
+
+    \begin{proof}
+        Using~\eqref{Ec} and~\eqref{Fc}
+        \begin{equation*}
+            \begin{aligned}
+            -k_B \avp{\ln \rho_c}{c} & = -k_B \int d\Omega \rho_c \ln \rho_c \\ & = -k_B \int d\Omega \rho_c \ln \frac{\exp(-\beta \mathcal H)}{Z_N} \\ & = -k_B \int d\Omega \rho_c \ln \exp(-\beta \mathcal H) - k_B \int d\Omega \rho_c \ln Z_N \\ & = k_B \int d\Omega \beta \mathcal H - k_B \underbrace{\ln Z_N}_{\beta F} \underbrace{\int d\Omega \rho_c}_{1} \\ & =  \frac{E - F}{T} = S_c
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\section{Equipartition theorem}
+
+    \begin{theorem}[Generalised equipartition theorem]
+        Let $\xi \in [a,b]$ and $\xi_j$ with $j \neq 1$ all the other coordinates or momenta. Suppose also 
+        \begin{equation}\label{cond}
+            \int \prod_{j \neq 1} d \xi_j [\xi_1 \exp(-\beta \mathcal H)]_a^b = 0
+        \end{equation}
+        Then 
+        \begin{equation*}
+            \avp{\xi_1 \pdv{\mathcal H}{\xi_1}}{c} = k_B T
+        \end{equation*}
+    \end{theorem}
+
+    \begin{proof}
+        By normalisation condition 
+        \begin{equation*}
+            1 = \int d\Omega \frac{\exp(-\beta \mathcal H)}{Z_N} = \frac{1}{Z_N} \int \prod_{j \neq 1} d \xi_j \exp(-\beta \mathcal H)
+        \end{equation*}
+        Using
+        \begin{equation*}
+            d\xi_1 (\xi_1 \exp(-\beta \mathcal H)) = d\xi_1 \exp(-\beta \mathcal H) + \xi \exp(-\beta \mathcal H) (-\beta) \pdv{\mathcal H}{\xi_1} d\xi_1
+        \end{equation*}
+        and integrating per parts
+        \begin{equation*}
+        \begin{aligned}        
+            1 & = \frac{1}{Z_N} \underbrace{\int \prod_{j \neq 1} d \xi_j [\xi_1 \exp(-\beta \mathcal H)]_a^b}_{0} + \frac{\beta}{Z_N} \int \prod_{j \neq 1} d \xi_j d\xi_1 \xi_1 \pdv{\mathcal H}{\xi_1} \exp (-\beta \mathcal H) \\ & = \beta \int d\Omega \xi_1 \pdv{\mathcal H}{\xi_1} \frac{\exp (- \beta \mathcal H)}{Z_N} \\ & = \beta \avp{\xi_1 \pdv{\mathcal H}{\xi_1}}{c}
+        \end{aligned}
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            \avp{\xi_1 \pdv{\mathcal H}{\xi_1}}{c} = \frac{1}{\beta} = k_B T
+        \end{equation*}
+    \end{proof}
+
+    Examples of system that satisfies the condition~\eqref{cond} are hamiltonians which depend on the square of momentum or confining potentials which go to infinity on the extremes $a$ and $b$. 
