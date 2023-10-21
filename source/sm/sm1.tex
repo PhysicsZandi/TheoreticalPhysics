@@ -1,0 +1,122 @@
+\part{Thermodynamics}
+
+\chapter{Laws of Thermodynamics}
+
+\section{The laws of Thermodynamics}
+
+    In this chapter, we will recall some notions of Thermodynamics.
+
+    In Thermodynamics, a state is defined by a set of macroscopic quantities, called thermodynamical variables. They can be divided into two groups, one conjugate to the other, according to their behaviour when the physical system is rescaled, i.e.~when the volume and the number of particles change: extensive variables do scale with it whereas intensive ones do not. See Table~\ref{table:1}. An equation of state is a functional relation among them.
+
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c | c }
+            Extensive & Intensive \\
+            \hline
+            Energy $E$ & - \\ 
+            Entropy $S$ & Temperature $T$ \\ 
+            Volume $V$ & Pression $p$\\ 
+            Number of particles $E$ & Chemical potential $\mathbf \mu$ \\ 
+            Polarization $\mathbf P$ & Electric field $\mathbf E$ \\ 
+            Magnetization $\mathbf M$ & Magnetic field $\mathbf B$ \\ 
+        \end{tabular}
+        \caption{Extensive and intensive thermodynamical variables.}
+        \label{table:1}
+    \end{table}
+
+    Thermodynamics is described by four laws.
+
+    \begin{law}[0th]
+        Two systems in thermal contact have the same empirical temperature $T$ at equilibrium
+        \begin{equation*}
+            T_1 = T_2
+        \end{equation*}.
+    \end{law}
+
+    \begin{law}[1st]
+        The (generalised) principle of conservation of energy states that
+        \begin{equation}\label{first}
+            d E = \delta Q - \delta L + \mu dN
+        \end{equation}
+        where $E$ is the internal energy, $Q$ is the heat, $L$ is the work, $\mu$ is the chemical potential (the necessary energy to add or remove a particle) and $N$ is the number of particles.
+    \end{law}
+
+    Recall that $E$ is a exact differential, i.e $\oint d E = 0$, whereas heat and word are not, i.e $\oint \delta Q \neq 0$ and $\oint \delta H \neq 0$.
+
+    \begin{law}[2nd]
+        A system naturally evolves in order to maximize its entropy $S$. For reversible processes
+        \begin{equation}\label{second}
+            dS = \frac{\delta Q}{T}
+        \end{equation}
+        whereas for irreversible processes
+        \begin{equation*}
+           dS \ge \frac{\delta Q}{T}
+        \end{equation*}
+    \end{law}
+
+    \begin{law}[3rd]
+        For any reversible isothermal process
+        \begin{equation*}
+        \Delta S \rightarrow 0 ~\textnormal{as}~ T \rightarrow 0
+        \end{equation*}
+    \end{law}
+
+
+\section{Thermodynamical potentials}
+
+    For reversible processes, using~\eqref{second} and $\delta L = p dV$,~\eqref{first} can be expressed as 
+    \begin{equation}\label{energy}
+        dE = T dS - pdV + \mu dN
+    \end{equation}
+    Notice that the left variables are intensive and the right variables (those with the differential) are extensive. 
+
+    $E$ is a function of $S$, $V$, $N$, hence it must be extensive and a homogeneous function of degree one, satisfying the property
+        \begin{equation*}
+            E(\lambda S, ~\lambda V, ~\lambda N) = \lambda E(S, ~V, ~N)
+        \end{equation*}
+    where $\lambda > 0$ is the scale factor. It can be proved that the only function is 
+        \begin{equation*}
+            E(S, ~V, ~N) = TS - pV + \mu N
+        \end{equation*}
+
+    Similar expression can be found for other thermodynamical quantities, simply exchanging the role of conjugate functions. See Table~\ref{table:2}.
+
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c | c}
+        Potentials & Differential \\
+        \hline
+        Internal energy $E(S, ~V, ~N) = TS - pV + \mu N$ & $dE = TdS - pdV + \mu dN$ \\ 
+        Helmotz free energy $F(T, ~V, ~N) = E - TS = -pV + \mu N$ & $dF = -SdT - pdV + \mu dN$ \\ 
+        Entalpy $H(S, ~p, ~N) = E + pV = St + \mu N$ & $dH = TdS + Vdp + \mu dN$ \\ 
+        Gibbs free energy $G(T, ~p, ~N) = E - TS + pV = \mu N$ & $dG = -SdT + V dp + \mu dN$ \\ 
+        Granpotential $\Omega (T, ~V, ~\mu) = E - TS - \mu N = -pV$ & $d\Omega = -SdT - pdV - N d \mu$ \\ 
+        \end{tabular}
+    \caption{Thermodynamical potentials.}
+    \label{table:2}
+    \end{table}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Fixing three of the thermodynamical variables to be constant, a system evolves in order to minimises the corresponding thermodynamical potential until it reaches its minimum, i.e the equilibrium state. Mathematically, it means that the first derivative must be vaninshing and the hessian must be positive defined. See Table~\ref{table:3}.
+
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c | c | c}
+        Inequality & Constant quantities & \\
+        \hline
+        $d E \leq 0$ & $S, V, N$\\ 
+        $d F \leq 0$ & $T, V, N$\\ 
+        $d H \leq 0$ & $S, p, N$\\ 
+        $d G \leq 0$ & $T, p, N$\\ 
+        $d \Omega \leq 0$ & $T, V, \mu$\\ 
+        \end{tabular}
+    \caption{Thermodynamical variation principles.}
+    \label{table:3}
+    \end{table}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}

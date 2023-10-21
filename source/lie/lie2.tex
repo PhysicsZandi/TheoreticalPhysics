@@ -1,0 +1,45 @@
+\part{SO(3) and SO(1,~3)}
+
+\chapter{SO(3)}
+
+\section{SO(3) as a Lie group}
+
+    In this chapter, we will study the three-dimensional rotations group $O(3)$. Computing the determinant, we can decomposed the Lie group into two parts according to the sign of it:
+
+    \begin{equation*}
+        \Rightarrow O(3) = \underbrace{\{\det R = +1\}}_{SO(3)} ~ \cup ~ \{\det R = -1\} = SO(3) ~ \cup ~ {\det R = -1}
+    \end{equation*}
+
+    Since there is no continuos path that connect the two parts and only $SO(3)$ contains the identity, we are going to study $SO(3)$ and recover the other one with a reflexion along an axis.
+
+    Any $SO(3)$ rotation can be parametrized by a unit vector, perpendicular to the rotation plane, and a rotation angle $\theta$:\
+
+    \begin{equation*}
+        R(\theta, ~ \mathbf n)_{ij} = \cos \theta ~ \delta_{ij} + (1 - \cos \theta) ~ n_i n_j - \sin \theta ~ \epsilon_{ijk} n_k
+    \end{equation*}
+
+    Hence, an infinitesimal rotation $\delta \theta$ near the identity $R(\theta = 0, ~ \mathbf n) = \delta_{ij}$ is 
+
+    \begin{equation*}
+        R(\delta \theta, ~ \mathbf n)_{ij} = \underbrace{\cos \delta \theta }_{1} ~ \delta_{ij} + (1 - \underbrace{\cos \delta \theta }_{1}) ~ n_i n_j - \underbrace{\sin \delta \theta}_{\delta \theta} ~ \epsilon_{ijk} n_k = \delta_{ij} - \delta \theta ~ \epsilon_{ijk} n_k
+    \end{equation*}
+
+    and its action on an arbitrary vector $\mathbf v$ is 
+
+    \begin{equation*}
+        R(\delta \theta, ~ \mathbf n)_{ij} v_i = \delta_{ij} v_i - \delta \theta ~ \epsilon_{ijk} v_i n_k = \delta_{ij} v_i + \delta \theta ~ \epsilon_{jik} v_i n_k 
+    \end{equation*}
+
+    or 
+
+    \begin{equation*}
+        R(\delta \theta, ~ \mathbf n) \mathbf v = \mathbf v + \delta \theta ~ \epsilon{jik} v_i n_k 
+    \end{equation*}
+
+
+\section{SO(3) representations}
+
+    In this chapter, 
+
+\chapter{SO(1,~3)}
+

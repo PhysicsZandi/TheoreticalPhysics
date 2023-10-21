@@ -1,0 +1,210 @@
+\part{Lie groups and representations}
+
+\chapter{Groups}
+
+    The justification of a group can be found in the structure of a physics transformation: given two transformation, the composition of them should be defined together with the unit one, i.e.~nothing happens, and the inverse one, i.e.~if you want to return back to the initial system.
+
+    \begin{definition}[Group]
+        A group is a set of elements $G = \{g_i\}$ associated with a composition map 
+        \begin{equation*}
+            \cdot \colon G \times G \rightarrow G
+        \end{equation*}
+        satisfying the following properties
+        \begin{enumerate}
+            \item closure, i.e.
+            \begin{equation*}
+                g_1 g_2 \in G \quad \forall g_1, g_2 \in G
+            \end{equation*}
+            \item associativity, i.e.
+            \begin{equation*}
+                (g_1 g_2)g_3 = g_1(g_2 g_3) = g_1 g_2 g_3 \quad \forall g_1, g_2, g_3 \in G
+            \end{equation*}
+            \item unit element, i.e.
+            \begin{equation*}
+                \exists! g_0 \in G \colon g_0 g = g g_0 = g \quad \forall g \in G
+            \end{equation*}
+            \item inverse element, i.e.
+            \begin{equation*}
+                \exists! g^{-1} \in G \colon g^{-1} g = g g^{-1} = g_0 \quad \forall g \in G
+            \end{equation*}
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[Abelian group]
+        A group is said to abelian if 
+        \begin{enumerate}
+        \setcounter{enumi}{4}
+            \item commutativity, i.e.
+            \begin{equation*}
+                g_1 g_2 = g_2 g_1 \quad \forall g_1, g_2 \in G
+            \end{equation*}
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[Subgroup]
+        A subgroup is a subset $H \subset G$ of a group which is also a group itself with closed restricted composition map.
+    \end{definition}
+
+    \begin{example}[Groups]
+        Examples of groups are
+        \begin{enumerate}
+            \item $\mathbb Z$, $\mathbb Q$, $\mathbb R$, $\mathbb C$ with composition map $+$ and unit element $0$,
+            \item $\mathbb Q\setminus\{0\}$, $\mathbb Q\setminus\{0\}$ with composition map $\times$ and unit element $1$,
+            \item $\mathbb Z_n = \set{z \in [0, ~n-1]}{a+n = a}$ with composition map $+$ and unit element $0$.
+        \end{enumerate}
+    \end{example}
+
+    \begin{example}[Matrix groups]
+        Matrices are a non-abelian group with matrix multiplication as composition map:
+        \begin{enumerate}
+            \item $GL(n) = \set{M \in Mat_{n \times n}(\mathbb R)}{\det M \neq 0}$
+        \end{enumerate}
+        Given a fixed invertible $n\times n$ matrix $B$, a subgroup of $GL(n)$ is the set of matrices $M$ which preserve this matrix, i.e. $M^{t}BM = B$:
+        \begin{enumerate}
+        \setcounter{enumi}{1}
+            \item $O(n) = \set{R \in Mat_{n \times n}(\mathbb R)}{R^{t} \mathds 1 R = \mathds 1}$ with Euclidean metric $B = \mathds 1$,
+            \item $O(1, ~n-1) = \set{\Lambda \in Mat_{n \times n}(\mathbb R)}{\Lambda^{t} \eta \Lambda = \eta}$ with Minkovskian metric $B = \eta$.
+        \end{enumerate}
+        Over the complex field
+        \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item $U(n) = \set{U \in Mat_{n \times n}(\mathbb C)}{U^{\dagger} U = \mathds 1}$
+        \end{enumerate}
+        Imposing $\det M = 1$, we find the special groups
+        \begin{enumerate}
+        \setcounter{enumi}{4}
+            \item $SL(n) = \set{M \in GL(n)}{\det M = 1}$,
+            \item $SO(n) = \set{R \in O(n)}{\det R = 1}$,
+            \item $SO(1,~n-1) = \set{\Lambda \in O(1, ~n-1)}{\det \Lambda = 1}$,
+            \item $SU(n) = \set{M \in U(n)}{\det U = 1}$.
+        \end{enumerate}
+    \end{example}
+
+\chapter{Lie groups}
+
+    \begin{definition}[Lie group]
+        A Lie group is a group endowed with a manifold structure such that composition and inverse are smooth maps, i.e.
+        \begin{equation*}
+        \begin{aligned}
+            \mu \colon & G \times G \rightarrow G 
+            \\ & (x, y) \mapsto x^{-1} y
+        \end{aligned}
+        \end{equation*}
+    \end{definition}
+
+    In Lie groups, we can introduce the notions of closeness and power series. The tangent space at $g_0 \in G$, i.e.~elements of the group infinitesimally away from the unit element, gives rise of the Lie algebra.
+
+    \begin{definition}[Lie algebra]
+        A Lie algebra is a linear space equipped with an anti-symmetric product, called Lie brackets
+        \begin{equation*}
+            [~,~] \colon \textgoth g \times \textgoth g \rightarrow \textgoth g
+        \end{equation*}
+        satisfying the following properties
+        \begin{enumerate}
+            \item linearity, i.e.
+            \begin{equation*}
+                [\alpha X + \beta Y, ~Z] = \alpha [X, ~Z] + \beta [Y, ~Z] \quad \forall X, ~Y, ~Z \in \textgoth g \quad \forall \alpha, ~\beta \in \mathbb R
+            \end{equation*}
+            \item anti-symmetry, i.e.
+            \begin{equation*}
+                [X, ~Y] = - [Y, ~X] \quad \forall X, ~Y \in \textgoth g
+            \end{equation*}
+            \item Jacobi identity, i.e.
+            \begin{equation*}
+                [X, ~[Y, ~Z]] + [Y, ~[Z, ~X]] + [Z, ~[X, ~Y]] = 0 \quad \forall X, ~Y, ~Z \in \textgoth g
+            \end{equation*}
+        \end{enumerate}
+        A Lie algebra can be encoded with the structure constants $f_{ijk}$
+        \begin{equation*}
+            [T_i, ~T_j] = f_{ijk} T_k
+        \end{equation*}
+        where $\{T_i\}$ is a basis of $\textgoth g$.
+    \end{definition}
+
+    The exponential map helps to construct a group element that is finitely away as $g = \exp(X)$ from $X \in \textgoth g$, tied to the existence of a unique path $\gamma \colon \mathbb R \rightarrow G$ such that $\gamma(0) = g_0$ and $\gamma(1) = g$ which is a one-parameter subgroup $\set{\gamma(s)}{s \in \mathbb R}$ whose tangent vector at $g_0$ is $X$.  
+
+    A useful formula is the Baker-Campbell-Hausdorff one, which connects the group composition with the Lie brackets
+    \begin{equation*}
+        \exp(X)\exp(Y) = \exp(X + Y + \frac{1}{2} [X, ~Y] + \ldots)
+    \end{equation*}
+
+    Summarizing, from structure constants we define a Lie algebra, from the exponential map and the BCH formula we define Lie group elements in terms of generators of the Lie algebra $\{T_i\}$.
+
+\chapter{Representations}
+
+    In physics, it is useful to study how groups act on objects, in particular matrix groups act on vectors belonging to linear spaces.
+
+    \begin{definition}[Representation]
+        A linear representation of a group $G$ is a group homomorphism 
+        \begin{equation*}
+            \rho \colon G \rightarrow Aut(V) 
+        \end{equation*}
+        satisfying the following property
+        \begin{enumerate}
+            \item composition map, i.e.
+            \begin{equation*}
+                \rho(g_1 g_2) = \rho(g_1) \rho(g_2) \quad \forall g_1, g_2 \in G
+            \end{equation*}
+        \end{enumerate}
+    \end{definition}
+
+    It is possible to derive other properties
+    \begin{enumerate}
+    \setcounter{enumi}{1}
+        \item unit element, i.e.
+        \begin{equation*}
+            \rho(g_0) = \mathds 1_V
+        \end{equation*}
+        \item inverse element, i.e.
+        \begin{equation*}
+            \rho(g^{-1}) = \rho^{-1}(g) \quad \forall g \in G
+        \end{equation*}
+    \end{enumerate}
+
+    For finite-dimensional linear spaces, i.e. $\dim V = n$, and $Aut(V) \simeq GL(n)$ after picking a basis. Furthermore, $\dim (\rho, ~V) = \dim V$. A representation $(\rho, ~V)$ acts as a linear transformation on a vector $v \in V$ as $\rho(g) v$.
+
+    \begin{definition}[Reducible, irreducible representation]
+        A representation $(\rho, ~V)$ is reducible if 
+        \begin{equation*}
+            \nexists U \subset V ~\colon~ \rho(g) u \in U \quad \forall u \in U
+        \end{equation*}
+        otherwise, it is irreducible.
+    \end{definition}
+
+    A reducible representation can be always put in block triangle form, choosing a suitable basis 
+    \begin{equation*}
+        \rho(g) = 
+        \begin{bmatrix}
+            \rho_1(g) & B(g) \\
+            0 & \rho_2(g) \\
+        \end{bmatrix}
+    \end{equation*}
+    with the invariant subspace is $U = \{(u, ~0) \in V\}$. If $B(g)=0$, the representation is completely reducible and decomposes into the direct sum of $\rho = \rho_1 \oplus \rho_2$. 
+
+    \begin{definition}[Equivalent representations]
+        Two representations $\rho_1$ and $\rho_2$ of the same dimension are equivalent if 
+        \begin{equation*}
+            \exists S invertible ~\colon~ \rho_2(g) = S^{-1} \rho_1(g) S \quad \forall g \in G
+        \end{equation*}
+        which means that there exists a basis change that relate the representations.
+    \end{definition}
+
+    \begin{definition}[Faithful representation]
+        A representation $\rho$ is faithful if 
+        \begin{equation*}
+            g_1 \neq g_2 ~\Rightarrow~ \rho(g_1) \neq \rho(g_1)
+        \end{equation*}
+    \end{definition}
+
+    For non-faithful representations, there exists $H \subset G$ such that $\rho(h) = \mathds 1 \quad \forall h \in H$.
+
+    \begin{definition}
+        Over the complex field, i.e. $\rho \colon G \rightarrow GL(n, ~\mathbb C)$, a representation is unitary if 
+        \begin{equation*}
+            \rho(g^{-1}) = \rho^{-1}(g) = \rho(g)^{\dagger}
+        \end{equation*}
+    \end{definition}
+
+    \section{Representations of Lie Groups and Lie Algebras}
+
+    
