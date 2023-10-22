@@ -43,3 +43,89 @@
 
 \chapter{SO(1,~3)}
 
+    The Lorentz group is defined by the matrices $\Lambda$ such that preserve the Minkovski metric 
+    \begin{equation}\label{lorentz}
+        \Lambda^\alpha_{\phantom \alpha \mu} \Lambda^\beta{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
+    \end{equation}
+
+    First, the Lorentz group can be decomposed into two parts according to their determinant
+    \begin{equation*}
+        \det (\Lambda^T \eta \Lambda) = \det \Lambda^T \det \eta \det \Lambda = \det^2 \Lambda = \det \eta = 1
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \det \Lambda = \pm 1
+    \end{equation*}
+    and the Lorentz group can be written as
+    \begin{equation*}
+        O(1,3) = \underbrace{\{\det \Lambda = +1\}}_{SO(1,3)} \cup \{\det \Lambda = - 1\} 
+    \end{equation*}
+    where $SO(1,3)$ is called the proper Lorentz group.
+
+    Second, the proper Lorentz group can be decomposed into two parts according to their (0, 0) component
+    \begin{equation*}
+        \eta_{00} = \Lambda^\alpha_{\phantom \alpha 0} \Lambda^\beta_{\phantom \beta 0} \eta_{\alpha \beta}
+    \end{equation*}
+    \begin{equation*}
+        -1 = -(\Lambda^0_{\phantom 0 0})^2 + (\Lambda^i_{\phantom i i})^2
+    \end{equation*}
+    \begin{equation*}
+        (\Lambda^0_{\phantom 0 0})^2 = 1 + (\Lambda^i_{\phantom i i})^2 \geq 1
+    \end{equation*}
+    
+    Hence 
+    \begin{equation*}
+        \Lambda^0_{\phantom 0 0} \in ]\infty, -1] \cup [1, \infty[
+    \end{equation*}
+    and the proper Lorentz group can be written as
+    \begin{equation*}
+        SO(1,3) = \underbrace{\{\Lambda^0_{\phantom 0 0} \in ]\infty, -1]\}}_{SO(1,3)^+} \cup \{\Lambda^0_{\phantom 0 0} \in [1, \infty[\} 
+    \end{equation*}
+    where $SO(1,3)^+$ is called the proper orthochronous Lorentz group.
+
+    From now on, only the proper orthochronous Lorentz group will be studied because is the only group containing the identity.
+
+\section{Lie algebra: generators of $SO(1,3)^+$}
+
+    Consider an infinitesimal Lorentz transformation around the identity 
+    \begin{equation}\label{inf}
+        \Lambda^{\mu}_{\phantom \mu \nu} = \delta^{\mu}_{\phantom \mu \nu} + \omega^{\mu}_{\phantom \mu \nu}
+    \end{equation}
+    where $\omega^{\mu}_{\phantom \mu \nu} \ll 1$ is an infinitesimal matrix.
+    
+    Using~\eqref{lorentz},
+    \begin{equation*}
+        (\delta^{\alpha}_{\phantom \alpha \mu} + \omega^{\alpha}_{\phantom \alpha \mu} )( \delta^{\beta}_{\phantom \beta \nu} + \omega^{\beta}_{\phantom \beta \nu} )\eta_{\alpha \beta} = \eta_{\mu \nu}
+    \end{equation*}
+    \begin{equation*}
+        \delta^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \delta^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
+    \end{equation*}
+    \begin{equation*}
+        \cancel{\eta_{\mu \nu}} + \omega_{\mu \nu} + \omega_{\nu\mu} + O(\omega^2) = \cancel{\eta_{\mu \nu}}
+    \end{equation*}
+    Hence, the matrices $\omega_{\mu\nu}$ are anti-symmetric
+    \begin{equation*}
+        \omega_{\mu \nu} = \omega_{\nu \mu}
+    \end{equation*}
+
+    Using the exponential map, a generic $SO(1,3)^+$ transformation can be written as
+    \begin{equation*}
+        \Lambda^{\mu}_{\phantom \mu \nu} = \exp(- \frac{i}{2} \omega^{\alpha \beta} M_{\alpha \beta})^\mu_{\phantom \mu \nu}
+    \end{equation*}
+    where $M_{\alpha \beta}$ are the generators of the Lie algebra $\mathfrak{so} (1,3)$. Since they must be antisymmetric, otherwise they would vanish, there are six independent generators of $\mathfrak{so} (1,3)$.
+    
+
+\section{Lie algebra: commutators of $SO(1,3)^+$}
+
+    To find the explicit expression of the commutator of two generators, first it will be computed the following expression using~\eqref{inf}
+    \begin{equation*}
+    \begin{aligned}
+        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = (\delta^{\mu}_{\phantom \mu \alpha} - \tilde \omega^{\mu}_{\phantom \mu \alpha})(\delta^{\alpha}_{\phantom \alpha \beta} - \omega^{\alpha}_{\phantom \alpha \beta})(\delta^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\beta}_{\phantom \beta \gamma})(\delta^{\gamma}_{\phantom \gamma \nu} + \omega^{\gamma}_{\phantom \gamma \nu}) + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta}\delta^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \tilde \omega^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} - \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} + \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} \\ & \quad + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2)
+    \end{aligned}
+    \end{equation*}
+    and second using the BCH formula~\eqref{BCH}
+    \begin{equation*}
+    \begin{aligned}
+        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = 
+    \end{aligned}
+    \end{equation*}
