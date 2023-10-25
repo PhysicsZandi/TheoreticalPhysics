@@ -503,3 +503,396 @@
             \pdvd{g_{ij}}{x^k}{x^l} \Big\vert_{y_P} = 0
         \end{equation*}
     \end{proof}
+
+\chapter{Lie derivatives}
+
+\section{Active and passive transformation}
+
+    In the passive interpretation of a diffeomorphism on $\mathcal M$, the points remain the same but their coordinates changes. The diffeomorphism does not act on $\mathcal M$, but on the coordinates in $\mathbb R^n$. It can be sees as a change of coordinates $x' = x'(x, \epsilon)$ where $\epsilon$ is a parameter such that $x'(x, 0) = x$. For instance, a function changes in such a way that $\Phi'(x') = \Phi(x)$ where $\Phi(x) = (f \o \phi^{-1})(x)$.
+
+    In the active interpretation of a diffeomorphism, the points are actually moved (along the flow of an integral curve). The diffeomorphism do act on $\mathcal M$. 
+
+    The Lie dragged or push forward of a function $f$ from a point $P$ to a point $P'$ is a new function such that $f^*(P') = f(P)$. 
+
+\section{Congruence}
+
+    A congruence of a vector field $V$ is a set of integral curve which start from a curve $\Sigma_0$, that is an hypersurface of dimension $n-1$ and uniquely cover a portion of $\mathcal M$. A Lie dragging or a push-forward $\phi_{\Delta \lambda} \colon \mathcal M \rightarrow \mathcal M$ is the motion of a point $P(\lambda_0)$ in $P(\lambda_0 + \Delta \lambda)$ such that $\phi_{\Delta \lambda}$ is continuous and invertible. If $V \in C^{\infty}$, the push-forward becomes a diffeomorphism and form a group. Infact, $\phi_{\lambda_1} \o \phi_{\lambda_2} = \phi_{\lambda_1 + \lambda_2}$, $\phi_{\lambda}^{-1} = \phi_{- \lambda}$ and $\phi_{\lambda = 0} = \mathbb I$. 
+
+    The push-forward of a function $f$ along a congruence of $V = \dv{}{\lambda}$ is a map $f^*$ from a point $P$ to a point $Q = \phi_{\Delta \lambda}(P) $ such that
+    \begin{equation*}
+        f^*_{\Delta \lambda} (Q) = f(P) 
+    \end{equation*}
+    If it is true $\forall Q$ along the integral curve of $V$, $f^*_{\Delta \lambda}$ is constant and $\dv{f}{\lambda} = 0$.
+
+    The push-forward of a vector field $W = \dv{}{\mu}$ along a congruence of $V = \dv{}{\lambda}$ is a map $f^*$ from a point $P$ to a point $Q = \phi_{\Delta \lambda}(P) $ such that
+    \begin{equation*}
+        W^*_{\Delta \lambda} (f^*_{\Delta \lambda}) \vert_Q = W (f) \vert_P
+    \end{equation*}
+    where $f$ is an arbitrary function. It can be also written as 
+    \begin{equation*}
+        \dv{f^*}{\mu} \Big\vert_{\lambda_0 + \Delta \lambda} = \dv{f}{\mu}
+    \end{equation*}
+    where $\lambda(P) = \lambda_0$ and $\lambda(Q) = \lambda_0 + \Delta \lambda$.
+    
+    Furthermore, the commutator between $V$ and $W^*$ vanishes
+    \begin{equation}\label{comm}
+        [V, W^*] = [\dv{}{\lambda}, \dv{}{\mu^*}] = 0
+    \end{equation}
+
+    \begin{proof}
+        Fixing $f$ and varying $\Delta \lambda$, $\dv{f^*}{\mu^*}$ is constant along the congruences of $V$. Mapping the initial curve $\Sigma_0$ into a new curve $\Sigma_{\Delta \lambda}$ and since $\lambda$ is constant, it can be used as a coordinate. 
+
+        Since $W^*$ is tangent to $\Sigma_{\Delta \lambda}$ its parameter $\mu^*$ is constant along the congruences of $V$. Hence there are two coordinates $(\lambda, \mu^*)$ are coordinates and their coordinate vectors commute.
+    \end{proof}
+
+\section{Lie derivatives}
+
+    The Lie derivative of a function $f$ along a vector field $V=\dv{}{\lambda}$ is 
+    \begin{equation*}
+        \pounds_{V} f \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{f^*_{-\Delta \lambda}(\lambda_0) - f(\lambda_0)}{\Delta \lambda} = \lim_{\Delta \lambda \rightarrow 0} \frac{f(\lambda_0 + \Delta \lambda)- f(\lambda_0)}{\Delta \lambda} = \dv{f}{\lambda} \Big \vert_{\lambda_0} = V(f)
+    \end{equation*}
+    where it has been used the push-back $\phi_{-\Delta\lambda} (P(\lambda_0 + \Delta \lambda)) = P(\lambda_0)$ and $f^*_{-\Delta\lambda} (\lambda_0) = f (\lambda_0 + \Delta \lambda)$. If $f$ is constant along the congruences, then $\pounds_V f = 0$.
+
+    The Lie derivative of a vector field $W=\dv{}{\mu}$ along a vector field $V=\dv{}{\lambda}$ is
+    \begin{equation*}
+        \pounds_V W (f) \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{W^*_{-\Delta\lambda} - W}{\Delta \lambda} (f) \Big \vert_{\lambda_0}
+    \end{equation*}
+    or it can be written as 
+    \begin{equation*}
+        \pounds_V W = [V, W]
+    \end{equation*}
+    in components
+
+    \begin{proof}
+        Taylor expanding around $\lambda_0 + \Delta \lambda$ 
+        \begin{equation*}
+            W^*_{-\Delta\lambda} (f) \Big \vert_{\lambda_0} = \dv{f}{\mu^*} \Big \vert_{\lambda_0} = \dv{f}{\mu^*} \Big \vert_{\lambda_0 + \Delta \lambda} - \Delta \lambda \Big ( \dv{}{\lambda} \dv{}{\mu^*} f \Big)\Big \vert_{\lambda_0 + \Delta \lambda} + O(\Delta \lambda^2)
+        \end{equation*}
+        
+        Using~\eqref{comm} and at first order $\dv{}{\mu} = \dv{}{\mu^*}$,
+        \begin{equation*}
+        \begin{aligned}
+            \dv{f}{\mu^*} \Big \vert_{\lambda_0} & = \dv{f}{\mu} \Big \vert_{\lambda_0 + \Delta \lambda} - \Delta \lambda \Big ( \dv{}{\lambda} \dv{}{\mu^*} f \Big)\Big \vert_{\lambda_0 + \Delta \lambda} + O(\Delta \lambda^2) \\ & = \dv{f}{\mu} \Big \vert_{\lambda_0} + \Delta \lambda \dv{}{\lambda} \dv{}{\mu^*} f \Big \vert_{\lambda_0} - \Delta \lambda \Big ( \dv{}{\lambda} \dv{}{\mu^*} f \Big)\Big \vert_{\lambda_0 + \Delta \lambda} + O(\Delta \lambda^2) \\ & = \dv{f}{\mu} \Big \vert_{\lambda_0} + \Delta \lambda \Big (\dv{}{\lambda} \dv{}{\mu^*} f -  \dv{}{\mu^*} \dv{}{\lambda} f \Big) \Big \vert_{\lambda_0 + \Delta \lambda} + O(\Delta \lambda^2) \\ & = \dv{f}{\mu} \Big \vert_{\lambda_0} + \Delta \lambda \Big [\dv{}{\lambda}, \dv{}{\mu} \Big ] f \Big \vert_{\lambda_0 + \Delta \lambda} + O(\Delta \lambda^2)  
+        \end{aligned}
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            W^*_{-\Delta\lambda} (f) \Big \vert_{\lambda_0} = W(f) \Big \vert_{\lambda_0} + \Delta \lambda \Big [\dv{}{\lambda}, \dv{}{\mu} \Big ] f \Big \vert_{\lambda_0} + O(\Delta \lambda^2) 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \pounds_V W(f) \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{\Delta \lambda \Big [\dv{}{\lambda}, \dv{}{\mu} \Big ] f \Big \vert_{\lambda_0} (f) \Big \vert_{\lambda_0} + O(\Delta \lambda^2) }{\Delta \lambda} = \Big [\dv{}{\lambda}, \dv{}{\mu} \Big ] f \Big \vert_{\lambda_0}
+        \end{equation*}
+    \end{proof}
+
+    The Lie derivative satifies the properties 
+    \begin{enumerate}
+        \item vanishes if the components of $W$ are constant along $V$
+        \item Leibniz rule, i.e. 
+            \begin{equation*}
+                \pounds_V (fW) = f \pounds_V (W) + \pounds_V (f) W  
+            \end{equation*}
+        \item linearity, i.e.
+            \begin{equation*}
+                \pounds_V + \pounds_W = \pounds_{V+W}
+            \end{equation*}
+        \item commutator, i.e.
+            \begin{equation*}
+                [\pounds_V, \pounds_W] = \pounds_{[V,W]}
+            \end{equation*}
+        \item Jacobi identity, i.e.
+            \begin{equation*}
+                [[\pounds_V, \pounds_W], \pounds_Z] + [[\pounds_W, \pounds_Z], \pounds_X] + [[\pounds_Z, \pounds_V], \pounds_W] = 0 
+            \end{equation*}
+    \end{enumerate}
+
+    The Lie derivative of a 1-form $\omega$ along a vector field $V=\dv{}{\lambda}$ is 
+    \begin{equation*}
+        (\pounds_V \omega ) (W) = \pounds_V (\omega(W)) - \omega(\pounds_V W)
+    \end{equation*}
+    or introducing a chart $x^i$ and the sual basis
+    \begin{equation*}
+        (\pounds_V \omega)_i = V^k \pdv{\omega_i}{x^k} + \omega_k \pdv{V^k}{x^i}
+    \end{equation*}
+
+    \begin{proof}
+        Using the Leibniz rule,
+        \begin{equation*}
+            \pounds_V (\omega (W)) = (\pounds_V \omega) (W) + \omega  (\pounds_V W)
+        \end{equation*}
+        \begin{equation*}
+             (\pounds_V \omega) (W) = \pounds_V (\omega (W)) - \omega  (\pounds_V W)
+        \end{equation*}
+
+        Introducing a coordinate basis, the Lie derivative of a scalar and the components of a commutator
+        \begin{equation*}
+        \begin{aligned}
+            (\pounds_V \omega)_i & = (\pounds_V \omega )(e_i) \\ & = \pounds_V (\omega (e_i)) - \omega  (\pounds_V e_i) = \dv{\omega (e_i)}{\lambda} - \omega ([V, e_i]) \\ & = V^k \pdv{\omega^i}{x^k} + \omega^k \pdv{V^k}{x^i}
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The Lie derivative of a tensor $(n,m)$
+    \begin{equation*}
+        T (\omega_1, \ldots, \omega_n, W^1, \ldots, W^m) \colon \mathcal M \rightarrow \mathbb R
+    \end{equation*} 
+    along a vector field $V=\dv{}{\lambda}$ is
+    \begin{equation*}
+    \begin{aligned}
+        \pounds_V T (\omega_1, \ldots, \omega_n, W^1, \ldots, W^n) & = (\pounds_V T) (\omega_1, \ldots, \omega_n, W^1, \ldots, W^n) \\ & \quad + T (\pounds_V \omega_1, \ldots, \omega_n, W^1, \ldots, W^n) + \ldots \\ & \quad + T (\pounds_V \omega_1, \ldots, \pounds_V \omega_n, W^1, \ldots, W^n) \\ & \quad + T (\omega_1, \ldots, \omega_n, \pounds_V W^1, \ldots, W^n) + \ldots \\ & \quad + T (\omega_1, \ldots, \omega_n, W^1, \ldots, \pounds_V W^n)
+    \end{aligned}
+    \end{equation*}
+
+\section{Symmetries}
+
+    Symmetries are no longer referred to the manifold, but to tensor defined in it. Furthermore, their geometrical meaning is a local feature.
+
+    A submanifold is a subset $\mathcal S \subset \mathcal M$ of dimension $\dim \mathcal S \leq \dim \mathcal M$ sucin which there exist a chart $x^i$ such that $U \cap \mathcal S \subseteq \mathcal M$ and $x^{n-m+1} = \ldots = x^n = 0$ for all $P \in mathcal S$.
+
+    The tangent space in a point $P \in mathcal S$ has dimension
+    \begin{equation*}
+        \dim T_P^{(\mathcal M)} = n \geq \dim T_P^{(\mathcal M)} = m
+    \end{equation*}
+
+    Curves and vectors in $\mathcal S$ maps to $\mathcal M$
+    \begin{equation*}
+        \gamma_{\mathcal S} = (x^1(\lambda), \ldots, x^m(\lambda)) \rightleftarrows \gamma_{\mathcal M} = (x^1(\lambda), \ldots, x^m(\lambda), 0, \ldots, 0)
+    \end{equation*}
+    and
+    \begin{equation*}
+        V_{\mathcal S} = (V^1, \ldots, V^m) \rightleftarrows V_{\mathcal M} = (V^1, \ldots, V^m, 0, \ldots, 0)
+    \end{equation*}
+    but the inverse is not unique, infact there are infinitely many curves or vectors created putting a different number from $0$ in the places with index greater than m. 
+
+    A 1-form in the submanifold is defined as 
+    \begin{equation*}
+        \omega_{\mathcal S} (V) = \omega_{\mathcal M} (V, 0, \ldots, 0)
+    \end{equation*}
+    where $V \in T_P^{(\mathcal S)}$. Also here, the inverse is not unique, infact there are infinitely many 1-forms created putting a different number from $0$ in the places with index greater than m. 
+
+    A set of vector fields $V^{(k)}$ with $k = 1, \ldots, p$ is linearly independent if there exist $a_k$ constants such that
+    \begin{equation*}
+        \sum_{k=1}^{p} a_k V^k (P) = 0 \quad \forall P \in \mathcal M 
+    \end{equation*}
+
+    This does not mean that at a given $P$, they are linearly independent, because the coefficients could depend on point $a_k = a_k (P)$.
+
+    \begin{theorem}[Frobenius]
+        Let $V^{(k)}$ be a set of linearly independent vector fields with $k = 1, \ldots, p$ such that forms a Lie algebra
+        \begin{equation*}
+            [V^{(i)},V^{(j)}] = C^{ij}_{\phantom{ij} k} V^{(k)}
+        \end{equation*}
+        where $C^{ij}_{\phantom{ij} k} \in \mathbb R$. Then the integral curves of $V^{(k)}$ form a family of submanifolds or foliations of $\mathcal M$ of dimension $m \leq p$.
+    \end{theorem}
+
+    A vector field $V$ is a symmetry of a tensor field $T$ if 
+    \begin{equation*}
+        \pounds_V T = 0
+    \end{equation*}
+
+    \begin{theorem}
+        Let $V^{(i)}$ be a set of linearly independent vector fields with $i = 1, \ldots, p$ and $T^{(k)}$ be a set of linearly independent vector fields with $k = 1, \ldots, q$ such that 
+        \begin{equation*}
+            \pounds_{\sum_i a_i V^{(i)}} \sum_k b_k T^{(k)} = 0
+        \end{equation*}
+        Then $V^{(i)}$ form a Lie algebra
+    \end{theorem}
+
+    \begin{proof}
+        Given a two symmetries $V^{(1)}$ and $V^{(2)}$, using a property of the Lie derivative
+        \begin{equation*}
+            [\pounds_{V^{(1)}}, \pounds_{V^{(2)}}] = \pounds_{[V^{(1)},V^{(2)}]} = 0
+        \end{equation*}
+        Hence, $[V^{(1)},V^{(2)}]$ is a symmetry as well. Generalizing for a linear combination $aV^{(1)} + bV^{(2)}$, the only condition to satift the hypothesis is that $a$ and $b$ are independent of $P$ and the structure constant as well. 
+    \end{proof}
+
+    \begin{corollary}
+        $V^{(i)}$ define a submanifold of dimension $m \leq p$.
+    \end{corollary}
+
+    An isometries is a symmetry of the metric tensor 
+    \begin{equation*}
+        \pounds_V g = 0
+    \end{equation*}
+    where $V$ is called the Killing vector. Hence, congruences along a Killing vector preserves lengths and angles.
+
+    In special relativity, inertial observers can be seen as coordinate frames along Killing vectors, using the Minkovski metric $g = \eta$.
+
+\chapter{Integrals and forms}
+
+\section{p-forms}
+
+    A p-form is an antysymmetric tensor $(0, p)$ in the tangent $T_P$. p-forms form a linear space. 
+
+    A 2-form $\omega$ is 
+    \begin{equation*}
+        \omega_{[ij]} = \frac{1}{2!} (\omega_{ij} - \omega_{ji})
+    \end{equation*}
+
+    A 3-form $\omega$ is 
+    \begin{equation*}
+        \omega_{[ijk]} = \frac{1}{3!} (\omega_{ijk} + \omega_{jki} + \omega_{kij} - \omega_{ikj} - \omega_{kji} - \omega_{jki})
+    \end{equation*}
+
+    A general p-form $\omega$ is 
+    \begin{equation*}
+        \omega_{[i_1 \ldots i_p]} = \frac{1}{p!} (\omega_{i_1 \ldots i_p} + \textnormal{permutations})
+    \end{equation*}
+
+    The number of independent components of a p-form is the binomial coefficient 
+    \begin{equation*}
+        \binom{n}{p} 
+    \end{equation*} 
+    with the condition $\sum_p \binom{n}{p} = n^2$.
+
+    Introducing the wedge product 
+    \begin{equation*}
+        \omega = \omega_{i_1 \ldots i_p} e^{i_1} \wedge \ldots \wedge e^{i_p} = \omega_{i_1 \ldots i_p} \frac{1}{p!} (e^{i_1} \otimes \ldots \otimes e^{i_p} + \textnormal{permutations})
+    \end{equation*}
+
+    Moreover, the wedge product can be used to compose a p-form and a q-form into a (p+q)-form
+    \begin{equation*}
+        \textnormal{p-form} \wedge \textnormal{q-form} = \textnormal{(p+q)-form}
+    \end{equation*}
+    and to contract a p-form with a vector to obtain a (p-1)-form
+    \begin{equation*}
+    \begin{aligned}
+        p(V, \ldots) & = (\omega_{i_1 \ldots i_p} e^{i_1} \wedge \ldots \wedge e^{i_p}) (V^k e_k) \\ & = \frac{1}{p!} (\omega_{i_1 \ldots i_p} e^{i_1}(e_k) \otimes \ldots \otimes e^{i_p} + \textnormal{permutations}) \\ & = V^k\omega_{i_1 \ldots i_p} e^{i_2} \wedge \ldots \wedge e^{i_p}
+    \end{aligned}
+    \end{equation*}
+
+\section{Volume}   
+
+    A polyhedron in $\mathcal M$ is defined by $n$ linearly independent vectors and its volume is a number. Therefore it is natural to associate an n-form, given the additional antysymmetric property, i.e. to vanish if two vectors are linearly dependent. In a coordinate basis, the $n$ vectors are
+    \begin{equation*}
+        \Delta x_k = dx^i_{(k)} \pdv{}{x^i}
+    \end{equation*}
+    and the n-form is 
+    \begin{equation*}
+        \omega = f e^1 \wedge \ldots \wedge e^n
+    \end{equation*}
+    Putting together, the volume of an infinitesimal polyhedron is 
+    \begin{equation*}
+        \omega (\Delta x_{(1)}, \ldots, \Delta x_{(n)}) = f e^i(\Delta x_{(1)}) \ldots e^n(\Delta x_{(n)}) + \textnormal{permutations}
+    \end{equation*}
+    Choosing coordinate basis, 
+    \begin{equation*}
+    \begin{aligned}
+        \omega (\Delta x_{(1)}, \ldots, \Delta x_{(n)}) & = f dx^1_{(1)} \ldots dx^n_{(n)} + 0 + \ldots + 0 \\ & = f dx^1_{(1)} \ldots dx^n_{(n)} \\ & = dV
+    \end{aligned}
+    \end{equation*}
+
+    Introducing a lattice of charts, the volume of a region $U \subseteq \mathcal M$ is the integral 
+    \begin{equation*}
+        V(U) = \int_{\phi(U)} f dx^1 \ldots dx^n = \int_U \omega 
+    \end{equation*}
+
+    It is a scalar, since under a change of coordinates $y^i(x^i)$
+    \begin{equation*}
+        V = \int_U \omega = \int_{\phi'(U)} f(y) J(y) d^n y
+    \end{equation*}
+    where $J$ is the determinant of the jacobian, which shows that the volume is coordinate independent. 
+
+\section{Area}
+
+    In a submanifold of dimension $n-1$, the infinitesimal area of an hypersurface uses a (n-1)-form, taken by contracting the n-form of the volume with a vector $v \in T_P^{(\mathcal M)} \notin T_P^{(\mathcal S)}$ which is $A = \omega(v, \ldots)$. 
+
+    The infinitesimal area, choosing coordinate basis, is
+    \begin{equation*}
+    \begin{aligned}
+        \omega (v, \omega_{(1)}, \ldots, \omega_{(n-1)}) & = A(\omega_{(1)}, \ldots, \omega_{(n-1)}) \\ & = v f e^1(\omega_{(1)}) \wedge \ldots \wedge e^{n-1} (\omega_{(n-1)}) \\ & = v f dx^1 \ldots dx^{n-1} \\ & = dA
+    \end{aligned}
+    \end{equation*}
+    and the area of a portion $\Sigma \subseteq \mathcal S$ is 
+    \begin{equation*}
+        A(\Sigma) = \int_{\phi(\Sigma)} f v dx^1 \ldots dx^{n-1} = \int_{\Sigma} A
+    \end{equation*}
+
+    
+    It is a scalar, since under a change of coordinates $y^i(x^i)$
+    \begin{equation*}
+        A' = J^{(n-1)}A
+    \end{equation*}
+    where $J^{(n-1)}$ is the determinant of the jacobian restricted to the image of $\Sigma$. 
+
+\section{Integrating with the metric}
+
+    In a point $P$, the metric can be put in canonical form 
+    \begin{equation*}
+        g_{ij} (P) = \pm \delta_{ij}
+    \end{equation*}
+
+    The natural volume n-form is 
+    \begin{equation*}
+        \omega_g = e^1 \wedge \ldots \wedge e^n
+    \end{equation*}
+    
+    Under a local change of coordinates $y^i(x^i)$ 
+    \begin{equation*}
+        \omega_g = J {\omega'}_g = J dy^1 \wedge \ldots \wedge dy^n
+    \end{equation*}
+
+    Using $g' = \Lambda^T g \Lambda$
+    \begin{equation*}
+        \det g' = \det (\Lambda^T g \Lambda) = \det g \det^2 \Lambda = \det g J^2 = \pm J^2
+    \end{equation*}
+    where $J = \sqrt{|\det g'|}$.
+
+    Hence, the volume of $U$ becomes 
+    \begin{equation*}
+        V(U) = \int_U \omega_g = \int_{\phi(U)} \sqrt{|\det g'|} dy^1 \ldots dy^n
+    \end{equation*}
+
+    Similarly, the natural area (n-1)-form is 
+    \begin{equation*}
+        A_g = \omega_g (\ldots, e_n) = e^1 \wedge \ldots \wedge e^{n-1}
+    \end{equation*}
+    and the area of a portion $\Sigma$ is 
+    \begin{equation*}
+        A = \int_{\Sigma} A_g = \int_{\phi(\Sigma)} \sqrt{|\det g^{(n-1)}|} dx^1 \ldots dx^{n-1}
+    \end{equation*}
+    where the metric locally is 
+    \begin{equation*}
+        g_{ij} = \begin{bmatrix}
+            g_{ij}^{(n-1)} & 0 \\
+            0 & \pm 1
+        \end{bmatrix}
+    \end{equation*}
+
+\section{Differential forms}
+
+    The exterior derivative of a p-form 
+    \begin{equation*}
+        \omega = \omega_{i_1 \ldots i_p} dx^{i_1} \wedge \ldots \wedge dx^{i_p}
+    \end{equation*}
+    is 
+    \begin{equation*}
+        d \omega = (\partial_k \omega_{i_1 \ldots i_p}) dx^k \wedge dx^{i_1} \wedge \ldots \wedge dx^{i_p}
+    \end{equation*}
+
+    It satisfies the following properties 
+    \begin{enumerate}
+        \item addition, i.e.
+            \begin{equation*}
+                d(\omega + \sigma) = d\omega + d\sigma
+            \end{equation*}
+        \item wedge product, i.e.
+            \begin{equation*}
+                d(\omega \wedge \sigma) = d\omega \wedge \sigma + (-1)^p \omega \wedge d\sigma
+            \end{equation*}
+        \item vanishing boundary, i.e.
+            \begin{equation*}
+                d (d\omega) = 0
+            \end{equation*}
+    \end{enumerate}
+
+    For a function, this is the differential 
+    \begin{equation*}
+        df = \partial_i f dx^i = df
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        d(df) = \partial_i \partial_j f dx^i \wedge dy^j = 0
+    \end{equation*}
+
+

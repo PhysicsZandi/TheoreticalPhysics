@@ -1,0 +1,27 @@
+\part{Rep}
+
+\chapter{SO(3)}
+
+\section{SO(3) as a Lie group}
+
+    The defining representation is $\rho(g) = g$. For a matrix group, it has the dimension of the matrices $n$. 
+
+    A representation of a Lie algebra $\mathfral g$ is a linear space $V$ and an algebra homomorphism into a set of endomorphisms on $V$
+    \begin{equation*}
+        \rho_{\mathfrak g} \colon \mathfrak g \rightarrow End(V)
+    \end{equation*}
+
+    Fixing a basis, $End(V)$ becomes matrices with matrix multiplication such that 
+    \begin{equation*}
+        \rho_{\mathfrak g} ([X, Y]) = \rho_{\mathfrak g}(X) \rho_{\mathfrak g}(Y) - \rho_{\mathfrak g}(Y) \rho_{\mathfrak g}(X)
+    \end{equation*}
+    and with a set of generator $\{T_i\}$ 
+    \begin{equation*}
+        \rho_{\mathfrak g}([T_i, T_j])= f_{ijk} \rho_{\mathfrak g} (T_K)
+    \end{equation*}
+
+    A representation of a Lie group $(\rho, V)$ induces a representation of its Lie algebra $\rho_{\mathfrak g}$. Hence, if $g = \exp (tX) \in G$ and $X \in \mathfrak g$, a path of transformation is
+    \begin{equation*}
+        \rho(\exp(tX))
+    \end{equation*}
+    
