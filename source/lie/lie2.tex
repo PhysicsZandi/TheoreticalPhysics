@@ -36,7 +36,6 @@
         R(\delta \theta, ~ \mathbf n) \mathbf v = \mathbf v + \delta \theta ~ \epsilon{jik} v_i n_k 
     \end{equation*}
 
-
 \section{SO(3) representations}
 
     In this chapter, 
@@ -126,6 +125,240 @@
     and second using the BCH formula~\eqref{BCH}
     \begin{equation*}
     \begin{aligned}
-        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = 
+        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(- \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \\ & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} + \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) \\ & \quad \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} - \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & =  \exp(\cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} + \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} - \cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} - \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} \\ & \quad + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & = \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2)
     \end{aligned}
     \end{equation*}
+    Hence, putting together
+    \begin{equation*}
+        \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} = \exp(-\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu})
+    \end{equation*}
+    \begin{equation*}
+        - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = -\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu} = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
+    \end{equation*}
+
+    Consider an ansatz 
+    \begin{equation*}
+        [M_{\alpha\beta}, M_{\sigma\rho}] = T^{(1)}_{\alpha\beta} M_{\sigma\rho} + T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(6)}_{\sigma\rho} M_{\alpha\beta}
+    \end{equation*}
+    and inserting into the previous, there are no matching term with $T^{(1)} = T^{(2)} = 0$. 
+
+
+    Furthermore, using $M_{\mu\nu} = - M_{\nu\mu}$
+    \begin{equation*}
+    \begin{aligned}
+        0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\beta\alpha}. M_{\sigma\rho}]
+    \end{aligned}
+    \end{equation*}
+
+\section{Rep of Lorentz algebra}
+
+    $SO^+(1,3)$ is not compact, since the values of the boosts do not have an upper buondary. For non-compact non abelian Lie groups, any non-trivial unitary representation must be infinite-dimensional. 
+
+    Now, let us focus in finite-dimensional representations. They are not unitary, but for fields representations do not matter since there is no scalar product between operators. 
+
+    The defining rep of the Lie algebra is 
+    \begin{equation*}
+        (M_{\alpha\beta})^\mu_{\phantom \mu \nu} = i (\delta^\mu_{\phantom \mu \alpha} \eta_{\beta \nu} - \delta^\mu_{\phantom \mu \beta} \eta_{\alpha \nu})
+    \end{equation*}
+
+    The generators of the rotations are hermitian
+    \begin{equation*}
+        J_i = \frac{1}{2} \epsilon_{ijk} M^{jk}
+    \end{equation*}
+    while the generators of the boosts are anti-hermitian, beacuse they do not have a finite range,
+    \begin{equation*}
+        K_i = M_{0i}
+    \end{equation*}
+
+    The procedure to construct Lorentz algebra irrep is complexification: consider a complex linear combination $\mathfrak g_{\mathbb C} = \mathfrak g \oplus i \mathfrak g$. 
+
+    Defining new generators 
+    \begin{equation*}
+        A_i = \frac{1}{2} (J_i + i K_i) \quad B_i = \frac{1}{2} (J_i - i K_i)
+    \end{equation*}
+    their new commutation relations are 
+    \begin{equation*}
+        [A_i, A_j] = i \epsilon_{ijk} A_K \quad [B_i, B_j] = i \epsilon_{ijk} B_K \quad [A_i, B_j] = 0
+    \end{equation*}
+    Hence $\mathfrak{so}(1,3) \simeq \mathfrak{su}(2) \oplus \mathfrak{su}(2)$. In this way, we can use representations of $\mathfrak{su}(2)$ labelled by a pair $(j_1, j_2)$. 
+
+    Formally, an irreducible rep of a direct sum $\mathfrak g \oplus \mathfrak h$ can be built by the tensor product of $(\rho_{\mathfrak g}, V_{\mathfrak g})$ and $(\rho_{\mathfrak h}, V_{\mathfrak h})$
+    \begin{equation*}
+        \rho \colon \mathfrak g \oplus \mathfrak h \rightarrow End(V) = End(V_{\mathfrak g} \otimes V_{\mathfrak h})
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \rho(X+Y) (v \otimes w) = \rho_{\mathfrak g}(v) \otimes w + v \otimes \rho_{\mathfrak h}(w)
+    \end{equation*}
+
+    For the Lorentz algebra 
+    \begin{equation*}
+        \rho_{j_1, j_2} \Big ( \sum_m \lambda_m A_m + \sum_n k_n B_n \Big) = \sum_m \lambda_m \rho_{j_1} (A_m) \otimes id_{V_{j_2}} + \sum_n k_n id_{V_{j_1}} \otimes \rho_{j_2} (B_n)
+    \end{equation*}
+    with dimension $\dim (V_{j_1} \otimes V_{j_2}) = \dim V_{j_1} \dim V_{j_2} = (2j_1 + 1)(2j_2 + 1)$.
+
+    For the rotation algebra $J_i = A_i + B_i$, a similar closed algebra $\mathfrak{so}(3) \simeq \mathfrak{su}(2)$, using the Clebsh-Gordon decomposition, this reduces into a sum of irreducible reps of spin $j$ such that $|j| \leq j_1 + j_2$.
+
+    Notice that if they are both integer of half-integer, the sum representation is integer, like a bosonic one. On the other hand, if one is integer and the other one half-integer, the sum representation is half-integer, like a fermionic one. 
+
+    $SO^+(1,3)$ is not simply connected, so its universal cover is $SL(2, \mathbb C)$. In particular $SO^+(1,3) \simeq SL(2, \mathbb C)/\mathbb Z_2$. Hence the spinor representations of $SO^+(1,3)$ is $SL(2, \mathbb C)$.
+
+\section{Spinor rep}
+
+    There are two different spinor reps: the left-handed Weyl spinor $\rho_L$ with $(\frac{1}{2}, 0)$ and the right-handed Weyl spinor $\rho_R$ with $(0, 
+    \frac{1}{2})$. They are called spinors because the only irrep of the rotations restriction hae $j = \frac{1}{2}$.
+
+    Since the rep $j = \frac{1}{2}$ is generated by the Pauli matrices and $j=0$ is the trivial one, the generators of left spinors are 
+    \begin{equation*}
+        \rho_L(A_i) = \frac{1}{2} \sigma_i \otimes \mathbb I_1 = \frac{1}{2} \sigma_i \quad \rho_R(B_i) = \mathbb I_2 \otimes 0 = 0
+    \end{equation*}
+    and the generators of right spinors are
+    \begin{equation*}
+        \rho_R(A_i) = 0 \otimes \mathbb I_1 = 0 \quad \rho_R(B_i) = \mathbb I_1 \otimes \frac{1}{2} \sigma_i = \frac{1}{2} \sigma_i
+    \end{equation*}
+    Hence, the original generators for left spinors are 
+    \begin{equation*}
+        \rho_L (J_i) = \rho_L(A_i) + \rho_L(B_i) = \frac{1}{2} \sigma_i \quad \rho_L(K_i) = - i (\rho_L(A_i) - \rho_L(B_i)) = - \frac{i}{2} \sigma_i
+    \end{equation*}
+    and the original generators for right spinors are 
+    \begin{equation*}
+        \rho_R (J_i) = \rho_R(A_i) + \rho_R(B_i) = \frac{1}{2} \sigma_i \quad \rho_R(K_i) = - i (\rho_R(A_i) - \rho_R(B_i)) = \frac{i}{2} \sigma_i
+    \end{equation*}
+
+    The associated rep is generated by a real linear combination 
+    \begin{equation*}
+        V_{(\frac{1}{2}, 0)} \ni \phi \mapsto \exp(-i \theta \vec n \cdot \rho_L(\vec J) - i \vec \cdot \rho_L(\vec K)) \phi
+    \end{equation*}
+    and 
+    \begin{equation*}
+        V_{(0, \frac{1}{2})} \ni \phi \mapsto \exp(-i \theta \vec n \cdot \rho_R(\vec J) - i \vec \cdot \rho_R(\vec K)) \phi = \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) \phi
+    \end{equation*}
+
+    Notice that they are the complex conjugates of each other. Using the identity
+    \begin{equation*}
+        (i \sigma_2) \sigma_i (- i \sigma_1) = (i \sigma_2) \overline \sigma_i (i \sigma_2)^{-1} = - \sigma_i
+    \end{equation*}
+    then defining $\chi = i \sigma_2 \phi$ 
+    \begin{equation*}
+    \begin{aligned}
+        \chi \mapsto i \sigma_2 \phi & = i \sigma_2 \overline{\exp(-i \theta \vec n \cdot \rho_L(\vec J) - i \vec \cdot \rho_L(\vec K)) \phi} \\ & i \sigma_2 \overline{\exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) \phi} \\ & = i \sigma_2 \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \overline{\vec \sigma}) \overline \phi \\ & = i \sigma_2 (i \sigma_2)^{-1} \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) (i \sigma_2) \overline \phi \\ & = \exp(- i \theta \vec n \cdot \rho_R(\vec J) - i \vec v \cdot \rho_R (\vec K)) \chi
+    \end{aligned}
+    \end{equation*}
+    Hence, up to a basis change, the complex conjugate of $\phi$ transforms like $\chi$. 
+
+    Another way to introduce spinors is through the Dirac matrices: $4 \times 4$ matrices which satisfy the anticommutator relations 
+    \begin{equation*}
+        \{\gamma_\mu, \gamma_\nu\} = \gamma_\mu \gamma_\nu - \gamma_\nu \gamma_\mu = 2 \eta_{\mu\nu}
+    \end{equation*}
+    They allow to construct a rep of the Lorentz algebra 
+    \begin{equation*}
+        M_{\alpha\beta} = \frac{i}{4} [\gamma_\alpha, \gamma_\beta] = \frac{i}{4} (\gamma_\alpha \gamma_\beta - \gamma_\beta \gamma_\alpha)
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        [M_{\alpha\beta}, M_{\sigma\rho}] = - i (\eta_{\alpha\sigma} M_{\beta \rho} - \eta_{\alpha\rho} M_{\beta\sigma} - \eta_{\beta\sigma} M_{\alpha\rho} + \eta_{\beta\rho} M_{\alpha\sigma})
+    \end{equation*}
+    which is a $4$-dimensional rep that leads to the Dirac equation.
+
+    It is called the bi-spinor rep and it is related to the Weyl one via 
+    \begin{equation*}
+        V_D = V_{frac{1}{2}, 0} \oplus V_{0, \frac{1}{2}}
+    \end{equation*}
+    but with basis 
+    \begin{equation*}
+        \psi_1 = \frac{\phi_1 + \chi_1}{\sqrt 2} \quad \psi_2 = \frac{\phi_2 + \chi_2}{\sqrt 2} 
+    \end{equation*}
+    \begin{equation*}
+        \psi_3 = \frac{\phi_1 - \chi_1}{\sqrt 2} \quad \psi_4 = \frac{\phi_2 - \chi_2}{\sqrt 2}
+    \end{equation*}
+    where $(\phi_1, \phi_2)$ is a basis of $V_{frac{1}{2}, 0}$ and $(\chi_1, \chi_2)$ of $V_{0, \frac{1}{2}}$.
+
+\section{Vector rep}
+
+    Consider a rep $(\frac{1}{2}, \frac{1}{2})$ which corresponds to a bosonic field, since its restrictions are $j = \frac{1}{2} + \frac{1}{2} = 1$ and $j = \frac{1}{2} - \frac{1}{2} = 0$. It is equivalent to the defining rep of $\mathfrak{so}(1,3)$. Picking a basis of $V_{\frac{1}{2}}$ that is $\{\ket{\frac{1}{2}, \frac{1}{2}}, \ket{\frac{1}{2}, -\frac{1}{2}}\} = \{\ket{+}, \ket{-}\}$, the natural basis becomes 
+    \begin{equation*}
+        \ket{+} \oplus \ket{+} = \ket{++} \quad \ket{+} \oplus \ket{-} = \ket{+-} \quad \ket{-} \oplus \ket{+} = \ket{-+} \quad \ket{-} \oplus \ket{-} = \ket{--}
+    \end{equation*}
+    or more useful 
+    \begin{equation*}
+    \begin{aligned}
+        & \ket{e_1} = \frac{\ket{+-} - \ket{-+}}{\sqrt 2} \quad \ket{e_2} = \frac{\ket{++} - \ket{--}}{\sqrt 2} \\ & \ket{e_3} = \frac{- \ket{++} - i\ket{--}}{\sqrt 2} \quad \ket{e_4} = \frac{- \ket{+-} - \ket{-+}}{\sqrt 2}
+    \end{aligned}
+    \end{equation*}
+
+    The rep of the generators becomes 
+    \begin{equation*}
+        \rho(A_i) = \rho_{\frac{1}{2}} (A_i) \otimes \mathbb I_2  = \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2
+    \end{equation*}
+    \begin{equation*}
+        \rho(B_i) = \mathbb I_2 \otimes \rho_{\frac{1}{2}} (B_i) = \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
+    \end{equation*}
+    which act on basis 
+    \begin{equation*}
+        \rho(A_i) \ket{+-} = \mathcal I_i^{(\frac{1}{2})} \ket{+} \otimes \ket{-} \quad \rho(B_i) \ket{+-} = \ket{+} \otimes \mathcal I_i^{(\frac{1}{2})}  \ket{-} 
+    \end{equation*}
+
+    The original Lorentz generators becomes 
+    \begin{equation*}
+        \rho(J_i) = \rho(A_i) + \rho(B_i) = \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2 + \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \rho(K_i) = -i (\rho(A_i) - \rho(B_i)) = - i \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2 + i \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
+    \end{equation*}
+
+    For example, studing the generators $J_3$
+    \begin{equation*}
+        \rho(J_3) \ket{++} = \ket{++} \quad \rho(J_3) \ket{--} = - \ket{--} \quad \rho(J_3) \ket{-+} = \rho(J_3) \ket{+-} = 0
+    \end{equation*}
+    or using the other basis
+    \begin{equation*}
+        \rho(J_3) \ket{e_1} = \rho(J_3) \ket{e_4} = 0 \quad \rho(J_3) \ket{e_2} = i \ket{e_3} \quad \rho(J_3) \ket{e_2} = -i \ket{e_2}
+    \end{equation*}
+    Hence the matrix is 
+    \begin{equation*}
+        \rho(J_3) = \begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 0 & -i & 0 \\
+            0 & i & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+        \end{pmatrix}
+    \end{equation*}
+
+    For example, studing the generators $K_3$
+    \begin{equation*}
+        \rho(K_3) \ket{++} = \rho(K_3) \ket{--} = 0 \quad \rho(K_3) \ket{+-} = - i \ket{+-} \quad \rho(K_3) \ket{-+} = i \ket{-+}
+    \end{equation*}
+    or using the other basis
+    \begin{equation*}
+        \rho(K_3) \ket{e_1} = i \ket{e_4} \quad \rho(K_3) \ket{e_2} = \quad \rho(K_3) \ket{e_3} = 0 \quad \rho(K_3) \ket{e_4} = i \ket{e_1}
+    \end{equation*}
+    Hence the matrix is 
+    \begin{equation*}
+        \rho(K_3) = \begin{pmatrix}
+            0 & 0 & 0 & i \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            i & 0 & 0 & 0 \\
+        \end{pmatrix}
+    \end{equation*}
+
+    As we expected, it is indeed the defining rep.
+
+    \section{Other rep}
+
+    \begin{enumerate}
+        \item $(0, 0)$ is the trivial rep. This fields are called scalar fields. They are bosonic. 
+        \item $(\frac{1}{2}, 0)$, $(0, \frac{1}{2})$ or $(\frac{1}{2}, 0) \otimes (0, \frac{1}{2})$ are the spinor rep. They correspond to all the matter particles.
+        \item $(\frac{1}{2}, \frac{1}{2})$. They correspond to all the force bosons. 
+        \item $(1,0)$ or $(0,1)$. The first one correspond to self-dual 2 form fields and the second one is the anti self-dual 2 form fields. In Standard Model there are no particle such that, but compare in string theory.
+        \item $(1, 0) \oplus (0, 1)$. They correspond to parity invariant 2-forms, like the electromagnetic tensor.
+        \item $(1,\frac{1}{2}) \otimes (\frac{1}{2}, 1)$. They correspond to Rarita-Schwinger fields, like the gravitino.
+        \item $(1, 1)$. They correspond to traceless symmetric tensor fields, like the graviton.
+    \end{enumerate}
+
+

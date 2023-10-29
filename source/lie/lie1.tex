@@ -205,6 +205,80 @@
         \end{equation*}
     \end{definition}
 
+    For any group, there exists a trivial 1-dimensional representation,  $\rho(g) = 1$. For any matrix group, there exists a non-trivial 1-dimensional representation, $\rho(g) = \det(g)$.
+
     \section{Representations of Lie Groups and Lie Algebras}
 
-    
+    The defining representation is $\rho(g) = g$. For a $n \times n$ matrix group, the defining representation has the dimension $n$.
+
+    A representation of a Lie algebra is a set of endomorphisms on a vector space $V$ 
+    \begin{equation*}
+        \rho_{\mathfrak g} \colon \mathfrak g \rightarrow End(V)
+    \end{equation*}
+    where $End$ means the set of linear maps $V \rightarrow V$. Given a basis, it becomes the set of matrices. Furthermore, the compatibility with the Lie algebra require the further condition 
+    \begin{equation*}
+        \rho_{\mathfrak g} [X, Y] = \rho_{\mathfrak g} X \rho_{\mathfrak g} Y - \rho_{\mathfrak g} Y \rho_{\mathfrak g} X
+    \end{equation*}
+    or, given a set of generators $\{T_i\}$,
+    \begin{equation*}
+        \rho_{\mathfrak g} [T_i, T_j] = f_{ijk} \rho_{\mathfrak g} T_k
+    \end{equation*}
+
+\section{From Lie group rep to Lie algebra rep}
+
+    Any representation of a Lie group $(\rho, V)$ induces a representation of its Lie algebra. Infact, an element of the group $g = \exp(tX)$ gives a path of transformations on $V$ and we can define a representation on $V$ with 
+    \begin{equation*}
+        \rho_{\mathfrak g} (X) (v) = \dv{}{t} \rho (\exp(tX)) \Big \vert_{t=0}
+    \end{equation*}
+    Hence, $\rho_{\mathfrak g} X $ is the same size of $\rho(g)$ and respects the Lie brackets. $(\rho_{\mathfrak g}, V)$ is representation of the Lie algebra. 
+
+    For a unitary representation, the Lie algebra representations are anti-Hermitian matrices, i.e. $\rho_{\mathfrak g}^\dagger (X) = - \rho_{\mathfrak g} (X)$. 
+
+    \begin{proof}
+        Because of unitarity, 
+        \begin{equation*}
+            \rho(\exp(tX))^\dagger \rho(\exp(tX)) = 1
+        \end{equation*}
+        and deriving it 
+        \begin{equation*}
+            0 = \dv{}{t} \rho(\exp(tX))^\dagger \rho(\exp(tX))\Big \vert_{t=0} = \dv{}{t} (\rho_{\mathfrak g}^\dagger (X) + \rho_{\mathfrak g} (X)) \rho(\exp(tX))^\dagger \rho(\exp(tX))\Big \vert_{t=0} = \rho_{\mathfrak g}^\dagger (X) + \rho_{\mathfrak g} (X)
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            \rho_{\mathfrak g}^\dagger (X) = i \rho_{\mathfrak g} (X)
+        \end{equation*}
+    \end{proof}
+
+    In Physics, it is more convenient working with Hermitian matrices, then introducing the related represention 
+    \begin{equation*}
+        \tilde \rho_{\mathfrak g} (X) = i \rho_{\mathfrak g} 
+    \end{equation*}
+    and the commutator becomes 
+    \begin{equation*}
+        [\tilde \rho_{\mathfrak g} (T_i), \tilde \rho_{\mathfrak g} (T_j)] = - [ \rho_{\mathfrak g} (T_i), \rho_{\mathfrak g} (T_j)] = - f_{ijk} \rho_{\mathfrak g} (T_k) = i f_{ijk} \rho_{\mathfrak g} (T_k)
+    \end{equation*}
+
+\section{From Lie algebra rep to Lie group rep}
+
+    Not all the representations of a Lie algebra extend to a rep of the Lie groups, because the Lie algebra gives information only locally, around the identity, while the Lie group could have different global topology. 
+
+    However, if the group is simply connected, i.e. all closed paths are contractible (deformable to a point), the Lie algebra rep is also a Lie group rep. If the Lie group $G$ is not simply-connected, there is always another Lie group $\tilde G$, the universal cover, which has the same rep as the Lie algebra. Cover because there is a surjective projection homomorphism $\phi \colon \tilde G \rightarrow G$. Furthermore, they have the same Lie algebra $\tilde{\mathfrak g} = \mathfrak g$. 
+
+    \begin{proof}
+        Geometrically, there is always an open neighbourhood such that the projection map is a diffeomorphism. This means that the tangent space at evry point is isomorphic to the tangent space at the identity.
+    \end{proof}
+
+\section{Reps in QM}
+
+    In quantum mechanics, a state is not uniquely defined. Infact it is characterized by a Hilbert space vector up to a phase factor. Two states are the same physical state if 
+    \begin{equation*}
+        \ket{\psi} = \exp(i \lambda) \ket{\phi}
+    \end{equation*}
+
+    Hence, we can relax the definition of the group structure, allowing also a projective representation
+    \begin{equation*}
+        \rho(g) \rho(h) = \exp(i \phi(g, h)) \rho(gh)
+    \end{equation*}
+    where $\phi(g, h) \in \mathbb R$. 
+
+    All unitary projective representations come from a linear representation of the covering group. 

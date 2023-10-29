@@ -1,27 +1,524 @@
-\part{Rep}
+\part{QFT}
 
-\chapter{SO(3)}
+\chapter{Lorentz group}
 
-\section{SO(3) as a Lie group}
+\section{}
 
-    The defining representation is $\rho(g) = g$. For a matrix group, it has the dimension of the matrices $n$. 
-
-    A representation of a Lie algebra $\mathfral g$ is a linear space $V$ and an algebra homomorphism into a set of endomorphisms on $V$
+    The Lorentz group is the group of isometries of the Minkovski spacetime, i.e. which leaves the metric unchanged
     \begin{equation*}
-        \rho_{\mathfrak g} \colon \mathfrak g \rightarrow End(V)
+        \Lambda^T \eta \Lambda = \eta
     \end{equation*}
 
-    Fixing a basis, $End(V)$ becomes matrices with matrix multiplication such that 
+    In particular, the proper orthochronous Lorentz group, the one which leaves discrete spacial $P$ and time $T$ inversion. 
+
+    It has $6$ parameters 
+    \begin{enumerate}
+        \item $3$-dimensional compact space rotations, i.e. 
+            \begin{equation*}
+                \theta = (\theta_1, \theta_2, \theta_3)
+            \end{equation*}
+        \item $3$-dimensional non-compact boosts, i.e. 
+            \begin{equation*}
+                \beta = (\beta_1, \beta_2, \beta_3)
+            \end{equation*}
+    \end{enumerate}
+    hence, it is a $6$-dimensional Lie group and its continuous parameters can be gathered into an antisymmetric matrix $\omega$
     \begin{equation*}
-        \rho_{\mathfrak g} ([X, Y]) = \rho_{\mathfrak g}(X) \rho_{\mathfrak g}(Y) - \rho_{\mathfrak g}(Y) \rho_{\mathfrak g}(X)
+        \omega_{\mu \nu} = - \omega_{\nu \mu}
     \end{equation*}
-    and with a set of generator $\{T_i\}$ 
+    in the following way
     \begin{equation*}
-        \rho_{\mathfrak g}([T_i, T_j])= f_{ijk} \rho_{\mathfrak g} (T_K)
+        \omega_{ij} = \epsilon_{ijk} \theta_k \quad \omega_{0i} = \beta_i
     \end{equation*}
 
-    A representation of a Lie group $(\rho, V)$ induces a representation of its Lie algebra $\rho_{\mathfrak g}$. Hence, if $g = \exp (tX) \in G$ and $X \in \mathfrak g$, a path of transformation is
+    The basis of the corresponding Lie algebra sare the $6$ generators 
     \begin{equation*}
-        \rho(\exp(tX))
+        M^{\mu\nu} = -M^{\nu\mu}
     \end{equation*}
+    which satisfy the commutator relation 
+    \begin{equation*}
+        [M^{\mu\nu}, M^{\rho\sigma}] = i (M^{\mu\sigma} \eta^{\rho\sigma} + M^{\rho\sigma} \eta^{\mu\sigma} - M^{\mu\rho} \eta_{\nu\sigma} - M^{\nu\sigma} \eta^{\mu\rho})
+    \end{equation*}
+
+    A generic element of the Lorentz group can be written as 
+    \begin{equation*}
+        \Lambda = \exp(-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}) \simeq 1 - \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}
+    \end{equation*}
+
+    In its finite-dimensional representations, each element is represented by an operator (matrix) which acts in a finite-dimensional space. In its infinite-dimensional representations, each element is represented by an operator (field) which acts in a infinite-dimensional space (Hilbert space). 
+
+    The generators can be decomposed in hermitian generators of rotations 
+    \begin{equation*}
+        J_i = \frac{1}{2} \epsilon_{ijk} M^{jk}
+    \end{equation*}
+    and in anti-hermitian generators of boosts
+    \begin{equation*}
+        K_i = M_{0i}
+    \end{equation*}
+    satisfing the commutation relation 
+    \begin{equation*}
+        [J_i, J_j] = i \epsilon_{ijk} J_k \quad [K_i, K_j] = - i \epsilon_{ijk} J_k \quad [J_i, K_j] = i \epsilon_{ijk} K_k
+    \end{equation*}
+    Notice that the algebra of $J$ is $SU(2)$, but the other algebra is not closed. However, if we take a complex linear combination, 
+    \begin{equation*}
+        A_i = \frac{1}{2} (J_i + i K_i) \quad B_i = \frac{1}{2} (J_i - i K_i)
+    \end{equation*}
+    we can construct closed algebras of hermitian generators
+    \begin{equation*}
+        [A_i, A_j] = i \epsilon_{ijk} A_k \quad [B_i, B_j] = i \epsilon_{ijk} B_k \quad [A_i, B_j] = 0
+    \end{equation*}
+    Hence, $\mathfrak{so}^+(1,3) \simeq \mathfrak{su}(2) \times \mathfrak{su}(2)$. Under parity,
+    \begin{equation*}
+        x^0 \rightarrow x^0 \quad x^i \rightarrow - x^i 
+    \end{equation*}
+    we can switch to the other generator
+    \begin{equation*}
+        J_i \rightarrow J_i \quad K_i \rightarrow - K_i \quad \Rightarrow \quad A_i \rightleftarrows B_i
+    \end{equation*}
+
+    The physical spin $J = A + B$ can be then decomposed into two spinors belonging to $SU(2)$: left-handed spinors labelled by $J_A$ and right-handed spinors labelled by $J_B$. In Physics, particles can be labelled by their representations 
+    \begin{enumerate}
+        \item scalar $(0,0)$ with total spin $s = 0$;
+        \item vectors $(\frac{1}{2},\frac{1}{2})$ with total spin $s = 0$;
+        \item Weyl spinors $(\frac{1}{2},0)$ and $(0, \frac{1}{2})$ with total spin $s = \frac{1}{2}$;
+        \item Dirac spinors $(\frac{1}{2},0) \oplus (0, \frac{1}{2})$  with total spin $s = \frac{1}{2}$;
+        \item Rarita-Schwinger $(0,0)$ with total spin $s = \frac{3}{2}$;
+        \item graviton $(0,0)$ with total spin $s = 2$;
+    \end{enumerate}
+
+\section{Finite-dimensional representations}
+
+    The trivial representation $(0,0)$ is 
+    \begin{equation*}
+        M^{\mu\nu} = 0
+    \end{equation*}
+    and each element is 
+    \begin{equation*}
+        \Lambda = \exp(-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}) = 1
+    \end{equation*}
+    It is associated to scalars
+    \begin{equation*}
+        \phi' = \Lambda \phi = 1 \phi = \phi
+    \end{equation*}
+
+    The vector representation $(\frac{1}{2},\frac{1}{2})$ is 
+    \begin{equation*}
+        (M^{\rho\sigma})^{\mu}_{\phantom \mu \nu} = - i (\eta^{\mu\sigma} \delta^{\rho}_{\phantom \rho \nu} - \eta^{\rho \mu} \delta^{\sigma}_{\phantom \sigma \nu})
+    \end{equation*}
+    and each element is 
+    \begin{equation*}
+        \Lambda = \exp(-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu})
+    \end{equation*}
+    It is associated to 4-vectors
+    \begin{equation*}
+        (V')^\rho = \Lambda^{\rho}_{\phantom \rho \sigma} V^\sigma = (\exp(-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}))^{\rho}_{\phantom \rho \sigma} V^\sigma
+    \end{equation*}
+    It is the fundamental representation.
+
+    The spinorial representation is not of $SO^+(1,3)$ but of its double cover $SL(2, \mathbb C)$. Infact there is an isomorphism between $SO^+(1,3) \simeq SL(2, \mathbb C) / \mathbb Z_2$. This means that for each element of $SO^+(1,3)$ there are two corresponding element of $SL(2, \mathbb C)$. Infact, using the Pauli matrices 
+    \begin{equation*}
+        \sigma^\mu = {\mathbb I, \vec \sigma}
+    \end{equation*}
+    we can correspond a $2 \times 2$ matrix $X$ with a 4-vector in the following way 
+    \begin{equation*}
+        X = x_\mu \sigma^\mu = \begin{matrix}
+            x_0 + i x_3 & x_1 - i x_2 \\
+            x_1 + i x_2 & x_0 - x_3 \\
+        \end{matrix}
+    \end{equation*}
+    Hence if $\Lambda$ preserve the metric $ds^2 = x^2_0 - |\vec x|^2$, we can correspond with a matrix $N \in SL(2, \mathbb C)$
+    \begin{equation*}
+        X' = N X Z
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \det X' = \det X = x^2_0 - |\vec x|^2
+    \end{equation*}
+    Hence there is a $2-1$ map between them, e.g. for $N = \pm \mathbb I_2$ there is $\Lambda = 1$. 
+
+\section{Finite-dimensional representations of $SL(2, \mathbb C)$}
+
+    The fundamental representation is the left-handed Weyl spinor $(\frac{1}{2}, 0)$ 
+    \begin{equation*}
+        (\psi)_\alpha = N_\alpha^{\phantom \alpha \beta} \phi_\beta \quad \alpha, \beta = 1,2 \quad N \in SL(2, \mathbb C)
+    \end{equation*}
+
+    The complex conjugate representation is the right-handed Weyl spinor $(0, \frac{1}{2})$ 
+    \begin{equation*}
+        \overline \chi_{\dot \alpha} = (N^*)_{\dot \alpha}^{\phantom{\dot \alpha} \dot \beta} \overline \chi_{\dot \beta} \quad \dot \alpha, \dot \beta = 1,2 \quad N^* \in SL(2, \mathbb C)
+    \end{equation*}
+
+    Its direct product $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ gives rise to the reducible representation of the Dirac spinors
+    \begin{equation*}
+        \psi_D = \begin{bmatrix}
+            \psi_\alpha \\
+            \overline \chi^{\dot \alpha} \\
+        \end{bmatrix}
+    \end{equation*}
+
+    The invariant tensor to raise and lower indises is 
+    \begin{equation*}
+        \epsilon^{\alpha \beta} = \epsilon^{\dot \alpha \dot \beta} = - \epsilon_{\alpha \beta} = - \epsilon^{\dot \alpha \dot \beta} = \begin{bmatrix}
+            0 & 1 \\
+            -1 & 0 \\
+        \end{bmatrix}
+    \end{equation*}
+    since 
+    \begin{equation*}
+        (\epsilon')^{\alpha \beta} = \epsilon^{\sigma \rho} N_\rho^{\phantom \rho \alpha} N_\sigma^{\phantom \sigma \beta} = \epsilon^{\alpha \beta} \underbrace{\det N}_{1} = \epsilon^{\alpha \beta}
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \psi^\alpha = \epsilon^{\alpha \beta} \psi_\beta 
+    \end{equation*}
+    and 
+    \begin{equation}
+        \overline \chi^{\dot \alpha} = \epsilon^{\dot \alpha \dot \beta} \overline \chi_{\dot \beta}
+    \end{equation}
+
+    The generators of $SL_(2, \mathbb C)$ are 
+    \begin{enumerate}
+        \item left-handed Weyl spinor 
+            \begin{equation*}
+                (\sigma^{\mu\nu})_\alpha^{\phantom \alpha \beta} = \frac{i}{4} (\sigma^\mu \overline \sigma^\nu - \sigma^\nu \overline \sigma^\mu)_\alpha^{\phantom \alpha \beta}
+            \end{equation*}
+              hence 
+            \begin{equation*}
+                (\psi')_\alpha = (\exp(-\frac{i}{2} \omega_{\mu\nu} \sigma^{\mu\nu}))_\alpha^{\phantom \alpha \beta} \psi_\beta
+            \end{equation*}
+        \item right-handed Weyl spinor 
+            \begin{equation*}
+                (\overline \sigma^{\mu\nu})^{\dot \alpha}_{\phantom{\dot \alpha} \dot \beta} = \frac{i}{4} (\overline \sigma^\mu \sigma^\nu - \overline \sigma^\nu  \sigma^\mu)^{\dot \alpha}_{\phantom{\dot \alpha} \dot \beta}
+            \end{equation*}
+              hence 
+            \begin{equation*}
+                (\chi')^{\dot \alpha} = (\exp(-\frac{i}{2} \omega_{\mu\nu} \overline \sigma^{\mu\nu}))^{\dot \alpha}_{\phantom{\dot \alpha} \dot \beta} \chi^{\dot \beta}
+            \end{equation*}
+        \item Dirac spinor 
+            \begin{equation*}
+                \Sigma^{\mu\nu} = \frac{i}{4} \gamma^{\mu\nu} = \begin{bmatrix}
+                    \sigma^{\mu\nu} & 0 \\
+                    0 & \overline \sigma^{\mu\nu} \\
+                \end{bmatrix}
+            \end{equation*}
+              hence 
+            \begin{equation*}
+                {\psi'}_D = (\exp(-\frac{i}{2} \omega_{\mu\nu}  \Sigma^{\mu\nu})) \psi_D
+            \end{equation*}
+    \end{enumerate}
+    where $\sigma^\mu = (\mathbb I, \vec \sigma)$, $\overline \sigma^\mu = (\mathbb I, - \vec \sigma)$ and $\gamma^{\mu\nu} = [\gamma^\mu, \gamma^\nu]$.
+
+    Introducing the chirality operator
+    \begin{equation*}
+        \gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3 = \begin{bmatrix}
+            - \mathbb I_2 & 0 \\
+            0 & \mathbb I_2 \\
+        \end{bmatrix}
+    \end{equation*}
+    its action on a Dirac spinor 
+    \begin{equation*}
+        \gamma^5 \psi_D = \begin{bmatrix}
+            - \mathbb I_2 & 0 \\
+            0 & \mathbb I_2 \\
+        \end{bmatrix} \begin{bmatrix}
+            \psi_\alpha \\
+            \overline \chi^{\dot \alpha} \\
+        \end{bmatrix} = \begin{bmatrix}
+            - \psi_\alpha \\
+            + \overline \chi^{\dot \alpha} \\
+        \end{bmatrix}
+    \end{equation*}
+    Hence, a left-handed Weyl spinor has eigenvalue equals to $+1$ and a right-handed Weyl spinor has eigenvalue equals to $-1$.
+
+    The projectors operators are 
+    \begin{enumerate}
+        \item left-handed Weyl spinor 
+            \begin{equation*}
+                P_L = \frac{1}{2} (\mathbb I - \gamma^5)
+            \end{equation*}
+              and its action is 
+            \begin{equation*}
+                P_L \psi_D = \begin{pmatrix}
+                    \psi_\alpha \\ 
+                    0 \\
+                \end{pmatrix}
+            \end{equation*}
+        \item right-handed Weyl spinor 
+            \begin{equation*}
+                P_R = \frac{1}{2} (\mathbb I + \gamma^5)
+            \end{equation*}
+              and its action is 
+            \begin{equation*}
+                P_R \psi_D = \begin{pmatrix}
+                    0 \\ 
+                    \overline \chi^{\dot \alpha} \\
+                \end{pmatrix}
+            \end{equation*}
+    \end{enumerate}
+
+    The Dirac conjugate is 
+    \begin{equation*}
+        \overline \psi_D = \psi^\dagger_D \gamma^0 = \begin{pmatrix}
+            \chi^\alpha & \overline \psi_{\dot \alpha} \\
+        \end{pmatrix}
+    \end{equation*}
+
+    The charge conjugate is 
+    \begin{equation*}
+        \psi_D^{C} = C \overline \psi^T_D = \begin{pmatrix}
+            \chi_\alpha \\
+            \overline \psi_{\dot \alpha} \\
+        \end{pmatrix}
+    \end{equation*}
+    where the charge conjugation matrix exchanges particles with antiparticles 
+    \begin{equation*}
+        C = \begin{pmatrix}
+            \epsilon_{\alpha \beta} & 0 \\
+            0 & \epsilon^{\dot \alpha \dot \beta} \\
+        \end{pmatrix}
+    \end{equation*}
+
+    A Majorana spinor is such that $\psi_\alpha = \chi_\alpha$ 
+    \begin{equation*}
+        \psi_M = \begin{pmatrix}
+            \psi_\alpha \\
+            \overline \psi^{\dot \alpha} \\
+        \end{pmatrix} = \psi^C_M
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \psi_D = \psi_{M_1} + i \psi_{M_2} \quad \psi_D = \psi^C_{M_1} - i \psi_{M_2}
+    \end{equation*}
+
+\section{Infinite-dimensional representations of $SO^*(1,3)$}
+
+    Each field representation element is represented by an operator acting on non-constant objects like fields, recalling that not only the field changes but also the coordinates 
+    \begin{equation*}
+        \psi_a(x) \rightarrow \underbrace{(\exp(-\frac{i}{2} \omega_\mu\nu S^{\mu\nu}))_{ab}}_{\textnormal{internal finite-dimensional}} \underbrace{\exp(-\frac{i}{2} \omega_\mu\nu L^{\mu\nu})}_{\textnormal{external infinite-dimensional}} \phi_b(x) = (\exp(-\frac{i}{2} \omega_\mu\nu J^{\mu\nu}))_{ab} \phi_b(x)
+    \end{equation*}
+    where $J^{\mu} = S^{\mu\nu} + L^{\mu\nu}$, in particular
+    \begin{equation*}
+        L^{\mu\nu} = i (x^\mu \partial^\nu - x^\nu \partial^\mu)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        S^{\mu\nu} = \begin{cases}
+            0 & \textnormal{scalar} \\
+            (M^{\mu\nu})^\rho_{\phantom \rho \sigma} & \textnormal{vector} \\
+            \sigma^{\mu\nu}, \sigma^{\mu\nu}, \Sigma^{\mu\nu} & \textnormal{spinors} \\
+        \end{cases}
+    \end{equation*}
+
+    If you quantise the theory, fields become operators on a Foch space and can have infinite-dimensional representations: each element is represented by a unitary operator acting on quantum states of a 1-particle Hilbert space. By Wigner's theorem, unitary operators have hermitian generators. Infact
+    \begin{equation*}
+        \Lambda \rightarrow U(\Lambda)
+    \end{equation*}
+    and
+    \begin{equation*}
+        \ket{\vec p, s} = \sqrt {2 E_{\vec p}} a^{\dagger}_{\vec p} \ket{0}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        U(\Lambda) \ket{\vec p, s} = \ket{\Lambda \vec p, s} = \sqrt {2 E_{\Lambda \vec p}} a^{\dagger}_{\Lambda \vec p} \ket{0}
+    \end{equation*}
+
+\chapter{Poincaré group}
+
+    In the Poincaré group, we add the spacetime translations to $SO^+(1,3)$, and the most general transformation becomes 
+    \begin{equation*}
+        (x')^\mu = \Lambda^\mu_{\phantom \mu \nu} x^\nu + a^\mu
+    \end{equation*}
+    where $a^\mu$ is a 4-vector. This group is also called the inhomogeneous proper orthochronous Lorentz group and it is a $10$-dimensional non-compact Lie group. Hence, we need to add further $4$ generators $P^\mu$ such that the commutation relations become
+    \begin{equation*}
+        [M^{\mu\nu} P^\sigma] = i (P^\mu \eta^{\nu\sigma} - P^\nu \eta^{\mu \sigma})
+    \end{equation*}
+    and
+    \begin{equation}
+        [P^\mu, P^\nu] = 0 
+    \end{equation}
+    This means that it is an abelian subgroup.
+
+    In the field representation, $P^\mu = i \partial^\mu$.
+
+\section{1-particle Hilbert space representation of the Poincaré group}
+    
+    In quantum mechanics, given an operator $A$ and a generator of a transformation $T$, if they commute $[A, T] = 0$ then the observable/aignevalue associated to A is invariant under the tranformation generated by $T$. Infact 
+    \begin{equation*}
+        A \ket{\phi_a} = a \ket{\phi_A}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \ket{{\phi'}_A} = \exp(i \alpha T) \ket{\phi_a} = \ket{\phi_a} + i \alpha T \ket{\phi_a} + O(\alpha^2)
+    \end{equation*}
+    and 
+    \begin{equation*}
+        A \ket{{\phi'}_A} = A \ket{\phi_a} + i \alpha A T \ket{\phi_a} = a \ket{\phi_a} + i \alpha T A \ket{\phi_a} = a (\mathbb 1 + i \alpha T) \ket{\phi_a} = a \ket {{\phi'}_a}
+    \end{equation*}
+    Hence, even though $\ket{\phi_a} = \ket{{\phi'}_a}$, they have the same eigenvalue. 
+
+    If an operator commutes with all the generators of the Poincaré group, it is called a Casimir operator, its associated quantity are invariant over a Poincaré transformation and it defines a class of states, called multiplets, which are labelled by different eigenvalues of the Casimir operators.
+
+    In the Poincaré group, there are 2 Casimir operators 
+    \begin{equation*}
+        C_1 = P^\mu P_\mu 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        C_2 = W^\mu W_\mu 
+    \end{equation*}
+    where $W^\mu = \frac{1}{2} \epsilon_{\mu\nu\rho\sigma} P^\nu M^{\rho\sigma}$ is the Pauli-Lubanski vector.
+
+\section{Massive representations}
+
+    In this case $P^\mu P_\mu = P^2$ has corresponding eigenvalues $p^2 = E_{\vec p}^2 - |\vec p|^2 = m^2 \neq 0$ and there is a set of infinitely many momenta $\{p^\mu\}$, generated by starting with a fixed $p^\mu$ and applying a Poincaré transformation. The multiplet is labelled by $\ket{m ; p^\mu}$ and by the eigenvalues of $W^\mu$. 
+
+    The little group is the subgroup of the Poincaré group such that $p^\mu$ is fixed and built from all the generators which commute with $P^\mu$. Wigner's theorem shows that the structure of it does not depend on the way we choose $p^\mu$ or $\ket{m ; p^\mu}$. Hence, we choose the case as simple as possible: the rest frame 
+    \begin{equation*}
+        p^\mu = (m, 0, 0, 0)
+    \end{equation*}
+
+    It is invariant under space rotations and its little group is $SO(3) \simeq SU(2) / \mathbb Z_2$. 
+
+    Given that 
+    \begin{equation*}
+        [P^\mu, W_\mu] = 0
+    \end{equation*}
+    $p^\mu$ is invariant under tranformations generated by $W^\mu$.
+
+    The components of the Pauli-Lubanski vector are 
+    \begin{equation*}
+        W_0 = \frac{1}{2} \epsilon_{0 \nu \rho \sigma} P^\nu M^{\rho \sigma}= \frac{1}{2} \underbrace{\epsilon_{0 0 \rho \sigma}}_{0} m M^{\rho \sigma} = 0
+    \end{equation*}
+    and 
+    \begin{equation*}
+        W_i = \frac{1}{2} \epsilon_{i \nu \rho \sigma} P^\nu M^{\rho \sigma} = \frac{1}{2} \underbrace{\epsilon_{i 0 jk}}_{- \epsilon_{ijk}} m M^{ij} = - \frac{m}{2} \epsilon_{ijk} M^{jk} = - m J_i
+    \end{equation*}
+
+    Hence, the second casimir operator is 
+    \begin{equation*}
+        C_2 = W^\mu W_\mu = W^i W_i = - m^2 J^i J_i = - m^2 J^2
+    \end{equation*}
+    and it is associated with the spin eigenvalues $j$ and $j_3$ such that $|j_3| \leq j$ and there are $2j+1$ values. 
+
+    The multiplet of a massive representations is 
+    \begin{equation*}
+        \ket{m, j ; p^\mu, j_3}
+    \end{equation*}
+    where $p^\mu$ is a continuous variable and $j_3$ is a discrete variable. 
+
+\section{Massless representations}
+
+    In this case $P^\mu P_\mu = P^2$ has corresponding eigenvalues $p^2 = E_{\vec p}^2 - |\vec p|^2 = m^2 = 0$ and $E_{\vec p} = |\vec p|$. For the little group, we choose $\vec p$ along the z-axis
+    \begin{equation*}
+        p^\mu = (E, 0, 0, E)
+    \end{equation*}
+
+    It is invariant under space rotations in the $(x, y)$ plane, i.e. $SO(2) \simeq U(1)$, but the little group is bigger. 
+
+    The components of the Pauli-Lubanski vector are 
+    \begin{equation*}
+    \begin{aligned}
+        W_0 & = \frac{1}{2} \epsilon_{0 \nu \rho \sigma} P^\nu M^{\rho \sigma} \\ & = \frac{1}{2} \underbrace{\epsilon_{0 0 \rho \sigma}}_{0} E M^{\rho \sigma} + \frac{1}{2} \epsilon_{0 3 \rho \sigma} E M^{\rho \sigma} \\ & = \frac{1}{2} \underbrace{\epsilon_{0 3 1 2 }}_{1} E M^{12} + \frac{1}{2} \underbrace{\epsilon_{0 3 21}}_{-1} E M^{21} \\ & = E \underbrace{\frac{1}{2} (M^{12} - M^{21})}_{J_3} \\ & = E J_3
+    \end{aligned}
+    \end{equation*}
+    and similarly
+    \begin{equation*}
+        W_1 = - E (J_1 + K_2) \quad W_2 = E (- J_2 + K_1) \quad W_3 = - E J_3 = - W_0
+    \end{equation*}
+
+    Hence, there are only 3 independent generators which satisfy the algebra
+    \begin{equation*}
+        [W_1, W_2] = 0 \quad [W_3, W_1] = - i E W_2 \quad [W_3, W_2] = i E W_1
+    \end{equation*}
+    which is the algebra of the 2-dimensional Euclidean group $E(2)$, the group consistued by the isometries of the 2-dimensional metric. Its dimension is 3: 2 translations generated by $W_1$ and $W_2$ and 1 rotations in a plane by $W_3$. 
+
+    The eigenvalues associated to $W_3$ are discrete while the ones associated to $W_1$ and $W_2$ are continuous, but continuous spin representations are not seen in Nature. Hence, we set by experimentally evidence $W_1 = W_2 = 0$. 
+
+    Since
+    \begin{equation}
+        W^\mu = J_3 (E, 0, 0 E) = J_3 P^\mu 
+    \end{equation}
+    the eigenvalues of the second Casimir operator are 
+    \begin{equation*}
+        W^\mu W_\mu \propto P^\mu P_\mu = 0
+    \end{equation*}
+    but we can introduce the helicity, i.e. the projection of the spin along the direction of the motion, which an be left and right, and its eigenvalues are $\lambda = 0, \frac{1}{2}, 1, \ldots$. We want also the negative values to incorporate the parity invariance in our theory. 
+    
+    The multiplet of a massless representations is 
+    \begin{equation*}
+        \ket{0, 0 ; p^\mu, \pm \lambda}
+    \end{equation*}
+
+    The helicity of the particles are 
+    \begin{enumerate}
+        \item Higgs boson has $\lambda = 0$,
+        \item quarks and leptons have $\lambda = \pm \frac{1}{2}$,
+        \item photons, $W^\pm$, $Z^0$, gluons have $\lambda = \pm 1$,
+        \item graviton has $\lambda = \pm 2$.
+    \end{enumerate}
+
+    Notice that the photons has only two degrees of freedom but $W^\pm$ and $Z^0$, after the Higgs mechanism, acquire the thirs one which correspond to $\lambda = 0$.
+
+    Putting $E = 1$, the generators become 
+    \begin{equation*}
+        W_1 = - (J_1 + K_2) \quad W_2 = K_1 - J_2 \quad W_3 = -J_3
+    \end{equation*}
+
+    Physically, $W_3$ generates rotations in the $(p_x, p_y)$ plane but $W_1$ and $W_2$ makes a more complicated transformation. Infact, the generator $K_2$ is
+    \begin{equation*}
+        K_2 = M^{20} = \begin{pmatrix}
+            0 & 0 & i & 0 \\
+            0 & 0 & 0 & 0 \\
+            -i & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+        \end{pmatrix}
+    \end{equation*}
+    the generator $J_1$ is 
+    \begin{equation*}
+        J_1 = M^{32} = \begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & i \\
+            0 & 0 & -i & 0 \\
+        \end{pmatrix}
+    \end{equation*}
+    and the generator $W_1$ is 
+    \begin{equation*}
+        W_1 = - (J_1 + K_2) = \begin{pmatrix}
+            0 & 0 & -i & 0 \\
+            0 & 0 & 0 & 0 \\
+            i & 0 & 0 & -i \\
+            0 & 0 & i & 0 \\
+        \end{pmatrix}
+    \end{equation*}
+
+    An infinitesimal trasformation of $W_1$ is 
+    \begin{equation*}
+        (p')^\mu = (\exp(- i \lambda W_1))^\mu_{\phantom \mu \nu} p^\nu = p^\mu - i \lambda (W_1)^\mu_{\phantom \mu \nu} p^\nu
+    \end{equation*}
+    Explicitly 
+    \begin{equation*}
+        \begin{cases}
+            E' = E - \lambda p_y \\
+            {p'}_x = p_x \\
+            {p'}_x = p_x + \lambda (E - p_z) \\
+            {p'}_z = p_z + \lambda p_y\\
+        \end{cases}
+    \end{equation*}
+    and for 
+    \begin{equation*}
+        p^\mu = \begin{pmatrix}
+            1 \\ 0 \\ 0 \\ 1 \\
+        \end{pmatrix}
+    \end{equation*}
+    remains invariant 
+    \begin{equation*}
+    \begin{cases}
+        E' = 1 - \lambda 0 = 1\\
+        {p'}_x = 0 \\
+        {p'}_x = 0 + \lambda (1 - 1) = 0 \\
+        {p'}_z = 1 + 0 = 1\\
+    \end{cases}
+    \end{equation*}
+    
     

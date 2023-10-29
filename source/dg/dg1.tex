@@ -799,7 +799,7 @@
 
     The number of independent components of a $p$-form is the binomial coefficient 
     \begin{equation*}
-        \binom{n}{p} 
+        \binom{n}{p} = \frac{n!}{p!(n-p)!}
     \end{equation*} 
     with the condition $\sum_p \binom{n}{p} = n^2$. This can be shown noticing that in principle we can choose $n$ different number but we rearrange them in sets costitued by $p$ numbers.
 
@@ -819,9 +819,21 @@
     \end{aligned}
     \end{equation*}
 
+    Any $p$-form can be written as wedge product of $p$ $1$-forms. The set of all forms of all degree with the wedge product is called the Grassmann algebra. 
+
+    The commutation rule for a $p$-form $\omega$ and a $q$-form $\sigma$ is 
+    \begin{equation*}
+        \omega \wedge \sigma = (-1)^{pq} \sigma \wedge \omega
+    \end{equation*}
+    where the $(-1)^p$ justified by the fact that every 1-forms must be exchange in order to exchange a $p$-form.
+
+    Given a $n$-dimensional manifold there is only a field of $n$-form at any point. $\omega$ separates the set of all vector bases at $P$ into rwo classes: positive and negative, or left-handed and right-handed. A mainfold is orientable if handness is continuously consistence, the same everywhere. 
+
 \section{Volume}   
 
-    A polyhedron in $\mathcal M$ is defined by $n$ linearly independent vectors and its volume is a number. Therefore it is natural to associate an n-form, given the additional antysymmetric property, i.e. to vanish if two vectors are linearly dependent. In a coordinate basis, the $n$ vectors are
+    A polyhedron in $\mathcal M$ is defined by $n$ linearly independent vectors and its volume is a number. Therefore it is natural to associate an $n$-form, given the additional antysymmetric property, i.e. to vanish if two vectors are linearly dependent. There is a free choice about which $n$-form.
+    
+    In a coordinate basis, the $n$ vectors are
     \begin{equation*}
         \Delta x_k = dx^i_{(k)} \pdv{}{x^i}
     \end{equation*}
@@ -851,6 +863,8 @@
     \end{equation*}
     where $J$ is the determinant of the jacobian, which shows that the volume is coordinate independent. 
 
+    To be precise, under a change of coordinate, there is still an ambiguity about the sign, but since we have chosen an orientable manifold, there is problem. Another critical point can be raise if there are more charts covering a manifold: the orientation chosen on one must be consistent with the one on the other.
+
 \section{Area}
 
     In a submanifold of dimension $n-1$, the infinitesimal area of an hypersurface uses a (n-1)-form, taken by contracting the n-form of the volume with a vector $v \in T_P^{(\mathcal M)} \notin T_P^{(\mathcal S)}$ which is $A = \omega(v, \ldots)$. 
@@ -875,7 +889,7 @@
 
 \section{Differential forms}
 
-    The exterior derivative of a p-form 
+    The exterior derivative of a $p$-form
     \begin{equation*}
         \omega = \omega_{i_1 \ldots i_p} dx^{i_1} \wedge \ldots \wedge dx^{i_p}
     \end{equation*}
@@ -908,12 +922,13 @@
     \begin{equation*}
         d(df) = \partial_i \partial_j f dx^i \wedge dy^j = 0
     \end{equation*}
+    where we used the symmetric property of the partial derivatives and the antisymmetry of the wedge products.
 
 \chapter{Metric tensor}
 
 \section{Metric tensor}
 
-    The notions of lenght and angles on a manifold can be introduced with the metric tensor.
+    The notions of lengths and angles on a manifold can be introduced with the metric tensor. 
 
     A metric tensor $g$ is a $(2,0)$ tensor which maps two vectors into a real number, satisfying the following properties
     \begin{enumerate}
@@ -942,7 +957,7 @@
     \end{equation*}
     Although, the latter only with Riemannian metrics.
 
-    The metric tensor, under a change of basis $\Lambda$, change 
+    The metric tensor, under a change of basis $\Lambda$, change in the following way
     \begin{equation*}
         g' = \Lambda^T g \Lambda
     \end{equation*}
@@ -954,12 +969,12 @@
     \begin{equation*}
         {g'}_{ij} = \pm \delta_{ij}
     \end{equation*}
-    which defines an orthonormal basis at $P$, i.e. $g(e_i, e_j) = \pm \delta_{ij}$. 
+    which defines an orthonormal basis at $P$, i.e. $g(e_i, e_j) = \pm \delta_{ij}$. Infact any vector space with a metric tensor has an orthonormal bases which puts the metric tensor in canonical form. 
 
     The $\pm$ cannot be eliminated and the sum of the diagonal element is called the signature. A sign inversion does not affect the signature. The diagonal elements can classify the metric in the following way:
     \begin{enumerate}
         \item Riemannian metric, i.e. all of the same sign
-        \item pseduo-Riemannian metric, i.e. both signs appear (Lorentzian metric if one is of one kind and all the others of the other kind)
+        \item pseudo-Riemannian metric, i.e. both signs appear (Lorentzian metric if one is of one kind and all the others of the other kind)
     \end{enumerate}
 
     Metric tensors define a map between $T_P$ and $T^*_P$, to lower indices and the inverse to raise them. Infact, a vector $v \in T_P$ can be mapped into a 1-form
@@ -970,7 +985,7 @@
     \begin{equation*}
         w^i = e^i(w) = g(e^i, w_j e^j) = w_j g(e^i, e^j) = w_j g^{ij}
     \end{equation*}
-    Consequently, at $P$ a vector and a 1-form are equivalent.
+    Consequently, at $P$ a vector and a 1-form are equivalent. Infact, a metric tensor defines a unique pairing between them and there is no difference between them. However, in a non-orthonormal basis and an indefinite metric, they can be different. 
 
     
     The inverse metric tensor in defined by 
@@ -988,6 +1003,7 @@
     \begin{equation*}
         ds^2 = g_{ij}(x) dx^i dx^j
     \end{equation*}
+    However, for an indefinite metric there could be a difference between a null vector and a null-norm vector. 
 
     Consider the integral curve $\gamma$ of a vector field $v = \dv{}{\lambda}$. The scalar infinitesimal displacement along $v$ is 
     \begin{equation*}
@@ -999,7 +1015,7 @@
         s(\lambda_1, \lambda_2) = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g(v,v)} = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g_{ij}(\lambda) v^i(\lambda) v^j(\lambda)}
     \end{equation*}
 
-    Introducing a chart $x^i$, 
+    Given a chart $\phi = x^i$, 
     \begin{equation*}
         s(\lambda_1, \lambda_2) = \integ{\lambda_1}{\lambda_2}{\lambda} \sqrt{g_{ij}(\lambda) \dv{x^i}{\lambda} \dv{x^j}{\lambda}}
     \end{equation*}
@@ -1089,9 +1105,11 @@
         \end{equation*}
     \end{proof}
 
+    It is important to say that it is impossible to find a coordinate basis that is orthogonal everywhere on the manifold, only in a neighbourhood of a point.
+
 \section{Isometries}
 
-    An isometries is a symmetry of the metric tensor 
+    An isometry is a symmetry of the metric tensor 
     \begin{equation*}
         \pounds_V g = 0
     \end{equation*}
@@ -1110,6 +1128,7 @@
     \begin{equation*}
         \omega_g = e^1 \wedge \ldots \wedge e^n
     \end{equation*}
+    It is unique, up to a sign. Hence, the metric defines a unique volume for an oriented manifold.
     
     Under a local change of coordinates $y^i(x^i)$ 
     \begin{equation*}
@@ -1127,7 +1146,7 @@
         V(U) = \int_U \omega_g = \int_{\phi(U)} \sqrt{|\det g'|} dy^1 \ldots dy^n
     \end{equation*}
 
-    Similarly, the natural area (n-1)-form is 
+    Similarly, the natural area $(n-1)$-form is 
     \begin{equation*}
         A_g = \omega_g (\ldots, e_n) = e^1 \wedge \ldots \wedge e^{n-1}
     \end{equation*}
