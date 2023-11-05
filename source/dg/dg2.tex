@@ -1,0 +1,375 @@
+\part{Riemmanian Manifolds}
+
+\chapter{Covariant derivative}
+
+\section{Parallel transport}
+
+    The only notion of parallelism can be given only at one point: two vectors are parallel if they are linearly independent. 
+
+    \begin{definition}[Parallel transport]
+        A parallel transport is a rule to tranport a vector $W \in T_{P(\lambda)}$ along a tangent curve $\gamma$ to a vector field $V$, asociating a second vector $W^{\parallel}_{-\Delta \lambda} \in T_{P(\lambda_0)}$.
+    \end{definition}
+
+    \begin{definition}[Covariant derivative]
+        The covariant derivative of a vector field $W$ with respect to $V$ at a point $P(\lambda_0)$ is 
+        \begin{equation*}
+            \nabla_V W \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{W^{\parallel}_{- \Delta \lambda} (\lambda_0) - W(\lambda_0)}{\Delta \lambda}
+        \end{equation*}
+        It is a vector itself and vanishes if the parallel transport vector coincides with the original one.
+    \end{definition}
+
+    It is different from the Lie derivative because we do not need a congruence but just one curve.
+
+    The covariant derivative of a function is the same as the Lie derivative 
+    \begin{equation*}
+        \nabla_V f = \dv{f}{\lambda}
+    \end{equation*}
+
+    For a vector, we require the following properties
+    \begin{enumerate}
+        \item Leibniz rule, i.e. 
+            \begin{equation*}
+                \nabla_V (f W) = \dv{f}{\lambda} W + f \nabla_V W
+            \end{equation*}
+            \begin{equation*}
+                \nabla_V (A \otimes B) = A \otimes \nabla_V B + \nabla_V A \otimes B
+            \end{equation*}
+            \begin{equation*}
+                \nabla_V (\omega (A)) = (\nabla_V \omega) A + \omega (\nabla_V A)
+            \end{equation*}
+        \item no effects on parameterisation $\mu = \mu(\lambda)$, i.e. 
+            \begin{equation*}
+                \dv{}{\mu} = \dv{\lambda}{\mu} \dv{}{\lambda} = h \dv{}{\lambda}
+            \end{equation*}
+            \begin{equation*}
+                \nabla_{h V} W = h \nabla_V W
+            \end{equation*}
+            for all smooth functions $h$ such that 
+            \begin{equation*}
+                \nabla_V W = 0 \quad \Rightarrow \quad \nabla{hV} W = 0
+            \end{equation*}
+        \item linearity, i.e.
+            \begin{equation*}
+                \nabla_V A + \nabla_W A = \nabla_{V + W} A
+            \end{equation*}
+            \begin{equation*}
+                \nabla_{fV +gW} = f \nabla_V + g \nabla_W
+            \end{equation*}
+    \end{enumerate}
+
+    Lie derivative does not satisfy the reparameterization condition. 
+
+    The covariant derivative can be seen as an operator 
+    \begin{equation*}
+        \nabla W \colon V \rightarrow \nabla_V W
+    \end{equation*}
+
+    We expand on a basis of $T_{P(\lambda_0)}$ 
+    \begin{equation*}
+        \nabla_V W = \nabla_{V^i e_i} (W^j e_j) = V^i \nabla_{e_i} (W^j e_j) = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \nabla_{e_i} e_j
+    \end{equation*}
+    where the second term $\nabla_{e_i} e_j = \Gamma^k_{ji} e_k$ is the affine connection. It transforms like a tensor at fixed $i$ and $j$ but it is not a $(1,2)$ tensor.
+
+    Given a coordinate basis and its dual basis 
+    \begin{equation*}
+    \begin{aligned}
+        \Gamma^n_{ml} e_n = \nabla_{e_l} e_m &= \nabla_{\Lambda^i_{\phantom i l} e_i} (\Lambda^j_{\phantom j m} e_j) \\ & = \Lambda^i_{\phantom i l} \nabla_{e_i} (\Lambda^j_{\phantom j m} e_j) \\ & = \Lambda^i_{\phantom i l} \nabla_{e_i} (\Lambda^j_{\phantom j m}) e_j + \Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \nabla_{e_i} (e_j) \\ & = \Lambda^i_{\phantom i l} \partial_i \Lambda^j_{\phantom j m} e_j + \Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \Gamma^k_{ji} e_k \\ & = (\Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \Lambda^n_{\phantom n k} \Gamma^k_{ji}+ \Lambda^i_{\phantom i l} \Lambda^n_{\phantom n k} \partial_i \Lambda^k_{\phantom k m}) e_n
+    \end{aligned}
+    \end{equation*}
+    Hence
+    \begin{equation*}
+        \Gamma^n_{ml} = \Lambda^n_{\phantom n k} (\Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m}  \Gamma^k_{ji} + \Lambda^i_{\phantom i l} \partial_i \Lambda^k_{\phantom k m})
+    \end{equation*}
+    which shows that at fixed $i$ and $j$ transforms as $\Gamma^n_{ml} e_n = \Gamma^k_{ml} e_k$ but not in $i$ and $j$.
+
+    The covariant derivative becomes 
+    \begin{equation*}
+        \nabla_V W = V^i \Big (\pdv{W^j}{x^i} \pdv{}{x^j} + W^j \Gamma^k_{ji} \pdv{}{x^k} \Big) = V^i \Big (\pdv{W^j}{x^i} + W^j \Gamma^k_{ji} \Big) \pdv{}{x^j}
+    \end{equation*}
+    whose in components is 
+    \begin{equation*}
+        (\nabla_V W)^k = V^i \pdv{W^j}{x^i} + \Gamma^k_{ji} V^i W^j = \dv{W^k}{\lambda} + \Gamma^k_{ji} V^i W^j
+    \end{equation*}
+    and since the components of $V$ enter only by contraction, we can call covariant derivative the tensor $(1,1)$ 
+    \begin{equation*}
+        (\nabla W^k)_i = \pdv{W^k}{x^i} + \Gamma^k_{ji} W^j
+    \end{equation*}
+    or in different notation 
+    \begin{equation*}
+        \nabla_i W^k = W^k_{;i} = W^k_{,i} + \Gamma^k_{ji} W^j
+    \end{equation*}
+
+    The covariant derivative of a $1$-form is 
+    \begin{equation*}
+        \omega_{k;i} = \nabla_i \omega_k = \pdv{\omega_k}{x^i} - \Gamma^j_{ki} \omega_j
+    \end{equation*}
+
+    \begin{proof}
+        By contraction $\omega (V) = \omega_i V^k$
+        \begin{equation*}
+            \partial_i (W_k V^k) = \nabla_i (W_k V^k) = (\nabla_i W_k) V^k + W_k (\nabla_i V^k)
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            (\nabla_i W_k) V^k = \partial_i (W_k V^k) - W_k (\nabla_i V^k) = (\nabla_i W_k) V^k + W_k (\partial_i V^k + \Gamma^k_{ij} V^j)
+        \end{equation*}
+        which is the thesis we were looking for.
+    \end{proof}
+
+    By the Leibniz rule, the covariant derivative of a $(1,1)$ tensor is 
+    \begin{equation*}
+        T^i_{\phantom i j;k} = T^i_{\phantom i j,k} + \Gamma^i_{lk} T^l_{\phantom l j} - \Gamma^l_{jk} T^i_{\phantom i l}
+    \end{equation*}
+
+    An affine conncetion is symmetric if 
+    \begin{equation*}
+        \Gamma^k_{ij} = \Gamma^k_{ji} 
+    \end{equation*}
+    and implies the relation with the Lie derivative
+    \begin{equation*}
+        \nabla_V W - \nabla_W V = [V, W] = \pounds_V W
+    \end{equation*}
+
+    Geometrically, it means that two linearly independent vectors $V$ and $W$ at a point $P$, which are parallel transported along the other ($W^\parallel$ along $V$ and $V^\parallel$ along $W$) forms a closed path. Infact, since $\nabla_V W^\parallel = \nabla_W V^\parallel = 0$, it follows that $\pounds_{V^\parallel} W^\parallel = [V^\parallel, W^\parallel] = 0$ and, being a coordinate frame, moving along $V$ and $W^\parallel$ or along $W$ and $V^\parallel$ we end up in the same point. 
+
+    If the affine connection is not symmetric, it is subjected to torsion 
+    \begin{equation*}
+        T^k_{ji} = \Gamma^k_{ij} - \Gamma^k_{ji}
+    \end{equation*}
+    which means that the path does not close. 
+
+\section{Geodesics}
+
+    \begin{definition}[Geodesics]
+        A curve $\gamma$ tangent to a vector $V$ is a geodesics if 
+        \begin{equation*}
+            \nabla_V V \vert_P = 0 \quad \forall P \in \gamma
+        \end{equation*}
+        where $\lambda$ is called an affine parameter. 
+    \end{definition}
+
+    The definition is restricted because we could have simply request 
+    \begin{equation*}
+        \nabla_V V = \alpha V
+    \end{equation*}
+    where $\alpha$ is a real function. It is invariant under reparameterization of the curve 
+    \begin{equation*}
+        \nabla_{h V} V = h \nabla_V V = h \alpha V = \alpha' V
+    \end{equation*}
+
+    Given a coordinate frame 
+    \begin{equation*}
+        0 = (\nabla_V V)^k = V^j \Big( \pdv{V^k}{x^j} + \Gamma^k_{ij} V^i \Big) = \dv{V^k}{\lambda} + \Gamma^k_{ij} V^i V^j = \dvd{x^k}{\lambda} + \Gamma^k_{ij} \dv{x^i}{\lambda} \dv{x^j}{\lambda}
+    \end{equation*}
+    which is a system of $n$ second-order ordinary differential equations. 
+
+    With the geodesics, we can use the affine parameter as coordinate $x^1 = \lambda$. The corresponding basis vector
+    \begin{equation*}
+        \nabla_{e_1} e_1 = 0
+    \end{equation*}
+    and the remaining ones can be parallely transported, which give rise to adapted coordinates 
+    \begin{equation*}
+        0 = \nabla_{e_1} e_i = \Gamma^k_{i1} e_k
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \Gamma^k_{i1}(P) = 0 \quad \forall i,k = 1, \ldots n \quad \forall P \in \gamma
+    \end{equation*}
+    However, in general $\Gamma^k_{ij} \neq 0$ for $j \neq 1$.
+
+    At a point $P$, for ant basis, the $n$ geodesic equations 
+    \begin{equation*}
+        \nabla_{e_i} e_i = 0
+    \end{equation*}
+    admit a unique solution with initial condition $e_i(P) = e_i^{(0)}$, which defines $n$ coordinates $\lambda_{(i)} = x^i$. Hence, the affine connection vanishes at $P$ for any geodesics 
+    \begin{equation*}
+        \Gamma^k_{ij} \vert_P = 0
+    \end{equation*}
+    and the system is called normal or Gaussian frame.
+
+    The affine connection defines how coordinate basis vectors are parallelly transported. Infact
+    \begin{equation*}
+        (\nabla_V W)^j \vert_P = V^i \pdv{W^j}{x^i} \Big \vert_P
+    \end{equation*}
+    then $W$ is parallely tranported along $V$ if its components do not change. In such frame 
+    \begin{equation*}
+        \nabla_{e_i} \vert_P = \pdv{}{x^i} \Big \vert_P = \pounds_{e_i} \vert_P
+    \end{equation*}
+    and the covariant derivatives coincides with the Lie derivatives. However, for another point $Q \neq P$, this does not hold, because in general it is impossible to find an open set such that 
+    \begin{equation*}
+        \pdv{\Gamma^k_{ij}}{x^l} \Big \vert_P = \Gamma^k_{ij,l} \vert_P \neq 0 
+    \end{equation*}
+    and higher derivatives. It is possible to construct a normal frame in an open set of $P$ along the geodesics.
+
+    Given a vector $A_P$ at a point $P = \gamma(\lambda_0)$ along $V = \dv{}{\lambda}$ and another point $Q = \gamma(\lambda = \lambda_0 + \Delta \lambda)$ 
+    \begin{equation*}
+        A(Q) = A_P + \Delta \lambda \nabla_V A_P + \frac{1}{2} \Delta \lambda^2 \nabla_V \nabla_V A_P + \ldots = \exp(\Delta \lambda \nabla_V) A_P
+    \end{equation*}
+    and, introducing a basis vector, 
+    \begin{equation*}
+        0 = \nabla_V e_i \vert_\gamma = V^j \Gamma^k_{ji} e_k \vert_\gamma 
+    \end{equation*}
+    which implies that the geodesic map becomes the exponential map along $\gamma$ 
+    \begin{equation*}
+        A^i(Q) = \exp(\Delta \lambda V^j \partial_j) A^i_P = A^i_P + \Delta \lambda V^j \partial_j A^i_P + O(\Delta \lambda^2) = A^i_P
+    \end{equation*}
+    Hence, the exponential map defines a vector field $A$ mapping it along $V$. Since the components do not change, all the vector $A(\lambda)$ are parallel to $A_P$.
+
+    In a generic frame, we substitute partial derivatives with covariant derivatives
+    \begin{equation*}
+        A(Q) = A^i_P \Delta \lambda V^j \Gamma^i_{jk} A^k_P + O(\Delta \lambda^2) 
+    \end{equation*}
+    If $A = V$, it defines the geodesic curve itself.
+
+\chapter{Riemmann tensor}
+
+    \begin{definition}[Riemann tensor]
+        The Riemann tensor is a $(1,3)$ tensor defined as 
+        \begin{equation*}
+            R(V,W) A = [\nabla_V, \nabla_W] A - \nabla_{[V,W]} A
+        \end{equation*}
+        or in components 
+        \begin{equation*}
+            R(V, W) A = (R(V,W)^i_{\phantom i j} A^j) e_i
+        \end{equation*}
+    \end{definition}
+
+    Through the Riemann tensor, we could define the curvature of a manifold.
+
+    Geometrically, consider two commuting vector fields $V = \dv{}{\lambda}$ and $W = \dv{}{\mu}$, used to construct a closed path. Consider a third vector $A$, start from a point $P$ and move it, first along $V$ by $\delta \lambda$ and then along $W$ by $\delta \mu$
+    \begin{equation*}
+        A^\parallel_{WV} = \exp(\delta \mu \nabla_W) \exp(\delta \lambda \nabla_V) A
+    \end{equation*}
+    or the other way 
+    \begin{equation*}
+        A^\parallel_{VW} = \exp(\delta \lambda \nabla_V) \exp(\delta \mu \nabla_W)  A
+    \end{equation*}
+
+    For infinitesimal displacement, the difference between the two path is 
+    \begin{equation*}
+        \delta A = A^\parallel_{WV} - A^\parallel_{VW} = \delta \mu \delta \mu [\nabla_V, \nabla_W] A + O(\delta^3)
+    \end{equation*}
+    Using the Riemann tensor 
+    \begin{equation*}
+        \delta A = \delta \mu \delta \mu R(V,W) A + O(\delta^3)
+    \end{equation*}
+    or introducing the second derivative 
+    \begin{equation*}
+        \frac{\delta^2 A^i}{\delta \mu \delta \lambda} = R^i_{jkl} V^j W^k A^l + O(\delta^3)
+    \end{equation*}
+
+    Hence, if the Riemann tensor vanishes, a vector parallely transported along a closed path does not return back to its initial value, otherwise, the manifold is curved. It is an intrinsic curvature because it does not need the embedding in a higher dimensional space. 
+
+    The Riemann tensor has the following way 
+    \begin{enumerate}
+        \item scalar, i.e. 
+            \begin{equation*}
+                R(V,W) (fA) = f R(V, W) A
+            \end{equation*}
+        \item scalar, i.e. 
+            \begin{equation*}
+                R(fV,W) A = R(V, fW) A = f R(V, W) A
+            \end{equation*}
+        \item in coordinates, i.e. 
+            \begin{equation*}
+                R^i_{ljk} e^l \otimes e_i = R(e_j, e_k)^i_l e^l \otimes e_i
+            \end{equation*}
+    \end{enumerate}
+
+\section{Metric connection}
+
+    In a metric manifold, we are interested in parallel transport which preserves lengths and angles. Consider two vectors $A$ and $B$ parallely transported along $V$, i.e. $\nabla_V A = \nabla_V B = 0$. We request that 
+    \begin{equation*}
+        \nabla_V g(A,B) = 0
+    \end{equation*}
+    which implies
+    \begin{equation*}
+        \nabla_V g = 0
+    \end{equation*}
+    or 
+    \begin{equation*}
+        \nabla g = 0
+    \end{equation*}
+
+    This implies that the affine connection is fixed by the metric 
+    \begin{equation}\label{chr}
+        \Gamma^k_{ij} = \frac{1}{2} g^{kl} (g_{il,j} + g_{jl,i} - g_{ij,l})
+    \end{equation}
+    where $\Gamma^k_{ij}$ are called Christoffel symbols.
+
+    \begin{proof}
+        The components of the covariant derivative are 
+        \begin{equation*}
+            0 = g_{ij;l} = g_{ij,l} - \Gamma^a_{il} g_{aj} - \Gamma^a_{jl} g_{ia}
+        \end{equation*}
+        and, permutating the indices
+        \begin{equation*}
+            0 = g_{il;j} = g_{il,j} - \Gamma^a_{ij} g_{al} - \Gamma^a_{lj} g_{ia}
+        \end{equation*}
+        \begin{equation*}
+            0 = g_{jl;i} = g_{jl,i} - \Gamma^a_{ji} g_{al} - \Gamma^a_{li} g_{ja}
+        \end{equation*}
+
+        Hence, contracting with the inverse of the metric
+        \begin{equation*}
+        \begin{aligned}
+            g^{kl} (g_{il,j} + g_{jl,i} - g_{ij,l}) & = \Gamma^k_{ij} + g^{kl} \Gamma^a_{lj} g_{ia} + \Gamma^k_{ji} + g^{kl} \Gamma^a_{li} g_{ja} - g^{kl} \Gamma^a_{il} g_{aj} - g^{kl} \Gamma^a_{jl} g_{ia} \\ & = \Gamma^k_{ij} + \Gamma^k_{ji} + g^{kl} (\Gamma^a_{li} - \Gamma^a_{il}) g_{ja} + g^{kl} (\Gamma^a_{lj} - \Gamma^a_{jl}) g_{ia}
+        \end{aligned}
+        \end{equation*}
+
+        The symmetry of $g$ implies the symmetry of $\Gamma^k_{ij} = \Gamma^k_{ji}$.
+
+        Furthermore, the metric fixes the Christoffel symbols 
+        \begin{equation*}
+            \Gamma^k_{ij} = \frac{1}{2} g^{kl} (g_{il,j} + g_{jl,i} - g_{ij,l})
+        \end{equation*}
+    \end{proof}
+
+    If the metric is in canonical form at $P$, the Christoffel symbols become 
+    \begin{equation*}
+        \Gamma^k_{ij} \vert_P = 0
+    \end{equation*}
+
+    Geodetics are local extremal length. Consider a geodesic $\gamma$ and a normal frame around it. In a neighbourhood of $\gamma$, the metric is in canonical form and the length becomes 
+    \begin{equation*}
+        ds^2 \simeq \frac{1}{2} \pdvdu{g_{ii}}{(\eta^i)} \Big \vert_{\lambda_P, \eta^1=\ldots=\eta^{n-1}=0}
+    \end{equation*}
+    This means that each portion of the geodesic is a local extremum (minimum if the second derivative is positive, maximum if negative).~\eqref{chr} can be derived from that.
+
+    \begin{proof}
+        The length of a curve between two fixed end-points is 
+        \begin{equation*}
+            s = \int_{A}^{B} ds = \int_{A}^{B} ds \sqrt{g_{ij} \dot x^i \dot x^j} = \int_{\lambda_A}^{\lambda_B} d\lambda \sqrt{2 L(x^k, \dot x^l)}
+        \end{equation*}
+        If we define $\lambda = s$, then $2L = 1$. A variation of the length is 
+        \begin{equation*}
+            \delta s = \delta \int_{s_A}^{s_B} ds \sqrt{2L} = \int_{s_A}^{s_B} ds \frac{\delta L}{\sqrt{2L}} = \delta \int_{s_A}^{s_B} ds L(x^k, \dot x^l)
+        \end{equation*}
+
+        Hence, if the variation vanishes, we have the Euler-Lagrange equations 
+        \begin{equation*}
+            \dv{}{s} \pdv{L}{\dot x^m} - \pdv{L}{x^m} = 0
+        \end{equation*}
+
+        In particular, 
+        \begin{equation*}
+            \pdv{L}{x^m} = \frac{1}{2} g_{jk,m} \dot x^j \dot x^k
+        \end{equation*}
+        \begin{equation*}
+            \pdv{L}{\dot x^m} = g_{mj} \dot x^j
+        \end{equation*}
+        and the Euler-Lagrange equations are 
+        \begin{equation*}
+            \ddot x^i + \frac{1}{2} g^{il} (g_{lk,j} + g_{lj,k} - g_{jk,l}) \dot x^j \dot x^k = 0
+        \end{equation*}
+        which, compared to the geodesic equation 
+        \begin{equation*}
+            \ddot x^i + \Gamma^i_{jk} \dot x^j \dot x^k = 0
+        \end{equation*}
+        gives the result.
+    \end{proof}
+
+    Consider a geodesic $\gamma_1$ from a point $P_1$ with two orthogonal tangent vectors $V_1 = \dv{}{\lambda}$ and $Y = \dv{}{y}$ such that $g(V_1,V_1) = -1$, $g(Y, Y) > 0$, $g(V_1, Y) = 0$. Moving from $P_1$ by $\Delta y$ at $P_2$ from which starts a geodesic $\gamma_2$ tangent to $V_2$ such that $\nabla_Y V_2 = 0$. Parametrising by $\lambda$ the two geodesic. If the manifold is flat, the length of $Y$ is constant and $\Delta y$ is equal to the distance between $\gamma_1(\lambda)$ and $\gamma_2(\lambda)$. Otherwise, if the manifold is curved, the rate of change of this distance is 
+    \begin{equation*}
+        \ddot Y^i \simeq \dvf{V^i}{\lambda^2} \simeq R^i_{jkl} V^j Y^k V^l
+    \end{equation*}

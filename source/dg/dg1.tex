@@ -1,15 +1,17 @@
-\part{Manifolds}
+\part{Manifolds and tensors}
 
 \chapter{Manifolds}
 
-    In physics, we often find problems which involve quantities (and operations on them) defined in a continuous space. Moreover, this space is not always flat, but it could be curved, like in general relativity. In this chapter, we will study how we can mathematically define what a space is with the notion of differential manifold.
+    In physics, we often find problems which involve quantities and operations on them defined in a continuous space: flat spaces, like in classical mechanics and special relativity, or curved spaces, like in general relativity. In this chapter, we will study how we can mathematically describe this kind of spaces through the notion of differentiable manifold.
 
 \section{Differentiable Manifolds}
 
-    A differential manifold $\mathcal M$ is a topological space which locally looks like $\mathbb R^n$. This means that if you zoom in to any patch, you find $\mathbb R^n$.
+    A differentiable manifold $\mathcal M$ is a topological space which locally looks like $\mathbb R^n$, but it might have a different and more complicated global topology. This means that if you zoom into a local region, it behaves like a flat $\mathbb R^n$, but over an extended region, you could find a curved region.
+
+\subsection{Topological spaces}
 
     \begin{definition}[Topological space]
-        A topological space $(\mathcal M, \{A_i\})$ is a set of points $\mathcal M$ in which is defined a tolopology, i.e.~a family of open sets $\{A_i\}$ such that 
+        A topological space $(\mathcal M, \{A_i\})$ is a set of points $\mathcal M$ in which it is defined a topology, i.e.~a family of open sets $\{A_i\}$ such that 
     \begin{enumerate}
         \item the empty set and the whole set are open sets, i.e.
             \begin{equation*}
@@ -33,63 +35,105 @@
     \end{definition}
     \noindent In a topological space, the notions of contiguity and continuity are well defined. Two points are contiguous if they belong to the same open set, called neighbourhood. Intuitively, it means that one is next to the other. A map is an application $\phi \colon D \subset \mathcal M \rightarrow \mathbb R^n$. It is continuous if it maps open sets into open sets. 
 
+\subsection{Charts and atlases}
+
     \begin{definition}[Chart]
-        A chart is a pair $(A, ~\phi)$, where $A$ is an open set of a point $P \in \mathcal M$, i.e. $A \subseteq \mathcal M$, and $\phi$ is an invertible and continuous map $\phi \colon A \rightarrow \mathbb R^n$ which associates a set of $n$ real coordinates $x^i = \phi$ for the neighbourhood $U$ of $P$. See Figure.
+        A chart is a pair $(A, ~\phi)$, where $A \subseteq \mathcal M$ is an open set of a point $P \in \mathcal M$ and $\phi$ is an invertible and continuous map $\phi \colon A \rightarrow \mathbb R^n$, which associates a set of $n$ real coordinates $\phi = x^i$ for the neighbourhood of $P$. See Figure~\ref{fig:chart}
     \end{definition}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{chart.pdf}
+        \caption{A chart on a manifold}\label{fig:chart}
+    \end{figure}
+
     \begin{definition}[Atlas]
         An atlas $\mathcal A$ is a collection of charts that covers entirely the manifold, i.e. 
     \begin{equation*}
         \mathcal A = \{\{(A_i, \phi_i)\} \colon \cup_i A_i \supseteq \mathcal M \} ~.
     \end{equation*}
     \end{definition}
-
-    In order to include all the points of the manifold $\mathcal M$, neighbourhoods must overlap each others. In the intersection of them, which is open, there are two different coordinate systems that describe it and there must be a relation between them.
+    \noindent In order to include all the points of the manifold $\mathcal M$, neighbourhoods might overlap each others. In the intersection of them, which is open, there are two different coordinate systems that describe the same points and there must be a smooth relation between them. Therefore, an atlas must be endowed with a consistency map.
     \begin{definition}[Consistency map]
-        A consistency map between two charts $\phi_1$ and $\phi_2$, over a point $P \in A_1 \cap A_2$, is an invertible map $\phi \colon \phi(A_2) \subseteq \mathbb R^n \rightarrow \psi(A_2) \subseteq \mathbb R^n $ such that 
+        A consistency map between two charts $\phi_1$ and $\phi_2$, over a point $P \in A_1 \cap A_2$, is an invertible map 
         \begin{equation*}
-            \psi(\phi_1(P)) = \phi_2(P) \quad \textnormal{or} \quad (\phi_2^{-1} \circ \psi \circ \phi_1) = \mathbb I
+            \psi \colon \phi(A_1) \subseteq \mathbb R^n \rightarrow \phi(A_2) \subseteq \mathbb R^n ~,
+        \end{equation*}
+        such that 
+        \begin{equation*}
+            \psi(\phi_1(P)) = \phi_2(P) \quad \textnormal{or} \quad (\phi_2^{-1} \circ \psi \circ \phi_1) = \mathbb I ~,
         \end{equation*}
         or, equivalently, 
         \begin{equation*}
-            \psi^{-1} (\phi_2(P)) = \phi_1(P) \quad \textnormal{or} \quad (\phi_1^{-1} \circ \psi \circ \phi_2) = \mathbb I
+            \psi^{-1} (\phi_2(P)) = \phi_1(P) \quad \textnormal{or} \quad (\phi_1^{-1} \circ \psi \circ \phi_2) = \mathbb I ~.
         \end{equation*}
-        See Figure.
+        See Figure~\ref{fig:consistency}.
     \end{definition}
-    \noindent The consistency map $\psi$ can be seen as a change of coordinates in $\mathbb R^n$. Since it is invertible, it follows that the dimension $n$ must be the same for all charts and can be defined as the dimension of the manifold. If $\psi \in C^p(\mathbb R^n)$, the manifold is a p-differentiable manifold. 
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{consistencymap.pdf}
+        \caption{A consistency map between two charts on a manifold}\label{fig:consistency}
+    \end{figure}
+
+    \noindent Intuitively, a chart is a system of coordinates and an atlas is a system of charts which are smoothly related where they overlapped each others. The consistency map $\psi$ can be seen as a change of coordinates in $\mathbb R^n$. Moreover, since it is invertible, it follows that the dimension $n$ must be the same for all charts and it can be defined as the dimension of the manifold. If $\psi \in C^p(\mathbb R^n)$, then the manifold is a $p$-differentiable manifold. 
+
+\subsection{Manifolds}
 
     \begin{definition}[Manifold]
         A manifold is an equivalence class of atlases, where two atlases are equivalent if there exists a bijective correspondence between them.
     \end{definition}
-    \noindent Examples are the $n$-dimensional Euclidean space $\mathbb R^n$, the $n$-dimensional sphere $S^n$, the $n$-dimensional torus $T^n$, the lagrangian configuration space or the hamiltonian phase space.
+    \noindent Examples of manifolds are the $n$-dimensional Euclidean space $\mathbb R^n$, the $n$-dimensional sphere $S^n$, the $n$-dimensional torus $T^n$ or the direct product of two manifolds. Physically related manifolds are the lagrangian configuration space, the hamiltonian phase space or the set of continuous transformations in $\mathbb R^n$. An example of a non-manifold is the cone.
+
+\subsection{Map between manifolds}
 
     \begin{definition}[Homeomorphism]
-        An homeomorphism between two manifold $\mathcal M$ and $\mathcal N$ is an injective, surjective and continuous with also inverse continuous map between them. Two manifolds are homeomorphic if it exists such map.
+        An homeomorphism between two manifold $\mathcal M$ and $\mathcal N$ is an injective, surjective and continuous, with also inverse continuous, map between them. Two manifolds are homeomorphic if it exists such map.
     \end{definition}
     \begin{definition}[Diffeomorphism]
-        An diffeomorphism between two manifold $\mathcal M$ and $\mathcal N$ is a smooth (differentiable) homeomorphism. Two manifolds are diffeomorphic if it exists such map.
+        A diffeomorphism between two manifold $\mathcal M$ and $\mathcal N$ is a smooth (differentiable) homeomorphism. Two manifolds are diffeomorphic if it exists such map.
     \end{definition}
-    \noindent Since locally all manifolds of the same dimension $n$ look like $\mathbb R^n$, they can be divide up into classes given by their global properties: two manifolds which are diffeomorphic (hence they have the same dimension) can be deformed one into each other. 
+    \noindent Since locally all manifolds of the same dimension $n$ look like $\mathbb R^n$, they can be divide up into classes given by their global properties: two manifolds which are diffeomorphic, and hence they have the same dimension, can be deformed one into each other. 
  
-\section{Curves}
-
-    \begin{definition}[Curve]
-        A curve is a continuous map $\gamma \colon I \subseteq \mathbb R \rightarrow \mathcal M$, where $I$ is an open set of $\mathbb R$. The set of all the image points of the function is the ordinary notion of curve. See Figure.
-    \end{definition} 
-    \noindent Given a chart $\phi = x^i$, we can parametrize the curve with a real parameter $\lambda$ and the curve becomes $\phi \circ \gamma \colon I \subseteq \mathbb R \rightarrow \mathbb R^n$, or $x^i = x^i(\lambda)$. If $x^i(\lambda) \in C^p(\mathbb R)$, then $\gamma$ is p-differentiable. A reparameterization $\sigma = \sigma(\lambda)$ defines a different curve, even if the images of the curves coincide.
-
-\section{Scalars}
-
-    \begin{definition}
-        A function is a map $f \colon \mathcal M \rightarrow \mathbb R$. See Figure.
-    \end{definition} 
-    \noindent Given a chart $\phi = x^i$, the function becomes $f \circ \phi^{-1} \colon \mathbb R^n \rightarrow \mathbb R$, or $f = f(x^i)$. Given another chart $\phi' = y^j$, $f'(y(P)) = f(x(P))$, showing that it is indeed a scalar. If $f(x^i) \in C^p(\mathbb R)$, then $f$ is p-differentiable. The coordinates are themselves $\infty$-differentiable functions.
+\chapter{Tensors}
 
 \section{Vectors}
 
-    Given that we have not defined a notion of distance, vectors are not anymore displacements or arrows between two points, but tangent objects to a curve.
+    All the objects we will define in this chapter are coordinate-independent. However, for computations purpose, we need to choose them.
+
+\subsection{Curves}
+
+    \begin{definition}[Curve]
+        A curve is a continuous map $\gamma \colon I \subseteq \mathbb R \rightarrow \mathcal M$, where $I$ is an open set of $\mathbb R$. The set of all the image points of the function is the ordinary notion of curve. See Figure~\ref{fig:curve}.
+    \end{definition} 
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{curve.pdf}
+        \caption{A curve on a manifold}\label{fig:curve}
+    \end{figure}
+
+    \noindent Given a chart $\phi = x^i$, we can parametrize the curve with a real parameter $\lambda$ and the curve becomes $\phi \circ \gamma \colon I \subseteq \mathbb R \rightarrow \mathbb R^n$, or $x^i = x^i(\lambda)$. If $x^i(\lambda) \in C^p(\mathbb R)$, then $\gamma$ is p-differentiable. A reparameterization $\sigma = \sigma(\lambda)$ defines a different curve, even if the images of the curves coincide.
+
+\subsection{Scalars}
+
+    \begin{definition}
+        A function is a map $f \colon \mathcal M \rightarrow \mathbb R$. See Figure~\ref{fig:scalar}.
+    \end{definition} 
+    \noindent Given a chart $\phi = x^i$, the function becomes $f \circ \phi^{-1} \colon \mathbb R^n \rightarrow \mathbb R$, or $f = f(x^i)$. Given another chart $\phi' = y^j$, $f'(y(P)) = f(x(P))$, showing that it is indeed a scalar. If $f(x^i) \in C^p(\mathbb R)$, then $f$ is $p$-differentiable. The coordinates are themselves $\infty$-differentiable functions.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{scalar.pdf}
+        \caption{A scalar on a manifold}\label{fig:scalar}
+    \end{figure}
+
+\subsection{Vectors}
+
+    Given that we have not defined a notion of distance, vectors are not anymore displacements or arrows between two points, but tangent objects to a curve defined at a single point.
 
     \begin{definition}[Vector]
-        A vector at a point $P \in \mathcal M$ is a map that associates to a function its derivative $v_{\gamma} \colon f \rightarrow v_\gamma(f) = \dvin{f}{\lambda}{\lambda_P} \in \mathbb R$, where $\gamma(\lambda_P) = P$.
+        A vector at a point $P \in \mathcal M$ is a functional map that associates to a function its derivative $v_{\gamma, P} \colon f \rightarrow v_\gamma(f) = \dv{f}{\lambda} \Big \vert_{\lambda_P} \in \mathbb R$, where $\gamma(\lambda_P) = P$.
     \end{definition} 
     \noindent Given a chart $\phi = x^i$,
     \begin{equation*}
@@ -105,7 +149,11 @@
     \begin{equation*}
         v = \underbrace{\dv{x^i}{\lambda}}_{v_i} \underbrace{\pdv{}{x^i}}_{e_i} = v^i e_i
     \end{equation*}
-    where $v^i$ are the components and $e_i$ are the coordinate basis vectors, whose vectors tangent to the coordinate line defined by constant $x^j$ for $i \neq j$.
+    where $v^i$ are the components and $e_i$ are the coordinate basis vectors. 
+    
+    \begin{definition}[Coordinate basis vectors]
+        Coordinate basis vectors are those vectors which are tangent to the coordinate line defined by constant $x^j$ for $i \neq j$.
+    \end{definition}
 
     Since any curve has an unique parameter, it has also a unique tangent vector. Conversely, a vector is tangent to an infinite number of curves, because there are different curves with the same tangent vector or the same curve can be reparameterised to give rise to another tangent vector.
 
@@ -117,9 +165,12 @@
     \begin{equation*}
         e_i = \pdv{}{x^i} = \pdv{y^{j'}}{x^i} \pdv{}{y^{j'}} = \pdv{y^{j'}}{x^i} e_{j'}
     \end{equation*}
-    \noindent Notice that components transform but basis change too, inversely, and, as a consequence, the vector remains the same.
+    \noindent Notice that components transform but basis change too, inversely, and, as a consequence, the vector remains the same, which shows that it is coordinate-independent.
 
-    A vector field in an open set $U \subseteq \mathcal M$ is map from each point $P \in U$ into a vector $v(P)$. Given a chart $\phi = x^i$, the vector field becomes $v (x^i) = v \circ \phi^{-1}$.
+    \begin{definition}
+        A vector field in an open set $U \subseteq \mathcal M$ is map from each point $P \in U$ into a vector $v(P)$.
+    \end{definition} 
+    \noindent Given a chart $\phi = x^i$, the vector field becomes $v (x^i) = v \circ \phi^{-1}$. Intuitively, it is a rule that associates a vector for each point. The components of a vector field depend on coordinates $V = v^i(x^j) e_i$.
 
     By definition a vector is a linear functional
     \begin{equation*}
@@ -149,18 +200,17 @@
     \begin{equation*}
         e_i = \pdv{}{x^i} = \pdv{y^j}{x^i} \pdv{}{y^j}
     \end{equation*}
-
     \end{proof}
 
     The dimension of $T_P$ is the same as the manifold. In other words, there is a $1-1$ correspondence between $T_P$ and the space of all derivative along curves in $P$. 
 
     It is important to remark that coordinate basis vectors at different points belong to different tangent space and cannot be linearly combined.
 
-\section{Fiber bundles}
+\subsection{Fiber bundles}
 
     A tangent bundle is the set of all tangent space at each point together with the manifold itself $\mathcal T \mathcal M = \{\mathcal M, ~\{T_P \colon \forall P \in \mathcal M \}\}$. It can be shown that $\mathcal T \mathcal M$ is a manifold too. The dimension of the tangent bundle is $2n$. 
 
-\section{Exponential maps}
+\subsection{Exponential maps}
 
     So far, we have defined a tangent vector given a curve, but now we want to examine the inverse problem. 
     
@@ -201,7 +251,7 @@
         f(\lambda_0 + \epsilon) = \exp \Big(\epsilon \dv{}{\lambda} \Big) ~ f \Big\vert_{\lambda_0} = \exp (\epsilon V ) ~ f \Big\vert_{\lambda_0}
     \end{equation*}
 
-\section{Lie brackets}
+\subsection{Lie brackets}
 
     Any linearly independent set of vector fields can be used as basis, but not all of them are coordinate vector basis. 
 
@@ -424,9 +474,13 @@
 
 \chapter{Lie derivatives}
 
+    In order to define a derivative on the manifold, we need to find a way to compare vectors which live in tangent spaces of different points. In this chapter, we will introduce the notion of Lie derivative, which exploits congruences of a vector field to move objects on the manifold.
+
 \section{Active and passive transformation}
 
-    In the passive interpretation of a diffeomorphism on $\mathcal M$, the points remain the same but their coordinates changes. The diffeomorphism does not act on $\mathcal M$, but on the coordinates in $\mathbb R^n$. It can be sees as a change of coordinates $x' = x'(x, \epsilon)$ where $\epsilon$ is a parameter such that $x'(x, 0) = x$. For instance, a function changes in such a way that $\Phi'(x') = \Phi(x)$ where $\Phi(x) = (f \o \phi^{-1})(x)$.
+    Diffeomorphisms and coordinate change are two different ways to do the same thing. 
+    
+    A coordinate change is just the introduction of a new coordinate map $y = y(x)$, but the points on the manifold remain fixed. The diffeomorphism does not act on $\mathcal M$, but on the coordinates in $\mathbb R^n$. It can be sees as a change of coordinates $x' = x'(x, \epsilon)$ where $\epsilon$ is a parameter such that $x'(x, 0) = x$. For instance, a function changes in such a way that $\Phi'(x') = \Phi(x)$ where $\Phi(x) = (f \o \phi^{-1})(x)$. It is called a passive intepretation of a diffeomorphism.
 
     In the active interpretation of a diffeomorphism, the points are actually moved (along the flow of an integral curve). The diffeomorphism do act on $\mathcal M$. 
 

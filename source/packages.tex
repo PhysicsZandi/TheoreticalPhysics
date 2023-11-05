@@ -19,6 +19,9 @@
 \titleformat{\section}
   {\normalfont\Large\bfseries\color{mycolor}\centering}
   {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{mycolor}\centering}
+  {\thesubsection}{1em}{}
 
 \renewcommand{\printtoctitle}[1]{\HUGE\normalfont\color{black}#1}
 
@@ -51,11 +54,13 @@
 \newcommand{\poiexp}[2]{\pdv{#1}{q^i} \pdv{#2}{p_i} - \pdv{#2}{q^i} \pdv{#1}{p_i}}
 
 \newcommand{\comm}[2]{[#1,~#2]}
-\newcommand{\set}[2]{\{#1~\colon~#2\}}
+\newcommand{\set}[2]{\{#1\colon#2\}}
 \newcommand{\inner}[2]{\langle#1,~#2\rangle}
 \newcommand{\av}[1]{\langle#1\rangle}
 \newcommand{\avp}[2]{\langle#1\rangle_{#2}}
 \newcommand{\ket}[1]{\vert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\vert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}
 
 \newtheoremstyle{colored}{}{}{\itshape}{}{\color{mycolor}\normalfont\bfseries\indent}{}{\newline}{}
 
@@ -83,13 +88,19 @@
   numberwithin=chapter,
 ]{law}
 
+\declaretheorem[
+  style=colored,
+  name=Principle,
+  numberwithin=chapter,
+]{princ}
+
 \usepackage{amsfonts}
 \usepackage{dsfont}
 \usepackage{yfonts}
 \usepackage{amssymb}
 
 \let\oldproof\proof
-\renewcommand{\proof}{\color{gray}\oldproof}
+\renewcommand{\proof}{\color{darkgray}\oldproof}
 
 \usepackage{cancel}
 \usepackage{indentfirst}

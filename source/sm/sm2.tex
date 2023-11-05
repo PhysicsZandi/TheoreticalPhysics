@@ -674,3 +674,63 @@
         \end{aligned}
         \end{equation*}
     \end{proof}
+
+\chapter{Entropy}
+
+    The Boltzmann's universal law allows us to define entropy in terms of number of states
+    \begin{equation*}
+        S = - k_B \av{\ln \rho} = k_B \ln \Sigma = \lim_{TD} S_{TD}
+    \end{equation*}
+
+    Thermodynamics tells us that equilibrium corresponds to maximum entropy.
+
+    We consider a canonical ensemble with a discrete set of energy values, but it can be generalised for grancanonical and continuous energy levels. Therefore, the probability density distribution is~\eqref{candist}
+    \begin{equation*}
+        \rho_c (E_r) = \frac{\exp(-\beta E_r)}{Z_N}
+    \end{equation*}
+    where the canonical partition function~\eqref{zn} becomes 
+    \begin{equation*}
+        Z_N = \int_{\mathcal M^N} d\Omega~ \exp(-\beta \mathcal H(q^i, p_i)) = int_0^\infty dE \int_{S_E} dS_E ~ \exp(-\beta E) \simeq \sum_{r=1}^{p} g_r \exp(-\beta E_r)
+    \end{equation*}
+    where we foliated $\mathcal M^N$ in energy surfaces $S_E$ and $g_r$ is the multiplicity or degeneracy, i.e.~how many levels have the same energy.
+
+    So far, we have started from an a-priori probability density distribution and from it derive the entropy. From now on, we will change the picture and do the converse: the probability distibution is the one corresponding to maximum entropy, given the macroscopic constains. To do so, we introduce the Shannon's information entropy
+    \begin{equation*}
+        H = - \sum_{i = 1}^{N} p_i \ln p_i
+    \end{equation*}
+    which is the only function with the following properties for a random variable $x$ such that it has $N$ possible outcomes $x_i$ with probability $p_i$ 
+    \begin{enumerate}
+        \item it is continuous with $p_i$,
+        \item is monotonically increasing with $N$,
+        \item it is invariant under compositions of subsystems, i.e.~change how we collect in group.
+    \end{enumerate}
+
+\subsection{Inference problem}
+
+    Given a certain constraint for a function $\av{f}$, what is the expectation value for another function $g$? The answer can be found with the principle of maximum entropy, subjected to Lagrange multipliers given by the constraints 
+    \begin{equation*}
+        \sum_{i=1}^{N} p_i = 1 \quad \sum_{i=1}^{N} p_i f(x_i) = \av{f(x)}
+    \end{equation*}
+    Hence, the problem reduces to maximise the function
+    \begin{equation}\label{entr}
+        H = - \sum_{i=1}^{N} p_i \ln p_i + \alpha \Big( \sum_{i=1}^{N} p_i - 1 \Big) + \beta \Big( \sum_{i=1}^{N} p_i f(x_i) - \av{f} \Big)
+    \end{equation}
+
+    In particular, we need to count the number of ways $W_{\{n_r\}}$ we can find $n_r$ systems with energy $E_r$, given a set of discrete energy levels $E_r$, each of degeneracy $g_r$ on which we distribute $n_r$ particles. Hence, the probability density distribution $n_r^*$ is the one which maximises~\eqref{entr}, with entropy 
+    \begin{equation*}
+        S = \ln W_{\{n_r\}}
+    \end{equation*} 
+    and the constrains 
+    \begin{equation*}
+        N = \sum_{r} n_r \quad E = \sum_r n_r E_r
+    \end{equation*}
+
+    In order to count $W_{\{n_r\}}$, we need to take into account distinguishablility or not of particles. Therefore, we decomposed it into 
+    \begin{equation*}
+        W_{\{n_r\}} = W_{\{n_r\}}^{(1)} W_{\{n_r\}}^{(2)}
+    \end{equation*}
+    where $W_{\{n_r\}}^{(1)}$ countsin how many we can put $n_r$ particles in the energy level $E_r$ and $W_{\{n_r\}}^{(1)}$ consider the degeneracy of these levels.
+
+\subsection{Boltzmann distribution}
+\subsection{Bose-Einstein distribution}
+\subsection{Fermi-Dirac distribution}

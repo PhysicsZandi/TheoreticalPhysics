@@ -1,0 +1,322 @@
+\part{Classical field theory}
+
+    In this part, we will study classical field theory.
+
+\chapter{Action}
+
+    A field is a physical quantity $\phi(t, \mathbf x)$ which is defined ad every point in spacetime. The dynamics of a field is governed by an action, which is a functional that associates a real number to each field configuration for a fixed time interval $[t_1, t_2]$
+    \begin{equation}\label{action}
+        S[\phi_i(x), \partial_\mu \phi_i(x)] = \int_{t_1}^{t_2} dt ~ L = \int_{t_1}^{t_2} dt ~ \int d^3x ~ \mathcal L = \int d^4 x \mathcal L (\phi_i, \partial_\mu \phi_i) ~,
+    \end{equation}
+    where $\mathcal L$ is the lagrangian density, defined by 
+    \begin{equation*}
+        L = \int d^3x ~ \mathcal L ~.
+    \end{equation*}
+
+    In natural units, the dimensional analysis is 
+    \begin{equation*}
+        [S] = 0 ~ [d^4 x]=-4 ~ [\mathcal L] = 4 ~.
+    \end{equation*}
+
+\section{The principle of stationary action}
+
+    The dynamics of the system can be determined by the principle of stationary action. 
+
+    \begin{princ}
+        The system evolve from an initial configuration at time $t_1$ to a final configuration at time $t_2$ along a path in configuration space which extremises the action~\eqref{action}, i.e.
+        \begin{equation}\label{statact}
+            \delta S = 0 ~.
+        \end{equation}
+        with the additional conditions 
+        \begin{enumerate}
+            \item fields vanish at spatial infinity
+                \begin{equation*}
+                    \phi_i(t, \mathbf x) \rightarrow 0 \quad |\mathbf x| \rightarrow \infty ~,
+                \end{equation*}
+                hence
+                \begin{equation}\label{space}
+                    \delta \phi_i (t, \infty) = 0 ~,
+                \end{equation}
+            \item fields vanish at time extremes
+                \begin{equation}\label{time}
+                    \delta \phi_i (t_1, \mathbf x) = \delta \phi_i (t_2, \mathbf x) = 0 ~.
+                \end{equation}
+        \end{enumerate}
+    \end{princ}
+
+    The equation of motion of the system are the Euler-Lagrange equations
+    \begin{equation}\label{eleq}
+        \pdv{\mathcal L}{\phi_i} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} = 0 ~.
+    \end{equation}
+
+    \begin{proof}
+        The variation of the action is 
+        \begin{equation*}
+            \delta S = \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i + \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \partial_\mu \phi_i \Big) = \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i + \pdv{\mathcal L}{\partial_\mu \phi_i} \partial_\mu \delta \phi_i \Big) ~,
+        \end{equation*}
+        where
+        \begin{equation*}
+            \delta \phi_i = {\phi'}_i(x) - \phi_i(x) ~,
+        \end{equation*} 
+        and 
+        \begin{equation*}
+            \delta \partial_\mu \phi_i(x) = \partial_\mu {\phi'}_i - \partial_\mu \phi(x) = \partial_\mu ({\phi'}_i(x) - \phi_i(x)) = \partial_\mu \delta \phi(x) ~.
+        \end{equation*}
+
+        By integration by parts, we obtain
+        \begin{equation*}
+            \delta S = \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i + \pdv{\mathcal L}{\partial_\mu \phi_i} \partial_\mu \delta \phi_i \Big) = \int d^4 x ~ \Big( \pdv{\mathcal L}{\phi_i} \delta \phi_i - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi_i \Big) + \int d^4x \partial_\mu \Big( \pdv{\mathcal L }{\partial_\mu \phi_i} \delta \phi_i \Big) ~.
+        \end{equation*}
+
+        Notice that the last term is a total derivative and it vanishes at the boundary by the condition~\eqref{time} and~\eqref{space}
+        \begin{equation*}
+            \int d^4x \partial_\mu \Big( \pdv{\mathcal L }{\partial_\mu \phi_i} \delta \phi_i \Big) = 0 ~.
+        \end{equation*}
+
+        Hence, we find 
+        \begin{equation*}
+            \delta S = \int d^4 x ~ \Big( \pdv{\mathcal L}{\phi_i} \delta \phi_i - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi_i \Big) ~,
+        \end{equation*}
+        and, by the principle of stationary action~\eqref{statact} 
+        \begin{equation*}
+            \int d^4 x ~ \Big( \pdv{\mathcal L}{\phi_i} \delta \phi_i - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi_i \Big) = 0 ~.
+        \end{equation*}
+
+        Finally, since $\delta_i \phi$ is arbitrary, we obtain~\eqref{eleq}
+        \begin{equation*}
+            \pdv{\mathcal L}{\phi_i} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    In order to quantise the theory, we need the hamiltonian formalism.
+
+    \begin{definition}
+        The conjugate field $\phi^i(x)$ associated to the field $\phi_i$ is 
+        \begin{equation*}
+            \phi^i(x) = \pdv{\mathcal L}{\dot \phi_i(x)}
+        \end{equation*}
+    \end{definition}
+
+    The hamiltonian density is given by the Legendre transformation 
+    \begin{equation*}
+        \mathcal H = \Phi^i \dot \phi_i - \mathcal L
+    \end{equation*}
+    where the hamiltonian is 
+    \begin{equation*}
+        H = \int d^3 x ~ \mathcal H
+    \end{equation*}
+
+\chapter{Noether's theorem}
+
+    Symmetries are fundamental in quantum field theory and they can be classified into 
+    \begin{enumerate}
+        \item spacetime
+        \begin{enumerate}
+            \item global
+            \begin{enumerate}
+                \item continuous (Poincarè)
+                \item discrete (Parity, time reversal)
+            \end{enumerate}
+            \item local
+            \begin{enumerate}
+                \item continuous (General relativity)
+                \item discrete (Parity coordinate dependent)
+            \end{enumerate}
+        \end{enumerate}
+        \item internal
+        \begin{enumerate}
+            \item global
+            \begin{enumerate}
+                \item continuous (Flavour)
+                \item discrete ($\mathbb Z_2$)
+            \end{enumerate}
+            \item local
+            \begin{enumerate}
+                \item continuous ($SU(3) \times SU(2) \times U(1)$)
+                \item discrete ($\mathbb Z_2 (x)$)
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    Through the Noether's theorem, we can associate conserved quantities to continuous symmetries.
+
+    \begin{theorem}[Noether's]
+        Every continuous symmetry $\delta \phi_i$ of the action~\eqref{action} give rise to a conserved current 
+        \begin{equation}\label{conscurr}
+            J^\mu = \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi - K^\mu
+        \end{equation}
+        such that it satisfies a continuity equation 
+        \begin{equation}\label{cont}
+            \partial_\mu J^\mu = 0
+        \end{equation}
+    \end{theorem}
+
+    \begin{proof}
+        We consider an infinitesimal transformation for a continuous symmetry of the system
+        \begin{equation*}
+            {\phi'}_i = \phi_i + \delta \phi_i
+        \end{equation*}
+        which induces a transformation of the lagrangian 
+        \begin{equation*}
+            \mathcal L' = \mathcal L + \delta \mathcal L
+        \end{equation*}
+        
+        In order to be a symmetry of the system, we require that the action is not invariant, but we allow to be up to a boundary term $K^\mu(\phi_i)$, because the dynamics of the system, i.e.~the equations of tmotion, do not change with a boundary term. Hence 
+        \begin{equation*}
+            S' = S + \int \partial_\mu K^\mu(\phi_i)
+        \end{equation*}
+        but 
+        \begin{equation}\label{symm}
+            \delta S = \int \partial_\mu K^\mu(\phi_i)
+        \end{equation}
+
+        Explicitly, we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            \delta S & = \delta \int d^4 x ~ \mathcal L \\ & = \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i + \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \partial_\mu \phi_i\Big) \\ & =  \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i + \pdv{\mathcal L}{\partial_\mu \phi_i} \partial_\mu \delta \phi_i \Big) \\ & =  \int d^4 x ~ \Big ( \pdv{\mathcal L}{\phi_i} \delta \phi_i - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi_i \Big) + \int d^4 x ~ \partial_\mu \Big ( \pdv{\mathcal L}{\phi} \delta \phi_i \Big)\\ & =  \int d^4 x ~ \delta \phi_i \Big ( \underbrace{\pdv{\mathcal L}{\phi_i} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi_i}}_0 \Big) + \int d^4 x ~ \partial_\mu \Big ( \pdv{\mathcal L}{\phi} \delta \phi_i \Big) \\ & = \int d^4 x ~ \partial_\mu \Big ( \pdv{\mathcal L}{\phi} \delta \phi_i \Big)
+        \end{aligned}
+        \end{equation*}
+        where we used the fact that partial derivatives and symmetries commute, the equation of motions~\eqref{eleq} and we integrated by parts. Hence, by requiring that it is a symmetry
+        \begin{equation*}
+            \delta S = \int d^4 x ~ \partial_\mu \Big ( \pdv{\mathcal L}{\phi} \delta \phi_i \Big) = \int d^4 x \partial_\mu K^\mu
+        \end{equation*}
+        or equivalently 
+        \begin{equation*}
+            \int d^4 x ~ \partial_\mu \Big ( \pdv{\mathcal L}{\phi} \delta \phi_i - K^\mu \Big) = 0
+        \end{equation*}
+        Since it is for arbitrary integration, the integrand vanishes and 
+        \begin{equation*}
+            \partial_\mu J^\mu = 0
+        \end{equation*}
+        with 
+        \begin{equation*}
+            J^\mu = \pdv{\mathcal L}{\partial_\mu \phi_i} \delta \phi_i - K^\mu
+        \end{equation*}
+    \end{proof}
+
+    Notice that every conserved current can be related to a conserved quantity $Q$ by 
+    \begin{equation*}
+        Q = \int_{\mathbb R^3} d^3 x ~J^0
+    \end{equation*}
+    This means that $Q$ is conserved locally, i.e.~any charge carrier leaving a finite volume $V$ is associated to a flow of current $\mathbf J$ out of the volume.
+
+    \begin{proof}
+        Infact, by using~\eqref{cont}
+        \begin{equation*}
+        \begin{aligned}
+            \dv{Q}{t} & = \dv{}{t} \int_{\mathbb R^3} d^3 x ~ J^0 \\ & = \int_{\mathbb R^3} d^3 x ~ \pdv{J^0}{t} \\ & = - \int_{\mathbb R^3} d^3 x ~ \nabla \cdot \mathbf J = 0 = -  \int_{\partial \mathbb R^3} d \mathbf S \cdot \mathbf J = 0
+        \end{aligned}
+        \end{equation*}
+        where we used the Stoke's theorem and the fact that $\mathbf J \rightarrow 0$ for $|\mathbf x| \rightarrow 0$.
+    \end{proof}
+
+\chapter{Energy-momentum tensor}
+
+    Spacetime translations give rise to $4$ conserved currents, which corresponds to the conservation of energy and momentum. Infact, we consider an infinitesimal spacetime translation 
+    \begin{equation*}
+        {x'}^\mu = x^\mu - \epsilon^\mu
+    \end{equation*}
+    such that fields change by 
+    \begin{equation*}
+        {\phi'}_i = \phi_i (x + \epsilon) = \phi(x) + \epsilon^\mu \partial_\mu \phi_i (x)
+    \end{equation*}
+    We considered an active transformation, where there is not a change of frame but fields themselves are indeed translated into new fields such that 
+    \begin{equation*}
+        {\phi'}_i (x') = \phi(x) = \phi(x' + \epsilon)
+    \end{equation*}
+
+    A passive transformation would have acted as 
+    \begin{equation*}
+        {\phi'}_i = \phi_i (x - \epsilon) 
+    \end{equation*}
+
+    Since the lagrangian is a function of the coordinates via fields, we have the following transformation
+    \begin{equation*}
+        \delta \mathcal L = \mathcal L' - \mathcal L = \epsilon^\mu \partial_\mu \mathcal L = \epsilon^\mu \partial_\nu(\delta^\nu_{\phantom \nu \mu} \mathcal L)
+    \end{equation*}
+    Hence, the boundary term is 
+    \begin{equation*}
+        K^\mu = \delta^\mu_{\phantom \mu \nu} \mathcal L
+    \end{equation*}
+
+    We apply the Noether's theorem~\eqref{conscurr} and find $4$ different conserved currents labelled by $\nu$
+    \begin{equation*}
+        {(J^\mu)}_\nu = \pdv{\mathcal L}{\partial_\mu \phi_i} \partial_\nu \phi_i - \delta^\mu_{\phantom \mu \nu} \mathcal L
+    \end{equation*}
+    and we define the energy-momentum tensor, or stress-energy tensor, 
+    \begin{equation*}\label{emten}
+        T^\mu_{\phantom \mu \nu} = {(J^\mu)}_\nu
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \partial_\mu T^\mu_{\phantom \mu \nu} = 0
+    \end{equation*}
+
+    In natural units, the dimensional analysis is 
+    \begin{equation*}
+        T^\mu_{\phantom \mu \nu} = [\mathcal L] = 4
+    \end{equation*}
+
+    The $4$ conserved charges are 
+    \begin{equation*}
+        Q_\nu = \int_{\mathbb R^3} d^3 x ~ (J^0)_\nu = \int_{\mathbb R^3} d^3 x ~ T^0_{\phantom 0 \nu} 
+    \end{equation*}
+    which correspond to the $4$-momentum
+    \begin{equation*}
+        P^\mu = \int_{\mathbb R^3} d^3 x ~ T^{0\mu}
+    \end{equation*}
+
+    In particular, the $0$-th component is the energy 
+    \begin{equation*}
+    \begin{aligned}
+        P^0 & = \int d^3 x ~ T^{00} \\ & = \int d^3 x ~ \Big ( \pdv{\mathcal L}{\partial_0 \phi_i} \partial^0 \phi_i - \delta^{0 0} \mathcal L \Big) \\ & = \int d^3 x ~ \Big ( \underbrace{\pdv{\mathcal L}{\dot \phi_i}}_{\pi^i} \dot \phi_i - \mathcal L \Big ) = \int d^3 x ~ (\underbrace{\pi^i \dot \phi_i - \mathcal L}_{\mathcal L}) = \int d^3 x ~ \mathcal H = H
+    \end{aligned}
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \dv{H}{t} = 0
+    \end{equation*} 
+    and the $j$-th components are the momentum 
+    \begin{equation*}
+    \begin{aligned}
+        P^j & = \int d^3 x ~ T^{0j} \\ & = \int d^3 x ~ \Big ( \pdv{\mathcal L}{\partial_0 \phi_i} \underbrace{\partial^j \phi_i}_{-\partial_j \phi_i} - \underbrace{\delta^{0j}}_0 \mathcal L \Big) \\ & = \int d^3 x ~ \Big ( - \underbrace{\pdv{\mathcal L}{\dot \phi_i}}_{\pi^i} \partial_j \phi_i \Big) \\ & = - \int d^3 x ~ \pi^i \partial_j \phi_i
+    \end{aligned}
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \dv{P^i}{t} = 0
+    \end{equation*}
+
+\chapter{An example: electrodynamics}
+
+    Maxwell's equations 
+    \begin{equation}\label{eqmax}
+        \nabla \cdot \mathbf B = 0 \quad \nabla \times \mathbf E + \pdv{\mathbf B}{t} = 0 \quad \nabla \cdot E = \rho \quad \nabla \times \mathbf B - \pdv{\mathbf E}{t} = \mathbf J
+    \end{equation}
+    can be written in covariant form 
+    \begin{equation*}
+        \partial_\mu F^{\mu\nu} = J^\nu \quad \partial_\mu {F^*}^{\mu\nu} = 0
+    \end{equation*}
+    where $F^{\mu\nu}$ is the electromagnetic tensor and ${F^*}^{\mu\nu} = \frac{1}{2} \epsilon^{\mu\nu\sigma\rho} F_{\sigma\rho}$ is its dual.
+
+    Furthermore, they can be written in terms of the scalar $\phi$ and the vector potentials $\mathbf A$, defined by
+    \begin{equation*}
+        \mathbf E = - \nabla \phi - \pdv{\mathbf A}{t} \quad \mathbf B = \nabla \times \mathbf A
+    \end{equation*}
+    Maxwell's equations do not change under this transformation. 
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    In covariant form, we can write the electromagnetic tensor as 
+    \begin{equation*}
+        F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu
+    \end{equation*}
+
+    Maxwell's equations can be seen as the equations of motion of the electromagnetic lagrangian 
+    \begin{equation*}
+        \mathcal L = 
+    \end{equation*}
+
+

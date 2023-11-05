@@ -1,50 +1,451 @@
-\part{SO(3) and SO(1,~3)}
+\part{$SO(3)$ and $SO^+(1,3)$}
 
-\chapter{SO(3)}
+\chapter{$SO(3)$}
 
-\section{SO(3) as a Lie group}
+    In this chapter, we will apply all the notions we learnt in the previous ones to~\eqref{so(3)}, the unit-determinant $3$-dimensional rotation group $SO(3)$.
 
-    In this chapter, we will study the three-dimensional rotations group $O(3)$. Computing the determinant, we can decomposed the Lie group into two parts according to the sign of it:
+\section{$SO(3)$ as a Lie group}
+    
+    The determinant of a $O(3)$ rotation has only two possible values, i.e. $\det R = \pm 1$. 
+    \begin{proof}
+        By using~\eqref{so(3)} and the product property of the determinant
+        \begin{equation*}
+            1 = \det \mathbb I = \det R^T R = \det R^T \det R = {\det}^2 R ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            \det R = \pm 1 ~.
+        \end{equation*}
+    \end{proof}
 
+    We can decomposed $O(3)$ into two parts according to the sign of the determinant
     \begin{equation*}
-        \Rightarrow O(3) = \underbrace{\{\det R = +1\}}_{SO(3)} ~ \cup ~ \{\det R = -1\} = SO(3) ~ \cup ~ {\det R = -1}
+        \Rightarrow O(3) = \underbrace{\{\det R = +1\}}_{SO(3)} \cup \{\det R = -1\} = SO(3) \cup \{\det R = -1\} ~.
+    \end{equation*}
+    Since there is no continuous path that connect the two parts and only $SO(3)$ contains the identity, we are going to study $SO(3)$ and recover the other one with a reflexion along an axis.
+
+    Any $SO(3)$ rotation can be parametrized by a unit vector, perpendicular to the rotation plane, and a rotation angle $\theta$ by the formula
+    \begin{equation*}
+        R{(\theta, \mathbf n)}_{ij} = \cos \theta \delta_{ij} + (1 - \cos \theta) n_i n_j - \sin \theta \epsilon_{ijk} n_k
     \end{equation*}
 
-    Since there is no continuos path that connect the two parts and only $SO(3)$ contains the identity, we are going to study $SO(3)$ and recover the other one with a reflexion along an axis.
+    \begin{proof}
+        Consider a unit vector $n$ and decompose another vector $v$into it 
+        \begin{equation*}
+            \mathbf v = \mathbf v_\parallel + \mathbf v_\perp ~,
+        \end{equation*}
+        where 
+        \begin{equation*}
+            v_\parallel = (\mathbf v \cdot \mathbf n) \mathbf n ~,
+        \end{equation*} 
+        and 
+        \begin{equation*}
+            \mathbf v_\perp = \mathbf v - \mathbf v_\parallel = \mathbf v - (\mathbf v \cdot \mathbf n) \mathbf n ~.
+        \end{equation*}
 
-    Any $SO(3)$ rotation can be parametrized by a unit vector, perpendicular to the rotation plane, and a rotation angle $\theta$:\
+        We exploit the triple vector product formula, with the unit norm of the unit vector
+        \begin{equation*}
+            \mathbf n \times (\mathbf n \times \mathbf v) = (\mathbf n \cdot \mathbf v) \mathbf n - \underbrace{(\mathbf n \cdot \mathbf n)}_{1}\mathbf v = (\mathbf n \cdot \mathbf v) \mathbf n - \mathbf v
+        \end{equation*}
+        and obtain 
+        \begin{equation*}
+            \mathbf v - (\mathbf n \cdot \mathbf v) \mathbf n = - \mathbf n \times (\mathbf n \times \mathbf v)
+        \end{equation*}
 
+        We put it in the previous equation and find 
+        \begin{equation*}
+            \mathbf v_\perp = - \mathbf n \times (\mathbf n \times \mathbf v)
+        \end{equation*}
+
+        Furthermore, we have the identity 
+        \begin{equation*}
+            \mathbf n \times \mathbf v = \mathbf n \times (\mathbf v_\parallel + \mathbf v_\perp) = \underbrace{\mathbf n \times \mathbf v_\parallel}_{0} + \mathbf n \times \mathbf v_\perp = \mathbf n \times \mathbf v_\perp
+        \end{equation*}
+
+        Now, we rotate around the unit vector $\mathbf n$ and go into polar coordinates 
+        \begin{equation*}
+            \mathbf {v'}_\perp = \cos \theta \mathbf v_\perp + \sin \theta \mathbf n \times \mathbf v_\perp = \cos \theta \mathbf v_\perp + \sin \theta \mathbf n \times \mathbf v
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \mathbf {v'}_\parallel = \mathbf v_\parallel
+        \end{equation*}
+
+        Hence
+        \begin{equation*}
+        \begin{aligned}
+            \mathbf {v'} & = R(\theta, \mathbf n) \mathbf v \\ & = \mathbf {v'}_\parallel + \mathbf {v'}_\perp \\ & = \mathbf v_\parallel + \cos \theta \mathbf v_\perp + \sin \theta \mathbf n \times \mathbf v \\ & = \mathbf v_\parallel + \cos \theta (\mathbf v - \mathbf v_\parallel) + \sin \theta \mathbf n \times \mathbf v \\ & = \cos \theta \mathbf v + (1 - \cos \theta)\mathbf v_\parallel + \sin \theta \mathbf n \times \mathbf v \\ &  = \cos \theta \mathbf v + (1 - \cos \theta) \mathbf v_\parallel + \sin \theta \mathbf n \times \mathbf v \\ & = \cos \theta \mathbf v + (1 - \cos \theta) (\mathbf v \cdot \mathbf n) \mathbf n  + \sin \theta \mathbf n \times \mathbf v 
+        \end{aligned}
+        \end{equation*}
+        
+        Since it is true for any vector $\mathbf v$, in index notation it becomes
+        \begin{equation*}
+            R{(\theta, \mathbf n)}_{ij} = \cos \theta \delta_{ij} + (1 - \cos \theta) n_i n_j - \sin \theta \epsilon_{ijk} n_k
+        \end{equation*}
+    \end{proof}
+
+    An infinitesimal rotation $\delta \theta$ near the identity $R(\theta = 0, \mathbf n) = \delta_{ij}$ is 
     \begin{equation*}
-        R(\theta, ~ \mathbf n)_{ij} = \cos \theta ~ \delta_{ij} + (1 - \cos \theta) ~ n_i n_j - \sin \theta ~ \epsilon_{ijk} n_k
+        R{(\delta \theta, \mathbf n)}_{ij} = \underbrace{\cos \delta \theta }_{1} \delta_{ij} + (1 - \underbrace{\cos \delta \theta }_{1}) n_i n_j - \underbrace{\sin \delta \theta}_{\delta \theta} \epsilon_{ijk} n_k = \delta_{ij} - \delta \theta ~ \epsilon_{ijk} n_k
     \end{equation*}
-
-    Hence, an infinitesimal rotation $\delta \theta$ near the identity $R(\theta = 0, ~ \mathbf n) = \delta_{ij}$ is 
-
-    \begin{equation*}
-        R(\delta \theta, ~ \mathbf n)_{ij} = \underbrace{\cos \delta \theta }_{1} ~ \delta_{ij} + (1 - \underbrace{\cos \delta \theta }_{1}) ~ n_i n_j - \underbrace{\sin \delta \theta}_{\delta \theta} ~ \epsilon_{ijk} n_k = \delta_{ij} - \delta \theta ~ \epsilon_{ijk} n_k
-    \end{equation*}
-
     and its action on an arbitrary vector $\mathbf v$ is 
-
     \begin{equation*}
-        R(\delta \theta, ~ \mathbf n)_{ij} v_i = \delta_{ij} v_i - \delta \theta ~ \epsilon_{ijk} v_i n_k = \delta_{ij} v_i + \delta \theta ~ \epsilon_{jik} v_i n_k 
+        R{(\delta \theta, \mathbf n)}_{ij} v_i = \delta_{ij} v_i - \delta \theta \epsilon_{ijk} v_i n_k = \delta_{ij} v_i + \delta \theta \epsilon_{jik} v_i n_k 
     \end{equation*}
-
     or 
-
     \begin{equation*}
-        R(\delta \theta, ~ \mathbf n) \mathbf v = \mathbf v + \delta \theta ~ \epsilon{jik} v_i n_k 
+        R{(\delta \theta, \mathbf n)} \mathbf v = \mathbf v + \delta \theta \epsilon_{jik} v_i n_k 
     \end{equation*}
 
-\section{SO(3) representations}
+    The generators $L_i$ of the Lie algebra, which are a basis of $\mathfrak{so}(3)$, are
+    \begin{equation*}
+        {(L_i)}_{jk} = - \epsilon_{ijk}
+    \end{equation*}
 
-    In this chapter, 
+    \begin{proof}
+        If we substitute the unit vector $\mathbf n$ with the Euclidean unit vectors $\mathbf i$, $\mathbf j$ and $\mathbf k$, we find
+        \begin{equation*}
+            R(\delta \theta, \begin{bmatrix} 1 \\ 0 \\ 0 \\ \end{bmatrix} ) = \mathbf v \delta \theta \begin{bmatrix} 0 \\ -v_3 \\ v_2 \end{bmatrix} = \mathbf v + \delta \theta \underbrace{\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{bmatrix}}_{L_1} \mathbf v
+        \end{equation*}
+        \begin{equation*}
+            R(\delta \theta, \begin{bmatrix} 0 \\ 1 \\ 0 \\ \end{bmatrix} ) = \mathbf v \delta \theta \begin{bmatrix} v_3 \\ 0 \\ -v_1 \end{bmatrix} = \mathbf v + \delta \theta \underbrace{\begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 \end{bmatrix}}_{L_2} \mathbf v
+        \end{equation*}
+        \begin{equation*}
+            R(\delta \theta, \begin{bmatrix} 0 \\ 0 \\ 1 \\ \end{bmatrix} ) = \mathbf v \delta \theta \begin{bmatrix} -v_2 \\ v_1 \\ 0 \\ \end{bmatrix} = \mathbf v + \delta \theta \underbrace{\begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}}_{L_1} \mathbf v
+        \end{equation*}
+    \end{proof}
 
-\chapter{SO(1,~3)}
+    Any rotation belonging ot $SO(3)$ can be written with the exponential map 
+    \begin{equation*}
+        R(\theta, \mathbf n) = \exp(\theta n_i L_i) = \exp(\theta \mathbf n \cdot \mathbf L)
+    \end{equation*}
 
-    The Lorentz group is defined by the matrices $\Lambda$ such that preserve the Minkovski metric 
+    The Lie algebra is $\mathfrak{so}(3) = \{\textnormal{anti-symmetric traceless} 3 \times 3 \textnormal{matrices}\}$, a $3$-dimensional real vector space.
+    \begin{proof}
+        Orthogonality require 
+        \begin{equation*}
+            \mathbb I = R(\theta, \mathbf n)^T R(\theta, \mathbf n) = \exp(\theta n_i (L_i^T + L_i) + \ldots)
+        \end{equation*}
+        then the generators are antisymmetric 
+        \begin{equation*}
+            L^T_i = - L^i
+        \end{equation*}
+        and the determinant condition $\det R = 1$ means 
+        \begin{equation*}
+            tr L_i = 0 
+        \end{equation*}
+    \end{proof}
+
+    The commutation relations are 
+    \begin{equation*}
+        [L_i, L_j] = \epsilon_{ijk} L_k
+    \end{equation*}
+
+    In physics, it is useful define generators as $J_i = i L_i$. Thus 
+    \begin{equation*}
+        R(\theta, \mathbf n) = \exp(- i \theta \mathbf n \cdot \mathbf J)
+    \end{equation*}
+    and the commutation relations become
+    \begin{equation*}
+        [J_i, J_j] = i \epsilon_{ijk} J_k
+    \end{equation*}
+    
+\section{$\mathfrak{so}(3)$ as a Lie algebra}
+
+    Now we study the finite dimensional representation of $SO(3)$. In the previous section, we used the Cartesian basis: Therefore, by a basis change of the Lie algebra, we introduce the ladders operators  
+    \begin{equation*}
+        J_\pm = J_1 \pm i J_2
+    \end{equation*}
+    such that they satisfy the commutation relations 
+    \begin{equation*}
+        [J_3, J_\pm] = \pm J_\pm \qquad [J_+, J_-] = 2 J_3
+    \end{equation*}
+    Since $J_i$ are Hermitian, so $J_\pm$ are. 
+
+    \begin{proof}
+        First, the commutation relations between $J_3$ and $J_\pm$ are 
+        \begin{equation*}
+            [J_3, J_\pm] = [J_3, J_1 \pm i J_2] = [J_3, J_1] \pm i [J_3, J_2] = i J_2 \pm i (- i J_1) = J_1 \pm i J_2 = \pm J_\pm ~.
+        \end{equation*}
+
+        Secondly, the commutation relations between $J_+$ and $J_-$ are 
+        \begin{equation*}
+            [J_+, J_-] = [J_1 + i J_2, J_1 - i J_2] = \underbrace{[J_1, J_1]}_0 + i [J_2, J_1] - i [J_1, J_2] + \underbrace{[J_2, J_2]}_0 = i (-i J_3) - i (i J_3) = 2 J_3
+        \end{equation*}
+    \end{proof}
+    
+    We define the Hermitian square modulus operator 
+    \begin{equation*}
+        J^2 = J_1^2 + J_2^2 + J_3^2
+    \end{equation*}
+    It is a Casimir operator, i.e.~it commutes with all the Lie algebra generators.
+
+    \begin{proof}
+        First, the commutation relations between $J^2$ and $J_\pm$ are 
+        \begin{equation*}
+        \begin{aligned}
+            [J^2, J_\pm] & = [J^2, J_1 \pm i J_2] \\ & = [J^2_1 + J^2_2 + J^2_3, J_1 \pm i J_2] \\ & = \underbrace{[J^2_1, J_1]}_0 + [J^2_2, J_1] + [J^2_3, J_1] \pm i[J^2_1, J_2] \pm i \underbrace{[J^2_2, J_2]}_0 \pm i [J^2_3, J_2] \\ & = J_2 [J_2, J_1] + [J_2, J_1] J_2 + J_3 [J_3, J_1] + [J_3, J_1] J_3 \pm i J_1 [J_1, J_2] \pm i [J_1, J_2] J_1 \pm i J_3 [J_3, J_2] \pm i [J_3, J_2] J_3 \\ & = - i \underbrace{J_2 J_3}_0 + - i \underbrace{J_3 J_2}_0 + i \underbrace{J_3 J_2}_0 + i \underbrace{J_2 J_3}_0 \mp \underbrace{J_1 J_3}_0 \mp \underbrace{J_3 J_1}_0 \pm \underbrace{J_3 J_1}_0 \pm \underbrace{J_1 J_3}_0 = 0
+        \end{aligned}
+        \end{equation*}
+
+        Second, the commutation relations between $J^2$ and $J_i$ are 
+        \begin{equation*}
+        \begin{aligned}
+            [J^2, J_i] & = [J^2_1 + J^2_2 + J^2_3, J_i] \\ & = [J_1^2, J_i] + [J_2^2, J_i] + [J_3^2, J_i] \\ & = J_1 [J_1, J_i] + [J_1, J_i] J_1 + J_2 [J_2, J_i] + [J_2, J_i] J_2 + J_3 [J_3, J_i] + [J_3, J_i] J_3
+        \end{aligned}
+        \end{equation*}
+        If $i = 1$ 
+        \begin{equation*}
+        \begin{aligned}
+            [J^2, J_1] & = J_1 \underbrace{[J_1, J_1]}_0 + \underbrace{[J_1, J_1]}_0 J_1 + J_2 [J_2, J_1] + [J_2, J_1] J_2 + J_3 [J_3, J_1] + [J_3, J_1] J_3 \\ & = - i \underbrace{J_2 J_3}_0 - i \underbrace{J_3 J_2}_0 + i \underbrace{J_3 J_2}_0 + i \underbrace{J_2 J_3}_0 = 0
+        \end{aligned}
+        \end{equation*}
+        and similarly for $i = 2, 3$.
+    \end{proof}
+
+\subsection{Eigenvalues}
+
+    Since $J_3$ and $J^2$ are commuting Hermitian matrices on a Hilbert space, the spectral theorem garanties us that there is a basis $\{\ket{\xi, m}\}$ such that it is orthonormal $\braket{\xi,m}{\xi', m'} = \delta_{mm'} \delta_{\xi\xi'}$ and it is a simultaneously eigenvector of the two operators, i.e. $J^2 \ket{\xi,m} = \xi \ket{\xi, m}$ and $J_3 \ket{\xi,m} = m \ket{\xi, m}$. There could be degeneracies, i.e.~same eigenvalue could have more than one eigenket, but the ladder operators prevent that because we can restrict to $1$-dimensional subspaces which correspond to same labels.
+
+    By quantum mechanics similarity, we have the following eigenvalue relations 
+    \begin{equation}\label{j3}
+        J^2 \ket{j ,m} = j (j+1) \ket{j, m} \qquad J_3 \ket{j, m} = m \ket{j, m}
+    \end{equation}
+    where $j \in \frac{\mathbb N_0}{2}$ and $|m| \leq j$. Furthermore, the ladder operators act on these kets by 
+    \begin{equation*}
+        J_\pm \ket{j, m} = \sqrt{(j \mp m) (j \pm m + 1)} \ket{j, m \pm 1}
+    \end{equation*}
+    Notice that different values of $j$ correspons to different representations, which have dimension $2j + 1$. The irreducible representations are labelled by the eigenvalues of Casimir operator.
+
+    For $j = 1$, we have a $3$-dimensional rep. For $j > 1$, we have a tensor product of irreps $V_1^{\otimes j} = V_1 \otimes \ldots \otimes V_1$. However half-integers are not a rep of $SO(3)$.
+
+    \begin{proof}
+        The entries of the representation matrices $M = \rho_j (X)$ for any $X \in \mathfrak{so}(3)$ are 
+        \begin{equation*}
+            M_{ab} = \bra{j, a} M \ket{j, b}
+        \end{equation*} 
+        and its action on kets is
+        \begin{equation*}
+            M \ket{j, m} = \sum_k \ket{j, k} M_{km}
+        \end{equation*}
+        By using the exponential map, we can find a representation of an element which could be in the universal cover. Infact, if we could take for istance the second unit vector $n_2$, we have 
+        \begin{equation*}
+            \rho_j {(R(\theta))}_{ab} = \bra{j, a} \exp(- i \theta J_2^{(j)}) \ket{j, b} = \bra{j, a} \exp(-\frac{1}{2} \theta (J_+^{(j)} - J_-^{(j)})) \ket{j, b}
+        \end{equation*}
+        where $J_k^{(j)} = \rho_j (L_k)$. 
+    
+        Explicitly, for $\theta = \pi$ we have 
+        \begin{equation*}
+            \rho(R(\pi))_{ab} = (-1)^{j-b} \delta_{a, -b}
+        \end{equation*}
+        Hence, a full rotation $2\pi$ is 
+        \begin{equation*}
+        \begin{aligned}
+            \rho_j{(R(\pi) R(\pi))}_{ab} & = {(\rho_j(R(\pi)) \rho_j(R(\pi)))}_{ab} \\ & = \sum_c \rho{(R(\pi))}_{ac} \rho_j{(R(\pi))}_{cb} \\ & = \sum_c (-1)^{j-c} \delta_{a, -c} {(-1)}^{j-b} \delta_{c, -b} \\ & = \sum_c (-1)^{2j -c-b} \delta_{a,-c} \delta_{c, -b} \\ & = {(-1)}^{2j} \delta_{ab}
+        \end{aligned}
+        \end{equation*}
+        Therefore $R(\pi) R(\pi) \neq \mathbb I$ and a full rotation is not the unit matrix for half-integer representations. 
+    \end{proof}
+    
+    Observe that, since the difference is just a phase factor, it is indeed a projective rep.
+
+\section{$SO(3)$ and $SU(2)$}
+
+    The spinor representation of $SU(2)$ with $j=\frac{1}{2}$ is a $2$-dimensional representation with basis
+    \begin{equation*}
+        \ket{e_1} = \ket{\frac{1}{2}, \frac{1}{2}} \qquad \ket{e_2} = \ket{\frac{1}{2}, - \frac{1}{2}}
+    \end{equation*}
+    Hence, the matrix representation of the $J_3$ operator is
+    \begin{equation*}
+        J_3^{(\frac{1}{2})} = \begin{bmatrix}
+            \frac{1}{2} & 0 \\ 0 & - \frac{1}{2} \\
+        \end{bmatrix}
+    \end{equation*}
+    of the ladder operators are 
+    \begin{equation*}
+        J_-^{(\frac{1}{2})} = \begin{bmatrix}
+            0 & 0 \\ 1 & 0 \\
+        \end{bmatrix} \quad J_-^{(\frac{1}{2})} = \begin{bmatrix}
+            0 & 1 \\ 0 & 0 \\
+        \end{bmatrix}
+    \end{equation*}
+    and of the $J_i$ operators are
+    \begin{equation*}
+        J_1^{(\frac{1}{2})} = \begin{bmatrix}
+            0 & \frac{1}{2} \\ \frac{1}{2} & 0 \\
+        \end{bmatrix} \quad J_2^{(\frac{1}{2})} = \begin{bmatrix}
+            0 & - \frac{i}{2} \\ \frac{i}{2} & 0 \\
+        \end{bmatrix}
+    \end{equation*}
+
+    \begin{proof}
+        First, the $J_3$ operator with~\eqref{j3}
+        \begin{equation*}
+            \bra{e_1} J_3^{(\frac{1}{2})} \ket{e_1} = - \bra{e_2} J_3^{(\frac{1}{2})} \ket{e_2} = - \frac{1}{2} \quad \bra{e_1} J_3^{(\frac{1}{2})} \ket{e_2} = \bra{e_2} J_3^{(\frac{1}{2})} \ket{e_1} = 0
+        \end{equation*}
+    
+        Second, the ladder operators 
+        \begin{equation*}
+            J_-^{(\frac{1}{2})} \ket{e_1} =  \ket{e_2} \quad J_+^{(\frac{1}{2})} \ket{e_1} = J_-^{(\frac{1}{2})} \ket{e_2} = = 0 \quad J_+^{(\frac{1}{2})} \ket{e_2} =  \ket{e_1}
+        \end{equation*}
+        
+        Third, the $J_i$ operators, with the inverse relations of~\eqref{jpm}
+        \begin{equation*}
+            J_1^{(\frac{1}{2})} = \frac{1}{2} (J_+^{(\frac{1}{2})} + J_-^{(\frac{1}{2})}) \quad J_2^{(\frac{1}{2})} = \frac{1}{2i} (J_+^{(\frac{1}{2})} - J_-^{(\frac{1}{2})}) ~.
+        \end{equation*}
+    \end{proof}    
+
+    Notice that 
+    \begin{equation*}
+        J_i^{(\frac{1}{2})} = \frac{1}{2} \sigma_i
+    \end{equation*}
+    where $\sigma_i$ are the Pauli matrices 
+    \begin{equation*}
+        \sigma_1 = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\ \end{bmatrix} \quad \sigma_2 = \begin{bmatrix} 0 & -i \\ i & 0 \\ \end{bmatrix} \quad \sigma_3 = \begin{bmatrix} 1 & 0 \\ 0 & -1 \\ \end{bmatrix}
+    \end{equation*}
+    such that thet satisfy the commutation relations
+    \begin{equation*}
+        [\sigma_i, \sigma_j] = 2 i \epsilon_{ijk} \sigma_k
+    \end{equation*}
+    This three matrices are linearly independent and they generate the $SU(2)$ group, i.e.~the set of Hermitian traceless matrices. 
+    
+    \begin{proof}
+        This can be seen by writing down a complex $2 \times 2$ matrix 
+        \begin{equation*}
+            \begin{pmatrix}
+                a & b \\ c & d \\
+            \end{pmatrix}
+        \end{equation*}
+        and by requiring the condition to be a $SU(2)$ matrix, i.e. $b = c^*$ because of hermiticy and $a = -d$ because of tracelessness. Hence
+        \begin{equation*}
+            \begin{pmatrix}
+                a & b \\ b^* & -a \\
+            \end{pmatrix}
+        \end{equation*}
+        which leaves three degrees of freedom, because $a$ is real. Now we decompose into the real and the complex part of $b$
+        \begin{equation*}
+            \begin{pmatrix}
+                a & b_r - i b_i \\ b_r + i b_i & - a\\
+            \end{pmatrix} = b_r \begin{pmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{pmatrix} + b_i \begin{pmatrix}
+                0 & -i \\ i & 0 \\
+            \end{pmatrix} + a \begin{pmatrix}
+                1 & 0 \\ 0 & -1 \\
+            \end{pmatrix} = b_r \sigma_1 + b_i \sigma_2 + a \sigma_3
+        \end{equation*}
+        which proves that they are indeed a basis for $\mathfrak{su}(2)$
+    \end{proof}. 
+
+    Thus a matrix $U \in SU(2)$ can be written in terms of the exponential map 
+    \begin{equation*}
+        U(\theta, \mathbf n) = \exp(- i \theta \mathbf n \cdot \mathbf J^{(\frac{1}{2})}) = \exp(- \frac{i}{2} \theta \mathbf n \cdot \mathbf \sigma) ~,
+    \end{equation*}
+    or explicitly 
+    \begin{equation*}
+        U(\theta, \mathbf n) = \begin{bmatrix}
+            \cos \frac{\theta}{2} - i n_3 \sin \frac{\theta}{2} & -i(n_1 - i n_2) \sin \frac{\theta}{2} \\ - i (n_1 + i n_2) \sin \frac{\theta}{2} & \cos \frac{\theta}{2} + i n_3 \sin \frac{\theta}{2} \\
+        \end{bmatrix} ~.
+    \end{equation*}
+
+    Alternatively, we can show that $SU(2) \simeq S^3$, by keeping complex parameters $a$ and $b$
+    \begin{equation}\label{su2mat}
+        U(a, b) = \begin{pmatrix}
+            a & b \\ -b^* & a^* \\
+        \end{pmatrix}
+    \end{equation}
+    such that $\det U = |a|^2 + |b|^2 = 1$.
+
+\subsection{$\mathfrak{so}(3)$ = $\mathfrak{su}(2)$}
+
+    In order to see that the Lie algebras are the same, we introduce a map between the two linear spaces
+    \begin{equation*}
+        X = \sum_i x_i \sigma_i \mapsto \mathbf x = \begin{pmatrix}
+            x_1 \\ x_2 \\ x_3 \\
+        \end{pmatrix} \in \mathbb R^3
+    \end{equation*}
+    with the Euclidean scalar product 
+    \begin{equation*}
+        \mathbf x \cdot \mathbf y = \frac{1}{2} tr(XY)
+    \end{equation*}
+
+    Thus, given an element $X \in \mathfrak{su}(2)$ we have for any $u \in SU(2)$ both the tracelessness and the hermiticy properties
+    \begin{equation*}
+        tr(U X U^{-1}) = tr(U^{-1} U X) = 0 \quad (UXU^{-1})^\dagger = (U^{-1})^\dagger X^\dagger U^\dagger = U X U^{-1}
+    \end{equation*}
+    and an action $\mathfrak{su}(2) \simeq \mathbb R^3 \rightarrow \mathbb R^3$ such that
+    \begin{equation*}
+        X \mapsto U X U^{-1}
+    \end{equation*} 
+    Furthermore, it is orthogonal 
+    \begin{equation*}
+        \mathbf x \cdot \mathbf y = \frac{1}{2} tr (XY) \mapsto \frac{1}{2} tr (UXU^{-1} U Y U^{-1}) = \frac{1}{2} (XY) = \mathbf x \cdot \mathbf y
+    \end{equation*}
+    and, since $SU(2)$ is connected, the identities are mapped and this defines a $3$-dimensional rep
+    \begin{equation*}
+        \rho_{ad} \colon SU(2) \rightarrow SO(3) \subset Aut(V) \quad V \ni X \mapsto \rho_{ad} (U) (X) = U X U^{-1}
+    \end{equation*}
+    called the adjoint representation. In this case, it coincides with the spin $j = 1$ representation of $SO(3)$.
+
+    Explicitly, by using~\eqref{su2mat}
+    \begin{equation*}
+        U(a,b) \sigma_1 U(a,b)^{-1} = Re(a^2 - b^2) \sigma_1 - Im(a^2 - b^2) \sigma_2 + 2 Re (a b^*) \sigma_3
+    \end{equation*}
+    \begin{equation*}
+        U(a,b) \sigma_2 U(a,b)^{-1} = Im(a^2 + b^2) \sigma_1 + Re(a^2 + b^2) \sigma_2 + 2 Im (a b^*) \sigma_3
+    \end{equation*}
+    \begin{equation*}
+        U(a,b) \sigma_3 U(a,b)^{-1} = - Re(ab) \sigma_1 + 2 Im(ab) \sigma_2 + (|a|^2 - |b|^2) \sigma_3
+    \end{equation*}
+    or, in matrix notation,
+    \begin{equation*}
+        \rho_{ad} (U(a,b)) = \begin{bmatrix}
+            Re(a^2 - b^2) & Im(a^2 + b^2) &  - Re(ab) \\ 
+            - Im(a^2 - b^2) & Re(a^2 + b^2) & 2 Im(ab) \\
+            2 Re (a b^*) & 2 Im (a b^*) & |a|^2 - |b|^2 \\
+        \end{bmatrix}
+    \end{equation*}
+    
+    
+    We can recover rotation matrices around each Cartesian axis, by computing 
+    \begin{equation*}
+        R(\delta \theta, \begin{bmatrix} 1 \\ 0 \\ 0 \\ \end{bmatrix} ) = \begin{bmatrix}
+            1 & 0 & 0 \\ 0 & \cos \theta & - \sin \theta \\ 0 & \sin \theta & \cos \theta \\
+        \end{bmatrix} = \rho_{ad} (U(\cos \frac{\theta}{2} , -i \sin \frac{\theta}{2}))
+    \end{equation*}
+    \begin{equation*}
+        R(\delta \theta, \begin{bmatrix} 0 \\ 1 \\ 0 \\ \end{bmatrix} ) = \begin{bmatrix}
+            \cos \theta & 0 & \sin \theta \\ 0 & 1 & 0 \\  -\sin \theta & 0 & \cos \theta \\
+        \end{bmatrix} = \rho_{ad} (U(\cos \frac{\theta}{2} , - \sin \frac{\theta}{2}))
+    \end{equation*}
+    \begin{equation*}
+        R(\delta \theta, \begin{bmatrix} 0 \\ 0 \\ 1 \\ \end{bmatrix} ) = \begin{bmatrix}
+            \cos \theta & - \sin \theta & 0 \\ \sin \theta & \cos \theta & 0 \\ 0 & 0 & 1 \\
+        \end{bmatrix} = \rho_{ad} (U(\exp(-\frac{i}{2} \theta), 0))
+    \end{equation*}
+
+    Therefore, $\rho_{ad}$ defines a group homomorphism. The kernel is $\rho_{ad} (\mathbb I_2) = \rho_{ad} (- \mathbb I_2) = \mathbb I_3$. Hence, the universal cover $SU(2)$ is a two-fold cover of $SO(3)$, i.e. $SO(3) \simeq SU(2) / \ker (\rho_{ad}) = SU(2) / \mathbb Z_2$.
+
+    \begin{proof}
+        If $U(a,b)$ is mapped into the identity, then $Re(a b^*) = 0$, $|a|^2 - |b|^2 = 1$ and $Re(a^2 - b^2) = 1$. Hence $b=0$ and $a = \pm 1$. 
+    \end{proof}
+
+    For a general $SO(n)$ rotation group, since it is not connected, we have a two-fold universal cover $Spin(n)$, which is for $n \leq 6$
+    \begin{equation*}
+        Spin(3) \simeq SU(2) \quad Spin(4) \simeq SU(2) \times SU(2) \\
+        Spin(5) \simeq Sp(2) \quad Spin(6) \simeq SU(6)
+    \end{equation*}
+    However, for $n > 6$, there is not a matrix group. Each group has a spinor representation. For $n = 2m$, it has dimension $2^{m-1}$ and for $n = 2m + 1$, it has dimension $2^m$.s
+
+\chapter{$SO^+(1,3)$}
+
+    In this chapter, we will apply all the notions we learnt in the previous ones to~\eqref{so(1,3)}, the proper Lorentz group $SO(1,3)$. In particular, we are interested in the proper orthochronous Lorentz group $SO^+(1,3)$.
+
+\section{$SO^+(1,3)$ as a Lie group}
+
+    The Lorentz group $O(1,3)$ is defined by the matrices $\Lambda$ such that they preserve the Minkovski metric 
     \begin{equation}\label{lorentz}
-        \Lambda^\alpha_{\phantom \alpha \mu} \Lambda^\beta{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
+        \Lambda^\alpha_{\phantom \alpha \mu} \Lambda^\beta_{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
     \end{equation}
 
     First, the Lorentz group can be decomposed into two parts according to their determinant
@@ -57,11 +458,11 @@
     \end{equation*}
     and the Lorentz group can be written as
     \begin{equation*}
-        O(1,3) = \underbrace{\{\det \Lambda = +1\}}_{SO(1,3)} \cup \{\det \Lambda = - 1\} 
+        O(1,3) = \underbrace{\{\det \Lambda = +1\}}_{SO(1,3)} \cup \{\det \Lambda = - 1\} = SO(1,3) \cup \{\det \Lambda = - 1\}
     \end{equation*}
     where $SO(1,3)$ is called the proper Lorentz group.
 
-    Second, the proper Lorentz group can be decomposed into two parts according to their (0, 0) component
+    Second, the proper Lorentz group can be decomposed into two parts according to their $(0, 0)$ component
     \begin{equation*}
         \eta_{00} = \Lambda^\alpha_{\phantom \alpha 0} \Lambda^\beta_{\phantom \beta 0} \eta_{\alpha \beta}
     \end{equation*}
@@ -71,122 +472,226 @@
     \begin{equation*}
         (\Lambda^0_{\phantom 0 0})^2 = 1 + (\Lambda^i_{\phantom i i})^2 \geq 1
     \end{equation*}
-    
     Hence 
     \begin{equation*}
         \Lambda^0_{\phantom 0 0} \in ]\infty, -1] \cup [1, \infty[
     \end{equation*}
     and the proper Lorentz group can be written as
     \begin{equation*}
-        SO(1,3) = \underbrace{\{\Lambda^0_{\phantom 0 0} \in ]\infty, -1]\}}_{SO(1,3)^+} \cup \{\Lambda^0_{\phantom 0 0} \in [1, \infty[\} 
+        SO(1,3) = \underbrace{\{\Lambda^0_{\phantom 0 0} \in ]\infty, -1]\}}_{SO^+(1,3)} \cup \{\Lambda^0_{\phantom 0 0} \in [1, \infty[\} = SO^+(1,3) \cup \{\Lambda^0_{\phantom 0 0} \in [1, \infty[\} 
     \end{equation*}
     where $SO(1,3)^+$ is called the proper orthochronous Lorentz group.
 
-    From now on, only the proper orthochronous Lorentz group will be studied because is the only group containing the identity.
+    From now on, only the proper orthochronous Lorentz group will be studied because is the only group containing the identity. The rest of the group can be obtained by composing a proper orthochronous Lorentz transformation with time or spatial reversals.
 
-\section{Lie algebra: generators of $SO(1,3)^+$}
+\section{$\mathfrak{so}(1,3)$ as a Lie algebra}
 
-    Consider an infinitesimal Lorentz transformation around the identity 
+    To find the Lie algebra, we consider an infinitesimal Lorentz transformation around the identity 
     \begin{equation}\label{inf}
         \Lambda^{\mu}_{\phantom \mu \nu} = \delta^{\mu}_{\phantom \mu \nu} + \omega^{\mu}_{\phantom \mu \nu}
     \end{equation}
-    where $\omega^{\mu}_{\phantom \mu \nu} \ll 1$ is an infinitesimal matrix.
-    
-    Using~\eqref{lorentz},
-    \begin{equation*}
-        (\delta^{\alpha}_{\phantom \alpha \mu} + \omega^{\alpha}_{\phantom \alpha \mu} )( \delta^{\beta}_{\phantom \beta \nu} + \omega^{\beta}_{\phantom \beta \nu} )\eta_{\alpha \beta} = \eta_{\mu \nu}
-    \end{equation*}
-    \begin{equation*}
-        \delta^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \delta^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
-    \end{equation*}
-    \begin{equation*}
-        \cancel{\eta_{\mu \nu}} + \omega_{\mu \nu} + \omega_{\nu\mu} + O(\omega^2) = \cancel{\eta_{\mu \nu}}
-    \end{equation*}
-    Hence, the matrices $\omega_{\mu\nu}$ are anti-symmetric
-    \begin{equation*}
-        \omega_{\mu \nu} = \omega_{\nu \mu}
-    \end{equation*}
+    where $\omega^{\mu}_{\phantom \mu \nu} \ll 1$ is an infinitesimal matrix. 
 
-    Using the exponential map, a generic $SO(1,3)^+$ transformation can be written as
+    In order to preserve the metric $\omega^{\mu}_{\phantom \mu \nu}$ is antisymmetric.
+    \begin{proof}
+        By using~\eqref{lorentz},
+        \begin{equation*}
+            (\delta^{\alpha}_{\phantom \alpha \mu} + \omega^{\alpha}_{\phantom \alpha \mu} )( \delta^{\beta}_{\phantom \beta \nu} + \omega^{\beta}_{\phantom \beta \nu} )\eta_{\alpha \beta} = \eta_{\mu \nu}
+        \end{equation*}
+        \begin{equation*}
+            \delta^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \delta^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \delta^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} + \omega^{\alpha}_{\phantom \alpha \mu} \omega^{\beta}_{\phantom \beta \nu} \eta_{\alpha \beta} = \eta_{\mu \nu}
+        \end{equation*}
+        \begin{equation*}
+            \cancel{\eta_{\mu \nu}} + \omega_{\mu \nu} + \omega_{\nu\mu} + O(\omega^2) = \cancel{\eta_{\mu \nu}}
+        \end{equation*}
+        Hence, the matrices $\omega_{\mu\nu}$ are anti-symmetric
+        \begin{equation*}
+            \omega_{\mu \nu} = \omega_{\nu \mu}
+        \end{equation*}
+    \end{proof}
+
+    By means of the exponential map, a generic $SO(1,3)^+$ transformation can be written as
     \begin{equation*}
         \Lambda^{\mu}_{\phantom \mu \nu} = \exp(- \frac{i}{2} \omega^{\alpha \beta} M_{\alpha \beta})^\mu_{\phantom \mu \nu}
     \end{equation*}
-    where $M_{\alpha \beta}$ are the generators of the Lie algebra $\mathfrak{so} (1,3)$. Since they must be antisymmetric, otherwise they would vanish, there are six independent generators of $\mathfrak{so} (1,3)$.
+    where $M_{\alpha \beta}$ are the generators of the Lie algebra $\mathfrak{so} (1,3)$. Since they must be antisymmetric, otherwise they would vanish because $\omega$ are so as well, there are six independent generators of $\mathfrak{so} (1,3)$.
+
+
+    The commutation relations between the generators are
+    \begin{equation*}
+        [M_{\alpha\beta}, M_{\sigma\rho}] = - i (\eta_{\alpha\sigma} M_{\beta \rho} - \eta_{\alpha\rho} M_{\beta\sigma} - \eta_{\beta\sigma} M_{\alpha\rho} + \eta_{\beta \rho} M_{\alpha \sigma})
+    \end{equation*}
+    or in matrix indices notation
+    \begin{equation*}
+        [M_{\alpha \beta}, M_{\sigma \rho}]^\mu_{\phantom \mu \nu} = (M_{\alpha\beta})^\mu_{\phantom \mu \gamma} (M_{\sigma \rho})^\gamma{\phantom \gamma \nu} - (M_{\sigma\rho})^\mu_{\phantom \mu \gamma} (M_{\alpha\beta})^\gamma{\phantom \gamma \nu}
+    \end{equation*}
+
+    \begin{proof}
+        To find the explicit expression of the commutator of two generators, first it will be computed the following expression using~\eqref{inf}
+        \begin{equation*}
+        \begin{aligned}
+            (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = (\delta^{\mu}_{\phantom \mu \alpha} - \tilde \omega^{\mu}_{\phantom \mu \alpha})(\delta^{\alpha}_{\phantom \alpha \beta} - \omega^{\alpha}_{\phantom \alpha \beta})(\delta^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\beta}_{\phantom \beta \gamma})(\delta^{\gamma}_{\phantom \gamma \nu} + \omega^{\gamma}_{\phantom \gamma \nu}) + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta}\delta^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \tilde \omega^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} - \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} + \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} \\ & \quad + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2)
+        \end{aligned}
+        \end{equation*}
+        and second using the BCH formula~\eqref{BCH}
+        \begin{equation*}
+        \begin{aligned}
+            (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(- \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \\ & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} + \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) \\ & \quad \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} - \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & =  \exp(\cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} + \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} - \cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} - \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} \\ & \quad + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & = \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2)
+        \end{aligned}
+        \end{equation*}
+        Hence, putting together
+        \begin{equation*}
+            \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} = \exp(-\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu})
+        \end{equation*}
+        \begin{equation*}
+            - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = -\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu} = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
+        \end{equation*}
     
+        Consider an ansatz 
+        \begin{equation*}
+            [M_{\alpha\beta}, M_{\sigma\rho}] = T^{(1)}_{\alpha\beta} M_{\sigma\rho} + T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(6)}_{\sigma\rho} M_{\alpha\beta}
+        \end{equation*}
+        and inserting into the previous, there are no matching term with $T^{(1)} = T^{(2)} = 0$. 
+    
+        Furthermore, using $M_{\mu\nu} = - M_{\nu\mu}$
+        \begin{equation*}
+        \begin{aligned}
+            0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\beta\alpha}. M_{\sigma\rho}]
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
 
-\section{Lie algebra: commutators of $SO(1,3)^+$}
-
-    To find the explicit expression of the commutator of two generators, first it will be computed the following expression using~\eqref{inf}
-    \begin{equation*}
-    \begin{aligned}
-        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = (\delta^{\mu}_{\phantom \mu \alpha} - \tilde \omega^{\mu}_{\phantom \mu \alpha})(\delta^{\alpha}_{\phantom \alpha \beta} - \omega^{\alpha}_{\phantom \alpha \beta})(\delta^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\beta}_{\phantom \beta \gamma})(\delta^{\gamma}_{\phantom \gamma \nu} + \omega^{\gamma}_{\phantom \gamma \nu}) + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta}\delta^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma}\delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \tilde \omega^{\beta}_{\phantom \beta \gamma} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \delta^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} - \delta^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \beta} \tilde \omega^{\beta}_{\phantom \beta \gamma} \delta^{\gamma}_{\phantom \gamma \nu} \\ & \quad + \delta^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \beta} \delta^{\beta}_{\phantom \beta \gamma} \omega^{\gamma}_{\phantom \gamma \nu} + O(\tilde \omega^2) + O(\omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} - \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \nu}} + \cancel{\omega^{\mu}_{\phantom \mu \nu}} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} \\ & \quad + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} + \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \cancel{\tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2) \\ & = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} + O(\omega^2) + O(\tilde \omega^2)
-    \end{aligned}
-    \end{equation*}
-    and second using the BCH formula~\eqref{BCH}
-    \begin{equation*}
-    \begin{aligned}
-        (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(- \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \\ & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} + \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) \\ & \quad \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} - \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & =  \exp(\cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} + \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} - \cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} - \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} \\ & \quad + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & = \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2)
-    \end{aligned}
-    \end{equation*}
-    Hence, putting together
-    \begin{equation*}
-        \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} = \exp(-\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu})
-    \end{equation*}
-    \begin{equation*}
-        - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = -\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu} = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
-    \end{equation*}
-    Hence 
-    \begin{equation*}
-        - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
-    \end{equation*}
-
-    Consider an ansatz 
-    \begin{equation*}
-        [M_{\alpha\beta}, M_{\sigma\rho}] = T^{(1)}_{\alpha\beta} M_{\sigma\rho} + T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(6)}_{\sigma\rho} M_{\alpha\beta}
-    \end{equation*}
-    and inserting into the previous, there are no matching term with $T^{(1)} = T^{(2)} = 0$. 
-
-
-    Furthermore, using $M_{\mu\nu} = - M_{\nu\mu}$
-    \begin{equation*}
-    \begin{aligned}
-        0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\beta\alpha}. M_{\sigma\rho}]
-    \end{aligned}
-    \end{equation*}
-
-\section{Rep of Lorentz algebra}
-
-    $SO^+(1,3)$ is not compact, since the values of the boosts do not have an upper buondary. For non-compact non abelian Lie groups, any non-trivial unitary representation must be infinite-dimensional. 
-
-    Now, let us focus in finite-dimensional representations. They are not unitary, but for fields representations do not matter since there is no scalar product between operators. 
-
-    The defining rep of the Lie algebra is 
+    It is also possbile to derive the $4 \times 4$ matrix representation, which is 
     \begin{equation*}
         (M_{\alpha\beta})^\mu_{\phantom \mu \nu} = i (\delta^\mu_{\phantom \mu \alpha} \eta_{\beta \nu} - \delta^\mu_{\phantom \mu \beta} \eta_{\alpha \nu})
     \end{equation*}
 
-    The generators of the rotations are hermitian
+    Now, we restrict to spatial indices and the commutation relations become
+    \begin{equation*}
+        [M_{ij}, M_{kl}] = - i (\delta_{ik} M_{jl} - \delta_{il} M_{jk} - \delta_{jk} M_{il} + \delta_{ji} M_{ij})
+    \end{equation*}
+    which gives rise to three independent generators 
+    \begin{equation*}
+        J_i = - \frac{1}{2} \epsilon_{ijk} M_{jk}
+    \end{equation*}
+    o, equivalently,
+    \begin{equation*}
+        M_{ij} = - \epsilon_{ijk} J_k
+    \end{equation*}
+    with commutation relations 
+    \begin{equation}\label{commjj}
+        [J_m, J_n] = i \epsilon{mnk} J_k
+    \end{equation}
+    Hence, the proper orthochronous Lorentz group contains the rotation group as subgroup with spatial indices.
+
+    There are other generators $K_i = M_{0i}$ associated to temporal indices, which are the generators of boosts in the $i$-th direction. The commutation relations become 
+    \begin{equation*}
+        [K_i, K_j] = -i(\eta_{00} M_{ij} + \delta_{ij} M_{00}) = - iM_{ij} = - i \epsilon_{ijk} J_k
+    \end{equation*}
+    and 
+    \begin{equation*}
+        [J_i, K_j] = - \frac{1}{2} \epsilon_{imn} [M_{mn}, M_{0j}] = - \frac{i}{2} (- \delta_{mj} M_{n0} + \delta_{nj} M_{m0}) = i \epsilon_{ijn} K_n
+    \end{equation*}
+
+    If the velocity is $\mathbf v = c \tanh(r) \mathbf u$ where $r$ is the rapidity, then a generic boost transformation can be written as 
+    \begin{equation*}
+        \Lambda = \begin{pmatrix}
+            \cosh(r) & \sinh(r) \mathbf u^T \\
+            \sinh(r) \mathbf u & \mathbb I_3 + (\cosh(r)-1) \mathbf u \mathbf u^T \\
+        \end{pmatrix}
+    \end{equation*}
+    and a general proper orthochronous Lorentz transformation is 
+    \begin{equation*}
+        \Lambda (\theta, \mathbf n, r, \mathbf u) = \exp(-i \theta \mathbf n \cdot \mathbf J - i \mathbf v \cdot \mathbf K) = \exp(- i \theta \mathbf n \cdot \mathbf J - i c \tanh(r) \mathbf u \cdot \mathbf K)
+    \end{equation*}
+
+\section{Representations of the Lorentz algebra}
+
+    $SO^+(1,3)$ is not compact, since the values of the boosts do not have an upper-bound limit. For non-compact non-abelian Lie groups, any non-trivial unitary representation must be infinite-dimensional. However, let us focus in finite-dimensional representations, even though they are not unitary. We can justified this choice by noticing that for field representations, which become quantum operator, there is no scalar product between them. 
+
+    The defining representation of the Lie algebra $\mathfrak{so}^+(1,3)$ is 
+    \begin{equation*}
+        (M_{\alpha\beta})^\mu_{\phantom \mu \nu} = i (\delta^\mu_{\phantom \mu \alpha} \eta_{\beta \nu} - \delta^\mu_{\phantom \mu \beta} \eta_{\alpha \nu})
+    \end{equation*}
+
+    The generators of rotations are
     \begin{equation*}
         J_i = \frac{1}{2} \epsilon_{ijk} M^{jk}
     \end{equation*}
-    while the generators of the boosts are anti-hermitian, beacuse they do not have a finite range,
+    which are hermitian, i.e. $J_i^\dagger = J_i$, while the generators of boosts are
     \begin{equation*}
         K_i = M_{0i}
     \end{equation*}
+    which are anti-hermitian, i.e. $K_i^\dagger = - K_i$, because they do not have a finite range. Explicitly, they are 
+    \begin{equation}\label{explj}
+        J_1 = \begin{bmatrix}
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & -i \\ 
+            0 & 0 & i & 0 \\ 
+        \end{bmatrix} \quad J_2 = \begin{bmatrix}
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & i \\ 
+            0 & 0 & 0 & 0 \\ 
+            0 & -i & 0 & 0 \\ 
+        \end{bmatrix} \quad J_3 = \begin{bmatrix}
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & -i & 0 \\ 
+            0 & i & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+        \end{bmatrix} 
+    \end{equation}
+    and 
+    \begin{equation}\label{explk}
+        K_1 = \begin{bmatrix}
+            0 & i & 0 & 0 \\ 
+            i & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+        \end{bmatrix} \quad K_2 = \begin{bmatrix}
+            0 & 0 & i & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+            i & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+        \end{bmatrix} \quad K_3 = \begin{bmatrix}
+            0 & 0 & 0 & i \\ 
+            0 & 0 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 \\ 
+            i & 0 & 0 & 0 \\ 
+        \end{bmatrix} 
+    \end{equation}
 
-    The procedure to construct Lorentz algebra irrep is complexification: consider a complex linear combination $\mathfrak g_{\mathbb C} = \mathfrak g \oplus i \mathfrak g$. 
+    \begin{proof}
+        For $J_1$ and similarly for the others
+        \begin{equation*}
+            (J_1)^\mu_{\phantom \mu \nu} = - (M_{23})^\mu_{\phantom \mu \nu} = - i (\underbrace{\delta^\mu_{\phantom \mu 2}}_{\mu = 2} \underbrace{\eta_{3 \nu}}_{\nu = 3} + \underbrace{\delta^\mu_{\phantom \mu 3}}_{\mu = 3} \underbrace{\eta_{2 \nu}}_{\nu = 2}) = - i \delta^2_{\phantom 2 3} + i \delta^3_{\phantom 3 2}
+        \end{equation*}
 
-    Defining new generators 
+        For $K_1$ and similarly for the others 
+        \begin{equation*}
+            (K_1)^\mu_{\phantom \mu \nu} = - (M_{01})^\mu_{\phantom \mu \nu} = - i (\underbrace{\delta^\mu_{\phantom \mu 0}}_{\mu = 0} \underbrace{\eta_{1 \nu}}_{\nu = 1} + \underbrace{\delta^\mu_{\phantom \mu 1}}_{\mu = 1} \underbrace{\eta_{0 \nu}}_{\nu = 0}) = i \delta^0_{\phantom 0 1 } + i \delta^1_{\phantom 1 0}
+        \end{equation*}
+    \end{proof}
+
+    The procedure to construct Lorentz algebra irreducible representations is called complexification and it consists of a complex linear combination of the generators $\mathfrak g_{\mathbb C} = \mathfrak g \oplus i \mathfrak g$. In particular, for the Lorentz algebra, we define new generators
     \begin{equation*}
         A_i = \frac{1}{2} (J_i + i K_i) \quad B_i = \frac{1}{2} (J_i - i K_i)
     \end{equation*}
-    their new commutation relations are 
+    such that the new commutation relations are 
     \begin{equation*}
         [A_i, A_j] = i \epsilon_{ijk} A_K \quad [B_i, B_j] = i \epsilon_{ijk} B_K \quad [A_i, B_j] = 0
     \end{equation*}
-    Hence $\mathfrak{so}(1,3) \simeq \mathfrak{su}(2) \oplus \mathfrak{su}(2)$. In this way, we can use representations of $\mathfrak{su}(2)$ labelled by a pair $(j_1, j_2)$. 
 
-    Formally, an irreducible rep of a direct sum $\mathfrak g \oplus \mathfrak h$ can be built by the tensor product of $(\rho_{\mathfrak g}, V_{\mathfrak g})$ and $(\rho_{\mathfrak h}, V_{\mathfrak h})$
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+
+    Hence $\mathfrak{so}(1,3) \simeq \mathfrak{su}(2) \oplus \mathfrak{su}(2)$. In this way, we can use representations of $\mathfrak{su}(2)$ labelled by a pair $(j_1, j_2)$ to construct a representation of the whole Lorentz algebra. Formally, an irreducible representation of a direct sum $\mathfrak g \oplus \mathfrak h$ can be built by the tensor product of $(\rho_{\mathfrak g}, V_{\mathfrak g})$ and $(\rho_{\mathfrak h}, V_{\mathfrak h})$ by
     \begin{equation*}
         \rho \colon \mathfrak g \oplus \mathfrak h \rightarrow End(V) = End(V_{\mathfrak g} \otimes V_{\mathfrak h})
     \end{equation*}
@@ -194,23 +699,21 @@
     \begin{equation*}
         \rho(X+Y) (v \otimes w) = \rho_{\mathfrak g}(v) \otimes w + v \otimes \rho_{\mathfrak h}(w)
     \end{equation*}
-
-    For the Lorentz algebra 
+    In particular, for the Lorentz algebra 
     \begin{equation*}
-        \rho_{j_1, j_2} \Big ( \sum_m \lambda_m A_m + \sum_n k_n B_n \Big) = \sum_m \lambda_m \rho_{j_1} (A_m) \otimes id_{V_{j_2}} + \sum_n k_n id_{V_{j_1}} \otimes \rho_{j_2} (B_n)
+        \rho_{j_1, j_2} \Big ( \sum_m \lambda_m A_m + \sum_n k_n B_n \Big) = \sum_m \lambda_m \rho_{j_1} (A_m) \otimes \mathbb I_{V_{j_2}} + \sum_n k_n \mathbb I_{V_{j_1}} \otimes \rho_{j_2} (B_n)
     \end{equation*}
-    with dimension $\dim (V_{j_1} \otimes V_{j_2}) = \dim V_{j_1} \dim V_{j_2} = (2j_1 + 1)(2j_2 + 1)$.
+    where $A_m$ and $B_n$ are independent generators of $\mathfrak{su}(2)$ and the dimension is $\dim (V_{j_1} \otimes V_{j_2}) = \dim V_{j_1} \dim V_{j_2} = (2j_1 + 1)(2j_2 + 1)$.
 
-    For the rotation algebra $J_i = A_i + B_i$, a similar closed algebra $\mathfrak{so}(3) \simeq \mathfrak{su}(2)$, using the Clebsh-Gordon decomposition, this reduces into a sum of irreducible reps of spin $j$ such that $|j| \leq j_1 + j_2$.
+    If we restrict to the rotation algebra $J_i = A_i + B_i$, a similar closed algebra $\mathfrak{so}(3) \simeq \mathfrak{su}(2)$ can be studied inside $\mathfrak{so}(1,3)$. By means of the Clebsch-Gordan decomposition, this reduces into a sum of irreducible representation of spin $j$ such that $|j| \leq j_1 + j_2$, with total dimension $(2j_1 + 1) (2j_2 + 1)$.
 
-    Notice that if they are both integer of half-integer, the sum representation is integer, like a bosonic one. On the other hand, if one is integer and the other one half-integer, the sum representation is half-integer, like a fermionic one. 
+    Notice that if they are both integers or half-integers, the sum representation is integer, like a bosonic one. On the other hand, if one is integer and the other one half-integer, the sum representation is half-integer, like a fermionic one. 
 
-    $SO^+(1,3)$ is not simply connected, so its universal cover is $SL(2, \mathbb C)$. In particular $SO^+(1,3) \simeq SL(2, \mathbb C)/\mathbb Z_2$. Hence the spinor representations of $SO^+(1,3)$ is $SL(2, \mathbb C)$.
+    $SO^+(1,3)$ is not simply connected. Therefore, we need its universal cover is $SL(2, \mathbb C)$. In particular, we have also here a two-fold cover $SO^+(1,3) \simeq SL(2, \mathbb C)/\mathbb Z_2$. Hence the spinor representations of $SO^+(1,3)$ is in $SL(2, \mathbb C)$.
 
-\section{Spinor rep}
+\subsection{Spinor representations}
 
-    There are two different spinor reps: the left-handed Weyl spinor $\rho_L$ with $(\frac{1}{2}, 0)$ and the right-handed Weyl spinor $\rho_R$ with $(0, 
-    \frac{1}{2})$. They are called spinors because the only irrep of the rotations restriction hae $j = \frac{1}{2}$.
+    Given the fact that we have two labels $j_1$ and $j_2$ for the representations, there are two different $2$-dimensional spinor representations: the left-handed Weyl spinor $\rho_L=\rho_{(\frac{1}{2}, 0)}$ with $(\frac{1}{2}, 0)$ and the right-handed Weyl spinor $\rho_R= \rho_{(0, \frac{1}{2})}$ with $(0, \frac{1}{2})$. They are called spinors because the only irreducible representation of rotations restriction are the one corresponding to $j = \frac{1}{2}$.
 
     Since the rep $j = \frac{1}{2}$ is generated by the Pauli matrices and $j=0$ is the trivial one, the generators of left spinors are 
     \begin{equation*}
@@ -220,7 +723,7 @@
     \begin{equation*}
         \rho_R(A_i) = 0 \otimes \mathbb I_1 = 0 \quad \rho_R(B_i) = \mathbb I_1 \otimes \frac{1}{2} \sigma_i = \frac{1}{2} \sigma_i
     \end{equation*}
-    Hence, the original generators for left spinors are 
+    Hence, by linearity, the original generators for left spinors are 
     \begin{equation*}
         \rho_L (J_i) = \rho_L(A_i) + \rho_L(B_i) = \frac{1}{2} \sigma_i \quad \rho_L(K_i) = - i (\rho_L(A_i) - \rho_L(B_i)) = - \frac{i}{2} \sigma_i
     \end{equation*}
@@ -229,136 +732,158 @@
         \rho_R (J_i) = \rho_R(A_i) + \rho_R(B_i) = \frac{1}{2} \sigma_i \quad \rho_R(K_i) = - i (\rho_R(A_i) - \rho_R(B_i)) = \frac{i}{2} \sigma_i
     \end{equation*}
 
-    The associated rep is generated by a real linear combination 
+    The associated representation is generated by real linear combinations: for left spinors is
     \begin{equation*}
         V_{(\frac{1}{2}, 0)} \ni \phi \mapsto \exp(-i \theta \vec n \cdot \rho_L(\vec J) - i \vec \cdot \rho_L(\vec K)) \phi
     \end{equation*}
-    and 
+    and for right spinors is
     \begin{equation*}
         V_{(0, \frac{1}{2})} \ni \phi \mapsto \exp(-i \theta \vec n \cdot \rho_R(\vec J) - i \vec \cdot \rho_R(\vec K)) \phi = \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) \phi
     \end{equation*}
 
-    Notice that they are the complex conjugates of each other. Using the identity
-    \begin{equation*}
-        (i \sigma_2) \sigma_i (- i \sigma_1) = (i \sigma_2) \overline \sigma_i (i \sigma_2)^{-1} = - \sigma_i
-    \end{equation*}
-    then defining $\chi = i \sigma_2 \phi$ 
-    \begin{equation*}
-    \begin{aligned}
-        \chi \mapsto i \sigma_2 \phi & = i \sigma_2 \overline{\exp(-i \theta \vec n \cdot \rho_L(\vec J) - i \vec \cdot \rho_L(\vec K)) \phi} \\ & i \sigma_2 \overline{\exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) \phi} \\ & = i \sigma_2 \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \overline{\vec \sigma}) \overline \phi \\ & = i \sigma_2 (i \sigma_2)^{-1} \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) (i \sigma_2) \overline \phi \\ & = \exp(- i \theta \vec n \cdot \rho_R(\vec J) - i \vec v \cdot \rho_R (\vec K)) \chi
-    \end{aligned}
-    \end{equation*}
-    Hence, up to a basis change, the complex conjugate of $\phi$ transforms like $\chi$. 
+    They are the complex conjugates of each other. 
+    
+    \begin{proof}
+        By using the identity
+        \begin{equation*}
+            (i \sigma_2) \sigma_i (- i \sigma_1) = (i \sigma_2) \overline \sigma_i (i \sigma_2)^{-1} = - \sigma_i
+        \end{equation*}
+        we define a new vector $\chi = i \sigma_2 \phi$ which maps as
+        \begin{equation*}
+        \begin{aligned}
+            \chi \mapsto i \sigma_2 \phi & = i \sigma_2 \overline{\exp(-i \theta \vec n \cdot \rho_L(\vec J) - i \vec \cdot \rho_L(\vec K)) \phi} \\ & = i \sigma_2 \overline{\exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) \phi} \\ & = i \sigma_2 \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \overline{\vec \sigma}) \overline \phi \\ & = i \sigma_2 (i \sigma_2)^{-1} \exp(-\frac{1}{2} (- i \theta \vec n + \vec v) \cdot \vec \sigma) (i \sigma_2) \overline \phi \\ & = \exp(- i \theta \vec n \cdot \rho_R(\vec J) - i \vec v \cdot \rho_R (\vec K)) \chi
+        \end{aligned}
+        \end{equation*}
+        Hence, up to a basis change, the complex conjugate of $\phi$ transforms like $\chi$.
+    \end{proof} 
 
-    Another way to introduce spinors is through the Dirac matrices: $4 \times 4$ matrices which satisfy the anticommutator relations 
+\subsection{Dirac representation}
+
+    The direct sum of the two Weyl spinors is a reducible representation, called the bispinor representation. It is related to the Weyl one via 
+    \begin{equation*}
+        V_D = V_{\frac{1}{2}, 0} \oplus V_{0, \frac{1}{2}}
+    \end{equation*}
+    but with different basis 
+    \begin{equation*}
+        \psi_1 = \frac{\phi_1 + \chi_1}{\sqrt 2} \quad \psi_2 = \frac{\phi_2 + \chi_2}{\sqrt 2} \quad \psi_3 = \frac{\phi_1 - \chi_1}{\sqrt 2} \quad \psi_4 = \frac{\phi_2 - \chi_2}{\sqrt 2}
+    \end{equation*}
+    where $(\phi_1, \phi_2)$ is a basis of $V_{frac{1}{2}, 0}$ and $(\chi_1, \chi_2)$ of $V_{0, \frac{1}{2}}$. 
+
+
+    Another way to introduce bispinors is through the Dirac matrices, i.e. $4 \times 4$ matrices such that they satisfy the anticommutator relations 
     \begin{equation*}
         \{\gamma_\mu, \gamma_\nu\} = \gamma_\mu \gamma_\nu - \gamma_\nu \gamma_\mu = 2 \eta_{\mu\nu}
     \end{equation*}
-    They allow to construct a rep of the Lorentz algebra 
+    They allow to construct a $4$-dimensional representation of the Lorentz algebra 
     \begin{equation*}
         M_{\alpha\beta} = \frac{i}{4} [\gamma_\alpha, \gamma_\beta] = \frac{i}{4} (\gamma_\alpha \gamma_\beta - \gamma_\beta \gamma_\alpha)
     \end{equation*}
-    such that 
+    such that the commutator relations are
     \begin{equation*}
         [M_{\alpha\beta}, M_{\sigma\rho}] = - i (\eta_{\alpha\sigma} M_{\beta \rho} - \eta_{\alpha\rho} M_{\beta\sigma} - \eta_{\beta\sigma} M_{\alpha\rho} + \eta_{\beta\rho} M_{\alpha\sigma})
     \end{equation*}
-    which is a $4$-dimensional rep that leads to the Dirac equation.
+    which leads to the Dirac equation. Further insights can be found in the RQM or in the QFT course.
 
-    It is called the bi-spinor rep and it is related to the Weyl one via 
-    \begin{equation*}
-        V_D = V_{frac{1}{2}, 0} \oplus V_{0, \frac{1}{2}}
-    \end{equation*}
-    but with basis 
-    \begin{equation*}
-        \psi_1 = \frac{\phi_1 + \chi_1}{\sqrt 2} \quad \psi_2 = \frac{\phi_2 + \chi_2}{\sqrt 2} 
-    \end{equation*}
-    \begin{equation*}
-        \psi_3 = \frac{\phi_1 - \chi_1}{\sqrt 2} \quad \psi_4 = \frac{\phi_2 - \chi_2}{\sqrt 2}
-    \end{equation*}
-    where $(\phi_1, \phi_2)$ is a basis of $V_{frac{1}{2}, 0}$ and $(\chi_1, \chi_2)$ of $V_{0, \frac{1}{2}}$.
+\subsection{Vector representation}
 
-\section{Vector rep}
-
-    Consider a rep $(\frac{1}{2}, \frac{1}{2})$ which corresponds to a bosonic field, since its restrictions are $j = \frac{1}{2} + \frac{1}{2} = 1$ and $j = \frac{1}{2} - \frac{1}{2} = 0$. It is equivalent to the defining rep of $\mathfrak{so}(1,3)$. Picking a basis of $V_{\frac{1}{2}}$ that is $\{\ket{\frac{1}{2}, \frac{1}{2}}, \ket{\frac{1}{2}, -\frac{1}{2}}\} = \{\ket{+}, \ket{-}\}$, the natural basis becomes 
+    Now, we study the vector representation, which is a representation where the spin label is $(\frac{1}{2}, \frac{1}{2})$. Since its restrictions to rotations are $j = \frac{1}{2} + \frac{1}{2} = 1$ and $j = \frac{1}{2} - \frac{1}{2} = 0$, they both have integer spin and it corresponds to a bosonic field. 
+    
+    We pick a basis of $V_{\frac{1}{2}}$, which is 
+    \begin{equation*}
+        \{\ket{\frac{1}{2}, \frac{1}{2}}, \ket{\frac{1}{2}, -\frac{1}{2}}\} = \{\ket{+}, \ket{-}\}
+    \end{equation*} 
+    and it induces a natural basis for $V_{(\frac{1}{2}, \frac{1}{2})}$ 
     \begin{equation*}
         \ket{+} \oplus \ket{+} = \ket{++} \quad \ket{+} \oplus \ket{-} = \ket{+-} \quad \ket{-} \oplus \ket{+} = \ket{-+} \quad \ket{-} \oplus \ket{-} = \ket{--}
     \end{equation*}
-    or more useful 
+    However, it can be more useful to introduce another basis for the same linear space
     \begin{equation*}
     \begin{aligned}
         & \ket{e_1} = \frac{\ket{+-} - \ket{-+}}{\sqrt 2} \quad \ket{e_2} = \frac{\ket{++} - \ket{--}}{\sqrt 2} \\ & \ket{e_3} = \frac{- \ket{++} - i\ket{--}}{\sqrt 2} \quad \ket{e_4} = \frac{- \ket{+-} - \ket{-+}}{\sqrt 2}
     \end{aligned}
     \end{equation*}
 
-    The rep of the generators becomes 
-    \begin{equation*}
-        \rho(A_i) = \rho_{\frac{1}{2}} (A_i) \otimes \mathbb I_2  = \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2
-    \end{equation*}
-    \begin{equation*}
-        \rho(B_i) = \mathbb I_2 \otimes \rho_{\frac{1}{2}} (B_i) = \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
-    \end{equation*}
-    which act on basis 
-    \begin{equation*}
-        \rho(A_i) \ket{+-} = \mathcal I_i^{(\frac{1}{2})} \ket{+} \otimes \ket{-} \quad \rho(B_i) \ket{+-} = \ket{+} \otimes \mathcal I_i^{(\frac{1}{2})}  \ket{-} 
-    \end{equation*}
+    It is equivalent to the defining rep of $\mathfrak{so}(1,3)$. 
+ 
+    \begin{proof}
+        The complex generators of the representation are
+        \begin{equation*}
+            \rho(A_i) = \rho_{\frac{1}{2}} (A_i) \otimes \mathbb J_2  = \mathcal J_i^{(\frac{1}{2})} \otimes \mathbb J_2
+        \end{equation*}
+        and
+        \begin{equation*}
+            \rho(B_i) = \mathbb J_2 \otimes \rho_{\frac{1}{2}} (B_i) = \mathbb J_2 \otimes \mathcal J_i^{(\frac{1}{2})} 
+        \end{equation*}
+        where their actions on the natural basis are
+        \begin{equation*}
+            \rho(A_i) \ket{+-} = \mathcal J_i^{(\frac{1}{2})} \ket{+} \otimes \ket{-} \quad \rho(B_i) \ket{+-} = \ket{+} \otimes \mathcal J_i^{(\frac{1}{2})}  \ket{-} 
+        \end{equation*}
+        Moreover, the original generators become 
+        \begin{equation*}
+            \rho(J_i) = \rho(A_i) + \rho(B_i) = \mathcal J_i^{(\frac{1}{2})} \otimes \mathbb J_2 + \mathbb J_2 \otimes \mathcal J_i^{(\frac{1}{2})} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \rho(K_i) = -i (\rho(A_i) - \rho(B_i)) = - i \mathcal J_i^{(\frac{1}{2})} \otimes \mathbb J_2 + i \mathbb J_2 \otimes \mathcal J_i^{(\frac{1}{2})} 
+        \end{equation*}
+        where $\mathcal J^{(\frac{1}{2})}$ is the single $\mathfrak{su}(2)$ representation.
+    
+        For example, we take the generator $J_3$, whose action on the natural basis is
+        \begin{equation*}
+            \rho(J_3) \ket{++} = \ket{++} \quad \rho(J_3) \ket{--} = - \ket{--} \quad \rho(J_3) \ket{-+} = \rho(J_3) \ket{+-} = 0
+        \end{equation*}
+        or on the other basis is
+        \begin{equation*}
+            \rho(J_3) \ket{e_1} = \rho(J_3) \ket{e_4} = 0 \quad \rho(J_3) \ket{e_2} = i \ket{e_3} \quad \rho(J_3) \ket{e_2} = -i \ket{e_2}
+        \end{equation*}
+        Hence the corresponding matrix becomes 
+        \begin{equation*}
+            \rho(J_3) = \begin{pmatrix}
+                0 & 0 & 0 & 0 \\
+                0 & 0 & -i & 0 \\
+                0 & i & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+            \end{pmatrix}
+        \end{equation*}
+        which is indeed the same matrix as~\eqref{explj}.
+    
+        For example, we take the generator $K_3$, whose action on the natural basis is
+        \begin{equation*}
+            \rho(K_3) \ket{++} = \rho(K_3) \ket{--} = 0 \quad \rho(K_3) \ket{+-} = - i \ket{+-} \quad \rho(K_3) \ket{-+} = i \ket{-+}
+        \end{equation*}
+        or on the other basis is
+        \begin{equation*}
+            \rho(K_3) \ket{e_1} = i \ket{e_4} \quad \rho(K_3) \ket{e_2} = \quad \rho(K_3) \ket{e_3} = 0 \quad \rho(K_3) \ket{e_4} = i \ket{e_1}
+        \end{equation*}
+        Hence the corresponding matrix becomes 
+        \begin{equation*}
+            \rho(K_3) = \begin{pmatrix}
+                0 & 0 & 0 & i \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                i & 0 & 0 & 0 \\
+            \end{pmatrix}
+        \end{equation*}
+        which is indeed the same matrix as~\eqref{explk}.
+    \end{proof}
 
-    The original Lorentz generators becomes 
-    \begin{equation*}
-        \rho(J_i) = \rho(A_i) + \rho(B_i) = \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2 + \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
-    \end{equation*}
-    and 
-    \begin{equation*}
-        \rho(K_i) = -i (\rho(A_i) - \rho(B_i)) = - i \mathcal I_i^{(\frac{1}{2})} \otimes \mathbb I_2 + i \mathbb I_2 \otimes \mathcal I_i^{(\frac{1}{2})} 
-    \end{equation*}
+\subsection{Other representations}
 
-    For example, studing the generators $J_3$
-    \begin{equation*}
-        \rho(J_3) \ket{++} = \ket{++} \quad \rho(J_3) \ket{--} = - \ket{--} \quad \rho(J_3) \ket{-+} = \rho(J_3) \ket{+-} = 0
-    \end{equation*}
-    or using the other basis
-    \begin{equation*}
-        \rho(J_3) \ket{e_1} = \rho(J_3) \ket{e_4} = 0 \quad \rho(J_3) \ket{e_2} = i \ket{e_3} \quad \rho(J_3) \ket{e_2} = -i \ket{e_2}
-    \end{equation*}
-    Hence the matrix is 
-    \begin{equation*}
-        \rho(J_3) = \begin{pmatrix}
-            0 & 0 & 0 & 0 \\
-            0 & 0 & -i & 0 \\
-            0 & i & 0 & 0 \\
-            0 & 0 & 0 & 0 \\
-        \end{pmatrix}
-    \end{equation*}
+    We conclude this chapter with a list of some relevant representations in physics. See Table~\ref{table:1}.
 
-    For example, studing the generators $K_3$
-    \begin{equation*}
-        \rho(K_3) \ket{++} = \rho(K_3) \ket{--} = 0 \quad \rho(K_3) \ket{+-} = - i \ket{+-} \quad \rho(K_3) \ket{-+} = i \ket{-+}
-    \end{equation*}
-    or using the other basis
-    \begin{equation*}
-        \rho(K_3) \ket{e_1} = i \ket{e_4} \quad \rho(K_3) \ket{e_2} = \quad \rho(K_3) \ket{e_3} = 0 \quad \rho(K_3) \ket{e_4} = i \ket{e_1}
-    \end{equation*}
-    Hence the matrix is 
-    \begin{equation*}
-        \rho(K_3) = \begin{pmatrix}
-            0 & 0 & 0 & i \\
-            0 & 0 & 0 & 0 \\
-            0 & 0 & 0 & 0 \\
-            i & 0 & 0 & 0 \\
-        \end{pmatrix}
-    \end{equation*}
-
-    As we expected, it is indeed the defining rep.
-
-    \section{Other rep}
-
-    \begin{enumerate}
-        \item $(0, 0)$ is the trivial rep. This fields are called scalar fields. They are bosonic. 
-        \item $(\frac{1}{2}, 0)$, $(0, \frac{1}{2})$ or $(\frac{1}{2}, 0) \otimes (0, \frac{1}{2})$ are the spinor rep. They correspond to all the matter particles.
-        \item $(\frac{1}{2}, \frac{1}{2})$. They correspond to all the force bosons. 
-        \item $(1,0)$ or $(0,1)$. The first one correspond to self-dual 2 form fields and the second one is the anti self-dual 2 form fields. In Standard Model there are no particle such that, but compare in string theory.
-        \item $(1, 0) \oplus (0, 1)$. They correspond to parity invariant 2-forms, like the electromagnetic tensor.
-        \item $(1,\frac{1}{2}) \otimes (\frac{1}{2}, 1)$. They correspond to Rarita-Schwinger fields, like the gravitino.
-        \item $(1, 1)$. They correspond to traceless symmetric tensor fields, like the graviton.
-    \end{enumerate}
-
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{c | c | c}
+            Representation & Field & Physics \\
+            \hline
+            $(0,0)$ & scalar & Higgs \\ 
+            $(\frac{1}{2}, 0)$, $(0, \frac{1}{2})$ or $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ & fermionic  & matter \\ 
+             $(\frac{1}{2}, \frac{1}{2})$ & bosonic  & forces \\ 
+            $(1,0)$ (or $(0,1)) $ & (anti) self-dual $2$-form  & only string theory\\
+            $(1, 0) \oplus (0, 1)$ & parity invariant 2-form & EM tensor \\
+            $(1,\frac{1}{2}) \oplus (\frac{1}{2}, 1)$ & Rarita-Schwinger & gravitino \\
+            $(1, 1)$ & traceless symmetric tensor & graviton \\
+        \end{tabular}
+        \caption{Other representations of the Lorentz group}\label{table:1}
+    \end{table}
 
