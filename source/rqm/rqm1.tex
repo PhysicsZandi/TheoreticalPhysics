@@ -148,15 +148,120 @@
         \Delta (x - y) = - i G(x - y) = 
     \end{equation}
 
-
-
-
-    \section{Yukawa potential}
+\section{Yukawa potential}
     
     Yukawa suggested from the Klein-Gordon equation, a theory of nuclear interactions.
 
+\section{Action}
 
+    The Klein-Gordon equation for a complex scalar field $\phi(x)$ can be obtained by the following lagrangian 
+    \begin{equation}\label{complkg}
+        \mathcal L = - \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi
+    \end{equation}
 
-\chapter{Action}
+    \begin{proof}
+        We apply the Euler-Lagrange equation, first for $\phi$
+        \begin{equation*}
+            \pdv{\mathcal L}{\phi} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi} = - m^2 \phi^* + \partial_\mu \partial^\mu \phi^* = (\Box - m^2) \phi^* = 0
+        \end{equation*}
+            which is the Klein-Gordon equation~\eqref{kgeq} for $\phi^*$, and similarly for $\phi^*$ 
+        \begin{equation*}
+            \pdv{\mathcal L}{\phi^*} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi^*} = - m^2 \phi + \partial_\mu \partial^\mu \phi = (\Box - m^2) \phi = 0
+        \end{equation*}
+        which is the Klein-Gordon equation~\eqref{kgeq} for $\phi$.
+    \end{proof}
 
+    The Klein-Gordon equation for a real scalar field $\phi = \phi^*$ can be obtained by the following lagrangian
+    \begin{equation}\label{realkg}
+        \mathcal L = - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{m^2}{2} \phi^2
+    \end{equation}
+
+    \begin{proof}
+        We apply the Euler-Lagrange equation
+        \begin{equation*}
+            \pdv{\mathcal L}{\phi} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi} = - m^2 \phi + \partial_\mu \partial^\mu \phi = (\Box - m^2) \phi = 0
+        \end{equation*}
+            which is the Klein-Gordon equation~\eqref{kgeq}.
+    \end{proof}
+
+    The complex scalar field can be seen as a linear combination of two real fields of the same mass 
+    \begin{equation*}
+        \phi = \frac{\phi_1 + i \phi_2}{\sqrt{2}} \quad \phi^* = \frac{\phi_1 - i \phi_2}{\sqrt{2}}
+    \end{equation*}
+    and the related lagrangian~\eqref{complkg} becomes~\eqref{realkg}
+    \begin{equation*}
+        \mathcal L = - \partial^\mu \phi^* \partial_\mu \phi - m^2 \phi^* \phi = -\frac{1}{2} \partial^\mu \phi_1 \partial_\mu \phi_1 - \frac{1}{2} \partial^\mu \phi_2 \partial_\mu \phi_2 - \frac{m^2}{2} (\phi_1^2 + \phi^2_2) 
+    \end{equation*}
+
+\subsection{Noether's theorem}
+
+    The free Klein-Gordon complex field is globally invariant under the $U(1)$ symmetry
+    \begin{equation*}
+        \phi'(x) = \exp(i \alpha) \phi(x) \quad (\phi')^*(x) = \exp(- i \alpha) \phi^*(x)
+    \end{equation*}
+    or, infinitesimally,
+    \begin{equation*}
+        \delta_\alpha \phi (x) = i \alpha \phi(x) \quad \delta_\alpha \phi^* (x) = - i \alpha \phi^*(x)
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We apply the Noether's theorem and we find associated Noether's current
+    \begin{equation*}
+        J^\mu = i \phi^* \partial^\mu \phi - i (\partial^\mu \phi^*) \phi
+    \end{equation*}
+    which satisfies the continuity equation 
+    \begin{equation*}
+        \partial^\mu J_\mu = 0
+    \end{equation*}
+    and its related conserved charge is 
+    \begin{equation*}
+        Q = \int d^3 x ~ J^0 = - i \int d^3 x ~ (\phi^* \partial_0 \phi - i (\partial_0 \phi^*) \phi)
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\subsection{Energy-momentum tensor}
+
+    The free Klein-Gordon complex field is globally invariant under the Poincaré group
+    \begin{equation*}
+        (xi)^\mu = \Lambda^\mu_{\phantom \mu \nu} x^\nu + a^\mu \quad \phi'(x') = \phi(x) \quad (\phi')^* (x') = \phi^*(x)
+    \end{equation*}
+    In particular, we are interested in the spacetime translations $a^\mu$, which infinitesimally look like
+    \begin{equation*}
+        \delta_\alpha \phi (x) = - a^\mu \partial_\mu \phi(x) \quad \delta_\alpha \phi^* (x) = - a^\mu \partial_\mu \phi^*(x)
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We apply the Noether's theorem and we find associated energy-momentum tensor
+    \begin{equation*}
+        T^{\mu\nu} = \partial^\mu \phi^* \partial^\nu \phi + \partial^\nu \phi^* \partial^\mu \phi + \eta^{\mu\nu} \mathcal L 
+    \end{equation*}
+    which satisfies the conserved equation 
+    \begin{equation*}
+        \partial_\mu T^{\mu\nu} = 0
+    \end{equation*}
+    and its related conserved charges are the total $4$-momentum carried by the field
+    \begin{equation*}
+        P^\mu = \in d^3 x ~ T^{0\mu}
+    \end{equation*}
+    In particular, the energy density is 
+    \begin{equation*}
+        \mathcal E = T^{00} = \partial_0 \phi^* \partial_0 \phi + \nabla \phi^* \cdot \nabla \phi + m^2 \phi^* \phi
+    \end{equation*}
+    and the total energy is 
+    \begin{equation*}
+        E = \int d^3 x ~ \mathcal E = \int d^3 x ~ (\partial_0 \phi^* \partial_0 \phi + \nabla \phi^* \cdot \nabla \phi + m^2 \phi^* \phi)
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
 

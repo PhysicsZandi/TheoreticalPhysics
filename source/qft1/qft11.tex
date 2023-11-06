@@ -1,7 +1,5 @@
 \part{Classical field theory}
 
-    In this part, we will study classical field theory.
-
 \chapter{Action}
 
     A field is a physical quantity $\phi(t, \mathbf x)$ which is defined ad every point in spacetime. The dynamics of a field is governed by an action, which is a functional that associates a real number to each field configuration for a fixed time interval $[t_1, t_2]$
@@ -291,13 +289,13 @@
 
     Maxwell's equations 
     \begin{equation}\label{eqmax}
-        \nabla \cdot \mathbf B = 0 \quad \nabla \times \mathbf E + \pdv{\mathbf B}{t} = 0 \quad \nabla \cdot E = \rho \quad \nabla \times \mathbf B - \pdv{\mathbf E}{t} = \mathbf J
+        \nabla \cdot \mathbf B = 0 \qquad \nabla \times \mathbf E + \pdv{\mathbf B}{t} = 0 \qquad \nabla \cdot E = \rho \qquad \nabla \times \mathbf B - \pdv{\mathbf E}{t} = \mathbf J
     \end{equation}
     can be written in covariant form 
     \begin{equation*}
         \partial_\mu F^{\mu\nu} = J^\nu \quad \partial_\mu {F^*}^{\mu\nu} = 0
     \end{equation*}
-    where $F^{\mu\nu}$ is the electromagnetic tensor and ${F^*}^{\mu\nu} = \frac{1}{2} \epsilon^{\mu\nu\sigma\rho} F_{\sigma\rho}$ is its dual.
+    where $F^{\mu\nu}$ is the electromagnetic tensor and ${F^*}^{\mu\nu} = \frac{1}{2} \epsilon^{\mu\nu\sigma\rho} F_{\sigma\rho}$ is its dual. 
 
     Furthermore, they can be written in terms of the scalar $\phi$ and the vector potentials $\mathbf A$, defined by
     \begin{equation*}
@@ -316,7 +314,85 @@
 
     Maxwell's equations can be seen as the equations of motion of the electromagnetic lagrangian 
     \begin{equation*}
-        \mathcal L = 
+        \mathcal L = - \frac{1}{4} F^{\mu\nu} F_{\mu\nu} - J_\mu A^\mu
+    \end{equation*}
+    or, equivalenty written in terms of the $4$-potential, 
+    \begin{equation*}
+        \mathcal L = - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} (\partial_\mu A^\mu) ^2 - A_\mu J^\mu
     \end{equation*}
 
+    \begin{proof}
+        First, we prove that they are equivalent.
+        Maybe in the future. 
+
+        Second, we prove that it leads to the Maxwell's equations.
+        Maybe in the future.
+    \end{proof}
+
+    In natural units, the dimensional analysis is 
+    \begin{equation*}
+        [F^{\mu\nu}] = 2 \quad [A_\mu] = 1 \quad [J^\mu] = 3
+    \end{equation*}
+
+    The minus sign garanties that the kinetic energy has a positive one 
+    \begin{equation*}
+        - \frac{1}{2} \partial_0 A_i \underbrace{\partial^0}_{\partial_0} \underbrace{A^i}_{-A_i} = \frac{1}{2} \dot A_i^2
+    \end{equation*}
+
+    The fourth field $A_0$ is not a dynamical quantity, since there is no kinetic energy in terms of $\dot A_0^2$, because the first $- \frac{1}{2} \partial_0 A_0 \partial^0 A^0$ cancels out with $\frac{1}{2} (\partial_0 A_0)^2$. Therefore, there are only $3$ degrees of freedom. However, since electrodynamics is a gauge theory, it is possible to restrict to only $2$ degrees of freedom, which correspond to the $2$ transversal polarisations direction of an electromagnetic wave.
+
+    The energy-momentum tensor is 
+    \begin{equation}\label{emtem}
+        T^{\mu\nu} = \partial^\nu A^\mu \partial_\rho A^\rho - \partial^\mu A^\rho \partial^\nu A_\rho + \frac{1}{4} \eta^{\mu\nu} F_{\rho \sigma} F^{\rho\sigma}
+    \end{equation}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    However, the first term in~\eqref{emtem} is not symmetric under change $\mu \leftrightarrow \nu$, but in order to take into account general relativity, this tensor must be symmetric, since $R_{\mu\nu}$ and $g_{\mu\nu}$ are so in
+    \begin{equation*}
+        R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8 \pi G}{c^4} T_{\mu\nu}
+    \end{equation*}
+
+    To do it, we defined a new energy-momentum tensor starting from the old one with the addition of an extra term: the partial derivative of a $3$ indices anti-symmetric in the first $2$ indices tensor $K^{\lambda\mu\nu} = - K^{\mu\lambda\nu}$
+    \begin{equation*}
+        \tilde T^{\mu\nu} = T^{\mu\nu} + \partial_\lambda K^{\lambda\mu\nu}
+    \end{equation*} 
+    This garanties that it is conserved as well 
+    \begin{equation*}
+        \partial_\mu \tilde T^{\mu\nu} = \partial_\mu T^{\mu\nu} + \underbrace{\partial_\mu \partial_\lambda}_{symm} \underbrace{K^{\lambda\mu\nu}}_{anti} = \partial_\mu T^{\mu\nu} = 0
+    \end{equation*}
+
+    In the electromagnetic case, we choose $K$ to be 
+    \begin{equation*}
+        K^{\lambda\mu\nu} = F^{\mu\lambda} A^\nu
+    \end{equation*}
+    and the symmetric energy-momentum tensor becomes 
+    \begin{equation*}
+        \tilde T^{\mu\nu} = F^{\mu\lambda} F_{\lambda}^{\phantom \lambda \nu} + \frac{1}{4} \eta^{\mu\nu} F^{\rho\sigma} F_{\rho\sigma}
+    \end{equation*}
+    which is called the Belifante-Rosenfeld tensor.
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The energy density is 
+    \begin{equation*}
+        \mathcal E = \frac{1}{2} (|\mathbf E|^2 + |\mathbf B|^2)
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The momentum density is 
+    \begin{equation*}
+        \mathcal P^i = (\mathbf E \times \mathbf B)^i
+    \end{equation*}
+
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
 
