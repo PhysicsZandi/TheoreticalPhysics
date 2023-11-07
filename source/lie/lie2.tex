@@ -492,7 +492,7 @@
     \end{equation}
     where $\omega^{\mu}_{\phantom \mu \nu} \ll 1$ is an infinitesimal matrix. 
 
-    In order to preserve the metric $\omega^{\mu}_{\phantom \mu \nu}$ is antisymmetric.
+    In order to preserve the metric, $\omega^{\mu}_{\phantom \mu \nu}$ is antisymmetric.
     \begin{proof}
         By using~\eqref{lorentz},
         \begin{equation*}
@@ -521,10 +521,6 @@
     \begin{equation*}
         [M_{\alpha\beta}, M_{\sigma\rho}] = - i (\eta_{\alpha\sigma} M_{\beta \rho} - \eta_{\alpha\rho} M_{\beta\sigma} - \eta_{\beta\sigma} M_{\alpha\rho} + \eta_{\beta \rho} M_{\alpha \sigma})
     \end{equation*}
-    or in matrix indices notation
-    \begin{equation*}
-        [M_{\alpha \beta}, M_{\sigma \rho}]^\mu_{\phantom \mu \nu} = (M_{\alpha\beta})^\mu_{\phantom \mu \gamma} (M_{\sigma \rho})^\gamma{\phantom \gamma \nu} - (M_{\sigma\rho})^\mu_{\phantom \mu \gamma} (M_{\alpha\beta})^\gamma{\phantom \gamma \nu}
-    \end{equation*}
 
     \begin{proof}
         To find the explicit expression of the commutator of two generators, first it will be computed the following expression using~\eqref{inf}
@@ -539,29 +535,89 @@
             (\tilde \Lambda^{-1})^{\mu}_{\phantom \mu \alpha} (\Lambda^{-1})^{\alpha}_{\phantom \alpha \beta} \tilde \Lambda^{\beta}_{\phantom \beta \gamma} \Lambda^{\gamma}_{\phantom \gamma \nu} & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}) \exp(- \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}) \\ & = \exp(\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} + \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) \\ & \quad \exp(- \frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta} - \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho} + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & =  \exp(\cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} + \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} - \cancel{\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}} - \cancel{\frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}} \\ & \quad + [\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2) \\ & = \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) + O(\omega^2) + O(\tilde \omega^2)
         \end{aligned}
         \end{equation*}
-        Hence, putting together
+        and we put them together
         \begin{equation*}
-            \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} = \exp(-\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu})
+            \exp([\frac{i}{2} \tilde \omega^{\alpha \beta} M_{\alpha \beta}, \frac{i}{2} \omega^{\sigma \rho} M_{\sigma \rho}]) = \delta^{\mu}_{\phantom \mu \nu} - \omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu} \rightarrow \exp(-\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \gamma} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu})
         \end{equation*}
         \begin{equation*}
             - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = -\frac{i}{2} (-\omega^{\mu}_{\phantom \mu \alpha} \tilde \omega^{\alpha}_{\phantom \alpha \nu} + \tilde \omega^{\mu}_{\phantom \mu \alpha} \omega^{\alpha}_{\phantom \alpha \nu}) M_\mu^{\phantom \mu\nu} = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
         \end{equation*}
         Hence 
-        \begin{equation*}
-            - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = - \frac{i}{2} \eta_{\alpha \gamma} (-\omega^{\mu\alpha} \tilde \omega^{\gamma\nu} + \tilde \omega^{\mu\alpha} \omega^{\gamma \nu}) M_{\mu\nu}
-        \end{equation*}
+        \begin{equation}\label{pr1}
+            - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] = - \frac{i}{2} \eta_{\alpha \gamma} (\tilde \omega^{\mu\alpha} \omega^{\gamma \nu} -\omega^{\mu\alpha} \tilde \omega^{\gamma\nu}) M_{\mu\nu}
+        \end{equation}
     
-        Consider an ansatz 
+        Now we consider an ansatz 
         \begin{equation*}
             [M_{\alpha\beta}, M_{\sigma\rho}] = T^{(1)}_{\alpha\beta} M_{\sigma\rho} + T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(6)}_{\sigma\rho} M_{\alpha\beta}
         \end{equation*}
         and inserting into the previous, there are no matching term with $T^{(1)} = T^{(2)} = 0$. 
     
-        Furthermore, using $M_{\mu\nu} = - M_{\nu\mu}$
+        Furthermore, by using $M_{\mu\nu} = - M_{\nu\mu}$
+        \begin{equation*}
+            0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\beta\alpha}. M_{\sigma\rho}]
+        \end{equation*}
+        we find that 
+        \begin{equation*}
+            0 = T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(2)}_{\beta\sigma} M_{\alpha\rho} + T^{(3)}_{\beta\rho} M_{\alpha\sigma} + T^{(4)}_{\alpha\sigma} M_{\beta\rho} + T^{(5)}_{\alpha\rho} M_{\beta\sigma } 
+        \end{equation*}
+        therefore
+        \begin{equation*}
+            T^{(2)}_{\alpha\sigma} + T^{(4)}_{\alpha\sigma} = 0
+        \end{equation*}
+        and 
+        \begin{equation*}
+            T^{(3)}_{\alpha\rho} + T^{(5)}_{\alpha\rho} = 0
+        \end{equation*}
+
+        Similarly
+        \begin{equation*}
+            0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\alpha\beta}. M_{\rho\sigma}]
+        \end{equation*}
+        we find that 
+        \begin{equation*}
+            0 = T^{(2)}_{\alpha\sigma} M_{\beta\rho} + T^{(3)}_{\alpha\rho} M_{\beta\sigma} + T^{(4)}_{\beta\sigma} M_{\alpha\rho} + T^{(5)}_{\beta\rho} M_{\alpha\sigma } + T^{(2)}_{\alpha\rho} M_{\beta\sigma} + T^{(3)}_{\alpha\sigma} M_{\beta\rho} + T^{(4)}_{\beta\rho} M_{\alpha\sigma} + T^{(5)}_{\beta\sigma} M_{\alpha\rho }
+        \end{equation*}
+        therefore
+        \begin{equation*}
+            T^{(2)}_{\alpha\sigma} + T^{(3)}_{\alpha\sigma} = 0
+        \end{equation*}
+        and 
+        \begin{equation*}
+            T^{(4)}_{\beta\sigma} + T^{(5)}_{\beta\sigma} = 0
+        \end{equation*}
+
+        Finally, we have
+        \begin{equation*}
+            T^(2) = - T^{(3)} = - T^{(4)} = T^{(5)} = T
+        \end{equation*}
+        and we insert it into~\eqref{pr1}
         \begin{equation*}
         \begin{aligned}
-            0 = [M_{\alpha\beta}, M_{\sigma \rho}] + [M_{\beta\alpha}. M_{\sigma\rho}]
+            - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho}[M_{\alpha \beta}, M_{\sigma \rho}] & = - \frac{1}{4} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} (T_{\alpha\sigma} M_{\beta\rho} - T_{\alpha\rho} M_{\beta\sigma} - T_{\beta\sigma} M_{\alpha\rho} + T_{\beta\rho} M_{\alpha\sigma }) \\ & = - \frac{1}{4} (T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} - T_{\alpha\rho} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\sigma} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho} + T_{\beta\rho} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\sigma }) \\ &  = - \frac{1}{4} (T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} - T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\rho \sigma} M_{\beta\rho} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho} + T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\rho \sigma} M_{\alpha\rho })
         \end{aligned}
+        \end{equation*}
+        where in the last step we only relabelled $\sigma \leftrightarrow \rho$. 
+
+        Now, we use the antisymmetry of $\omega$ and $M$
+        \begin{equation*}
+        \begin{aligned}
+            & = - \frac{1}{4} (T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} + T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho }) \\ & = - \frac{1}{2} (T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho}) \\ & = - \frac{1}{2} (T_{\gamma\lambda} \tilde \omega^{\gamma \nu} \omega^{\lambda \mu} M_{\nu\mu} - T_{\gamma\lambda} \tilde \omega^{\mu \gamma} \omega^{\lambda \nu} M_{\mu \nu}) \\ & = - \frac{1}{2} (T_{\alpha\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\beta\rho} - T_{\beta\sigma} \tilde \omega^{\alpha \beta} \omega^{\sigma \rho} M_{\alpha\rho}) \\ & = - \frac{1}{2} (T_{\gamma\lambda} \tilde \omega^{\gamma\nu} \omega^{\mu\lambda} M_{\mu\nu} - T_{\gamma\lambda} \tilde \omega^{\mu \gamma} \omega^{\lambda \nu} M_{\mu \nu}) \\ & = - \frac{1}{2} T_{\gamma\lambda} (\tilde \omega^{\gamma\nu} \omega^{\mu\lambda} - \tilde \omega^{\mu \gamma} \omega^{\lambda \nu}) M_{\mu \nu}
+        \end{aligned}
+        \end{equation*}
+        where in the second step we only relabelled $\alpha \leftrightarrow \gamma$, $\beta \leftrightarrow \nu$, $\sigma \leftrightarrow \lambda$, $\rho \leftrightarrow \mu$ in the first term and $\alpha \leftrightarrow \mu$, $\beta \leftrightarrow \gamma$, $\sigma \leftrightarrow \lambda$, $\rho \leftrightarrow \nu$ in the second term. 
+
+        We compare it to~\eqref{pr1}
+        \begin{equation*}
+            - \frac{1}{2} T_{\gamma\lambda} (\tilde \omega^{\gamma\nu} \omega^{\mu\lambda} - \tilde \omega^{\mu \gamma} \omega^{\lambda \nu}) M_{\mu \nu} = - \frac{i}{2} \eta_{\alpha \gamma} (\tilde \omega^{\mu\alpha} \omega^{\gamma \nu} -\omega^{\mu\alpha} \tilde \omega^{\gamma\nu}) M_{\mu\nu}
+        \end{equation*}
+        and we find that 
+        \begin{equation*}
+            T_{\gamma \lambda} = - i \eta_{\gamma\lambda}
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            [M_{\alpha\beta}, M_{\sigma\rho}] = -i (\eta_{\alpha\sigma} M_{\beta\rho} - \eta_{\alpha\rho} M_{\beta\sigma} - \eta_{\beta\sigma} M_{\alpha\rho} + \eta_{\beta\rho} M_{\alpha\sigma})
         \end{equation*}
     \end{proof}
 
@@ -584,7 +640,7 @@
     \end{equation*}
     with commutation relations 
     \begin{equation}\label{commjj}
-        [J_m, J_n] = i \epsilon{mnk} J_k
+        [J_m, J_n] = i \epsilon_{mnk} J_k
     \end{equation}
     Hence, the proper orthochronous Lorentz group contains the rotation group as subgroup with spatial indices.
 
