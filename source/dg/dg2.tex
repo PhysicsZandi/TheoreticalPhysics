@@ -1,142 +1,225 @@
-\part{Riemmanian Manifolds}
+\part{Connection on a manifold}
 
-\chapter{Covariant derivative}
+\chapter{What is a connection?}
 
-\section{Parallel transport}
+    The structure of a differentiable manifold does not present a notion of intrinsic parallelism between two vectors that live in different tangent spaces at different points. Although things are different at one point because two vectors that live in the same tangent space are parallel if they are linearly dependent, i.e.~proportional to each others, the only way to have parallel vectors along a given path is to introduce an external rule. This rule is called a \textit{parallel transport}. It is another prescription to compare vectors at different points, different from the push-forward.
+    
+\section{Covariant derivative}
 
-    The only notion of parallelism can be given only at one point: two vectors are parallel if they are linearly independent. 
+    Suppose we have a parallel transport for a vector $W$ on a curve $\gamma$ tangent to a vector field $V = \dv{}{\lambda}$. If the vector $W \in T_{Q(\lambda)}$ is defined at a point $Q$ parametrised by $\lambda$, then we can associate a second vector $W^\parallel_{-\Delta \lambda} \in T_{P(\lambda_0)}$ at a different point $P$ parametrised by $\lambda_0$ such that $\lambda = \lambda_0 + \Delta \lambda$. By means of the parallel transport, we can move back the vector defined in $Q(\lambda)$ by a shift $-\Delta \lambda$ in order to make them comparable at the point $P(\lambda_0)$, which means that they are both in the same tangent space $T_{P(\lambda_0)}$. See Figure~\ref{fig:covder}.
 
-    \begin{definition}[Parallel transport]
-        A parallel transport is a rule to tranport a vector $W \in T_{P(\lambda)}$ along a tangent curve $\gamma$ to a vector field $V$, asociating a second vector $W^{\parallel}_{-\Delta \lambda} \in T_{P(\lambda_0)}$.
-    \end{definition}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{chart.pdf}
+        \caption{The parallel transport of a vector field $W$ along the vector $V$.}\label{fig:covder}
+    \end{figure}
 
     \begin{definition}[Covariant derivative]
-        The covariant derivative of a vector field $W$ with respect to $V$ at a point $P(\lambda_0)$ is 
+        The covariant derivative of a vector field $W$ with respect to $V=\dv{}{\lambda}$ at a point $P(\lambda_0)$ is 
         \begin{equation*}
-            \nabla_V W \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{W^{\parallel}_{- \Delta \lambda} (\lambda_0) - W(\lambda_0)}{\Delta \lambda}
+            \nabla_V W \vert_{\lambda_0} = \lim_{\Delta \lambda \rightarrow 0} \frac{W^{\parallel}_{- \Delta \lambda} (\lambda_0) - W(\lambda_0)}{\Delta \lambda} ~.
         \end{equation*}
-        It is a vector itself and vanishes if the parallel transport vector coincides with the original one.
     \end{definition}
+    \noindent It vanishes if the vector does not change along $\gamma$, the parallel transported vector coincides with the original one $W^{\parallel} = W$. It is different from the Lie derivative because we do not need an entire congruence so that the vectors are defined in a neighbourhood of the curve, we only need one curve and a parallel transport.
 
-    It is different from the Lie derivative because we do not need a congruence but just one curve.
+\subsection{Covariant derivative of functions and vectors}
 
-    The covariant derivative of a function is the same as the Lie derivative 
+    Since for a function there is no direction, the covariant derivative of a function is the same as the Lie derivative~\ref{liederf}
     \begin{equation*}
-        \nabla_V f = \dv{f}{\lambda}
+        \nabla_V f = \dv{f}{\lambda} ~.
     \end{equation*}
-
-    For a vector, we require the following properties
+    For a generic vector, we require the following properties
     \begin{enumerate}
-        \item Leibniz rule, i.e. 
+        \item Leibniz rules, i.e.~for a function and a vector
+            \begin{equation}\label{covlei}
+                \nabla_V (f W) = \dv{f}{\lambda} W + f \nabla_V W ~,
+            \end{equation}
+                for the tensor product of two vectors
             \begin{equation*}
-                \nabla_V (f W) = \dv{f}{\lambda} W + f \nabla_V W
+                \nabla_V (A \otimes B) = A \otimes \nabla_V B + \nabla_V A \otimes B ~,
             \end{equation*}
+                for the contraction of a $1$-form with a vector
             \begin{equation*}
-                \nabla_V (A \otimes B) = A \otimes \nabla_V B + \nabla_V A \otimes B
+                \nabla_V (\omega (A)) = (\nabla_V \omega) A + \omega (\nabla_V A) ~;
             \end{equation*}
+        \item no effects on reparameterisation $\mu = \mu(\lambda)$, i.e. 
+             \begin{equation}\label{covre}
+                \nabla_{h V} W = h \nabla_V W ~,
+            \end{equation}
+            where $h = \dv{\mu}{\lambda}$ such that 
             \begin{equation*}
-                \nabla_V (\omega (A)) = (\nabla_V \omega) A + \omega (\nabla_V A)
+                \dv{}{\mu} = \dv{\lambda}{\mu} \dv{}{\lambda} = h \dv{}{\lambda} ~;
             \end{equation*}
-        \item no effects on parameterisation $\mu = \mu(\lambda)$, i.e. 
+        \item linearity, i.e.~the covariant derivative of two vectors at a point is additive
             \begin{equation*}
-                \dv{}{\mu} = \dv{\lambda}{\mu} \dv{}{\lambda} = h \dv{}{\lambda}
-            \end{equation*}
-            \begin{equation*}
-                \nabla_{h V} W = h \nabla_V W
-            \end{equation*}
-            for all smooth functions $h$ such that 
-            \begin{equation*}
-                \nabla_V W = 0 \quad \Rightarrow \quad \nabla{hV} W = 0
-            \end{equation*}
-        \item linearity, i.e.
-            \begin{equation*}
-                \nabla_V A + \nabla_W A = \nabla_{V + W} A
-            \end{equation*}
-            \begin{equation*}
-                \nabla_{fV +gW} = f \nabla_V + g \nabla_W
-            \end{equation*}
+                \nabla_V A + \nabla_W A = \nabla_{V + W} A ~.
+            \end{equation*} 
     \end{enumerate}
-
-    Lie derivative does not satisfy the reparameterization condition. 
-
-    The covariant derivative can be seen as an operator 
+    The second property implies that for all smooth functions $h$, the notion of parallel transport along a curve must be independent on reparameterisation
     \begin{equation*}
-        \nabla W \colon V \rightarrow \nabla_V W
+        \nabla_V W = 0 \quad \Rightarrow \quad \nabla_{hV} W = 0 ~.
     \end{equation*}
-
-    We expand on a basis of $T_{P(\lambda_0)}$ 
+    The second and the third property together imply that $\forall f, g$
     \begin{equation*}
-        \nabla_V W = \nabla_{V^i e_i} (W^j e_j) = V^i \nabla_{e_i} (W^j e_j) = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \nabla_{e_i} e_j
+        \nabla_{fV+gW} A = f \nabla_V + g \nabla_W ~.
     \end{equation*}
-    where the second term $\nabla_{e_i} e_j = \Gamma^k_{ji} e_k$ is the affine connection. It transforms like a tensor at fixed $i$ and $j$ but it is not a $(1,2)$ tensor.
+    The Lie derivative does not satisfy the second property. 
+    \begin{proof}
+        Infact
+        \begin{equation*}
+        \begin{aligned}
+            \pounds_{hV} W & = [hV, W] \\ & = h [V, W] + [h, W] V \\ &= h [V, W] - [W, h] V \\ & = h \pounds_V W - (\pounds_W h) V \neq h \pounds_V W ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used~\eqref{leib} and~\eqref{anti}.
+    \end{proof}
 
-    Given a coordinate basis and its dual basis 
-    \begin{equation*}
+\section{Affine connection}
+
+    In order to find the components of the covariant derivative, we expand on a basis $\{e_i\}$ of $T_{P(\lambda_0)}$ both $V = V^i e_i$ and $W = W^j e_j$
+    \begin{equation}\label{covder1}
     \begin{aligned}
-        \Gamma^n_{ml} e_n = \nabla_{e_l} e_m &= \nabla_{\Lambda^i_{\phantom i l} e_i} (\Lambda^j_{\phantom j m} e_j) \\ & = \Lambda^i_{\phantom i l} \nabla_{e_i} (\Lambda^j_{\phantom j m} e_j) \\ & = \Lambda^i_{\phantom i l} \nabla_{e_i} (\Lambda^j_{\phantom j m}) e_j + \Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \nabla_{e_i} (e_j) \\ & = \Lambda^i_{\phantom i l} \partial_i \Lambda^j_{\phantom j m} e_j + \Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \Gamma^k_{ji} e_k \\ & = (\Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m} \Lambda^n_{\phantom n k} \Gamma^k_{ji}+ \Lambda^i_{\phantom i l} \Lambda^n_{\phantom n k} \partial_i \Lambda^k_{\phantom k m}) e_n
+        \nabla_V W & = \nabla_{V^i e_i} (W^j e_j) \\ & = V^i \nabla_{e_i} (W^j e_j) \\ & = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \nabla_{e_i} e_j \\ & = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \Gamma^k_{ji} e_k ~,
     \end{aligned}
-    \end{equation*}
-    Hence
+    \end{equation}
+    where we have used~\eqref{covlei} and~\eqref{covre}. The second term is the \textit{affine connection}
+    \begin{equation}\label{affconn}
+        \nabla_{e_i} e_j = \Gamma^k_{ji} e_k ~.
+    \end{equation} 
+    It follows that the affine connection fixes the parallel transport: once we know all the $i-th$ and $j-th$ components, we know how to do it. Furthermore, it transforms like a tensor at fixed $i$ and $j$ but it is not a $(1,2)$ tensor, infact for a change of basis $e_{i'} = \Lambda_{i'}^{\phantom{i'} i} e_i$ it transforms as 
     \begin{equation*}
-        \Gamma^n_{ml} = \Lambda^n_{\phantom n k} (\Lambda^i_{\phantom i l} \Lambda^j_{\phantom j m}  \Gamma^k_{ji} + \Lambda^i_{\phantom i l} \partial_i \Lambda^k_{\phantom k m})
+        \Gamma^{k'}_{j'i'} = \Lambda^{k}_{\phantom{k} k'}(\Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'} \Gamma^k_{ji} + \Lambda^{i}_{\phantom{i} i'} \partial_i \Lambda^{k'}_{\phantom{k'} j'} ) ~,
     \end{equation*}
-    which shows that at fixed $i$ and $j$ transforms as $\Gamma^n_{ml} e_n = \Gamma^k_{ml} e_k$ but not in $i$ and $j$.
+    which shows that only at fixed $i$ and $j$, it behaves as a tensor such that 
+    \begin{equation*}
+        \Gamma^{k'}_{ij} e_{k'} = \Gamma^k_{ij} e_k ~.
+    \end{equation*}
+    \begin{proof}
+        Given a coordinate basis $\{e_i\}$ and a change of basis $e_{i'} = \Lambda^{i}_{\phantom{i} i'} e_i$
+        \begin{equation*}
+        \begin{aligned}
+            \Gamma^{k'}_{j'i'} e_{k'} & = \nabla_{e_{i'}} e_{j'} \\ & = \nabla_{\Lambda^{i}_{\phantom{i} i'} e_i} (\Lambda^{j}_{\phantom{j} j'} e_j) \\ & = \Lambda^{i}_{\phantom{i} i'} \nabla_{e_i} (\Lambda^{j}_{\phantom{j} j'} e_j) \\ & = \Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'}\nabla_{e_i} e_j + \Lambda^{i}_{\phantom{i} i'}  (\nabla_{e_i} \Lambda^{j}_{\phantom{j} j'}) e_j \\ & = \Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'} \Gamma^k_{ji} e_k + \Lambda^{i}_{\phantom{i} i'} (\partial_i \Lambda^{j}_{\phantom{j} j'}) e_k \\ & = \Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'} \Gamma^k_{ji} \Lambda^{k}_{\phantom{k} k'} e_{k'} + \Lambda^{i}_{\phantom{i} i'} (\partial_i \Lambda^{k'}_{\phantom{k'} j'}) \Lambda^{k}_{\phantom{k} k'} e_{k'} \\ & = \Lambda^{k}_{\phantom{k} k'}(\Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'} \Gamma^k_{ji} + \Lambda^{i}_{\phantom{i} i'} \partial_i \Lambda^{k'}_{\phantom{k'} j'} ) e_{k'} 
+        \end{aligned}
+        \end{equation*}
+        where we have used~\eqref{affconn},~\eqref{covlei},~\eqref{covre}, $e_{i} = \Lambda_{i}^{\phantom{i} i'} e_{i'}$ and $\nabla_{e_i} \Lambda_{i}^{\phantom{i} i'} = \partial_i \Lambda_{i}^{\phantom{i} i'}$, and we exchange $j \leftrightarrow k'$. Hence, hiding the $e_{k'}$
+        \begin{equation*}
+            \Gamma^{k'}_{j'i'} = \Lambda^{k}_{\phantom{k} k'}(\Lambda^{i}_{\phantom{i} i'} \Lambda^{j}_{\phantom{j} j'} \Gamma^k_{ji} + \Lambda^{i}_{\phantom{i} i'} \partial_i \Lambda^{k'}_{\phantom{k'} j'} ) ~.
+        \end{equation*}
+    \end{proof}
 
-    The covariant derivative becomes 
+    Once the $\Gamma$'s are given, we can find the components of the covariant derivative 
+    \begin{equation}\label{covder}
+        (\nabla W^k)_i = \partial_i W^k + \Gamma^k_{ji} W^j ~,
+    \end{equation}
+    or, equivalently, in different notation
     \begin{equation*}
-        \nabla_V W = V^i \Big (\pdv{W^j}{x^i} \pdv{}{x^j} + W^j \Gamma^k_{ji} \pdv{}{x^k} \Big) = V^i \Big (\pdv{W^j}{x^i} + W^j \Gamma^k_{ji} \Big) \pdv{}{x^j}
+        \nabla_i W^k = W^k_{;i} = W^k_{,i} + \Gamma^k_{ji} W^j ~.
     \end{equation*}
-    whose in components is 
-    \begin{equation*}
-        (\nabla_V W)^k = V^i \pdv{W^j}{x^i} + \Gamma^k_{ji} V^i W^j = \dv{W^k}{\lambda} + \Gamma^k_{ji} V^i W^j
-    \end{equation*}
-    and since the components of $V$ enter only by contraction, we can call covariant derivative the tensor $(1,1)$ 
-    \begin{equation*}
-        (\nabla W^k)_i = \pdv{W^k}{x^i} + \Gamma^k_{ji} W^j
-    \end{equation*}
-    or in different notation 
-    \begin{equation*}
-        \nabla_i W^k = W^k_{;i} = W^k_{,i} + \Gamma^k_{ji} W^j
-    \end{equation*}
+    Intuitively, the affine connection tells you what to mix in order to keep parallelism.
+    \begin{proof}
+        Infact, using~\eqref{covder1}
+        \begin{equation*}
+        \begin{aligned}
+            \nabla_V W & = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \Gamma^k_{ji} e_k \\ & = V^i (\partial_i W^j) \pdv{}{x^j} + V^i W^j \Gamma^k_{ji} \pdv{}{x^k} \\ & = V^i (\partial_i W^k + V^i W^j \Gamma^k_{ji}) \pdv{}{x^k} ~,
+        \end{aligned}
+        \end{equation*}
+        where we have exchanged $j \leftrightarrow k$. Hence, the $k$-th component is
+        \begin{equation*}
+            (\nabla_V W)^k = V^i \partial_i W^k + \Gamma^k_{ji} V^i W^j ~,
+        \end{equation*}
+        and since the components of $V$ enter only by contraction in a multiplicative way, we obtain
+        \begin{equation*}
+            (\nabla W^k)_i = \partial_i W^k + \Gamma^k_{ji} W^j ~.
+        \end{equation*}
+    \end{proof}
+
+\subsection{Covariant derivative of 1-forms and generic tensors}
 
     The covariant derivative of a $1$-form is 
     \begin{equation*}
-        \omega_{k;i} = \nabla_i \omega_k = \pdv{\omega_k}{x^i} - \Gamma^j_{ki} \omega_j
+        \omega_{k;i} = \nabla_i \omega_k = \partial_i \omega_k - \Gamma^j_{ki} \omega_j ~.
+    \end{equation*}
+    \begin{proof}
+        By contraction, $\omega (V) = \omega_i V^k$ is a scalar and using~\eqref{covlei}
+        \begin{equation*}
+            \nabla_i (\omega_k V^k) = (\nabla_i \omega_k) V^k + \omega_k (\nabla_i V^k) ~,
+        \end{equation*}
+        and, since for a scalar partial and covariant derivative are equivalent 
+        \begin{equation*}
+            \nabla_i (\omega_k V^k) = \partial (\omega_k V^k) = (\partial_i \omega_k) V^k + \omega_k (\partial_i V^k) ~.
+        \end{equation*}
+        Hence, using~\eqref{covder}
+        \begin{equation*}
+        \begin{aligned}
+            (\partial_i \omega_k) V^k + \cancel{\omega_k (\partial_i V^k)} & = (\nabla_i \omega_k) V^k + \omega_k (\nabla_i V^k) \\ & = (\nabla_i \omega_k) V^k + \omega_k (\partial_i V^k + \Gamma^k_{ij} V^j) \\ & = (\nabla_i \omega_k) V^k + \cancel{\omega_k \partial_i V^k} + \omega_k \Gamma^k_{ij} V^j~,
+        \end{aligned}
+        \end{equation*}
+        and isolating the covariant derivative of a 1-form 
+        \begin{equation*}
+            (\nabla_i \omega_k) V^k = (\partial_i \omega_k) V^k - \omega_j \Gamma^k_{ik} V^k ~.
+        \end{equation*}
+    \end{proof}
+    The covariant derivative of a $(1,1)$ tensor is 
+    \begin{equation*}
+        T^i_{\phantom i j;k} = T^i_{\phantom i j,k} + \Gamma^i_{lk} T^l_{\phantom l j} - \Gamma^l_{jk} T^i_{\phantom i l} ~.
+    \end{equation*}
+    \begin{proof}
+        By contraction, $T (\omega, V) = T^i_{\phantom i j} \omega_i V^j$ is a scalar and using~\eqref{covlei}
+        \begin{equation*}
+            \nabla_k (T^i_{\phantom i j} \omega_i V^j)  = (\nabla_k T^i_{\phantom i j}) \omega_i V^j + T^i_{\phantom i j} (\nabla_k \omega_i) V^j + T^i_{\phantom i j} \omega_i  (\nabla_k V^j) ~,
+        \end{equation*}
+        and, since for a scalar partial and covariant derivative are equivalent 
+        \begin{equation*}
+            \nabla_k (T^i_{\phantom i j} \omega_i V^j) = \partial_k (T^i_{\phantom i j} \omega_i V^j) = (\partial_k T^i_{\phantom i j}) \omega_i V^j + T^i_{\phantom i j} (\partial_k \omega_i) V^j + T^i_{\phantom i j} \omega_i  (\partial_k V^j) ~.
+        \end{equation*}
+        Hence, using~\eqref{covder}
+        \begin{equation*}
+        \begin{aligned}
+            (\partial_k T^i_{\phantom i j}) \omega_i V^j & + \cancel{T^i_{\phantom i j} (\partial_k \omega_i) V^j} + \cancel{T^i_{\phantom i j} \omega_i (\partial_k V^j)} = (\nabla_k T^i_{\phantom i j}) \omega_i V^j + T^i_{\phantom i j} (\nabla_k \omega_i) V^j + T^i_{\phantom i j} \omega_i  (\nabla_k V^j) \\ & = (\nabla_k T^i_{\phantom i j}) \omega_i V^j + T^i_{\phantom i j} (\partial_k \omega_i - \Gamma^l_{ik} \omega_l) V^j + T^i_{\phantom i j} \omega_i (\partial_k V^j + \Gamma^j_{lk} V^l) \\ & = (\nabla_k T^i_{\phantom i j}) \omega_i V^j + \cancel{T^i_{\phantom i j} (\partial_k \omega_i) V^j} - T^i_{\phantom i j}  \Gamma^l_{ik} \omega_l V^j + \cancel{T^i_{\phantom i j} \omega_i (\partial_k V^j)} + T^i_{\phantom i j} \omega_i \Gamma^j_{lk} V^l ~,
+        \end{aligned}
+        \end{equation*}
+        and isolating the covariant derivative of a 1-form 
+        \begin{equation*}
+            (\nabla_k T^i_{\phantom i j}) \omega_i V^j = (\partial_k T^i_{\phantom i j}) \omega_i V^j + \Gamma^i_{lk} T^l_{\phantom l j} \omega_i V^j - \Gamma^l_{jk} T^l_{\phantom i l} \omega_i  V^j ~,
+        \end{equation*}
+        where we exchanged $i \leftrightarrow l$ in the second term and $j \leftrightarrow l$ in the last one.
+    \end{proof}
+    The covariant derivative of a generic $(n,m)$ tensor is 
+    \begin{equation*}
+        T^{i \ldots n}_{\phantom{i \ldots n} j \ldots m; k} = T^{i \ldots n}_{\phantom{i \ldots n} j \ldots m, k} + \Gamma^i_{lk} T^{l \ldots n}_{\phantom{i \ldots n} j \ldots m} + \ldots + \Gamma^n_{lk} T^{i \ldots l}_{\phantom{i \ldots n} j \ldots m} - \Gamma^l_{jk} T^{i \ldots n}_{\phantom{i \ldots n} l \ldots m} - \ldots - \Gamma^l_{mk} T^{i \ldots n}_{\phantom{i \ldots n} j \ldots l}~.
     \end{equation*}
 
+\subsection{Symmetric connection and torsion}
+
+    An affine connection is symmetric if 
+    \begin{equation}\label{symm}
+        \Gamma^k_{ij} = \Gamma^k_{ji}  ~,
+    \end{equation}
+    and it implies the relation with the Lie derivative
+    \begin{equation*}
+        \nabla_V W - \nabla_W V = [V, W] = \pounds_V W ~.
+    \end{equation*}
     \begin{proof}
-        By contraction $\omega (V) = \omega_i V^k$
+        Infact, using~\eqref{covder1} and~\eqref{symm}
         \begin{equation*}
-            \partial_i (W_k V^k) = \nabla_i (W_k V^k) = (\nabla_i W_k) V^k + W_k (\nabla_i V^k)
+        \begin{aligned}
+            \nabla_V W - \nabla_W V & = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \Gamma^k_{ji} e_k - W^i (\nabla_{e_i} V^j) e_j - W^i V^j \Gamma^k_{ji} e_k \\ & = V^i (\nabla_{e_i} W^j) e_j + V^i W^j \Gamma^k_{ji} e_k - W^i (\nabla_{e_i} V^j) e_j - W^j V^i \Gamma^k_{ij} e_k \\ & = V^i (\nabla_{e_i} W^j) e_j + \cancel{V^i W^j \Gamma^k_{ji} e_k} - W^i (\nabla_{e_i} V^j) e_j - \cancel{W^j V^i \Gamma^k_{ji} e_k} \\ & = V^i (\nabla_{e_i} W^j) e_j - W^i (\nabla_{e_i} V^j) e_j \\ & = [V, W] = \pounds_V W ~,
+        \end{aligned}
         \end{equation*}
-        Hence 
-        \begin{equation*}
-            (\nabla_i W_k) V^k = \partial_i (W_k V^k) - W_k (\nabla_i V^k) = (\nabla_i W_k) V^k + W_k (\partial_i V^k + \Gamma^k_{ij} V^j)
-        \end{equation*}
-        which is the thesis we were looking for.
+        where we have exchanged $i \leftrightarrow j$ and~\eqref{liecomp}.
     \end{proof}
 
-    By the Leibniz rule, the covariant derivative of a $(1,1)$ tensor is 
+    Geometrically, it means that two linearly independent vectors $V$ and $W$ at a point $P$, which are parallel transported along the other ($W^\parallel$ along $V$ and $V^\parallel$ along $W$) forms a closed path. Infact, since $\nabla_V W^\parallel = \nabla_W V^\parallel = 0$, it follows that $\pounds_{V^\parallel} W^\parallel = [V^\parallel, W^\parallel] = 0$ and, in a coordinate frame, if we move along $V$ and $W^\parallel$ or along $W$ and $V^\parallel$, we end up in the same point. On the other hand, if the affine connection is not symmetric, it is subjected to torsion 
     \begin{equation*}
-        T^i_{\phantom i j;k} = T^i_{\phantom i j,k} + \Gamma^i_{lk} T^l_{\phantom l j} - \Gamma^l_{jk} T^i_{\phantom i l}
+        T^k_{ji} = \Gamma^k_{ij} - \Gamma^k_{ji} \neq 0 ~,
     \end{equation*}
+    which means that the close path does not close. See Figure~\ref{fig:tors}.
 
-    An affine conncetion is symmetric if 
-    \begin{equation*}
-        \Gamma^k_{ij} = \Gamma^k_{ji} 
-    \end{equation*}
-    and implies the relation with the Lie derivative
-    \begin{equation*}
-        \nabla_V W - \nabla_W V = [V, W] = \pounds_V W
-    \end{equation*}
-
-    Geometrically, it means that two linearly independent vectors $V$ and $W$ at a point $P$, which are parallel transported along the other ($W^\parallel$ along $V$ and $V^\parallel$ along $W$) forms a closed path. Infact, since $\nabla_V W^\parallel = \nabla_W V^\parallel = 0$, it follows that $\pounds_{V^\parallel} W^\parallel = [V^\parallel, W^\parallel] = 0$ and, being a coordinate frame, moving along $V$ and $W^\parallel$ or along $W$ and $V^\parallel$ we end up in the same point. 
-
-    If the affine connection is not symmetric, it is subjected to torsion 
-    \begin{equation*}
-        T^k_{ji} = \Gamma^k_{ij} - \Gamma^k_{ji}
-    \end{equation*}
-    which means that the path does not close. 
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{chart.pdf}
+        \caption{On the left, a symmetric connection means that the path does closed. On the right, torsion means that the path does not close.}\label{fig:tors}
+    \end{figure}
 
 \section{Geodesics}
 
@@ -287,9 +370,9 @@
         \nabla_V g = 0
     \end{equation*}
     or 
-    \begin{equation*}
+    \begin{equation}\label{metconn}
         \nabla g = 0
-    \end{equation*}
+    \end{equation}
 
     This implies that the affine connection is fixed by the metric 
     \begin{equation}\label{chr}
@@ -374,4 +457,182 @@
         \ddot Y^i \simeq \dvf{V^i}{\lambda^2} \simeq R^i_{jkl} V^j Y^k V^l
     \end{equation*}
 
+\section{Killing equation}
+
+    The Killing equation~\eqref{kill} in terms of the covariant derivative becomes 
+    \begin{equation*}
+        V_{i;j} + V_{j;i} = V_{(i,j)} = 0 ~.
+    \end{equation*}
+
+    \begin{proof}
+        By contraction, $g(A,B)$ is a scalar
+        \begin{equation*}
+            \pounds_V g(A, B) = \nabla_V g(A,B) ~,
+        \end{equation*}
+        and using Leibniz rule, in a metric connection~\eqref{metconn}
+        \begin{equation*}
+        \begin{aligned}
+            (\pounds_V g) (A, B) + g(\pounds_V A, B) + g(A, \pounds_V B) & = \underbrace{(\nabla_V g)}_0 (A, B) + g(\nabla_V A, B) + g(A, \nabla_V B) \\ & = g(\nabla_V A, B) + g(A, \nabla_V B) ~.
+        \end{aligned}
+        \end{equation*}
+        We isolate the first term and we use coordinate basis, expanding $V = V^k e_k$
+        \begin{equation*}
+        \begin{aligned}
+            (\pounds_V g) (e_i, e_j) & = (\pounds_V g)_{ij} = - g(\pounds_V e_i, e_j) - g(e_i, \pounds_V e_j) + g(\nabla_V e_i, e_j) + g(e_i, \nabla_V e_j) \\ & = - g(\pounds_V e_i, e_j) - g(e_i, \pounds_V e_j) + V^k g(\nabla_{e_k} e_i, e_j) + V^k g(e_i, \nabla_{e_k} e_j) \\ & = \partial_i V^k g(e_k, e_j) + \partial_j V^k (e_i, e_k) + V^k \Gamma^l_{ik} g(e_l, e_j) + V^k \Gamma^l_{jk} g(e_i, e_l) \\ & (\partial_i V^k g_{kj} + V^k \Gamma^l_{ik} g_{lj}) + (\partial_j V^k g_{ki} + V^k \Gamma^l_{jk} g_{li}) \\ & = V_{j;i} + V_{i;j} ~,
+        \end{aligned}
+        \end{equation*}
+        which vanishes by the Killing equation.
+    \end{proof}
+
+    In a normal frame at a point, where $\Gamma \vert_P = 0$, the Killing equation becomes 
+    \begin{equation*}
+        V_{(i,j)} \vert_P = 0 ~.
+    \end{equation*}
+    However, we need to define the Killing equation in at least an open set of the manifold if not in the entire of it.
+
 \chapter{Ricci tensor, Ricci scalar, Einstein tensor}
+
+    In a normal frame at a point, the Riemann tensor becomes 
+    \begin{equation*}
+        R_{ijkl} = \frac{1}{2} (g_{il,jk} - g_{ik,jl} + g_{jk,il} - g_{jl,ik}) ~.
+    \end{equation*}
+    It satisfies the following properties 
+    \begin{enumerate}
+        \item antisymmetry in the first and last pair of indices, i.e. 
+        \begin{equation}\label{rieanti}
+            R_{ijkl} = - R_{jikl} = - R_{ijlk} ~,
+        \end{equation}
+        \item block symmetry for the exchange of two pairs, i.e.
+        \begin{equation}\label{riesymm}
+            R_{ijkl} = R_{klij} ~,
+        \end{equation}
+        \item first Bianchi identity, i.e. 
+        \begin{equation}\label{bianchi1}
+            R_{i jkl} + R_{i klj} + R_{i ljk} = 0 ~,
+        \end{equation}
+        \item second or contracted Bianchi identity, i.e. 
+        \begin{equation}\label{bianchi2}
+            R_{ijkl,m} + R_{ijmk,l} + R_{ijlm,k} = 0 ~.
+        \end{equation}
+    \end{enumerate}
+    \begin{proof}
+        For the antisymmetry property
+        \begin{equation*}
+        \begin{aligned}
+            R_{ijkl} & = \frac{1}{2} (g_{il,jk} - g_{ik,jl} + g_{jk,il} - g_{jl,ik}) \\ & = - \frac{1}{2} (- g_{il,jk} + g_{ik,jl} - g_{jk,il} + g_{jl,ik}) \\ & = - \frac{1}{2} (g_{jl,ik} - g_{jk,il} + g_{ik,jl} - g_{il,jk}) = - R_{jikl} ~,
+        \end{aligned}
+        \end{equation*}
+        and 
+        \begin{equation*}
+        \begin{aligned}
+            R_{ijkl} & = \frac{1}{2} (g_{il,jk} - g_{ik,jl} + g_{jk,il} - g_{jl,ik}) \\ & = - \frac{1}{2} (- g_{il,jk} + g_{ik,jl} - g_{jk,il} + g_{jl,ik}) \\ & = - \frac{1}{2} ( g_{ik,jl} - g_{il,jk} + g_{jl,ik}  - g_{jk,il}) = - R_{ijlk} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the block symmetry
+        \begin{equation*}
+        \begin{aligned}
+            R_{ijkl} = \frac{1}{2} (g_{il,jk} - g_{ik,jl} + g_{jk,il} - g_{jl,ik}) = \frac{1}{2} (g_{jk,il} - g_{jl,ik} +  g_{il,jk} - g_{ik,jl}) = R_{jilk} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the first Bianchi identity 
+        \begin{equation*}
+        \begin{aligned}
+            R_{ijkl} + R_{iklj} + R_{iljk} & = \frac{1}{2} (g_{il,jk} - g_{ik,jl} + g_{jk,il} - g_{jl,ik} + g_{ij,kl} - g_{il,kj} \\ & \quad + g_{kl,ij} - g_{kj,il} + g_{ik,lj} - g_{ij,lk} + g_{lj,ik} - g_{lk,ij} ) \\ & = \frac{1}{2} (\cancel{g_{il,jk}} - \cancel{g_{ik,jl}} + \cancel{g_{jk,il}} - \cancel{g_{jl,ik}} + \cancel{g_{ij,kl}} - \cancel{g_{il,jk}} \\ & \quad + \cancel{g_{kl,ij}} - \cancel{g_{jk,il} } + \cancel{g_{ik,jl}} - \cancel{g_{ij,kl}} + \cancel{g_{jl,ik}} - \cancel{g_{kl,ij}}) = 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the fact that second partial derivatives commute and the metric tensor is symmetric.
+
+        For the contracted Bianchi identity 
+        \begin{equation*}
+        \begin{aligned}
+            R_{ijkl,m} + R_{ijmk,l} + R_{ijlm,k} & = \frac{1}{2} (g_{il,jkm} - g_{ik,jlm} + g_{jk,ilm} - g_{jl,ikm} + g_{ik,jml} - g_{im,jkl} \\ & \quad + g_{jm,ikl} - g_{jk,iml} + g_{im,jlk} - g_{il,jmk} + g_{jl,imk} - g_{jm,ilk} ) \\ & = \frac{1}{2} (\cancel{g_{il,jkm}} - \cancel{g_{ik,jlm}} + \cancel{g_{jk,ilm}} - \cancel{g_{jl,ikm}} + \cancel{g_{ik,jlm}} - \cancel{g_{im,jkl}} \\ & \quad + \cancel{g_{jm,ikl}} - \cancel{g_{jk,ilm}} +\cancel{g_{im,jkl}} - \cancel{g_{il,jkm}} + \cancel{g_{jl,ikm}} - \cancel{g_{jm,ikl}}) = 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the fact that second partial derivatives commute and the metric tensor is symmetric.
+    \end{proof}
+    In a generic frame, the Riemann tensor can be obtained by substituting the partial derivative with the covariant derivative 
+    \begin{equation}\label{riemanmetric}
+        R_{ijkl} = \frac{1}{2} (g_{il;jk} - g_{ik;jl} + g_{jk;il} - g_{jl;ik}) ~.
+    \end{equation}
+    The Riemann tensor in terms of the connection is 
+    \begin{equation}\label{rieconn}
+        R^i_{\phantom i jkl} = \Gamma^i_{jl,k} - \Gamma^i_{jk,l} + \Gamma^a_{jl} \Gamma^i_{ak} - \Gamma^a_{jk} \Gamma^i_{al}
+    \end{equation}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    The number of indipendent components of a Riemann tensor is 
+    \begin{equation*}
+        \frac{n^2 (n^2 - 1)}{12}
+    \end{equation*}
+    \begin{proof}
+        A symmetric matrix has $\frac{n(n+1)}{2}$ degrees of freedom, while an antysymmetric matrix has $\frac{n(n-1)}{2}$ of them. Therefore, by~\eqref{rieanti} and~\eqref{riesymm}, the indipendent components are 
+        \begin{equation*}
+        \begin{aligned}
+            \frac{1}{2} \Big ( \frac{n(n-1)}{2} \Big) \Big ( \frac{n(n-1)}{2} + 1 \Big) & = \frac{(n^2 - n) (n^2 - n + 1)}{8} \\ & = \frac{(n^4 - n^3 + n^2 - n^3 + n - n) }{8} \\ & = \frac{n^4 - 2n^3 + 3n^2 - 2n}{8} ~.
+        \end{aligned}
+        \end{equation*}
+        Adding the further property~\eqref{bianchi1}, which is a totally antysimmetric tensor with $\frac{n(n-1)(n-2)(n-3)}{4!}$, we obtain
+        \begin{equation*}
+        \begin{aligned}
+            \frac{n^4 - 2n^3 + 3n^2 - 2n}{8} - \frac{n(n-1)(n-2)(n-3)}{4!} & =  \frac{n^4 - 2n^3 + 3n^2 - 2n}{8} - \frac{ (n^2 - n) (n^2 - 5n + 6)}{24} \\ & = \frac{3n^4 - 6n^3 + 9n^2 - 6n}{24} - \frac{ n^4 - 5 n^3 + 6n^2 - n^3 + 5 n^2 + 6n}{24} \\ & = \frac{2 n^4 - 2n^2}{24} = \frac{n^2 (n^2 - 1)}{12} ~. 
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    In particular, we can define three new tensors by the block property: 
+    \begin{enumerate}
+        \item Ricci tensor, i.e. 
+            \begin{equation}\label{riccit}
+                R_{ij} = R^k_{\phantom k ikj} ~,
+            \end{equation}
+            such that $R_{ij} = R_{ji}$,
+        \item Ricci scalar, i.e. 
+            \begin{equation}\label{riccis}
+                R = R^k_{\phantom k k} ~,
+            \end{equation}
+        \item Einstein tensor, i.e. 
+            \begin{equation}\label{einstens}
+                G_{ij} = R_{ij} - \frac{1}{2} R g_{ij} ~.
+            \end{equation}
+    \end{enumerate}
+    The Ricci tensor in terms of the connection is 
+    \begin{equation*}
+        R_{ij} = \Gamma^k_{ij;k} - \Gamma^k_{ki;j}
+    \end{equation*}
+    \begin{proof}
+        Infact, using~\eqref{rieconn}
+        \begin{equation*}
+        \begin{aligned}
+            R_{ij} & = R^k_{\phantom k ikj} \\ &  = \Gamma^k_{ij,k} - \Gamma^k_{ik,j} + \Gamma^a_{ij} \Gamma^k_{ak} - \Gamma^a_{ik} \Gamma^k_{aj} \\ & = \Gamma^k_{ij,k} - \Gamma^k_{ik,j} + \Gamma^k_{ij} \Gamma^a_{ka} - \Gamma^k_{ia} \Gamma^a_{kj} \\ & = \Gamma^k_{ij;k} - \Gamma^k_{ik;j} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    An important property of the Einstein tensor is that its covariante derivative vanishes 
+    \begin{equation*}
+        \nabla_i G^{ij} = \nabla_j G^{ij} = 0
+    \end{equation*}
+    \begin{proof}
+        Infact, using~\eqref{bianchi2} and contracting $i = m$ and $j = l$
+        \begin{equation*}
+        \begin{aligned}
+            0 & = g^{im} g^{jl} (R_{ijkl;m} + R_{ijmk;l} + R_{ijlm;k}) \\ & = R^{ml}_{\phantom{ml} kl;m} + R^{ml}_{\phantom{ml} mk;l} + R^{ml}_{\phantom{ml} lm;k} \\ & = R^{lm}_{\phantom{ml} lk;m} + R^{ml}_{\phantom{ml} mk;l} - R^{ml}_{\phantom{ml} ml;k} \\ & = R^m_{\phantom m k;m} + R^l_{\phantom l k;l} - R^l_{\phantom l l;k} \\ & = 2 R^l_{\phantom l k;l} - g^{lk} R_{;l} ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used~\eqref{rieanti},~\eqref{riccit} and~\eqref{riccis}. Hence 
+        \begin{equation*}
+            R^i_{\phantom i k;i} - \frac{1}{2} g^{ik} R_{;i} ~.
+        \end{equation*}
+        Now, we compute the covariant derivative of the Einstein tensor
+        \begin{equation*}
+            G^{ik}_{\phantom{ik} ;i} = \Big( R^{ik}_{\phantom{ik} ;i} - \frac{1}{2} g^{ik} R_{;i} \Big) = 0 ~.
+        \end{equation*}
+    \end{proof}
+    The Riemann tensor in terms of the Ricci scalar and the Ricci tensor is 
+    \begin{equation*}
+        R_{lijk} = \frac{1}{n-2} \Big( g_{lj} R_{ik} - g_{lk} R_{ij} - g_{ij} R_{lk} + g_{ik} R_{lj} - \frac{R}{n-1} (g_{lj} g_{ik} - g_{lk} g_{ij}) \Big) + C_{lijk}
+    \end{equation*}
+    where $C_{lijk}$ is the Weyl tensor, which does not carry information about Ricci tensor or Ricci scalar. Notice that the Ricci tensor and the metric tensor (two symmetric tensors) has $\frac{n(n+1)}{2}$ indipendent components, therefore the Weyl tensors has 
+    $\frac{n^2(n^2 - 1)}{12} - \frac{n(n+1)}{2}$ of them.

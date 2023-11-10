@@ -1,0 +1,1015 @@
+\part{Dirac theory}
+
+\chapter{Dirac equation}
+
+\section{Derivation}
+
+    We are looking for a quantum equation that describes $\frac{1}{2}$-spin particles, but unlike the Klein-Gordon equation, it allows a probabilistic interpretation. The problem with the Klein-Gordon equation is the presence of second-order terms in time, therefore we need an hamiltonian which is linear but at the same time recover the energy-momentum relation~\eqref{enmom}. The first guess is
+    \begin{equation}\label{guess}
+        E = c \mathbf p \cdot \boldsymbol \alpha + m c^2 \beta ~,
+    \end{equation}
+    where $\alpha$ and $\beta$ are hermitian matrices such that satisfies the Clifford algebra 
+    \begin{equation}\label{clifford}
+        \{\alpha^i, \alpha^j\} = 2 \delta^{ij} \mathbb I ~, \quad \{\beta, \beta\} = 2 \mathbb I ~, \quad \{\alpha^i, \beta\} = 0~.
+    \end{equation}
+    \begin{proof}
+        Infact, we compute the square of~\eqref{guess}
+        \begin{equation*}
+        \begin{aligned}
+            E^2 & = (c p^i \alpha^i + m c^2 \beta)^2 \\ & = (c p^i \alpha^i + m c^2 \beta) (c p^j \alpha^j + m c^2 \beta) \\ & = c^2 \alpha^i p^i \alpha^j p^j + \beta^2 m^2 c^4 + m c^3 p^i \alpha^i \beta + m c^3 p^j \beta \alpha^j \\ & = c^2 p^i p^j \underbrace{\alpha^i \alpha^j}_{\frac{\alpha^i \alpha^j + \alpha^j \alpha^i}{2}} + \beta^2 m^2 c^4 + m c^3 p^i (\alpha^i \beta + \beta \alpha^i) \\ & = c^2 p^i p^j \frac{\alpha^i \alpha^j + \alpha^j \alpha^i}{2} + \beta^2 m^2 c^4 + m c^3 p^i (\alpha^i \beta + \beta \alpha^i) ~,
+        \end{aligned}
+        \end{equation*}
+        where in the fourth row, we exploit the symmetry of $p^i p^j$ to symmetrise $\alpha^i \alpha^j$. We compare it with~\eqref{enmom}
+        \begin{equation*}
+            E^2 = c^2 p^i p^j \underbrace{\frac{\alpha^i \alpha^j + \alpha^j \alpha^i}{2}}_{\delta^{ij}} + \underbrace{\beta^2}_{1} m^2 c^4 + m c^3 p^i \underbrace{(\alpha^i \beta + \beta \alpha^i)}_{0} = p^2 c^2 + m^2 c^4 ~.
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            \{\alpha^i, \alpha^j\} = \alpha^i \alpha^j + \alpha^j \alpha^i = 2 \delta^{ij} ~,
+        \end{equation*}
+        \begin{equation*}
+            \{\beta, \beta\} = \beta^2 + \beta^2 = 2 \beta^2 = 2 ~,
+        \end{equation*}
+        \begin{equation*}
+            \{\alpha^i, \beta\} = \alpha^i \beta + \beta \alpha^i = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    The minimal solutions for the set of algebraic equation~\eqref{clifford} are $4 \times 4$ traceless matrices $\boldsymbol \alpha$ and $\beta$ such that
+    \begin{equation*}
+        \alpha^i = \begin{bmatrix}
+            0 & \sigma^i \\ 
+            \sigma^i & 0 \\
+        \end{bmatrix} ~, \quad \beta = 
+        \begin{bmatrix}
+            \mathbb I_2 & 0 \\
+            0 & - \mathbb I_2 \\
+        \end{bmatrix} ~, 
+    \end{equation*}
+    where $\sigma^i$ are the Pauli matrices 
+    \begin{equation*}
+        \sigma^1 = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\ \end{bmatrix} ~,
+        \quad \sigma^2 = \begin{bmatrix} 0 & -i \\ i & 0 \\ \end{bmatrix} ~,
+        \quad \sigma^3 = \begin{bmatrix} 1 & 0 \\ 0 & -1 \\ \end{bmatrix} ~,
+    \end{equation*}
+    and they satisfy the relation 
+    \begin{equation*}
+        \sigma^i \sigma^j = \delta^{ij} \mathbb I + i \epsilon^{ijk} \sigma^k ~.
+    \end{equation*}
+    It is called the Dirac representation and it is the only irreducible representation of the Clifford algebra up to others that are unitarily equivalent (by a change of basis) to the Dirac one or that are higher dimensional and thus reducible.
+
+    The hamiltonian form of the Dirac equation becomes 
+    \begin{equation}\label{hamdirac}
+        i \hbar \pdv{}{t} \psi (t, \mathbf x) = (- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + \beta m c^2) \psi (t, \mathbf x)  = H_D \psi (t, \mathbf x) ~,
+    \end{equation}
+    while in covariant form it becomes 
+    \begin{equation}\label{covdirac}
+        (\gamma^\mu \partial_\mu + m) \psi(x) = (\cancel \partial + m ) \psi(x) = 0 ~,
+    \end{equation}
+    where $\psi(t, \mathbf x)$ is a matrix 
+    \begin{equation*}
+        \psi(x) = \begin{bmatrix} \psi_1(x) \\ \psi_2(x) \\ \psi_3(x) \\ \psi_4(x) \\ \end{bmatrix} ~,
+    \end{equation*}
+    and $\gamma^\mu$ are the matrices 
+    \begin{equation*}
+        \gamma^0 = - i \beta ~, \quad \gamma^i = - i \beta \alpha^i ~,
+    \end{equation*}
+    such that they satisfy the Clifford algebra
+    \begin{equation}\label{cliffordrel}
+        \{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} ~.
+    \end{equation}
+    Explicitly, they are 
+    \begin{equation*}
+        \gamma^0 = - i \begin{bmatrix} \mathbb I_2 & 0 \\ 0 & \mathbb I_2 \end{bmatrix} ~, \quad \gamma^i = \begin{bmatrix} 0 & - i \sigma^i \\ i \sigma^i & 0 \\ \end{bmatrix} ~.
+    \end{equation*}
+    \begin{proof}
+        Infact, we compute operator substitution~\eqref{sub} on~\eqref{guess} 
+        \begin{equation*}
+            \underbrace{E}_{i\hbar \pdv{}{t}} \psi(t, \mathbf x) = (c \underbrace{\mathbf p}_{ - i \hbar \boldsymbol \nabla} \cdot \boldsymbol \alpha + m c^2 \beta) \psi(t, \mathbf x) ~.
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            i \hbar \pdv{}{t} \psi (t, \mathbf x) = (- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + \beta m c^2) \psi (t, \mathbf x) = H_D \psi(t, \mathbf x) ~.
+        \end{equation*} 
+        In order to write it in covariant form, we compute 
+        \begin{equation*}
+        \begin{aligned}
+            \frac{\beta}{\cancel{\hbar} c} i \cancel{\hbar} \pdv{}{t} \psi (t, \mathbf x) & = \frac{\beta}{\hbar c}(- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + \beta m c^2) \psi (t, \mathbf x) \\ & = \Big ( - \frac{\beta}{\cancel{\hbar} \cancel{c}} i \cancel{\hbar} \cancel{c} \boldsymbol \alpha \cdot \boldsymbol \nabla + \frac{m c}{\hbar} \underbrace{\beta^2}_1 \Big ) \psi (t, \mathbf x) ~.
+        \end{aligned}
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            i \frac{\beta}{c} \pdv{}{t} \psi (t, \mathbf x) = \Big ( - i \beta \boldsymbol \alpha \cdot \boldsymbol \nabla + \frac{m c}{\hbar} \Big ) \psi (t, \mathbf x) ~,
+        \end{equation*}
+        \begin{equation*}
+            \Big ( \underbrace{- i \beta}_{\gamma^0} \frac{1}{c} \pdv{}{t} \underbrace{- i \beta \boldsymbol \alpha}_{\boldsymbol \gamma} \cdot \boldsymbol \nabla + \frac{m c}{\hbar} \Big ) \psi (t, \mathbf x) = 0 ~,
+        \end{equation*}
+        \begin{equation*}
+            \Big ( \gamma^0 \frac{1}{c} \pdv{}{t} + \boldsymbol \gamma \cdot \boldsymbol \nabla + \frac{m c}{\hbar} \Big ) \psi (t, \mathbf x) = 0 ~, 
+        \end{equation*}
+        and in covariant form, we obtain 
+        \begin{equation*}
+            (\gamma^\mu \partial_\mu + \mu ) \psi(x) = 0 ~,
+        \end{equation*}
+        where $\mu = \frac{m c}{\hbar}$ is the inverse reduced Compton wavelength. In natural units, it becomes 
+        \begin{equation*}
+            (\gamma^\mu \partial_\mu + m) \psi(x) = 0 ~.
+        \end{equation*}
+
+        Finally, they satisfy the Clifford algebra 
+        \begin{equation*}
+            \{\gamma^0, \gamma^0\} = 2 \eta^{00} = 2 ~,
+        \end{equation*}
+        \begin{equation*}
+            \{\gamma^i, \gamma^j\} = 2 \eta^{ij} = 2 \delta^{ij} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \{\gamma^0, \gamma^i\} = 2 \eta^{0i} = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Continuity equation}
+    
+    The continuity equation associated to the Dirac equation is 
+    \begin{equation*}
+        \pdv{}{t} (\psi^\dagger \psi) + \boldsymbol \nabla \cdot (c \psi^\dagger \boldsymbol \alpha \psi) = 0
+    \end{equation*}
+    where the density charge is positive defined $\psi^\dagger \psi > 0$ and it's compatible with the probabilistic intepretation.
+    \begin{proof}
+        Infact, we multiply by $\psi^\dagger$ and subtract the hermitian conjugate on~\eqref{hamdirac} 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \psi^\dagger (i \hbar \pdv{}{t} \psi - (- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + m c^2 \beta) \psi) - (\psi^\dagger (i \hbar \pdv{}{t} \psi - (- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + m c^2 \beta) \psi))^\dagger \\ & = \psi^\dagger (i \hbar \pdv{}{t} \psi - (- i \hbar c \boldsymbol \alpha \cdot \boldsymbol \nabla + m c^2 \beta) \psi) - (- i \hbar \pdv{}{t} \psi^\dagger - (i \hbar c \underbrace{\boldsymbol \alpha^\dagger}_{\boldsymbol \alpha} \cdot \boldsymbol \nabla + m c^2 \underbrace{\beta^\dagger}_\beta) \psi^\dagger) \psi \\ & = i \hbar \psi^\dagger \pdv{}{t} \psi + i \hbar c \psi^\dagger \boldsymbol \alpha \cdot \boldsymbol \nabla \psi - \cancel{m c^2 \beta \psi^\dagger \psi }+ i \hbar \psi \pdv{}{t} \psi^\dagger + i \hbar c \psi \boldsymbol \alpha \cdot \boldsymbol \nabla \psi^\dagger + \cancel{m c^2 \beta \psi^\dagger \psi} \\ & = \cancel{i \hbar} \underbrace{\Big( \psi^\dagger \pdv{}{t} \psi + \psi \pdv{}{t} \psi^\dagger \Big)}_{\pdv{}{t} (\psi^\dagger \psi)} + \cancel{i \hbar} \underbrace{(c \psi^\dagger \boldsymbol \alpha \cdot \boldsymbol \nabla \psi  + \psi \boldsymbol \alpha \cdot \boldsymbol \nabla \psi^\dagger)}_{\boldsymbol \nabla \cdot (c \psi^\dagger \boldsymbol \alpha \psi)} \\ & = \pdv{}{t} (\psi^\dagger \psi) + \boldsymbol \nabla \cdot (c \psi^\dagger \boldsymbol \alpha \psi)  ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\section{Gamma matrices}
+
+    As we said before, $\alpha^i$ and $\beta$ are hermitian whicle $\gamma^0$ is antihermitian and $\gamma^i$ is hermitian 
+    \begin{equation*}
+        (\gamma^0)^\dagger = - \gamma^0 ~, \quad (\gamma^i)^\dagger = \gamma^i ~.
+    \end{equation*}
+    which can be written in the following way 
+    \begin{equation*}
+        (\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0 = - \beta \gamma^\mu \beta ~.
+    \end{equation*}
+    This means that the Clifford algebra is valid for $(\gamma^\mu)^\dagger$, intepreted as a change of basis 
+    \begin{equation*}
+        \{- (\gamma^\mu)^\dagger, - (\gamma^\nu)^\dagger \} = 2 \eta^{\mu\nu} ~.
+    \end{equation*}
+    \begin{proof}
+        Infact, by the hermiticity of $\alpha^i$ and $\beta$
+        \begin{equation*}
+            (\gamma^0)^\dagger = (- i \beta)^\dagger = i \beta = - \gamma^0
+        \end{equation*}
+        and 
+        \begin{equation*}
+        \begin{aligned}
+            (\gamma^i)^\dagger & = (- i \beta \alpha^i)^\dagger  = (\gamma^0 \alpha^i)^\dagger = \alpha^i \underbrace{(\gamma^0)^\dagger}_{\gamma^0} \\ & = - \alpha^i \gamma^0 = - i \underbrace{\alpha^i \beta}_{\beta \alpha^i} = - i \beta \alpha^i = \gamma^i ~.
+        \end{aligned}
+        \end{equation*}
+        
+        Furthermore,
+        \begin{equation*}
+            (\gamma^0)^\dagger = \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^0 = - \gamma^0
+        \end{equation*}
+        and 
+        \begin{equation*}
+            (\gamma^i)^\dagger = \gamma^0 \underbrace{\gamma^i \gamma^0}_{-\gamma^0 \gamma^i} = - \gamma^0 \gamma^0 \gamma^i = - \underbrace{(\gamma^0)^2}_{-1} \gamma^i = \gamma^i ~.
+        \end{equation*}
+
+        Finally, using~\eqref{cliffordrel}
+        \begin{equation*}
+        \begin{aligned}
+            \{- (\gamma^\mu)^\dagger, - (\gamma^\nu)^\dagger \} & = (\gamma^\mu)^\dagger (\gamma^\nu)^\dagger + (\gamma^\nu)^\dagger (\gamma^\mu)^\dagger \\ & = \gamma^0 \gamma^\mu \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^\nu \gamma^0 + \gamma^0 \gamma^\nu \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^\mu \gamma^0 \\ & = - \underbrace{\gamma^0 \gamma^\mu}_{- \gamma^\mu \gamma^0} \underbrace{\gamma^\nu \gamma^0}_{- \gamma^0 \gamma^\nu} - \underbrace{\gamma^0 \gamma^\nu}_{- \gamma^\nu \gamma^0} \underbrace{\gamma^\mu \gamma^0}_{- \gamma^0 \gamma^\mu} \\ & = - \gamma^\mu \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^\nu - \gamma^\nu \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^\mu = \gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu = 2 \eta^{\mu\nu} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    As we said before, $\alpha^i$ and $\beta$ are traceless and so $\gamma^\mu$ are
+    \begin{equation*}
+        \tr \gamma^\mu = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        Infact, by the linearity and cyclic property of the trace and~\eqref{clifford}
+        \begin{equation*}
+            \tr \gamma^0 = \tr (- i \beta) = - i \underbrace{\tr \beta}_0 = 0
+        \end{equation*}
+        and 
+        \begin{equation*}
+        \begin{aligned}
+            \tr (\gamma^i) & = \tr (\mathbb I \gamma^i) = \tr ((\gamma^j)^2 \gamma^i) = \tr (\gamma^j \underbrace{\gamma^j \gamma^i}_{- \gamma^i \gamma^j}) \\ & = - \tr (\gamma^j \gamma^i \gamma^j) = - \tr (\gamma^i \gamma^j \gamma^j) = - \tr (\gamma^i (\gamma^j)^2) = - \tr (\gamma^i) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\subsection{$\gamma^5$}
+
+    We introduce another matrix $\gamma^5$, called the chirality matrix
+    \begin{equation*}
+        \gamma^5 = - i \gamma^0 \gamma^1 \gamma^2 \gamma^3
+    \end{equation*}
+    such that it satisfies the gamma-matrix properties
+    \begin{enumerate}
+        \item anticommutator, i.e.
+            \begin{equation*}
+                \{\gamma^5, \gamma^\mu\} = 0 ~,
+            \end{equation*}
+        \item the square is the identity, i.e.
+            \begin{equation}\label{sqgamma}
+                (\gamma^5)^2 = \mathbb I ~,
+            \end{equation}
+        \item hermiticity, i.e.
+            \begin{equation*}
+                (\gamma^5)^\dagger = \gamma^5 ~,
+            \end{equation*}
+        \item traceless, i.e.
+            \begin{equation*}
+                \tr(\gamma^5) = 0 ~.
+            \end{equation*}
+    \end{enumerate}
+    \begin{proof}
+        For the anticommutator property 
+        \begin{equation*}
+        \begin{aligned}
+            \{\gamma^5, \gamma^\mu\} = \gamma^5 \gamma^\mu + \gamma^\mu \gamma^5 = - i \gamma^0 \gamma^1 \gamma^2 \gamma^3 \gamma^\mu - i \gamma^\mu \gamma^0 \gamma^1 \gamma^2 \gamma^3  ~.
+        \end{aligned}
+        \end{equation*}
+        Now, consider $\mu=0$ 
+        \begin{equation*}
+        \begin{aligned}
+            \{\gamma^5, \gamma^0\} & = - i \gamma^0 \gamma^1 \gamma^2 \underbrace{\gamma^3 \gamma^0}_{-\gamma^0 \gamma^3} - i \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^1 \gamma^2 \gamma^3 \\ & = i \gamma^0 \gamma^1 \underbrace{\gamma^2 \gamma^0}_{- \gamma^0 \gamma^2} \gamma^3 + i \gamma^1 \gamma^2 \gamma^3 \\ & = - i \gamma^0 \underbrace{\gamma^1 \gamma^0}_{- \gamma^0 \gamma^1} \gamma^2 \gamma^3 + i \gamma^1 \gamma^2 \gamma^3 \\ & = i \underbrace{\gamma^0 \gamma^0 }_{-1} \gamma^1 \gamma^2 \gamma^3 + i \gamma^1 \gamma^2 \gamma^3 \\ & = - i \gamma^1 \gamma^2 \gamma^3 + i \gamma^1 \gamma^2 \gamma^3 = 0
+        \end{aligned}
+        \end{equation*}
+        and similarly for $\mu = 1,2,3$.
+
+        For the square property 
+        \begin{equation*}
+            (\gamma^5)^2 = (-i\gamma^0 \gamma^1 \gamma^2 \gamma^3)^2 = - \underbrace{(\gamma^0)^2}_{- \mathbb I} \underbrace{(\gamma^1)^2}_{\mathbb I} \underbrace{(\gamma^2)^2}_{\mathbb I} \underbrace{(\gamma^3)^2}_{\mathbb I} = \mathbb I ~.
+        \end{equation*}
+
+        For the hermiticity property 
+        \begin{equation*}
+        \begin{aligned}
+            (\gamma^5)^\dagger & = (-i \gamma^0 \gamma^1 \gamma^2 \gamma^3)^\dagger \\ & = i (\gamma^3)^\dagger (\gamma^2)^\dagger (\gamma^1)^\dagger (\gamma^0)^\dagger \\ & = i \gamma^0 \gamma^3 \underbrace{\gamma^0 \gamma^0}_{-1}\gamma^2 \underbrace{\gamma^0 \gamma^0}_{-1} \gamma^1 \underbrace{\gamma^0 \gamma^0}_{-1} \underbrace{\gamma^0 \gamma^0}_{-1} \\ & = i \gamma^0 \gamma^3 \underbrace{\gamma^2 \gamma^1}_{\gamma^1 \gamma^2} \\ & = - i \gamma^0 \underbrace{\gamma^3 \gamma^1}_{-\gamma^3 \gamma^1} \gamma^2 \\ & = i \gamma^0 \gamma^1 \underbrace{\gamma^3 \gamma^2}_{\gamma^2 \gamma^3} \\ & = - i \gamma^0 \gamma^1 \gamma^2 \gamma^3 = \gamma^5 ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the traceless property 
+        \begin{equation*}
+        \begin{aligned}
+            \tr (\gamma^5) & = \tr(-i \gamma^0 \gamma^1 \gamma^2 \gamma^3) \\ & = - i \tr (\underbrace{\gamma^0 \gamma^1}_{- \gamma^1 \gamma^0} \gamma^2 \gamma^3)\\ &  = i \tr(\gamma^1 \underbrace{\gamma^0 \gamma^2}_{- \gamma^2 \gamma^0} \gamma^3)\\ &  = - i \tr (\gamma^1 \gamma^2 \underbrace{\gamma^0 \gamma^3}_{- \gamma^3 \gamma^0}) \\ & = i \tr (\gamma^1 \gamma^2 \gamma^3 \gamma^0) \\ & = i \tr ( \gamma^0 \gamma^1 \gamma^2 \gamma^3) \\ & = - \tr (\gamma^5) ~,
+        \end{aligned}        
+        \end{equation*}
+        where we have used the cyclic property of the trace.
+    \end{proof}
+
+    Explicitly, in the Dirac representation, it becomes
+    \begin{equation*}
+        \gamma^5 = \begin{bmatrix}
+            0 & - \mathbb I_2 \\ - \mathbb I_2 & 0 \\
+        \end{bmatrix} ~.
+    \end{equation*}
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+        \begin{aligned}
+            \gamma^5 & = - i \gamma^0 \gamma^1 \gamma^2 \gamma^3 = (-i)^5 \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & - \mathbb I_2 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & \sigma^1 \\ - \sigma^1 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & \sigma^2 \\ - \sigma^2 & 0 \\
+            \end{bmatrix}\begin{bmatrix}
+                0 & \sigma^3 \\ - \sigma^3 & 0 \\
+            \end{bmatrix} \\ & = -i \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & - \mathbb I_2 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & - \sigma^1 \sigma^2 \\ - \sigma^1 \sigma^2 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & \sigma^3 \\ - \sigma^3 & 0 \\
+            \end{bmatrix} \\ & = -i \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & - \mathbb I_2 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & - \underbrace{\sigma^1 \sigma^2}_{i \sigma^3} \sigma^3 \\ \underbrace{\sigma^1 \sigma^2}_{i \sigma^3} \sigma^3 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & - \mathbb I_2 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & - \underbrace{(\sigma^3)^2 }_{\mathbb I_2}\\ \underbrace{(\sigma^3)^2 }_{\mathbb I_2} & 0 \\
+            \end{bmatrix} \\ & = \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & - \mathbb I_2 \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & \mathbb I_2 \\ - \mathbb I_2 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                0 & -\mathbb I_2 \\ - \mathbb I_2 & 0 \\
+            \end{bmatrix} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    It adds another dimension to the $4$-dimensional Clifford algebra. Infact, we can define a $5$-dimensional Clifford algebra by the anticommutator relations
+    \begin{equation*}
+        \{\gamma^M, \gamma^N\} = 2 \eta^{MN} ~,
+    \end{equation*}
+    where $M, N = 0,1,2,3,5$ with Minkovski metric $\eta^{MN} = diag(-++++)$.
+
+    It can be used to define the projection operators on chiral (Weyl) spinors
+    \begin{equation*}
+        P_L = \frac{\mathbb I - \gamma^5}{2} ~, \quad P_L = \frac{\mathbb I - \gamma^5}{2} ~,
+    \end{equation*}
+    such that they satisfy the following properties 
+    \begin{enumerate}
+        \item nilpotent, i.e. 
+            \begin{equation*}
+                P_L^2 = P_L ~, \quad P_R^2 = P_R ~,
+            \end{equation*}
+        \item orthogonality, i.e. 
+            \begin{equation*}
+                P_L P_R = 0 ~, \quad P_L + P_R = \mathbb I~.
+            \end{equation*}
+    \end{enumerate}
+    \begin{proof}
+        For the nilpotent property, using~\eqref{sqgamma}
+        \begin{equation*}
+            P_L^2 = \Big ( \frac{\mathbb I - \gamma^5}{2} \Big)^2 = \frac{1}{4} (\mathbb I^2 - 2 \gamma^5 + \underbrace{(\gamma^5)^2}_{\mathbb I} ) = \frac{2 \mathbb I - 2 \gamma^5}{4} = \frac{\mathbb I - \gamma^5}{2} = P_L
+        \end{equation*}
+        and 
+        \begin{equation*}
+            P_R^2 = \Big ( \frac{\mathbb I + \gamma^5}{2} \Big)^2 = \frac{1}{4} (\mathbb I^2 + 2 \gamma^5 + \underbrace{(\gamma^5)^2}_{\mathbb I} ) = \frac{2 \mathbb I + 2 \gamma^5}{4} = \frac{\mathbb I + \gamma^5}{2} = P_R ~.
+        \end{equation*}
+
+        For the orthogonality property, using~\eqref{sqgamma}
+        \begin{equation*}
+            P_L P_R = \Big ( \frac{\mathbb I - \gamma^5}{2} \Big)  \Big ( \frac{\mathbb I + \gamma^5}{2} \Big) = \frac{1}{4} (\mathbb I^2 - \underbrace{(\gamma^5)^2}_{\mathbb I} ) = \frac{\mathbb I - \mathbb I}{4} = 0
+        \end{equation*}
+        and
+        \begin{equation*}
+            P_L + P_R = \Big ( \frac{\mathbb I - \cancel{\gamma^5}}{2} \Big) + \Big ( \frac{\mathbb I + \cancel{\gamma^5}}{2} \Big) = \frac{\mathbb I + \mathbb I}{2} = \mathbb I ~.
+        \end{equation*}
+    \end{proof}
+    They allow to divide a Dirac spinor into two components $\psi = \psi_L + \psi_R$, where $\psi_L = P_L \psi$ is the left-handed one and $\psi_R = P_R \psi$ is the right-handed one. Infact a Dirac spinor can be written as $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$. Spinors live in a $4$-dimensional complex linear space $\psi(x) \in \mathbb C^4$. Therefore, the gamma matrices are an example of $4$-dimensional matrices act on this space. A complete basis of linear operators must have $16$ of them and we can choose $(\mathbb I, \gamma^5, \Sigma^{\mu\nu}, \gamma^\mu \gamma^5, \gamma^5)$ where $\Sigma^{\mu\nu} = - \frac{i}{4} [\gamma^\mu, \gamma^\nu]$ with $\mu > \nu$. They are indeed respectively $1 + 4 + 6 + 4 + 1 = 16$ linearly independent matrices. 
+
+\chapter{Non-relativistic limit} 
+
+\chapter{Covariance} 
+
+\section{Dirac spinor representation}
+
+    Now, we verify that the Dirac equation is Lorentz invariant, i.e~it is covariant under a generic transformation of $SO^+(1,3)$. Recall that given a Lorentz transformation $\Lambda \in SO^+(1,3)$, the coordinates transform as 
+    \begin{equation*}
+        (x')^\mu = \Lambda^\mu_{\phantom \mu \nu} x^\nu
+    \end{equation*}
+    and the partial derivatives transform as 
+    \begin{equation*}
+        {\partial'}_\mu = \Lambda_\mu^{\phantom \mu \nu} \partial_\nu ~.
+    \end{equation*}
+    Therefore, the Dirac spinor transform as 
+    \begin{equation*}
+        \psi'(x') = S(\Lambda) \psi(x)
+    \end{equation*}
+    where $S(\Lambda)$ is linear representation of the proper orthochronous group of spinors and the Dirac equation is covariant 
+    \begin{equation*}
+        (\gamma^\mu \partial'_\mu + m) \psi' (x') = 0 ~.
+    \end{equation*}
+
+    The infinitesimal Lorentz transformation $S(\Lambda)$ is 
+    \begin{equation*}
+        S = \mathbb I + \frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}
+    \end{equation*}
+    where $\Sigma^{\mu\nu}$ are a set of $6$ antisymmetric $4 \times 4$ matrices that act on spinors
+    \begin{equation}\label{sigmas}
+        \Sigma^{\mu\nu} = - \frac{i}{4} [\gamma^\mu, \gamma^\nu] ~,
+    \end{equation}
+    such that they satisfy the commutator relations 
+    \begin{equation*}
+        [\Sigma^{\mu\nu}, \gamma^\rho] = i (\eta^{\mu\rho} \gamma^\nu - \eta^{\nu\rho} \gamma^\mu) ~.
+    \end{equation*}
+    \begin{proof}
+        We transform with a Lorentz transformation every components in the Dirac equation
+        \begin{equation*}
+            0 = (\gamma^\mu \partial'_\mu + m) \psi'(x') = (\gamma^\mu \Lambda_\mu^{\phantom \mu \nu} \partial_\nu + m) S(\Lambda) \psi(x) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = S^{-1}(\Lambda) (\gamma^\mu \Lambda_\mu^{\phantom \mu \nu} \partial_\nu + m) S(\Lambda) \psi(x) \\ & = (S^{-1}(\Lambda) \gamma^\mu \Lambda_\mu^{\phantom \mu \nu} S(\Lambda) \partial_\nu + m \underbrace{S^{-1} (\Lambda) S(\Lambda)}_1) \psi(x) \\ & = (S^{-1}(\Lambda) \gamma^\mu \Lambda_\mu^{\phantom \mu \nu} S(\Lambda) \partial_\nu + m) \psi(x) ~.
+        \end{aligned}
+        \end{equation*}
+        We compare it with~\eqref{covdirac} 
+        \begin{equation*}
+            0 = (S^{-1}(\Lambda) \gamma^\mu \Lambda_\mu^{\phantom \mu \nu} S(\Lambda) \partial_\nu + m) \psi(x) = (\gamma^\nu \partial_\nu + m) \psi(x) 
+        \end{equation*}
+        and we find 
+        \begin{equation*}
+            S^{-1}(\Lambda) \gamma^\mu \Lambda_\mu^{\phantom \mu \nu} S(\Lambda) = \gamma^\nu
+        \end{equation*}
+        or, equivalently,
+        \begin{equation*}
+            S^{-1}(\Lambda) \gamma^\mu \underbrace{\Lambda^\rho_{\phantom \rho \nu} \Lambda_\mu^{\phantom \mu \nu}}_{\delta^\rho_{\phantom \rho \mu} } S(\Lambda) = \Lambda^\rho_{\phantom \rho \nu} \gamma^\nu ~,
+        \end{equation*}
+        \begin{equation*}
+            S^{-1}(\Lambda) \underbrace{\gamma^\mu \delta^\rho_{\phantom \rho \mu}}_{\gamma^\rho}  S(\Lambda) = \Lambda^\rho_{\phantom \rho \nu} \gamma^\nu ~,
+        \end{equation*}
+        \begin{equation}\label{proof1}
+            S^{-1}(\Lambda) \gamma^\rho  S(\Lambda) = \Lambda^\rho_{\phantom \rho \nu} \gamma^\nu ~.
+        \end{equation}
+
+        Now, we consider an infinitesimal Lorentz transformation 
+        \begin{equation*}
+            \Lambda^\mu_{\phantom \mu \nu} = \delta^\mu_{\phantom \mu \nu} + \omega^\mu_{\phantom \mu \nu} ~,
+        \end{equation*}
+        where $\omega_{\mu\nu} = - \omega_{\nu\mu}$, which induces an infinitesimal Lorentz transformation on the spinor 
+        \begin{equation*}
+            S(\Lambda) = \mathbb I + \frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu} ~,
+        \end{equation*}
+        where $\Sigma^{\mu\nu} = - \Sigma^{\mu\nu}$. Substituting in~\eqref{proof1}, we find 
+        \begin{equation*}
+            \Big (\mathbb I - \frac{i}{2} \omega_{\alpha\beta} \Sigma^{\alpha\beta} \Big) \gamma^\rho \Big (\mathbb I + \frac{i}{2} \omega_{\sigma\lambda} \Sigma^{\sigma\lambda} \Big) = (\delta^\rho_{\phantom \rho \nu} + \omega^\rho_{\phantom \rho \nu}) \gamma^\nu ~.
+        \end{equation*}
+        and we only keep first order terms in $\omega$ 
+        \begin{equation*}
+            \cancel{\gamma^\rho} - \frac{i}{2} \omega_{\alpha\beta} \Sigma^{\alpha\beta} \gamma^\rho + \frac{i}{2} \gamma^\rho \omega_{\sigma\lambda} \Sigma^{\sigma\lambda} = \cancel{\gamma^\rho} + \omega^\rho_{\phantom \rho \nu} \gamma^\nu ~,
+        \end{equation*}
+        \begin{equation*}
+            - \frac{i}{2} \omega_{\alpha\beta} \underbrace{(\Sigma^{\alpha\beta} \gamma^\rho - \gamma^\rho \Sigma^{\alpha\beta})}_{[\Sigma^{\alpha\beta}, \gamma^\rho]} = \omega^\rho_{\phantom \rho \nu} \gamma^\nu ~,
+        \end{equation*}
+        \begin{equation*}
+            - \frac{i}{2} \omega_{\alpha\beta} [\Sigma^{\alpha\beta}, \gamma^\rho] = \omega^\rho_{\phantom \rho \nu} \gamma^\nu ~,
+        \end{equation*}
+        where we have exchanged $\sigma = \alpha$ and $\lambda = \beta$. Hence 
+        \begin{equation*}
+            \cancel{\omega_{\alpha\beta}} [\Sigma^{\alpha\beta}, \gamma^\rho] = 2 i \omega^\rho_{\phantom \rho \beta} \gamma^\beta = \omega_{\alpha\beta} 2i \underbrace{\eta^{\rho\alpha} \gamma^{\beta}}_{\frac{\eta^{\rho\alpha} \gamma^{\beta} - \eta^{\rho\beta} \gamma^{\alpha}}{2}} = \cancel{\omega_{\alpha\beta}} i ( \eta^{\rho\alpha} \gamma^{\beta} - \eta^{\rho\beta} \gamma^{\alpha}) ~,
+        \end{equation*}
+        where we have exchanged $\nu = \beta$ and we exploit the antysymmetry of $\omega_{\alpha\beta}$ to antisymmetrise $\eta^{\rho\alpha}\gamma^{\beta}$. Thus 
+        \begin{equation*}
+            [\Sigma^{\alpha\beta}, \gamma^\rho] = i (\eta^{\rho\alpha} \gamma^{\beta} - \eta^{\rho\beta} \gamma^{\alpha}) ~.
+        \end{equation*}
+        The solution of this algebraic commutation equation is 
+        \begin{equation*}
+            \Sigma^{\alpha\beta} = - \frac{i}{4} [\gamma^\alpha, \gamma^\beta] ~.
+        \end{equation*}
+        Infact, using~\eqref{cliffordrel}
+        \begin{equation*}
+        \begin{aligned}
+            [\Sigma^{\alpha\beta}, \gamma^\mu] & = - \frac{i}{4} [\gamma^\alpha \gamma^\beta - \gamma^\beta \gamma^\alpha, \gamma^\mu] \\ & = - \frac{i}{4} [\gamma^\alpha \gamma^\beta, \gamma^\mu] - \frac{i}{4} [\gamma^\beta \gamma^\alpha, \gamma^\mu] \\ & = - \frac{i}{4} (\gamma^\alpha \{\gamma^\beta, \gamma^\mu\} - \{\gamma^\alpha, \gamma^\mu \} \gamma^\beta - \gamma^\beta \{\gamma^\alpha, \gamma^\mu\} + \{\gamma^\beta, \gamma^\mu \} \gamma^\alpha ) \\ & = - \frac{i}{4} (\gamma^\alpha \underbrace{\{\gamma^\beta, \gamma^\mu\}}_{2 \eta^{\beta\mu}} - \underbrace{\{\gamma^\alpha, \gamma^\mu \}}_{2 \eta^{\alpha\mu}} \gamma^\beta - \gamma^\beta \underbrace{\{\gamma^\alpha, \gamma^\mu\}}_{2\eta^{\alpha\mu}} + \underbrace{\{\gamma^\beta, \gamma^\mu \}}_{2 \eta^{\beta \mu}} \gamma^\alpha ) \\ & = - \frac{i}{2} (\gamma^\alpha \eta^{\beta\mu} - \eta^{\alpha\mu}\gamma^\beta - \gamma^\beta \eta^{\alpha\mu} + \eta^{\beta \mu} \gamma^\alpha ) \\ & = - \frac{i}{2} (\eta^{\beta\mu} \gamma^\alpha  - \eta^{\alpha\mu} \gamma^\beta - \eta^{\alpha\mu} \gamma^\beta + \eta^{\beta \mu} \gamma^\alpha ) \\ & = - i (\eta^{\mu\beta} \gamma^\alpha  - \eta^{\mu\alpha} \gamma^\beta) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the fact that the $\eta$ is symmetric, it commutes with the $\gamma$'s and the identity
+        \begin{equation*}
+            [AB,C] = ABC - CAB = ABC + ACB - CAB - ACB = A \{B, C\} - \{A, C\} B ~.
+        \end{equation*}
+    \end{proof}
+
+    A generic Lorentz transformation is obtained by iterating intinitesimal ones via exponential map
+    \begin{equation}\label{lorspin}
+        S(\Lambda) = \exp(\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) = \exp(\frac{1}{4} \omega_{\mu\nu} \gamma^\mu \gamma^\nu)
+    \end{equation}
+    \begin{proof}
+        Infact, using~\eqref{sigmas}
+        \begin{equation*}
+        \begin{aligned}
+            S(\Lambda) & = \exp(\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) \\ & =  \exp(\frac{i}{2} \omega_{\mu\nu} (-\frac{i}{4} [\gamma^\mu,\gamma^\nu])) \\ & = \exp(\frac{1}{8} \omega_{\mu\nu} (\gamma^\mu \gamma^\nu - \underbrace{\gamma^\nu \gamma^\mu}_{-\gamma^\mu \gamma^\nu})) \\ & = \exp(\frac{1}{8} \omega_{\mu\nu} (\gamma^\mu \gamma^\nu + \gamma^\mu \gamma^\nu )) \\ & = \exp(\frac{1}{4} \omega_{\mu\nu} \gamma^\mu \gamma^\nu) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\section{Application on rotations and boosts}
+
+    \begin{example}[Rotation around the z-axis]
+        Consider a rotation around the z-axis. The infinitesimal Lorentz transformation is parametrised by 
+        \begin{equation*}
+            \omega_{\mu\nu} = \begin{cases}
+                \varphi & (\mu, \nu) = (1,2) \\
+                - \varphi & (\mu, \nu) = (2,1) \\
+                0 & otherwise \\
+            \end{cases} ~.
+        \end{equation*}
+        Therefore, the infinitesimal $\omega$ matrix is 
+        \begin{equation*}
+            \omega^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+                0 & 0 & 0 & 0 \\
+                0 & 0 & \varphi & 0 \\
+                0 & -\varphi & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+            \end{bmatrix}
+        \end{equation*}
+        and a finite Lorentz transformation can be found by the exponential map
+        \begin{equation*}
+            \Lambda^\mu_{\phantom \mu \nu} = (\exp(\omega))^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & \cos \varphi & \sin \varphi & 0 \\
+                0 & -\sin \varphi & \cos \varphi & 0 \\
+                0 & 0 & 0 & 1 \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        \begin{proof}
+            Recall the Taylor expansions of the sine and cosine functions
+            \begin{equation*}
+                \cos \varphi = 1 - \frac{\varphi^2}{2} + \ldots ~, \quad \sin \varphi = \varphi - \frac{\varphi^3}{3!} + \ldots ~.
+            \end{equation*}
+            We Taylor expand the exponential and find
+            \begin{equation*}
+            \begin{aligned}
+                \exp(\omega) & = \sum_{k = 0}^\infty \frac{\omega^k}{k!} = \sum_{k=0}^{\infty} \frac{1}{k!} \begin{bmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & \varphi & 0 \\
+                    0 & -\varphi & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} \\ & = \mathbb I_4 + \begin{bmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & \varphi & 0 \\
+                    0 & -\varphi & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \frac{1}{2}\begin{bmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & -\varphi^2 & 0 & 0 \\
+                    0 & 0 & -\varphi^2 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \frac{1}{3!} \begin{bmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & - \varphi^3 & 0 \\
+                    0 & \varphi^3 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \ldots \\ & = \begin{bmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & 1 - \frac{\varphi^2}{2} + \ldots & \varphi - \frac{\varphi^3}{3!} + \ldots & 0 \\
+                    0 & - \varphi + \frac{\varphi^3}{3!} + \ldots & 1 - \frac{\varphi^2}{2} + \ldots & 0 \\
+                    0 & 0 & 0 & 1 \\
+                \end{bmatrix} = \begin{bmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & \cos \varphi & \sin \varphi & 0 \\
+                    0 & - \sin \varphi & \cos \varphi & 0 \\
+                    0 & 0 & 0 & 1 \\
+                \end{bmatrix} ~.
+            \end{aligned}
+            \end{equation*}
+        \end{proof}
+
+        Moreover, a generic Lorents transformation on a Dirac spinor is 
+        \begin{equation*}
+            S(\Lambda) = \exp(\frac{i \varphi}{2} \begin{bmatrix}
+                \sigma^3 & 0 \\ 0 & \sigma^3 \\
+            \end{bmatrix}) = \begin{bmatrix}
+                \exp(\frac{i \varphi}{2}) & 0 & 0 & 0 \\ 
+                0 & \exp(\frac{-i \varphi}{2}) & 0 & 0 \\ 
+                0 & 0 & \exp(\frac{i \varphi}{2}) & 0 \\ 
+                0 & 0 & 0 & \exp(\frac{-i \varphi}{2}) \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        \begin{proof}
+            Infact, using~\eqref{lorspin}
+            \begin{equation*}
+            \begin{aligned}
+                S(\Lambda) & = \exp(\frac{1}{4} \omega_{\mu\nu} \gamma^\mu \gamma^\nu) = \exp(\frac{1}{4} (\underbrace{\omega_{12}}_\varphi \gamma^1 \gamma^2 + \underbrace{\omega_{21}}_{-\varphi} \gamma^2 \gamma^1 )) = \exp(\frac{\varphi}{4} (\gamma^1 \gamma^2 - \underbrace{\gamma^2 \gamma^1}_{- \gamma^1 \gamma^2} )) \\ & = \exp(\frac{\varphi}{2} \underbrace{\gamma^1}_{-i \beta \alpha^1} \underbrace{\gamma^2}_{- i \beta \alpha^3}) = \exp(\frac{\varphi}{2} \underbrace{\beta^2}_1 \alpha^1 \alpha^2) = \exp(\frac{\varphi}{2} \begin{bmatrix}
+                    0 & \sigma^1 \\ \sigma^1 & 0 \\
+                \end{bmatrix} \begin{bmatrix}
+                    0 & \sigma^2 \\ \sigma^2 & 0 \\
+                \end{bmatrix}) \\ & = \exp(\frac{\varphi}{2} \begin{bmatrix}
+                    \underbrace{\sigma^1 \sigma^2}_{i \sigma^3} & 0 \\ 0 & \underbrace{\sigma^1 \sigma^2}_{i \sigma^3} \\
+                \end{bmatrix})  = \exp(\frac{i \varphi}{2} \begin{bmatrix}
+                    \sigma^3 & 0 \\ 0 & \sigma^3 \\
+                \end{bmatrix}) \\ & = \exp(\begin{bmatrix}
+                    \frac{i \varphi}{2} & 0 & 0 & 0 \\
+                    0 & - \frac{i \varphi}{2} & 0 & 0 \\
+                    0 & 0 & \frac{i \varphi}{2} & 0 \\
+                    0 & 0 & 0 & -\frac{i \varphi}{2} \\
+                \end{bmatrix}) = \begin{bmatrix}
+                    \exp(\frac{i \varphi}{2}) & 0 & 0 & 0 \\ 
+                    0 & \exp(\frac{-i \varphi}{2}) & 0 & 0 \\ 
+                    0 & 0 & \exp(\frac{i \varphi}{2}) & 0 \\ 
+                    0 & 0 & 0 & \exp(\frac{-i \varphi}{2}) \\
+                \end{bmatrix} ~,
+            \end{aligned}
+            \end{equation*}
+            where we used the property of the exponential of a diagonal matrix.
+        \end{proof}
+        Notice that it is a unitary representation $S^\dagger(\Lambda) = S^{-1}(\Lambda)$. It is also a double-valued representation, since a rotation of $\varphi = 2 \pi$ is represented by $S(\Lambda) = - \mathbb I$. Only with a rotation of $\varphi = 4 \pi$, we find the identity again.
+    \end{example}
+
+    \begin{example}[Generic rotation]
+        A generic rotation of an angle $\varphi$ around an axis $\mathbb n$ is represented by 
+        \begin{equation*}
+            S(\Lambda) = \begin{bmatrix}
+                \exp(\frac{i \varphi}{2} \mathbf n \cdot \boldsymbol \sigma) & 0 \\
+                0 & \exp(\frac{i \varphi}{2} \mathbf n \cdot \boldsymbol \sigma) \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        This means that a decomposition like the non-relativistic limit make a rotation on both the wave functions indipendently.
+    \end{example}
+
+    \begin{example}[Boost along the x-axis]
+        Consider a boost around the x-axis. The infinitesimal Lorentz transformation is parametrised by 
+        \begin{equation*}
+            \omega_{\mu\nu} = \begin{cases}
+                - w & (\mu, \nu) = (0,1) \\
+                - w & (\mu, \nu) = (1,0) \\
+                0 & otherwise \\
+            \end{cases} ~.
+        \end{equation*}
+        Therefore, the infinitesimal $\omega$ matrix is 
+        \begin{equation*}
+            \omega^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+                0 & - w & 0 & 0 \\
+                - w & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+            \end{bmatrix}
+        \end{equation*}
+        and a finite Lorentz transformation can be found by the exponential map
+        \begin{equation*}
+            \Lambda^\mu_{\phantom \mu \nu} = (\exp(\omega))^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+                \cosh w & - \sinh w & 0 & 0 \\
+                - \sinh w & \cosh w & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1 \\
+            \end{bmatrix} = \begin{bmatrix}
+                \gamma & - \beta \gamma & 0 & 0 \\
+                - \beta \gamma & \gamma & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1 \\
+            \end{bmatrix}~,
+        \end{equation*}
+        where we defined the rapidity $w$ in terms of the Lorentz factors 
+        \begin{equation}\label{rap}
+            \gamma = \frac{1}{\sqrt{1 - v^2}} = \cosh w ~, \quad \beta = v = \tanh w ~, \quad \beta \gamma = \sinh w ~.
+        \end{equation}
+        \begin{proof}
+            Recall the Taylor expansions of the hyperbolic sine and hyperbolic cosine functions
+            \begin{equation*}
+                \cosh w = 1 + \frac{w^2}{2} + \ldots ~, \quad \sinh w = w + \frac{w^3}{3!} + \ldots ~.
+            \end{equation*}
+            We Taylor expand the exponential and find
+            \begin{equation*}
+            \begin{aligned}
+                \exp(\omega) & = \sum_{k = 0}^\infty \frac{\omega^k}{k!} = \sum_{k=0}^{\infty} \frac{1}{k!} \begin{bmatrix}
+                    0 & - w & 0 & 0 \\
+                    - w & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} \\ & = \mathbb I_4 + \begin{bmatrix}
+                    0 & - w & 0 & 0 \\
+                    - w & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \frac{1}{2}\begin{bmatrix}
+                    w^2 & 0 & 0 & 0 \\
+                    0 & w^2 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \frac{1}{3!} \begin{bmatrix}
+                    0 & - w^3 & 0 & 0 \\
+                    - w^3 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                \end{bmatrix} + \ldots \\ & = \begin{bmatrix}
+                    1 + \frac{w^2}{2} + \ldots & - w - \frac{w^3}{3!} + \ldots & 0 & 0 \\
+                    - w - \frac{w^3}{3!} + \ldots & 1 + \frac{w^2}{2} + \ldots & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1 \\
+                \end{bmatrix} = \begin{bmatrix}
+                    \cosh w & - \sinh w & 0 & 0 \\
+                    - \sinh w & \cosh w & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 0 & 0 & 1 \\    
+                \end{bmatrix} ~.
+            \end{aligned}
+            \end{equation*}
+        \end{proof}
+
+        Moreover, a generic Lorents transformation on a Dirac spinor is 
+        \begin{equation}\label{loridrac}
+            S(\Lambda) = \cosh \frac{w}{2} \mathbb I - \sinh \frac{w}{2} \alpha^1 ~.
+        \end{equation}
+        \begin{proof}
+            Infact, using~\eqref{lorspin}
+            \begin{equation*}
+            \begin{aligned}
+                S(\Lambda) & = \exp(\frac{1}{4} \omega_{\mu\nu} \gamma^\mu \gamma^\nu) = \exp(\frac{1}{4} (\underbrace{\omega_{01}}_w \gamma^0 \gamma^1 + \underbrace{\omega_{10}}_w \gamma^1 \gamma^0 )) = \exp(\frac{w}{4} (\gamma^0 \gamma^1 + \underbrace{\gamma^0 \gamma^1}_{\gamma^1 \gamma^0} )) \\ & = \exp(\frac{w}{2} \underbrace{\gamma^0}_{-i \beta} \underbrace{\gamma^1}_{- i \beta \alpha^1}) = \exp(- \frac{w}{2} \underbrace{\beta^2}_1 \alpha^1) = \exp(- \frac{w}{2} \begin{bmatrix}
+                    0 & \sigma^1 \\ \sigma^1 & 0 \\
+                \end{bmatrix}) \\ & = \exp(\begin{bmatrix}
+                    0 & 0 & 0 & - \frac{w}{2} \\
+                    0 & 0 & - \frac{w}{2} & 0 \\
+                    0 & - \frac{w}{2} & 0 & 0 \\
+                    - \frac{w}{2} & 0 & 0 & 0 \\
+                \end{bmatrix}) = \sum_{k = 0}^{\infty} \frac{1}{k!} \begin{bmatrix}
+                    0 & 0 & 0 & - \frac{w}{2} \\
+                    0 & 0 & - \frac{w}{2} & 0 \\
+                    0 & - \frac{w}{2} & 0 & 0 \\
+                    - \frac{w}{2} & 0 & 0 & 0 \\
+                \end{bmatrix}^k \\ & = \mathbb I + \begin{bmatrix}
+                    0 & 0 & 0 & - \frac{w}{2} \\
+                    0 & 0 & - \frac{w}{2} & 0 \\
+                    0 & - \frac{w}{2} & 0 & 0 \\
+                    - \frac{w}{2} & 0 & 0 & 0 \\
+                \end{bmatrix} + \frac{1}{2} \begin{bmatrix}
+                    \frac{w^2}{4} & 0 & 0 & 0\\
+                    0 & \frac{w^2}{4} & 0 & 0 \\
+                    0 & 0 & \frac{w^2}{4} & 0 \\
+                    0 & 0 & 0 & \frac{w^2}{4} \\
+                \end{bmatrix} + \frac{1}{3!} \begin{bmatrix}
+                    0 & 0 & 0 & - \frac{w^3}{8} \\
+                    0 & 0 & - \frac{w^3}{8} & 0 \\
+                    0 & - \frac{w^3}{8} & 0 & 0 \\
+                    - \frac{w^3}{8} & 0 & 0 & 0 \\
+                \end{bmatrix} + \ldots \\ & = \begin{bmatrix}
+                    1 + \frac{w^2}{8} + \ldots & 0 & 0 & - \frac{w}{2} - \frac{w^3}{48} + \ldots \\
+                    0 & 1 + \frac{w^2}{8} + \ldots & - \frac{w}{2} - \frac{w^3}{48} + \ldots & 0 \\ 
+                    0 & - \frac{w}{2} - \frac{w^3}{48} + \ldots & 1 + \frac{w^2}{8} + \ldots & 0 \\ 
+                    - \frac{w}{2} - \frac{w^3}{48} + \ldots & 0 & 0 & 1 + \frac{w^2}{8} + \ldots \\ 
+                \end{bmatrix} \\ & = \begin{bmatrix}
+                    \cosh \frac{w}{2} & 0 & 0 & - \sinh \frac{w}{2} \\
+                    0 & \cosh \frac{w}{2} & - \sinh \frac{w}{2} & 0 \\
+                    0 & - \sinh \frac{w}{2} & \cosh \frac{w}{2} & 0 \\
+                    - \sinh \frac{w}{2} & 0 & 0 & \cosh \frac{w}{2} \\
+                \end{bmatrix} \\ & = \cosh \frac{w}{2} \mathbb I - \sinh \frac{w}{2} \alpha^1 ~,
+            \end{aligned}
+            \end{equation*}
+            where we used the Taylor expansion of the exponential.
+        \end{proof}
+        Notice that it is a not unitary representation $S^\dagger(\Lambda) \neq S^{-1}(\Lambda)$, since there is a theorem that states that in a non-compact group, like the boost because they are not upper-bounded in velocity, the only irreducible representations are infinite-dimensional. However, it satisfies $S^\dagger (\Lambda) = S(\Lambda)$.
+
+        In terms of mass, momentum and energy, a finite Lorentz transformation on a Dirac spinor becomes 
+        \begin{equation*}
+            S(\Lambda) = \sqrt{\frac{m + E}{2m}} \Big( \mathbb I - \frac{\alpha^1 |\mathbf p|}{m + E} \Big) ~.
+        \end{equation*}
+        \begin{proof}
+            Infact, using the hyberbolic trigonometry identities
+            \begin{equation*}
+                \tanh \frac{w}{2} = \frac{\sinh w}{1 + \cosh w}
+            \end{equation*}
+            and 
+            \begin{equation*}
+                \cosh \frac{w}{2} = \sqrt{\frac{1 + \cosh w}{2}}
+            \end{equation*}
+
+            Using the rapidity relations~\eqref{rap}, we can rewrite~\eqref{loridrac} as 
+            \begin{equation*}
+            \begin{aligned}
+                S(\Lambda) & = \cosh \frac{w}{2} \Big( \mathbb I - \alpha^1 \tanh \frac{w}{2} \Big) \\ & = \sqrt{\frac{1}{2}} (1 + \underbrace{\cosh w}_{\gamma})^{\frac{1}{2}} \Big (\mathbb I + \alpha^1 \frac{\overbrace{\sinh w}^{\beta\gamma}}{1 + \underbrace{\cosh w}_\gamma} \Big) \\ & = \sqrt{\frac{1 + \gamma}{2}} \Big ( \mathbb I + \alpha^1 \frac{\beta \gamma}{1 + \gamma}\Big) ~.
+            \end{aligned}
+            \end{equation*}
+
+            Now, we use the $4$-momentum $(E, p) = (m \gamma, m \gamma\beta)$ and we reverse to find 
+            \begin{equation*}
+                \gamma = \frac{E}{m} ~, \quad \beta \gamma = \frac{|\mathbf p|}{m} ~.
+            \end{equation*}
+
+            Putting together, we obtain 
+            \begin{equation*}
+                S(\Lambda) = \sqrt{\frac{1 + \gamma}{2}} \Big ( \mathbb I + \alpha^1 \frac{\beta \gamma}{1 + \gamma}\Big) = \sqrt{\frac{1 + \frac{E}{m}}{2}} \Big ( \mathbb I + \alpha^1  \frac{\frac{\mathbf p}{m}}{1 + \frac{E}{m}}\Big) = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\alpha^1 |\mathbf p|}{m + E}\Big) ~.
+            \end{equation*}
+        \end{proof}
+    \end{example}
+
+    \begin{example}[Generic boost]
+        A generic boost of rapidity $w$ along an axis $\mathbb n$ is represented by 
+        \begin{equation*}\label{genlorspi}
+            S(\Lambda) = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\boldsymbol \alpha \cdot \mathbf p}{m + E}\Big)
+        \end{equation*}
+    \end{example}
+
+\chapter{Wave plane solutions}
+
+    In order to find a solution of the Dirac equation~\eqref{covdirac}, we propose a plane wave ansatz 
+    \begin{equation*}
+        \psi_P(x) = w (p) \exp(i p_\mu x^\mu) ~,
+    \end{equation*}
+    where $\exp(i p_\mu x^\mu)$ is the propagation in space-time, $p^\mu$ is arbitrary and $w(p)$ is the polarisation 
+    \begin{equation*}
+        w(p) = \begin{bmatrix}
+            w_1(p) \\ w_2(p) \\ w_3(p) \\ w_4(p) \\
+        \end{bmatrix} ~.
+    \end{equation*}
+    such that the polarisation satisfies the algebraic equation 
+    \begin{equation}\label{pol}
+        (i \gamma^\mu p_\mu + m ) w(p) = 0 ~,
+    \end{equation}
+    and $p^\mu$ satisfies the mass-shell relation for a relativistic particle
+    \begin{equation*}
+        p^\mu p_\mu + m^2 = 0~.
+    \end{equation*}
+    \begin{proof}
+        Infact, inserting the ansatz in~\eqref{covdirac}
+        \begin{equation*}
+            0 = (\gamma^\mu \partial_\mu + m) \psi(x) = (\gamma^\mu \partial_\mu + m) w(p) \exp(i p_\mu x^\mu) = \underbrace{(i \gamma^\mu p_\mu + m) w(p)}_0 \underbrace{\exp(i p_\mu x^\mu)}_{\neq 0} ~.
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            (i \gamma^\mu p_\mu + m) w(p) = (i \cancel p + m) w(p) = 0 ~.
+        \end{equation*}
+
+        Furthermore, we have 
+        \begin{equation*}
+            0 = (- i \cancel p + m)(i \cancel p + m) w(p) = \underbrace{(\cancel p^2 + m^2)}_0 \underbrace{w(p)}_{\neq 0} ~,
+        \end{equation*}
+        and we notice, using~\eqref{cliffordrel}
+        \begin{equation*}
+            \cancel p^2 = \gamma^\mu p_\mu \gamma^\nu p_\nu = p_\mu p_\nu \underbrace{\gamma^\mu \gamma^\nu}_{\frac{\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu}{2}} = p_\mu p_\nu \frac{1}{2} \underbrace{(\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu)}_{\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu}}= p_\mu p_\nu \eta^{\mu\nu} = p_\mu p^\mu = p^2 ~,
+        \end{equation*}
+        where we exploit the symmetry of $p^\mu p^\nu$ to symmetrise $\gamma^\mu \gamma^\nu$. Hence
+        \begin{equation*}
+            p^2 + m^2 = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Plane wave at rest}
+
+    \begin{example}[Rest-frame]
+        Consider a particle at rest, which means with $p^\mu = (E,0,0,0)$. Then, we substitute in~\eqref{pol}
+        \begin{equation*}
+            0  = (i \cancel p + m)w(p) = (i \gamma^0 p_0) w(p) = (- \underbrace{i \gamma^0}_{\beta} \underbrace{p^0}_E + m) w(p) = (- \beta E + m) w(p) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            0 = \beta (- \beta E + m) w(P) = (- \beta^2 E + \beta m) w(p) = (- E + \beta m) w(P)
+        \end{equation*}
+        and 
+        \begin{equation*}
+            E w(p) = \beta m w(p)
+        \end{equation*}
+        Recalling the matrix representation of $\beta$, we obtain 
+        \begin{equation*}
+            \begin{bmatrix}
+                E & 0 & 0 & 0 \\
+                0 & E & 0 & 0 \\
+                0 & 0 & E & 0 \\
+                0 & 0 & 0 & E \\
+            \end{bmatrix} 
+            \begin{bmatrix}
+                w_1(p) \\ w_2(p) \\ w_3(p) \\ w_4(p) \\
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                m & 0 & 0 & 0 \\
+                0 & m & 0 & 0 \\
+                0 & 0 & -m & 0 \\
+                0 & 0 & 0 & -m \\
+            \end{bmatrix}
+            \begin{bmatrix}
+                w_1(p) \\ w_2(p) \\ w_3(p) \\ w_4(p) \\ 
+            \end{bmatrix} ~.
+        \end{equation*}
+        This means that we have four different solutions: two are with positive energy $E = m$ which can be intepreted electrons with spin-up and spin-down
+        \begin{equation*}
+            \psi_1(x) = \begin{bmatrix}
+                1 \\ 0 \\ 0 \\ 0 \\
+            \end{bmatrix} \exp(-imt) ~, \quad \psi_2(x) = \begin{bmatrix}
+                0 \\ 1 \\ 0 \\ 0 \\
+            \end{bmatrix} \exp(-imt) ~,
+        \end{equation*}
+        and two with negative energy $E = - m$ which can be intepreted positrons with spin-up and spin-down
+        \begin{equation*}
+            \psi_3(x) = \begin{bmatrix}
+                0 \\ 0 \\ 1 \\ 0 \\
+            \end{bmatrix} \exp(imt) ~, \quad \psi_4(x) = \begin{bmatrix}
+                0 \\ 0 \\ 0 \\ 1 \\
+            \end{bmatrix} \exp(imt) ~.
+        \end{equation*}
+    \end{example}
+
+\section{Moving plane wave}
+
+    In order to find general solutions with arbitrary momentum, we apply a Lorentz transformation to the rest-frame solutions. A generic boost trasforms the rest-frame plane wave into 
+    \begin{equation*}
+    \begin{aligned}
+        & \psi_1(x) = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+            1 \\ 0 \\ \frac{p_3}{m+E} \\ \frac{p_+}{m+E} \\
+        \end{bmatrix} \exp(ip_\mu x^\mu t) ~, \quad \psi_2(x) = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+            0 \\ 1 \\ \frac{p_-}{m + E} \\ - \frac{p_3}{m + E} \\
+        \end{bmatrix} \exp(ip_\mu x^\mu t) ~, \\ & 
+        \psi_3(x) = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+            \frac{p_3 }{m+E}\\ \frac{p_+}{m+E} \\ 1 \\ 0 \\
+        \end{bmatrix} \exp(-ip_\mu x^\mu t) ~, \quad \psi_4(x) = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+            \frac{p_- }{m+E}\\ - \frac{p_3}{m+E} \\ 0 \\ 1 \\
+        \end{bmatrix} \exp(-ip_\mu x^\mu t) ~,
+    \end{aligned}
+    \end{equation*}
+    where $p_\pm = p_1 \pm i p_2$. 
+    \begin{proof}
+        Firsly, we compute  
+        \begin{equation*}
+            \alpha^1 = \begin{bmatrix}
+                0 & \sigma^1 \\ \sigma^1 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                0 & 0 & 0 & 1 \\ 
+                0 & 0 & 1 & 0 \\ 
+                0 & 1 & 0 & 0 \\ 
+                1 & 0 & 0 & 0 \\ 
+            \end{bmatrix} ~,
+        \end{equation*}
+        \begin{equation*}
+            \alpha^2 = \begin{bmatrix}
+                0 & \sigma^2 \\ \sigma^2 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                0 & 0 & 0 & -i \\ 
+                0 & 0 & i & 0 \\ 
+                0 & -i & 0 & 0 \\ 
+                i & 0 & 0 & 0 \\ 
+            \end{bmatrix} ~, 
+        \end{equation*}
+        \begin{equation*}
+            \alpha^3 = \begin{bmatrix}
+                0 & \sigma^3 \\ \sigma^3 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                0 & 0 & 1 & 0 \\ 
+                0 & 0 & 0 & -1 \\ 
+                1 & 0 & 0 & 0 \\ 
+                0 & -1 & 0 & 0 \\ 
+            \end{bmatrix} ~.
+        \end{equation*}
+        Hence
+        \begin{equation*}
+            \boldsymbol \alpha \cdot \mathbf p = \alpha^1 p_1 + \alpha^2 p_2 + \alpha^3 p_3 = \begin{bmatrix}
+            0 & 0 & p_3 & p_1 - i p_2 \\
+            0 & 0 & p_1 + i p_2 & - p_3 \\
+            p_3 & p_1 - i p_2 & 0 & 0 \\
+            p_1 + i p_2& -p_3 & 0 & 0 \\
+            \end{bmatrix} = \begin{bmatrix}
+                0 & 0 & p_3 & p_- \\
+                0 & 0 & p_+ & - p_3 \\
+                p_3 & p_- & 0 & 0 \\
+                p_+ & -p_3 & 0 & 0 \\
+            \end{bmatrix} ~.
+        \end{equation*}
+    
+        Now, we compute $\psi_1$ 
+        \begin{equation*}
+        \begin{aligned}
+            S(\Lambda) \psi_1 (x) & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\boldsymbol \alpha \cdot \mathbf p}{m + E}\Big) \psi_1 (x) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{1}{m + E} \begin{bmatrix}
+                0 & 0 & p_3 & p_- \\
+                0 & 0 & p_+ & - p_3 \\
+                p_3 & p_- & 0 & 0 \\
+                p_+ & -p_3 & 0 & 0 \\
+            \end{bmatrix} \Big) \begin{bmatrix}
+                1 \\ 0 \\ 0 \\ 0 \\
+            \end{bmatrix} \exp(i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \begin{bmatrix}
+                1 \\ 0 \\ 0 \\ 0 \\
+            \end{bmatrix} + \frac{1}{m + E} \begin{bmatrix}
+                0 \\ 0 \\ p_3 \\ p_+ \\
+            \end{bmatrix} \Big) \exp(i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+                1 \\ 0 \\ \frac{p_3}{m+E} \\ \frac{p_+}{m+E} \\
+            \end{bmatrix} \exp(ip_\mu x^\mu t)  ~,
+        \end{aligned}
+        \end{equation*}
+        we compute $\psi_2$ 
+        \begin{equation*}
+        \begin{aligned}
+            S(\Lambda) \psi_2 (x) & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\boldsymbol \alpha \cdot \mathbf p}{m + E}\Big) \psi_2 (x) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{1}{m + E} \begin{bmatrix}
+                0 & 0 & p_3 & p_- \\
+                0 & 0 & p_+ & - p_3 \\
+                p_3 & p_- & 0 & 0 \\
+                p_+ & -p_3 & 0 & 0 \\
+            \end{bmatrix} \Big) \begin{bmatrix}
+                0 \\ 1 \\ 0 \\ 0 \\
+            \end{bmatrix} \exp(i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \begin{bmatrix}
+                0 \\ 1 \\ 0 \\ 0 \\
+            \end{bmatrix} + \frac{1}{m + E} \begin{bmatrix}
+                0 \\ 0 \\ p_- \\ - p_3 \\
+            \end{bmatrix} \Big) \exp(i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+                0 \\ 1 \\ \frac{p_-}{m + E} \\ - \frac{p_3}{m + E} \\
+            \end{bmatrix} \exp(ip_\mu x^\mu t) ~,
+        \end{aligned}
+        \end{equation*}
+        we compute $\psi_3$ 
+        \begin{equation*}
+        \begin{aligned}
+            S(\Lambda) \psi_3 (x) & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\boldsymbol \alpha \cdot \mathbf p}{m + E}\Big) \psi_3 (x) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{1}{m + E} \begin{bmatrix}
+                0 & 0 & p_3 & p_- \\
+                0 & 0 & p_+ & - p_3 \\
+                p_3 & p_- & 0 & 0 \\
+                p_+ & -p_3 & 0 & 0 \\
+            \end{bmatrix} \Big) \begin{bmatrix}
+                0 \\ 0 \\ 1 \\ 0 \\
+            \end{bmatrix} \exp(- i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \begin{bmatrix}
+                0 \\ 0 \\ 1 \\ 0 \\
+            \end{bmatrix} + \frac{1}{m + E} \begin{bmatrix}
+                p_3 \\ p_+ \\ 0 \\ 0 \\
+            \end{bmatrix} \Big) \exp(- i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+                \frac{p_3 }{m+E}\\ \frac{p_+}{m+E} \\ 1 \\ 0 \\
+            \end{bmatrix} \exp(-ip_\mu x^\mu t)
+        \end{aligned}
+        \end{equation*}
+        and we compute $\psi_4$ 
+        \begin{equation*}
+        \begin{aligned}
+            S(\Lambda) \psi_4 (x) & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{\boldsymbol \alpha \cdot \mathbf p}{m + E}\Big) \psi_4 (x) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \mathbb I + \frac{1}{m + E} \begin{bmatrix}
+                0 & 0 & p_3 & p_- \\
+                0 & 0 & p_+ & - p_3 \\
+                p_3 & p_- & 0 & 0 \\
+                p_+ & -p_3 & 0 & 0 \\
+            \end{bmatrix} \Big) \begin{bmatrix}
+                0 \\ 0 \\ 0 \\ 1 \\
+            \end{bmatrix} \exp(- i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \Big ( \begin{bmatrix}
+                0 \\ 0 \\ 0 \\ 1 \\
+            \end{bmatrix} + \frac{1}{m + E} \begin{bmatrix}
+                p_- \\ - p_3 \\ 0 \\ 0 \\
+            \end{bmatrix} \Big) \exp(- i p_\mu x^\mu t) \\ & = \sqrt{\frac{m + E}{2m}} \begin{bmatrix}
+                \frac{p_- }{m+E}\\ - \frac{p_3}{m+E} \\ 0 \\ 1 \\
+            \end{bmatrix} \exp(-ip_\mu x^\mu t) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\chapter{Discrete symmetries} 
+\chapter{Dirac action} 

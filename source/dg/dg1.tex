@@ -583,9 +583,9 @@
     The Lie derivative satifies the properties 
     \begin{enumerate}
         \item anticommutativity, i.e. 
-            \begin{equation*}
+            \begin{equation} \label{anti}
                 \pounds_V (W) = - \pounds_W (V) 
-            \end{equation*}
+            \end{equation}
         \item Leibniz rule, i.e. 
             \begin{equation}\label{leib}
                 \pounds_V (fW) = f \pounds_V (W) + \pounds_V (f) W  
@@ -659,9 +659,9 @@
         (\pounds_V W)^i = V^j e_j (W^i) - U^j e_j (V^i) + V^j W^k (\pounds_{e_j} e_k)^i
     \end{equation*}
     which in a coordinate basis becomes 
-    \begin{equation*}
+    \begin{equation}\label{liecomp}
         (\pounds_V W)^i = V^j \pdv{}{x^j} W^i - U^j \pdv{}{x^j} V^i
-    \end{equation*}
+    \end{equation}
     and if we choose $V = \pdv{}{x^1}$
     \begin{equation*}
         (\pounds_V W)^i = \pdv{W^i}{x^1}
@@ -1164,9 +1164,9 @@
 \section{Isometries}
 
     An isometry is a symmetry of the metric tensor 
-    \begin{equation*}
+    \begin{equation}\label{kill}
         \pounds_V g = 0
-    \end{equation*}
+    \end{equation}
     where $V$ is called the Killing vector. Hence, congruences along a Killing vector preserves lengths and angles.
 
     In special relativity, inertial observers can be seen as coordinate frames along Killing vectors, using the Minkovski metric $g = \eta$.
