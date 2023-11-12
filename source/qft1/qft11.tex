@@ -265,21 +265,21 @@
     \end{equation*}
 
     In particular, the $0$-th component is the energy 
-    \begin{equation*}
+    \begin{equation}\label{energ}
     \begin{aligned}
         P^0 & = \int d^3 x ~ T^{00} \\ & = \int d^3 x ~ \Big ( \pdv{\mathcal L}{\partial_0 \phi_i} \partial^0 \phi_i - \delta^{0 0} \mathcal L \Big) \\ & = \int d^3 x ~ \Big ( \underbrace{\pdv{\mathcal L}{\dot \phi_i}}_{\pi^i} \dot \phi_i - \mathcal L \Big ) = \int d^3 x ~ (\underbrace{\pi^i \dot \phi_i - \mathcal L}_{\mathcal L}) = \int d^3 x ~ \mathcal H = H
     \end{aligned}
-    \end{equation*}
+    \end{equation}
     such that 
     \begin{equation*}
         \dv{H}{t} = 0
     \end{equation*} 
     and the $j$-th components are the momentum 
-    \begin{equation*}
+    \begin{equation}\label{momen}
     \begin{aligned}
         P^j & = \int d^3 x ~ T^{0j} \\ & = \int d^3 x ~ \Big ( \pdv{\mathcal L}{\partial_0 \phi_i} \underbrace{\partial^j \phi_i}_{-\partial_j \phi_i} - \underbrace{\delta^{0j}}_0 \mathcal L \Big) \\ & = \int d^3 x ~ \Big ( - \underbrace{\pdv{\mathcal L}{\dot \phi_i}}_{\pi^i} \partial_j \phi_i \Big) \\ & = - \int d^3 x ~ \pi^i \partial_j \phi_i
     \end{aligned}
-    \end{equation*}
+    \end{equation}
     such that 
     \begin{equation*}
         \dv{P^i}{t} = 0

@@ -53,9 +53,9 @@
         \quad \sigma^3 = \begin{bmatrix} 1 & 0 \\ 0 & -1 \\ \end{bmatrix} ~,
     \end{equation*}
     and they satisfy the relation 
-    \begin{equation*}
+    \begin{equation} \label{sigma}
         \sigma^i \sigma^j = \delta^{ij} \mathbb I + i \epsilon^{ijk} \sigma^k ~.
-    \end{equation*}
+    \end{equation}
     It is called the Dirac representation and it is the only irreducible representation of the Clifford algebra up to others that are unitarily equivalent (by a change of basis) to the Dirac one or that are higher dimensional and thus reducible.
 
     The hamiltonian form of the Dirac equation becomes 
@@ -352,6 +352,301 @@
     They allow to divide a Dirac spinor into two components $\psi = \psi_L + \psi_R$, where $\psi_L = P_L \psi$ is the left-handed one and $\psi_R = P_R \psi$ is the right-handed one. Infact a Dirac spinor can be written as $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$. Spinors live in a $4$-dimensional complex linear space $\psi(x) \in \mathbb C^4$. Therefore, the gamma matrices are an example of $4$-dimensional matrices act on this space. A complete basis of linear operators must have $16$ of them and we can choose $(\mathbb I, \gamma^5, \Sigma^{\mu\nu}, \gamma^\mu \gamma^5, \gamma^5)$ where $\Sigma^{\mu\nu} = - \frac{i}{4} [\gamma^\mu, \gamma^\nu]$ with $\mu > \nu$. They are indeed respectively $1 + 4 + 6 + 4 + 1 = 16$ linearly independent matrices. 
 
 \chapter{Non-relativistic limit} 
+
+    In order to study the non-relativistic limit for $c \rightarrow \infty$, we insert back the $\hbar$ and $c$. 
+
+\section{Free Pauli equation}
+    
+    Starting from~\eqref{hamdirac}, we decompose the Dirac spinor wave function into two spinor wave functions 
+    \begin{equation}\label{nonrel}
+        \psi(t, \mathbf x) = \begin{bmatrix}
+            \varphi(t, \mathbf x) \\ \chi (t, \mathbf x) \\
+        \end{bmatrix} \exp(- \frac{i}{\hbar} m c^2 t)
+    \end{equation}
+    where we have brought out the time dependence from the energy-mass (similarly to the rest-frame wave plane).
+
+    In the non-relativistic limit, we recove the free Pauli equation 
+    \begin{equation*}
+        i \hbar \pdv{}{t} \varphi = \frac{p^2}{2m} \varphi
+    \end{equation*}
+    where $\varphi$ is a $2$-dimensional spinor, bringing information about the spin of the particle.
+    \begin{proof}
+        We insert~\eqref{nonrel} into~\eqref{hamdirac}
+        \begin{equation*}
+            i \hbar \pdv{}{t} (\begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \exp(- \frac{i}{\hbar} m c^2 t)) = (c \boldsymbol \alpha \cdot \mathbf p + m c^2 \beta) \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \exp(- \frac{i}{\hbar} m c^2 t) ~,
+        \end{equation*}
+        \begin{equation*}
+            i \hbar (\begin{bmatrix}
+                \dot \varphi \\ \dot \chi \\
+            \end{bmatrix} - \frac{i}{\hbar} m c^2 \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} ) \cancel{\exp(- \frac{i}{\hbar} m c^2 t)} = (c \begin{bmatrix}
+                0 & \boldsymbol \sigma \cdot \mathbf p \\
+                \boldsymbol \sigma \cdot \mathbf p & 0 \\
+            \end{bmatrix} + m c^2 \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & -\mathbb I_2 \\
+            \end{bmatrix}) \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \cancel{\exp(- \frac{i}{\hbar} m c^2 t)} ~,
+        \end{equation*}
+        \begin{equation*}
+            \begin{bmatrix}
+                i \hbar \dot \varphi + m c^2 \varphi \\ i \hbar \dot \chi + m c^2 \chi \\
+            \end{bmatrix} = c \begin{bmatrix}
+                \boldsymbol \sigma \cdot \mathbf p \chi\\
+                \boldsymbol \sigma \cdot \mathbf p \varphi \\
+            \end{bmatrix} + \begin{bmatrix}
+                m c^2 \varphi \\ - m c^2 \chi \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        This is a system of $2$ equations 
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi + \cancel{m c^2 \varphi} = c \boldsymbol \sigma \cdot \mathbf p \chi + \cancel{m c^2 \varphi} \\
+                i \hbar \dot \chi + m c^2 \chi = c \boldsymbol \sigma \cdot \mathbf p \varphi - m c^2 \chi \\
+            \end{cases} ~,
+        \end{equation*}
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \mathbf p \chi \\
+                i \hbar \dot \chi + 2m c^2 \chi = c \boldsymbol \sigma \cdot \mathbf p \varphi \\
+            \end{cases} ~.
+        \end{equation*}
+
+        Now, we go into the non-relativistic limit for $c \rightarrow \infty$ which means that $i \hbar \dot \chi \ll 2 m c^2 \chi$ and we obtain 
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \mathbf p \chi \\
+                \underbrace{\cancel{i \hbar \dot \chi}}_{c \rightarrow \infty} + 2m c^2 \chi = c \boldsymbol \sigma \cdot \mathbf p \varphi \\
+            \end{cases} \quad \Rightarrow \quad \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \mathbf p \chi \\
+                2m c^2 \chi = c \boldsymbol \sigma \cdot \mathbf p \varphi \\
+            \end{cases} ~.
+        \end{equation*}
+        We solve this algebraic equation, starting with the second 
+        \begin{equation*}
+            \chi = \frac{\boldsymbol \sigma \cdot \mathbf p}{2 m c} \varphi
+        \end{equation*}
+        and putting into the first
+        \begin{equation*}
+            i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \mathbf p \chi = \cancel{c} \boldsymbol \sigma \cdot \mathbf p \frac{\boldsymbol \sigma \cdot \mathbf p}{2 m \cancel{c}} \varphi = \frac{(\boldsymbol \sigma \cdot \mathbf p)^2}{2m} \varphi ~.
+        \end{equation*}
+        We notice that, using~\eqref{sigma}
+        \begin{equation*}
+            (\boldsymbol \sigma \cdot \mathbf p)^2 = \sigma^i p^i \sigma^j p^j = p^i p^j \sigma^i \sigma^j = p^i p^j (\delta^{ij} + i \epsilon^{ijk} \sigma^k) = p^i p^j \delta^{ij} + i \cancel{\underbrace{p^i p^j}_{\textnormal{symm}}\underbrace{\epsilon^{ijk}}_{\textnormal{anti}}} \sigma^k = p^i p^i ~,
+        \end{equation*}
+        and we obtain the free Pauli equation 
+        \begin{equation*}
+            i \hbar \dot \varphi = \frac{(\boldsymbol \sigma \cdot \mathbf p)^2}{2m} \varphi = \frac{p^2}{2m} \varphi ~. 
+        \end{equation*}
+    \end{proof}
+
+\section{External electromagnetic field}
+
+    We study how particles, in this case an electron with charge $e < 0$, couple with the electromagnetic field through the minimal substitution 
+    \begin{equation*}
+        E \mapsto E - q \phi ~, \quad \mathbf p \mapsto \boldsymbol \pi = \mathbf p - \frac{e}{c} \mathbf A
+    \end{equation*}
+    or in covariant form 
+    \begin{equation*}
+        p_\mu \mapsto \pi_\mu = p_\mu - \frac{e}{c} A_\mu  ~,
+    \end{equation*}
+    where the $4$-momentum is $p^\mu = (\frac{E}{c}, \mathbf p)$ and the $4$-potential is $A^\mu = (\phi, \mathbf A)$. In this way we are also able to study the effects due to the spin.
+
+    The non-relativistic Dirac equation for an electron is
+    \begin{equation*}
+        i \hbar \dot \varphi = \Big ( \frac{\pi^2}{2m} - \frac{e}{mc} \mathbf B \cdot \mathbf S + e \phi \Big) \varphi
+    \end{equation*}
+    where $\mathbf S = \frac{\hbar}{2} \boldsymbol \sigma$ is the spin of the electron.
+    \begin{proof}
+        We use the minimal substitution in~\eqref{hamdirac}
+        \begin{equation*}
+            i \hbar \pdv{}{t} \psi(t, \mathbf x) = (c \boldsymbol \alpha \cdot \mathbf p + \beta m c^2) \psi(t, \mathbf x) \mapsto (c \boldsymbol \alpha \cdot \boldsymbol \pi + \beta m c^2 + e \phi) \psi(t, \mathbf x) ~,
+        \end{equation*}
+        where 
+        \begin{equation*}
+            \boldsymbol \pi = - i \hbar \boldsymbol \nabla - \frac{e}{c} \mathbf A = - i \hbar \Big ( \boldsymbol \nabla - \frac{ie}{\hbar c} \mathbf A \Big)
+        \end{equation*}
+        is the covariant derivative, covariant because of the gauge transformation.
+
+        Using the same procedure as before, we decompose $\psi$ with~\eqref{nonrel} 
+        \begin{equation*}
+            i \hbar \pdv{}{t} (\begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \exp(- \frac{i}{\hbar} m c^2 t)) = (c \boldsymbol \alpha \cdot \boldsymbol \pi + m c^2 \beta + e \phi) \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \exp(- \frac{i}{\hbar} m c^2 t) ~,
+        \end{equation*}
+        \begin{equation*}
+            i \hbar (\begin{bmatrix}
+                \dot \varphi \\ \dot \chi \\
+            \end{bmatrix} - \frac{i}{\hbar} m c^2 \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} ) \cancel{\exp(- \frac{i}{\hbar} m c^2 t)} = (c \begin{bmatrix}
+                0 & \boldsymbol \sigma \cdot \boldsymbol \pi \\
+                \boldsymbol \sigma \cdot \boldsymbol \pi & 0 \\
+            \end{bmatrix} + m c^2 \begin{bmatrix}
+                \mathbb I_2 & 0 \\ 0 & -\mathbb I_2 \\
+            \end{bmatrix} + e \phi) \begin{bmatrix}
+                \varphi \\ \chi \\
+            \end{bmatrix} \cancel{\exp(- \frac{i}{\hbar} m c^2 t)} ~,
+        \end{equation*}
+        \begin{equation*}
+            \begin{bmatrix}
+                i \hbar \dot \varphi + m c^2 \varphi \\ i \hbar \dot \chi + m c^2 \chi \\
+            \end{bmatrix} = c \begin{bmatrix}
+                \boldsymbol \sigma \cdot \boldsymbol \pi \chi\\
+                \boldsymbol \sigma \cdot \boldsymbol \pi \varphi \\
+            \end{bmatrix} + \begin{bmatrix}
+                (m c^2 + e \phi) \varphi\\ (-m c^2 + e \phi) \chi \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        This is a system of $2$ equations 
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi + \cancel{m c^2 \varphi} = c \boldsymbol \sigma \cdot \boldsymbol \pi \chi + \cancel{m c^2 \varphi} + e \phi \varphi \\
+                i \hbar \dot \chi + m c^2 \chi = c \boldsymbol \sigma \cdot \boldsymbol \pi \varphi - m c^2 \chi + e \phi \chi \\
+            \end{cases} ~,
+        \end{equation*}
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \boldsymbol \pi \chi + e \phi \varphi\\
+                i \hbar \dot \chi + 2m c^2 \chi = c \boldsymbol \sigma \cdot \boldsymbol \pi \varphi + e \phi \chi\\
+            \end{cases} ~.
+        \end{equation*}
+
+        Now, we go into the non-relativistic limit for $c \rightarrow \infty$ which means that $i \hbar \dot \chi \ll 2 m c^2 \chi$ and $e \phi \chi \ll 2 m c^2 \chi$, thus we obtain 
+        \begin{equation*}
+            \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \boldsymbol \pi \chi + e \phi \varphi\\
+                \underbrace{\cancel{i \hbar \dot \chi}}_{c \rightarrow \infty} + 2m c^2 \chi = c \boldsymbol \sigma \cdot \boldsymbol \pi \varphi + \underbrace{\cancel{e \phi \chi}}_{c \rightarrow \infty}\\
+            \end{cases} \quad \Rightarrow \quad \begin{cases}
+                i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \boldsymbol \pi \chi + e \phi \varphi\\
+                2m c^2 \chi = c \boldsymbol \sigma \cdot \boldsymbol \pi \varphi\\
+            \end{cases} ~.
+        \end{equation*}
+        We solve this algebraic equation, starting with the second 
+        \begin{equation*}
+            \chi = \frac{\boldsymbol \sigma \cdot \boldsymbol \pi}{2 m c} \varphi
+        \end{equation*}
+        and putting into the first
+        \begin{equation*}
+            i \hbar \dot \varphi = c \boldsymbol \sigma \cdot \boldsymbol \pi \chi + e \phi \varphi = \cancel{c} \boldsymbol \sigma \cdot \boldsymbol \pi \frac{\boldsymbol \sigma \cdot \boldsymbol \pi}{2 m \cancel{c}} \varphi + e \phi \varphi = \frac{(\boldsymbol \sigma \cdot \boldsymbol \pi)^2}{2m} \varphi + e \phi \varphi ~.
+        \end{equation*}
+        We notice that, using~\eqref{sigma}
+        \begin{equation*}
+        \begin{aligned}
+            (\boldsymbol \sigma \cdot \boldsymbol \pi)^2 & = \sigma^i \pi^i \sigma^j \pi^j \\ & = \pi^i \pi^j \sigma^i \sigma^j \\ & = \pi^i \pi^j (\delta^{ij} + i \epsilon^{ijk} \sigma^k) \\ & = \pi^i \pi^j \delta^{ij} + i \epsilon^{ijk} \sigma^k \underbrace{\pi^i \pi^j}_{\frac{\pi^i \pi^j - \pi^j \pi^i}{2}} \\ & = \pi^2 + i \epsilon^{ijk} \sigma^k \frac{\pi^i \pi^j - \pi^j \pi^i}{2} \\ & = \pi^2 + \frac{i}{2} \epsilon^{ijk} \sigma^k [\pi^i, \pi^j]  ~,
+        \end{aligned}
+        \end{equation*}
+        where we exploit the antisymmetry of $\epsilon^{ijk}$ to antisymmetrise $\pi^i \pi^j$. We compute the commutator
+        \begin{equation*}
+        \begin{aligned}
+            [\pi^i, \pi^j] & = [p^i - \frac{e}{c} A^i, p^j - \frac{e}{c} A^j] \\ & = \underbrace{[p^i, p^j]}_0 - \frac{e}{c} [p^i, A^j] - \frac{e}{c} \underbrace{[A^i, p^j]}_{- [p^j, A^i]} + \frac{e^2}{c^2} \underbrace{[A^i(x), A^j(x)]}_0 \\ & = - \frac{e}{c} ([p^i, A^j] - [p^j, A^i]) \\ & = - \frac{e}{c} (p^i A^j - A^j p^i - p^j A^i + p^i A^j) \\ & = \frac{i \hbar e}{c} (\partial^i A^j - A^j \partial^i - \partial^j A^i + A^i \partial^j ) \\ & =\frac{i \hbar e}{c} (\partial^i A^j - \partial^j A^i) \\ & = \frac{2 i \hbar e}{c} \partial^i A^j
+        \end{aligned}
+        \end{equation*}
+        where we used the canonical commutation relation, $[A^i(x), A^j(x)] = 0$ because $A(x)$ is a function of $x$,~\eqref{sub} and the fact that second partial derivatives commute. Hence 
+        \begin{equation*}
+        \begin{aligned}
+            (\boldsymbol \sigma \cdot \boldsymbol \pi)^2 & = \pi^2 + \frac{i \hbar e}{2 c} i \epsilon^{ijk} \underbrace{(\partial^i A^j - \partial^j A^i)}_{2 \partial^i A^j} \\ & = \pi^2 + \frac{i \hbar e}{\cancel{2} c} \cancel{2} i \underbrace{\epsilon^{ijk} \partial^i A^j}_{B^k} \sigma^k \\ & = \pi^2 - \frac{\hbar e}{c} B^k \sigma^k \\ & = \pi^2 - \frac{2e}{c} \mathbf B \cdot \underbrace{\frac{1}{2} \boldsymbol \sigma}_{\mathbf S} \\ & = \pi^2 - \frac{2e}{c} \mathbf B \cdot \mathbf S
+        \end{aligned}
+        \end{equation*}
+        where we exploit the antisymmetry of $\epsilon^{ijk}$ to antisymmetrise $\partial^i A^j$. Finally we obtain the non-relativistic Dirac equation for the electron
+        \begin{equation*}
+            i \hbar \dot \varphi = \Big ( \frac{1}{2m} (\pi^2 - \frac{2e}{mc} \mathbf B \cdot \mathbf S) + e \phi \Big) \varphi = \Big ( \frac{\pi^2}{2m} - \frac{e}{mc} \mathbf B \cdot \mathbf S + e \phi \Big) \varphi ~. 
+        \end{equation*}
+    \end{proof}
+
+\subsection{Angular momentum and spin}
+
+    Recall that a magnetic dipole with magnetic moment $\boldsymbol \mu$ couples with an external magnetic field $\mathbf B$ through the hamiltonian 
+    \begin{equation*}
+        H = - \boldsymbol \mu \cdot \mathbf B ~.
+    \end{equation*}
+    In particular, a charge $e$ in motion with angular momentum $\mathbf L$ has magnetic moment proportional to it 
+    \begin{equation*}
+        |\boldsymbol \mu| = \frac{e}{2mc} g |\mathbf L|
+    \end{equation*}
+    where the gyromagnetic factor $g = 1$ for the angular momentum of the electron and $g = 2$ for its spin.
+    \begin{example}
+        Consider a constant magnetic field $\mathbf B$ and its associated vector potential $\mathbf A = \frac{1}{2} \mathbf B \times \mathbf r$. Hence 
+        \begin{equation*}
+        \begin{aligned}
+            \pi^2 & = (\mathbf p - \frac{e}{c} \mathbf A) (\mathbf p - \frac{e}{c} \mathbf A) \\ & = p^2 - \frac{e}{c} (\mathbf A \cdot \mathbf p + \mathbf p \cdot \mathbf A) + \frac{e^2}{c^2} A^2 \\ & = p^2 - \frac{2e}{c} (\mathbf A \cdot \mathbf p) + \frac{e^2}{c^2} A^2 \\ & = p^2 - \frac{2e}{c} (\frac{1}{2} \mathbf B \times \mathbf r \cdot \mathbf p) + \frac{e^2}{c^2} A^2 \\ & = p^2 - \frac{2e}{c} (\frac{1}{2} \mathbf B \cdot \underbrace{\mathbf r \times \mathbf p}_{\mathbf L}) + \frac{e^2}{c^2} A^2 \\ & = p^2 - \frac{2e}{c} (\frac{1}{2} \mathbf B \cdot \mathbf L) + \frac{e^2}{c^2} A^2 \\ & = p^2 - \frac{e}{c} \mathbf B \cdot \mathbf L + \frac{e^2}{c^2} A^2 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the fact that $\mathbf p \cdot \mathbf A$ commutes for constant $\mathbf B$ and the cyclic property for the mixed product. This means that the gyromagnetic factors associated to angular momentum and spin are
+        \begin{equation*}
+            i \hbar \dot \varphi = \Big ( \frac{\pi^2}{2m} - \frac{e}{2mc} \mathbf B \cdot (\underbrace{1}_{g=1}\mathbf L + \underbrace{2}_{g=2}\mathbf S) + \frac{e^2}{2 m c^2} A^2 + e \phi \Big) \varphi ~.
+        \end{equation*}
+    \end{example}
+
+    By similarity with the non-relativistic limit $\mathbf S = \frac{1}{2} \boldsymbol \sigma$ and $\chi \propto \varphi$, the spin operator of the Dirac spinor in the Dirac representation is \begin{equation*}
+        \mathbf S = \frac{1}{2} \boldsymbol \Sigma = \frac{1}{2} \begin{bmatrix}
+            \boldsymbol \sigma & 0 \\ 
+            0 & \boldsymbol \sigma \\ 
+        \end{bmatrix} ~.
+    \end{equation*}
+    In index notation
+    \begin{equation*}
+        \Sigma^i = - \frac{i}{2} \epsilon^{ijk} \alpha^j \alpha^k ~.
+    \end{equation*}
+
+    Introducing the angular momentum $\mathbf L = \mathbf r \times \mathbf p$ and the total angular momentum $\mathbf J = \mathbf L + \mathbf S$, we have the following commutation relations
+    \begin{equation*}
+        [H_D, L^i] = - i \epsilon^{ijk} \alpha^j p^k ~,
+    \end{equation*}
+    \begin{equation*}
+        [H_D, S^i] = - i \epsilon^{ijk} p^j \alpha^k
+    \end{equation*}
+    and
+    \begin{equation*}
+        [H_D, J^i] = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        For the angular momentum commutation relation,~\eqref{clifford}
+        \begin{equation*}
+        \begin{aligned}
+            [H_D, L^i] & = [\alpha^l p_l + \beta m, \epsilon^{ijk} x^j p^k] \\ & = [\alpha^l p_l, \epsilon^{ijk} x^j p^k] + \underbrace{[\beta m, \epsilon^{ijk} x^j p^k]}_0 \\ & = [\alpha^l p_l, \epsilon^{ijk} x^j p^k] \\ & = \alpha^l \underbrace{[p_l,  x^j]}_{-i \delta_l^{\phantom l j}} \epsilon^{ijk} p^k + \alpha^l \underbrace{[p_l, p^k]}_0 \epsilon^{ijk} x^j \\ & = - i \alpha^l \delta_l^{\phantom l j} \epsilon^{ijk} p^k \\ & = - i \epsilon^{ijk} \alpha^j p^k ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the spin commutation relation,~\eqref{clifford}
+        \begin{equation*}
+        \begin{aligned}
+            [H_D, S^i] & = [\alpha^l p_l + \beta m, -\frac{i}{4} \epsilon^{ijk} \alpha^j \alpha^k] \\ & = [\alpha^l p_l, -\frac{i}{4} \epsilon^{ijk} \alpha^j \alpha^k] + [\beta m, -\frac{i}{4} \epsilon^{ijk} \alpha^j \alpha^k] \\ & =  -\frac{i}{4} p_l \epsilon^{ijk} [\alpha^l, \alpha^j \alpha^k] -\frac{i}{4} m \epsilon^{ijk}  [\beta, \alpha^j \alpha^k] \\ & = -\frac{i}{4} p_l \epsilon^{ijk} (\underbrace{\{\alpha^l, \alpha^j\}}_{2\eta^{lj}} \alpha^k - \alpha^j \underbrace{\{\alpha^l, \alpha^k\}}_{2\eta^{lk}}) - \frac{i}{4} m \epsilon^{ijk} (\underbrace{\{\beta, \alpha^j\}}_0 \alpha^k - \alpha^j \underbrace{\{\beta, \alpha^k\}}_0) \\ & = -\frac{i}{4} p_l \epsilon^{ijk} (2\eta^{lj} \alpha^k - \alpha^j 2\eta^{lk}) \\ & = - i \epsilon^{ijk} p^j \alpha^k ~,
+        \end{aligned}
+        \end{equation*}
+        where we exploit the antysymmetry of $\epsilon^{ijk}$ to antisymmetrise $\alpha^j \eta^{lk}$ and we have used the identity 
+        \begin{equation*}
+            [AB,C] = ABC - CAB = ABC + ACB - CAB - ACB = A \{B, C\} - \{A, C\} B ~.
+        \end{equation*}
+
+        For the total momentum commutation relation 
+        \begin{equation*}
+        \begin{aligned}
+            [H_D, J^i] & = [H_D, L^i + S^i] = [H_D, L_i] + [H_D, S^i] = - i \epsilon^{ijk} \alpha^j p^k - i \epsilon^{ijk} p^j \alpha^k \\ & = - i \epsilon^{ijk} \alpha^j p^k + i \epsilon^{ikj} p^j \alpha^k = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    An experimental test for the Dirac theory is the prediction of the energy levels of the hydrogen atom, via perturbation solutions. Schoredinger solution is 
+    \begin{equation*}
+        E_{nl} = - \frac{m_e \alpha^2}{2 n^2} ~,
+    \end{equation*}
+    Klein-Gordon solution is 
+    \begin{equation*}
+        E_{nl} = m_e \Big( 1 - \frac{\alpha^2}{2n^2} - \frac{\alpha^4}{n^4} \Big ( \frac{n}{2l+1} - \frac{3}{8} \Big) + O(\alpha^6)\Big)
+    \end{equation*}
+    and Dirac solution is
+    \begin{equation*}
+        E_{nl} = m_e \Big( 1 - \frac{\alpha^2}{2n^2} - \frac{\alpha^4}{n^4} \Big ( \frac{n}{2j+1} - \frac{3}{8} \Big) + O(\alpha^6)\Big) ~.
+    \end{equation*}
+    where $\alpha = \frac{e^2}{4\pi}$ is the fine structure constant. Notice that the Schoredinger solution is degenerate in $l$, Klein-Gordon solution lifts this degeneracy but it is not in agree with experiments, since $2l+1$ is odd and it must be even, and finally Dirac solution is the right one, since $2j+1$ is even.
 
 \chapter{Covariance} 
 

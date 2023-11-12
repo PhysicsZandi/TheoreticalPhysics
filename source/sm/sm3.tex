@@ -1,17 +1,293 @@
 \part{Applications of classical statistical mechanics}
 
 \chapter{Microcanonical ensemble}
+
 \section{Non-relativistic ideal gas}
+    The hamiltonian of a non-relativistic ideal (non-interacting) gas is 
+    \begin{equation*}
+        H = \sum_i \frac{p^2_i}{2m} ~.
+    \end{equation*}
+    The number of states $\Sigma(E)$ is 
+    \begin{equation*}
+        \Sigma(E) = \frac{2V^{N}}{\xi_N d N \Gamma(\frac{dN}{2})} \Big ( \frac{2 \pi m E}{h^2}\Big)^{\frac{dN}{2}} ~.
+    \end{equation*}
+    The density state $\omega(E)$ is
+    \begin{equation*}
+        \omega (E) = \frac{V^N}{\xi_N \Gamma(\frac{dN}{2})} \Big ( \frac{2 \pi m}{h^2} \Big )^{\frac{dN}{2}} E^{\frac{dN}{2}-1} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Now, consider a $3$-dimensional ideal gas. The entropy is 
+    \begin{equation*}
+        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{3N}{2E} + \ln \Delta E ~,
+    \end{equation*}
+    or, in the thermodynamic limit, 
+    \begin{equation*}
+        S = k_B \begin{cases}
+            \frac{3}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{3 N h^2})^{\frac{3}{2}} \Big) & \textnormal{for distinguishable particles} \\
+            \frac{5}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{3 N h^2})^{\frac{3}{2}} \Big) & \textnormal{for indistinguishable particles} \\
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The internal energy is 
+    \begin{equation*}
+        E = \frac{3}{2} N k_B T ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The pressure is 
+    \begin{equation*}
+        P = \frac{N k_B T}{V} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
 \section{Gas of harmonic oscillators}
-\section{$2$-levels system}
+
+    The hamiltonian of a non-relativistic ideal (non-interacting) gas is 
+    \begin{equation*}
+        H = \sum_i \Big( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big) ~.
+    \end{equation*}
+    The number of states $\Sigma(E)$ is 
+    \begin{equation*}
+        \Sigma(E) = \frac{1}{\xi_N \Gamma (dN + 1)} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} ~.
+    \end{equation*}
+    The density state $\omega(E)$ is
+    \begin{equation*}
+        \omega (E) = \frac{1}{\xi_N \Gamma(dN)} \Big ( \frac{1}{h \omega}\Big)^{dN} E^{dN - 1} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
 
 \chapter{Canonical ensemble}
+
 \section{Non-relativistic ideal gas}
+
+    The canonical partition function is 
+    \begin{equation*}
+        Z = \frac{V^N}{N! \lambda_T^{3N}} = \frac{V^N}{N!} \sqrt{\frac{2 \pi m k_B T}{h^2}} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The internal energy is 
+    \begin{equation*}
+        E = \frac{3}{2} N k_B T ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The Helmoltz free energy is 
+    \begin{equation*}
+        F = \frac{N}{\beta} ( \ln (n \lambda^3_T) - 1) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The entropy is 
+    \begin{equation*}
+        S = N k_B \Big ( \frac{5}{2} - \ln(n \lambda_t^3) \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The pression is 
+    \begin{equation*}
+        p = \frac{N}{V k_B} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The chemical potential is 
+    \begin{equation*}
+        \mu = \frac{1}{\beta} \ln (n \lambda^3_T) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The specific heats per particle are 
+    \begin{equation*}
+        c_V = \frac{3}{2} k_B ~, \quad c_p = \frac{5}{2} k_B ~. 
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
 \section{Gas of harmonic oscillators}
+
+    The canonical partition function is 
+    \begin{equation*}
+        Z = \Big ( \frac{k_B T}{\hbar \omega}\Big)^N ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The internal energy is 
+    \begin{equation*}
+        E = N k_B T ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The Helmoltz free energy is 
+    \begin{equation*}
+        F = N k_B T \ln \frac{\hbar \omega}{k_B T} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The entropy is 
+    \begin{equation*}
+        S = N k_B \Big ( 1 - \ln \frac{\hbar \omega}{k_B T} \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The pression is 
+    \begin{equation*}
+        p = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The chemical potential is 
+    \begin{equation*}
+        \mu = k_B T \ln \frac{\hbar \omega}{k_B T} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The specific heats per particle are 
+    \begin{equation*}
+        c_V = k_B ~, \quad c_p = k_B ~. 
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
 \section{Ultra-relativistic ideal gas}
+
+    The hamiltonian of an ultra-relativistic ideal (non-interacting) gas is 
+    \begin{equation*}
+        H = \sum_i c |p_i|
+    \end{equation*}
+    The canonical partition function is 
+    \begin{equation*}
+        Z = \frac{1}{N!} \Big ( \frac{8 \pi V}{(\beta h c)^3}\Big)^N ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The internal energy is 
+    \begin{equation*}
+        E = 3 N k_B T ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The Helmoltz free energy is 
+    \begin{equation*}
+        F = N k_B T \Big (\ln \frac{n (\beta h c)^3}{8 \pi} - 1 \Big )~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The entropy is 
+    \begin{equation*}
+        S = N k_B \Big (4 - \ln \frac{n (\beta h c)^3}{8 \pi} \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The pression is 
+    \begin{equation*}
+        p = \frac{N}{V\beta} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The chemical potential is 
+    \begin{equation*}
+        \mu = - k_B T \ln \frac{8 \pi (k_B T)^3}{n (hc)^3} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The specific heats per particle are 
+    \begin{equation*}
+        c_V = 3 k_B ~, \quad c_p = 4 k_B ~. 
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
 \section{Maxwell-Boltzmann velocity distribution}
+
 \section{Magnetic solid}
 
+    The hamiltonian of a magnetic solid is 
+    \begin{equation*}
+        H = \sum_i \boldsymbol \mu_i \cdot \mathbf H = - \mu H \sum_i \cos \theta_i
+    \end{equation*}
+    The canonical partition function is 
+    \begin{equation*}
+        Z = \Big ( 4 \pi \frac{\sinh (\beta \mu H)}{\beta \mu H} \Big)^N ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The internal energy is 
+    \begin{equation*}
+        E = - N \mu H \Big ( \coth (\beta \mu H) - \frac{1}{\beta \mu H} \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The Helmoltz free energy is 
+    \begin{equation*}
+        F = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu H)}{\beta \mu H} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
+    The entropy is 
+    \begin{equation*}
+        S =  ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    
 \chapter{Grancanonical ensemble}
 \section{Non-relativistic ideal gas}
 \section{Gas of harmonic oscillators}
