@@ -867,3 +867,201 @@
     \end{proof}
 
 \section{Heisenberg picture}
+
+    Classical theory is Lorentz-invariant since the lagrangian $\mathcal L$ is manifestly so. However, so far in the Schroedinger picture, we worked at a preferred time in which field operators are $\hat \varphi (\mathbf x)$ and $\hat \pi (\mathbf x)$. The time evolution is governed by the Schroedinger equation
+    \begin{equation*}
+        i \dv{}{t} \ket{\mathbf p(t)} = \hat H \ket{\mathbf p(t)} ~,
+    \end{equation*}
+    in which a state evolves as 
+    \begin{equation*}
+        \ket{\mathbf p(t)} = \exp(- i E_{\mathbf p} t) \ket{\mathbf p} ~.
+    \end{equation*}
+
+    In Heisenberg's picture, an operator is related to the Schroedinger's one as 
+    \begin{equation*}
+        \hat O_H = \exp(i \hat H t) \hat O_S \exp(- i \hat H t) ~,
+    \end{equation*}
+    where its time evolution is governed by the Heisenberg equation 
+    \begin{equation*}
+        \dv{}{\hat O_H} = i [\hat H, \hat O_H] ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \dv{}{t} \hat O_H & = \dv{}{t} \Big ( \exp(i \hat H t) \hat O_S \exp(- i \hat H t) \Big) \\ & = \dv{}{t} \Big ( \exp(i \hat H t) \Big) \hat O_S \exp(- i \hat H t) + \exp(i \hat H t) \cancel{\dv{}{t} \Big (  \hat O_S  \Big)} \exp(- i \hat H t) + \exp(i \hat H t) \hat O_S \dv{}{t} \Big (  \exp(- i \hat H t) \Big ) \\ & = i \hat H \underbrace{\exp(i \hat H t) \hat O_S \exp(- i \hat H)}_{\hat O_H} - i \underbrace{\exp(i \hat H t) \hat O_S \exp(- i \hat H)}_{\hat O_H} \hat H \\ & = i \hat H \hat O_H - i \hat O_H \hat H \\ & = i [\hat H, \hat O_H] ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Therefore, in Schoredinger picture we have $\hat \varphi(\mathbf x)$ while in Heisenberg picture we have $\hat \varphi(x)$, where they agree at $t=0$. The commutation relation at equal time $t$ becomes 
+    \begin{equation*}
+        [\hat \varphi(t, \mathbf x), \hat \varphi(t, \mathbf y)] = [\hat \pi(t, \mathbf x), \hat \pi(t, \mathbf y)] = 0 ~, \quad [\hat \varphi(t, \mathbf x), \hat \pi(t, \mathbf y)] = i \delta^3 (\mathbf x - \mathbf y) ~.
+    \end{equation*}
+
+    The time evolution of $\hat \varphi (x)$ is 
+    \begin{equation*}
+        \pdv{}{t} \hat \varphi (x) = \hat \pi (x) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{}{t} \hat \varphi (x) & = i [\hat H, \hat \varphi (x)] \\ & = i [\frac{1}{2} \int d^3 y (\hat \pi^2 (t, \mathbf y) + \nabla^2 \hat \varphi (t, \mathbf y) + m^2 \hat \varphi^2 (t, \mathbf y)) , \hat \varphi (t, \mathbf x)] \\ & = \frac{i}{2} \int d^3 y \Big (\underbrace{[\hat \pi^2 (t, \mathbf y), \hat \varphi (t, \mathbf x)]}_{\pi (t, \mathbf y) [\hat \pi (t, \mathbf y), \hat \varphi (t, \mathbf x)] + [\hat \pi (t, \mathbf y), \hat \varphi (t, \mathbf x)] \pi (t, \mathbf y)} + \underbrace{[\nabla^2 \hat \varphi (t, \mathbf y), \hat \varphi (t, \mathbf x)]}_0 + m^2 \underbrace{[\hat \varphi^2 (t, \mathbf y), \hat \varphi (t, \mathbf x)]}_0 \Big ) \\ & = \frac{i}{2} \int d^3 y \Big (\pi (t, \mathbf y) \underbrace{[\hat \pi (t, \mathbf y), \hat \varphi (t, \mathbf x)]}_{- i \delta^3 (\mathbf x - \mathbf y)} + \underbrace{[\hat \pi (t, \mathbf y), \hat \varphi (t, \mathbf x)] }_{- i \delta^3 (\mathbf x - \mathbf y)} \pi (t, \mathbf y) \Big ) \\ & = \frac{1}{2} \int d^3 y \Big (\pi (t, \mathbf y) \underbrace{\delta^3 (\mathbf x - \mathbf y)}_{\mathbf x = \mathbf y} + \underbrace{\delta^3 (\mathbf x - \mathbf y)}_{\mathbf x = \mathbf y} \pi (t, \mathbf y) \Big ) \\ & = \frac{1}{2} (\pi (t, \mathbf x) + \pi (t, \mathbf x)) \\ & = \pi (t, \mathbf x) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used $[\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \varphi (t, \mathbf x)] = 0$ since the right-handed side depends on $\mathbf y$ and the left-handed side depends on $\mathbf x$.
+    \end{proof}
+
+    The time evolution of $\hat \pi (x)$ is 
+    \begin{equation*}
+        \pdv{}{t} \hat \pi (x) = (\nabla^2 - m^2) \hat \varphi (x) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{}{t} \hat \pi (x) & = i [\hat H, \hat \pi (x)] \\ & = i [\frac{1}{2} \int d^3 y (\hat \pi^2 (t, \mathbf y) + \nabla^2 \hat \varphi (t, \mathbf y) + m^2 \hat \varphi^2 (t, \mathbf y)) , \hat \pi (t, \mathbf x)] \\ & = \frac{i}{2} \int d^3 y \Big (\underbrace{[\hat \pi^2 (t, \mathbf y), \hat \pi (t, \mathbf x)]}_0 + \underbrace{[\nabla^2 \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{[ \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]} + m^2 \underbrace{[\hat \varphi^2 (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{\hat \varphi (t, \mathbf y) [\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)] + [\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)] \hat \varphi (t, \mathbf y)} \Big ) \\ & = \frac{i}{2} \int d^3 y \Big (\underbrace{[\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot [\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)] + [\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)] \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y)} \\ & \qquad + m^2 \hat \varphi (t, \mathbf y) \underbrace{[\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{i \delta^3 (\mathbf x - \mathbf y)} + m^2 \underbrace{[\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{i \delta^3 (\mathbf x - \mathbf y)} \hat 
+            \varphi (t, \mathbf y) \Big ) 
+        \end{aligned}    
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            \phantom{\pdv{}{t} \hat \pi (x)} & = \frac{i}{2} \int d^3 y \Big (\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot \underbrace{[\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{\boldsymbol \nabla_{\mathbf y} [\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]} + \underbrace{[\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{\boldsymbol \nabla_{\mathbf y} [\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \\ & \qquad + i m^2 \hat \varphi (t, \mathbf y) i \delta^3 (\mathbf x - \mathbf y) + i m^2 \delta^3 (\mathbf x - \mathbf y) \hat \varphi (t, \mathbf y) \Big ) \\ & = \frac{i}{2} \int d^3 y \Big (\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot \boldsymbol \nabla_{\mathbf y} \underbrace{[\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{i \delta^3 (\mathbf x - \mathbf y)} + \boldsymbol \nabla_{\mathbf y} \underbrace{[\hat \varphi (t, \mathbf y), \hat \pi (t, \mathbf x)]}_{i \delta^3 (\mathbf x - \mathbf y)} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \\ & \qquad + i m^2 \hat \varphi (t, \mathbf y) i \delta^3 (\mathbf x - \mathbf y) + i m^2 \delta^3 (\mathbf x - \mathbf y) \hat \varphi (t, \mathbf y) \Big ) \\ & = \frac{i}{2} \int d^3 y \Big (i \underbrace{\boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \cdot \boldsymbol \nabla_{\mathbf y} \delta^3 (\mathbf x - \mathbf y)}_{- \boldsymbol \nabla_{\mathbf y} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \delta^3 (\mathbf x - \mathbf y) + \textnormal{boundary term}} + i \underbrace{\boldsymbol \nabla_{\mathbf y} \delta^3 (\mathbf x - \mathbf y) \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y)}_{- \delta^3 (\mathbf x - \mathbf y) \boldsymbol \nabla_{\mathbf y} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) + \textnormal{boundary term}} \\ & \qquad + i m^2 \hat \varphi (t, \mathbf y) i \delta^3 (\mathbf x - \mathbf y) + i m^2 \delta^3 (\mathbf x - \mathbf y) \hat \varphi (t, \mathbf y) \Big ) \\ & = \frac{i}{2} \int d^3 y \Big (- i \boldsymbol \nabla_{\mathbf y} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \underbrace{\delta^3 (\mathbf x - \mathbf y) }_{\mathbf x = \mathbf y} - i \underbrace{\delta^3 (\mathbf x - \mathbf y) }_{\mathbf x = \mathbf y} \boldsymbol \nabla_{\mathbf y} \cdot \boldsymbol \nabla_{\mathbf y} \hat \varphi (t, \mathbf y) \\ & \qquad + i m^2 \hat \varphi (t, \mathbf y) i \underbrace{\delta^3 (\mathbf x - \mathbf y) }_{\mathbf x = \mathbf y} + i m^2 \underbrace{\delta^3 (\mathbf x - \mathbf y) }_{\mathbf x = \mathbf y} \hat \varphi (t, \mathbf y) \Big ) \\ & = \boldsymbol \nabla_{\mathbf x} \cdot \boldsymbol \nabla_{\mathbf x} \hat \varphi (t, \mathbf x) - m^2 \hat \varphi (t, \mathbf x) = (\nabla^2 - m^2) \hat \varphi (t, \mathbf x) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Combining the two time evolutions, we obtain the Klein-Gordon equation~\eqref{kgeq}
+    \begin{equation*}
+        (\Box + m^2) \hat \varphi (x) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            \hat{\ddot \varphi} (x) =  \hat{\dot \pi} (x) = (\nabla^2 - m^2) \hat \psi(x) ~,
+        \end{equation*}
+        hence
+        \begin{equation*}
+            0 = (\pdvdu{}{t} - \nabla^2 + m^2) \hat \varphi (x) = (\Box + m^2) \hat \varphi (x) ~.
+        \end{equation*}
+    \end{proof}
+
+    Since field operators evolve in time and they depend on the ladder operators, the latters evolve in time as well 
+    \begin{equation*}
+        (\hat a_{\mathbf p})_H = \exp(- i E_{\mathbf p} t) (\hat a_{\mathbf p})_S ~, \quad (\hat a^\dagger_{\mathbf p})_H = \exp(i E_{\mathbf p} t) (\hat a^\dagger_{\mathbf p})_S~.
+    \end{equation*}
+    \begin{proof}
+        Using the formula $ \hat H^n \hat a_{\mathbf p} = \hat a_{\mathbf p} (\hat H - E_{\mathbf p})^n$ which can be proved 
+        \begin{equation*}
+            [\hat H, \hat a_{\mathbf p}] = \hat H \hat a_{\mathbf p} - \hat a_{\mathbf p} \hat H = - \omega_{\mathbf p} \hat a_{\mathbf p} = - E_{\mathbf p} \hat a_{\mathbf p} ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat H \hat a_{\mathbf p} = \hat a_{\mathbf p} (\hat H - E_{\mathbf p}) ~,
+        \end{equation*}
+        hence 
+        \begin{equation}
+            \hat H^2 \hat a_{\mathbf p} = \hat H \hat a_{\mathbf p} (\hat H - E_{\mathbf p}) = \hat a_{\mathbf p} (\hat H - E_{\mathbf p})^2 ~,
+        \end{equation}
+        by induction 
+        \begin{equation*}
+            \hat H^n \hat a_{\mathbf p} = \hat a_{\mathbf p} (\hat H - E_{\mathbf p})^n ~.
+        \end{equation*}
+
+        For the annihilation operator 
+        \begin{equation*}
+        \begin{aligned}
+            (\hat a_{\mathbf p})_H & = \exp(i \hat H t) (\hat a_{\mathbf p})_S \exp(- i \hat H t) \\ & = \underbrace{\exp(i \hat H t)}_{\sum_n \frac{(i t)^n}{n!} \hat H^n} \hat a_{\mathbf p} \exp(- i \hat H t) \\ & = \sum_n \frac{(i t)^n}{n!} \underbrace{\hat H^n \hat a_{\mathbf p}}_{\hat a_{\mathbf p} (\hat H - E_{\mathbf p})^n} \exp(- i \hat H t) \\ & = \underbrace{\sum_n \frac{1}{n!}  (i t (\hat H - E_{\mathbf p}))^n }_{\exp(i t (\hat H - E_{\mathbf p}))}  \hat a_{\mathbf p} \exp(- i \hat H t) \\ & = \exp(i t (\cancel{\hat H} - E_{\mathbf p})) \hat a_{\mathbf p} \cancel{\exp(- i \hat H t)} \\ & = \exp(- i E_{\mathbf p} t) \hat a_{\mathbf p} ~.
+        \end{aligned}
+        \end{equation*}
+
+        Using the formula $\hat H^n \hat a_{\mathbf p} = \hat a_{\mathbf p} (\hat H - E_{\mathbf p})^n$ which can be proved 
+        \begin{equation*}
+            [\hat H, \hat a^\dagger_{\mathbf p}] = \hat H \hat a^\dagger_{\mathbf p} - \hat a^\dagger_{\mathbf p} \hat H = \omega_{\mathbf p} \hat a^\dagger_{\mathbf p} = E_{\mathbf p} \hat a^\dagger_{\mathbf p} ~,
+        \end{equation*}
+        \begin{equation*}
+            \hat H \hat a^\dagger_{\mathbf p} = \hat a^\dagger_{\mathbf p} (\hat H + E_{\mathbf p}) ~,
+        \end{equation*}
+        hence 
+        \begin{equation}
+            \hat H^2 \hat a^\dagger_{\mathbf p} = \hat H \hat a^\dagger_{\mathbf p} (\hat H + E_{\mathbf p}) = \hat a^\dagger_{\mathbf p} (\hat H + E_{\mathbf p})^2 ~,
+        \end{equation}
+        by induction 
+        \begin{equation*}
+            \hat H^n \hat a^\dagger_{\mathbf p} = \hat a^\dagger_{\mathbf p} (\hat H + E_{\mathbf p})^n ~.
+        \end{equation*}
+
+        For the annihilation operator 
+        \begin{equation*}
+        \begin{aligned}
+            (\hat a^\dagger_{\mathbf p})_H & = \exp(i \hat H t) (\hat a^\dagger_{\mathbf p})_S \exp(- i \hat H t) \\ & = \underbrace{\exp(i \hat H t)}_{\sum_n \frac{(i t)^n}{n!} \hat H^n} \hat a^\dagger_{\mathbf p} \exp(- i \hat H t) \\ & = \sum_n \frac{(i t)^n}{n!} \underbrace{\hat H^n \hat a^\dagger_{\mathbf p}}_{\hat a^\dagger_{\mathbf p} (\hat H + E_{\mathbf p})^n} \exp(- i \hat H t) \\ & = \underbrace{\sum_n \frac{1}{n!}  (i t (\hat H + E_{\mathbf p}))^n }_{\exp(i t (\hat H + E_{\mathbf p}))}  \hat a^\dagger_{\mathbf p} \exp(- i \hat H t) \\ & = \exp(i t (\cancel{\hat H} + E_{\mathbf p})) \hat a^\dagger_{\mathbf p} \cancel{\exp(- i \hat H t)} \\ & = \exp(i E_{\mathbf p} t) \hat a^\dagger_{\mathbf p} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Finally, the field operators are 
+    \begin{equation*}
+        \hat \varphi (x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat a^\dagger_{\mathbf p} \exp(i p x) + \hat a_{\mathbf p} \exp(-i p x))
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \hat \pi (x) = \int \frac{d^3 p}{(2\pi)^3} \Big (- i \sqrt{\frac{ E_{\mathbf p}}{2}} \Big ) (\hat a_{\mathbf p} \exp(-i p x) - \hat a^\dagger_{\mathbf p} \exp(i p x) ) ~,
+    \end{equation*}
+    where $p x = p^\mu x_\mu = E_{\mathbf p} t - \mathbf p \cdot \mathbf x$. 
+    \begin{proof}
+        For the field operator 
+        \begin{equation}
+        \begin{aligned}
+            \hat \varphi (x) & = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} ((\hat a^\dagger_{\mathbf p})_H \exp(-i \mathbf p \cdot \mathbf x) + (\hat a_{\mathbf p})_H \exp(i \mathbf p \cdot \mathbf x)) \\ & = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat a^\dagger_{\mathbf p} \exp(i (E_{\mathbf p} t - \mathbf p \cdot \mathbf x)) + \hat a_{\mathbf p} \exp(-i (E_{\mathbf p} t - \mathbf p \cdot \mathbf x))) \\ & = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat a^\dagger_{\mathbf p} \exp(i px) + \hat a_{\mathbf p} \exp(-i px)) ~.
+        \end{aligned}
+        \end{equation}
+
+        For the conjugate field operator 
+        \begin{equation}
+        \begin{aligned}
+            \hat \pi (x) & = \int \frac{d^3 p}{(2\pi)^3} \Big (- i \sqrt{\frac{ E_{\mathbf p}}{2}} \Big ) (- (\hat a^\dagger_{\mathbf p})_H \exp(-i \mathbf p \cdot \mathbf x) + (\hat a_{\mathbf p})_H \exp(i \mathbf p \cdot \mathbf x)) \\ & = \int \frac{d^3 p}{(2\pi)^3} \Big (- i \sqrt{\frac{ E_{\mathbf p}}{2}} \Big ) (- \hat a^\dagger_{\mathbf p} \exp(i (E_{\mathbf p} t - \mathbf p \cdot \mathbf x)) + \hat a_{\mathbf p} \exp(-i (E_{\mathbf p} t - \mathbf p \cdot \mathbf x))) \\ & = \int \frac{d^3 p}{(2\pi)^3} \Big (- i \sqrt{\frac{ E_{\mathbf p}}{2}} \Big ) ( - \hat a^\dagger_{\mathbf p} \exp(i px) + \hat a_{\mathbf p} \exp(-i px)) ~.
+        \end{aligned}
+        \end{equation}
+    \end{proof}
+
+\section{Casuality} 
+
+    So far, almost everything is manifestly Lorentz invariant except the commutation relations, because they privileged a time since they must be evaluated at equal time. We need to work out commutation relations at arbitrary times 
+    \begin{equation*}
+        [\hat O_1 (t, \mathbf x), \hat O_2 (t', \mathbf y)] = [\hat O_1 (x), \hat O_2 (y)] ~.
+    \end{equation*}
+    Its physical meaning is the effects of one onto the other one. This means that in order to preserve causality, it must be zero outside the light cone since the signal cannot travel faster than light. Obviously, if it is inside the light cone, it can be non-zero. This means that
+    \begin{equation*}
+        [\hat O_1 (x), \hat O_2 (y)] = 0 \quad \forall (x - y)^2 = (x^\mu - y^\mu) (x_\mu - y_\mu) < 0 ~. 
+    \end{equation*}
+
+    We define the quantity 
+    \begin{equation*}
+        \Delta (x - y) = [\hat \varphi (x), \hat \varphi (y)] ~.
+    \end{equation*}
+
+    It is Lorentz invariant
+    \begin{equation*}
+        \Delta (x - y) = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( \exp(- i p (x - y)) - \exp(i p (x - y)) \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        
+    \end{proof}
+
+    It satisfies the causality constrains
+    \begin{enumerate}
+        \item inside the light cone, for timelike separations
+            \begin{equation*}
+                \Delta (x - y) \neq 0 \quad \forall (x - y)^2 > 0 ~,
+            \end{equation*}
+        \item outside the light cone, for spacelike separations
+            \begin{equation*}
+                \Delta (x - y) = 0 \quad \forall (x - y)^2 < 0 ~.
+            \end{equation*}
+    \end{enumerate}
+    \begin{proof}
+        
+    \end{proof}
+
+    
+\section{Correlators}

@@ -152,9 +152,9 @@
         (\gamma^0)^\dagger = - \gamma^0 ~, \quad (\gamma^i)^\dagger = \gamma^i ~.
     \end{equation*}
     which can be written in the following way 
-    \begin{equation*}
+    \begin{equation}\label{betagamma}
         (\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0 = - \beta \gamma^\mu \beta ~.
-    \end{equation*}
+    \end{equation}
     This means that the Clifford algebra is valid for $(\gamma^\mu)^\dagger$, intepreted as a change of basis 
     \begin{equation*}
         \{- (\gamma^\mu)^\dagger, - (\gamma^\nu)^\dagger \} = 2 \eta^{\mu\nu} ~.
@@ -316,9 +316,9 @@
     where $M, N = 0,1,2,3,5$ with Minkovski metric $\eta^{MN} = diag(-++++)$.
 
     It can be used to define the projection operators on chiral (Weyl) spinors
-    \begin{equation*}
+    \begin{equation}\label{proj}
         P_L = \frac{\mathbb I - \gamma^5}{2} ~, \quad P_L = \frac{\mathbb I - \gamma^5}{2} ~,
-    \end{equation*}
+    \end{equation}
     such that they satisfy the following properties 
     \begin{enumerate}
         \item nilpotent, i.e. 
@@ -452,9 +452,9 @@
         E \mapsto E - q \phi ~, \quad \mathbf p \mapsto \boldsymbol \pi = \mathbf p - \frac{e}{c} \mathbf A
     \end{equation*}
     or in covariant form 
-    \begin{equation*}
+    \begin{equation}\label{minsub}
         p_\mu \mapsto \pi_\mu = p_\mu - \frac{e}{c} A_\mu  ~,
-    \end{equation*}
+    \end{equation}
     where the $4$-momentum is $p^\mu = (\frac{E}{c}, \mathbf p)$ and the $4$-potential is $A^\mu = (\phi, \mathbf A)$. In this way we are also able to study the effects due to the spin.
 
     The non-relativistic Dirac equation for an electron is
@@ -1065,6 +1065,98 @@
         \end{equation*}
     \end{example}
 
+\subsection{Pseudo-unitary}
+
+    Dirac spinorial representation is pseudo-unitary 
+    \begin{equation*}
+        S^\dagger (\Lambda) = \beta S^{-1} (\Lambda) \beta ~.
+    \end{equation*}
+    \begin{proof}
+        Infact, using~\eqref{betagamma}
+        \begin{equation*}
+        \begin{aligned}
+            (\Sigma^{\mu\nu})^\dagger & = (- \frac{i}{4} [\gamma^\mu, \gamma^\nu])^\dagger \\ & = \frac{i}{4} [\underbrace{(\gamma^\nu)^\dagger}_{-\beta \gamma^\nu \beta}, \underbrace{(\gamma^\mu)^\dagger}_{- \beta \gamma^\mu \beta}] \\ & = \frac{i}{4} [\beta \gamma^\nu \beta, \beta \gamma^\mu \beta] \\ & = \frac{i}{4} (\beta \gamma^\nu \underbrace{\beta \beta}_1 \gamma^\mu \beta - \beta \gamma^\mu \underbrace{\beta \beta}_1 \gamma^\nu \beta ) \\ & = \beta \frac{i}{4} [\gamma^\nu, \gamma^\mu] \beta \\ & = - \beta \underbrace{(-\frac{i}{4} [\gamma^\mu, \gamma^\nu] )}_{\Sigma^{\mu\nu}} \beta \\ & = - \beta \Sigma^{\mu\nu} \beta ~.
+        \end{aligned}
+        \end{equation*}
+        Therefore,
+        \begin{equation*}
+        \begin{aligned}
+            S^\dagger (\Lambda) & = \exp(\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu})^\dagger \\ & = \exp(-\frac{i}{2} \omega_{\mu\nu} (\Sigma^{\mu\nu})^\dagger ) \\ & = \exp(-\frac{i}{2} \omega_{\mu\nu} \beta \Sigma^{\mu\nu} \beta ) \\ & = \sum_{k=0}^\infty \frac{1}{k!} (-\frac{i}{2} \omega_{\mu\nu} \beta \Sigma^{\mu\nu} \beta)^k \\ & = \beta \sum_{k=0}^\infty \frac{1}{k!} (-\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu})^k \beta \\ & = \beta \exp(-\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) \beta \\ & = \beta S^{-1} (\Lambda) \beta~.
+        \end{aligned} 
+        \end{equation*}
+    \end{proof}
+
+\section{Fermionic bilinears}
+
+    Since the Dirac spinor representatio is pseudo-unitary, we define the Dirac conjugate by
+    \begin{equation*}
+        \overline \psi (x) = \psi^\dagger (x) \beta ~,
+    \end{equation*}
+    such that it transforms as 
+    \begin{equation*}
+        \overline \psi' (x') = \overline \psi (x) S^{-1} (\Lambda) ~.
+    \end{equation*}
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            \overline \psi' (x') = (\underbrace{\psi'}_{S(\Lambda) \psi})^\dagger (x') \beta = (S^(\Lambda) \psi (x) )^\dagger = \psi^\dagger (x) \underbrace{S^\dagger (\Lambda)}_{\beta S^{-1} (\Lambda) \beta} \beta = \underbrace{\psi^\dagger (x) \beta}_{\overline \psi (x)} S^{-1} (\Lambda) \underbrace{\beta \beta}_1 = \overline \psi (x) S^{-1} (\Lambda) ~.
+        \end{equation*}
+    \end{proof}
+
+    With the Dirac spinor and its conjugate we can build a scalar, which is
+    \begin{equation*}
+        \overline \psi (x) \psi (x) ~,
+    \end{equation*}
+    but not this
+    \begin{equation*}
+        \psi^\dagger (x) \psi(x) ~.
+    \end{equation*}
+    \begin{proof}
+        For the scalar
+        \begin{equation*}
+            \overline \psi' (x') \psi'(x') = \overline \psi (x) \underbrace{S^{-1} (\Lambda) S (\Lambda)}_1 \psi (x) = \overline \psi (x) \psi (x) ~.
+        \end{equation*}
+
+        For the non-scalar
+        \begin{equation*}
+            (\psi' )^\dagger (x') \psi'(x') = (S(\Lambda) \psi)^\dagger (x) S(\Lambda) \psi(x) = \psi^\dagger (x) \underbrace{S^\dagger (\Lambda)}_{\beta S^{-1} \beta} S (\Lambda) \psi(x) = \psi^\dagger (x) \beta S^{-1} \beta S (\Lambda) \psi(x) \neq \psi^\dagger (x) \psi (x) ~.
+        \end{equation*}
+    \end{proof}
+    
+    Actually, it is the $0$-th component of a four-vector 
+    \begin{equation*}
+        J^\mu = (J^0, \mathbf J) = (\psi^\dagger \psi, \psi^\dagger \boldsymbol \alpha \psi) = i \overline \psi (x) \gamma^\mu \psi (x)
+    \end{equation*}
+    which is the current that appears in the continuity equation.
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            (J')^\mu (x') = i \overline \psi' (x') \gamma^\mu \psi' (x') = i \overline \psi (x) \underbrace{S^{-1} (\Lambda) \gamma^\mu S(\Lambda)}_{\Lambda^\mu_{\phantom \mu \nu} \gamma^\nu} \psi (x) = \Lambda^\mu_{\phantom \mu \nu} \underbrace{i \overline \psi (x) \gamma^\nu \psi (x)}_{J^\mu (x)} = \Lambda^\mu_{\phantom \mu \nu} J^\mu (x) ~.
+        \end{equation*}
+    \end{proof}
+
+    A fermionic bilinear is a useful quantity to describe physical properties. We can costruct them starting with the basis 
+    \begin{equation}\label{basis}
+        \Gamma^A = (\mathbb I, \gamma^5, \Sigma^{\mu\nu}, \gamma^\mu \gamma^5, \gamma^5) ~,
+    \end{equation} such that
+    \begin{equation*}
+        \overline \psi \Gamma^a \psi ~.
+    \end{equation*}
+    Notice that under Lorentz transformation, they all five transform in a good way: $\mathbb I$ and $\gamma^5$ are scalars, $\gamma^5$ and $\gamma^\mu \gamma^5$ are $4$-vectors, $\Sigma^{\mu\nu}$ is a $2$-tensor. However, under parity transformation, the last two of~\eqref{basis} are an axial-vector and pseudo-scalar.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Recall from group theory, the Dirac spinor representation of the Lorentz group satisfies the Lie algebra 
+    \begin{equation*}
+        [\Sigma, \Sigma] 
+    \end{equation*}
+    and the gamma matrices $\gamma^\mu$ are invariant tensors (Clebsh-Gordan coefficients). 
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    This means that the covariance of the Dirac equation can be understood in the usual way: contraction of tensor indices that makes the spinor $\xi (x) = (\gamma^\mu \partial_\mu + m) \psi(x)$ manifestly covariant and equals zero in any inertial frame.
+
 \chapter{Wave plane solutions}
 
     In order to find a solution of the Dirac equation~\eqref{covdirac}, we propose a plane wave ansatz 
@@ -1307,4 +1399,347 @@
     \end{proof}
 
 \chapter{Discrete symmetries} 
+
+    In order to recover the whole Lorentz group $O(1,3)$, it is necessary to take into account also discrete transformations, like parity and time reversal, which allows us to go into the disconnected to the identity parts of the group. 
+
+\section{Parity} 
+
+    The parity transformation is defined by the revesal of the orientation of the spatial axes
+    \begin{equation*}
+        (t', \mathbf x') = (t, - \mathbf x) ~, \quad (x')^\mu = P^\mu_{\phantom \mu \nu} x^\nu ~,
+    \end{equation*}
+    where the parity matrix $P$ is 
+    \begin{equation*}
+        P^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & -1 & 0 & 0 \\
+            0 & 0 & -1 & 0 \\
+            0 & 0 & 0 & -1 \\
+        \end{bmatrix} ~.
+    \end{equation*}
+    It has determinant equals to $-1$, so it is not connected to the identity and it forms a subgroup with the identity, isomorphic to $\mathbb Z_2 = \{\mathbb I, P\}$.
+
+    What is the analoguous parity transformation for a Dirac spinor? We conjecture that exists a linear transformation 
+    \begin{equation*}
+        \psi' (x') = \mathcal P \psi(x) ~.
+    \end{equation*}
+    It turns out that such a matrix exists and it is 
+    \begin{equation*}
+        \mathcal P = \beta ~.
+    \end{equation*}
+    \begin{proof}
+        Infact
+        \begin{equation*}
+            0 = (\gamma^\mu \underbrace{{\partial'}_\mu}_{P_\mu^{\phantom \mu \nu} \partial_\nu} + m) \underbrace{\psi'(x')}_{\mathcal P \psi(x)} = (\gamma^\mu P_\mu^{\phantom \mu \nu} \partial_\nu + m) \mathcal P \psi(x) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            0 = \mathcal P^{-1}(\gamma^\mu P_\mu^{\phantom \mu \nu} \partial_\nu + m)\mathcal P \psi(x) = (\mathcal P^{-1}\gamma^\mu P_\mu^{\phantom \mu \nu} \mathcal P \partial_\nu + m) \psi(x)
+        \end{equation*}
+        and to be Lorentz invariant, we have the condition 
+        \begin{equation*}
+            \mathcal P^{-1}\gamma^\mu P_\mu^{\phantom \mu \nu} \mathcal P = \gamma^\nu
+        \end{equation*}
+        or equivalently
+        \begin{equation*}
+            \mathcal P^{-1}\gamma^\mu \mathcal P = P^\mu_{\phantom \mu \nu} \gamma^\nu ~.
+        \end{equation*}
+
+        Since 
+        \begin{equation*}
+            P^\mu_{\phantom \mu \nu} \gamma^\mu = \begin{bmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & -1 & 0 & 0 \\
+                0 & 0 & -1 & 0 \\
+                0 & 0 & 0 & -1 \\
+            \end{bmatrix} \begin{bmatrix}
+                \gamma^0 \\ \gamma^1 \\ \gamma^2 \\ \gamma^3 \\
+            \end{bmatrix} = \begin{bmatrix}
+                \gamma^0 \\ - \gamma^1 \\ - \gamma^2 \\ - \gamma^3 \\
+            \end{bmatrix} ~,
+        \end{equation*}
+            we need a matrix that commutes with $\gamma^0$ and anticommutes with $\gamma^i$, which is $\gamma^0$ itself  and 
+        \begin{equation*}
+            \mathcal P = \eta \gamma^0 ~,
+        \end{equation*}
+        where $\eta$ is an arbitrary phase factor, that we choose to be $1$, because it is one of the four solutions of $\mathcal P^4 = 1$, which are $\eta = \{\pm 1, \pm i\}$.
+    \end{proof}
+
+    Hence, we have under parity these transformations
+    \begin{equation*}
+        \begin{cases}
+            (x')^\mu = P^\mu_{\phantom \mu \nu} x^\nu \\
+            \psi' (x') = \beta \psi(x) \\
+            \overline \psi'(x') = \overline \psi (x) \beta \\
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            \overline \psi' (x') = (\psi')^\dagger (x') \beta = \beta \psi^\dagger (x) \beta = \psi^\dagger \underbrace{\beta^2}_1 = \psi^\dagger = \overline \psi \beta ~.
+        \end{equation*}
+    \end{proof}
+
+    From these transformations, we can deduce which are the true scalar or vectors and which are only pseudo, because it appears a minus sign when transformed under parity
+    \begin{equation*}
+        \begin{cases}
+            \overline \psi'(x') \psi'(x') = \overline \psi(x) \psi(x) \\
+            \overline \psi'(x') \gamma^5 \psi'(x') = - \overline \psi(x) \gamma^5 \psi(x) \\
+            \overline \psi'(x')\gamma^\mu \psi'(x') = \overline \psi(x) P^\mu_{\phantom \mu \nu} \gamma^\nu \psi(x) \\
+            \overline \psi'(x') \gamma^\mu \gamma^5 \psi'(x') = -\overline \psi(x) P^\mu_{\phantom \mu \nu} \gamma^\nu \gamma^5 \psi(x) \\
+            \overline \psi'(x') \Sigma^{\mu\nu} \psi'(x') = \overline \psi(x) P^\mu_{\phantom \mu \alpha} P^\nu_{\phantom \nu \beta} \Sigma^{\alpha \beta} \psi(x) \\
+        \end{cases} ~,
+    \end{equation*}
+    which shows that $\gamma^5$ is indeed a pseudoscalar and $\gamma^\mu \gamma^5$ is indeed an axial vector.
+    \begin{proof}
+        For $\mathbb I$, 
+        \begin{equation*}
+            \overline \psi' (x') \psi' (x') = \overline \psi (x) \underbrace{\beta \beta}_1 \psi (x) = \overline \psi (x) \psi (x)  ~.
+        \end{equation*}
+
+        For $\gamma^5$, 
+        \begin{equation*}
+            \overline \psi' (x') \gamma^5 \psi' (x') = \overline \psi (x) \beta \underbrace{\gamma^5 \beta}_{-\beta \gamma^5} \psi (x) = - \overline \psi (x) \underbrace{\beta \beta}_1 \gamma^5 \psi (x) = - \overline \psi (x) \gamma^5 \psi (x)~.
+        \end{equation*}
+
+        For $\gamma^\mu$, 
+        \begin{equation*}
+            \overline \psi' (x') \gamma^\mu \psi' (x') = \overline \psi (x) \underbrace{\beta \gamma^\mu \beta }_{P^\mu_{\phantom \mu \nu} \gamma^\nu} \psi (x) = \overline \psi (x) P^\mu_{\phantom \mu \nu} \gamma^\nu \psi (x) ~.
+        \end{equation*}
+
+        For $\gamma^\mu \gamma^5$, 
+        \begin{equation*}
+            \overline \psi' (x') \gamma^5 \psi' (x') = \overline \psi (x) \beta \gamma^\mu \underbrace{\gamma^5 \beta}_{-\beta \gamma^5} \psi (x) = - \overline \psi (x) \underbrace{\beta \gamma^\mu \beta }_{P^\mu_{\phantom \mu \nu} \gamma^\nu} \gamma^5 \psi (x) = - \overline \psi (x) P^\mu_{\phantom \mu \nu} \gamma^\nu \gamma^5 \psi (x)  ~.
+        \end{equation*}
+        
+        For $\Sigma^{\mu\nu}$, 
+        \begin{equation*}
+        \begin{aligned}
+            \overline \psi' (x') \Sigma^{\mu\nu} \psi' (x') & = \overline \psi (x) \beta \underbrace{\Sigma^{\mu\nu}}_{-\frac{i}{4} [\gamma^\mu, \gamma^\nu]} \beta \psi (x) \\ & = - \frac{i}{4} \overline \psi (x) \beta [\gamma^\mu,  \gamma^\nu] \beta \psi (x) \\ & = - \frac{i}{4} \overline \psi (x) \beta (\gamma^\mu \gamma^\nu - \gamma^\nu \gamma^\mu) \beta \psi (x) \\ & = - \frac{i}{4} \overline \psi (x) \beta \gamma^\mu \underbrace{\mathbb I }_{\beta \beta} \gamma^\nu \psi (x) + \frac{i}{4} \overline \psi (x) \beta \gamma^\nu \underbrace{\mathbb I }_{\beta \beta} \gamma^\mu \beta \psi (x) \\ & = - \frac{i}{4} \overline \psi (x) \underbrace{\beta \gamma^\mu \beta}_{P^\mu_{\phantom \mu \alpha} \gamma^\alpha} \underbrace{\beta \gamma^\nu \beta}_{P^\nu_{\phantom \nu \beta} \gamma^\beta} \psi (x) + \frac{i}{4} \overline \psi (x) \underbrace{\beta \gamma^\nu \beta}_{P^\nu_{\phantom \nu \beta} \gamma^\beta} \underbrace{\beta \gamma^\mu \beta}_{P^\mu_{\phantom \mu \alpha} \gamma^\alpha} \psi (x) \\ & = - \frac{i}{4} \overline \psi (x) P^\mu_{\phantom \mu \alpha} \gamma^\alpha P^\nu_{\phantom \nu \beta} \gamma^\beta \psi (x) + \frac{i}{4} \overline \psi (x) P^\nu_{\phantom \nu \beta} \gamma^\beta P^\mu_{\phantom \mu \alpha} \gamma^\alpha \psi (x) \\ & = \overline \psi (x) P^\mu_{\phantom \mu \alpha} P^\nu_{\phantom \nu \beta} \Big (-\frac{i}{4} (\gamma^\alpha \gamma^\beta - \gamma^\beta \gamma^\alpha) \Big ) \psi (x) \\ & = \overline \psi (x) P^\mu_{\phantom \mu \alpha} P^\nu_{\phantom \nu \beta} \underbrace{\Big (-\frac{i}{4} [\gamma^\alpha, \gamma^\beta] \Big )}_{\Sigma^{\alpha \beta}} \psi (x) \\ & = \overline \psi (x) P^\mu_{\phantom \mu \alpha} P^\nu_{\phantom \nu \beta} \Sigma^{\alpha \beta} \psi (x) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\subsection{Weyl spinors}   
+
+    The projectors~\eqref{proj} allow us to show that the Dirac representation is reducible into two spin $\frac{1}{2}$ representations of the Lorentz group. It follows from the fact that $\Sigma^{\mu\nu}$ commutes with $P_L$ and $P_R$
+    \begin{equation*}
+        [\Sigma^{\mu\nu}, P_L] = 0 ~, \quad [\Sigma^{\mu\nu}, P_R] = 0 ~,
+    \end{equation*}
+    which means that an infinitesimal Lorentz transformation acts on a Weyl spinor and it does not change its chirality. 
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+        \begin{aligned}
+            [P_L, \Sigma^{\mu\nu}] & = [\frac{\mathbb I - \gamma^5}{2}, - \frac{i}{4} [\gamma^\mu, \gamma^\nu]] \\ & = - \frac{i}{8} [\mathbb I - \gamma^5, \gamma^\mu \gamma^\nu - \gamma^\nu \gamma^\mu] \\ & = - \frac{i}{8} \underbrace{[\mathbb I, \gamma^\mu \gamma^\nu - \gamma^\nu \gamma^\mu]}_0 + \frac{i}{8} [\gamma^5, \gamma^\mu \gamma^\nu - \gamma^\nu \gamma^\mu] \\ & = \frac{i}{8} [\gamma^5, \gamma^\mu \gamma^\nu] - \frac{i}{8}  [\gamma^5, \gamma^\nu \gamma^\mu] \\ & = \frac{i}{8} \gamma^\mu [\gamma^5, \gamma^\nu] + \frac{i}{8} [\gamma^5, \gamma^\mu ] \gamma^\nu - \frac{i}{8}  \gamma^\nu [\gamma^5, \gamma^\mu] - \frac{i}{8}  [\gamma^5, \gamma^\nu] \gamma^\mu \\ & = \frac{i}{8} \gamma^\mu \underbrace{\{\gamma^5, \gamma^\nu\}}_0 - 2 \frac{i}{8} \gamma^\mu \gamma^\nu \gamma^5 + \frac{i}{8} \underbrace{\{\gamma^5, \gamma^\mu \}}_0 \gamma^\nu - 2 \frac{i}{8} \gamma^\mu \underbrace{\gamma^5 \gamma^\nu}_{- \gamma^\nu \gamma^5} \\ & \qquad - \frac{i}{8}  \gamma^\nu \underbrace{\{\gamma^5, \gamma^\mu\}}_0 + 2 \frac{i}{8} \gamma^\nu \gamma^\mu \gamma^5 - \frac{i}{8} \underbrace{\{\gamma^5, \gamma^\nu\}}_0 \gamma^\mu + 2 \frac{i}{8} \gamma^\nu \underbrace{\gamma^5 \gamma^\mu}_{- \gamma^\mu \gamma^5} \\ & = - \cancel{2 \frac{i}{8} \gamma^\mu \gamma^\nu \gamma^5} + 2 \cancel{\frac{i}{8} \gamma^\mu \gamma^\nu \gamma^5} + 2 \cancel{\frac{i}{8}  \gamma^\nu \gamma^\mu \gamma^5} - \cancel{2 \frac{i}{8} \gamma^\nu \gamma^\mu \gamma^5} \\ & = 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the identity
+        \begin{equation*}
+            [A, B] = AB - BA = AB + BA - BA - BA = \{A, B\} - 2 B A ~.
+        \end{equation*}
+    \end{proof}
+
+    Knowing that the Lie algebra of the Lorentz group can be written as $\mathfrak{so}(1,3) = \mathfrak{su}(2) + \mathfrak{su}(2)$, we can label each $SU(2)$ subalgebra with an half-integer $(j, j')$ associated to an irreducible representations. Dirac representation $(0, \frac{1}{2}) \oplus (\frac{1}{2}, 0)$ is invariant under parity, while Weyl spinor one is not. Infact under parity, a Weyl spinor get exchanged into the other one
+    \begin{equation*}
+        (\psi_L)' = (\psi')_R ~, (\psi_R)' = (\psi')_L ~.
+    \end{equation*}
+    \begin{proof}
+        Infact, Lorentz trasformation does not mix
+        \begin{equation*}
+            (\psi_L)' = S (\Lambda) \psi_L = \exp(\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) P_L \psi = P_L \exp(\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) \psi = P_L S(\Lambda) \psi = (\psi')_L ~,
+        \end{equation*}
+        while parity transformation does
+        \begin{equation*}
+            (\psi_L)' = \beta \psi_L = \beta P_L \psi = \beta \frac{\mathbb I - \gamma^5}{2} \psi = \frac{\mathbb I + \gamma^5}{2} \beta \psi_L = P_R \beta \psi = (\psi')_R ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Time reversal} 
+
+    The time reversal transformation is defined by the reversal of the orientation of the time axis
+    \begin{equation*}
+        (t', \mathbf x') = (- t, \mathbf x) ~, \quad (x')^\mu = T^\mu_{\phantom \mu \nu} x^\nu ~,
+    \end{equation*}
+    where the time reversal matrix $T$ is 
+    \begin{equation*}
+        T^\mu_{\phantom \mu \nu} = \begin{bmatrix}
+            -1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1 \\
+        \end{bmatrix} ~.
+    \end{equation*}
+    It has determinant equals to $-1$, so it is not connected to the identity and it forms a subgroup with the identity, isomorphic to $\mathbb Z_2 = \{\mathbb I, T\}$.
+
+    What is the analoguous parity transformation for a Dirac spinor? We conjecture that exists a linear transformation 
+    \begin{equation*}
+        \psi' (x') = \mathcal T \psi(x) ~.
+    \end{equation*}
+    It turns out that such a matrix does not exist. However, by analogy with the Schoredinger equation in which time reversal is the same as complex conjugate, we can defied as 
+    \begin{equation*}
+        \mathcal T = \gamma^1 \gamma^3 ~,
+    \end{equation*}
+    with the difference that it transforms its complex conjugate $\psi'(x') = \mathcal T \psi^* (x)$.
+    \begin{proof}
+        Infact
+        \begin{equation*}
+            0 = (\gamma^\mu \underbrace{{\partial'}_\mu}_{T_\mu^{\phantom \mu \nu} \partial_\nu} + m) \underbrace{\psi'(x')}_{\mathcal T \psi^* (x)} = (\gamma^\mu T_\mu^{\phantom \mu \nu} \partial_\nu + m) \mathcal T \psi^*(x) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            0 = \mathcal T^{-1}(\gamma^\mu T_\mu^{\phantom \mu \nu} \partial_\nu + m)\mathcal T \psi^*(x) = (\mathcal T^{-1}\gamma^\mu T_\mu^{\phantom \mu \nu} \mathcal T \partial_\nu + m) \psi^*(x)
+        \end{equation*}
+        and to be Lorentz invariant, we have the condition 
+        \begin{equation*}
+            \mathcal T^{-1}\gamma^\mu T_\mu^{\phantom \mu \nu} \mathcal T = (\gamma^*)^\nu
+        \end{equation*}
+        or equivalently
+        \begin{equation*}
+            \mathcal T^{-1}\gamma^\mu \mathcal T = T^\mu_{\phantom \mu \nu} (\gamma^*)^\nu ~.
+        \end{equation*}
+
+        Since 
+        \begin{equation*}
+            T^\mu_{\phantom \mu \nu} (\gamma^*)^\mu = \begin{bmatrix}
+                - 1 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1 \\
+            \end{bmatrix} \begin{bmatrix}
+                (\gamma^*)^0 \\ (\gamma^*)^1 \\ (\gamma^*)^2 \\ (\gamma^*)^3 \\
+            \end{bmatrix} = \begin{bmatrix}
+                - (\gamma^*)^0 \\ (\gamma^*)^1 \\ (\gamma^*)^2 \\ (\gamma^*)^3 \\ = 
+            \end{bmatrix} = \begin{bmatrix}
+                \gamma^0 \\ -\gamma^1 \\ \gamma^2 \\ - \gamma^3 \\ 
+            \end{bmatrix} ~,
+        \end{equation*}
+            we need a matrix that commutes with $\gamma^0$ and $\gamma^2$ and anticommutes with $\gamma^1$ and $\gamma^3$, which is $\gamma^1 \gamma^3$ and 
+        \begin{equation*}
+            \mathcal T = \eta \gamma^1 \gamma^3~,
+        \end{equation*}
+        where $\eta$ is an arbitrary phase factor, that we choose to be $1$, because it is one of the four solutions of $\mathcal T^4 = 1$, which are $\eta = \{\pm 1, \pm i\}$.
+    \end{proof}
+
+\subsection{Hole theory}
+
+    In order to solve the problem of negative energy solutions, we propose the hole theory. Consider the vacuum state, which is the minimum energy level, defined as configuration in which all negeative energy are occupied by electrons, called the Dirac sea. Pauli's exclusion principle guarantees the stability in which all holes all filled. By definition, the vacuum energy $E_{vac} = 0$ and charge $Q_{vac} = 0$ are zero. An electron state means that a positive energy level is occupied with energy energy $E_{e^-} = E_p > 0$ and charge $Q_{e^-} = e$. Pauli's exclusion principle ensures that it cannot jump in the Dirac sea. If there is a hole, we can interpet it as an antiparticle. Infact, it is equivalent to a configuration with energy $E_{hol} = E_p > 0$ and charge $Q_{hol} = - e$. 
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            E_{hol} + (- E_p) = E_{vac} = 0 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            Q_{hol} + e = Q_{vac} = 0 ~.
+        \end{equation*}
+    \end{proof}
+    It predicts both the positron and the pair creation, i.e. if a photon interacts with the vacuum, it creates an electron and a positron because it tranfers energy to a state of the Dirac sea and it occupates a positive energy one.
+
+\section{Charge conjugation}
+
+    The couple with electromagnetism is made through minimal substitution~\eqref{minsub}. For a particle of charge $e$ and mass $m$, it can be written as 
+    \begin{equation*}
+        (\gamma^\mu (\partial_\mu - i e A_\mu) + m) \psi = 0 ~,
+    \end{equation*}
+    while for an antiparticle of charge $-e$ and mass $m$ is 
+    \begin{equation*}
+        (\gamma^\mu (\partial_\mu + i e A_\mu) + m) \psi_c = 0 ~.
+    \end{equation*}
+    It is not a symmetry, but they are related by a transformation
+    \begin{equation*}
+        \mathcal A (\gamma^*)^\mu \mathcal A = \gamma^\mu ~,
+    \end{equation*}
+    where $A$ can be identify as 
+    \begin{equation*}
+        \mathcal A = \mathcal C \beta
+    \end{equation*}
+    and $\mathcal C$ is the charge conjugation matrix, defined as 
+    \begin{equation*}
+        \mathcal C = \gamma^0 \gamma^2 ~.
+    \end{equation*}
+    It is a background symmetry. However, in QED for dynamical $A_\mu$, we have a true symmetry. Notice that $\mathcal C$ is antysymmetric and it coincides with its inverse.
+    \begin{proof}
+        Infact, from
+        \begin{equation*}
+            0 = (\gamma^\mu ( \partial_\mu - i e A_\mu ) + m) \psi (x) 
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            0 = ((\gamma^*)^\mu ( \partial_\mu + i e A_\mu ) + m) \psi^* (x) ~,
+        \end{equation*}
+        and comparing with 
+        \begin{equation*}
+            (\gamma^\mu (\partial_\mu + i e A_\mu) + m) \psi_c = 0 ~,
+        \end{equation*}
+        to be Lorentz invariant, we have the condition 
+        \begin{equation*}
+            \mathcal A (\gamma^*)^\mu \mathcal A = \gamma^\mu ~,
+        \end{equation*}
+        such that 
+        \begin{equation*}
+            \psi_c = \mathcal A \psi^* ~.
+        \end{equation*}
+
+        We choose in the form
+        \begin{equation*}
+            \mathcal = \mathcal C \beta
+        \end{equation*}
+        and in terms of the Dirac conjugate
+        \begin{equation*}
+            \psi_c = \mathcal A \psi^* = \mathcal C \beta \psi^* = \mathcal C \overline \psi^T ~.
+        \end{equation*}
+
+        Hence, using
+        \begin{equation*}
+            (\gamma^*)^\mu = (- \beta \gamma^\mu \beta)^T = - \beta (\gamma^T)^\mu \beta ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \gamma^\mu = \mathcal A (\gamma^*)^\mu \mathcal A = \mathcal C \beta (\gamma^*)^\mu \mathcal C \beta = -\mathcal C \underbrace{\beta \beta }_ 1(\gamma^T)^\mu \beta \mathcal C \beta = ~,
+        \end{equation*}
+        or equivalently
+        \begin{equation*}
+            \mathcal C^{-1} \gamma^\mu \mathcal C = - (\gamma^T)^\mu = \begin{bmatrix}
+                - \gamma^0 \\ \gamma^1 \\ - \gamma^2 \\ \gamma^3 \\
+            \end{bmatrix} ~,
+        \end{equation*}
+        we need a matrix that commutes with $\gamma^1$ and $\gamma^2$ and anticommutes with $\gamma^0$ and $\gamma^2$, which is $\gamma^0 \gamma^2$ and 
+        \begin{equation*}
+            \mathcal C = \eta \gamma^0 \gamma^2~,
+        \end{equation*}
+        where $\eta$ is an arbitrary phase factor, that we choose to be $1$, because it is one of the four solutions of $\mathcal C^4 = 1$, which are $\eta = \{\pm 1, \pm i\}$.
+    \end{proof}
+
+\subsection{Weyl spinors}   
+
+    For Weyl spinors, we have 
+    \begin{equation*}
+        (\psi_L)_c = P_R C (\psi_L)_c ~.
+    \end{equation*}
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            \psi_{L,c} = \mathcal C (\overline \psi_L)^T = \mathcal (\overline \psi_L P_R)^T = \mathcal C P_R (\overline \psi_L)^T = P_R \mathcal C (\overline \psi_L)^T = P_R \psi_{L,c} ~.
+        \end{equation*}
+    \end{proof}
+
+\subsection{CPT}
+
+    Even though singular discrete symmetries are broken by interaction, the union of the three is always valid for Lorentz invariance theories. It acts as 
+    \begin{equation*}
+        \begin{cases}
+            (x')^\mu = - x^\mu \\
+            \psi'(x') = \gamma^5 \psi(x) \\
+        \end{cases} ~,
+    \end{equation*}
+    which is a symmetry for the Dirac equation.
+    \begin{proof}
+        Infact 
+        \begin{equation*}
+            (\gamma^\mu {\partial'}_\mu + m) \psi'(x') = (- \gamma^\mu \partial_\mu + m) \gamma^5 \psi(x) = \cancel{\gamma^5} (\gamma^\mu \partial_\mu + m) \psi (x) = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+
 \chapter{Dirac action} 
