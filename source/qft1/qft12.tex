@@ -1042,10 +1042,15 @@
 
     It is Lorentz invariant
     \begin{equation*}
-        \Delta (x - y) = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( \exp(- i p (x - y)) - \exp(i p (x - y)) \Big) ~.
+        \Delta (x - y) = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \exp(- i p (x - y)) - \exp(i p (x - y)) \Big) ~.
     \end{equation*}
     \begin{proof}
-        
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            \Delta (x - y) & = [\hat \varphi (x), \hat \varphi (y)] \\ & = [\int \frac{d^3 p}{{(2\pi)}^3} \frac{1}{\sqrt{2 \omega_{\mathbf p}}} \Big (\hat a_{\mathbf p} \exp(- i p x) + \hat a_{\mathbf p}^\dagger \exp(i p x) \Big) , \\ & \qquad  \int \frac{d^3 q}{{(2\pi)}^3} \frac{1}{\sqrt{2 \omega_{\mathbf p}}} \Big (\hat a_{\mathbf q} \exp(- i q y) + \hat a_{\mathbf q}^\dagger \exp( i q y) \Big)] \\ & = \int \frac{d^3 p ~ d^3 q}{{(2\pi)}^6} \frac{1}{2 \sqrt{\omega_{\mathbf p}}\omega_{\mathbf q}}  \Big ( \underbrace{[\hat a_{\mathbf p}, \hat a_{\mathbf q}]}_0 exp (- i p x - i q y) + \underbrace{[\hat a_{\mathbf p}^\dagger, \hat a_{\mathbf q}]}_{- (2\pi)^3 \delta (p - q)} exp (i p x - i q y) \\ & \qquad + \underbrace{[\hat a_{\mathbf p}, \hat a_{\mathbf q}^\dagger]}_{(2\pi)^3 \delta ( p - q)} exp (- i p x + i q y) + \underbrace{[\hat a_{\mathbf p}^\dagger, \hat a_{\mathbf p}^\dagger]}_0 exp (i p x + i q y) \Big) \\ & = \int \frac{d^3 p ~ d^3 q}{{(2\pi)}^3} \frac{1}{2 \sqrt{\omega_{\mathbf p}}\omega_{\mathbf q}}  \Big ( - \underbrace{\delta (p - q)}_{p = q} exp (i p x - i q y) + \underbrace{\delta ( p - q)}_{p = q} exp (- i p x + i q y) \Big) \\ & =  = \int \frac{d^3 p ~ d^3 q}{{(2\pi)}^3} \frac{1}{2 \omega_{\mathbf p}} \Big ( exp (- i p (x -  y)) - exp (i p (x - y) )  \Big) \\ & =
+        \end{aligned}
+        \end{equation*}
     \end{proof}
 
     It satisfies the causality constrains
@@ -1060,8 +1065,93 @@
             \end{equation*}
     \end{enumerate}
     \begin{proof}
-        
+        For inside the light cone, we choose one particular case with $x^\mu = (t, 0, 0, 0)$ and $y^\mu = (0, 0, 0,0 0)$, where we are static in space. Hence 
+        \begin{equation*}
+        \begin{aligned}
+        \Delta (x - y) & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \exp(- i \underbrace{p (x - y)}_{E_{\mathbf p} t}) - \exp(i \underbrace{p (x - y)}_{E_{\mathbf p} t}) \Big) \\ & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \exp(- i E_{\mathbf p} t) - \exp(i E_{\mathbf p} t) \Big) ~.
+        \end{aligned}
+        \end{equation*}
+        In polar coordinates $(|p|, \theta, \varphi)$
+        \begin{equation*}
+        \begin{aligned}
+        \Delta (x - y) & = \int_0^\infty \frac{d|p|}{(2 \pi)^3} \frac{|p|^2}{2 E_{\mathbf p}} \Big ( \exp(- i E_{\mathbf p} t) - \exp(i E_{\mathbf p} t) \Big) \underbrace{\int_0^{2\pi} d\varphi \int_0^\pi d\theta \sin \theta}_{4\pi} \\ & = 4 \pi \int_0^\infty \frac{d|p|}{(2 \pi)^3} \frac{|p|^2}{2 \sqrt{|p|^2 + m^2}} \Big ( \exp(- i \sqrt{|p|^2 + m^2} t) - \exp(i \sqrt{|p|^2 + m^2} t) \Big) ~.
+        \end{aligned}
+        \end{equation*}
+        By a change of variable $|p| = E_{\mathbf p}$ with differential $|p|^2 d|p| = E_{\mathbf p} d E_{\mathbf p} \sqrt{E_{\mathbf p}^2 - m^2}$
+        \begin{equation*}
+        \begin{aligned}
+            \Delta (x-y) & = \frac{1}{4\pi^2} \int_m^\infty d E_{\mathbf p} \sqrt{E_{\mathbf p} - m^2} (\exp(- i E_{\mathbf p} t) - \exp(i E_{\mathbf p} t)) \\ & = \frac{m}{8 \pi t} (Y_1(mt) + i J_1(mt) - Y_1(-mt) - i J_1(-mt)) ~,
+        \end{aligned}
+        \end{equation*}
+        where have used the Bessel function of first order. notice that their behaviour at infinity is 
+        \begin{equation*}
+            J_1(x) \xrightarrow{x \rightarrow \infty} \sqrt{\frac{2\pi}{x}} \cos x ~, \quad Y_1(x) \xrightarrow{x \rightarrow \infty} \sqrt{\frac{2}{\pi x}} \sin x ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            Y_1(mt) + m J_2(mt) \xrightarrow{t \rightarrow \infty} \sqrt{\frac{2}{\pi mt}} (\sin (mt) + i \cos (mt)) = i \sqrt{\frac{2}{\pi mt}} \exp(- i mt)
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \Delta (x-y) \xrightarrow{t \rightarrow \infty} \propto \exp(-imt) - \exp(i mt) \neq 0~.
+        \end{equation*}
+
+        For outside the light cone, because of the Lorentz invariance, we need to prove only a particular spacelike separations and it becomes true for all spacelike separations. We choose the one at the same t
+        \begin{equation*}
+        \begin{aligned}
+            \Delta (x - y) & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \exp(- i \underbrace{p (x - y)}_{- \mathbf p \cdot (\mathbf x - \mathbf y)}) - \exp(i \underbrace{p (x - y)}_{- \mathbf p \cdot (\mathbf x - \mathbf y)}) \Big) \\ & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \exp( i\mathbf p \cdot (\mathbf x - \mathbf y)) - \exp( - i \mathbf p \cdot (\mathbf x - \mathbf y)) \Big) = 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we echanged $\mathbf p$ in $-\mathbf p$ in the second term of the integrand.
     \end{proof}
 
+    We have just proved that the Klein-Gordon theory preserves causality.
     
 \section{Correlators}
+
+    Another way to study is via the propagators. Consider a particle at a spacetime point $y$. What is the probability to find it st $x$? We define the propagator 
+    \begin{equation*}
+        D(x - y) = \bra{0} \hat \varphi (x) \hat \varphi (y) \ket{0} ~.
+    \end{equation*}
+    which is 
+    \begin{equation}
+        D(x-y) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_{\mathbf p}} \exp(- i p (x - y)) ~.
+    \end{equation}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            D(x- y) & = \bra{0} \hat \varphi (x) \hat \varphi (y) \ket{0} \\ & = \bra{0} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat a^\dagger_{\mathbf p} \exp(i p x) + \hat a_{\mathbf p} \exp(-i p x)) \\ & \qquad \int \frac{d^3 q}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf q}}} (\hat a^\dagger_{\mathbf q} \exp(i q y) + \hat a_{\mathbf q} \exp(-i q y)) \ket{0} \\ & = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2 \sqrt{E_{\mathbf p} E_{\mathbf p}}} \bra{0} \Big ( \hat a_{\mathbf p} \hat a_{\mathbf q} \exp (- i p x - i q y) + \hat a_{\mathbf p}^\dagger \hat a_{\mathbf q} \exp (i p x - i q y) \\ & \qquad + \hat a_{\mathbf p} \hat a_{\mathbf q}^\dagger \exp (- i p x + i q y) + \hat a_{\mathbf p}^\dagger \hat a_{\mathbf p}^\dagger \exp (i p x + i q y) \Big) \ket{0} \\ & = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2 \sqrt{E_{\mathbf p} E_{\mathbf p}}} \Big ( \bra{0} \hat a_{\mathbf p} \underbrace{\hat a_{\mathbf q} \ket{0}}_0 \exp (- i p x - i q y) + \bra{0} \hat a_{\mathbf p}^\dagger \underbrace{\hat a_{\mathbf q} \ket{0}}_0  \exp (i p x - i q y) \\ & \qquad + \bra{0} \underbrace{\hat a_{\mathbf p} \hat a_{\mathbf q}^\dagger}_{[\hat a_{\mathbf p}, \hat a_{\mathbf q}^\dagger] + \hat a_{\mathbf q}^\dagger \hat a_{\mathbf p}} \ket{0} \exp (- i p x + i q y) + \underbrace{\bra{0} \hat a_{\mathbf p}^\dagger}_0 \hat a_{\mathbf p}^\dagger \ket{0}  \exp (i p x + i q y) \Big) \\ & = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2 \sqrt{E_{\mathbf p} E_{\mathbf p}}} \Big (\bra{0} \underbrace{[\hat a_{\mathbf p}, \hat a_{\mathbf q}^\dagger]}_{(2\pi)^3 \delta (\mathbf p - \mathbf q)} \ket{0} \exp (- i p x + i q y) + \bra{0} \hat a_{\mathbf q}^\dagger \underbrace{\hat a_{\mathbf p} \ket{0}}_0 \exp (- i p x + i q y) \Big ) \\ & = \int \frac{d^3 p ~ d^3 q}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\mathbf p} E_{\mathbf p}}} 
+            \underbrace{\delta (\mathbf p - \mathbf q)}_{\mathbf p = \mathbf q} \underbrace{\braket{0}{0}}_1 \exp (- i p x + i q y) \\ & = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_{\mathbf p}} \exp (- i p (x-y)) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Outside the light cone, it does not vanish.
+    \begin{proof}
+        For spacelike separation, like $(x-y) = (0, \mathbf r)$, we have 
+        \begin{equation*}
+            D(x-y) = \frac{1}{(2\pi)^2 r} \int_m^\infty dy ~ \frac{y \exp(- yr)}{\sqrt{y^2 - m^1}} ~,
+        \end{equation*}
+        or with asymptotic behaviour at infinity 
+        \begin{equation*}
+            D(x-y) \xrightarrow{r \rightarrow \infty} \propto \exp(-mr) ~,
+        \end{equation*}
+        which means that the propagators decays exponentially quickly outside the light cone but it does not vanish.
+    \end{proof}
+
+    However, causality is not violated because even though the propagator is non-zero, the commutator $\Delta (x-y)$ is so and it can be written as 
+    \begin{equation*}
+        \Delta (x-y) = D(x-y) - D(y-x) ~,
+    \end{equation*}
+    which means that there is a decostructive interference, with the Feynman interpretation as 
+    \begin{equation*}
+        \Delta (x-y) = \bra{0} \hat \varphi (x) \hat \varphi (y) \ket{0} - \bra{0} \hat \varphi (y) \hat \varphi (x) \ket{0} ~,
+    \end{equation*}
+    where the first term is the probability amplitude to go from $\mathbf y$ to $\mathbf x$ at a speed larger than that of light and the latter term is the probability amplitude to go from $\mathbf x$ to $\mathbf y$ at a speed larger than that of light. The physical intuition, for a complex Klein-Gordon field, is a particle and an antiparticle that travels backward in time
+    \begin{equation*}
+        \Delta (x-y) = \bra{0} \hat \varphi (x) \hat \varphi^* (y) \ket{0} - \bra{0} \hat \varphi^* (y) \hat \varphi (x) \ket{0} ~.
+    \end{equation*} 
+    
+    
+    

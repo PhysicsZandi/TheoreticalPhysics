@@ -487,4 +487,68 @@
         \end{equation*}
     \end{proof}
 
-    For instance, a plane wave $u(x) = \exp (i \mathbf k \cdot \mathbf x) $ and $\hat \psi(x) = \sum_k \hat_k^\dagger \exp(i \mathbf k \cdot \mathbf x)$.
+    For instance, a plane wave $u(x) = \exp (i \mathbf k \cdot \mathbf x) $ and $\hat \psi(x) = \sum_k \hat a_k^\dagger \exp(i \mathbf k \cdot \mathbf x)$.
+
+    Notice that field operators are basis independent
+
+\section{Operators}
+
+    Consider a Fock space $\mathcal F = \bigoplus_{N=0}^\infty \mathcal H^{(N)}_{B/F}$ with orthonormal basis $\ket{n_1, \ldots n_k, \ldots} = \frac{1}{\sqrt{\prod_j n_j !}} (\hat a^\dagger_1)^{n_1} \ldots (\hat a_k^\dagger)^{n_k} \ldots \ket{0}$, which is in $1-1$ correspondence to the orthonormal basis $\psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots$, where $hat S$ is the symmetriser and $\hat A$ is the antisymmetriser.
+
+    We define a one-body operator, associated to a system in which all the particles are the same, as 
+    \begin{equation*}
+        \hat O^{(1)} = \sum_{j=1}^{N} \hat O(\hat p_j, \hat x_j) ~.
+    \end{equation*}
+    Since it is self-adjoint, it exists an orthonormal basis of eigenvalues $\{u_\alpha (x)\}$, such that 
+    \begin{equation*}
+        \hat O(\hat p, \hat x) u_\alpha (x) = \epsilon_\alpha u_\alpha (x) ~.
+    \end{equation*}
+
+    Since 
+    \begin{equation*}
+    \begin{aligned}
+        \hat O^{(1)} \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) \\ & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \Big) \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty}  u_{\alpha_1} (x_1) \ldots \underbrace{\hat O(\hat p_j, \hat x_j) u_{\alpha_j} (x_j)}_{\epsilon_{\alpha_j} u_{\alpha_j} (x_j) } \ldots \Big) \\ & = \Big (\sum_{j=1}^{\infty} \epsilon_j n_j \Big ) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) ~.
+    \end{aligned}
+    \end{equation*}
+
+    For the Fock space, we have 
+    \begin{equation*}
+        \hat O^{(1)}_F = \sum_{j=1}^{\infty} \epsilon_j \hat n_j = \sum_{j=1}^{\infty} \epsilon_j \hat a_j^\dagger \hat a_j ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \epsilon_j = \bra{u_j (x)} \hat O (\hat p_j, \hat x_j) \ket{u_j(x)} ~.
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \hat O^{(1)}_F = \sum_{j=1}^{\infty} \bra{u_j (x)} \hat O (\hat p_j, \hat x_j) \ket{u_j(x)} \hat a_j^\dagger \hat a_j ~.
+    \end{equation*}
+
+    Since it is dependent of the basis, because we choose the eigenbasis, we choose a different arbitrary basis 
+    \begin{equation*}
+        \psi^\dagger (x) = \sum_k u_k (x) \hat a^\dagger_k = \sum_m v_m (x) b^\dagger_m ~,
+    \end{equation*}
+    and we define the one-body operator
+    \begin{equation*}
+        \hat O^{(1)}_F = \int d^d x ~ \hat \varphi^\dagger (x) \hat O (\hat p, \hat x) \hat \varphi (x) ~,
+    \end{equation*}
+    which this time is basis independent.
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \int d^d x ~ \hat \varphi^\dagger (x) \hat O (\hat p, \hat x) \hat \varphi (x) & = \int d^d x ~ \Big ( \sum_k u_k(x) \hat a^\dagger (x) \Big ) \hat O (\hat p, \hat x) \Big ( \sum_m u_m^* (x) \hat a_m (x) \Big ) \\ & = \sum_k \sum_m \hat a_k^\dagger \hat a_m \int d^d x ~ u_k (x) \underbrace{\hat O(\hat p, \hat x) u^*_m (x)}_{\epsilon_m u^*_m (x)} \\ & = \sum_k \sum_m \hat a_k^\dagger \hat a_m \epsilon_m \underbrace{\int d^d x ~ u_k (x) u^*_m (x)}_{\delta_{km}} \\ & = \sum_k \sum_m \hat a_k^\dagger \hat a_m \epsilon_m \underbrace{\delta_{km}}_{k = m} \\ & = \sum_k\hat a_k^\dagger \hat a_k \epsilon_k = \hat O^{(1)}_F ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    It can be written as 
+    \begin{equation*}
+        \hat O^{(1)}_F = \sum_k \sum_m t_{km} \hat b_k^\dagger \hat h_m ~,
+    \end{equation*}
+    where the transition amplitude is
+    \begin{equation*}
+        t_{km} = \bra{v_k} \hat O (\hat p, \hat x) \ket{v_m} ~.
+    \end{equation*}
+
+
+

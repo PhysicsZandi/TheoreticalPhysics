@@ -1741,5 +1741,106 @@
         \end{equation*}
     \end{proof}
 
-
 \chapter{Dirac action} 
+
+    The Dirac action is 
+    \begin{equation*}
+        S [\psi, \overline \psi] = \int d^4 x ~ (- \overline \psi (\gamma^\mu \partial_\mu + m) \psi) ~.
+    \end{equation*}
+    It is Lorentz invariant, since there is a summation over $\mu$ and a scalar $\overline \psi \psi$. The Euler-Lagrange equations are 
+    \begin{equation*}
+        (\gamma^\mu \partial_\mu + m) \psi (x) = 0 ~, \quad \overline \psi (x) (\gamma^\mu \overleftarrow{\partial_\mu} - m) = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \delta S &= \int d^4 x ~ (\underbrace{- \overline \psi \gamma^\mu \partial_\mu \delta \psi}_{\overline \psi \gamma^\mu \overleftarrow{\partial_\mu} \delta \psi - \textnormal{boundary term}} - \overline \psi m \delta \psi - \delta \overline \psi \gamma^\mu \partial_\mu \psi - \delta \overline \psi m \psi) \\ & = \int d^4 x ~ (\overline \psi \gamma^\mu \overleftarrow{\partial_\mu} \delta \psi - \overline \psi m \delta \psi - \delta \overline \psi \gamma^\mu \partial_\mu \psi - \delta \overline \psi m \psi) ~,
+        \end{aligned}
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \dvf{S}{\psi} = \overline \psi \gamma^\mu \overleftarrow{\partial_\mu} - \overline \psi m = 0
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \dvf{S}{\overline \psi} = - \psi \gamma^\mu \partial_\mu \psi - m \psi = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Noether's theorem}
+
+    Consider an internal symmetry of a complex rotation $U(1)$, which is 
+    \begin{equation*}
+        \psi'(x) = \exp(i \alpha) \psi(x) ~, \quad \overline \psi'(x) = \exp(- i \alpha) \overline \psi (x) ~.
+    \end{equation*} 
+    The Dirac action is indeed invariant.
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            \mathcal L' = - \overline \psi' (\gamma^\mu \partial_\mu + m) \psi' = - \overline \psi \cancel{\exp(- i \alpha) }(\gamma^\mu \partial_\mu + m) \psi \cancel{ \exp(i \alpha)} = - \overline \psi (\gamma^\mu \partial_\mu + m) \psi = \mathcal L ~.
+        \end{equation*}
+    \end{proof}
+
+    The infinitesimal transformation is 
+    \begin{equation*}
+        \delta \psi(x) = i \alpha \psi(x) ~, \quad \psi \overline \psi(x) = - i \alpha \overline \psi (x) ~
+    \end{equation*}
+    and the Noether's current is 
+    \begin{equation*}
+        J^\mu = i \overline \psi \gamma^\mu \psi ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            J^\mu = \pdv{\mathcal L}{\partial_\mu \psi} \delta \psi + \cancel{\pdv{\mathcal L}{\partial_\mu  \overline \psi}} \delta \overline \psi = - \overline \psi \gamma^\mu i \alpha \psi = - \alpha (i \overline \psi \gamma^\mu \psi) ~,
+        \end{equation*}
+        which is defined up to a constant $- \alpha$.
+    \end{proof}
+    It can be intepreted as a probability density, since its charge is positive definite. 
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            J^0 = i \overline \psi \gamma^0 \psi = i \psi^\dagger \beta \gamma^0 \psi = i \psi^\dagger i \gamma^0 \gamma^0 \psi = \psi^\dagger \psi \geq 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    It can be generalised to $n$ Dirac fermions with the same mass $m$, since it is invariant under the symmetry $U(N) = U(1) \times SU(N)$. In fact, given the fundamental representation $U^i_{\phantom i j} \in U(N)$
+    \begin{equation*}
+        N rep : (\psi')^ = U^i_{\phantom i j} \psi^j ~, \quad \overline N rep : (\overline \psi')^ = \overline \psi^j (U^{-1})^i_{\phantom i j} ~.
+    \end{equation*}
+    Writing the generators $U = \mathbb + i \alpha_a T^a$, we have the infinitesimal transformation $\delta \psi^i = i \alpha_a (T^a)^i_{\phantom i j} \psi^j$ and, by the Noether's theorem, the Noether current is 
+    \begin{equation*}
+        J^{\mu , a} = i \overline \psi_i \gamma^\mu (T^a)^i_{\phantom i j} \psi^j ~,
+    \end{equation*}
+    where $a = 1, \ldots N^2$.
+
+\section{Action for Weyl spinors}
+
+    The action in terms of the irreducible chiral components is 
+    \begin{equation*}
+        S[\psi_L, \overline \psi_L, \psi_R, \overline \psi_R] = \int d^4 x (- \psi_L \cancel{\partial} \psi_L - \overline \psi_R \cancel{\partial} \psi_R - m (\overline \psi_L \psi_R + \overline \psi_R \psi_L)) ~.
+    \end{equation*}
+    The Dirac mass is forbidden by chiral fermions, because setting $\psi_R$ we have 
+    \begin{equation*}
+        S = \int d^4 x (- \overline \psi_L \gamma^\mu \partial_\mu \psi_L)
+    \end{equation*}
+    which does not present mass term. However, there exists another Lorentz invariant mass term: the Maiorana mass, but it breaks the $U(1)$ symmetry, because there is not a term with $\overline \psi \psi$ to cancel the phase factor. It is 
+    \begin{equation*}
+        \mathcal L_M = \frac{M}{2} \psi^T \mathca C^{-1} \psi + h.c. ~.
+    \end{equation*}
+    Lorentz invariance is verified by 
+    \begin{equation*}
+        \delta \psi = \frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu} \psi
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \delta \psi^T = \frac{i}{2} \omega_{\mu\nu} \psi^T (\Sigma^{\mu\nu})^T = - \frac{i}{2} \omega_{\mu\nu} \psi^T \mathcal C^{-1} \Sigma^{\mu\nu} \mathcal C ~,
+    \end{equation*}
+    where we have used $(\gamma^\mu)^T = - \mathcal C^{-1} \gamma^\mu \mathcal C$ so that $(\Sigma^{\mu\nu})^T = - \mathcal C^{-1} \Sigma^{\mu\nu} \mathcal C$. Hence $\delta \mathcal L_M = 0$.
+
+
+
+
+
+    The left-handed neutrino, the one which weakly interacts, has no Maiorana mass, but it is possible that the right-handed neutrino does have it.
