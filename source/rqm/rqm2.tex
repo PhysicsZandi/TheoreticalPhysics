@@ -1827,7 +1827,7 @@
     \end{equation*}
     which does not present mass term. However, there exists another Lorentz invariant mass term: the Maiorana mass, but it breaks the $U(1)$ symmetry, because there is not a term with $\overline \psi \psi$ to cancel the phase factor. It is 
     \begin{equation*}
-        \mathcal L_M = \frac{M}{2} \psi^T \mathca C^{-1} \psi + h.c. ~.
+        \mathcal L_M = \frac{M}{2} \psi^T \mathcal C^{-1} \psi + h.c. ~.
     \end{equation*}
     Lorentz invariance is verified by 
     \begin{equation*}
@@ -1839,8 +1839,51 @@
     \end{equation*}
     where we have used $(\gamma^\mu)^T = - \mathcal C^{-1} \gamma^\mu \mathcal C$ so that $(\Sigma^{\mu\nu})^T = - \mathcal C^{-1} \Sigma^{\mu\nu} \mathcal C$. Hence $\delta \mathcal L_M = 0$.
 
-
-
-
-
     The left-handed neutrino, the one which weakly interacts, has no Maiorana mass, but it is possible that the right-handed neutrino does have it.
+
+\section{Action for Maiorana spinors}
+
+    The action with the Maiorana mass becomes 
+    \begin{equation*}
+        \mathcal L = - \overline \psi (\gamma^\mu \partial_\mu + m) \psi + \frac{M}{2} (\psi^T \mathcal C^{-1} \psi + h.c.) ~.
+    \end{equation*}
+    Notice that there are two masses: the Dirac mass term that preserves the $U(1)$ symmetry, whereas the Majorana mass term that break this symmetry.  
+
+    This description is equivalent to a Majorana fermions $\mu_C(x) = \mu (x)$, which is $\mu (x) \sim \psi_L(x) + \psi_{L,c} (x)$. A majorana spinor is analoguous to a real scalar $\varphi^* = \varphi$, while Dirac spinor is analoguous to a complex scalar field, which is equivalent to two real scalar field of equal mass, hence two Majorana spinors of identical mass.  
+
+    Let's an analogu with a scalar field. Consider two fields with the same mass 
+    \begin{equation*}
+        \mathcal L = - \frac{1}{2} \partial_\mu \varphi_1 \partial^\mu \varphi_1 - \frac{1}{2} \partial_\mu \varphi_2 \partial^\mu \varphi_2 - \frac{1}{2} m^2 (\varphi^1 + \varphi^2) ~,
+    \end{equation*}
+    which is invariant under a rotation $SO(2)$ in the $\varphi_1, \varphi_2$ plane, only if $m_1 = m_2 = m$. With a change of variable $\phi = \frac{1}{\sqrt{2}} (\varphi_1 + i \varphi_2)$ and $\phi^* = \frac{1}{\sqrt{2}} (\varphi_1 - i \varphi_2)$, we obtain 
+    \begin{equation*}
+        \mathcal L = - \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi ~,
+    \end{equation*}
+    which is invariant under a rotation $U(1)$. However, the addition of the Majorana mass term, it breaks the symmetry 
+    \begin{equation*}
+        \mathcal L = - \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi - \frac{M}{2} (\phi \phi + \phi^* \phi^* )~,
+    \end{equation*}
+    which has positive physical mass term, once we diagonalise,
+    \begin{equation*}
+        \mu_1 = m^2 + M^2 ~, \quad \mu_2 = m^2 - M^2 ~.
+    \end{equation*}
+
+\section{Green function and propagator}
+
+    The Green equation reads 
+    \begin{equation*}
+        (\cancel{\partial_x} + m) G(x - y) = \delta^4 (x - y) ~,
+    \end{equation*}
+    which can be solved by a Fourier transform 
+    \begin{equation*}
+        G(x-y) = \int \frac{d^4 p}{(2\pi)^4} \exp(ip(x-y)) \tilde G(p) 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \tilde G(p) = \frac{1}{i \cancel{p} + m} = \frac{- i \cancel{p} + m}{p^2 + m^2} ~,
+    \end{equation*}
+    where we can use the Feynman-Stueckelberg prescription. The propagator, which is a particular Green function, is 
+    \begin{equation*}
+        \bra{0} T \hat \psi(x) \hat \psi (y) \ket{0} = \av{\psi(x) \overline \psi (y)} = - i G(x - y) = \int \frac{d^4 p}{(2\pi)^4} \exp(i p (x-y)) \frac{- i \cancel{p} + m}{p^2 + m^2} ~.
+    \end{equation*}
+    

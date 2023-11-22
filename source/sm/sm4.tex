@@ -529,9 +529,9 @@
         \psi^\dagger (x) = \sum_k u_k (x) \hat a^\dagger_k = \sum_m v_m (x) b^\dagger_m ~,
     \end{equation*}
     and we define the one-body operator
-    \begin{equation*}
+    \begin{equation}\label{basind}
         \hat O^{(1)}_F = \int d^d x ~ \hat \varphi^\dagger (x) \hat O (\hat p, \hat x) \hat \varphi (x) ~,
-    \end{equation*}
+    \end{equation}
     which this time is basis independent.
     \begin{proof}
         In fact 
@@ -550,5 +550,136 @@
         t_{km} = \bra{v_k} \hat O (\hat p, \hat x) \ket{v_m} ~.
     \end{equation*}
 
+    To summarise, the onebody operator is 
+    \begin{equation*}
+        \hat O^{(1)}_F = \begin{cases}
+            \sum_{m m'} t_{mm'} \hat b^\dagger_m \hat b_m & \textnormal{arbitrary basis} \\
+            \sum_k \epsilon_k \hat a^\dagger_k \hat a_k & \textnormal{eigenbasis} \\
+        \end{cases} ~.
+    \end{equation*}
 
+\section{Examples} 
+
+    The density operator of a single particle $j$ is 
+    \begin{equation*}
+        \hat \rho_j = \delta (x - x_j)
+    \end{equation*}
+    and the corresponding field operator is 
+    \begin{equation*}
+        \hat \varphi (x_j) = \int d^d x  \psi (x) \delta (x - x_j) ~.
+    \end{equation*}
+
+    The onebody operator is 
+    \begin{equation*}
+        \hat \rho^{(1)} = \sum_{j=1}^{N} \delta (x - x_j) ~,
+    \end{equation*}
+    which in the basis independent definition~\eqref{basind} on the Fock space 
+    \begin{equation*}
+        \hat \rho_F = \int d^d y \hat \psi^\dagger (y) \delta (x - y) \hat \psi (y) = \hat \psi^\dagger \hat \psi = \sum_{kk'} u_k^* (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} ~.
+    \end{equation*}
+
+    The number of particle operator is 
+    \begin{equation*}
+        \hat N = \int d^d x \hat \rho^{(1)}_F (x) = \int d^d x \sum_{kk'} u^*_k (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\int d^d x u^*_k (x) u_{k'} (x)}_{\delta_{kk'}} = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\delta_{kk'}}_{k = k'} = \sum_k \hat a^\dagger_k \hat a_k = \sum_k \hat n_k ~,
+    \end{equation*}
+    which is consistent with the definition of $\rho$ since it can be seen as a density of particle whose intergral is indeed the number of particles.
+
+\subsection{Free non-relativistic $3$-dimensional particles} 
+
+    Consider the hamiltonian of a single particle described by the wave function $\psi (x) \in L^2 (\mathbb R^d)$ 
+    \begin{equation*}
+        \hat H_1 = \frac{\hbar^2 \hat p^2}{2m} = - \frac{\hbar^2}{2m} \nabla_x^2 ~.
+    \end{equation*}
+    The onebody operator for $N$ particles is 
+    \begin{equation*}
+        \hat H = \sum_{j = 1}^{N} \frac{\hbar^2 hat p_j^2}{2m} = - \sum_{j = 1}^{N} \frac{\hbar^2}{2m} \nabla^2_{x_j} ~.
+    \end{equation*}
+    On the Fock space, it becomes 
+    \begin{equation*}
+        H = \sum_k \epsilon_k \hat a_k^\dagger \hat a_k ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \hat H_1 u_k (x) = - \frac{\hbar^2}{2m} u_k (x) = \epsilon_k u_k (x) ~.
+    \end{equation*}
+    However, wave plane solutions do not belong in $u_k(x) \sim \exp(i \mathbf k \cdot \mathbf x) \notin L^2 (\mathbb R^d)$, because they are not normalisable. The trick is to go into a finite volume $V$ and consider the space $L^2(V)$. The simple example is the particle in a cube of length $L$ describer by the coordinates $(x,y,z) \in [0, L]$. The Schoredinger's equation becomes 
+    \begin{equation*}
+        - \frac{\hbar^2}{2m} \nabla_x^2 u_k (x,y,z) = \epsilon_k u_k (x,y,z) ~.
+    \end{equation*}
+    Now, we do not choose the Dirichlet or the Neumann boundary condition, but we choose the periodic boundary conditions 
+    \begin{equation*}
+        \begin{cases}
+            u(x=0, y, z) = u(x = L, y, z) \\
+            u(x, y=0, z) = u(x, y=L, z) \\
+            u(x, y, z=0) = u(x, y, z=L) \\
+        \end{cases} ~,
+    \end{equation*}
+    which trasforms the cube into a $3$-torus.
+
+    The ansatz solution is 
+    \begin{equation*}
+        u_\alpha (\mathbf x) = c \exp(i \mathbf k \cdot \mathbf x) ~,
+    \end{equation*}
+    where $c$ is a normalisation constant and 
+    \begin{equation*}
+        \nabla_2 u_\alpha (\mathbf x) = - (k_x^2 + k_y^2 + k_z^2) u_\alpha (\mathbf x) = \epsilon_{\mathbf k} = - k^2 ~.
+    \end{equation*}
+    Imposing the periodic boundary conditions, we obtain 
+    \begin{equation*}
+        u_{\mathbf k} (0,y,z) = \cancel{c} \exp(i \cancel{(k_y y + k_z z)}) = u_{\mathbf k} (L,y,z) = \cancel{c} \exp(i (k_x L + \cancel{k_y y + k_z z})) ~,
+    \end{equation*}
+    hence
+    \begin{equation*}
+        \exp(i k_x L) = 0 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        k_x = \frac{2 \pi}{L} n_x ~,
+    \end{equation*}
+    where $n \in \mathbb Z$ is an integer number. Simiarly for $y$ and $z$, we have 
+    \begin{equation*}
+        \mathbf k = (k_x, k_y, k_z) = \frac{2\pi}{L} \mathbf n = \frac{2\pi}{L} (n_x, n_y, n_z) 
+    \end{equation*}
+    where $n_x, n_y, n_z \in \mathbb Z$. Finally, the energy eigenvalues are 
+    \begin{equation*}
+        \epsilon_{n_x, n_y, n_z} = - \frac{4\pi^2}{L^2} (n_x^2 + n_y^2 + n_z^2) 
+    \end{equation*}
+    and the eigenstates are 
+    \begin{equation*}
+        u_{n_x, n_y, n_z} = c \exp(i \frac{2\pi}{L} (n_x x + n_y y + n_z z)) \in L^2(V) ~.
+    \end{equation*}
+    The normalisation constant is 
+    \begin{equation*}
+        C = \frac{1}{\sqrt{V}} ~.
+    \end{equation*}
+    In fact 
+    \begin{equation*}
+        1 = ||u_{n_x, n_y, n_z} ||^2 = \int_V dx ~ dy ~ dz ~ |c|^2 |\exp(i \mathbf k \cdot \mathbf x)|^2 = |c|^2 V ~.
+    \end{equation*}
+    Hence, the onebody operator is 
+    \begin{equation*}
+        \hat O^{(1)} = \sum_{j=1}^{N} \frac{\hat p^2_j}{2m} = - \sum_{j=1}^{N} \frac{\hbar^2}{2m} \nabla^2_{\mathbf x_j} ~,
+    \end{equation*}
+    and choosing the orthonormal basis of wavefunctions, we have in the Fock space 
+    \begin{equation*}
+        \hat O_F = \sum_{\mathbf k} \epsilon_{\mathbf k} \hat a^\dagger_{\mathbf k} \hat a_{\mathbf k} ~,
+    \end{equation*}
+    where $\mathbf k = \frac{2\pi}{L} (n_x, n_y, n_z)$ and $\epsilon_{\mathbf k} = \frac{\hbar^2}{2m} k^2$.
+
+\subsection{Interaction potential}
+
+    Now, consider a different operator than the onebody one: the two particles operatior, used to describe interaction potential 
+    \begin{equation*}
+        \hat O^{(2)} = \sum_{i < j} V(x_i, x_j) = \frac{1}{2} \int dx \int dy V(x,y) \hat \psi^\dagger (x) \hat \psi^\dagger (y) \psi(y) \psi (x) ~,
+    \end{equation*}
+    or 
+    \begin{equation*}
+        \hat O^{(2)} = \frac{1}{2} \sum_{ijkl} V_{ijkl} \hat a_i^\dagger \hat a_j^\dagger \hat a_k \hat a_l ~,
+    \end{equation*}
+    where the first expression is basis-independent, while in the last one it is in the eigenbasis. 
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\chapter{Ensemble theory}
 
