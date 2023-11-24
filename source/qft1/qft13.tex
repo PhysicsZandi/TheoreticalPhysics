@@ -1,3 +1,206 @@
 \part{Dirac theory}
 
+\chapter{Dirac action}
+
+\section{Spinor representation of the Lorentz group}    
+
+    The reducible representation of a Dirac spinor is 
+    \begin{equation*}
+        {\psi'}_D = \exp(-\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) \psi_D ~,
+    \end{equation*}
+    where $\psi_D$ is a four-components complex vector, $\Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu]$ and the gamma matrices satisfy 
+    \begin{equation*}
+        \{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb I_4 ~.
+    \end{equation*}
+    In the Weyl basis, the Dirac matrices become 
+    \begin{equation*}
+        \gamma^0 = \begin{bmatrix}
+            0 & \mathbb I_2 \\ \mathbb I_2 & 0 \\ 
+        \end{bmatrix} ~.
+    \end{equation*}
+    It is useful to redefine the matrix 
+    \begin{equation*}
+        S^{\mu\nu} = - i \Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] ~,
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        {\psi'}_D^\alpha (x) = \exp(\frac{1}{2} \omega_{\mu\nu} S^{\mu\nu})^\alpha_{\phantom \alpha \beta} \psi^\beta_D (x) = S^\alpha_\beta \psi^\beta_D (x) ~,
+    \end{equation*}
+    where $\alpha, \beta = 1,2,3,4$.
+
+\section{Invariant quantities}
+
+    In order to have a Lorentz invariant action, we need to built Lorentz invariant quantities in function of $\psi$. Observe that the quantity $\psi \psi^\dagger$ is not a scalar. 
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            {\psi'}^\dagger \psi' = \psi^\dagger S^\dagger S \psi \neq \psi^\dagger \psi ~,
+        \end{equation*}
+        since $S^\dagger \neq S^{-1}$.
+    \end{proof}
+
+    However, $S$ satisfies $S^\dagger = \gamma^0 S^{-1} \gamma^0$.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We define the adjoint Dirac spinor 
+    \begin{equation*}
+        \overline \psi (x) = \psi^\dagger (x) \gamma^0 ~.
+    \end{equation*}
+    With this, we can construct a Lorentz invariant bilinear spinor 
+    \begin{equation*}
+        \overline \psi \psi ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            \overline \psi' \psi' = {\psi'}^\dagger \gamma^0 \psi' = \psi^\dagger \underbrace{S^\dagger}_{\gamma^0 S^{-1} \gamma^0} \gamma^0 S \psi = = \psi^\dagger \gamma^0 S^{-1} \underbrace{\gamma^0 \gamma^0}_1 S \psi = \psi^\dagger \gamma^0 \underbrace{S^{-1} S}_1 \psi = \psi^\dagger \gamma^0 \psi = \overline \psi \psi ~.
+        \end{equation*}
+    \end{proof}
+
+    Now, we want to build a $4$-vector $\overline \psi \gamma^\mu \psi$ such that
+    \begin{equation*}
+        \overline psi' \gamma^\mu \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \nu} \gamma^\nu \psi ~,
+    \end{equation*}
+    or equivalently 
+    \begin{equation*}
+        S^{-1} \gamma^\mu S = \Lambda^\mu_{\phantom \mu \nu} \gamma^\nu ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We obtained a Lorentz invariant scalar by contracting $\gamma^\mu$ with the first order derivative $\partial_\mu$. 
+
+    Furthermore, $\Sigma^{\mu\nu}$ is a $2$-tensor 
+    \begin{equation*}
+        \overline psi' \Sigma^{\mu\nu} \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \alpha} \Lambda^\nu_{\phantom \nu \beta} \Sigma^{\alpha\beta} \psi ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Dirac action}
+
+    Now, we have all the tools to build a Lorentz invariant lagrangian
+    \begin{equation*}
+        \mathcal L = \overline \psi (x) \gamma^\mu \partial_\mu \psi(x) - m \overline \psi (x) \psi (x) = \overline \psi (x) (i \gamma^\mu \partial_\mu - m) \psi(x) ~.
+    \end{equation*}
+    We have added an $i$ factor to ensure that $\mathcal L \in \mathbb R$.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The dymensional analysis is 
+    \begin{equation*}
+        [S] = 0 ~, [d^4 x] = - ~, [\mathcal L] = 4~, [\psi] = \frac{3}{2} ~, [\partial_\mu] = 1 ~, [m] = 1 ~.
+    \end{equation*}
+    Notice that in the Klein Gordon theory, we had $[\varphi] = 1$. However, in a renormalisable theory, the coupling between operators must be of dimension $4$. This means that only terms like $\varphi \overline \psi \psi$ are allowed. Another difference in the Dirac theory is that the lagrangian in at first order whereas in the Klein-Gordon theory is at second order. This is possible only because the gamma matrices exists only in the Dirac theory, while in the Klein-Gordon we have to constract to partial derivatives to get a scalar.
+
+    The equations of motion can be obtained by the Euler-Lagrange equations: the Dirac equation is 
+    \begin{equation*}
+        (i \gamma^\mu \partial_\mu - m) \psi(x) = 0
+    \end{equation*}
+    and the conjugate Dirac equation is 
+    \begin{equation*}
+        \overline \psi(x) (i \gamma^\mu \overleftarrow{\partial_\mu} + m) = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Dirac and Klein-Gordon equations}
+
+    The four-components of the Dirac spinor satisfy the Dirac equation, but each components separately satisfy the Klein-Gordon equation, because it means that particles ensures the mass-shell condition.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\chapter{Chiral spinors}
+
+    Recall that the Dirac representation $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ is reducible and it can be decomposed into $2$ irreducible Weyl representations $(\frac{1}{2}, 0)$ and $(0, \frac{1}{2})$. 
+
+    We introduce the $\gamma^5$ matrix 
+    \begin{equation*}
+        \gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3
+    \end{equation*}
+    such that it satisfies 
+    \begin{equation*}
+        \{\gamma^\mu, \gamma^5\} = 0~, \quad (\gamma^5)^2 = \mathbb I~, \quad (\gamma^5)^\dagger = \gamma^5 ~.
+    \end{equation*}
     
+    In the Weyl basis it becomes 
+    \begin{equation*}
+        \gamma^5 = \begin{bmatrix}
+            - \mathbb I_2 & 0 \\ 0 & \mathbb I_2 \\
+        \end{bmatrix} ~.
+    \end{equation*}
+
+    With $\gamma^5$, we can define the projection operators 
+    \begin{equation*}
+        P_L = \frac{\mathbb I - \gamma^5}{2} ~, \quad P_R = \frac{\mathbb I + \gamma^5}{2} ~.
+    \end{equation*}
+    such that they satisfy 
+    \begin{equation*}
+        P_L^2 = P_L ~, \quad P_R^2 = P_R ~\quad P_L^\dagger = P_L ~, \quad P_R^\dagger = P_R ~, \quad P_L P_R = P_R P_L = 0 ~, \quad P_L + P_R = \mathbb I ~.
+    \end{equation*}
+    and they decompose the Dirac spinor into a left-handed Weyl spinor $\psi_L^{(W)}$ and a right-handed Weyl spinor $\psi_R^{(W)}$
+    \begin{equation*}
+        \psi_L = \begin{bmatrix}
+            \psi_L^{(W)} \\ 0 \\
+        \end{bmatrix} = P_L \psi = \frac{\mathbb I - \gamma^5}{2} \psi ~, \quad \psi_R = \begin{bmatrix}
+            0 \\ \psi_R^{(W)} \\
+        \end{bmatrix} = P_R \psi = \frac{\mathbb I + \gamma^5}{2} \psi ~.
+    \end{equation*}
+    Furthermore, their eigenvalues are 
+    \begin{equation*}
+        \gamma^5 \psi_L = (-1) \psi_L ~, \quad \gamma^5 \psi_R = (+1) \psi_R ~.
+    \end{equation*}
+
+    The Dirac lagrangian in terms of the Weyl spinors is 
+    \begin{equation*}
+        \mathcal L = \overline \psi_L i \gamma^\mu \partial_\mu \psi_L + \overline \psi_R i \gamma^\mu \partial_\mu \psi_R - m (\overline \psi_L \psi_R + \overline \psi_R \psi_L) ~.
+    \end{equation*}
+    Notice that for a massive fermions, we do not know if it is right-handed or left-handed because of the last mixed term. Instead for massless fermions, we know.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    In terms of the Weyl spinors, the Dirac equation becomes 
+    \begin{equation*}
+        \begin{cases}
+            i \pdv{}{t} \psi^{(W)}_R (x) + i \boldsymbol \sigma \cdot \boldsymbol \nabla \psi_R^{(W)} - m \psi_L^{(W)} = 0 \\
+            i \pdv{}{t} \psi^{(W)}_L (x) + i \boldsymbol \sigma \cdot \boldsymbol \nabla \psi_L^{(W)} - m \psi_R^{(W)} = 0 
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    For massless fermions, which have a hamiltonian $\hat H = |\hat p|$, the Weyl equations become
+    \begin{equation*}
+        \begin{cases}
+            (\hat{\mathbf S} \cdot \mathbf p) \psi^{(W)}_R (x) = (+1) \psi^{(W)}_R (x) \\
+            (\hat{\mathbf S} \cdot \mathbf p) \psi^{(W)}_L (x) = (-1) \psi^{(W)}_L (x) \\
+        \end{cases}
+    \end{equation*}
+    where $\mathbf p$ is the direction of motion and $\hat S$ is the spin operator. The quantity $\hat{\mathbf S} \cdot \mathbf p$ is called helicity and it is the projection of the spin along the direction of motion. 
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Parity} 
+
+    The parity operator transforms a right-handed Weyl spinor into a left-handed Weyl spinor and viceversa
+    \begin{equation*}
+        \begin{cases}
+            {\psi'}_L^{(W)} = \psi_R^{(W)} \\
+            {\psi'}_R^{(W)} = \psi_L^{(W)} \\
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\chapter{Solutions of the Dirac equation}

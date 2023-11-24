@@ -1,0 +1,293 @@
+\part{Spin $s \geq 1$ theory}
+
+\chapter{Pauli-Fierz equations} 
+
+    Let us consider particles with higher spin $s \geq 1$. It is straight forward to generalised the Klein-Gordon equation for bosonic fields of integer spin and Dirac equation for fermionic fields of half-integer spin, without interactions. In the massive case, we have the Pauli-Fierz equations with $2s+1$ possbile polarisations whereas in the massless case, we have the Fronsdal equations with only $2$ polarisations, eliminated by the gauge symmetries. 
+
+\section{Massive particle of spin $s \geq 1$}
+
+    Consider first the bosonic case with integer spin. We expect $2s+1$ independet spin polarisations. We describe the theory with a field $\phi_{\mu_1 \ldots \mu_s}$, which is a totally symmetric tensor with $s$ indices 
+    \begin{equation*}
+        \phi_{\mu_1 \ldots \mu_i \mu_{i+1} \ldots \mu_s} = \phi_{\mu_1 \ldots \mu_{i+1} \mu_i \ldots \mu_s} ~.
+    \end{equation*}
+    Its number of independent components is 
+    \begin{equation*}
+        \frac{4 \cdot 5 \cdot \ldots (4 + s - 1)}{s!} ~,
+    \end{equation*}
+    because of the symmetry property.
+
+    In order to have only $2s+1$ degrees of freedom, we introduce the Pauli-Fierz equations: a set of Klein-Gordon equations with constrains
+    \begin{equation}\label{pfeq}
+        \begin{cases}
+            (\Box - m^2) \phi_{\mu_1 \ldots \mu_s} = 0 \\
+            \partial^\mu \phi_{\mu \mu_2 \ldots \mu_s} = 0 \\
+            \eta^{\mu \mu_1} \phi_{\mu_1 \mu_2 \ldots \mu_s} = \phi^\mu_{\phantom \mu \mu \mu_2 \ldots \mu_s} = 0 \\
+        \end{cases} ~.
+    \end{equation}
+
+    To understande them better, consider a wave plane ansatz 
+    \begin{equation*}
+        \phi_{\mu_1 \ldots \mu_s} (x) = \epsilon_{\mu_1 \ldots \mu_s} (p) \exp(i p x) ~,
+    \end{equation*}
+    where $\epsilon_{\mu_1 \ldots \mu_s} (p) $ is the spin polarisation tensor. Imposing~\eqref{pfeq}, we find that 
+    \begin{enumerate}
+        \item $p$ satisfies the mass-shell condition $p^2 + m^2 = 0$,
+        \item the only non-vanishing component of $\epsilon$ must be spacelike $\epsilon_{i_1 \ldots i_s} \neq 0$,
+        \item $\epsilon$ belong to the irreducible representations of $SO(3)$, which are symmetric and traceless tensor, with precisely $2s+1$ possible spin orientations.
+    \end{enumerate}
+    \begin{proof}
+        For the first condition 
+        \begin{equation*}
+            0 = (\Box - m^2) \epsilon_{\mu_1 \ldots \mu_s} (p) \exp(i p x) = \epsilon_{\mu_1 \ldots \mu_s} (p) (- p^2 - m^2) \exp(i p x) ~,
+        \end{equation*} 
+        hence, 
+        \begin{equation*}
+            p^2 + m^2 = 0 ~.
+        \end{equation*}
+
+        For the second condition, consider the rest frame $p^\mu = (m,0,0,0)$, possible because it is massive
+        \begin{equation*}
+            0 = p^\mu \epsilon_{\mu \mu_1 \ldots \mu_s} (p) = m p^\mu \epsilon_{0 \mu_1 \ldots \mu_s} (p) ~,
+        \end{equation*}
+        hence all the timelike components vanish.
+
+        For the third condition, we have 
+        \begin{equation*}
+            \frac{3 \cdot 4 \ldots (3+S-1)}{S!} - \frac{3 \cdot 4 \ldots (3+(S-2)-1)}{(S-2)!} = 2 s + 1 ~,
+        \end{equation*}
+        where we have reduced the degrees of freedom due to the traceless constrain.
+    \end{proof}
+
+    For fermions, it is similar, in which the equations become 
+    \begin{equation*}
+        \begin{cases}
+            (\gamma^\mu \partial_\mu + m) \psi_{\mu_1 \ldots \mu_s} = 0 \\
+            \partial^\mu \psi_{\mu \mu_2 \ldots \mu_s} = 0 \\
+            \gamma^{\mu} \psi_{\mu \mu_2 \ldots \mu_s} = 0 \\
+        \end{cases} ~.
+    \end{equation*}
+
+\chapter{Proca equation}
+
+    In the massive spin $1$ case, we have the Proca equation. The field is described by a $4$-vector $\psi_\mu = A_\mu$ and the equations of motion are~\eqref{pfeq}
+    \begin{equation}\label{proca}
+        \begin{cases}
+            (\Box - m^2) A_\mu = 0 \\
+            \partial^\mu A_\mu = 0 \\
+        \end{cases} ~.
+    \end{equation}
+
+    They can be derived from the Proca action 
+    \begin{equation*}
+        S_p [A_\mu] = \int d^4 x \Big ( - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} m^2 A_\mu A^\mu \Big) = \int \Big ( -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} (\partial_\mu A^\mu)^2 - \frac{1}{2} m^2 A_\mu A^\mu \Big) ~,
+    \end{equation*}
+    where $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$.
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            S_p [A_\mu] & = \int d^4 x \Big ( - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} m^2 A_\mu A^\mu \Big) \\ & = \int d^4 x \Big ( - \frac{1}{4} (\partial-\mu \partial_\nu - \partial_\nu A_\mu)(\partial^\mu A^\nu - \partial^\nu A^\mu) - \frac{1}{2} m^2 A_\mu A^\mu \Big) \\ & = \int d^4 x \Big ( - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu - \frac{1}{2} m^2 A_\mu A^\mu \Big ) \\ & = \int \Big ( -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} (\partial_\mu A^\mu)^2 - \frac{1}{2} m^2 A_\mu A^\mu \Big) ~,
+        \end{aligned}
+        \end{equation*}
+        where in the last passage, we integrated by parts.
+    \end{proof}  
+
+    Using the principle of stationary action, we obtain the equations of motion 
+    \begin{equation*}
+        \partial^\mu F_{\mu\nu} = m^2 A_\nu ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            0 = \delta S = \int d^4 x \Big (- \frac{1}{2} F_{\mu\nu} \delta F^{\mu\nu} - m^2 A_\mu \delta A^\mu \Big ) = \int d^4 x (-F_{\mu\nu} \partial^\mu \delta A^\nu - m^2 A_\mu \delta A^\mu) = \int d^4 x \delta A^\nu (\partial^\mu F_{\mu\nu} - m^2 A_\nu) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \partial^\mu F_{\mu\nu} = m^2 A_\nu ~.
+        \end{equation*}
+    \end{proof}
+
+    Notice that the second condition of~\eqref{proca} is satisfies. 
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            \underbrace{\partial^\mu \partial^\nu}_{symm} \underbrace{F_{\mu\nu}}_{anti} = 0~.
+        \end{equation*}
+    \end{proof}
+
+\section{Plane waves} 
+
+    Consider an ansatz of a plane wave 
+    \begin{equation*}
+        A_\mu (x) = \epsilon_\mu (p) = \exp(i p x) ~,
+    \end{equation*}
+    which satisfies the condition by~\eqref{proca} 
+    \begin{equation*}
+        p^2 + m^2 = 0 ~, \quad p^\mu \epsilon_\mu (p) = 0~.
+    \end{equation*}
+    The second condition means that there are only $3$ polarisation left. To see that, in the rest frame $p^\mu = (m, 0, 0, 0)$, we have $m \epsilon_0 = 0$.
+    \begin{proof}
+        For the first condition 
+        \begin{equation*}
+            (- p^2 + m^2) \epsilon_\mu (p) \exp(i p x) = 0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            p^2 + m^2 = 0~.
+        \end{equation*}
+
+        For the second condition
+        \begin{equation*}
+            i p^\mu \epsilon_\mu (p) \exp(ipx) = 0 ~,
+        \end{equation*}
+        hence
+        \begin{equation*}
+            p^\mu \epsilon_\mu (p) = 0~.
+        \end{equation*}
+    \end{proof}
+
+\section{Green function}
+
+    We can rewrite the Proca action in term of a quadratic differential operator $K^{\mu\nu} (\partial)$
+    \begin{equation*}
+        S_P[A_\mu] = \int d^4 x \Big (-\frac{1}{4}  F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} m^2 A_\mu A^\mu) = \int d^4 x \Big ( - \frac{1}{2} A_\mu (x) K^{\mu\nu} (\partial) A_\nu (x) \Big)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        K^{\mu\nu} (\partial) = (- \Box + m^2) \eta^{\mu\nu} + \partial^\mu \partial^\nu ~.
+    \end{equation*}
+    The equations of motion becomes 
+    \begin{equation*}
+        K^{\mu\nu} (\partial) A_\nu (x) = 0~.
+    \end{equation*}
+
+    The Green equation is 
+    \begin{equation*}
+        K^{\mu\nu} (\partial) G_{\nu\lambda} (x-y) = \delta^\mu_{\phantom \mu \lambda} \delta^4 (x-y) ~,
+    \end{equation*}
+    which in momentum space via a Fourier transform is 
+    \begin{equation*}
+        G_{\mu\nu} (x-y) = \int \frac{d^4 p}{(2\pi)^4} \exp(i p (x-y)) \tilde G_{\mu\nu} (p) ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \frac{\eta_{\mu\nu} + \frac{p_\mu p_\nu}{m^2}}{p^2 + m^2} ~.
+    \end{equation*}
+
+    Physically, the Proca propagator can be used to describe $W^\pm$ bosons. Notice that the massless case is singular.
+
+\chapter{Mawxell equation}
+
+    The free Maxwell action is 
+    \begin{equation*}
+        S_M [A_\mu] = \int d^4 x \Big (- \frac{1}{4} F^{\mu\nu} F_{\mu\nu} \Big) ~.
+    \end{equation*} 
+
+    Notice that there is no dependence on the field $A_\mu$ but the only dependence is of $\partial_\mu A_\nu$ via $F^{\mu\nu}$. This means that a gauge symmetry appears. In fact, putting 
+    \begin{equation*}
+        \delta A_\mu (x) = \partial_\mu \alpha(x) ~,
+    \end{equation*}
+    we have 
+    \begin{equation*}
+        \delta F_{\mu\nu} = \partial_\mu \delta A_\nu - \partial_\nu \delta A_\mu = \partial_\mu \partial_\nu \alpha (x) - \partial_\nu \partial_\mu \alpha (x) = 0 ~.
+    \end{equation*}
+    This means that $F^{\mu\nu}$ is gauge invariant, which means that the parameters of the symmetry are actually arbitrary functions $\alpha (x)$. The gauge symmetry can be written in another way 
+    \begin{equation*}
+        \delta A_\mu (x) = - i \exp(-i \alpha(x)) \partial_\mu \exp(i \alpha (x))
+    \end{equation*}
+    which highlights that $\exp(i \alpha(x)) \in U(1)$, where $U(1)$ is the gauge group, i.e.~for all $x$ there is a $U(1)$ group.
+
+    The equations of motion (Maxwell's equations) are 
+    \begin{equation*}
+        \partial^\mu F_{\mu\nu} = 0 ~.
+    \end{equation*}
+
+    Given the gauge invariance, we are allowed to choose a representative of the equivalence class of fields, called gauge fixing. We choose the Lorentz gauge 
+    \begin{equation*}
+        \partial_\mu A^\mu = 0 ~.
+    \end{equation*}
+    In this way, the equations of motion becomes 
+    \begin{equation*}
+        0 = \partial^\mu (\partial_\mu A_\nu - \partial_\nu A_\mu) = \Box A_\mu - \partial_\nu \partial^\mu A_\mu = \Box A_\mu ~.
+    \end{equation*}
+    and the gauge function satisfies 
+    \begin{equation*}
+        \Box \alpha = - \partial^\mu A_\mu ~.
+    \end{equation*}
+    \begin{proof}
+        In fact,
+        \begin{equation*}
+            \partial^\mu {A'}_\mu = \partial^\mu (A_\mu + \partial_\mu \alpha (x)) = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    However, there is still a residual gauge trasformation, since this gauge is always valid for gauge functions satisfying 
+    \begin{equation*}
+        \Box \alpha (x) = 0~.
+    \end{equation*}
+    \begin{proof}
+        In fact,
+        \begin{equation*}
+            \partial^\mu {A'}_\mu = \partial^\mu A_\mu + \partial^\mu \partial_\mu \alpha (x) ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Plane waves}
+
+    Consider a plane wave ansatz 
+    \begin{equation*}
+        A_\mu (x) = \epsilon (p) \exp(i p x)
+    \end{equation*}
+    such that
+    \begin{equation*}
+        p^2 = 0 ~, \quad p^\mu \epsilon_\mu (p) = 0 ~.
+    \end{equation*}
+    However, there is still a non-physical degree of freedom, due to the fact that there are $3$ polarisations left but only $2$ are physical. To see this, consider the longitudinal polarisation $\epsilon_\mu (p) = p_\mu$, such that $\alpha(x) = - i \exp(p x)$ for $p^2 = 0$. This means that this field is equivalent to the vacuum, since
+    \begin{equation*}
+        {A'}_\mu = 0 + \partial_\mu \alpha = p_\mu \exp(ipx) 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        {A'}_\mu = A_\mu + \partial_\mu \beta = p_\mu \exp(i p x) - p_\mu \exp(i p x) = 0~,
+    \end{equation*}
+    where we have used $\Box \beta = 0$ and $\beta (x) = - \alpha (x)$. Hence the longitudinal polarisation is unphysical and there are only two physical polarisation.
+
+\chapter{Linearised Einstein equation}  
+
+    For a massive spin $2$ particle, the Fierz-Pauli equations are 
+    \begin{equation*}
+        \begin{cases}
+            (\Box - m^2) \phi_{\mu\nu} = 0 \\
+            \partial^\mu \phi_{\mu\nu} = 0 \\
+            \phi^\mu_{\phantom \mu \nu} = 0 \\
+        \end{cases} ~,
+    \end{equation*}
+    where the number of indepdendent components are $5$, by $10$ symmetrical minus the $5$ constrains. 
+
+    For a massless spin $2$ particle, like in the linearised Einstein's equation in which the field is the metric 
+    \begin{equation*}
+        \phi_{\mu\nu} = h_{\mu\nu}~, \quad \eta_{\mu\nu} + h_{\mu\nu} ~.
+    \end{equation*}
+    We want a Maxwell-like equation of motion $\Box A_\mu = 0$, to do so we find 
+    \begin{equation*}
+        \Box h_{\mu\nu} - \partial_\mu \partial^\sigma g_{\sigma \mu} + \partial_\mu \partial_\nu h = 0 ~,
+    \end{equation*}
+    where the second term is due to Maxwell's $\partial_\nu \partial?\mu A_\mu$, the third one is for symmetrise the tensor and the last one for make it traceless. 
+
+    Notice that it is present a gauge symmetry with $4$ parameters 
+    \begin{equation*}
+        \delta h_{\mu\nu} = \partial_\mu \xi_\nu (x) - \partial_\nu \xi_\mu (x) ~,
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        \Box \delta h_{\mu\nu} - \partial_\mu \partial^\sigma \delta h_{\sigma \mu} + \partial_\mu \partial_\nu \delta h = 0 ~.
+    \end{equation*}
+    An useful gauge fixing is the De Donder gauge 
+    \begin{equation*}
+        \partial^\mu h_{\mu\nu} = \frac{1}{2} \partial_\nu h ~,
+    \end{equation*}
+    for which we have 
+    \begin{equation*}
+        \Box h_{\mu\nu} = 0 ~.
+    \end{equation*}
+    Observe that there are $2$ polarisations, since we have $10$ degrees of freedom for the symmetrical property minus $4$ for De Donder and minus $4$ for the residual gauge $\Box \xi = 0$.
