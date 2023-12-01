@@ -143,9 +143,9 @@
                 \sum_{n = 0}^{\infty} P_n = \mathbb I~,
             \end{equation}
         \item spectral decomposition, i.e.
-            \begin{equation*}
+            \begin{equation}\label{spec}
                 \hat A = \sum_{n=0}^{\infty} \lambda_n P_n ~.
-            \end{equation*}
+            \end{equation}
     \end{enumerate}
 
 \subsection{Measure}
@@ -221,9 +221,9 @@
         \{\ket{\psi_n}, p_n\} ~,
     \end{equation*}
     where $p_n \geq 0$ and $\sum_{n=0}^{\infty} p_n = 1$. The difference from a pure state is that, in a mixed state, the system is in a classical fixed state before the measurement whereas in a pure state, the state is in a quantum superposition. The density matrix of a mixed state is 
-    \begin{equation*}
+    \begin{equation}\label{mix}
         \rho = \sum_n p_k \ket{\psi_n} \bra{\psi_n} = \sum_n p_n \rho_n ~,
-    \end{equation*}
+    \end{equation}
     It defines a statistical ensemble. 
 
     Similarly to the pure state case, it satisfies the following properties
@@ -261,9 +261,9 @@
     \end{proof}
 
     However, the average value of an observable is the same as the pure states 
-    \begin{equation*}
+    \begin{equation}\label{avobs}
         \av{\hat A} = \bra{\psi} \hat A \ket{\psi} = \tr (\rho \hat A) ~.
-    \end{equation*}
+    \end{equation}
     \begin{proof}
         In fact, 
         \begin{equation*}
@@ -686,52 +686,125 @@
 
 \section{Symmetric/antisymmetric Hilbert space} 
 
-    Consider $2$ distinguishable particles. In general, the Hilbert space is $\mathcal H_{tot} = \mathcal H \otimes \mathcal H$. If the particle are indistinguishable, we can decomposed the Hilbert space into $\mathcal H_{tot} = \mathcal H_S \otimes_\perp  \mathcal H_A$. In fact, given two states $\ket{a}_1 \in \mathcal H_1$ and $\ket{b}_2 \in \mathcal H_2$, we have 
+\subsection{$2$ particles}
+
+    Consider $2$ particles. If they are distinguishable, the total Hilbert space is 
+    \begin{equation*}
+        \mathcal H_{tot} = \mathcal H \otimes \mathcal H ~,
+    \end{equation*}
+    whereas if the particles are indistinguishable, we can decomposed the Hilbert space into
+    \begin{equation*}
+        \mathcal H_{tot} = \mathcal H_S \oplus_\perp  \mathcal H_A ~.
+    \end{equation*} 
+    \begin{proof}
+        In fact, given two states $\ket{a}_1 \in \mathcal H_1$ and $\ket{b}_2 \in \mathcal H_2$, we have 
     \begin{equation*}
     \begin{aligned}
         \ket{a}_1\ket{b}_2 & = \frac{2}{2} \ket{a}_1\ket{b}_2 + \frac{1}{2} \ket{b}_1\ket{a}_2 - \frac{1}{2} \ket{b}_1\ket{a}_2 \\ & = \underbrace{\frac{\ket{a}_1\ket{b}_2 + \ket{b}_1\ket{a}_2}{2}}_{\ket{\psi_S}} + \underbrace{\frac{\ket{a}_1\ket{b}_2 - \ket{b}_1\ket{a}_2}{2}}_{\ket{\psi_A}} \\ & = \ket{\psi_S} + \ket{\psi_A} ~.
     \end{aligned}
     \end{equation*}
-    Notice that Pauli's exclusion principle is encoded into the antysymmetric part, because if $a = b$ we have $\ket{\psi_A} = 0$. It is also an orthogonal decomposition. In fact 
+    Furthermore, the permutation group for $2$ particles is $P_2 = \{\mathbb I, \sigma\}$. The symmetric part $\ket{\psi_S} \in \mathcal H_S$, since
+    \begin{equation*}
+        \sigma \ket{\psi_S} = \sigma \frac{\ket{a}_1\ket{b}_2 + \ket{b}_1\ket{a}_2}{2} = \frac{\ket{b}_1\ket{a}_2 + \ket{a}_1\ket{b}_2}{2} = \frac{\ket{a}_1\ket{b}_2 + \ket{b}_1\ket{a}_2}{2} = \ket{\psi_S} ~,
+    \end{equation*}
+    where we used the commutativity property. The antysymmetric part is $\ket{\psi_A} \in \mathcal H_A$, since
+    \begin{equation*}
+        \sigma \ket{\psi_A} = \sigma \frac{\ket{a}_1\ket{b}_2 - \ket{b}_1\ket{a}_2}{2} = \frac{\ket{b}_1\ket{a}_2 - \ket{a}_1\ket{b}_2}{2} = - \frac{\ket{a}_1\ket{b}_2 - \ket{b}_1\ket{a}_2}{2} = - \ket{\psi_A} ~,
+    \end{equation*}
+    where we used the commutativity property. Finally, the decomposition is orthogonal, since 
     \begin{equation*}
     \begin{aligned}
-        \braket{\psi_S}{\psi_A} & = \frac{\bra{a}_1\bra{b}_2 + \bra{b}_1\bra{a}_2}{2} \frac{\ket{a}_1 \ket{b}_2 - \ket{b}_1 \ket{a}_2}{2} \\ & = \frac{1}{4} (\underbrace{\braket{a}{a}_1}_1 \underbrace{\braket{b}{b}_2}_1 - \cancel{\braket{a}{b}_1 \braket{b}{a}_2} + \cancel{\braket{b}{a}_1 \braket{a}{b}_2} - \underbrace{\braket{b}{b}_1}_1 \underbrace{\braket{a}{a}_2}_1 ) = 0 ~. 
+        \braket{\psi_S}{\psi_A} & = \frac{\bra{a}_1\bra{b}_2 + \bra{b}_1\bra{a}_2}{2} \frac{\ket{a}_1 \ket{b}_2 - \ket{b}_1 \ket{a}_2}{2} \\ & = \frac{1}{4} (\underbrace{\braket{a}{a}_1}_1 \underbrace{\braket{b}{b}_2}_1 - \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2 - \underbrace{\braket{b}{b}_1}_1 \underbrace{\braket{a}{a}_2}_1) \\ & = \frac{1}{4} (- \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2)  
     \end{aligned}
     \end{equation*}
+    and 
+    \begin{equation*}
+    \begin{aligned}
+        - \braket{\psi_S}{\psi_A} & = - \frac{\bra{a}_1\bra{b}_2 + \bra{b}_1\bra{a}_2}{2} \frac{\ket{a}_1 \ket{b}_2 - \ket{b}_1 \ket{a}_2}{2} \\ & = - \frac{1}{4} (\underbrace{\braket{a}{a}_1}_1 \underbrace{\braket{b}{b}_2}_1 - \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2 - \underbrace{\braket{b}{b}_1}_1 \underbrace{\braket{a}{a}_2}_1) \\ & = - \frac{1}{4} (- \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2) \\ & = \frac{1}{4} (- \braket{a}{b}_2 \braket{b}{a}_1 + \braket{b}{a}_2 \braket{a}{b}_1 ) ~,
+    \end{aligned}
+    \end{equation*}
+    which means that $\braket{\psi_S}{\psi_A} = - \braket{\psi_S}{\psi_A}$. Therefore, the only solution is $\braket{\psi_S}{\psi_A} = 0$.
+    \end{proof}
+    
+    Notice that Pauli's exclusion principle is encoded into the antysymmetric part, because if $a = b$ we have $\ket{\psi_A} = 0$.
 
     The decomposition is equivalent to define two orthogonal projectors: the symmetriser 
     \begin{equation*}
-        \hat S \colon \mathcal H \rightarrow mathcal H_S
+        \hat S \colon \mathcal H \rightarrow \mathcal H_S
     \end{equation*}
     and the antisymmetriser 
     \begin{equation*}
-        \hat A \colon \mathcal H \rightarrow mathcal H_A ~,
+        \hat A \colon \mathcal H \rightarrow \mathcal H_A ~,
     \end{equation*}
     such that they satisfy the properties 
-    \begin{equation*}
+    \begin{equation}\label{proj}
         \hat S^\dagger = \hat S~, \quad \hat A^\dagger = \hat A~, \quad \hat S^2 = \hat S~, \quad \hat A^2 = \hat A~, \quad \hat S \hat A = \hat A \hat S = 0 ~.
+    \end{equation}
+
+\subsection{$N$ particles}
+
+    Generalising for $N$ particles, if they are distinguishable, the total Hilbert space is 
+    \begin{equation*}
+        \mathcal H_{tot} = \mathcal H \otimes \ldots \mathcal H
+    \end{equation*}
+    and a state is $\ket{\psi} = \ket{a_1}_1 \ldots \ket{a_N}_N = \ket{1, \ldots N}$ where $\ket{a_j} \in \mathcal H$. 
+
+    However, if the particle are indistinguishable, similarly to the $2$ particles case, we can define the symmetriser
+    \begin{equation*}
+        \hat S \colon \ket{\psi} \mapsto \frac{1}{N!} \sum_{P \in P_N} \ket{P(1), \ldots P(N)}
+    \end{equation*}
+    and the antisymmetriser
+    \begin{equation*}
+        \hat A \colon \ket{\psi} \mapsto \frac{1}{N!} \sum_{P \in P_N} sgn(P) \ket{P(1), \ldots P(N)} ~,
+    \end{equation*}
+    where $P(1, \ldots N) \mapsto (P(1), \ldots P(N))$. 
+    They satisfy the orthogonal projector properties~\eqref{proj}. Notice that for $N > 2$ particles, the total Hilbert space is $\mathcal H_{tot} = \mathcal H_S \otimes \mathcal H_A \otimes \mathcal H'$, where bosons work only in $\mathcal H_S$, fermions work only in $\mathcal H_A$ and $\mathcal H'$ is not physical.
+
+    \begin{example}
+        For $N=3$, we can have $\psi_S \in mathcal H_S$
+        \begin{equation*}
+            \psi_S = \hat S \psi = \psi(1,2,3) + \psi(1,3,2) + \psi(2,1,3) + \psi(2,3,1) + \psi(3,1,2) + \psi(3,2,1)
+        \end{equation*}
+        and $\psi_A \in mathcal H_A$
+        \begin{equation*}
+            \psi_A = \hat A \psi = \psi(1,2,3) - \psi(1,3,2) - \psi(2,1,3) + \psi(2,3,1) + \psi(3,1,2) - \psi(3,2,1) ~.
+        \end{equation*}
+        However, we can also have $\psi' \in \mathcal H'$ such that
+        \begin{equation*}
+            \psi' = \psi(1,2,3) + \psi(1,3,2) -  \psi(2,1,3) - \psi(2,3,1) + \psi(3,1,2) + \psi(3,2,1) ~.
+        \end{equation*}
+    \end{example}
+    
+    For $N$ distinguishable particle, consider an orthonormal basis for the total Hilbert space
+    \begin{equation*}
+        \{u_{\alpha_1}(x_1) \ldots u_{\alpha_N}(x_N)\}_{\alpha_1, \ldots \alpha_N=0}^\infty ~,
+    \end{equation*}
+    where $\{u_{\alpha_K} (x_k)\}_{\alpha_k = 1}^\infty$ is an orthonormal basis for a single Hilbert space $\mathcal H_1$. Notice that they are labelled by the ordered set $(\alpha_1, \ldots \alpha_N)$ and we are specifying which particle is in which states. 
+
+    In order to construct an orthonormal basis for $\mathcal H_A$ and $\mathcal H_S$ for $N$ indistinguishable particles, we project the distinguishable orthonormal basis respectively with the antisymmetriser and the symmetriser
+    \begin{equation*}
+        \ket{n_1, \ldots n_j, \ldots} = C \begin{cases} \hat S \\ \hat A \end{cases} ~ u_{\alpha_1}(x_1) \ldots u_{\alpha_N}(x_N) ~.
+    \end{equation*}
+    By the properties of the projectors, they are orthonormal but they are not normalised. Therefore, we need to choose a normalisation constant
+    \begin{equation*}
+        C = \begin{cases}
+            \sqrt{\frac{N!}{n_1! \ldots n_k! \ldots}} & \mathcal H_S \\
+            \sqrt{N!} & \mathcal H_A \\
+        \end{cases} ~.
     \end{equation*}
 
-    Generalising for $N$ particles, we have $\mathcal H_{tot} = \mathcal H \otimes \ldots \mathcal H$ and a state is $\ket{a_1}_1 \ldots \ket{a_N}_N$ where $\ket{a_j} \in \mathcal H$. The symmetriser is 
-    \begin{equation*}
-        \hat S \colon \ket{\psi} \mapsto \frac{1}{N!} \sum_{P \in P_N} \ket{a_{P(1)}}_1 \ldots \ket{a_P(N)}_N
-    \end{equation*}
-    and the antisymmetriser is 
-    \begin{equation*}
-        \hat A \colon \ket{\psi} \mapsto \frac{1}{N!} \sum_{P \in P_N} sgn(P) \ket{a_{P(1)}}_1 \ldots \ket{a_P(N)}_N
-    \end{equation*}
-    where $P(1, \ldots N) \mapsto (P(1), \ldots P(N))$. They satisfy the orthogonal projector properties. Notice that for $N > 2$ particles, the total Hilbert space is $\mathcal H_{tot} = \mathcal H_S \otimes \mathcal H_A \otimes \mathcal H'$, where bosons work only in $\mathcal H_S$, fermions work only in $\mathcal H_A$ and $\mathcal H'$ is not physical.
+    On the contrary for the distinguishable case, now we lose information, because we know only how many particle are in each state and not anymore which is in which state. We label the states with $n_1, \ldots n_k, \dots$ with $j=1, \ldots \infty$, which are the occupation number. For bosons, we have $n_k = 0, 1, \ldots, \infty$, whereas for fermions, we have $n_k = 0, 1$. For both cases, there is the constrain $N = \sum_k n_k$, which is an infinite sum but mostly are zero occupied. Moreover, given the set $\alpha_k$, we uniquely determine the occupation number $n_k$, but given the occupation number $n_k$, we use the symmetric or antisymmetric property to uniquely determine the state, because it is in $1-1$ correspondence to the set $n_k$. 
 
-    For distinguishable particles, we have $\mathcal H_{tot} = \mathcal H^{\otimes N}$ with orthonormal basis $\{u_{\alpha_1}(x_1) \ldots u_{\alpha_N}(x_N)\}_{\alpha_1, \ldots \alpha_N=0}^\infty$ labelled by the ordered set $(\alpha_1, \ldots \alpha_N)$. In this case, we are specifying which particle is in which states. However, for indistinguishable particles, we lose information because we know only how many particle are in each state. We label the states with $n_1, \ldots n_j$ with $j=1, \ldots \infty$, which are the occupation number. For bosons, we have $n_k = 0, 1, \ldots, \infty$, whereas for fermions, we have $n_k = 0, 1$. For both cases, there is the constrain $N = \sum_k n_k$, which is an infinite sum but mostly are zero occupied.
+    Nonetheless, there is another way to describe fermionic or bosonic quantum space in a intrinsic way, called the second quantisation because we make a further quantisation, promoting fields to operators.
 
 \chapter{Second quantisation} 
 
 \section{Bosonic case}
-
-    We define creation and annihilation operators such that they satisfies the properties 
-    \begin{equation*}
+   
+    We define bosonic creation and annihilation operators such that they satisfies the properties 
+    \begin{equation}\label{bos}
         [\hat a, \hat a^\dagger]_- = \hat a \hat a^\dagger - \hat a^\dagger \hat a = \mathbb I~.
-    \end{equation*}
+    \end{equation}
     Furthermore, the number operator $\hat N = \hat a^\dagger \hat a$ such that 
     \begin{equation*}
         [\hat N, \hat a] = - \hat a~, \quad [\hat N, \hat a^\dagger] = \hat a^\dagger ~.
@@ -748,10 +821,10 @@
 
 \section{Fermionic case}
 
-    We define creation and annihilation operators such that they satisfies the properties 
-    \begin{equation*}
-        [\hat a, \hat a^\dagger]_+ = \hat a \hat a^\dagger + \hat a^\dagger \hat a = \mathbb I~.
-    \end{equation*}
+    We define fermionic creation and annihilation operators such that they satisfies the properties 
+    \begin{equation}\label{ferm}
+        [\hat a, \hat a^\dagger]_+ = \hat a \hat a^\dagger + \hat a^\dagger \hat a = \mathbb I ~.
+    \end{equation}
     Furthermore, the number operator $\hat N = \hat a^\dagger \hat a$ such that 
     \begin{equation*}
         [\hat N, \hat a] = - \hat a~, \quad [\hat N, \hat a^\dagger] = \hat a^\dagger ~.
@@ -786,18 +859,22 @@
     \begin{equation*}
         \ket{e_n} \mapsto \{\hat a_n, \hat a_n^\dagger \}_{n=1}^\infty ~,
     \end{equation*}
-    such that they satisfy 
+    such that they satisfy
     \begin{equation*}
         [\hat a_n, \hat a_m]_\pm = [\hat a_n^\dagger, \hat a_m^\dagger]_\pm = 0 ~, \quad [\hat a_n, \hat a_m^\dagger]_\pm = \delta_{nm} ~,
     \end{equation*}
-    where the minus sign correponds to the commutator (bosons) and the plus sign to the anticommutator (fermions). 
+    where the minus sign correponds to the commutator (bosons)~\eqref{bos} and the plus sign to the anticommutator (fermions)~\eqref{fer}. 
 
-    The vacuum state is defined as 
+    The normalised vacuum state, which describes a no particle state, is defined by the annihilation of every annihilation operator
     \begin{equation*}
         \hat a_n \ket{0} = 0 \quad \forall n~.
     \end{equation*}
+    It generates a subspace of dimension $1$ 
+    \begin{equation}\label{vac}
+        \mathcal H^{(0)}_{S/A} = \{\lambda \ket{0} \colon \lambda \in \mathbb C \} ~.
+    \end{equation}
 
-    For each $\ket{e_n}$, we associate a number operator $\hat n_k = \hat a_k^\dagger \hat a_k$ such that 
+    Now, we define the one-particle state. For each $\ket{e_n}$, we associate a number operator $\hat n_k = \hat a_k^\dagger \hat a_k$ such that 
     \begin{equation*}
         \hat n_k \hat a_k^\dagger \ket{0} = 1 \hat a_k^\dagger \ket{0} ~, \quad \hat n_{k'} \hat a_k^\dagger \ket{0} = 0 \quad k' \neq k ~.
     \end{equation*}
@@ -826,8 +903,6 @@
     \begin{equation*}
         \hat a^\dagger_{k_1} \hat a^\dagger_{k_2} \ket{0} = \hat a^\dagger_{k_2} \hat a^\dagger_{k_1} \ket{0} ~.
     \end{equation*}
-
-\section{Alternative way}
 
     There is a $1-1$ correspondence between the orthonormal basis  $\{\ket{e_n}\}_{n=1}^\infty$ of $\mathcal H$ and the orthonormal basis $\{\hat a_k \ket{0}\}_{k=1}^\infty$ of $\mathcal H_{S/A}$. Hence for $N$ particles, we have 
     \begin{equation*}

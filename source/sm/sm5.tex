@@ -1,5 +1,295 @@
 \part{Quantum statistical mechanics}
 
 \chapter{Microcanonical ensemble}
+
+    The microcanonical ensemble is characterised by constant volume, energy and number of particle. Since $N$ is fixed, we can work in the Hilbert space $\mathcal H_{tot}$. Given a time-independent hamiltonian operator $\hat H$, we find the energy eigenbasis $\ket{\psi_j} \in \mathcal H_{tot}$ 
+    \begin{equation*}
+        \hat H \ket{\psi_j} = E_j \ket{\psi_j} ~.
+    \end{equation*}
+    However, there could be some degeneracy we want to consider, i.e. $E_{j,\alpha} = E_{j, \beta}$ for $\ket{\psi_{j, \alpha}} \neq \ket{\psi_{j, \beta}}$. Therefore, we have 
+    \begin{equation}\label{eneigen}
+        \hat H \ket{\psi_{j,\alpha}} = E_j \ket{\psi_{j,\alpha}} ~,
+    \end{equation}
+    where $\alpha = 1, \ldots n_j$.
+
+    The density operator for mixed states is~\eqref{mix}
+    \begin{equation*}
+        \rho_{mc} = \sum_{\alpha=1}^{n_j} p_\alpha \ket{\psi_{j, \beta}} \bra{\psi_{j, \beta}} ~,
+    \end{equation*}
+    where $p_\alpha$ is the probability for the eigenstate $\ket{\psi_{j, \beta}}$. Since $E = E_j$ is fixed, all the eigenstates have the same probability to occur. Therefore $p_\alpha = \frac{1}{n_j}$ and 
+    \begin{equation*}
+        \rho_{mc} = \frac{1}{n_j} \sum_{\alpha=1}^{n_j} \ket{\psi_{j, \alpha}} \bra{\psi_{j, \alpha}} = \frac{1}{n_j} \hat P_j ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        P_j = \sum_{\alpha=1}^{n_j} \ket{\psi_{j, \alpha}} \bra{\psi_{j, \alpha}}
+    \end{equation*} 
+    is the projector onto the energy eigenspace. Notice that we can expand the hamiltonian using~\eqref{spec}
+    \begin{equation}\label{endec}
+        \hat H = \sum_j E_j \hat P_j ~.
+    \end{equation}
+
+    The average of an observable $\hat A$ in the microcanonical ensemble is 
+    \begin{equation*}
+        \av{A}_{mc} = \frac{1}{n_j} \sum_{\alpha=1}^{n_j} \bra{\psi_{n,\alpha}} \hat A \ket{\psi_{n,\alpha}} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, choosing an orthonormal basis $\ket{e_j}$, the trace is 
+        \begin{equation*}
+            \tr_{\mathcal H_{tot}} \hat A = \sum_j \bra{e_j} \hat A \ket{e_j} ~.
+        \end{equation*}
+        Therefore, using~\eqref{avobs}
+        \begin{equation*}
+        \begin{aligned}
+            \av{A}_{mc} & = \tr_{\mathcal H_{tot}} (\hat A \rho_{mc}) \\ & = \tr_{\mathcal H_{tot}} \Big ( \hat A \frac{1}{n_j} \sum_{\alpha=1}^{n_j} \ket{\psi_{j, \alpha}} \bra{\psi_{j, \alpha}} \Big) \\ & = \frac{1}{n_j} \sum_{\alpha=1}^{n_j} \tr_{\mathcal H_{tot}} \Big ( \hat A \ket{\psi_{j, \alpha}} \bra{\psi_{j, \alpha}} \Big) \\ & = \frac{1}{n_j} \sum_{\alpha=1}^{n_j} \bra{\psi_{j, \alpha}} \hat A \ket{\psi_{j, \alpha}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The entropy in the microcanonical ensemble is 
+    \begin{equation*}
+        S_{mc} = k_B \log n_j ~,
+    \end{equation*}
+    where $n_j$ is the number of states with $E = E_j$. Notice that it is similar to the classical case~\eqref{entropymc}.
+    \begin{proof}
+        In fact, using~\eqref{unboltz}
+        \begin{equation*}
+        \begin{aligned}
+            S_{mc} = - k_B \av{\log \rho_{mc}}_{mc} = - k_B \tr_{\mathcal H_{tot}} ( \rho_{mc} \log \rho_{mc}) ~.
+        \end{aligned}
+        \end{equation*}
+
+        In matrix notation, the density operator is 
+        \begin{equation*}
+        \begin{aligned}
+            \rho_{mc} & = \begin{bmatrix}
+                \begin{bmatrix}
+                    \frac{1}{n_1} & 0 & \ldots & 0 \\
+                    0 & \frac{1}{n_1} & \ldots & 0 \\
+                    \ldots & \ldots & \ldots & \ldots \\
+                    0 & 0 & \ldots & \frac{1}{n_1} \\
+                \end{bmatrix} & 0 & \ldots & 0 & \ldots & \ldots \\ 0 & 
+                \begin{bmatrix}
+                    \frac{1}{n_2} & 0 & \ldots & 0 \\
+                    0 & \frac{1}{n_2} & \ldots & 0 \\
+                    \ldots & \ldots & \ldots & \ldots \\
+                    0 & 0 & \ldots & \frac{1}{n_2} \\
+                \end{bmatrix} & \ldots & 0 & \ldots & \ldots \\ 
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+                0 & 0 & \ldots & \begin{bmatrix}
+                    \frac{1}{n_j} & 0 & \ldots & 0 \\
+                    0 & \frac{1}{n_j} & \ldots & 0 \\
+                    \ldots & \ldots & \ldots & \ldots \\
+                    0 & 0 & \ldots & \frac{1}{n_j} \\
+                \end{bmatrix} & \ldots & \ldots \\
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+            \end{bmatrix} \\ & = \sum_j \begin{bmatrix}
+                0 & 0 & \ldots & 0 & \ldots & \ldots \\ 
+                0 & 0 & \ldots & 0 & \ldots & \ldots \\ 
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+                0 & 0 & \ldots & \begin{bmatrix}
+                    \frac{1}{n_j} & 0 & \ldots & 0 \\
+                    0 & \frac{1}{n_j} & \ldots & 0 \\
+                    \ldots & \ldots & \ldots & \ldots \\
+                    0 & 0 & \ldots & \frac{1}{n_j} \\
+                \end{bmatrix} & \ldots & \ldots \\
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+            \end{bmatrix}
+        \end{aligned} ~.
+        \end{equation*}
+
+        In order to compute the logarithm of $0$, we use a trick: we define a small parameter $\epsilon$ and we make it go to zero. In this way, the limit becomes $\epsilon \log \epsilon \xrightarrow{\epsilon \rightarrow 0} = 0$. Finally, we compute the trace 
+        \begin{equation*}
+        \begin{aligned}
+            \tr_{\mathcal H_{tot}} ( \rho_{mc} \log \rho_{mc}) & = \tr \begin{bmatrix}
+                0 & 0 & \ldots & 0 & \ldots & \ldots \\ 
+                0 & 0 & \ldots & 0 & \ldots & \ldots \\ 
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+                0 & 0 & \ldots & \begin{bmatrix}
+                    \frac{1}{n_j} \log \frac{1}{n_j} & 0 & \ldots & 0 \\
+                    0 & \frac{1}{n_j} \log \frac{1}{n_j} & \ldots & 0 \\
+                    \ldots & \ldots & \ldots & \ldots \\
+                    0 & 0 & \ldots & \frac{1}{n_j} \log \frac{1}{n_j} \\
+                \end{bmatrix} & \ldots & \ldots \\
+                \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+            \end{bmatrix} \\ & = \sum_j \frac{1}{n_j} \log \frac{1}{n_j} = n_j \frac{1}{n_j} \log \frac{1}{n_j} = - \log n_j ~.
+        \end{aligned}
+        \end{equation*}
+        Hence, 
+        \begin{equation*}
+            S_{mc} = - k_B \tr_{\mathcal H_{tot}} ( \rho_{mc} \log \rho_{mc}) = k_B \log n_j ~.
+        \end{equation*}
+    \end{proof}
+
+    Notice that entropy is always a positive function, since there is at least one state occupied $n_j \geq 1$, which implies $S \geq 0$.
+
 \chapter{Canonical ensemble}
+
+    The canonical ensemble is characterised by constant volume, temperature and number of particle. Energy, which can be exchange in an external reservoir, can be in one of the eigenstates~\eqref{eneigen} with probability 
+    \begin{equation}\label{prob}
+        p_j \propto \exp(- \beta E_j) ~.
+    \end{equation}
+
+    Consider a family of projectors $\{\hat P_j\}$, the density matrix of a mixed states is 
+    \begin{equation*}
+        \rho_c = \frac{1}{Z_N } \sum_j \exp(- \beta E_j) \hat P_j = \frac{\exp(- \beta \hat H)}{Z_N} ~,
+    \end{equation*}
+    where the quantum canonical partition function is 
+    \begin{equation*}
+        Z_N(T,V) = \tr_{\mathcal H_{tot}} \Big ( \frac{\exp(- \beta \hat H)}{Z_N} \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        For a mixed state, the density matrix is~\eqref{mix}
+        \begin{equation*}
+            \rho_c = \sum_j p_j \hat P_j = C \sum_j \exp(- \beta E_j) \hat P_J ~,
+        \end{equation*}
+        where the probability is given by~\eqref{prob} and $C$ is a normalisation function.
+
+        Moreover, using~\eqref{endec}
+        \begin{equation*}
+        \begin{aligned}
+            \rho_c & = C \sum_j \exp(- \beta E_j) \hat P_J \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta E_j)^k \underbrace{\hat P_j}_{(P_j)^k} \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta E_j \hat P_j)^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_j E_j \hat P_j)^k \\ & = C \exp(- \beta \underbrace{\sum_j E_j \hat P_j}_{\hat H}) \\ & = C \exp(- \beta \hat H) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the Taylor expansion of the exponential, one of the properties of the projectors~\eqref{idem} and we have exchanged the two series.
+
+        Finally, We set $C = \frac{1}{Z_N}$, where $Z_N$ is the quantum canonical partition function, and by the normalisation condition 
+        \begin{equation*}
+            1 = \tr_{\mathcal H_{tot}} \rho_c = \frac{1}{Z_N} \tr_{\mathcal H_{tot}} \exp(- \beta \hat H) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            Z_N = \tr_{\mathcal H_{tot}} \exp(- \beta \hat H) ~.
+        \end{equation*}
+    \end{proof}
+
+    We define the Helmoltz free energy
+    \begin{equation*}
+        Z_N = \exp(- \beta F) ~,
+    \end{equation*}
+    or equivalently 
+    \begin{equation*}
+        F = - \frac{1}{\beta} \log Z_N ~.
+    \end{equation*}
+    The average energy is 
+    \begin{equation*}
+        E = \av{\hat H}_c = - \pdv{}{\beta} \log Z_N ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            E & = \av{\hat H}_c \\ & = \tr_{\mathcal H_{tot}} (\hat H \rho_c) \\ & = \tr_{\mathcal H_{tot}} \Big ( \hat H \frac{\exp(- \beta \hat H)}{Z_N} \Big ) \\ & = \frac{1}{Z_N} \tr_{\mathcal H_{tot}} \Big (- \pdv{}{\beta} \exp(- \beta \hat H) \Big) \\ & = - \frac{1}{Z_N} \pdv{}{\beta} \underbrace{\tr_{\mathcal H_{tot}} \exp(- \beta \hat H)}_{Z_N} \\ & = - \frac{1}{Z_N} \pdv{}{\beta} Z_N \\ & = - \pdv{}{\beta} \log Z_N ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The entropy is 
+    \begin{equation*}
+        S = \frac{E - F}{T} = \pdv{F}{T} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{unboltz}
+        \begin{equation*}
+        \begin{aligned}
+            S_c & = - k_B \av{\log \rho_c}_c \\ & = - k_B \tr_{\mathcal H_{tot}} (\rho_c \log \rho_c) \\ & = - k_B \tr_{\mathcal H_{tot}} (\frac{\exp(- \beta \hat H)}{Z_N} \log \frac{\exp(- \beta \hat H)}{Z_N}) \\ & = - k_B \tr_{\mathcal H_{tot}} \Big (\frac{\exp(- \beta \hat H)}{Z_N} (\log \exp(- \beta \hat H) - \log Z_N) \Big ) \\ & = - k_B \tr_{\mathcal H_{tot}} (\frac{\exp(- \beta \hat H)}{Z_N} (- \beta \hat H - \log Z_N)) \\ & = k_B \beta ~ \underbrace{\tr_{\mathcal H_{tot}} (\frac{\exp(- \beta \hat H)}{Z_N} \hat H )}_E + k_B \tr_{\mathcal H_{tot}} (\frac{\exp(- \beta \hat H)}{Z_N} \underbrace{\log Z_N}_{- \beta F} ) \\ & = \frac{E}{T} - k_B \beta F ~ \frac{1}{Z_N} \underbrace{\tr_{\mathcal H_{tot}} (\exp(- \beta \hat H))}_{Z_N} \\ & = \frac{E-F}{T} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    Notice that the entropy is well defined because the trace of the exponential of the energy eigenvalues diverges only if they are negative. Thus, we assume that $E_j \geq \min E_j = 0$.
+
 \chapter{Grancanonical ensemble}
+
+    The grancanonical ensemble is characterised by constant volume, temperature and chemical potential. Since $N$ is not fixed, we work in the full Fock space $\mathcal F_N$. However, we restrict the hamiltonian operator in the Fock space to the condition that it conserves the number of particles, i.e. $[\hat H, \hat N] = 0$ 
+    \begin{equation*}
+        \hat H \Big \vert_{\mathcal F_N} = \hat H_N ~.
+    \end{equation*}
+    An example of physical system which does not satisfy this condition is a photons absorbed by an electron. Energy can be in one of the eigenstates, each for a fixed $N$
+    \begin{equation*}
+        \hat H^{(N)} \ket{\psi_{j, \alpha}^{(N)}} = E_j^{(N)} \ket{\psi_{j, \alpha}^{(N)}} ~,
+    \end{equation*}
+    with probability 
+    \begin{equation}\label{prob2}
+        p_j^{(N)} \propto \exp(- \beta (E_j - \mu N)) ~.
+    \end{equation}
+
+    Consider a family of projectors $\{\hat P_j^{(N)}\}$
+    \begin{equation*}
+        \hat P_j^{N} = \sum_\alpha \ket{\psi_{j, \alpha}^{(N)}} \bra{\psi_{j, \alpha}^{(N)}} ~,
+    \end{equation*}  
+    the density matrix of a mixed states is 
+    \begin{equation*}
+        \rho_{gc} = \frac{1}{\mathcal Z} \sum_N \sum_j \exp(- \beta (E_j - \mu N)) \hat P_j^{(N)} = \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} ~,
+    \end{equation*}
+    where $z = \exp(\beta \mu)$ is the fugacity and the quantum grancanonical partition function is 
+    \begin{equation*}
+        \mathcal Z = \sum_{N=0}^{\infty} \tr_{\mathcal H_{tot}} \Big ( \exp(- \beta (\hat H - \mu \hat N)) \Big) = \sum_{N=0}^\infty z^N Z_N ~.
+    \end{equation*}
+    \begin{proof}
+        For a mixed state, the density matrix is~\eqref{mix}
+        \begin{equation*}
+            \rho_{gc} = \sum_N \sum_j p_j \hat P_j^{(N)} = C \sum_N \sum_j \exp(- \beta (E_j^{(N)} - \mu N)) \hat P_j^{(N)} ~,
+        \end{equation*}
+        where the probability is given by~\eqref{prob2} and $C$ is a normalisation function.
+
+        Moreover, using~\eqref{endec} and~\eqref{numb}
+        \begin{equation*}
+        \begin{aligned}
+            \rho_{gc} & = C \sum_N \sum_j \exp(- \beta (E_j - \mu N)) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} - \mu N))^k \underbrace{\hat P_j^{(N)}}_{(P_j^{(N)})^k} \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} \hat P_j^{(N)} - \nu N P_j^{(N)}))^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_N \sum_j (E_j^{(N)} \hat P_j^{(N)} - \mu N P_j^{(N)}))^k \\ & = C \exp(- \beta (\underbrace{\sum_j \sum_N E_j^{(N)} \hat P_j^{(N)}}_{\hat H}) - \mu \underbrace{\sum_j \sum_N N \hat P_j^{(N)}}_{\hat N}) \\ & = C \exp(- \beta (\hat H - \mu \hat N)) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used the Taylor expansion of the exponential, one of the properties of the projectors~\eqref{idem} and we have exchanged the two series.
+
+        Finally, We set $C = \frac{1}{\mathcal Z}$, where $\mathcal Z$ is the quantum canonical partition function, and by the normalisation condition 
+        \begin{equation*}
+            1 = \tr_{\mathcal F} \rho_{gc} = \sum_N \frac{1}{\mathcal H_{tot}} \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \mathcal Z = \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) = \sum_{N=0}^{\infty} \tr_{\mathcal H_{tot}} \exp(- \beta (\hat H - \mu \hat N)) = \sum_{N=0}^{\infty} z^N \underbrace{\tr_{\mathcal H_{tot}} \exp(- \beta \hat H)}_{Z_N} = \sum_N z^N Z_N ~.
+        \end{equation*}
+    \end{proof}
+
+    Consider an observable $\hat A$ such that it conserves the number of particles, i.e. $[\hat A, \hat N]$, the average value is 
+    \begin{equation*}
+        \av{\hat A}_{gc} = \tr_{\mathcal F} (\hat A \rho_{gc}) = \frac{1}{\mathcal Z} \sum_{N=0}^{\infty} z^N Z_N \av{\hat A}_c ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            \av{\hat A}_{gc} & = \tr_{\mathcal F} (\hat A \rho_{gc}) \\ & = \sum_{N=0}^{\infty} \tr_{\mathcal H_{tot}} \Big (\hat A \frac{z^N \exp(- \beta \hat H)}{\mathcal Z}) = \frac{1}{\mathcal Z} \sum_{N=0}^{\infty} z^N \tr_{\mathcal H_{tot}} (\hat A \exp(- \beta \hat H)) \\ & = \frac{1}{\mathcal Z} \sum_{N=0}^{\infty} z^N Z_N \underbrace{\frac{\tr_{\mathcal H_{tot}} (\hat A \exp(- \beta \hat H))}{Z_N}}_{\av{\hat A}_c} \\ & = \frac{1}{\mathcal Z} \sum_{N=0}^{\infty} z^N Z_N \av{\hat A}_c ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    
+    We define the granpotential 
+    \begin{equation*}
+        \Omega = - \frac{1}{\beta} \log \mathcal Z ~,
+    \end{equation*}
+    the energy in the grancanonical is 
+    \begin{equation*}
+        E - \mu N = \av{\hat H - \mu \hat N} = - \pdv{}{\beta} \log \mathcal Z ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            E - \mu N & = \av{\hat H - \mu \hat N} \\ & = \tr_{\mathcal F} \Big ( (\hat H - \mu \hat N) \frac{\exp( - \beta (\hat H - \mu \hat N))}{\mathcal Z} \Big) \\ & = - \frac{1}{\mathcal Z} \pdv{}{\beta} \underbrace{\tr_{\mathcal F} (\exp(- \beta (\hat H - \mu \hat N)))}_{\mathcal Z} \\ & = - \frac{1}{\mathcal Z} \pdv{}{\beta} \mathcal Z \\ & = - \pdv{}{\beta} \log \mathcal Z ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The entropy in the grancanonical ensemble is 
+    \begin{equation*}
+        S = \frac{E - \mu N - \Omega}{T} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            S & = - k_B \av{\log \rho_{gc}}_{gc} \\ & = - k_B \tr_{\mathcal F} ( \rho_{gc} \log \rho_{gc}) \\ & = - k_B \tr_{\mathcal F} \Big ( \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} \log \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} \Big) \\ & = - k_B \tr_{\mathcal F} \Big ( \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} (\log \exp(- \beta (\hat H - \mu \hat N)) - \log \mathcal Z) \Big) \\ & = k_B \beta \underbrace{\tr_{\mathcal F} \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} (\hat H - \mu \hat N)}_{E - \mu N} + k_B \underbrace{\tr_{\mathcal F} \log \mathcal Z }_{- \beta \Omega} \\ & = \frac{E - \mu N - \Omega}{T} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}

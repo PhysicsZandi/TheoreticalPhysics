@@ -1,0 +1,179 @@
+\part{Path integrals in configuration and phase space}
+
+\chapter{Introduction}
+
+    In quantum mechanics, there are two equivalent method to quantise: operatorial formalism and path integrals. The latter has been introduced by Feynman and it is useful for two reasons: quantisation of (non-abelian) gauge theories in the standard model and relation between quantum field theory and statistical mechanics.
+
+\section{Two slit experiment}
+
+    Consider an electron, created by a source, that passes through a barrier with two slits and reach a detector. The standard way to study such system is to highlight the wave behaviour of the electron and calculate the interference pattern with the Huygens principle. However, Feynman proposes an alternative way. The electron is a particle which accomplish all the possible path with an associated amplitude. Therefore, for each path $c_i$, there is an amplitude $A (c_i)$ and the total amplitude $A_{tot} = \sum_i A(c_i)$ is related to the probability to find the particle in a point of the detector screen $p = |A_{tot}|^2$. To each amplitude, we associated a unit norm and a phase equal to $\frac{S}{\hbar}$, where $S$ is the action of the particle, 
+    \begin{equation*}
+        A(c_i) = \exp( \frac{i}{\hbar}) S(c_i)
+    \end{equation*}
+    and the total amplitude is 
+    \begin{equation*}
+        A_{tot} = \sum_i \exp( \frac{i}{\hbar}) S(c_i) ~.
+    \end{equation*}
+
+\subsection{Heuristical free particle} 
+
+    Consider a free particle with associated action 
+    \begin{equation*}
+        S[q] = \int_0^T dt ~ \frac{m}{2} \dot q^2 ~.
+    \end{equation*}
+    We suppose that the difference between the two path is $d \ll D$ and we evaluate the action fot the path $c_1$ 
+    \begin{equation*}
+        S(c_1) = \frac{m}{2} \frac{D^2}{T^2} T = \frac{m}{2} \frac{D^2}{T}
+    \end{equation*}
+    and for the path $c_2$ 
+    \begin{equation*}
+        S(c_2) = \frac{m}{2} \frac{(D+d)^2}{T^2} T = \frac{m}{2T} (D^2 + 2 D d + O(d^2)) = \frac{m}{2} \frac{D^2}{T} + \frac{m D d}{T} O(d^2) = \frac{m}{2} \frac{D^2}{T} + pd + O(d^2) = S(c_1) + pd + O(d^2) ~,
+    \end{equation*}
+    where we roughly estimate $p \sim \frac{m D}{T}$. Therefore, the total amplitude is 
+    \begin{equation*}
+        A_{tot} = A(c_1) + A(c_2) = \exp (\frac{i}{\hbar} S(c_1)) + \exp (\frac{i}{\hbar} S(c_2)) = \exp (\frac{i}{\hbar} S(c_1)) \Big (1 + \exp (\frac{i}{\hbar} pd)) + O(d^2) ~. 
+    \end{equation*}
+    We notice that the maximum probability is given when 
+    \begin{equation*}
+        \exp(\frac{i}{\hbar} pd) = 1 \quad \Rightarrow \quad \frac{pd}{\hbar} = 2 \pi n ~,
+    \end{equation*}
+    where $n \in \mathbb Z$. We recover quantum mechanics, since we recognise the Compton wavelength of the electron
+    \begin{equation*}
+        \lambda = \frac{\hbar}{p}
+    \end{equation*}
+    and we find the relation 
+    \begin{equation*}
+        \frac{d}{\lambda} = n ~.
+    \end{equation*}
+
+    We can generalise by increasing the number of slits and intermediary screens to have all the possible paths between the initial point (source) and the final point (detector). The action becomes 
+    \begin{equation*}
+        S[q] = \int{t_i}^{t_f} dt ~L(q, \dot q) 
+    \end{equation*}
+    and the transition amplitude in the continuum limit 
+    \begin{equation*}
+        A = \sum_i \exp(\frac{i}{\hbar} S(c_i)) = \int \mathcal D q ~ \exp (\frac{i}{\hbar} S[q]) ~,
+    \end{equation*}
+    where $S[q]$ is a functional, $A$ is an integral functional and $\mathcal D q$ is the measure in the path space.
+
+    We can recover the classical limit by noticing that, for macroscopic systems, the rate $\frac{S}{\hbar}$ is very big and small variations $\frac{\delta S}{\hbar}$ are bigger than $i \pi$. Therefore, the amplitudes of nearby paths cancel by destructive interference, unless it is the real classical path, since $\delta S = 0$. 
+
+\section{Schroedinger equation}
+
+    Consider a $1$-dimensional particle. The lagrangian action in the configuration space 
+    \begin{equation*}
+        S[x(t)] = \int dt \Big ( \frac{m}{2} \dot x^2 - V(x)) ~. 
+    \end{equation*}
+    The momentum is defined as 
+    \begin{equation*}
+        p = \pdv{L}{\dot x} = m \dot x ~.
+    \end{equation*}
+    By a Legendre transformation, we can introduce the hamiltonian 
+    \begin{equation*}
+        H = p \dot x - L = p \frac{p}{m} + \frac{p^2}{2m} + V(x) = \frac{p^2}{2m} ~.
+    \end{equation*}
+    The hamiltonian action in the phase space 
+    \begin{equation*}
+        S[x(t)] = \int dt \Big ( p \dot x - \frac{p^2}{2m} - V(x)) ~. 
+    \end{equation*}
+
+    Given $2$ function in phase space $f$ and $g$, the Poisson brackets are 
+    \begin{equation*}
+        \{x,x\} = \{p,p\} = 0 ~, \quad \{x,p\} = 1 ~.
+    \end{equation*}
+
+    The canonical quantisation consists in promoting position and momentum to operators $\hat x$ and $\hat p$ such that they satisfy the canonical commutation relations 
+    \begin{equation*}
+        [\hat x, \hat x] = [\hat p, \hat p] = 0 ~, \quad [\hat x, \hat p] = i \hbar ~.
+    \end{equation*}
+    Therefore, also the hamiltonian is promoted to an operator acting on the Hilbert space $\mathcal H$ 
+    \begin{equation*}
+        \hat H = \frac{1}{2m} \hat p^2 + V(\hat x) ~.
+    \end{equation*}
+
+    The Schroedinger equation reads as 
+    \begin{equation*}
+        i \hbar \pdv{}{t} \ket{\psi} = \hat H \ket{\psi} ~,
+    \end{equation*}
+    where $\ket{\psi} \in \mathcal H$ is a state in the Hilbert space.
+
+    In the position representation, the eigenstates of the position are 
+    \begin{equation*}
+        \hat x \ket{x} = x \ket{x} ~,
+    \end{equation*}
+    such that they satisfy 
+    \begin{equation*}
+        \braket{x}{x'} = \delta (x - x') ~, \quad \mathbb I = \int dx ~ \ket{x} \bra{x} ~.
+    \end{equation*}
+    The momentum operator in this representation is 
+    \begin{equation*}
+        \hat p = - i \hbar \pdv{}{x} ~.
+    \end{equation*}
+    Hence, the Schroedinger equation is 
+    \begin{equation*}
+        i \hbar \pdv{}{t} \psi(t,x) = \Big (\frac{1}{2m} \hat p^2 + V(\hat x) \Big ) \psi(t,x) = \Big (-\frac{\hbar^2}{2m} \pdvdu{x} + V(x) \Big) \psi(t,x) ~.
+    \end{equation*}
+
+    However, for any time-independent hamiltonian, we can solve the Schroedinger equation introducing an evolution operator 
+    \begin{equation*}
+        \ket{\psi(t)} = \exp(- \frac{i}{\hbar} \hat H t) \ket{\psi_i} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            i \hbar \pdv{}{t} \ket{\psi(t)} = i \hbar \Big ( - \frac{i}{\hbar} \hat H \Big) \ket{\psi(t)} = \hat H \ket{\psi(t)} ~. 
+        \end{equation*}
+    \end{proof}
+
+    The transition amplitude to find the system from the intial state $\psi_i$ to the final state $\psi_f$ is 
+    \begin{equation*}
+        A(x_i, x_f, T) = \braket{\psi_f}{\psi(t)} = \bra{\psi_f} \exp(- \frac{i}{\hbar} \hat H T) \ket{\psi_i} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            \braket{\psi_f}{\psi(t)} & = \bra{\psi_f} \exp(- \frac{i}{\hbar} \hat H T) \ket{\psi_i} \\ & = \bra{\psi_f} \mathbb I \exp(- \frac{i}{\hbar} \hat H T) \mathbb I \ket{\psi_i} \\ & = \int dx_f ~ \underbrace{\braket{\psi_f}{x_i}}_{\psi_f(x_f)} \bra{x_i} \exp(- \frac{i}{\hbar} \hat H T) \int dx_i ~ \ket{x_i} \underbrace{\braket{x_i}{\psi_i}}_{\psi_i(x_i)} \\ & = \int dx_i \int dx_f ~ \psi_f^* (x_f) \psi_i (x_i) \bra{x_f} \exp(- \frac{i}{\hbar} \hat H T) \ket{x_i} ~,
+        \end{aligned}
+        \end{equation*}
+        which shows that it is a matrix element between position eigenstates of the evolution operator.
+    \end{proof}
+
+\chapter{Path integrals in phase space}
+
+    The path integral in phase space is 
+    \begin{equation*}
+        A = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\prod_{k=1}^{N} \frac{d p_k}{2\pi \hbar} \Big ) \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (p_k \frac{x_k - x_{k-1}}{\epsilon} - H(x_{k-1}, p_k))) = \int \mathcal D x ~ \mathcal D p ~ \exp(\frac{i}{\hbar} S[x,p]) ~,
+    \end{equation*}
+    where $\epsilon =\frac{T}{N} $.
+
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            A (x_i, x_f, T) & = \bra{x_f} \exp(- \frac{i}{\hbar} \hat H T) \ket{x_i} \\ & = \bra{x_f} \exp(- \frac{i}{\hbar} \hat H \underbrace{\frac{T}{N}}_\epsilon N) \ket{x_i} \\ & = \bra{x_f} \exp(- \frac{i}{\hbar} \hat H \epsilon)^N \ket{x_i} \\ & = \bra{x_f} \mathbb I \exp(- \frac{i}{\hbar} \hat H \epsilon) \mathbb I \ldots \mathbb I \exp(- \frac{i}{\hbar} \hat H \epsilon) \mathbb I \ket{x_i} \\ & = \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \bra{x_k} \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} \Big) \\ & = \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \bra{x_k} \mathbb I \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} \Big) \\ & = \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \frac{dp_k}{2 \pi \hbar} \Big) \prod_{k=1}^{N}\underbrace{\braket{x_k}{p_k}}_{\exp(\frac{i}{\hbar} p_k x_k)} \bra{p_k} \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} \\ & = \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \frac{dp_k}{2 \pi \hbar} \Big) \prod_{k=1}^{N} \exp(\frac{i}{\hbar} p_k x_k) \bra{p_k} \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} ~.
+        \end{aligned}
+        \end{equation*}
+
+        So far, we compute the exaxt development. Now, we go infinitesimally with $N \rightarrow \infty$
+        \begin{equation*}
+        \begin{aligned}
+            A & = \lim_{N \rightarrow \infty} \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \frac{dp_k}{2 \pi \hbar} \Big) \prod_{k=1}^{N} \exp(\frac{i}{\hbar} p_k x_k) \bra{p_k} \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} \\ & = \lim_{N \rightarrow \infty} \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \frac{dp_k}{2 \pi \hbar} \Big) \prod_{k=1}^{N} \exp(\frac{i}{\hbar} (p_k (x_k - x_{k-1}) - H(x_{k-1}, p_k) epsilon )) \\ & = \lim_{N \rightarrow \infty} \int \Big ( \prod_{k=1}^{N-1} dx_k \Big) \Big ( \prod_{k=1}^{N} \frac{dp_k}{2 \pi \hbar} \Big) \prod_{k=1}^{N} \exp(\frac{i}{\hbar} \underbrace{\epsilon}_{dt} (\underbrace{p_k}_p \underbrace{\frac{x_k-x_{k-1}}{\epsilon}}_{\dot x} - \underbrace{H(x_{k-1}, p_k)}_{H} )) \\ & = \int \mathcal D x ~ \mathcal D p ~ \exp(\frac{i}{\hbar} S[x,p]) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used
+        \begin{equation*}
+            \bra{p_k} \exp(- \frac{i}{\hbar} \hat H \epsilon) \ket{x_{k-1}} = \braket{p_k}{x_{k-1}} \exp(- \frac{i}{\hbar} H (x_{k-1}, p_k) \epsilon) ~.
+        \end{equation*}
+    \end{proof}
+
+\chapter{Path integrals in configuration space}
+
+    The path integral in configuration space is 
+    \begin{equation*}
+        A = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\frac{m}{2 \pi i \hbar \epsilon} \Big )^{\frac{N}{2}} \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (\frac{m}{2} \frac{(x_k - x_{k-1})^2}{epsilon^2} - V(x_{k-1})\Big )) = \int \mathcal D x ~ \exp(\frac{i}{\hbar} S[x]) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+\chapter{Free particle}

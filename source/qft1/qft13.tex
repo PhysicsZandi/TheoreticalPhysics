@@ -23,10 +23,18 @@
         S^{\mu\nu} = - i \Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] ~,
     \end{equation*}
     such that 
-    \begin{equation*}
+    \begin{equation}\label{lorspin}
         {\psi'}_D^\alpha (x) = \exp(\frac{1}{2} \omega_{\mu\nu} S^{\mu\nu})^\alpha_{\phantom \alpha \beta} \psi^\beta_D (x) = S^\alpha_\beta \psi^\beta_D (x) ~,
-    \end{equation*}
+    \end{equation}
     where $\alpha, \beta = 1,2,3,4$.
+
+    Notice that 
+    \begin{equation}\label{gammadag}
+        (\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0 ~.
+    \end{equation}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
 
 \section{Invariant quantities}
 
@@ -41,7 +49,18 @@
 
     However, $S$ satisfies $S^\dagger = \gamma^0 S^{-1} \gamma^0$.
     \begin{proof}
-        Maybe in the future.
+        In fact, consider the spinor representation
+        \begin{equation*}
+            S = \exp ( \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) ~,
+        \end{equation*}
+        its hermitian 
+        \begin{equation*}
+            S = \exp ( \frac{1}{2} \omega_{\mu\nu} (S^\dagger)^{\mu\nu})
+        \end{equation*}
+        and its inverse 
+        \begin{equation*}
+            S = \exp ( - \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) ~.
+        \end{equation*}
     \end{proof}
 
     We define the adjoint Dirac spinor 
@@ -204,3 +223,374 @@
     \end{proof}
 
 \chapter{Solutions of the Dirac equation}
+
+    Since each components of the Dirac spinor $\psi(x)$ satisfies the Klein-Gordon equation, the plane waves are solutions 
+    \begin{equation*}
+        \psi_\alpha (x) = u_\alpha (\mathbf p) \exp(- i p x) ~,
+    \end{equation*}
+    where $u_\alpha (\mathbf p)$ is the polarisation vector with $4$ components $\alpha = 1,2,3,4$ and $p_0 = E_{\mathbf p} = \sqrt{|\mathbf p|^2 + m^2}$. Furthermore, in order to satisfy the Dirac equation, $u_\alpha (\mathbf p)$ satisfies 
+    \begin{equation}\label{cond}
+        \begin{bmatrix}
+            - m & p^\mu \sigma_\mu \\ p^\mu \overline \sigma_\mu & -m \\
+        \end{bmatrix} u (\mathbf p) = 0 ~,
+    \end{equation}
+    where $\sigma^\mu = (\mathbb I_2, \sigma^i)$ and $\overline \sigma^\mu = (\mathbb I_2, - \sigma^i)$.
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            0 = (i \gamma^\mu \partial_\mu - m) \psi(x) = (i \gamma^\mu (- i p_\mu ) - m) u(\mathbf p) \exp(- i p x) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            0 = (\gamma^\mu  p_\mu - m) u(\mathbf p) = \Big ( 
+            \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\ 
+            \end{bmatrix} p_0 + \begin{bmatrix}
+                0 & \sigma^i \\ - \sigma^i & 0
+            \end{bmatrix} p_i  - m \begin{bmatrix}
+                1 & 0 \\ 0 & 1 \\
+            \end{bmatrix} \Big) u (\mathbf p) = \begin{bmatrix}
+                - m & p^\mu \sigma_\mu \\ p^\mu \overline \sigma_\mu & -m \\
+            \end{bmatrix} u (\mathbf p) = 0 ~. 
+        \end{equation*}
+    \end{proof}
+
+    Moreover, we can split the polarisation vector $u (\mathbf p)$ into the right and the left-handed part 
+    \begin{equation}\label{split}
+        u (\mathbf p) = \begin{bmatrix}
+            u_L (\mathbf p) \\ u_R (\mathbf p) \\
+        \end{bmatrix} ~,
+    \end{equation}
+    which can be intepret as the positive frequency solution. 
+    \begin{proof}
+        In fact, putting~\eqref{split} into~\eqref{cond} 
+        \begin{equation}\label{proof4}
+            \begin{cases}
+                (p^\mu \overline \sigma_\mu) u_L = m u_R \\
+                (p^\mu \sigma_\mu) u_R = m u_L \\
+            \end{cases} ~.
+        \end{equation}
+
+        Notice that 
+        \begin{equation*}
+        \begin{aligned}
+            (p_\mu \sigma^\mu) (p_\nu \overline \sigma^\nu) & = (p_0 + p_i \sigma^i) (p_0 + p_j \overline \sigma^j) \\ & = (p_0 + p_i \sigma^i) (p_0 - p_j \sigma^j) \\ & = p_0^2 - p_i p_j \underbrace{\sigma^i \sigma^j}_{\delta^{ij} + i \epsilon^{ijk} \sigma_k} \\ & = p_0^2 - p_i p_j \underbrace{\delta^{ij}}_{i = j} + \cancel{i \underbrace{p_i p_j}_{symm} \underbrace{\epsilon^{ijk}}_{anti} \sigma_k} \\ & = p_0^2 - |\mathbf p|^2 = m^2 ~.
+        \end{aligned}
+        \end{equation*}
+
+        We choose the form of $u_L$ such that 
+        \begin{equation*}
+            u_L (\mathbf p) = A p^\mu \sigma_\mu \chi ~,
+        \end{equation*}
+        where $A$ is a constant and $\chi$ is $2$-components spinor. 
+        Hence, the first equation of~\eqref{proof4}
+        \begin{equation*}
+            m u_R = (p^\mu \overline \sigma_\mu) u_L = A \underbrace{(p^\mu \overline \sigma_\mu) (p^\nu \sigma_\nu)}_{m^2} \chi = A m^2 \chi
+        \end{equation*}
+        and 
+        \begin{equation*}
+            u_R (\mathbf p) = m A \chi.
+        \end{equation*}
+        In this way, the second equation of~\eqref{proof4} is automatically satisfied
+        \begin{equation*}
+            m u_L = p^\mu \sigma_\mu \underbrace{m A \chi }_{u_R} = p^\mu \sigma_\mu u_R ~.
+        \end{equation*}
+        Therefore 
+        \begin{equation*}
+            u (\mathbf p) = A \begin{bmatrix}
+                (p^\mu \sigma_\mu) \chi \\ m \chi \\
+            \end{bmatrix} ~.
+        \end{equation*} 
+
+        We choose $A = \frac{1}{m}$ and $\chi = \sqrt{p^\mu \overline \sigma_\mu} \xi$, where $\xi$ is a constant $2$-components spinor normalised such that $\xi^\dagger \xi = 1$. Hence 
+        \begin{equation*}
+            u (\mathbf p) = \frac{1}{m} \begin{bmatrix}
+                (p^\mu \sigma_\mu) \sqrt{p^\nu \overline \sigma_\nu} \xi \\ m \sqrt{p^\mu \overline \sigma_\mu} \xi \\
+            \end{bmatrix} = \frac{1}{m} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \underbrace{\sqrt{p^\alpha \sigma_\alpha} \sqrt{p^\nu \overline \sigma_\nu}}_m \xi \\ m \sqrt{p^\mu \overline \sigma_\mu} \xi \\
+            \end{bmatrix} = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \xi \\ \sqrt{p^\mu \overline \sigma_\mu} \xi \\
+            \end{bmatrix} ~.
+            \end{equation*}
+    \end{proof}
+
+    Actually, there is another class of plane waves solutions, the negative frequency solutions 
+    \begin{equation*}
+        \psi(x) = v(\mathbf p) \exp(i p x) ~,
+    \end{equation*}
+    where $v (\mathbf p)$ is the polarisation vector 
+    \begin{equation*}
+        v (\mathbf p) = \begin{bmatrix}
+            \sqrt{p_\mu \sigma^\mu} \eta \\
+            - \sqrt{p_\mu \overline \sigma^\mu} \eta \\
+        \end{bmatrix} ~,
+    \end{equation*}
+    where $\eta$ is a constant $2$-components spinor normalised such that $\eta^\dagger \eta = 1$. 
+
+    They can be distinguished since 
+    \begin{equation*}
+        (\gamma^\mu p_\mu - m) u(\mathbf p) = 0 ~, \quad (\gamma^\mu p_\mu + m) v(\mathbf p) = 0 ~,
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \hat H \psi(x) = i \pdv{}{t} (u (\mathbf p) \exp(- i px)) = E_{\mathbf p} \psi (x) ~, \quad \hat H \psi(x) = i \pdv{}{t} (u (\mathbf p) \exp(i px)) = - E_{\mathbf p} \psi (x) ~.
+    \end{equation*}
+
+    Consider a massive particle in the rest frame $p^\mu = (m, 0, 0,0)$. The positive frequency solutions look like 
+    \begin{equation*}
+        \psi(x) = \sqrt{m} \exp(- i E_{\mathbf p} t) \begin{bmatrix}
+            \xi \\ \xi \\
+        \end{bmatrix} ~.
+    \end{equation*}
+    Using~\eqref{lorspin}, we restrict to spatial rotations in which the generators are
+    \begin{equation*}
+        S^{ij} = - \frac{1}{2} \epsilon^{ijk} \begin{bmatrix}
+            \sigma^k & 0 \\ 0 & \sigma^k \\
+        \end{bmatrix} ~,
+    \end{equation*}
+    where $i \neq j$ and the parameters are 
+    \begin{equation*}
+        \omega_{ij} = - \epsilon_{ijk} \theta^k ~.
+    \end{equation*}
+    Therefore, the matrix rotation is 
+    \begin{equation*}
+        \exp(\frac{1}{2} \omega_{ij} S^{ij}) = \begin{bmatrix}
+            \exp(\frac{i}{2} \theta^i \sigma_i) & 0 \\ 0 & \exp(\frac{i}{2} \theta^i \sigma_i) \\
+        \end{bmatrix}
+    \end{equation*}
+    and the Dirac spinor transforms as 
+    \begin{equation*}
+        \psi' (x) = \begin{bmatrix}
+            \exp(\frac{i}{2} \theta^i \sigma_i) & 0 \\ 0 & \exp(\frac{i}{2} \theta^i \sigma_i) \\
+        \end{bmatrix} \psi (x) ~,
+    \end{equation*}
+    which induces a transformation on $\xi$ such that 
+    \begin{equation*}
+        \xi ' = \exp(\frac{i}{2} \theta^i \sigma_i) \xi ~.
+    \end{equation*}
+    This is indeed an $SU(2)$ transformation, where we can recognise tha spin operator $\hat{\mathbf S} = \frac{1}{2} \boldsymbol \sigma$ and $\xi$ is a $2$-components spinot which describes particle with spin $\frac{1}{2}$. Since $\xi^\dagger \xi = 1$, we choose, for the spin up
+    \begin{equation*}
+        \xi = \begin{bmatrix}
+            1 \\ 0 \\
+        \end{bmatrix} \colon \sigma_3 \xi = \begin{bmatrix}
+            1 & 0 \\ 0 & -1 \\
+        \end{bmatrix} \begin{bmatrix}
+            1 \\ 0 \\
+        \end{bmatrix} = (+1) \xi ~,
+    \end{equation*}
+    for the spin down
+    \begin{equation*}
+        \xi = \begin{bmatrix}
+            0 \\ 1 \\
+        \end{bmatrix} \colon \sigma_3 \xi = \begin{bmatrix}
+            1 & 0 \\ 0 & -1 \\
+        \end{bmatrix} \begin{bmatrix}
+            0 \\ 1 \\
+        \end{bmatrix} = (-1) \xi ~,
+    \end{equation*}
+
+\chapter{Useful formulas} 
+
+\section{Inner product}
+
+    We introduce a basis of the $2$-components spinors 
+    \begin{equation*}
+        \xi^r ~, \eta^s ~,
+    \end{equation*}
+    where $r,s = 1,2$ such that they satisfy 
+    \begin{equation*}
+        (\xi^\dagger)^r \xi^s = \delta^{rs} ~, \quad (\eta^\dagger)^r \eta^s = \delta^{rs}  ~.
+    \end{equation*}
+
+    For example, 
+    \begin{equation*}
+        \xi^1 = \begin{bmatrix}
+            1 \\ 0 \\
+        \end{bmatrix} ~, \quad \xi^2 = \begin{bmatrix}
+            0 \\ 1 \\
+        \end{bmatrix} ~, \quad \eta^1 = \begin{bmatrix}
+            1 \\ 0 \\
+        \end{bmatrix} ~, \quad \eta^2 = \begin{bmatrix}
+            0 \\ 1 \\
+        \end{bmatrix} ~.
+    \end{equation*}
+
+    We define the following inner products 
+    \begin{enumerate}
+        \item \begin{equation*}
+            (u^\dagger)^r (\mathbf p) u^s (\mathbf p) = 2 p^0 \delta^{rs} ~,
+        \end{equation*}
+        \item \begin{equation*}
+            \overline u^r (\mathbf p) u^s (\mathbf p) = 2 m \delta^{rs} ~,
+        \end{equation*} 
+        \item \begin{equation*}
+            (v^\dagger)^r (\mathbf p) v^s (\mathbf p) = 2 p^0 \delta^{rs} ~,
+        \end{equation*}
+        \item \begin{equation*}
+            \overline v^r (\mathbf p) v^s (\mathbf p) = - 2 m \delta^{rs} ~,
+        \end{equation*}
+        \item \begin{equation*}
+            \overline u^r (\mathbf p) v^s (\mathbf p) = \overline v^r (\mathbf p) u^s (\mathbf p) = 0 ~,
+        \end{equation*}
+        \item \begin{equation*}
+            (u^\dagger)^r (\mathbf p) v^s (- \mathbf p) = (v^\dagger)^r (\mathbf p) u^s (- \mathbf p) = 0 ~.
+        \end{equation*}
+    \end{enumerate}
+    \begin{proof}
+        For the first one, 
+        \begin{equation*}
+        \begin{aligned}
+            (u^\dagger)^r (\mathbf p) u^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\xi^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\xi^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \xi^s \\ \sqrt{p^\mu \overline \sigma_\mu} \xi^s \\
+            \end{bmatrix} \\ & = (\xi^\dagger)^r p^\mu \sigma_\mu \xi^s + (\xi^\dagger)^r p^\mu \overline \sigma_\mu \xi^s \\ & = (\xi^\dagger)^r p^0 \underbrace{\sigma_0}_{\mathbb I_2} \xi^s + (\xi^\dagger)^r p^0 \underbrace{\overline \sigma_0}_{\mathbb I_2} \xi^s + (\xi^\dagger)^r p^i \sigma_i \xi^s + (\xi^\dagger)^r p^i \underbrace{\overline \sigma_i}_{- \sigma_i} \xi^s \\ & = (\xi^\dagger)^r p^0 \xi^s + (\xi^\dagger)^r p^0 \xi^s + \cancel{(\xi^\dagger)^r p^i \sigma_i \xi^s } - \cancel{(\xi^\dagger)^r p^i \sigma_i \xi^s} \\ & = 2 p_0 \underbrace{(\xi^\dagger)^r \xi^s}_{\delta^{rs}} \\ & = 2 p_0 \delta^{rs} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the second one, 
+        \begin{equation*}
+        \begin{aligned}
+            \overline u^r (\mathbf p) u^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\xi^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\xi^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \xi^s \\ \sqrt{p^\mu \overline \sigma_\mu} \xi^s \\
+            \end{bmatrix} \\ & = (\xi^\dagger)^r p^\mu \underbrace{\sqrt{p^\mu  \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \xi^s + (\xi^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \xi^s \\ & = 2 m \underbrace{(\xi^\dagger)^r \xi^s}_{\delta^{rs}} \\ & 2 m = \delta^{rs} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the third one, 
+        \begin{equation*}
+        \begin{aligned}
+            (v^\dagger)^r (\mathbf p) v^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\eta^\dagger)^r & - \sqrt{p^\mu \overline \sigma_\mu} (\eta^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \eta^s \\ - \sqrt{p^\mu \overline \sigma_\mu} \eta^s \\
+            \end{bmatrix} \\ & = (\eta^\dagger)^r p^\mu \sigma_\mu \eta^s + (\eta^\dagger)^r p^\mu \overline \sigma_\mu \eta^s \\ & = (\eta^\dagger)^r p^0 \underbrace{\sigma_0}_{\mathbb I_2} \eta^s + (\eta^\dagger)^r p^0 \underbrace{\overline \sigma_0}_{\mathbb I_2} \eta^s + (\eta^\dagger)^r p^i \sigma_i \eta^s + (\eta^\dagger)^r p^i \underbrace{\overline \sigma_i}_{- \sigma_i} \eta^s \\ & = (\eta^\dagger)^r p^0 \eta^s + (\eta^\dagger)^r p^0 \eta^s + \cancel{(\eta^\dagger)^r p^i \sigma_i \eta^s } - \cancel{(\eta^\dagger)^r p^i \sigma_i \eta^s} \\ & = 2 p_0 \underbrace{(\eta^\dagger)^r \eta^s}_{\delta^{rs}} \\ & = 2 p_0 \delta^{rs} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the fourth one, 
+        \begin{equation*}
+        \begin{aligned}
+            \overline v^r (\mathbf p) v^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\eta^\dagger)^r & - \sqrt{p^\mu \overline \sigma_\mu} (\eta^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \eta^s \\ - \sqrt{p^\mu \overline \sigma_\mu} \eta^s \\
+            \end{bmatrix} \\ & = - (\eta^\dagger)^r p^\mu \underbrace{\sqrt{p^\mu  \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \eta^s - (\eta^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \eta^s \\ & = - 2 m \underbrace{(\eta^\dagger)^r \eta^s}_{\delta^{rs}} \\ & - 2 m = \delta^{rs} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the fifth one, 
+        \begin{equation*}
+        \begin{aligned}
+            \overline u^r (\mathbf p) v^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\xi^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\xi^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \eta^s \\ - \sqrt{p^\mu \overline \sigma_\mu} \eta^s \\
+            \end{bmatrix} \\ & = - (\xi^\dagger)^r \underbrace{\sqrt{p^\mu  \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \eta^s + (\xi^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \eta^s \\ & = m ( \cancel{(- \xi^\dagger)^r \eta^s} + \cancel{(\xi^\dagger)^r \eta^2}) = 0 ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the second in the fifth one, 
+        \begin{equation*}
+        \begin{aligned}
+            \overline v^r (\mathbf p) u^s (\mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\eta^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\eta^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \xi^s \\ - \sqrt{p^\mu \overline \sigma_\mu} \xi^s \\
+            \end{bmatrix} \\ & = - (\eta^\dagger)^r \underbrace{\sqrt{p^\mu  \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \xi^s + (\eta^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\nu \overline \sigma_\nu}}_m \xi^s \\ & = m ( \cancel{(- \eta^\dagger)^r \xi^s} + \cancel{(\eta^\dagger)^r \xi^2}) = 0 ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the sixth one, 
+        \begin{equation*}
+        \begin{aligned}
+            (u^\dagger)^r (\mathbf p) v^s (- \mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\xi^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\xi^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{\overline p^\mu \sigma_\mu} \eta^s \\ - \sqrt{\overline p^\mu \overline \sigma_\mu} \eta^s \\
+            \end{bmatrix} \\ & = (\xi^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{\overline p^\mu \sigma_\mu}}_m \eta^s - (\xi^\dagger)^r \underbrace{\sqrt{p^\mu \overline \sigma_\mu} \sqrt{\overline p^\mu \overline \sigma_\mu}}_m \eta^s \\ & = m ((\xi^\dagger)^r \eta^s - (\xi^\dagger)^r \eta^s) = 0 ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the second in the sixth one, 
+        \begin{equation*}
+        \begin{aligned}
+            (v^\dagger)^r (\mathbf p) u^s (- \mathbf p) & = \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\eta^\dagger)^r & - \sqrt{p^\mu \overline \sigma_\mu} (\eta^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{\overline p^\mu \sigma_\mu} \xi^s \\ \sqrt{\overline p^\mu \overline \sigma_\mu} \xi^s \\
+            \end{bmatrix} \\ & = (\eta^\dagger)^r \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{\overline p^\mu \sigma_\mu}}_m \xi^s - (\eta^\dagger)^r \underbrace{\sqrt{p^\mu \overline \sigma_\mu} \sqrt{\overline p^\mu \overline \sigma_\mu}}_m \xi^s \\ & = m ((\eta^\dagger)^r \xi^s - (\eta^\dagger)^r \xi^s) = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\section{Outer product}
+
+    We define the following outer products 
+    \begin{enumerate}
+        \item \begin{equation*}
+            \sum_{s=1}^{2} u^s (\mathbf p) \overline u^s(\mathbf p) = \gamma^\mu p_\mu + m \mathbb I_4 ~,
+        \end{equation*} 
+        \item \begin{equation*}
+            \sum_{s=1}^{2} v^s (\mathbf p) \overline v^s(\mathbf p) = \gamma^\mu p_\mu - m \mathbb I_4 ~.
+        \end{equation*} 
+    \end{enumerate}
+    \begin{proof}
+        For the first one
+        \begin{equation*}
+        \begin{aligned}
+            \sum_{s=1}^{2} u^s (\mathbf p) \overline u^s(\mathbf p) & = \sum_{s=1}^{2} \begin{bmatrix}
+                \sqrt{ p^\mu \sigma_\mu} \xi^s \\ \sqrt{ p^\mu \overline \sigma_\mu} \xi^s \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\xi^\dagger)^r & \sqrt{p^\mu \overline \sigma_\mu} (\xi^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \\ & = \sum_{s=1}^{2} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} \xi^s (\xi^\dagger)^s \sqrt{p^\mu \overline \sigma_\mu} & \sqrt{p^\mu \sigma_\mu} \xi^s (\xi^\dagger)^s \sqrt{p^\mu \sigma_\mu} \\ \sqrt{p^\mu \overline \sigma_\mu} \xi^s (\xi^\dagger)^s \sqrt{p^\mu \overline \sigma_\mu} & \sqrt{p^\mu \overline \sigma_\mu} \xi^s (\xi^\dagger)^s \sqrt{p^\mu \sigma_\mu} 
+            \end{bmatrix} \\ & = \begin{bmatrix}
+                \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\mu \overline \sigma_\mu}}_m & \sqrt{p^\mu \sigma_\mu} \sqrt{p^\mu \sigma_\mu} \\ \sqrt{p^\mu \overline \sigma_\mu} \sqrt{p^\mu \overline \sigma_\mu} & \underbrace{\sqrt{p^\mu \overline \sigma_\mu} \sqrt{p^\mu \sigma_\mu}}_m
+            \end{bmatrix} \\ & = \begin{bmatrix}
+                m & p^\mu \sigma_\mu \\ p^\mu \overline \sigma_\mu & m \\
+            \end{bmatrix} \\ & = \gamma^\mu p_\mu + m ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used 
+        \begin{equation*}
+            \sum_{s=1}^{2} \xi^s (\xi^\dagger)^s = \mathbb I_2 ~.
+        \end{equation*}
+
+        For the first one
+        \begin{equation*}
+        \begin{aligned}
+            \sum_{s=1}^{2} v^s (\mathbf p) \overline v^s(\mathbf p) & = \sum_{s=1}^{2} \begin{bmatrix}
+                \sqrt{ p^\mu \sigma_\mu} \eta^s \\ - \sqrt{ p^\mu \overline \sigma_\mu} \eta^s \\
+            \end{bmatrix} \begin{bmatrix}
+                \sqrt{p^\mu \sigma_\mu} (\eta^\dagger)^r & - \sqrt{p^\mu \overline \sigma_\mu} (\eta^\dagger)^r \\
+            \end{bmatrix} \begin{bmatrix}
+                0 & 1 \\ 1 & 0 \\
+            \end{bmatrix} \\ & = \sum_{s=1}^{2} \begin{bmatrix}
+                - \sqrt{p^\mu \sigma_\mu} \eta^s (\eta^\dagger)^s \sqrt{p^\mu \overline \sigma_\mu} & \sqrt{p^\mu \sigma_\mu} \eta^s (\eta^\dagger)^s \sqrt{p^\mu \sigma_\mu} \\ \sqrt{p^\mu \overline \sigma_\mu} \eta^s (\eta^\dagger)^s \sqrt{p^\mu \overline \sigma_\mu} & - \sqrt{p^\mu \overline \sigma_\mu} \eta^s (\eta^\dagger)^s \sqrt{p^\mu \sigma_\mu} 
+            \end{bmatrix} \\ & = \begin{bmatrix}
+                - \underbrace{\sqrt{p^\mu \sigma_\mu} \sqrt{p^\mu \overline \sigma_\mu}}_m & \sqrt{p^\mu \sigma_\mu} \sqrt{p^\mu \sigma_\mu} \\ \sqrt{p^\mu \overline \sigma_\mu} \sqrt{p^\mu \overline \sigma_\mu} & -\underbrace{\sqrt{p^\mu \overline \sigma_\mu} \sqrt{p^\mu \sigma_\mu}}_m 
+            \end{bmatrix} \\ & = \begin{bmatrix}
+                - m & p^\mu \sigma_\mu \\ p^\mu \overline \sigma_\mu & - m \\
+            \end{bmatrix} \\ & = \gamma^\mu p_\mu - m ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used 
+        \begin{equation*}
+            \sum_{s=1}^{2} \eta^s (\eta^\dagger)^s = \mathbb I_2 ~.
+        \end{equation*}
+    \end{proof}
+
+\chapter{How to not quantise the Dirac theory}
