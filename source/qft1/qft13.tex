@@ -594,3 +594,319 @@
     \end{proof}
 
 \chapter{How to not quantise the Dirac theory}
+
+    We quantise the theory with the same procedure we used for the scalar field. The conjugate field is 
+    \begin{equation*}
+        \pi = i \psi^\dagger ~.
+    \end{equation*}
+
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+            \pi = \pdv{\mathcal L}{\dot \psi} = \underbrace{\overline \psi}_{\psi^\dagger \gamma_0} i \gamma_0 = \psi^\dagger \gamma_0 i \gamma_0 = \psi^\dagger i \underbrace{(\gamma_0)^2}_{1} = i \psi^\dagger ~.
+        \end{equation*}
+    \end{proof}
+
+    In the Schroedinger picture, we impose the canonical commutation relations
+    \begin{equation*}
+        [\hat \psi_\alpha (\mathbf x), \hat \psi_\beta (\mathbf y)] = [\hat \pi_\alpha (\mathbf x), \hat \pi_\beta (\mathbf y)] = 0 ~,
+    \end{equation*}
+    \begin{equation*}
+        [\hat \psi_\alpha (\mathbf x), \hat \pi_\beta (\mathbf y)] = [\hat \psi_\alpha (\mathbf x), \hat \psi^\dagger_\beta (\mathbf y)] = i \delta^3 (\mathbf x - \mathbf y) \delta_{\alpha\beta} ~.
+    \end{equation*}
+
+    Since the general solution of the Dirac equation can be written as a linear combination of positive and negative frequency solutions, the general form of the field operator is 
+    \begin{equation*}
+        \hat \psi(\mathbf x) = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( \hat b^s_{\mathbf p} u^s (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + (\hat c_{\mathbf p}^\dagger)^s v^s(\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big) ~,
+    \end{equation*}
+    \begin{equation*}
+        \hat \psi^\dagger (\mathbf x) = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( (\hat b^\dagger_{\mathbf p})^s (u^\dagger)^s (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) + \hat c^s_{\mathbf p} (v^\dagger)^s(\mathbf p) \exp(i \mathbf p \cdot \mathbf x) \Big) ~,
+    \end{equation*}
+    Therefore, the commutation relation among the ladder operators are 
+    \begin{equation*}
+        [\hat b^s_{\mathbf p}, (\hat b^\dagger_{\mathbf q})] = (2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q) ~, \quad [\hat c^s_{\mathbf p}, (\hat c^\dagger_{\mathbf q})] = - (2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q) ~, 
+    \end{equation*}
+    and all the others vanish. Notice that there is a minus sign in the commutator of $\hat c$.
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            [\hat \psi(\mathbf x), \hat \psi^\dagger (\mathbf y)] & = [\sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( \hat b^s_{\mathbf p} u^s (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + (\hat c_{\mathbf p}^\dagger)^s v^s(\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big), \\ & \qquad \sum_{r=1}^{2} \int \frac{d^3 q}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf q}}} \Big ( (\hat b^\dagger_{\mathbf q})^r (u^\dagger)^r (\mathbf q) \exp(- i \mathbf q \cdot \mathbf y) + \hat c^r_{\mathbf q} (v^\dagger)^r(\mathbf q) \exp(i \mathbf q \cdot \mathbf y) \Big) ] \\ & = \sum_{r,s=1}^2 \int \frac{d^3 p ~ d^3 q}{(2 \pi)^6} \frac{1}{2 \sqrt{E_{\mathbf p} E_{\mathbf q}}} \Big ( \underbrace{[\hat b^s_{\mathbf p}, (\hat b^\dagger_{\mathbf q})^r]}_{(2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q)} u^s (\mathbf p) (u^\dagger)^r (\mathbf q) \exp (i (\mathbf p \cdot \mathbf x - \mathbf q \cdot \mathbf y)) \\ & \qquad + \underbrace{[\hat b^s_{\mathbf p}, \hat c_{\mathbf q}^r]}_0 u^s (\mathbf p) (v^\dagger)^r (\mathbf q) \exp (i (\mathbf p \cdot \mathbf x + \mathbf q \cdot \mathbf y)) \\ & \qquad + \underbrace{[(\hat c^\dagger_{\mathbf p})^s, (\hat b^\dagger_{\mathbf q})^r]}_0 v^s (\mathbf p) (u^\dagger)^r (\mathbf q) \exp (i (- \mathbf p \cdot \mathbf x - \mathbf q \cdot \mathbf y)) \\ & \qquad + \underbrace{[(\hat c^\dagger_{\mathbf p})^s, \hat c^r_{\mathbf q}]}_{(2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q)} v^s (\mathbf p) (v^\dagger)^r (\mathbf q) \exp (i (- \mathbf p \cdot \mathbf x + \mathbf q \cdot \mathbf y)) \Big) \\ & = \sum_{s=1}^2 \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( \underbrace{u^s (\mathbf p) \overline u^s (\mathbf p)}_{\gamma^\mu p_\mu + m} \gamma^0 \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) + \underbrace{v^s (\mathbf p) \overline v^s (\mathbf p)}_{\gamma^\mu p_\mu - m} \gamma^0 \exp (- i \mathbf p  \cdot (\mathbf x - \mathbf y)) \Big) 
+        \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            \phantom{[\hat \psi(\mathbf x), \hat \psi^\dagger (\mathbf y)]} & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( (\gamma^\mu p_\mu + m) \gamma^0 \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) + (\gamma^\mu p_\mu - m) \gamma^0 \exp (- i \mathbf p  \cdot (\mathbf x - \mathbf y)) \Big)  \\ & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( (\gamma^\mu p_\mu + m) \gamma^0 \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) + (-\gamma^\mu p_\mu - m) \gamma^0 \exp (i \mathbf p  \cdot (\mathbf x - \mathbf y)) \Big) \\ & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_{\mathbf p}} \Big ( (\gamma^0 p_0 + \cancel{\gamma^i p_i} + \cancel{m}) \gamma^0 \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) + (\gamma^0 p_0 - \cancel{\gamma^i p_i} - \cancel{m}) \gamma^0 \exp (i \mathbf p  \cdot (\mathbf x - \mathbf y)) \Big) \\ & = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{\cancel{2 E_{\mathbf p}}} \Big (\cancel{2 p_0} \underbrace{\gamma^0 \gamma^0}_1 \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) \Big) \\ & = \int \frac{d^3 p}{(2 \pi)^3} \exp (i \mathbf p \cdot (\mathbf x - \mathbf y)) = \delta^3 (\mathbf x - \mathbf y) ~.
+        \end{aligned}
+        \end{equation*} 
+    \end{proof}
+
+    The hamiltonian is 
+    \begin{equation*}
+        \hat H = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} - (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}) ~.
+    \end{equation*}
+    \begin{proof}
+        The hamiltonian density is 
+        \begin{equation*}
+            \mathcal H = \pi \dot \psi - L = i \psi^\dagger \psi - \overline \psi i \gamma^\mu \partial_\mu \psi + m \overline \psi \psi = \cancel{i \psi^\dagger \psi} - \cancel{\psi^\dagger \gamma^0 i \gamma^0 \partial_0 \psi} - i \gamma^i \partial_i \overline \psi \psi + m \overline \psi \psi = \overline \psi (- i \gamma^i \partial_i + m) \psi ~.
+        \end{equation*}
+
+        We compute 
+        \begin{equation*}
+        \begin{aligned}
+            (- i \gamma^i \partial_i + m) \hat \psi (\mathbf x) & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat b^s_{\mathbf p} (- \gamma^i \underbrace{i \partial_i}_{p_i} + m) u^s (\mathbf p) \exp(i \mathbf p \cdot x) \\ & \qquad + (\hat c^\dagger_{\mathbf p})^s (- \gamma^i \underbrace{i \partial_i}_{- p_i} + m) v^s (\mathbf p) \exp(-i \mathbf p \cdot x) ) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} (\hat b^s_{\mathbf p} \underbrace{(- \gamma^i p_i + m) u^s (\mathbf p)}_{\gamma^0 p_0 u^s (\mathbf p)} \exp(i \mathbf p \cdot x) \\ & \qquad + (\hat c^\dagger_{\mathbf p})^s \underbrace{(\gamma^i p_i + m) v^s (\mathbf p)}_{- \gamma^0 p_0 v^s (\mathbf p)} \exp(-i \mathbf p \cdot x) ) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \sqrt{\frac{E_{\mathbf p}}{2}} \gamma^0 (\hat b^s_{\mathbf p} u^s (\mathbf p) \exp(i \mathbf p \cdot x) - (\hat c^\dagger_{\mathbf p})^s v^s (\mathbf p) \exp(-i \mathbf p \cdot x) ) ~.
+        \end{aligned}
+        \end{equation*}
+
+        Therefore, 
+        \begin{equation*}
+        \begin{aligned}
+            \hat H & = \int d^3 x ~ \mathcal H \\ & = \sum_{r, s=1}^{2} \int \frac{d^3 x ~ d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2} \sqrt{\frac{E_{\mathbf p}}{E_{\mathbf q}}} \Big ( (\hat b^\dagger_{\mathbf q})^s (u^\dagger)^s (\mathbf q) \exp(- i \mathbf q \cdot \mathbf x) + \hat c^s_{\mathbf q} (v^\dagger)^s (\mathbf q) \exp(i \mathbf q \cdot \mathbf x) \Big) \\ & \qquad \underbrace{\gamma^0 \gamma^0}_1 (\hat b^s_{\mathbf p} u^s (\mathbf p) \exp(i \mathbf p \cdot x) - (\hat c^\dagger_{\mathbf p})^s v^s (\mathbf p) \exp(-i \mathbf p \cdot x) ) \\ & = \sum_{r, s=1}^{2} \int \frac{d^3 x ~ d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2} \sqrt{\frac{E_{\mathbf p}}{E_{\mathbf q}}} \Big ( (\hat b^\dagger_{\mathbf q})^s (\mathbf q) \hat b^s_{\mathbf p} (u^\dagger)^s u^s (\mathbf p) \underbrace{\exp(- i (\mathbf q - \mathbf p )\cdot \mathbf x)}_{(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \\ & \qquad - (\hat b^\dagger_{\mathbf q})^s (\hat c^\dagger_{\mathbf p})^s (u^\dagger)^s (\mathbf q) v^s (\mathbf p) \underbrace{\exp(- i (\mathbf q + \mathbf p) \cdot \mathbf x) }_{(2\pi)^3 \delta^3 (\mathbf p + \mathbf q)} \\ & \qquad + \hat c^s_{\mathbf q} \hat b^s_{\mathbf p} (v^\dagger)^s (\mathbf q) u^s (\mathbf p) \underbrace{\exp(i (\mathbf p + \mathbf q) \cdot x)}_{(2\pi)^3 \delta^3 (\mathbf p + \mathbf q)}  \\ & \qquad - \hat c^s_{\mathbf q} (\hat c^\dagger_{\mathbf p})^s (v^\dagger)^s (\mathbf q) v^s (\mathbf p)\underbrace{ \exp(- i (\mathbf p - \mathbf q) \cdot x) }_{(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \Big )
+        \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            \phantom{\hat H} & = \sum_{r, s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2} \Big ( (\hat b^\dagger_{\mathbf p})^s (\mathbf p) \hat b^s_{\mathbf p} \underbrace{(u^\dagger)^s u^s (\mathbf p) }_{2 p_0 \delta^{rs}} \\ & \qquad - (\hat b^\dagger_{- \mathbf p})^s (\hat c^\dagger_{\mathbf p})^s \underbrace{(u^\dagger)^s (- \mathbf p) v^s (\mathbf p) }_0 \\ & \qquad + \hat c^s_{- \mathbf p} \hat b^s_{\mathbf p} \underbrace{(v^\dagger)^s (- \mathbf p) u^s (\mathbf p)}_0 \\ & \qquad - \hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s \underbrace{(v^\dagger)^s (\mathbf p) v^s (\mathbf p)}_{2 p_0 \delta^{rs}} \Big ) \\ & = \sum_{s = 1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} - \underbrace{\hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s}_{[\hat c^s_{\mathbf p}, (\hat c^\dagger_{\mathbf p})^s] + (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}} ) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} - (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p} + (2\pi)^3 \delta^3 (0)) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} - (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}) ~,
+        \end{aligned}
+        \end{equation*}
+        where the last term is canceled due to normal ordering.
+    \end{proof}
+
+    Furthermore, they satisfy the following relations 
+    \begin{equation*}
+        [\hat H, (\hat b^\dagger_{\mathbf p})^s] = E_{\mathbf p} (\hat b^\dagger_{\mathbf p})^s ~,
+    \end{equation*}
+    \begin{equation*}
+        [\hat H, (\hat c^\dagger_{\mathbf p})^s] = E_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s ~.
+    \end{equation*}
+
+    Interpeting $(\hat c^\dagger_{\mathbf p})^s$ as a creation operator and $\hat c^s_{\mathbf p}$ as an annihilation operator, we find positive energies but negative norms. 
+    \begin{proof}
+        Computing 
+        \begin{equation*}
+            \hat H ((\hat c^\dagger_{\mathbf p})^s \ket{0}) = [\hat H, (\hat c^\dagger_{\mathbf p})^s] \ket{0} + (\hat c^\dagger_{\mathbf p})^s \underbrace{\hat H \ket{0}}_0 = E_\mathbf p ((\hat c^\dagger_{\mathbf p})^s \ket{0}) ~,
+        \end{equation*}
+        which tells us that $c$-particles have positive energies.
+
+        Computing 
+        \begin{equation*}
+            \hat H ((\hat b^\dagger_{\mathbf p})^s \ket{0}) = [\hat H, (\hat b^\dagger_{\mathbf p})^s] \ket{0} + (\hat b^\dagger_{\mathbf p})^s \underbrace{\hat H \ket{0}}_0 = E_\mathbf p ((\hat b^\dagger_{\mathbf p})^s \ket{0}) ~,
+        \end{equation*}
+        which tells us that $b$-particles have positive energies.
+
+        However, the norm is negative. In fact, since
+        \begin{equation*}
+            \braket{\mathbf q, s}{\mathbf p, s} = \bra{0} \hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s \ket{0} = \bra{0} \underbrace{[\hat c^s_{\mathbf p} , (\hat c^\dagger_{\mathbf p})^s]}_{- (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} + \cancel{\bra{0} (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p} \ket{0}} =- (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~,
+        \end{equation*}
+        in momentum space 
+        \begin{equation*}
+            \ket{\psi, s} = \int \frac{d^3 p}{(2\pi)^3} \psi (\mathbf p) \ket{\mathbf p, s} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \braket{\psi, s}{\psi, s} = ||\ket{\psi, s}||^2 = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \psi^* \mathbf(q) \psi \mathbf(p) \braket{\mathbf q, s}{\mathbf p, s} = - \int \frac{d^3 p}{(2\pi)^3} \psi^* \mathbf(q) \psi \mathbf(p) < 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    Interpeting $(\hat c^\dagger_{\mathbf p})^s$ as a annihilation operator and $\hat c^s_{\mathbf p}$ as an creation operator, we find positive norms but negative energies. 
+    \begin{proof}
+        Computing 
+        \begin{equation*}
+            \hat H (\hat c^s_{\mathbf p} \ket{0}) = [\hat H, \hat c^s_{\mathbf p}] \ket{0} + \hat c^s_{\mathbf p} \underbrace{\hat H \ket{0}}_0 = - E_\mathbf p (\hat c^s_{\mathbf p})^s \ket{0} ~,
+        \end{equation*}
+        which tells us that $c$-particles have negative energies.
+
+        However, the norm is negative. In fact, since
+        \begin{equation*}
+            \braket{\mathbf q, s}{\mathbf p, s} = \bra{0} (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p} \ket{0} = \bra{0} \underbrace{[(\hat c^\dagger_{\mathbf p} , \hat c^s_{\mathbf p})^s]}_{(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} + \cancel{\bra{0} \hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s \ket{0}} = (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~,
+        \end{equation*}
+        in momentum space 
+        \begin{equation*}
+            \ket{\psi, s} = \int \frac{d^3 p}{(2\pi)^3} \psi (\mathbf p) \ket{\mathbf p, s} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \braket{\psi, s}{\psi, s} = ||\ket{\psi, s}||^2 = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \psi^* \mathbf(q) \psi \mathbf(p) \braket{\mathbf q, s}{\mathbf p, s} = \int \frac{d^3 p}{(2\pi)^3} \psi^* \mathbf(q) \psi \mathbf(p) > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    To summarise, if we try to quantise Dirac theory with commutation relations, we get into troubles since $b$-particles have both positive norms and energies, but $c$-particles have either positive norm/negative energies or negative norms/positive energies. 
+
+\chapter{How to rightly quantise Dirac theory}
+
+    Since bosons follow the Bose-Eistein statistics, in which 
+    \begin{equation*}
+        \ket{\mathbf p, \mathbf q} = \hat a^\dagger_{\mathbf p} \hat a^\dagger_{\mathbf q} \ket{0} = \hat a^\dagger_{\mathbf q} \hat a^\dagger_{\mathbf p} \ket{0} = \ket{\mathbf q, \mathbf p} ~.
+    \end{equation*}
+    fermions experimentally follows Fermi-Dirac statistics. Thus, we try imposing anticommutation relations 
+    \begin{equation*}
+        \{\hat \psi_\alpha (\mathbf x), \hat \psi_\beta (\mathbf y)\} = \{\hat \pi_\alpha (\mathbf x), \hat \pi_\beta (\mathbf y)\} = 0 ~,
+    \end{equation*}
+    \begin{equation*}
+        \{\hat \psi_\alpha (\mathbf x), \hat \psi^\dagger_\beta (\mathbf y)\} = \{\hat \psi_\alpha (\mathbf x), \hat \psi^\dagger_\beta (\mathbf y)\} = \delta^3 (\mathbf x - \mathbf y) \delta_{\alpha\beta} ~.
+    \end{equation*}
+    Therefore, the commutation relation among the ladder operators are 
+    \begin{equation*}
+        \{\hat b^s_{\mathbf p}, (\hat b^\dagger_{\mathbf q})\} = (2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q) ~, \quad \{\hat c^s_{\mathbf p}, (\hat c^\dagger_{\mathbf q})\} = (2\pi)^3 \delta^{rs} \delta^3 (\mathbf p - \mathbf q) ~, 
+    \end{equation*}
+    and all the others vanish. Notice that now there is a plus sign in the commutator of $\hat c$.
+
+    Similarly for the computation we have made in the previous chapter, the hamiltonian is 
+    \begin{equation*}
+        \hat H = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} + (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            \hat H & = \sum_{s = 1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} - \underbrace{\hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s}_{\{\hat c^s_{\mathbf p}, (\hat c^\dagger_{\mathbf p})^s\} - (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}} ) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} + (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p} + (2\pi)^3 \delta^3 (0)) \\ & = \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} E_{\mathbf p} ((\hat b^\dagger_{\mathbf p})^s \hat b^s_{\mathbf p} + (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p}) ~,
+        \end{aligned}
+        \end{equation*}
+        where the last term is canceled due to normal ordering.
+    \end{proof}
+
+    Furthermore, they satisfy the following relations 
+    \begin{equation*}
+        \{\hat H, (\hat b^\dagger_{\mathbf p})^s\} = E_{\mathbf p} (\hat b^\dagger_{\mathbf p})^s ~,
+    \end{equation*}
+    \begin{equation*}
+        \{\hat H, (\hat c^\dagger_{\mathbf p})^s\} = E_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s ~.
+    \end{equation*}
+
+    Now, we have both positive norms and positive energies. 
+    \begin{proof}
+        Computing 
+        \begin{equation*}
+            \hat H ((\hat c^\dagger_{\mathbf p})^s \ket{0}) = \{\hat H, \hat c^s_{\mathbf p}\} \ket{0} + \hat c^s_{\mathbf p} \underbrace{\hat H \ket{0}}_0 = E_\mathbf p (\hat c^s_{\mathbf p})^s \ket{0} ~,
+        \end{equation*}
+        which tells us that $c$-particles have positive energies.
+
+        Since
+        \begin{equation*}
+            \braket{\mathbf q, s}{\mathbf p, s} = \bra{0} (\hat c^\dagger_{\mathbf p})^s \hat c^s_{\mathbf p} \ket{0} = \bra{0} \underbrace{\{(\hat c^\dagger_{\mathbf p} , \hat c^s_{\mathbf p})^s\}}_{(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} + \cancel{\bra{0} \hat c^s_{\mathbf p} (\hat c^\dagger_{\mathbf p})^s \ket{0}} = (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~,
+        \end{equation*}
+        in momentum space 
+        \begin{equation*}
+            \ket{\psi, s} = \int \frac{d^3 p}{(2\pi)^3} \psi (\mathbf p) \ket{\mathbf p, s} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \braket{\psi, s}{\psi, s} = ||\ket{\psi, s}||^2 = \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \psi^* \mathbf(q) \psi \mathbf(p) \braket{\mathbf q, s}{\mathbf p, s} = \int \frac{d^3 p}{(2\pi)^3} \psi^* \mathbf(q) \psi \mathbf(p) > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Electric charge}
+
+    In order to distinguish $b$-particles and $c$-particles, we use the Noether charge associated to the global $U(1)$ symmetry. The Noether current is 
+    \begin{equation*}
+        j^\mu = q \overline \psi \gamma^\mu \psi ~.
+    \end{equation*}
+    \begin{proof}
+        A global $U(1)$ symmetry is 
+        \begin{equation*}
+            \psi' = \exp(i q \theta) \psi ~, \quad \overline \psi' = \exp(- i q \theta) ~,
+        \end{equation*}
+        which infinitesimally becomes
+        \begin{equation*}
+            \delta \psi = i q \theta ~, \quad \delta \overline \psi = - i q \theta ~.
+        \end{equation*}
+
+        The Noether current is 
+        \begin{equation*}
+            j^\mu = \pdv{L}{\partial_\mu \psi} \delta \psi + \cancel{\pdv{L}{\partial_\mu \overline \psi}} \delta \overline \psi = - q \theta \overline \psi \gamma^\mu \psi \rightarrow q \overline \psi \gamma^\mu \psi ~,
+        \end{equation*}
+        where we have dropped the constant $- \theta$.
+    \end{proof}
+
+    The Noether charge is 
+    \begin{equation*}
+        Q = \int d^3 x j^0 = 
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We can see that it distinguishes indeed $b$ and $c$-particles, since it associates an eigenvalue of $+q$ for $b$ and $-q$ for $c$.
+    \begin{proof}
+        For $b$
+        \begin{equation*}
+        \begin{aligned}
+            \hat Q (\hat b^\dagger_{\mathbf p})^s \ket{0} & = q \sum_{r=1}^2 \int \frac{d^3 k}{(2\pi)^3} ((\hat b_{\mathbf k}^\dagger)^r \underbrace{\hat b_{\mathcal k}^r (\hat b^\dagger_{\mathbf p})^s \ket{0}}_{(2\pi)^3 \delta(\mathbf k - \mathbf p) \delta^{rs} \ket{0} - (\hat b^\dagger_{\mathbf p})^s \cancel{\hat b_{\mathcal k}^r \ket{0}}} - (\hat c_{\mathbf k}^\dagger)^r \underbrace{\hat c_{\mathcal k}^r (\hat b^\dagger_{\mathbf p})^s}_{- (\hat b^\dagger_{\mathbf p})^s \cancel{\hat c_{\mathcal k}^r \ket{0}}}  ) \\ &  = q (\hat b^\dagger_{\mathbf p})^s \ket{0} ~.
+        \end{aligned}
+        \end{equation*}
+
+        For $c$
+        \begin{equation*}
+        \begin{aligned}
+            \hat Q (\hat c^\dagger_{\mathbf p})^s \ket{0} & = q \sum_{r=1}^2 \int \frac{d^3 k}{(2\pi)^3} (- (\hat c_{\mathbf k}^\dagger)^r \underbrace{\hat c_{\mathcal k}^r (\hat c^\dagger_{\mathbf p})^s \ket{0}}_{(2\pi)^3 \delta(\mathbf k - \mathbf p) \delta^{rs} \ket{0} - (\hat c^\dagger_{\mathbf p})^s \cancel{\hat c_{\mathcal k}^r \ket{0}}} + (\hat b_{\mathbf k}^\dagger)^r \underbrace{\hat b_{\mathcal k}^r (\hat c^\dagger_{\mathbf p})^s}_{- (\hat c^\dagger_{\mathbf p})^s \cancel{\hat b_{\mathcal k}^r \ket{0}}}  ) \\ &  = q (\hat c^\dagger_{\mathbf p})^s \ket{0} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\section{Spin-statistics}
+
+    The wave function is antisymmetric 
+    \begin{equation*}
+        \ket{\mathbf p_1, s_1; \mathbf p_2, s_2} = - \ket{\mathbf p_2, s_2; \mathbf p_1, s_1} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            \ket{\mathbf p_1, s_1; \mathbf p_2, s_2} = (\hat b^\dagger_{\mathbf p_1})^{s_1} (\hat b^\dagger_{\mathbf p_2})^{s_2} \ket{0} = (\hat b^\dagger_{\mathbf p_2})^{s_2} (\hat b^\dagger_{\mathbf p_1})^{s_1} \ket{0} = - \ket{\mathbf p_2, s_2; \mathbf p_1, s_1} ~.
+        \end{equation*}
+    \end{proof}
+
+    Notice that the Pauli exclusion principle holds, since 
+    \begin{equation*}
+        \ket{\mathbf p, s; \mathbf p, s} = - \ket{\mathbf p, s; \mathbf p, s}  \Rightarrow \ket{\mathbf p, s; \mathbf p, s} = 0~.
+    \end{equation*}
+
+\chapter{Propagator} 
+
+    Now, we move into Heisenberg picture. The Dirac spinor depends also on time $\psi(x) = \psi(t, \mathbf x)$ and it satisfies the Heisenberg equation 
+    \begin{equation*}
+        \pdv{}{t} \hat \psi(x) = i [\hat H, \hat \psi (x)] ~.
+    \end{equation*}
+
+    The fermionic propagator is defined by 
+    \begin{equation*}
+        i S_{\alpha\beta} = \{\hat \psi_\alpha (x), \hat{ \overline \psi_\beta} (y)\} ~,
+    \end{equation*}
+    or in compact notation 
+    \begin{equation*}
+        i S(x - y) = \{\hat \psi (x), \hat{\overline \psi(y)}\} ~.
+    \end{equation*}
+
+    We can write it in terms of bosonic propagators 
+    \begin{equation*}
+        i S(x - y) = (i \gamma^\mu \partial_\mu + m) (D(x-y) - D(y-x)) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Notice that for spacelike separated points, we have seen that $D(x-y) - D(y-x) = 0$, therefore for $(x-y)^2 < 0$
+    \begin{equation*}
+        \begin{cases}
+            [\hat \varphi (x), \hat \varphi (y)] = 0 & \textnormal{bosons} \\
+            \{\hat \varphi (x), \hat \varphi (y)\} = 0 & \textnormal{fermions} \\
+        \end{cases} ~.
+    \end{equation*}
+    This ensures that causality is not violated. This holds because all the observables are bilinears of fermions. Hence, they commute and they do not anticommute outside the lightcone. 
+
+    The fermionic propagator satisfies Dirac equation as a matrix 
+    \begin{equation*}
+        (i \gamma^\mu \partial_\mu - m) S(x-y) = 0~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    The probability amplitude to propagate freely for a particle from $y$ to $x$ is 
+    \begin{equation*}
+        \bra{0} \hat \psi_\alpha (x) \hat {\overline \psi_\beta} (y) \ket{0} = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2E_{\mathbf p}} (\gamma^\mu p_\mu + m)_{\alpha\beta} \exp(- i p (x-y)) ~,
+    \end{equation*}
+    whereas the probability amplitude to propagate freely for an antiparticle from $x$ to $y$ is 
+    \begin{equation*}
+        \bra{0} \hat {\overline \psi_\beta} (y) \hat \psi_\alpha (x) \ket{0} = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2E_{\mathbf p}} (\gamma^\mu p_\mu - m)_{\alpha\beta} \exp(i p (x-y)) ~.
+    \end{equation*}

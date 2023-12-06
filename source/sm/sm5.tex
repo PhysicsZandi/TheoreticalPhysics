@@ -293,3 +293,331 @@
         \end{aligned}
         \end{equation*}
     \end{proof}
+
+\chapter{Quantum gas}
+
+\section{Generic quantum gas}
+
+    Consider a quantum gas. The hamiltonian operator of one particle, labelled by $k$ is 
+    \begin{equation*}
+        \hat H_k = \epsilon_k \hat n_k = \epsilon_k \hat a^\dagger_k \hat a_k ~,
+    \end{equation*}
+    where $\hat n_k = \hat a^\dagger_k \hat a_k$ is the number operator and $\epsilon_k$ is the energy eigenvalue associated to the eigenbasis $\ket{u_k(x)}$ by the eigenvalue relation
+    \begin{equation*}
+        \hat H_k \ket{u_k(x)} = \epsilon_k \ket{u_k(x)} ~.
+    \end{equation*} 
+    Therefore, the hamiltonian one-body operator in the Fock space $\mathcal F$, created by the ladder operators $\hat a^\dagger_k$ each associated to the element of the eigenbasis $\ket{u_k(x)}$, is 
+    \begin{equation*}
+        \hat H = \sum_k \hat H_k =  \sum_k \epsilon_k \hat n_k =  \sum_k \epsilon_k \hat a^\dagger_k \hat a_k ~.
+    \end{equation*}
+    In $\mathcal F$, the total number onebody operator is 
+    \begin{equation*}
+        \hat N = \sum_k \hat n_k ~,
+    \end{equation*}
+    where their eignevalues are given with respect to an orthonormal basis $\ket{n_1, \ldots n_k, \ldots}$ by the eigenvalue relation
+    \begin{equation*}
+        \hat n_k \ket{n_1, \ldots n_k, \ldots} = n_k \ket{n_1, \ldots n_k, \ldots} ~.
+    \end{equation*}
+    In particular, we distinguish the bosonic and the fermionic case
+    \begin{equation*}
+        n_k = \begin{cases}
+            0,1,2,\ldots & \textnormal{bosons} \\
+            0,1 & \textnormal{fermions} \\
+        \end{cases} ~.
+    \end{equation*}
+
+    We exploit the grancanonical ensemble. The grancanonical partition function is 
+    \begin{equation*}
+        \mathcal Z = \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) = \prod_k \sum_{n_1, \ldots n_k, \ldots} \exp(-\beta(\epsilon_k - \mu)n_k) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            \mathcal Z & = \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) \\ & = \sum_{n_1, \ldots n_k, \ldots} \bra{n_1, \ldots n_k, \ldots} \exp(- \beta \sum_k (\epsilon - \mu) \underbrace{\hat n_k) \ket{n_1, \ldots n_k, \ldots}}_{n_k \ket{n_1, \ldots n_k, \ldots}} \\ & = \sum_{n_1, \ldots n_k, \ldots} \bra{n_1, \ldots n_k, \ldots} \underbrace{\exp(- \beta \sum_k}_{\prod_k \exp} (\epsilon - \mu) n_k) \ket{n_1, \ldots n_k, \ldots} \\ & = \sum_{n_1, \ldots n_k, \ldots} \prod_k \exp(\beta (\epsilon - \mu) n_k) \braket{n_1, \ldots n_k, \ldots}{n_1, \ldots n_k, \ldots} \\ & = \prod_k \sum_{n_1, \ldots n_k, \ldots} \exp(-\beta(\epsilon_k - \mu)n_k) ~,
+        \end{aligned}
+        \end{equation*}
+        where in the last passage, we have switched the product with the sum because $n_1, \ldots, n_k, \ldots$ are independent.
+    \end{proof}
+
+    Furthermore, for bosons and fermions, it becomes
+    \begin{equation*}
+        \mathcal Z = \begin{cases}
+            \prod_k \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))} & \textnormal{bosons} \\
+            \prod_k \Big (1 + \exp (- \beta (\epsilon_k - \mu)) \Big ) & \textnormal{fermions} \\
+        \end{cases} ~,
+    \end{equation*}
+    or, in compact notation, 
+    \begin{equation*}
+        \mathcal Z_\mp = \prod_k \Big ( 1 \mp \exp(- \beta (\epsilon_k - \mu) ) \Big)^\mp ~,
+    \end{equation*}
+    where the minus is associated to bosons and the plus to fermions.
+    \begin{proof}
+        For fermions, $n_k = 0, 1$
+        \begin{equation*}
+            \mathcal Z_+ = \prod_k \sum_{n_1, \ldots n_k, \ldots = 0}^1 \exp(-\beta(\epsilon_k - \mu)n_k) = \prod_k \Big (1 + \exp (- \beta (\epsilon_k - \mu)) \Big ) ~.
+        \end{equation*}
+
+        For bosons, $n_k = 0, 1, 2, \ldots$
+        \begin{equation*}
+        \begin{aligned}
+            \mathcal Z_- & = \prod_k \sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu)n_k) \\ & = \prod_k \underbrace{\sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu))^{n_k}}_{\textnormal{geometrical series}} \\ & = \prod_k \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))} ~.
+        \end{aligned}
+        \end{equation*}
+        Notice that the condition of convergence of the geometrical series is $\mu < \min \epsilon_k = 0$, which we have set to zero for convenience.
+    \end{proof}
+
+    The grancanonical potential is 
+    \begin{equation*}
+        \Omega_\mp = -\frac{1}{\beta} \log \mathcal Z_\mp = \pm \frac{1}{\beta} \sum_k \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu)) \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \Omega_\mp & = -\frac{1}{\beta} \log \mathcal Z_\mp \\ & = - \frac{1}{\beta} \underbrace{\log \Big (\prod_k}_{\sum_k \log} ( 1 \mp \exp(- \beta (\epsilon_k - \mu) ))^\mp \Big ) \\ & = - (\mp) \sum_k \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu))) \\ & = \pm \frac{1}{\beta} \sum_k \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu)) \Big) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The grancanonical average number of particle in an energy level state $\overline k$ is 
+    \begin{equation*}
+        \av{\hat n_{\overline k}}_{gc} = \tr_{\mathcal F} \Big (\hat n_{\overline k} \frac{\exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k)}{\mathcal Z} \Big) = \pdv{\Omega}{\epsilon_{\overline k}} = \frac{1}{\exp(\beta(\epsilon_{\overline k} \mp 1))} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact
+        \begin{equation*}
+        \begin{aligned}
+            \av{\hat n_{\overline k}}_{gc} & = \tr_{\mathcal F} \Big (\hat n_{\overline k} \frac{\exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k)}{\mathcal Z} \Big) \\ & = \frac{1}{\mathcal Z} \tr_{\mathcal F} \Big (- \frac{1}{\beta} \pdv{}{\epsilon_{\overline k}} \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big) \\ & = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{\overline k}} \underbrace{\tr_{\mathcal F} \Big ( \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big)}_{\mathcal Z} \\ & = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{\overline k}} \mathcal Z = \\ & = \pdv{}{\epsilon_{\overline k}} \underbrace{\Big ( - \frac{\log \mathcal Z}{\beta} \Big)}_\Omega \\ & = \pdv{}{\epsilon_{\overline k}} \Omega ~.
+        \end{aligned}
+        \end{equation*}
+
+        Therefore, 
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{}{\epsilon_{\overline k}} \Omega & = \pdv{}{\epsilon_{\overline k}}  \Big (\pm \frac{1}{\beta} \sum_k \log (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \Big ) \\ & = \pm \frac{1}{\beta} (- \beta) \frac{\exp(- \beta(\epsilon_k - \mu))}{1 \mp \exp(- \beta(\epsilon_k - \mu))} \\ & = \mp \frac{1}{1 \mp \exp(\beta(\epsilon_k - \mu))} \\ & = \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The average total number of particle is 
+    \begin{equation*}
+        N = \av{\hat N}_{gc} = \av{\sum_k \hat n_k}_{gc} = \sum_k \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
+    \end{equation*}
+
+    The average energy is 
+    \begin{equation*}
+        E = \av{\hat H}_{gc} = \tr_{\mathcal F} \Big (\hat H \frac{\exp (-\beta (\hat H - \mu \hat N))}{\mathcal Z} \Big) = \sum_k \epsilon_k \av{\hat n_k}
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            E & = \av{\hat H}_{gc} \\ & = \tr_{\mathcal F} \Big (\hat H \frac{\exp (-\beta (\hat H - \mu \hat N))}{\mathcal Z} \Big) \\ & = \frac{1}{\mathcal Z} \tr_{\mathcal F} \Big (- \pdv{}{\beta} \exp (-\beta (\hat H - \mu \hat N)) \Big) \\ & = - \frac{1}{\mathcal Z} \pdv{}{\beta}\underbrace{ \tr_{\mathcal F} \Big (\exp (-\beta (\hat H - \mu \hat N)) \Big)}_{\mathcal Z} \\ & = - \pdv{}{\beta} \Big \vert_z \log \mathcal Z \\ & =  - \pdv{}{\beta} \Big \vert_z (\mp \sum_k \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu)) \Big)) \\ & = \mp \sum_k \frac{\epsilon_k \exp (-\beta (\epsilon_k - \mu))}{1 \mp \exp (-\beta (\epsilon_k - \mu))} \\ & = \sum_k \frac{\epsilon_k}{\exp (\beta (\epsilon_k - \mu)) \mp 1} \\ & = \sum_k \epsilon_l \av{\hat n_k}
+        \end{aligned}
+        \end{equation*}
+        where we have kept the fugacity $z$ constant.
+    \end{proof}
+
+\section{Non-relativistic non-interacting quantum gas}
+
+    So far, we have made computations for a generic quantum gas. From now on, we will deal with non-relativistic non-interacting quantum gas. The finite-volume energy eigenvalues are 
+    \begin{equation*}
+        \epsilon_k = \frac{\hbar^2 k^2}{2m} ~ \quad \mathbf k = \frac{2\pi}{L} \mathbf n ~,
+    \end{equation*}
+    where $\mathbf n = (n_1, n_2, n_3) \in \mathbb Z^3$. In the thermodynamic limit, the spectrum $\mathbf k$ becomes continuous, but $\mathbf n$ not, because
+    \begin{equation*}
+        \Delta K_i = \frac{2\pi}{L} (n_i + 1 - n_i) = \frac{2\pi}{L} ~.
+    \end{equation*}
+
+    Therefore, sums in $k$ becomes integrals in $dk$ 
+    \begin{equation*}
+        \sum_k = \sum_{n_1, n_2, n_2 = -\infty}^\infty \rightarrow \frac{V}{2\pi^2} \int dk~k^2 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, in $1$-dimensional
+        \begin{equation*}
+        \begin{aligned}
+            \sum_{n_1} \underbrace{\Delta n_1}_1 = \sum_{k_1} \frac{L}{2\pi} \Delta k_1 \rightarrow \frac{L}{2\pi} \int dk_1 ~.
+        \end{aligned}
+        \end{equation*}
+
+        Similarly, in the $3$-dimensional case
+        \begin{equation*}
+        \begin{aligned}
+            \sum_{n_1, n_2, n_3=- \infty}^\infty \underbrace{\Delta n_1 \Delta n_2 \Delta n_3}_1 \rightarrow \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 = \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 = \Big ( \frac{L}{2\pi} \Big)^3 \int dk^3 = \Big ( \frac{L}{2\pi} \Big)^3 4 \pi \int dk ~ k^2 = \frac{V}{2\pi^2} \int dk~k^2 ~. 
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The grandcanonical potential is 
+    \begin{equation*}
+        \Omega_\mp = \mp \frac{2}{3}AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1}  ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \Omega_\mp & = \pm \frac{1}{\beta} \sum_k \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu)) \Big) \\ & \rightarrow \pm \frac{1}{\beta} \frac{V}{2\pi^2} \int_{-\infty}^\infty dk ~ k^2 \log \Big (1 \mp \exp (-\beta (\epsilon_k - \mu)) \Big) ~.
+        \end{aligned}
+        \end{equation*}
+
+        Under a change of variable 
+        \begin{equation*}
+            \epsilon = \frac{\hbar^2 k^2}{2m} ~, \quad k^2 dk = \frac{1}{2} \Big (\frac{2m}{\hbar^2}\Big)^{\frac{3}{2}} \sqrt{\epsilon} d\epsilon ~,
+        \end{equation*}
+        we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            \Omega_\mp & = \pm \frac{AV}{\beta} \int_0^\infty \underbrace{d\epsilon \sqrt{\epsilon}}_{\frac{2}{3} d \epsilon^{\frac{3}{2}}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \int_0^\infty d \epsilon^{\frac{3}{2}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \underbrace{\epsilon^{\frac{3}{2}}}_{0 \textnormal{ for } \epsilon = 0} \underbrace{\log  (1 \mp \exp (-\beta (\epsilon_k - \mu)))}_{0 \textnormal{ for } \epsilon = \infty} \Big \vert_0^\infty \mp \frac{2}{3} \frac{AV}{\beta} \beta \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3}AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3} AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} ~.
+        \end{aligned}
+        \end{equation*}
+        where we have integrated by parts and, introducing the degeneracy ($g = 2s+1$ for spin particles), we have called 
+        \begin{equation*}
+            A = \frac{g}{4\pi^2} \Big (\frac{2m}{\hbar^2}\Big)^{\frac{3}{2}} ~. 
+        \end{equation*}
+    \end{proof}
+
+    The equation of state reads as 
+    \begin{equation*}
+        \Omega = - pV = - \frac{2}{3} E ~.
+    \end{equation*}
+
+    Furthermore, we have the formulas 
+    \begin{equation*}
+        N = AV \int_0^\infty d\epsilon \epsilon^{\frac{1}{2}} n(\epsilon) ~, 
+    \end{equation*}
+    \begin{equation*}
+        P = \frac{2}{3} \frac{E}{V} = \frac{2}{3} A \int_0^\infty d\epsilon \epsilon^{\frac{3}{2}} n(\epsilon) ~.
+    \end{equation*}
+
+\section{Expanding with respect to fugacity $z$}
+
+    We can expand the density with respect to the fugacity $z = \exp(\beta \mu) \geq 0$
+    \begin{equation*}
+        n = \frac{g}{\lambda_T^3} f^\mp_{\frac{3}{2}} ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        f^\mp_l = \begin{cases}
+            \sum_{n=0}^\infty \frac{2^{n+1}}{(n+1)^l} & f^- \textnormal{ for bosons} \\
+            \sum_{n=0}^\infty \frac{(-1)^n 2^{n+1}}{(n+1)^l} & f^+ \textnormal{ for fermions}
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Under a change of variable 
+        \begin{equation*}
+            x^2 = \beta \epsilon ~, \quad \beta d \epsilon = 2 x dx ~,
+        \end{equation*}
+        we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            n & = A \int_0^\infty dx ~\frac{2x}{\beta} \frac{x}{\sqrt(\beta) (\exp(x^2) z^{-1}) \mp 1} \\ & = \frac{4 g}{\sqrt{\pi} \lambda_T^3} \int_0^\infty dx ~ \frac{x^2 z}{\exp(x^2) \mp 2} \\ & = \frac{4g}{\sqrt{\pi} \lambda_T^3} \int_0^\infty dx ~ x^2 z \exp(- x^2) \sum_{n=0}^\infty (\pm 1) z^n \exp(- n x^2) \\ & = \frac{4g}{\sqrt{\pi} \lambda_T^3} \sum_{n=0}^\infty (\pm 1)^n z^{n+1} \underbrace{\int_0^\infty dx ~ x^2 \exp(- x^2 (n+1)) }_{\frac{\sqrt{\pi}}{4 (n+1)^{\frac{3}{2}}}} \\ & = \frac{g}{\lambda_T^3} \sum_{n=0}^\infty (\pm 1)^n \frac{z^{n+1}}{(n+1)^{\frac{3}{2}}} \\ & = \frac{g}{\lambda_T^3} f^\mp_{\frac{3}{2}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Notice that for bosons, the convergence of the series implies $z < 1$, which means $\mu > 0$.
+
+\section{Classical limit}
+
+\section{Semiclassical limit}
+
+\chapter{Fermions}
+
+    In this chapter, we restrict ourselves with the fermionic case. The equations of state are 
+    \begin{equation*}
+        n = \frac{g}{\lambda_T^3} f_{\frac{3}{2}}^+ (z) ~, \quad \beta p = \frac{g}{\lambda_T^3} f_{\frac{5}{2}}^+ (z) ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        f_l^+ (z) = \sum_{n=0}^\infty \frac{(-1)^n z^{n+1}}{(n+1)^l}
+    \end{equation*}
+    which is an alternate-sign power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and pointwisely converges for $z > 1$. Moreover, it is a monotonic function in $z$. 
+
+    It is interesting to study its behaviour for $z \ll 1$. In fact, in the classical limit
+    \begin{equation*}
+        f_{\frac{3}{2}}(z) \sim f_{\frac{5}{2}}(z) \sim z  ~,
+    \end{equation*}
+    and in the semiclassical limit 
+    \begin{equation*}
+        f_{\frac{3}{2}}(z) \sim z - \frac{z^2}{2^{\frac{3}{2}}} ~, \quad f_{\frac{5}{2}}(z) \sim z - \frac{z^2}{2^{\frac{5}{2}}}  ~.
+    \end{equation*}
+
+\section{Low temperature limit}
+
+    For the zero temperature limit $T = 0$, the Fermi-Dirac distribution becomes 
+    \begin{equation*}
+        n(\epsilon) = \frac{1}{\exp(\beta(\epsilon - \mu)) + 1} \xrightarrow{T \rightarrow 0} \begin{cases}
+            0 & \epsilon > \mu \\
+            \frac{1}{2} & \epsilon = \mu \\
+            1 & \epsilon < \mu \\
+        \end{cases} ~.
+    \end{equation*} 
+    It is a step function in $\epsilon = \mu$. This energy value is called Fermi energy $\epsilon_F$. Physically, it means that all the states below this energy level are occupied. Hence, for $\epsilon < \epsilon_F$, we have as many states as particles. If we add a particle, we increase $\epsilon_F$, whereas if we remove a particle, we decrease $\epsilon_F$. This is the procedure to dope a material.
+
+    For small $T$, it is no longer a step function, but it can be accurately approximate to it for a certain range $\Delta \epsilon$. Physically, more energetic particle are transfered over $\epsilon_F$. We define Fermi temperature $T_F$
+    \begin{equation*}
+        \epsilon_F = \lim_{T \rightarrow 0} \mu (T) = k_B T_F ~.
+    \end{equation*}
+    In fact, if $\Delta \epsilon \ll \epsilon_F$, which means $T \ll T_F$, we can approximate $n(\epsilon)$ with a step function without making a big error. 
+
+\section{Fermi Energy for a non-relativistic non-interacting quantum gas} 
+
+    In the $3$-dimensional case, the density is
+    \begin{equation*}
+        n = A \frac{2}{3} \epsilon_F^{\frac{3}{2}} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using $n (\epsilon) = \theta (- \epsilon_F)$
+        \begin{equation*}
+        \begin{aligned}
+            n & = A \int_0^\infty d\epsilon \epsilon^{\frac{1}{2}} n(\epsilon) \\ & = A \int_0^{\epsilon_F} d\epsilon \epsilon^{\frac{1}{2}} \\ & = A \frac{2}{3} \epsilon_F^{\frac{3}{2}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    The energy is 
+    \begin{equation*}
+        E = A V \frac{2}{5} \epsilon_F^{\frac{5}{2}} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using $n (\epsilon) = \theta (- \epsilon_F)$
+        \begin{equation*}
+        \begin{aligned}
+            n & = A \int_0^\infty d\epsilon \epsilon^{\frac{3}{2}} n(\epsilon) \\ & = A \int_0^{\epsilon_F} d\epsilon \epsilon^{\frac{3}{2}} \\ & = A \frac{2}{5} \epsilon_F^{\frac{5}{2}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Notice that at $T = 0$, there is a positive pressure 
+    \begin{equation*}
+        p = \frac{2}{5} n \epsilon_F > 0~.
+    \end{equation*}
+    This can be seen visually, because at $T=0$, there are particle with energy $\epsilon \neq 0$, unlikely the classical case, in which $p = 0$.
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            p = \frac{2}{3} \frac{E}{V} = \frac{2}{3} \frac{E}{N} \frac{N}{V} = \frac{2}{5} n \epsilon_F ~. 
+        \end{equation*}
+    \end{proof}
+
+\chapter{Bosons}
+
+    In this chapter, we restrict ourselves with the bosonic case. The equations of state are 
+    \begin{equation*}
+        n = \frac{g}{\lambda^3_T} f^-_{\frac{3}{2}} (z) ~, \quad \beta p = \frac{g}{\lambda^3_T} f^-_{\frac{5}{2}} (z)
+    \end{equation*}
+    where 
+    \begin{equation*}
+        f_l^- (z) = \sum_{n=0}^\infty \frac{z^{n+1}}{(n+1)^l}
+    \end{equation*}
+    which is a positive-terms power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and converges for $z > 1$ only if $l < 2$. Moreover, it is a monotonic function in $z$. At $z = 1$, it becomes the Riemann zeta 
+    \begin{equation*}
+        g_{\frac{3}{2}} (z=1) = \sum_{n=0}^\infty \frac{1}{n+1}^{\frac{3}{2}} = \zeta(\frac{3}{2}) ~.
+    \end{equation*}
+
+    Notice that in $z = 1$, it has a vertical derivative, and for $z > 1$, it is not defined according to the physical $\mu > 0$ in the grandcanonical ensemble. 
+
+    We can study the behaviour of the chemical potential $\mu$. It goes to $-\infty$ for $T \rightarrow \infty$ but the equilibrium condition implies that $\pdv{\mu}{T} < 0$, therefore, it cannot increase. 
+
+\section{Low temperature limit}

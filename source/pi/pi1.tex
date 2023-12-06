@@ -143,7 +143,9 @@
 
     The path integral in phase space is 
     \begin{equation*}
-        A = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\prod_{k=1}^{N} \frac{d p_k}{2\pi \hbar} \Big ) \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (p_k \frac{x_k - x_{k-1}}{\epsilon} - H(x_{k-1}, p_k))) = \int \mathcal D x ~ \mathcal D p ~ \exp(\frac{i}{\hbar} S[x,p]) ~,
+    \begin{aligned}
+        A & = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\prod_{k=1}^{N} \frac{d p_k}{2\pi \hbar} \Big ) \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (p_k \frac{x_k - x_{k-1}}{\epsilon} - H(x_{k-1}, p_k))) \\ & = \int \mathcal D x ~ \mathcal D p ~ \exp(\frac{i}{\hbar} S[x,p]) ~,
+    \end{aligned}
     \end{equation*}
     where $\epsilon =\frac{T}{N} $.
 
@@ -171,9 +173,239 @@
 
     The path integral in configuration space is 
     \begin{equation*}
-        A = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\frac{m}{2 \pi i \hbar \epsilon} \Big )^{\frac{N}{2}} \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (\frac{m}{2} \frac{(x_k - x_{k-1})^2}{epsilon^2} - V(x_{k-1})\Big )) = \int \mathcal D x ~ \exp(\frac{i}{\hbar} S[x]) ~.
+        A = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\frac{m}{2 \pi i \hbar \epsilon} \Big )^{\frac{N}{2}} \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \Big (\frac{m}{2} \frac{(x_k - x_{k-1})^2}{\epsilon^2} - V(x_{k-1})\Big )) = \int \mathcal D x ~ \exp(\frac{i}{\hbar} S[x]) ~.
     \end{equation*}
     \begin{proof}
-        Maybe in the future.
+        With the use of the gaussian integral, 
+        \begin{equation*}
+            \int_{- \infty}^\infty dp ~ \exp(- \frac{\alpha}{2} p^2 + \beta p) = \sqrt{\frac{2\pi}{\alpha}} \exp(\frac{\beta^2}{2\alpha}) ~,
+        \end{equation*}
+        where in our case they are 
+        \begin{equation*}
+            \alpha = \frac{i\epsilon}{\hbar m} ~, \quad \beta = \frac{i}{\hbar} (x_k - x_{k-1}) ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+        \begin{aligned}
+            A & = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d x_k \Big ) \Big (\frac{1}{2\pi\hbar} \Big (\frac{2\pi \hbar m}{i \epsilon} \Big)^{\frac{N}{2}}  \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \epsilon \Big (\frac{m (x_k - x_{k-1})^2}{\epsilon^2} - V(x_{k-1})) \Big ) \Big ) \\ & = \lim_{N \rightarrow \infty} \int \prod_{k=1}^{N-1} d x_k \Big (\frac{m}{2 \pi \hbar i \epsilon} \Big)^{\frac{N}{2}}  \exp(\frac{i \epsilon}{\hbar} \sum_{k=1}^{N} \epsilon \Big (\frac{m (x_k - x_{k-1})^2}{\epsilon^2} - V(x_{k-1})) \Big ) \\ & = \int \mathcal D x ~ \exp(\frac{i}{\hbar} S[x]) ~.
+        \end{aligned}
+        \end{equation*}
     \end{proof}
+
 \chapter{Free particle}
+
+    Consider a particle with $N = 1$ and $T = \epsilon$, the path integral is 
+    \begin{equation*}
+        A = \sqrt{\frac{m}{2\pi\hbar i T}} \exp(\frac{i}{\hbar} \frac{m(x_f - x_i)^2}{2T}) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, heuristically for $x_{cl} (t) = x_i + \frac{x_f - x_i}{T} t$
+        \begin{equation*}
+            S[x_{cl}] = \int_0^T \frac{m}{2} \frac{(x_f - x_i)^2}{T^2} = T \frac{m}{2} \frac{(x_f - x_i)^2}{T^2} =  \frac{m(x_f - x_i)^2}{2T} ~.
+        \end{equation*}
+
+        Moreover, considering $x(t) = x_{cl}(t) + q(t)$
+        \begin{equation*}
+        \begin{aligned}
+            A & = \int \mathcal D x \exp (\frac{i}{\hbar} S[x(t)]) \\ & = \int \mathcal D x \exp (\frac{i}{\hbar} S[x_{cl}(t) + q(t)]) \\ & = \int \mathcal D x \exp (\frac{i}{\hbar} S[x_{cl}(t)] + S [q(t)]) \\ & = \int \mathcal D x \exp (\frac{i}{\hbar} S[x_{cl}(t)]) \underbrace{\int \mathcal D x \exp (\frac{i}{\hbar} S [q(t)])}_N \\ & = N \exp(\frac{i}{\hbar} S[x_{cl}(t)]) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used for the mixed term
+        \begin{equation*}
+            S[x] \propto \int dt \dv{}{t} (x_{cl} + q) \dv{}{t} (x_{cl} + q) = \int dt 2 \dot x \dot q = \int dt \underbrace{\ddot x}_0 q = 0
+        \end{equation*}
+    \end{proof}
+    It is a semiclassical approximation, since it solves the Schroedinger equation 
+    \begin{equation*}
+        i \hbar \pdv{}{t} A(x_i, x_f, T) = - \frac{\hbar^2}{2m} A(x_i, x_f, T) ~.
+    \end{equation*}
+
+\chapter{Wick rotation} 
+
+    Quantum mechanics can be related to statistical mechanics by an analitic continuation $T \rightarrow i \beta$, called a Wick rotation. 
+
+    The Schroedinger equation becomes a diffusion equation 
+    \begin{equation*}
+        \pdv{}{\beta} A = \frac{1}{2m} \pdvdu{}{x_f} A ~.
+    \end{equation*}
+    \begin{proof}
+        In fact
+        \begin{equation*}
+            - \frac{1}{2m} \pdvdu{}{x_f} A = - \frac{1}{2m} \frac{1}{i} \pdv{}{T} = - \frac{1}{2m} \frac{1}{i} \pdvdu{}{x_f} A = \frac{1}{2m} \pdvdu{}{x_f} A ~.
+        \end{equation*}
+    \end{proof}
+
+    The fundamental solution of the heat equation is 
+    \begin{equation*}
+        \begin{cases}
+            A(x_i, x_f, \beta) = \sqrt{\frac{m}{2\pi\beta}} \exp \Big (- \frac{m (x_f - x_i)^2}{2\beta} \Big) \\
+            A(x_i, x_f, \beta = 0) = \delta (x_i - x_f) \\
+        \end{cases} ~.
+    \end{equation*}
+
+    Through a Wick rotation, we can obtain an euclidean metric 
+    \begin{equation*}
+        ds^2 = - dt^2 + dx^2 \rightarrow ds^2 dt^2 + dx^2 ~.
+    \end{equation*}
+    Therefore, we have an euclidean action 
+    \begin{equation*}
+    \begin{aligned}
+        i S[x] = i \int_0^T dt \Big ( \frac{m}{2} \dot x^2 - V(x) \Big) = \int_{0}^{\beta} da \Big (- \frac{m}{2} \Big (\dv{x}{a} \Big )^2 - V(x) \Big ) = - \int_{0}^{\beta} da \Big (\frac{m}{2} \Big (\dv{x}{a} \Big )^2 + V(x) \Big ) = - S_E [x] ~,
+    \end{aligned}
+    \end{equation*}
+    with an euclidean path integral 
+    \begin{equation*}
+        \int \mathcal D x \exp(- S_E [x]) ~.
+    \end{equation*}
+
+    To summarise 
+    \begin{equation*}
+    \begin{aligned}
+        & A(x_i, x_f, T) = \bra{x_f} \exp(- i t \hat H) \ket{x_i} = \int \mathcal D x \exp(i t S[x]) \\ & \rightarrow A(x_i, x_f, T) = \bra{x_f} \exp(- \beta \hat H) \ket{x_i} = \int \mathcal D x \exp(- S_E [x]) 
+    \end{aligned}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        i \pdv{}{t} A = \hat H A \rightarrow \pdv{}{\beta} A = - \hat H A ~.
+    \end{equation*}
+
+    The connection with statistical mechanics can be made by computing the canonical partition function, in quantum mechanics 
+    \begin{equation*}
+        Z = \tr \exp(- i \hat H t) = \sum_n \exp(-i E_n t) = \int dx \bra{x} \exp(- i \hat H t) \ket{x} = \int_{PBC} \mathcal D x \exp (i S [x]) ~,
+    \end{equation*}
+    where we have used a discrete energy spectrum (otherwise there would have been an integral), we have used position eigenstates and the path integral is on a circle with periodic boundary condition $x(T) = x(0)$; and in statistical mehcanics 
+    \begin{equation*}
+        Z_E = \tr \exp(- \beta \hat H) = \sum_n \exp (-\beta E_n) = \int dx \bra{x} \exp(- \beta \hat H) \ket{x} = \int_{PBC} \mathcal D x \exp (- S_E [x]) ~,
+    \end{equation*}
+    where the path integral is on a circle with periodic boundary condition $x(\beta) = x(0)$.
+
+    Few comments are to be made. First, we need some (dimensional) regularisation, for instance we need an imaginary time to preserve gauge symmetry. Second, since so far we only have compute the $1$-dimensional case, we need to generalise for the finite or infinite degrees of freedom. For instance, in the $3$-dimensional particle
+    \begin{equation*}
+        \int_{\mathbf R^3} \mathcal D x ~ \exp (i S[x]) = \lim_{N \rightarrow \infty} \int \Big (\prod_{k=1}^{N-1} d^3 x_k \Big ) \Big (\frac{m}{2\pi i \hbar \epsilon} \Big)^{\frac{3N}{2}} \exp \Big (\frac{i}{\hbar} \sum_{k=1}^{N} \epsilon \Big (\frac{m}{2} \frac{(\mathbf x_k - \mathbf x_{k-1})^2}{\epsilon^2} - V (\mathbf x_{k-1}) \Big )  \Big )  ~.
+    \end{equation*}
+    Third, there is an ambiguity in choosing the argument of the potential: the prepoint discretisation chooses $V(x_{k-1})$, the midpoint discretisation chooses $V(\frac{x_k - x_{k-1}}{2})$ and the postpoint discretisation chooses $V(x_{k})$. For gauge theoru, the midpoint prescription is chosen. However all the quantisation methods (among ordering) are equivalent, since there are the same ambiguities in all methods. 
+
+\chapter{Correlation functions}
+
+    We define the normalised $n$-point correlation function as 
+    \begin{equation*}
+    \begin{aligned}
+        \av{x(t_1), \ldots x(t_n)} & = \frac{\int \mathcal D x ~ x(t_1) \ldots x(t_n) \exp(\frac{i}{\hbar} S[x])}{\int \mathcal D x ~ \exp(\frac{i}{\hbar} S[x])} \\ & = \frac{1}{Z} \int \mathcal D x ~ x(t_1) \ldots x(t_n) \exp(\frac{i}{\hbar} S[x])~,
+    \end{aligned}
+    \end{equation*}
+    where $x(t)$ is a dynamical variable. 
+
+    The generating functional of correlation functions is 
+    \begin{equation*}
+        Z[J] = \int \mathcal D x ~ \exp \Big(\frac{i}{\hbar} S[x] + \frac{i}{\hbar} \int_0^T dt ~ J(t) x(t) \Big) ~,
+    \end{equation*}
+    where the functional $J(t)$ is called the source. 
+
+    We can write the normalised $n$-point correlation function in terms of the generating functional in the following way 
+    \begin{equation*}
+        \av{x(t_1), \ldots x(t_n)} = \frac{1}{Z[0]} \Big ( \frac{\hbar}{i} \Big)^n \frac{\delta^n Z[J]}{\delta J (t_1) \ldots \delta J(t_n)} \Big \vert_{J=0} ~.
+    \end{equation*}
+
+    The $0$-point function is 
+    \begin{equation*}
+        \av{1} = \frac{Z}{Z} = 1~.
+    \end{equation*}
+
+    If you know $Z[J]$, you know all the correlation functions. 
+
+
+    In the Schroedinger picture, the correlation function is 
+    \begin{equation*}
+        \av{x(t_1) \ldots x(t_n)} = \frac{1}{Z} \bra{x_f} \exp(- \frac{i}{\hbar} \hat H (t_f - T_n) \hat x \ldots \hat x \exp(- \frac{i}{\hbar} \hat H (T_1 - t_i))) \ket{x_i} ~,
+    \end{equation*}
+    where we have ordered to start from the earliest $T_1$ to the latest $T_n$. In the Heisenberg picture, the correlation function is 
+    \begin{equation*}
+        \av{x(t_1) \ldots x(t_n)} = \frac{1}{Z} \bra{x_f, t_f} T \hat h_H (t_1) \ldots \hat h_H (t_n) \ket{x_i, t_i} ~,
+    \end{equation*}
+    where $T$ is the time-ordered prescription. For example, a $2$-point correlation function is 
+    \begin{equation*}
+        \bra{0} T \hat \varphi (x) \hat \varphi (y) \ket{0} ~.
+    \end{equation*}
+
+\chapter{Gaussian integrals}
+
+    We make a list of useful gaussian integrals 
+    \begin{equation*}
+        \int_{-\infty}^\infty \frac{d\phi}{2\pi} \exp(- \frac{1}{2} K \phi^2) = \frac{1}{\sqrt{K}} ~,
+    \end{equation*}
+    with $K \geq 0$.
+    \begin{equation*}
+        \int_{-\infty}^\infty \frac{d\phi}{2\pi} \exp(- \frac{1}{2} K \phi^2 + J \phi) = \frac{1}{\sqrt{K}} \exp(\frac{1}{2K} J^2) \quad K \geq 0 ~.
+    \end{equation*}
+
+    \begin{equation*}
+        \int_{\mathbb R^n} \frac{d^n \phi}{(2\pi)^{\frac{n}{2}}} \exp(- \frac{1}{2} \phi^i K_{ij} \phi^j ) = \frac{1}{\sqrt{\det k_{ij}}} ~,
+    \end{equation*}
+    where $K_{ij}$ is symmetric, real, positive defined and $\det K_{ij}$ is the product of the eigenvalues.
+    \begin{equation*}
+        \int_{\mathbb R^n} \frac{d^n \phi}{(2\pi)^{\frac{n}{2}}} \exp(- \frac{1}{2} \phi^i K_{ij} \phi^j + J_i \phi^i) = \frac{1}{\sqrt{\det k_{ij}}} \exp( \frac{1}{2} J_i G^{ij} J_j ) ~,
+    \end{equation*}
+    where $G^{ij}$ is the inverse of $K_{ij}$ such that $K_{ij}G^{jl} = \delta_i^{\phantom i l}$.
+
+    By analitic continuation, we have 
+    \begin{equation*}
+        \int_{\mathbb R^n} \frac{d^n \phi}{(-i2\pi)^{\frac{n}{2}}} \exp(- \frac{i}{2} \phi^i K_{ij} \phi^j + i J_i \phi^i) = \frac{1}{\sqrt{\det k_{ij}}} \exp( \frac{i}{2} J_i G^{ij} J_j ) ~,
+    \end{equation*}
+
+    but in order to converge, we must have $K_{ij} - i \epsilon \delta_{ij}$, so that a damping exponential compares.
+
+\chapter{Hypercondensed notation}
+
+    In the hypercondensed notation, we can write 
+    \begin{equation*}
+        x(t) \rightarrow \phi^i ~, \quad x \rightarrow \phi ~, t \rightarrow i ~,
+    \end{equation*}
+    \begin{equation*}
+        A_\mu(x^\nu) \rightarrow \phi^i ~, \quad A \rightarrow \phi ~, (\phantom{|}_\mu, x^\nu) \rightarrow i ~,
+    \end{equation*}
+    Notice that now $i$ is a continuous index. Furthermore 
+    \begin{equation*}
+        \phi^i \phi_i = \int dt x(t) x(t) = \int dt \int dt' x(t) \delta (t - t') x(t') ~.
+    \end{equation*}
+    or
+    \begin{equation*}
+        \phi^i \phi_i = \int d^4 x A_\mu (x ) A^\mu (y) = \int d^4 x \int d^4 y A_\mu (x) \eta^{\mu\nu} \delta^4 (x-y) A_\nu (y) ~.
+    \end{equation*}
+
+    We can introduce the generating functional of connected correlation functional 
+    \begin{equation*}
+        W[J] = \frac{\hbar}{i} \ln Z{J} ~,
+    \end{equation*}
+    which implies that 
+    \begin{equation*}
+        Z{J} = \exp (\frac{i}{\hbar} W[J]) ~.
+    \end{equation*}
+
+    We can write the normalised $n$-point correlation function in terms of the generating functional of connected correlation functions in the following way 
+    \begin{equation*}
+        \av{\phi^{i_1} \ldots \phi^{i_n}}_c = \Big ( \frac{\hbar}{i} \Big)^{n-1} \frac{\delta^n W[J]}{\delta J_{i_1} \ldots \delta J_{i_n}} \Big \vert_{J=0} ~.
+    \end{equation*}
+
+    The effective action-generating functional of $1$-particle irreducible is 
+    \begin{equation*}
+        \Gamma (\varphi) = \min_J (W[J] - J^i \varphi_i) ~,
+    \end{equation*}
+    where the procedure to calculate $\varphi$ is 
+    \begin{equation*}
+        \varphi^i = \dvf{W[J]}{J_i} ~.
+    \end{equation*}
+    \begin{proof}
+        The condition of minimum implies 
+        \begin{equation*}
+            \dvf{W[J]}{J_i} -  \varphi^i = 0 ~.
+        \end{equation*}
+        Therefore 
+        \begin{equation*}
+        \varphi^i = \dvf{W[J]}{J_i} ~,
+        \end{equation*}
+        and we can invert the relation from $\varphi^i = \varphi^i (J)$ to $T_i = T_i(\varphi)$.
+    \end{proof}
+
+    Notice that it is a Legendre transform. 
+
+
