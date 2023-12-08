@@ -200,9 +200,9 @@
     \end{equation}
 
     The Gibbs-Duhem relation expresses $\mu$ in terms of $p$ and $T$ 
-    \begin{equation*}
+    \begin{equation}\label{gdrel}
         S dT - Vdp + N d\mu = 0 ~, \quad \mu = v dp - s dT ~.
-    \end{equation*}
+    \end{equation}
     \begin{proof}
         Computing the differential of~\eqref{e} 
         \begin{equation*}
@@ -222,16 +222,25 @@
         \end{equation*}
     \end{proof}
 
+    Inverting~\eqref{de}, we obtained the entropy differential
+    \begin{equation}\label{ds}
+        dS = \frac{1}{T} dE + \frac{p}{T} dV - \frac{\mu}{T} dN ~.
+    \end{equation}
+    Its equations of state are 
+    \begin{equation}\label{ses}
+        \frac{1}{T} = \pdv{S}{E} \Big \vert_{V, N} ~, \quad \frac{p}{T} = \pdv{S}{V} \Big \vert_{E, N} ~, \quad - \frac{\mu}{T} = \pdv{S}{N} \Big \vert_{E, V} ~.
+    \end{equation}
+
 \section{Integrability condition} 
 
     In order to be an exact differential, the exterior derivative of the right handed side of~\eqref{de} must have vanishing exterior derivative
-    \begin{equation*}
+    \begin{equation}\label{intconden}
         - \pdv{T}{V} \Big \vert_{S,N} = \pdv{p}{S} \Big \vert_{V,N} ~, \quad 
         \pdv{T}{N} \Big \vert_{S,V} = \pdv{\mu}{S} \Big \vert_{N, V} ~, \quad 
         - \pdv{p}{N} \Big \vert_{V,S} = \pdv{\mu}{V} \Big \vert_{N, S} ~. 
-    \end{equation*}
+    \end{equation}
     \begin{proof}
-        By the means of the exterior derivative, we have 
+        By means of the exterior derivative, we have 
         \begin{equation*}
         \begin{aligned}
             d (dE) & = d (T dS) - d (p dV) + d (\mu dN) \\ & = \pdv{T}{S} \underbrace{dS \wedge dS}_0 + \pdv{T}{V} dV \wedge dS + \pdv{T}{N} dN \wedge dS - \pdv{p}{S} dS \wedge dV - \pdv{p}{V} \underbrace{dV \wedge dV}_0 \\ & \quad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{V} dV \wedge dN + \pdv{\mu}{N} \underbrace{dN \wedge dN}_0 \\ & = \pdv{T}{V} dV \wedge dS + \pdv{T}{N} dN \wedge dS - \pdv{p}{S} dS \wedge dV \\ & \quad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{V} dV \wedge dN ~.
@@ -244,7 +253,7 @@
             0 & = d^2 E = \pdv{T}{V} dV \wedge dS + \pdv{T}{N} \underbrace{dN}_0 \wedge dS - \pdv{p}{S} dS \wedge dV \\ & \quad - \pdv{p}{N} \underbrace{dN}_0 \wedge dV + \pdv{\mu}{S} dS \wedge \underbrace{dN}_0 + \pdv{\mu}{V} dV \wedge \underbrace{dN}_0 \\ & = \pdv{T}{V} dV \wedge dS - \pdv{p}{S} dS \wedge dV = \pdv{T}{V} dV \wedge dS + \pdv{p}{S} dV \wedge dS ~,
         \end{aligned}
         \end{equation*}
-        hence 
+        hence, by the linear independence of $V$ and $S$,
         \begin{equation*}
             - \pdv{T}{V} \Big \vert_{S,N} = \pdv{p}{S} \Big \vert_{V,N} ~.
         \end{equation*}
@@ -255,7 +264,7 @@
             0 & = d^2 E = \pdv{T}{V} \underbrace{dV}_0 \wedge dS + \pdv{T}{N} dN \wedge dS - \pdv{p}{S} dS \wedge \underbrace{dV}_0 \\ & \qquad - \pdv{p}{N} dN \wedge \underbrace{dV}_0 + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{V} \underbrace{dV}_0 \wedge dN \\ & = \pdv{T}{N} dN \wedge dS + \pdv{\mu}{S} dS \wedge dN = \pdv{T}{N} dN \wedge dS - \pdv{\mu}{S} dN \wedge dS~,
         \end{aligned}
         \end{equation*}
-        hence 
+        hence, by the linear independence of $N$ and $S$,
         \begin{equation*}
             \pdv{T}{N} \Big \vert_{S,V} = \pdv{\mu}{S} \Big \vert_{N, V} ~.
         \end{equation*}
@@ -266,7 +275,7 @@
             0 & = d^2 E = \pdv{T}{V} dV \wedge \underbrace{dS}_0 + \pdv{T}{N} dN \wedge \underbrace{dS}_0 - \pdv{p}{S} \underbrace{dS}_0 \wedge dV \\ & \qquad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{S} \underbrace{dS}_0 \wedge dN + \pdv{\mu}{V} dV \wedge dN \\ & = - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{V} dV \wedge dN = - \pdv{p}{N} dN \wedge dV - \pdv{\mu}{V} dN \wedge dV ~,
         \end{aligned}
         \end{equation*}
-        hence 
+        hence, by the linear independence of $N$ and $V$,
         \begin{equation*}
             - \pdv{p}{N} \Big \vert_{V,S} = \pdv{\mu}{V} \Big \vert_{N, S} ~.
         \end{equation*}
@@ -324,7 +333,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}
+    \begin{equation}\label{fes}
         S = - \pdv{F}{T} \Big \vert_{V,N} ~, \quad p = - \pdv{F}{V} \Big \vert_{T,N} ~, \quad \mu = \pdv{F}{N} \Big \vert_{T,V} ~. 
     \end{equation}
     \begin{proof}
@@ -353,6 +362,54 @@
         hence 
         \begin{equation*}
             \mu = \pdv{F}{N} \Big \vert_{T,V} ~.
+        \end{equation*}
+    \end{proof}
+
+    The integrability conditions are 
+    \begin{equation}\label{intcondhel}
+        \pdv{S}{V} \Big \vert_{T,N} = \pdv{p}{T} \Big \vert_{V,N} ~, \quad 
+        - \pdv{S}{N} \Big \vert_{T,V} = \pdv{\mu}{T} \Big \vert_{N, V} ~, \quad 
+        - \pdv{p}{N} \Big \vert_{V,T} = \pdv{\mu}{V} \Big \vert_{N, T} ~. 
+    \end{equation}
+    \begin{proof}
+        By means of the exterior derivative, we have 
+        \begin{equation*}
+        \begin{aligned}
+            d (dF) & = - d (S dT) - d (p dV) + d (\mu dN) \\ & = - \pdv{S}{T} \underbrace{dT \wedge dT}_0 - \pdv{S}{V} dV \wedge dT - \pdv{S}{N} dN \wedge dT - \pdv{p}{T} dT \wedge dV - \pdv{p}{V} \underbrace{dV \wedge dV}_0 \\ & \quad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{V} dV \wedge dN + \pdv{\mu}{N} \underbrace{dN \wedge dN}_0 \\ & = - \pdv{S}{V} dV \wedge dT - \pdv{S}{N} dN \wedge dT - \pdv{p}{T} dT \wedge dV \\ & \quad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{V} dV \wedge dN ~.
+        \end{aligned}
+        \end{equation*}
+
+        At constant $N$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 F = - \pdv{S}{V} dV \wedge dT - \pdv{S}{N} \underbrace{dN}_0 \wedge dT - \pdv{p}{T} dT \wedge dV \\ & \quad - \pdv{p}{N} \underbrace{dN}_0 \wedge dV + \pdv{\mu}{T} dT \wedge \underbrace{dN}_0 + \pdv{\mu}{V} dV \wedge \underbrace{dN}_0 \\ & = - \pdv{S}{V} dV \wedge dT - \pdv{p}{T} dT \wedge dV = - \pdv{S}{V} dV \wedge dT + \pdv{p}{T} dV \wedge dT  ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $V$ and $T$,
+        \begin{equation*}
+            \pdv{S}{V} \Big \vert_{T,N} = \pdv{p}{T} \Big \vert_{V,N} ~.
+        \end{equation*}
+
+        At constant $V$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 F = - \pdv{S}{V} \underbrace{dV}_0 \wedge dT - \pdv{S}{N} dN \wedge dT - \pdv{p}{T} dT \wedge \underbrace{dV}_0 \\ & \quad - \pdv{p}{N} dN \wedge \underbrace{dV}_0 + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{V} \underbrace{dV}_0 \wedge dN \\ & = - \pdv{S}{N} dN \wedge dT + \pdv{\mu}{T} dT \wedge dN = - \pdv{S}{N} dN \wedge dT - \pdv{\mu}{T} dN \wedge dT~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $N$ and $T$,
+        \begin{equation*}
+            - \pdv{S}{N} \Big \vert_{T,V} = \pdv{\mu}{T} \Big \vert_{N, V} ~.
+        \end{equation*}
+
+        At constant $T$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 F = - \pdv{S}{V} dV \wedge \underbrace{dT}_0 - \pdv{S}{N} dN \wedge \underbrace{dT}_0 - \pdv{p}{T} \underbrace{dT}_0 \wedge dV \\ & \quad - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{T} \underbrace{dT}_0 \wedge dN + \pdv{\mu}{V} dV \wedge dN \\ & = - \pdv{p}{N} dN \wedge dV + \pdv{\mu}{V} dV \wedge dN =- \pdv{p}{N} dN \wedge dV - \pdv{\mu}{V} dN \wedge dV ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $N$ and $V$,
+        \begin{equation*}
+            - \pdv{p}{N} \Big \vert_{V,T} = \pdv{\mu}{V} \Big \vert_{N, T} ~.
         \end{equation*}
     \end{proof}
 
@@ -414,6 +471,54 @@
         \end{equation*}
     \end{proof}
 
+    The integrability conditions are 
+    \begin{equation}\label{intcondent}
+        \pdv{V}{S} \Big \vert_{p,N} = \pdv{T}{p} \Big \vert_{S,N} ~, \quad 
+        \pdv{V}{N} \Big \vert_{p,S} = \pdv{\mu}{p} \Big \vert_{N, S} ~, \quad 
+        \pdv{\mu}{S} \Big \vert_{N,p} = \pdv{T}{N} \Big \vert_{S, p} ~. 
+    \end{equation}
+    \begin{proof}
+        By means of the exterior derivative, we have 
+        \begin{equation*}
+        \begin{aligned}
+            d (dH) & = d (T dS) + d (V dp) + d (\mu dN) \\ & = \pdv{T}{S} \underbrace{dS \wedge dS}_0 + \pdv{T}{p} dp \wedge dS + \pdv{T}{N} dN \wedge dS + \pdv{V}{S} dS \wedge dp + \pdv{V}{p} \underbrace{dp \wedge dp}_0 \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{p} dp \wedge dN + \pdv{\mu}{N} \underbrace{dN \wedge dN}_0 \\ & = \pdv{T}{p} dp \wedge dS + \pdv{T}{N} dN \wedge dS + \pdv{V}{S} dS \wedge dp \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{p} dp \wedge dN  ~.
+        \end{aligned}
+        \end{equation*}
+
+        At constant $N$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 H = \pdv{T}{p} dp \wedge dS + \pdv{T}{N} \underbrace{dN}_0 \wedge dS + \pdv{V}{S} dS \wedge dp \\ & \quad + \pdv{V}{N} \underbrace{dN}_0 \wedge dp + \pdv{\mu}{S} dS \wedge \underbrace{dN}_0 + \pdv{\mu}{p} dp \wedge \underbrace{dN}_0 \\ & = \pdv{T}{p} dp \wedge dS + \pdv{V}{S} dS \wedge dp = \pdv{T}{p} dp \wedge dS - \pdv{V}{S} dS \wedge dp ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $S$ and $p$,
+        \begin{equation*}
+            \pdv{V}{S} \Big \vert_{p,N} = \pdv{T}{p} \Big \vert_{S,N} ~.
+        \end{equation*}
+
+        At constant $S$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 H = \pdv{T}{p} dp \wedge \underbrace{dS}_0 + \pdv{T}{N} dN \wedge \underbrace{dS}_0 + \pdv{V}{S} \underbrace{dS}_0 \wedge dp \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{S} \underbrace{dS}_0 \wedge dN + \pdv{\mu}{p} dp \wedge dN \\ & = \pdv{V}{N} dN \wedge dp + \pdv{\mu}{p} dp \wedge dN = \pdv{V}{N} dN \wedge dp - \pdv{\mu}{p} dN \wedge dp ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $N$ and $p$,
+        \begin{equation*}
+            \pdv{V}{N} \Big \vert_{p,S} = \pdv{\mu}{p} \Big \vert_{N, S} ~.
+        \end{equation*}
+
+        At constant $p$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 H = \pdv{T}{p} \underbrace{dp}_0 \wedge dS + \pdv{T}{N} dN \wedge dS + \pdv{V}{S} dS \wedge \underbrace{dp}_0 \\ & \quad + \pdv{V}{N} dN \wedge \underbrace{dp}_0 + \pdv{\mu}{S} dS \wedge dN + \pdv{\mu}{p} \underbrace{dp}_0 \wedge dN \\ & = \pdv{T}{N} dN \wedge dS + \pdv{\mu}{S} dS \wedge dN = \pdv{T}{N} dN \wedge dS - \pdv{\mu}{S} dS \wedge dN ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $S$ and $N$,
+        \begin{equation*}
+            \pdv{\mu}{S} \Big \vert_{N,p} = \pdv{T}{N} \Big \vert_{S, p} ~.
+        \end{equation*}
+    \end{proof}
+
 \section{Gibbs free energy $G$} 
 
     The Gibbs free energy is defined as 
@@ -440,7 +545,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}
+    \begin{equation}\label{ges}
         S = - \pdv{G}{T} \Big \vert_{p,N} ~, \quad V = \pdv{G}{p} \Big \vert_{T,N} ~, \quad \mu = \pdv{G}{N} \Big \vert_{p,T} ~. 
     \end{equation}
     \begin{proof}
@@ -472,12 +577,61 @@
         \end{equation*}
     \end{proof}
 
+    The integrability conditions are 
+    \begin{equation}\label{intcondgib}
+        - \pdv{V}{T} \Big \vert_{p,N} = \pdv{S}{p} \Big \vert_{T,N} ~, \quad 
+        \pdv{V}{N} \Big \vert_{p,T} = \pdv{\mu}{p} \Big \vert_{N, T} ~, \quad 
+        - \pdv{S}{N} \Big \vert_{T,p} = \pdv{\mu}{T} \Big \vert_{N, p} ~. 
+    \end{equation}
+    \begin{proof}
+        By means of the exterior derivative, we have 
+        \begin{equation*}
+        \begin{aligned}
+            d (dG) & = - d (S dT) + d (V dp) + d (\mu dN) \\ & = - \pdv{S}{T} \underbrace{dT \wedge dT}_0 - \pdv{S}{p} dp \wedge dT - \pdv{S}{N} dN \wedge dT + \pdv{V}{T} dT \wedge dp + \pdv{V}{p} \underbrace{dp \wedge dp}_0 \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{p} dp \wedge dN + \pdv{\mu}{N} \underbrace{dN \wedge dN}_0 \\ & = - \pdv{S}{p} dp \wedge dT - \pdv{S}{N} dN \wedge dT + \pdv{V}{T} dT \wedge dp \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{p} dp \wedge dN ~.
+        \end{aligned}
+        \end{equation*}
+
+        At constant $N$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 G = - \pdv{S}{p} dp \wedge dT - \pdv{S}{N} \underbrace{dN}_0 \wedge dT + \pdv{V}{T} dT \wedge dp \\ & \quad + \pdv{V}{N} \underbrace{dN}_0 \wedge dp + \pdv{\mu}{T} dT \wedge \underbrace{dN}_0 + \pdv{\mu}{p} dp \wedge \underbrace{dN}_0 \\ & = - \pdv{S}{p} dp \wedge dT + \pdv{V}{T} dT \wedge dp = - \pdv{S}{p} dp \wedge dT - \pdv{V}{T} dp \wedge dT ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $p$ and $T$,
+        \begin{equation*}
+            - \pdv{V}{T} \Big \vert_{p,N} = \pdv{S}{p} \Big \vert_{T,N} ~.
+        \end{equation*}
+
+        At constant $T$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 G = - \pdv{S}{p} dp \wedge \underbrace{dT}_0 - \pdv{S}{N} dN \wedge \underbrace{dT}_0 + \pdv{V}{T} \underbrace{dT}_0 \wedge dp \\ & \quad + \pdv{V}{N} dN \wedge dp + \pdv{\mu}{T} \underbrace{dT}_0 \wedge dN + \pdv{\mu}{p} dp \wedge dN \\ & = \pdv{V}{N} dN \wedge dp + \pdv{\mu}{p} dp \wedge dN = \pdv{V}{N} dN \wedge dp - \pdv{\mu}{p} dp \wedge dN ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $p$ and $N$,
+        \begin{equation*}
+            \pdv{V}{N} \Big \vert_{p,T} = \pdv{\mu}{p} \Big \vert_{N, T} ~.
+        \end{equation*}
+
+        At constant $p$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 G = - \pdv{S}{p} \underbrace{dp}_0 \wedge dT - \pdv{S}{N} dN \wedge dT + \pdv{V}{T} dT \wedge \underbrace{dp}_0 \\ & \quad + \pdv{V}{N} dN \wedge \underbrace{dp}_0 + \pdv{\mu}{T} dT \wedge dN + \pdv{\mu}{p} \underbrace{dp}_0 \wedge dN \\ & = - \pdv{S}{N} dN \wedge dT + \pdv{\mu}{T} dT \wedge dN = - \pdv{S}{N} dN \wedge dT - \pdv{\mu}{T} dN \wedge dT ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $N$ and $T$,
+        \begin{equation*}
+            - \pdv{S}{N} \Big \vert_{T,p} = \pdv{\mu}{T} \Big \vert_{N, p} ~.
+        \end{equation*}
+
+    \end{proof}
+
 \section{Granpotential $\Omega$} 
 
     The granpotential is defined as 
-    \begin{equation*}
+    \begin{equation}\label{ome}
         \Omega = E - TS - \mu N = F - \mu N ~.
-    \end{equation*}
+    \end{equation}
     Its differential is 
     \begin{equation*}
         d\Omega \leq - SdT - pdV - N d\mu ~.
@@ -530,25 +684,377 @@
         \end{equation*}
     \end{proof}
 
+    The integrability conditions are 
+    \begin{equation}\label{intcondom}
+        \pdv{S}{\mu} \Big \vert_{T,V} = \pdv{N}{T} \Big \vert_{\mu,V} ~, \quad 
+        \pdv{S}{V} \Big \vert_{T,\mu} = \pdv{p}{T} \Big \vert_{V, \mu} ~, \quad 
+        \pdv{p}{\mu} \Big \vert_{V,T} = \pdv{N}{V} \Big \vert_{\mu, T} ~. 
+    \end{equation}
+    \begin{proof}
+        By means of the exterior derivative, we have 
+        \begin{equation*}
+        \begin{aligned}
+            d (d\Omega) & = - d (S dT) - d (p dV) - d (N d\mu) \\ & = - \pdv{S}{T} \underbrace{dT \wedge dT}_0 - \pdv{S}{V} dV \wedge dT - \pdv{S}{\mu} d\mu \wedge dT - \pdv{p}{T} dT \wedge dV - \pdv{p}{V} \underbrace{dV \wedge dV}_0 \\ & \quad - \pdv{p}{\mu} d\mu \wedge dV - \pdv{N}{T} dT \wedge d\mu - \pdv{N}{V} dV \wedge d\mu - \pdv{N}{\mu} \underbrace{d\mu \wedge d\mu}_0 \\ & = - \pdv{S}{V} dV \wedge dT - \pdv{S}{\mu} d\mu \wedge dT - \pdv{p}{T} dT \wedge dV \\ & \quad - \pdv{p}{\mu} d\mu \wedge dV - \pdv{N}{T} dT \wedge d\mu - \pdv{N}{V} dV \wedge d\mu ~.
+        \end{aligned}
+        \end{equation*}
 
-\section{Integrability condition and equilibrium condition}
+        At constant $\mu$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 \Omega = - \pdv{S}{V} dV \wedge dT - \pdv{S}{\mu} \underbrace{d\mu}_0 \wedge dT - \pdv{p}{T} dT \wedge dV \\ & \quad - \pdv{p}{\mu} \underbrace{d\mu}_0 \wedge dV - \pdv{N}{T} dT \wedge \underbrace{d\mu}_0 - \pdv{N}{V} dV \wedge \underbrace{d\mu}_0 \\ & = - \pdv{S}{V} dV \wedge dT - \pdv{p}{T} dT \wedge dV = - \pdv{S}{V} dV \wedge dT + \pdv{p}{T} dV \wedge dT ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $V$ and $T$,
+        \begin{equation*}
+            \pdv{S}{V} \Big \vert_{T,\mu} = \pdv{p}{T} \Big \vert_{V, \mu} ~.
+        \end{equation*}
+
+        At constant $V$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 \Omega = - \pdv{S}{V} \underbrace{dV}_0 \wedge dT - \pdv{S}{\mu} d\mu \wedge dT - \pdv{p}{T} dT \wedge \underbrace{dV}_0 \\ & \quad - \pdv{p}{\mu} d\mu \wedge \underbrace{dV}_0 - \pdv{N}{T} dT \wedge d\mu - \pdv{N}{V} \underbrace{dV}_0 \wedge d\mu \\ & = - \pdv{S}{\mu} d\mu \wedge dT - \pdv{N}{T} dT \wedge d\mu = - \pdv{S}{\mu} d\mu \wedge dT + \pdv{N}{T} d\mu \wedge dT ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $\mu$ and $T$,
+        \begin{equation*}
+            \pdv{S}{\mu} \Big \vert_{T,V} = \pdv{N}{T} \Big \vert_{\mu,V} ~.
+        \end{equation*}
+
+        At constant $T$ 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = d^2 \Omega = - \pdv{S}{V} dV \wedge \underbrace{dT}_0 - \pdv{S}{\mu} d\mu \wedge \underbrace{dT}_0 - \pdv{p}{T} \underbrace{dT}_0 \wedge dV \\ & \quad - \pdv{p}{\mu} d\mu \wedge dV - \pdv{N}{T} \underbrace{dT}_0 \wedge d\mu - \pdv{N}{V} dV \wedge d\mu \\ & = - \pdv{p}{\mu} d\mu \wedge dV - \pdv{N}{V} dV \wedge d\mu=  - \pdv{p}{\mu} d\mu \wedge dV + \pdv{N}{V} d\mu \wedge dV ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the linear independence of $N$ and $V$,
+        \begin{equation*}
+            \pdv{p}{\mu} \Big \vert_{V,T} = \pdv{N}{V} \Big \vert_{\mu, T} ~.
+        \end{equation*}
+    \end{proof}
+
+\subsection{Comments}
+
+    The thermodynamic potential are not homogeneous functions since they depend on mixed extensive and intensive variables. However, they are extensive, i.e. 
+    \begin{equation}\label{a6}
+        F = N f(T, v) ~, \quad H = N h(p, s) ~, \quad G = N g(T, p) ~, \quad \Omega = N f \omega (T, \mu) ~. 
+    \end{equation}
+    Notice that the chemical potential is also the Gibbs free energy per particle
+    \begin{equation}
+        g(T, p) = \mu(T, p) ~.
+    \end{equation}
+    \begin{proof}
+        In fact, using~\eqref{ges} and \eqref{a6}
+        \begin{equation*}
+            \mu = \pdv{G}{N} = \pdv{Ng }{N} = g ~.
+        \end{equation*}
+    \end{proof}
+
+    Notice that 
+    \begin{equation*}
+        \Omega = - pV ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{e} and~\eqref{ome}
+        \begin{equation*}
+            \Omega = E - TS - \mu N = \cancel{TS} - pV + \cancel{\mu N} - \cancel{TS} - \cancel{\mu N} = - pV ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Maxwell's relations}
+
+    Integrability condition can be written as jacobian determinant. 
+
+    For the energy, they are
+    \begin{equation*}
+        \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{\mu, S, N}{N, S, V} ~.
+    \end{equation*}
+    \begin{proof}
+        Using the first of~\eqref{intconden}
+        \begin{equation*}
+            - \pdv{T}{V} \Big \vert_{S, N} = - \pdv{p}{S} \Big \vert_{V, N} \rightarrow \pdv{(T, N, S)}{(V, N, S)} = - \pdv{(p, N, V)}{(S, N, V)} = \pdv{(p, N, V)}{(V, N, S)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side
+        \begin{equation*}
+            1 = \pdv{(T, N, S)}{(V, N, S)} \pdv{(p, N, V)}{(V, N, S)}^{-1} = \pdv{(T, N, S)}{(V, N, S)} \pdv{(V, N, S)}{(p, N, V)} = \pdv{(T, N, S)}{(p, N, V)} ~.
+        \end{equation*} 
+
+        Using the second of~\eqref{intconden}
+        \begin{equation*}
+            \pdv{T}{N} \Big \vert_{S, V} = - \pdv{\mu}{S} \Big \vert_{N, V} \rightarrow \pdv{(T, V, S)}{(N, V, S)} = - \pdv{(\mu, V, N)}{(S, V, N)} = \pdv{(\mu, V, N)}{(N, V, S)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side
+        \begin{equation*}
+            1 = \pdv{(T, V, S)}{(N, V, S)} \pdv{(\mu, V, N)}{(N, V, S)}^{-1} = \pdv{(T, V, S)}{(N, V, S)} \pdv{(N, V, S)}{(\mu, V, N)} = \pdv{(T, V, S)}{(\mu, V, N)} ~.
+        \end{equation*} 
+
+        Using the third of~\eqref{intconden}
+        \begin{equation*}
+            \pdv{p}{N} \Big \vert_{V, S} = - \pdv{\mu}{V} \Big \vert_{N, S} \rightarrow \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{(\mu, S, N)}{(N, S, V)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side
+        \begin{equation*}
+            1 = \pdv{(p, S, V )}{(N, S, V)} \pdv{(\mu, S, N)}{(N, S, V)}^{-1} = \pdv{(p, S, V )}{(N, S, V)} \pdv{(N, S, V)}{(\mu, S, N)} = \pdv{(p, S, V )}{(\mu, S, N)} ~.
+        \end{equation*} 
+    \end{proof}
+
+    TO BE CONTINUED.
 
 
-\chapter{Boh}
+    Not all the Maxwell's relations are independent, but only $6$ of them 
+    \begin{equation*}
+        \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~, \quad \pdv{(p, V, N)}{(T, S, N)} = 1 ~, 
+    \end{equation*}
+    \begin{equation*}
+        \pdv{(T, S, \mu)}{(p, V, \mu)} = 1 ~, \quad \pdv{(T, S, p)}{(N, \mu, p)} = 1 ~, \quad \pdv{(T, S, V)}{(N, \mu, V)} = 1 ~.
+    \end{equation*}
+
+    The intergability conditions written in term of jacobian determinant give rise to the geometrical interpretation: the coordinate transformations, which mean that we changed into a different chart of independent variables, preserves the volume.
+
+\section{Stable conditions}
+
+    Every thermodynamic potential has a natural chart. In fact, the configuration of stable equilbrium can be obtained by a set of variational principle, which can be derived by fixing to constants the natural independent variables. This variations principle derive from the second law of thermodynamics, since all systems evolve spontaneously to maximise the entropy. Therefore, minima of the thermodynamic potentials correspond to stable equilibrium under boundary condition which keep constant the natural variables
+    \begin{equation*}
+        (T, V, N) = const \rightarrow \delta F = 0 ~, \delta^2 F > 0 ~, 
+    \end{equation*}
+    \begin{equation*}
+        (S, p, N) = const \rightarrow \delta H = 0 ~, \delta^2 H > 0 ~, 
+    \end{equation*}
+    \begin{equation*}
+        (T, p, N) = const \rightarrow \delta G = 0 ~, \delta^2 G > 0 ~, 
+    \end{equation*}
+    \begin{equation*}
+        (T, V, \mu) = const \rightarrow \delta \Omega = 0 ~, \delta^2 \Omega > 0 ~.
+    \end{equation*}
+
+    Equilibrium of two subsystems requires that $T$, $p$ and $\mu$ are equal.
+    \begin{proof}
+        Consider two subsystems $A$ and $B$ with extensive variables $(E_A, V_A, N_A)$ and $(E_B, V_B, N_B)$. Therefore $E = E_A + E_B$, $V = V_A + V_B$ and $N = N_A + N_B$. The whole system is at fixed boundary conditions $E, V, S = const$. The entropy is additive 
+        \begin{equation*}
+            S = S_A + S_B = S_A(E_A, V_A, N_A) - S_B(E - E_A, V-V_A, N-N_A) ~.
+        \end{equation*}
+        Computing its derivative and imposing it to zero, using~\eqref{ses}
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \delta S = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A \\ & \quad + \pdv{S_B}{E_B} \underbrace{\delta (E - E_A)}_{- \delta E_A} + \pdv{S_B}{V_B} \underbrace{\delta (V - V_A)}_{- \delta V_A} + \pdv{S_B}{N_B} \underbrace{\delta (N - N_A)}_{- \delta N_A} \\ & = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A - \pdv{S_B}{E_B} \delta E_A - \pdv{S_B}{V_B}  \delta V_A - \pdv{S_B}{N_B} \delta N_A  \\ & = \delta E_A \Big ( \underbrace{\pdv{S_A}{E_A}}_{\frac{1}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{1}{T_B}} \Big) + \delta V_A \Big ( \underbrace{\pdv{S_A}{V_A}}_{\frac{p_A}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{p_B}{T_B}} \Big) + \delta N_A \Big (\underbrace{\pdv{S_A}{N_A}}_{ - \frac{\mu_A}{T_A}} - \underbrace{\pdv{S_B}{N_B}}_{- \frac{\mu_B}{T_B}} \Big) \\ & = \delta E_A \Big ( \frac{1}{T_A} - \frac{1}{T_B} \Big) + \delta V_A \Big ( \frac{p_A}{T_A} - \frac{p_B}{T_B} \Big) + \delta N_A \Big (- \frac{\mu_A}{T_A} + \frac{\mu_B}{T_B} \Big) ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by the arbitrarity of $\delta E_A$, $\delta V_A$ and $\delta N_A$,
+        \begin{equation*}
+            T_A = T_B ~, \quad p_A = p_B ~, \quad \mu_A = \mu_B ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Stability conditions}
+
+    At $T, p, N = const$, the stability condition is 
+    \begin{equation}\label{stab}
+    \begin{aligned}
+        & E_{SS} = \pdv{T}{S} \Big \vert_V > 0 ~, \quad E_{VV} = - \pdv{p}{V} \Big \vert_S > 0 ~, \\ & E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~, 
+    \end{aligned}
+    \end{equation}
+    \begin{proof}
+        We know that $E = E(S, V, N)$. AT constant $N$, its variation is 
+        \begin{equation*}
+        \begin{aligned}
+            \delta E & = \underbrace{\pdv{E}{S} \Big \vert_V }_T \delta S + \underbrace{\pdv{E}{V} \Big \vert_S}_{-p} \delta V  \\ & \quad + \frac{1}{2} \Big ( \underbrace{\pdvdu{E}{S} \Big \vert_V}_{E_{SS}} \delta S^2 + 2 \underbrace{\pdvd{E}{S}{V}}_{E_{SV}} \delta S \delta V + \underbrace{\pdvdu{E}{V} \Big \vert_S }_{E_{VV}} \delta V^2 \Big) \\ & = T \delta S - p \delta V + \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) ~.
+        \end{aligned}
+        \end{equation*}
+
+        The first derivative terms vanishes, since 
+        \begin{equation*}
+        \begin{aligned}
+            \delta G &= \delta E - T \delta S + p \delta V \\ & = \cancel{T \delta S} - \cancel{p \delta V} + \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) - \cancel{T \delta S} + \cancel{p \delta V} \\ & = \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) ~.
+        \end{aligned}
+        \end{equation*}
+
+        The condition to be a minimum is that 
+        \begin{equation*}
+            E_{SS} > 0 ~, \quad E_{VV} > 0 ~, \quad E_{SS} E_{VV} - E_{SV}^2 > 0 ~.
+        \end{equation*}
+
+        Respectively, they become 
+        \begin{equation*}
+            E_{SS} = \pdv{}{S} \underbrace{\pdv{E}{S}}_{T} = \pdv{T}{S} > 0 ~,
+        \end{equation*}
+        \begin{equation*}
+            E_{VV} = \pdv{}{V} \underbrace{\pdv{E}{V}}_{-p} = - \pdv{p}{V} > 0 ~,
+        \end{equation*}
+        \begin{equation*}
+            E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    We define the stability conditions in terms of the specific heat 
+    \begin{equation*}
+        C_V = T \pdv{S}{T} \Big \vert_{V} > 0 ~,
+    \end{equation*}
+    the adiabatic compressibility
+    \begin{equation*}
+        \chi_S = - \frac{1}{V} \pdv{V}{p} \Big \vert_S > 0
+    \end{equation*}
+    and the isothermal compressibility 
+    \begin{equation*}
+        \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T > 0 ~.
+    \end{equation*}
+    \begin{proof}
+        For the first, using~\eqref{stab} and $T > 0$
+        \begin{equation*}
+            C_V = T \pdv{S}{T} \Big \vert_{V} > 0 ~.
+        \end{equation*}
+
+        For the second, using~\eqref{stab} and $V > 0$
+        \begin{equation*}
+            \chi_S = - \frac{1}{V} \pdv{V}{p} \Big \vert_S > 0 ~.
+        \end{equation*}
+        
+        For the third, using~\eqref{stab} and~\eqref{intcondgib}
+        \begin{equation*}
+        \begin{aligned}
+            0 & < \pdv{T}{V} \Big \vert_S \pdv{T}{V} \Big \vert_S + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S \\ &  - \pdv{T}{V} \Big \vert_S \pdv{p}{S} \Big \vert_V + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S \\ & = \pdv{(T,p)}{(S,V)} \\ & = \pdv{(T,p)}{(S,V)} = \pdv{(T,p)}{(T,V)} \pdv{(T,V)}{(S,V)} \\ & = \pdv{p}{V} \Big \vert_T \pdv{T}{S} \Big \vert_V \\ & = \frac{T}{C_V} \pdv{p}{V} \Big \vert_T ~,
+        \end{aligned}
+        \end{equation*}
+        hence, by $T>0$, $C_V>0$ and $V>0$, 
+        \begin{equation*}
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    Consequently to stability, $F$ is a concave of $T$ and covex of $V$, whereas $G$ is concave of both $T$ and $p$. 
+    \begin{proof}
+        For the concavity of $F$ of $T$
+        \begin{equation*}
+            C_V = T \pdv{S}{T} \Big \vert_{V} = - T \pdvdu{F}{T} \Big \vert_V > 0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \pdvdu{F}{T} \Big \vert_V < 0 ~.
+        \end{equation*}
+
+        For the convexity of $F$ of $V$
+        \begin{equation*}
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = \Big ( V \pdvdu{F}{V} \Big \vert_T \Big)^{-1} > 0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \pdvdu{F}{V} \Big \vert_T > 0 ~.
+        \end{equation*}
+
+        For the concavity of $G$ of $T$
+        \begin{equation*}
+            C_P = T \pdv{S}{T} \Big \vert_{P} = - T \pdvdu{G}{T} \Big \vert_p > 0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \pdvdu{G}{T} \Big \vert_p < 0 ~.
+        \end{equation*}
+
+        For the concavity of $G$ of $p$
+        \begin{equation*}
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = - \frac{1}{V} \pdvdu{G}{p} \Big \vert_T > 0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \pdvdu{G}{p} \Big \vert_T < 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    Furthermore, the second law of thermodynamics can be expressed, in order to maximise the entropy, by imposing that first derivatives vanish and the hessian, i.e. the matrix with its second derivatives, must be negative defined. Therefore, it must be (locally) concave in $E$, $V$ and $N$.
+
+    When cease to work at constant $N$, the stability condition is 
+    \begin{equation*}
+        \pdv{N}{\mu} \Big \vert_{V, T} = \frac{N^2}{V} \chi_T > 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{N}{\mu} \Big \vert_{V, T} & = \pdv{(N, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(p, V, T)} 1 \pdv{(p, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(p, V, T)} \pdv{(p, V, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} \\ & = - \pdv{V}{p} \Big \vert_{N, T}  \pdv{p}{\mu} \Big \vert_{V, T}  \pdv{p}{\mu} \Big \vert_{N, T} 
+        \end{aligned}
+        \end{equation*}
+
+        Now we use~\eqref{gdrel}
+        \begin{equation*}
+            \pdv{p}{\mu} \Big \vert_{V, T} = \pdv{p}{\mu} \Big \vert_{N, T} = \Big ( \pdv{\mu}{p} \Big \vert_T \Big) = \frac{N}{V} ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+        \pdv{N}{\mu} \Big \vert_{V, T} = - \frac{N^2}{V^2} \pdv{V}{p} \Big \vert_{N,T} = \frac{N^2}{V} \chi_T > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    Moreover, we have the relation 
+    \begin{equation*}
+        \chi_T (C_P - C_V) = T V \alpha_p^2 ~,
+    \end{equation*}
+    which implies that 
+    \begin{equation*}
+        C_P > C_V \iff \chi_T > \chi_S ~.
+    \end{equation*}
+
+    \begin{proof}
+        We start from
+        \begin{equation*}
+            C_V = T \pdv{S}{T} \Big \vert_V = \pdv{E}{T} \Big \vert_V ~,
+        \end{equation*}
+        \begin{equation*}
+            C_p = T \pdv{S}{T} \Big \vert_p = \pdv{E}{T} \Big \vert_p + p \pdv{V}{T} \Big \vert_p  ~,
+        \end{equation*}
+        which imply that 
+        \begin{equation*}
+            T dS = C_V dT + ( \pdv{E}{V} \Big \vert_{T} + p) dV = C_V dT + T \pdv{p}{T} \Big \vert_V dV ~,
+        \end{equation*}
+        \begin{equation*}
+            T dS = C_p dT + ( \pdv{E}{p} \Big \vert_T + \pdv{V}{p} \Big \vert_T ) dp = C_p dT - T \pdv{V}{T} \Big \vert_p dp ~.
+        \end{equation*}
+
+        Comparing them 
+        \begin{equation*}
+            (C_p - C_V) dT = T (\pdv{V}{T} \Big \vert_p dp + \pdv{p}{T} \Big \vert_V dV) ~,
+        \end{equation*}
+        \begin{equation*}
+            (C_p - C_V) = T \pdv{V}{T} \Big \vert_p \pdv{p}{T} \Big \vert_V ~.
+        \end{equation*}
+
+        We use 
+        \begin{equation*}
+            \pdv{p}{T} \Big \vert_V = \pdv{(p, V)}{T, V} = \pdv{(p,V)}{(p, T)} \pdv{(p, T)}{(T, V)} = - \pdv{V}{T} \Big \vert_p \pdv{p}{V} \Big \vert_T ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            C_p - C_V = \frac{T}{V \chi_T} \Big ( \pdv{V}{T} \Big \vert_p \Big)^2 ~,
+        \end{equation*}
+        or, defining the thermal expansion coefficient
+        \begin{equation}
+            \alpha_p = \frac{1}{V} \pdv{V}{T} \Big \vert_p~,
+        \end{equation}
+        we have 
+        \begin{equation*}
+            \chi_T (C_P - C_V) = T V \alpha_p^2 ~,
+        \end{equation*}
+
+        Finally, we obtain 
+        \begin{equation*}
+            \frac{C_p}{C_V} = \frac{\chi_T}{\chi_S} ~.
+        \end{equation*}
+    \end{proof}
+    
+\section{$\pdv{\mu}{T}$}
+
+
+    Using~\eqref{gdrel}
+    \begin{equation*}
+        d\mu = v dp - s dT
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        \pdv{\mu}{T} = - s < 0 ~.
+    \end{equation*}
+
+\chapter{Summary}
 
 \section{Thermodynamical potentials}
 
-
-
-
-
-
-
-
-
-
-
-    Similar expression can be found for other thermodynamical quantities, simply exchanging the role of conjugate functions. See Table~\ref{table:2}.
+    See Table~\ref{table:2}.
 
     \begin{table}[h!]
         \centering
@@ -569,7 +1075,7 @@
         Maybe in the future.
     \end{proof}
 
-    Fixing three of the thermodynamical variables to be constant, a system evolves in order to minimises the corresponding thermodynamical potential until it reaches its minimum, i.e the equilibrium state. Mathematically, it means that the first derivative must be vaninshing and the hessian must be positive defined. See Table~\ref{table:3}.
+    See Table~\ref{table:3}.
 
     \begin{table}[h!]
         \centering
@@ -585,7 +1091,3 @@
     \caption{Thermodynamical variation principles.}
     \label{table:3}
     \end{table}
-
-    \begin{proof}
-        Maybe in the future.
-    \end{proof}

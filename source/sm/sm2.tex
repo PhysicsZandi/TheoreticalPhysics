@@ -405,7 +405,7 @@
         Z_[V, T] = \exp(-\beta F[N, V, T])
     \end{equation}
     or, equivalently,
-    \begin{equation}\label{Fc}
+    \begin{equation}\label{can:f}
         F[V, N ,T] = -\frac{1}{\beta} \ln Z_N
     \end{equation}
 
@@ -434,14 +434,14 @@
     \end{proof}
 
     Notice that in the last result, the entropy can be also written as 
-    \begin{equation} \label{Sc}
+    \begin{equation} \label{can:s}
         S_c = \frac{E - F}{T}
     \end{equation}
     
     The internal energy can also be written as 
-    \begin{equation*}
+    \begin{equation}\label{can:en}
         E = - \pdv{}{\beta} \ln Z_N
-    \end{equation*}
+    \end{equation}
 
     \begin{proof}
         Using~\eqref{Ec},
@@ -457,7 +457,7 @@
 
 
     \begin{proof}
-        Using~\eqref{Ec} and~\eqref{Fc}
+        Using~\eqref{Ec} and~\eqref{can:f}
         \begin{equation*}
             \begin{aligned}
             -k_B \avp{\ln \rho_c}{c} & = -k_B \int d\Omega \rho_c \ln \rho_c \\ & = -k_B \int d\Omega \rho_c \ln \frac{\exp(-\beta \mathcal H)}{Z_N} \\ & = -k_B \int d\Omega \rho_c \ln \exp(-\beta \mathcal H) - k_B \int d\Omega \rho_c \ln Z_N \\ & = k_B \int d\Omega \beta \mathcal H - k_B \underbrace{\ln Z_N}_{\beta F} \underbrace{\int d\Omega \rho_c}_{1} \\ & =  \frac{E - F}{T} = S_c
@@ -473,9 +473,9 @@
             \int \prod_{j \neq 1} d \xi_j [\xi_1 \exp(-\beta \mathcal H)]_a^b = 0
         \end{equation}
         Then 
-        \begin{equation*}
+        \begin{equation}\label{equi}
             \avp{\xi_1 \pdv{\mathcal H}{\xi_1}}{c} = k_B T
-        \end{equation*}
+        \end{equation}
     \end{theorem}
 
     \begin{proof}
@@ -631,9 +631,9 @@
     \end{equation*}
 
     The grancanonical internal energy is 
-    \begin{equation*}
+    \begin{equation}\label{gran:e}
         E = - \pdv{}{\beta} \ln \mathcal Z \Big \vert_z
-    \end{equation*}
+    \end{equation}
 
     \begin{proof}
         \begin{equation*}
@@ -644,9 +644,9 @@
     \end{proof}
 
     The grancanonical number of particles is 
-    \begin{equation*}
+    \begin{equation}\label{gran:n}
         \avp{N}{gc} = z \pdv{}{z} \ln \mathcal Z \Big \vert_T
-    \end{equation*}
+    \end{equation}
 
     \begin{proof}
         \begin{equation*}
@@ -657,7 +657,7 @@
     \end{proof}
 
     The grancanonical potential is 
-    \begin{equation}\label{Ogc}
+    \begin{equation}\label{gran:o}
         \Omega = - \frac{1}{\beta} \ln \mathcal Z
     \end{equation}
 
@@ -667,7 +667,7 @@
     \end{equation*}
 
     \begin{proof}
-        Using~\eqref{Ogc},
+        Using~\eqref{gran:o},
         \begin{equation*}
         \begin{aligned}
             -k_B \avp{\ln \rho_{gc}}{gc} & = -k_B \int d\Omega ~ \rho_{gc} \ln \rho_{gc} \\ & = -k_B \sum_{N=0}^{\infty} \frac{z^N}{\mathcal Z} \int d\Omega ~ \exp(- \beta \mathcal H) \ln \rho_{gc} \\ & = = -k_B \sum_{N=0}^{\infty} \frac{z^N}{\mathcal Z} \int d\Omega ~ \exp(- \beta \mathcal H) (- \beta \mathcal H + \beta \mu N + \ln \mathcal Z) \\ & = k_B \beta \underbrace{\sum_{N=0}^{\infty} \frac{z^N}{\mathcal Z} \int d\Omega ~ \exp(-\beta \mathcal H) \mathcal H}_{E} - k_B \beta \mu \underbrace{\sum_{N=0}^{\infty} \frac{z^N}{\mathcal Z} \int d\Omega ~ \exp(-\beta \mathcal H) N}_{N} \\ & \quad + k_B \ln \mathcal Z \underbrace{\sum_{N=0}^{\infty} \frac{z^N}{\mathcal Z} \int d\Omega ~ \exp(-\beta \mathcal H)}_{1} \\ & = \frac{E - \mu N - \Omega}{T} = S
