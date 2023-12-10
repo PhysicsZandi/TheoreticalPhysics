@@ -326,7 +326,7 @@
 
     If all the particles are identical, we have $\mathcal H_1 = \ldots = \mathcal H_N = \mathcal H$. Therefore $\mathcal H_{tot} = \mathcal H^{\otimes N}$.
 
-\subsection{$N$ particles}
+\subsection{N particles}
 
     Explicitly, a single particle lives in $\mathbb R^3$ and its Hilbert space is $\mathcal H = L^2 (\mathbb R^3) \ni \psi(x)$. The scalar product is 
     \begin{equation*}
@@ -686,7 +686,7 @@
 
 \section{Symmetric/antisymmetric Hilbert space} 
 
-\subsection{$2$ particles}
+\subsection{2 particles}
 
     Consider $2$ particles. If they are distinguishable, the total Hilbert space is 
     \begin{equation*}
@@ -737,11 +737,11 @@
         \hat A \colon \mathcal H \rightarrow \mathcal H_A ~,
     \end{equation*}
     such that they satisfy the properties 
-    \begin{equation}\label{proj}
+    \begin{equation}\label{projprop}
         \hat S^\dagger = \hat S~, \quad \hat A^\dagger = \hat A~, \quad \hat S^2 = \hat S~, \quad \hat A^2 = \hat A~, \quad \hat S \hat A = \hat A \hat S = 0 ~.
     \end{equation}
 
-\subsection{$N$ particles}
+\subsection{N particles}
 
     Generalising for $N$ particles, if they are distinguishable, the total Hilbert space is 
     \begin{equation*}
@@ -758,7 +758,7 @@
         \hat A \colon \ket{\psi} \mapsto \frac{1}{N!} \sum_{P \in P_N} sgn(P) \ket{P(1), \ldots P(N)} ~,
     \end{equation*}
     where $P(1, \ldots N) \mapsto (P(1), \ldots P(N))$. 
-    They satisfy the orthogonal projector properties~\eqref{proj}. Notice that for $N > 2$ particles, the total Hilbert space is $\mathcal H_{tot} = \mathcal H_S \otimes \mathcal H_A \otimes \mathcal H'$, where bosons work only in $\mathcal H_S$, fermions work only in $\mathcal H_A$ and $\mathcal H'$ is not physical.
+    They satisfy the orthogonal projector properties~\eqref{projprop}. Notice that for $N > 2$ particles, the total Hilbert space is $\mathcal H_{tot} = \mathcal H_S \otimes \mathcal H_A \otimes \mathcal H'$, where bosons work only in $\mathcal H_S$, fermions work only in $\mathcal H_A$ and $\mathcal H'$ is not physical.
 
     \begin{example}
         For $N=3$, we can have $\psi_S \in mathcal H_S$
@@ -863,7 +863,7 @@
     \begin{equation*}
         [\hat a_n, \hat a_m]_\pm = [\hat a_n^\dagger, \hat a_m^\dagger]_\pm = 0 ~, \quad [\hat a_n, \hat a_m^\dagger]_\pm = \delta_{nm} ~,
     \end{equation*}
-    where the minus sign correponds to the commutator (bosons)~\eqref{bos} and the plus sign to the anticommutator (fermions)~\eqref{fer}. 
+    where the minus sign correponds to the commutator (bosons)~\eqref{bos} and the plus sign to the anticommutator (fermions)~\eqref{ferm}. 
 
     The normalised vacuum state, which describes a no particle state, is defined by the annihilation of every annihilation operator
     \begin{equation*}
@@ -956,9 +956,14 @@
     \begin{proof}
         In fact,
         \begin{equation*}
-            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm = [\sum_k f^*_k \hat a_k, \sum_m g_m \hat a^\dagger]_\pm = \sum_k \sum_m f^*_k g_m \underbrace{[\hat a_k, \hat a^\dagger_m]}_{\delta_{km} \mathbb I} = \sum_k \sum_m f^*_k g_m \underbrace{\delta_{km}}_{k= m} \mathbb I = \sum_k f^*_k g_k \mathbb I = \braket{f}{g} \mathbb I ~.
+        \begin{aligned}
+            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\sum_k f^*_k \hat a_k, \sum_m g_m \hat a^\dagger]_\pm \\ & = \sum_k \sum_m f^*_k g_m \underbrace{[\hat a_k, \hat a^\dagger_m]}_{\delta_{km} \mathbb I} \\ & = \sum_k \sum_m f^*_k g_m \underbrace{\delta_{km}}_{k= m} \mathbb I \\ & = \sum_k f^*_k g_k \mathbb I \\ & = \braket{f}{g} \mathbb I ~.
+        \end{aligned}
         \end{equation*}
-        where we have used $\ket{f} \sum_k f_k \ket{e_k}$, $\ket{g} = \sum_m g_m \ket{e_m}$ and $\braket{f}{g} = \sum_k \sum_m f^*_k g_m \underbrace{\braket{e_k}{e_m}}_{\delta_{km}} = \sum_k f^*_k g_k$.
+        where we have used 
+        \begin{equation*}
+            \ket{f} = \sum_k f_k \ket{e_k} ~, \quad \ket{g} = \sum_m g_m \ket{e_m} ~, \quad \braket{f}{g} = \sum_k \sum_m f^*_k g_m \underbrace{\braket{e_k}{e_m}}_{\delta_{km}} = \sum_k f^*_k g_k ~.
+        \end{equation*}
     \end{proof}
 
     Consider a single particle state in $\mathcal H = L^2(\mathbb R^d) \ni \psi(x)$ with an orthonormal basis $u_k(x)$ such that to each ket there are ladder operators $\hat a_k$ and $\hat a_k^\dagger$. Hence $L^2(\mathbb R^d) \ni f(x) = \sum_k f_k u_k(x)$ and we define field operators
@@ -978,7 +983,9 @@
     \begin{proof}
         In fact,
         \begin{equation*}
-            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm = [\int d^d x ~ f^* (x) \hat \psi(x), \int d^d y ~ g(y) \hat \psi^\dagger (y)]_\pm = \int d^d x \int d^d y ~ f^*(x) g(y) [\psi(x), \psi^\dagger (y)]  ~,
+        \begin{aligned}
+            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\int d^d x ~ f^* (x) \hat \psi(x), \int d^d y ~ g(y) \hat \psi^\dagger (y)]_\pm \\ & = \int d^d x \int d^d y ~ f^*(x) g(y) [\psi(x), \psi^\dagger (y)]  ~,
+        \end{aligned}
         \end{equation*}
         which must be equal to 
         \begin{equation*}
@@ -1083,11 +1090,13 @@
 
     The number of particle operator is 
     \begin{equation*}
-        \hat N = \int d^d x \hat \rho^{(1)}_F (x) = \int d^d x \sum_{kk'} u^*_k (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\int d^d x u^*_k (x) u_{k'} (x)}_{\delta_{kk'}} = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\delta_{kk'}}_{k = k'} = \sum_k \hat a^\dagger_k \hat a_k = \sum_k \hat n_k ~,
+    \begin{aligned}
+        \hat N & = \int d^d x \hat \rho^{(1)}_F (x) \\ & = \int d^d x \sum_{kk'} u^*_k (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} \\ & = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\int d^d x u^*_k (x) u_{k'} (x)}_{\delta_{kk'}} \\ & = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\delta_{kk'}}_{k = k'} \\ & = \sum_k \hat a^\dagger_k \hat a_k = \sum_k \hat n_k ~,
+    \end{aligned}
     \end{equation*}
     which is consistent with the definition of $\rho$ since it can be seen as a density of particle whose intergral is indeed the number of particles.
 
-\subsection{Free non-relativistic $3$-dimensional particles} 
+\subsection{Free non-relativistic 3-dimensional particles} 
 
     Consider the hamiltonian of a single particle described by the wave function $\psi (x) \in L^2 (\mathbb R^d)$ 
     \begin{equation*}

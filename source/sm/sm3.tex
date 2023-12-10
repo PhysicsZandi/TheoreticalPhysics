@@ -2,7 +2,7 @@
 
 \chapter{Microcanonical ensemble}
 
-\section{Non-relativistic ideal gas in $d$-dimensions}
+\section{Non-relativistic ideal gas in d-dimensions}
 
     Consider a non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. Its hamiltonian is 
     \begin{equation*}
@@ -123,7 +123,7 @@
         \end{equation*}
     \end{proof}
 
-\section{Non-relativistic ideal gas in $3$-dimensions}
+\section{Non-relativistic ideal gas in 3-dimensions}
 
     Now, consider the case in which $d = 3$.
     The number of states $\Sigma(E)$ is 
@@ -158,7 +158,7 @@
         p V = N k_B T ~.
     \end{equation*}
 
-\section{Gas of harmonic oscillators in $d$-dimensions}
+\section{Gas of harmonic oscillators in 3-dimensions}
 
     Consider a non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$. Its hamiltonian is 
     \begin{equation*}
@@ -259,7 +259,7 @@
 
 \chapter{Canonical ensemble}
 
-\section{Non-relativistic ideal gas in $d$-dimensions}
+\section{Non-relativistic ideal gas in d-dimensions}
 
     Consider an indistinguishable non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. If we did not confined the particles is a finite volume, we would have found undesidered divergences. Its hamiltonian is 
     \begin{equation*}
@@ -312,7 +312,9 @@
     \begin{proof}
         By~\eqref{can:e}
         \begin{equation*}
-            E = - \pdv{\ln Z}\beta = - \pdv{}{\beta} N (1 - \ln (n \lambda_T^d)) = - Nd \pdv{}{\beta} \ln (\lambda_T) = - Nd \pdv{}{\beta} \ln (\beta^{1/2}) = \frac{Nd}{2} \frac{1}{\beta} = \frac{d}{2} N k_B T ~.
+        \begin{aligned}
+            E & = - \pdv{\ln Z}\beta \\ & = - \pdv{}{\beta} N (1 - \ln (n \lambda_T^d)) \\ & = - Nd \pdv{}{\beta} \ln (\lambda_T) \\ & = - Nd \pdv{}{\beta} \ln (\beta^{1/2}) \\ & = \frac{Nd}{2} \frac{1}{\beta} \\ & = \frac{d}{2} N k_B T ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
     
@@ -334,7 +336,9 @@
     \begin{proof}
         By~\eqref{can:s}
         \begin{equation*}
-            S = \frac{E - F}{T} = \frac{1}{T} \Big ( \frac{d}{2} N k_B T - \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) \Big ) = \frac{N}{\beta T} \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) = N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big )
+        \begin{aligned}
+            S & = \frac{E - F}{T} \\ & = \frac{1}{T} \Big ( \frac{d}{2} N k_B T - \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) \Big ) \\ & = \frac{N}{\beta T} \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) \\ & = N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big )
+        \end{aligned}
         \end{equation*}
     \end{proof}
 
@@ -413,7 +417,7 @@
         \end{equation*}
     \end{proof}
 
-\section{Non-relativistic ideal gas in $3$-dimensions}
+\section{Non-relativistic ideal gas in 3-dimensions}
 
     Now, consider the case in which $d = 3$.
     For indistinguishable particles, the canonical partition function $Z$ is 
@@ -441,7 +445,7 @@
         T_c = \frac{2 m \pi k_B}{h^2} e^{3/2} n^{-2/3} ~.
     \end{equation*}
     A plot of this is in Figure~\ref{can:ent}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '5/2 - log(1 / x**(3/2))', 1, 3, 0, True, False, False)}}
         \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{2 \pi m k_B T n^{2/3}}{h^2}$ and $f(x) = \frac{S}{N k_B}$.}
@@ -458,7 +462,7 @@
         \mu = \frac{1}{\beta} \ln (n \lambda_T^3) ~.
     \end{equation*}
     A plot of this is in Figure~\ref{can:mu}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x**(3/2)) ', 2, 3, 1, True, False, False)}}
         \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{2 \pi m k_B T n^{2/3}}{h^2}$ and $f(x) = \frac{2 \pi m \mu}{h^2 n^{3/2}}$.}
@@ -472,7 +476,7 @@
 
     Notice that there are two problems: entropy cannot be negative and the specific heat $C_V \rightarrow 0$ for $T \rightarrow 0$, by thermodynamics. This means that this model is not correct and we must go quantum.
     
-\section{Gas of harmonic oscillators in $d$-dimensions}
+\section{Gas of harmonic oscillators in d-dimensions}
 
     Consider a distinguishable non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$. Its hamiltonian is 
     \begin{equation*}
@@ -603,7 +607,7 @@
         \end{equation*}
     \end{proof}
 
-\section{Gas of harmonic oscillators in $1$-dimension}
+\section{Gas of harmonic oscillators in 1-dimension}
 
     Now, consider the case in which $d = 1$.
     For distinguishable particles, the canonical partition function $Z$ is 
@@ -631,7 +635,7 @@
         T_c = \frac{h \omega}{2 \pi k_B e} ~.
     \end{equation*}
     A plot of this is in Figure~\ref{can:ent2}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '1 - log(1 / x)', 2, 3, 2, True, False, False)}}
         \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{S}{N k_B}$.}
@@ -648,7 +652,7 @@
         \mu = \frac{1}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
     \end{equation*}
     A plot of this is in Figure~\ref{can:mu2}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x)', 3, 3, 3, True, False, False)}}
         \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{2 \pi \mu}{h \omega}$.}
@@ -760,7 +764,9 @@
     \begin{proof}
         By~\eqref{can:s}
         \begin{equation*}
-            S = \frac{E - F}{T} = \frac{1}{T} \Big ( 3 N k_B T - \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1)  \Big ) = 3 N k_B - N k_B (\ln \frac{n (\beta h c)^3}{8\pi} - 1) = N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) ~.
+        \begin{aligned}
+            S & = \frac{E - F}{T} \\ & = \frac{1}{T} \Big ( 3 N k_B T - \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1)  \Big ) \\ & = 3 N k_B - N k_B (\ln \frac{n (\beta h c)^3}{8\pi} - 1) \\ & = N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
 
@@ -794,7 +800,7 @@
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{can:ent3}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '4 - log(1 / x**3)', 3, 5, 4, True, False, False)}}
         \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{(8 \pi)^{1/3} k_B T}{h c n^{1/3}}$ and $f(x) = \frac{S}{N k_B}$.}
@@ -827,7 +833,7 @@
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{can:mu3}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x**3)', 3, 4, 5, True, False, False)}}
         \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{(8 \pi)^{1/3} k_B T}{h c n^{1/3}}$ and $f(x) = \frac{(8 \pi)^{1/3} \mu}{h c n^{1/3}}$.}
@@ -919,7 +925,7 @@
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{max:mom}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'exp(- x**2)', 3, 2, 6, True, False, False)}}
         \caption{A plot of the momentum probability density distribution. We have used $x = \sqrt{\frac{\beta}{2m}} p$ and $f(x) = (2\pi m k_B T)^{3/2} \rho$.}
@@ -956,7 +962,7 @@
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{max:vel}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x**2 * exp(- x**2)', 3, 0.5, 7, True, True, True)}}
         \caption{A plot of the velocity modulus probability density distribution. We have used $x = \sqrt{\frac{\beta m}{2}} v$ and $f(x) = \rho$.}
@@ -1077,7 +1083,9 @@
     \begin{proof}
         By~\eqref{can:e}
         \begin{equation*}
-            E = - \pdv{\ln Z}{\beta} = - \pdv{}{\beta} N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} = - N \pdv{}{\beta} \ln \sinh (\beta \mu B) + N \pdv{}{\beta} \ln \beta = - N \mu B \coth (\beta \mu B) + \frac{N}{\beta} = - N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) ~.
+        \begin{aligned}
+            E & = - \pdv{\ln Z}{\beta} \\ & = - \pdv{}{\beta} N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \\ & = - N \pdv{}{\beta} \ln \sinh (\beta \mu B) + N \pdv{}{\beta} \ln \beta \\ & = - N \mu B \coth (\beta \mu B) + \frac{N}{\beta} \\ & = - N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) ~.
+        \end{aligned}
         \end{equation*}
 
         To study the limit for $\beta \rightarrow 0$ or $T \rightarrow \infty$, we Taylor expand for the variable $x = \beta \mu B$
@@ -1098,7 +1106,7 @@
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{can:magen}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '- coth(1 / x) + x', 5, 1.2, 10, True, True, False)}}
         \caption{A plot of the internal energy $E$ as a function of $T$. We have used $x = \frac{1}{\beta \mu B}$ and $f(x) = \frac{E}{N \mu B}$.}
@@ -1140,11 +1148,13 @@
         \end{equation*}
         but 
         \begin{equation*}
-            M_z = - \pdv{F}{B} = \pdv{}{B} \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} = \frac{N}{\beta} \pdv{}{\beta} \ln \sinh (\beta \mu B) - \frac{N}{\beta} \pdv{}{B} \ln B = N \mu \coth(\beta \mu B) - \frac{N}{\beta B} = N \mu \Big (\coth (\beta \mu B) - \frac{1}{\beta \mu B} \Big ) ~.
+        \begin{aligned}
+            M_z & = - \pdv{F}{B} \\ & = \pdv{}{B} \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \\ & = \frac{N}{\beta} \pdv{}{\beta} \ln \sinh (\beta \mu B) - \frac{N}{\beta} \pdv{}{B} \ln B \\ & = N \mu \coth(\beta \mu B) - \frac{N}{\beta B} \\ & = N \mu \Big (\coth (\beta \mu B) - \frac{1}{\beta \mu B} \Big ) ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{can:mag}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'coth(x) - 1 / x', 7, 1, 8, True, True, True)}}
         \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{M_z}{N \mu}$.}
@@ -1158,11 +1168,13 @@
     \begin{proof}
         By definition
         \begin{equation*}
-            \chi_\beta = \pdv{M}{B} = \pdv{}{B} N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B}) = N \mu ( - \frac{\beta \my}{\sinh^2 (\beta \mu B)} + \frac{\beta \mu}{(\beta \mu B)^2} ) = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
+        \begin{aligned}
+            \chi_\beta & = \pdv{M}{B} \\ & = \pdv{}{B} N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B}) \\ & = N \mu ( - \frac{\beta \mu}{\sinh^2 (\beta \mu B)} + \frac{\beta \mu}{(\beta \mu B)^2} ) \\ & = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
     A plot of this is in Figure~\ref{can:sus}.
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x * (1 / x**2 - 1 / sinh(x)**2)', 5, 0.5, 9, True, True, True)}}
         \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{B \chi_\beta}{N \mu}$.}
@@ -1194,7 +1206,7 @@
 
 \chapter{Grancanonical ensemble}
 
-\section{Non-relativistic ideal gas in $d$-dimensions}
+\section{Non-relativistic ideal gas in d-dimensions}
 
     Consider an indistinguishable non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. 
 
@@ -1210,7 +1222,7 @@
     \begin{proof}
         By definition, using the Taylor expansion of the exponential,
         \begin{equation*}
-            \mathcal Z = \sum_{N=0}^\infty z^N Z_N = \sum_{N=0}^\infty \frac{1}{N!} \Big ( \frac{z V}{\lambda_T^d} \Big)^N = \exp(\frac{z V}{\lmabda_T^d}) ~.
+            \mathcal Z = \sum_{N=0}^\infty z^N Z_N = \sum_{N=0}^\infty \frac{1}{N!} \Big ( \frac{z V}{\lambda_T^d} \Big)^N = \exp(\frac{z V}{\lambda_T^d}) ~.
         \end{equation*}
     \end{proof}
     
@@ -1255,9 +1267,231 @@
 
 \section{Maxwell-Boltzmann distribution}
 
+    We can distribute $N$ particle in $p$ boxes in ways 
+    \begin{equation*}
+        W^{(1)}_{n_r} = \frac{N!}{n_1! \ldots n_p!} ~,
+    \end{equation*}
+    whereas there is no restriction for the states 
+    \begin{equation*}
+        W^{(2)}_{n_r} = \prod_r g_r^{n_r} ~,
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        W_{n_r} = \frac{N!}{n_1! \ldots n_p!} \prod_{r=1}^p g_r^{n_r} = N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} ~.
+    \end{equation*}
+
+    Maximising the constrained entropy, we find the Boltzmann canonical distribution 
+    \begin{equation*}
+        p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
+    \end{equation*}
+    \begin{proof}
+        The entropy is, using the Stirling approximation (see Appendix 2),
+        \begin{equation*}
+        \begin{aligned}
+            S & = \ln W_{n_r} \\ & = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) \\ & = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} \\ & = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} \\ & = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
+        \end{aligned}
+        \end{equation*}
+
+        The constrained entropy is
+        \begin{equation*}
+            S =  N \ln N + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
+        \end{equation*}
+
+        The maximum is 
+        \begin{equation*}
+            0 = \pdv{S}{n_r} = \ln g_r - \ln n_r - 1 - \alpha - \beta E_r ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            n_r^* = \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~.
+        \end{equation*}
+
+        We find $\alpha$ by the normalisation condition 
+        \begin{equation*}
+            N = \sum_r n_r^* = \sum_r \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \exp(1 + \alpha) = \frac{\sum_r g_r \exp(- \beta E_r)}{N} ~.
+        \end{equation*}
+
+        Finally, if we identify $\beta = 1/k_B T$ the probability distribution density is
+        \begin{equation*}
+            p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
+        \end{equation*}
+    \end{proof}
+    A plot of this is in Figure~\ref{en:bol}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 5, 10, 11, True, False, True)}}
+        \caption{A plot of the probability density distribution $p_r^*$ as a function of $\beta E_r$. We have used $x = \beta E_r$ and $f(x) = p_r^* \frac{\sum_r g_r \exp(- \beta E_r)}{g_r}$.}
+        \label{en:bol}
+    \end{figure}
+
 \section{Fermi-Dirac distribution}
+
+    For fermions, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable
+    \begin{equation*}
+        W^{(1)}_{n_r} = 1 ~,
+    \end{equation*}
+    whereas we can distribute $n_r$ objects in $g_r$ boxes
+    \begin{equation*}
+        W^{(2)}_{n_r} = \prod_r \binom{g_r}{n_r} = \prod_r \frac{g_r!}{n_r! (g_r - n_r)!} ~,
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        W_{n_r} = \prod_r \binom{g_r}{n_r} = \prod_r \frac{g_r!}{n_r! (g_r - n_r)!} ~.
+    \end{equation*}
+    
+    Maximising the constrained entropy, we find the Bose-Einstein distribution 
+    \begin{equation*}
+        n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) + 1} ~.
+    \end{equation*}
+    \begin{proof}
+        The entropy is, using the Stirling approximation (see Appendix 2),
+        \begin{equation*}
+        \begin{aligned}
+            S & = \ln W_{n_r} \\ & = \ln \Big (\prod_r \frac{g_r!}{n_r! (g_r - n_r)!} \Big) \\ & = \sum_r \Big ( \underbrace{\ln g_r!}_{g_r \ln g_r - g_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - n_r)!}_{(g_r - n_r) \ln (g_r - n_r) - g_r + n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - \cancel{g_r} - n_r \ln n_r + \cancel{n_r} - (g_r - n_r) \ln (g_r - n_r) + \cancel{g_r} - \cancel{n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) 
+             ~.
+        \end{aligned}
+        \end{equation*}
+    
+        The constrained entropy is
+        \begin{equation*}
+            S =  \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
+        \end{equation*}
+    
+        The maximum is 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \pdv{S}{n_r} \\ & = - \ln n_r - \cancel{1} + \ln (g_r - n_r) + \cancel{1} - \alpha - \beta E_r \\ & = - \ln n_r + \ln (g_r - n_r) - \alpha - \beta E_r \\ & = \ln (\frac{g_r}{n_r} - 1) - \alpha - \beta E_r~ ,
+        \end{aligned}
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \frac{g_r}{n_r} - 1 = \exp(\alpha + \beta E_r) ~,
+        \end{equation*}
+        \begin{equation*}
+            n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) + 1} ~.
+        \end{equation*}
+    \end{proof}
+    A plot of this is in Figure~\ref{en:fd}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) + 1)', 5, 2, 12, True, False, True)}}
+        \caption{A plot of the Fermi-Dirac distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
+        \label{en:fd}
+    \end{figure}
 
 \section{Bose-Einstein distribution}
 
+    For bosons, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable
+    \begin{equation*}
+        W^{(1)}_{n_r} = 1 ~,
+    \end{equation*}
+    whereas we can distribute $n_r$ objects in $g_r$ boxes
+    \begin{equation*}
+        W^{(2)}_{n_r} = \prod_r \binom{n_r + g_r - 1}{n_r} = \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} ~,
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        W_{n_r} = \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} ~.
+    \end{equation*}
+    
+    Maximising the constrained entropy, we find the Bose-Einstein distribution 
+    \begin{equation*}
+        n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) - 1} ~.
+    \end{equation*}
+    \begin{proof}
+        The entropy is, using the Stirling approximation (see Appendix 2),
+        \begin{equation*}
+        \begin{aligned}
+            S & = \ln W_{n_r} \\ & = \ln \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} \\ & = \sum_r \Big (\underbrace{\ln (n_r + g_r - 1)!}_{(n_r + g_r - 1) \ln (n_r + g_r - 1) - n_r - g_r + 1} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - 1)!}_{(g_r - 1) \ln (g_r - 1) - g_r + 1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) - \cancel{n_r} - \cancel{g_r} + \cancel{1} \\ & \quad - n_r \ln n_r + \cancel{n_r }- (g_r - 1) \ln (g_r - 1) + \cancel{g_r} - \cancel{1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) 
+        \end{aligned}
+        \end{equation*}
+    
+        The constrained entropy is
+        \begin{equation*}
+        \begin{aligned}
+            S & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) \\ & \quad + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
+        \end{aligned}
+        \end{equation*}
+    
+        The maximum is 
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \pdv{S}{n_r} \\ & = \ln (n_r + g_r - 1) + \cancel{1} - \ln n_r - \cancel{1} - \alpha - \beta E_r \\ & = \ln (n_r + g_r - 1) - \ln n_r - \alpha - \beta E_r \\ & = \ln (\frac{g_r - 1}{n_r} + 1) - \alpha - \beta E_r~ ,
+        \end{aligned}
+        \end{equation*}
+        hence, for $g_r \gg 1$,
+        \begin{equation*}
+            \frac{g_r - 1}{n_r} + 1 = \exp(\alpha + \beta E_r) ~,
+        \end{equation*}
+        \begin{equation*}
+            n_r^* = \frac{g_r - 1}{\exp(\alpha + \beta E_r) - 1} \simeq \frac{g_r}{\exp(\alpha + \beta E_r) - 1} ~.
+        \end{equation*}
+    \end{proof}
+    A plot of this is in Figure~\ref{en:be}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) - 1)', 5, 5, 13, True, False, True)}}
+        \caption{A plot of the Bose-Einstein distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
+        \label{en:be}
+    \end{figure}
+
 \section{Two-levels system}
+
+    Consider a system composed by $2$ levels of energies $\epsilon_+ = + \epsilon$ and $\epsilon_- = - \epsilon$. The constrains are 
+    \begin{equation*}
+        E = \epsilon (n_+ - n_-) ~, \quad N = n_+ + n_- ~.
+    \end{equation*}
+    They can be inverted as
+    \begin{equation}
+        n_+ = \frac{N}{2} + \frac{E}{2\epsilon} ~, \quad n_+ = \frac{N}{2} - \frac{E}{2\epsilon} ~.
+    \end{equation}
+
+    We can distribute $N$ objects in $n_+$ boxes
+    \begin{equation*}
+        \Omega(E) = \binom{N}{n_+} = \frac{N!}{n_+! (N - n_+)!}  = \frac{N!}{n_+! n_-!} ~.
+    \end{equation*}
+    
+    The entropy is 
+    \begin{equation*}
+        S = - N k_B \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} ) \Big ) ~.
+    \end{equation*}
+    \begin{proof}
+        By definition, using the Stirling approximation (see Appendix 2),
+        \begin{equation*}
+        \begin{aligned}
+            \frac{S}{k_B} & = \ln \Omega (E) \\ & = \ln \frac{N!}{n_+! n_-!} \\ & = \underbrace{\ln N!}_{N \ln N - N} - \underbrace{\ln n_+!}_{n_+ \ln n_+ - n_+} - \underbrace{\ln n_-!}_{n_- \ln n_- - n_-} \\ & = N \ln N - \cancel{N} - n_+ \ln n_+ + \cancel{n_+} - n_- \ln n_- + \cancel{n_-} \\ & = N \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = (n_+ + n_-) \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = n_+ \ln \frac{N}{n_+} + n_- \ln \frac{N}{n_-} \\ & = (\frac{N}{2} + \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} + \frac{E}{2\epsilon}} + (\frac{N}{2} - \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} - \frac{E}{2\epsilon}} \\ & = N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} + \frac{E}{2\epsilon N}} + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} - \frac{E}{2\epsilon N}} \Big ) \\ & = - N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} )\Big ) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    A plot of this is in Figure~\ref{en:s}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '-( (1 / 2 + x) * ln (1/2 + x) +  (1 / 2 - x) * ln (1/2 - x) )', 1, 1, 14, True, False, True)}}
+        \caption{A plot of the entropy $S$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{S}{N k_B}$.}
+        \label{en:s}
+    \end{figure}
+
+    The temperature is 
+    \begin{equation*}
+        T = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{T}
+        \begin{equation*}
+        \begin{aligned}
+            T & = (\pdv{S}{E})^{-1} \\ & = - (\frac{k_B}{2\epsilon} \ln (\frac{1}{2} + \frac{E}{2 \epsilon N}) + \cancel{\frac{k_B}{2\epsilon}} - \frac{k_B}{2\epsilon} \ln (\frac{1}{2} - \frac{E}{2 \epsilon N}) - \cancel{\frac{k_B}{2\epsilon}} )^{-1} \\ & = - (\frac{k_B}{2\epsilon} \ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}})^{-1} \\ & = - \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}}} \\ & = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    A plot of this is in Figure~\ref{en:t}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 / (ln ( (0.5 - x) / (0.5 + x) ) )', 10, 10, 15, True, False, False)}}
+        \caption{A plot of the temperature $T$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{k_B T}{2 \epsilon}$.}
+        \label{en:t}
+    \end{figure}
 

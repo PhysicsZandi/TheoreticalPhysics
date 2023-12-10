@@ -1,0 +1,283 @@
+\part{Maxwell theory}
+
+\chapter{Classical electrodynamics}
+
+\section{Maxwell lagrangian}
+
+    The lagrangian of the electromagnetic field is 
+    \begin{equation*}
+        \mathcal L = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} ~,
+    \end{equation*}
+    where the electromagnetic tensor is 
+    \begin{equation*}
+        F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu = \begin{bmatrix}
+            0 & E_1 & E_2 & E_3 \\ 
+            -E_1 & 0 & - B_3 & B_2 \\ 
+            - E_2 & B_3 & 0 & - B_1 \\ 
+            - E_3 & -B_2 & B_1 & 0 \\
+        \end{bmatrix}
+    \end{equation*}
+    and the $4$-potential is $A^\mu = (\phi, \mathbf A)$.
+
+    The equation of motion (Maxwell's equations) are 
+    \begin{equation*}
+        \partial_\mu F^{\mu\nu} = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{eleq}
+        \begin{equation*}
+            0 = \partial_\mu \pdv{\mathcal L}{\partial_\mu A_\nu} = - \partial_\mu F^{\mu\nu} ~.
+        \end{equation*}
+    \end{proof}
+
+    The electromagnetic tensor satisfies the Bianchi identity 
+    \begin{equation*}
+        \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda \mu} + \partial_\lambda F_{\mu \nu} = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, by the symmetry of partial derivatives, 
+        \begin{equation*}
+        \begin{aligned}
+            \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda \mu} + \partial_\lambda F_{\mu \nu} & = \partial_\mu (\partial_\nu A_\lambda - \partial_\lambda A_\nu) + \partial_\nu (\partial_\lambda A_\mu - \partial_\mu A_\lambda) + \partial_\lambda (\partial_\mu A_\nu - \partial_\nu A_\mu) \\ & = \partial_\mu \partial_\nu A_\lambda -  \partial_\mu \partial_\lambda A_\nu + \partial_\nu \partial_\lambda A_\mu - \partial_\nu  \partial_\mu A_\lambda + \partial_\lambda \partial_\mu A_\nu - \partial_\lambda \partial_\nu A_\mu \\ & = \cancel{\partial_\nu \partial_\mu A_\lambda} - \cancel{\partial_\lambda \partial_\mu A_\nu} +  \cancel{\partial_\lambda \partial_\nu A_\mu} - \cancel{\partial_\nu \partial_\mu A_\lambda} + \cancel{\partial_\lambda \partial_\mu A_\nu} - \cancel{\partial_\lambda \partial_\nu A_\mu} = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    The Bianchi identity can be written in terms of the dual tensor
+    \begin{equation*}
+        \tilde F^{\mu\nu} = - \frac{1}{2} \epsilon^{\mu\nu\rho\sigma} F_{\rho\sigma} ~,
+    \end{equation*}
+    explicitly 
+    \begin{equation*}
+        \tilde F_{\mu\nu} = \begin{bmatrix}
+            0 & - B_1 & - B_2 & - B_3 \\ 
+            B_1 & 0 & E_3 & -E_2 \\ 
+            B_2 & -E_3 & 0 & E_1 \\ 
+            B_3 & E_2 & -E_1 & 0 \\
+        \end{bmatrix} ~,
+    \end{equation*}
+    as 
+    \begin{equation*}
+        \partial_\mu \tilde F^{\mu\nu} = - \frac{1}{2} \epsilon^{\mu\nu\rho\sigma} \partial_\mu  F_{\rho\sigma} = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda \mu} + \partial_\lambda F_{\mu \nu} \\ & = \epsilon^{\mu\nu\lambda\sigma} (\partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda \mu} + \partial_\lambda F_{\mu \nu}) \\ & = \partial_\mu \epsilon^{\mu\nu\lambda\sigma} F_{\nu\lambda} + \partial_\nu \epsilon^{\mu\nu\lambda\sigma} F_{\lambda \mu} + \partial_\lambda \epsilon^{\mu\nu\lambda\sigma} F_{\mu \nu} \\ & = \cancel{\partial_\mu \epsilon^{\sigma\mu\nu\lambda} F_{\nu\lambda}} - \cancel{\partial_\nu \epsilon^{\sigma\nu\lambda\mu} F_{\lambda\mu}} + \partial_\lambda \epsilon^{\lambda\sigma\mu\nu} F_{\mu \nu} \\ & = \epsilon^{\mu\nu\rho\sigma} \partial_\mu  F_{\rho\sigma} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    It can be proved that the Maxwell's equations in covariant formalism can be written as 
+    \begin{equation*}
+        \boldsymbol \nabla \cdot \mathbf B = 0 ~, \quad \pdv{\mathbf B}{t} = - \boldsymbol \nabla \times \mathbf E \quad \Rightarrow \quad \partial_\mu \tilde F^{\mu\nu} = 0 ~,
+    \end{equation*}
+    \begin{equation*}
+        \boldsymbol \nabla \cdot \mathbf E = 0 ~, \quad \pdv{\mathbf E}{t} = \boldsymbol \nabla \times \mathbf E \quad \Rightarrow \quad \partial_\mu F^{\mu\nu} = 0 ~.
+    \end{equation*}
+    Notice that there is a duality symmetry, since if we perfom the exhange $\mathbf E \leftrightarrow - \mathbf B$, we find $F^{\mu\nu} \leftrightarrow \tilde F^{\mu\nu}$.
+
+\section{Gauge symmetry}
+
+    We rewrite the lagrangian in terms of temporal and spatial indices
+    \begin{equation*}
+        \mathcal L = - \frac{1}{2} (F_{0i} F^{0i} + F_{ij} F^{ij} ) ~.
+    \end{equation*} 
+    \begin{equation*}
+    \begin{aligned}
+        \mathcal L & = - \frac{1}{4} (\partial_\mu A_\nu - \partial_\nu A_\mu)(\partial^\mu A^\nu - \partial^\nu A^\mu) \\ & = -\frac{1}{4} (\partial_\mu A_\nu \partial^\mu A^\nu - \partial_\mu A_\nu \partial^\nu A^\mu -  \partial_\nu A_\mu \partial^\mu A^\nu + \partial_\nu A_\mu \partial^\nu A^\mu) \\ & = - \frac{1}{2} (\partial_\mu \partial^\mu A^\nu A_\nu - \partial_\nu \partial^\mu A^\nu A_\mu) \\ & = - \frac{1}{2} (\cancel{\partial_0 \partial^0 A^0 A_0} + \partial_0 \partial^0 A^i A_i + \partial_i \partial^i A^0 A_0 + \partial_i \partial^i A^j A_j - \cancel{\partial_0 \partial^0 A^0 A_0} - \partial_0 \partial^i A^0 A_i - \partial_i \partial^j A^i A_j - \partial_i \partial^0 A^i A_0) \\ & = - \frac{1}{2} (\partial_0 \partial^0 A^i A_i + \partial_i \partial^i A^0 A_0 + \partial_i \partial^i A^j A_j - \partial_0 \partial^i A^0 A_i - \partial_i \partial^j A^i A_j - \partial_i \partial^0 A^i A_0) \\ & = - \frac{1}{2} 
+        (\partial_0 \partial^0 A^i A_i - \partial_0 \partial^i A_i A^0 - \partial_i  \partial^0 A^0 A^i + \partial_j \partial^j A_i A^i - \partial_i \partial^j A_j A^i + \partial_j \partial^i A_i A^j + \partial_i \partial^j A_j A^i - \partial_i \partial^i A_j A^j ) \\ & = - \frac{1}{2} ((\partial_0 A_i - \partial_i A_0) (\partial^0 A^i - \partial^i A^0) - (\partial_j A_i - \partial_i A_j) (\partial^j A^i - \partial^i A^j)) \\ & = - \frac{1}{2} (F_{0i} F^{0i} + F_{ij} F^{ij} ) ~.
+    \end{aligned}
+    \end{equation*}
+    Notice that there is no dependence on the kinetic part of $A^0$, i.e. $\dot A^0$, which means that $A^0$ is fully determined by $A^i$. In fact, by the Gauss' law 
+    \begin{equation*}
+        \boldsymbol \nabla \boldsymbol \nabla A_0 = \boldsymbol \nabla \cdot \pdv{\mathbf A}{t} ~,
+    \end{equation*}
+
+    This implies that there is a gauge symmetry 
+    \begin{equation*}
+        {A'}_\mu (x) = A_\mu (x) + \partial_\mu \alpha (x) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            {F'}^{\mu\nu} = \partial_\mu {A'}_\nu - \partial_\nu {A'}_\mu = \partial_\mu A_\nu - \partial_\nu A_\mu + \cancel{\partial_\mu \partial_\nu \alpha(x)} - \cancel{\partial_\nu \partial_\mu \alpha(x)} = \partial_\mu A_\nu - \partial_\nu A_\mu = F^{\mu\nu} ~,
+        \end{equation*}
+        which means 
+        \begin{equation*}
+            \mathcal L' = \mathcal L ~.
+        \end{equation*}
+    \end{proof}
+
+    Actually, there is a second gauge transformation 
+    \begin{equation*}
+        {A''}_\mu (x) = {A'}_\mu (x) + \partial_\mu \beta (x) = A_\mu (x) + \partial_\mu (\alpha (x) + \beta (x) ) ~.
+    \end{equation*}
+    Physically, $A$, $A'$ and $A''$ descibes the same state, therefore they define a class of equivalence of physical states. There are several choices for the representative of this class. The one we will use is the Lorenz gauge, which brings down the number of degrees of freedom to $2$ (the $2$ orthogonal polarisation direction ot the motion)
+    \begin{equation*}
+        \partial_\mu A^\mu = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        With a gauge transformation 
+        \begin{equation*}
+            {A'}_\mu (x) = A_\mu (x) + \partial_\mu \alpha (x) ~,
+        \end{equation*}
+        $\alpha (x)$ must satisfy 
+        \begin{equation*}
+            0 = \partial_\mu {A'}^\mu = \partial_\mu A^\mu + \Box \alpha (x)
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \Box \alpha(x) = \partial_\mu A^\mu ~.
+        \end{equation*}
+
+        With the second gauge transformation 
+        \begin{equation*}
+            {A''}_\mu (x) = {A'}_\mu (x) + \partial_\mu \beta (x) ~,
+        \end{equation*}
+        $\beta (x)$ must satisfy 
+        \begin{equation*}
+            \partial_\mu {A''}^\mu = \partial_\mu {A'}^\mu + \Box \beta (x)
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \Box \beta(x) = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    The equations of motion in the Lorenz gauge are 
+    \begin{equation*}
+        \Box A^\mu (x) = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            0 = \partial_\mu F^{\mu\nu} = \partial_\mu (\partial^\mu A^\nu - \partial^\nu A^\mu) = \Box A^\nu - \partial^\nu \underbrace{\partial_\mu A^\mu}_0 = \Box A^\nu ~.
+        \end{equation*}
+    \end{proof}
+
+\chapter{Quantisation}
+
+\section{Hamiltonian}
+
+    The conjugate momentum of $A$ is 
+    \begin{equation*}
+        \pi^\mu = (0, \mathbf E) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            \pi^0 = \pdv{\mathcal L}{\dot A_0} = 0
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \pi^i = \pdv{\mathcal L}{\dot A_i} = - \frac{1}{2} \pdv{}{\dot A_i} ((\dot A_j - \partial_j A_0))(\dot A^j - \partial^j A_0) = - \frac{1}{2} \pdv{}{\dot A_i} (F_{0j} F^{0j}) = - F^{0i} = E^i ~.
+        \end{equation*}
+    \end{proof}
+
+    The hamiltonian is 
+    \begin{equation*}
+        H = \int d^3 x ~\Big ( \frac{1}{2}  (|E|^2 + |B|^2) - A_0 (\boldsymbol \nabla \cdot \mathbf E) \Big) ~.
+    \end{equation*}
+    Notice that we have a Lagrange multiplier $A_0$ to ensure the constrain of the Gauss' law, since $A_0$ is not a physical variable. In fact 
+    \begin{equation*}
+        0 = \dot A_0 = \pdv{\mathcal H}{A_0} = - \boldsymbol \nabla \cdot \mathbf E ~. 
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            \mathcal H = \pi^\mu \dot A_\mu - \mathcal L = \pi^i \dot A_i - \mathcal L = - E^i \underbrace{\dot A_i}_{- E_i - \partial_i A_0} - \mathcal L = E^i E_i + E^i \partial_i A_0 - \frac{1}{2} (|E|^2 - |B|^2) = \frac{1}{2} (|E|^2 + |B|^2) + E^i \partial_i A_0 ~,
+        \end{equation*}
+        hence 
+        \begin{equation}
+            H = \int d^3 x ~ \mathcal H = \int d^3 x ~ \Big ( \frac{1}{2} (|E|^2 + |B|^2) + \underbrace{E^i \partial_i A_0}_{- A_0 \partial_i E^i + \textnormal{boundary terms}} \Big) = \int d^3 x ~ \Big ( \frac{1}{2} (|E|^2 + |B|^2) - A_0 (\boldsymbol \nabla \cdot \mathbf E) \Big) ~.
+        \end{equation}
+    \end{proof}
+
+\section{Quantisation without Lorenz gauge}
+
+    Notice that the Maxwell's equations in the Lorentz gauge are equal to the Klein-Gordon ones with mass equals to zero. This ensures that the mass shell condition is preserved. This means that each components of $A^\mu$ separately satisfies the mass shell condition. At quantum level, $A_\mu$ describes particles (photons) with energy $E_{\mathbf p} = |\mathbf p|$.
+
+    Instead of imposind by hand the Lorenz gauge, we modify the lagrangian 
+    \begin{equation*}
+        \mathcal L = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} (\partial_\mu A^\mu)^2 ~. 
+    \end{equation*}
+    Therefore, the conjugate momentum is 
+    \begin{equation*}
+        \pi^\mu = (- \partial_\mu A^\mu, F^{i0}) = F^{\nu 0} - \eta^{\nu 0} \partial_\mu A^\mu ~.
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            \pi^0 = \pdv{\mathcal L}{\dot A_0} = - \frac{1}{2} \pdv{\mathcal L}{\dot A_0} (\partial_\mu A^\mu)^2 = - \partial_\mu A^\mu 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \pi^i = E^i = - F^{0i} = F^{i0} ~.
+        \end{equation*}
+
+        In covariant formalism 
+        \begin{equation*}
+            \pi^0 = \underbrace{F^{00}}_0 - \underbrace{\eta^{00}}_1 (\partial_\mu A^\mu) = - \partial_\mu A^\mu 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \pi^i = F^{0i} - \underbrace{\eta^{i0}}_0 (\partial_\mu A^\mu) = F^{0i} ~.
+        \end{equation*}
+    \end{proof}
+
+    Now, in Schoedinger picture, we promote $A^\mu(x)$ and $\pi^\mu(x)$ to operators in the Fock space by imposing the canoncial commutation (since an half-integer spin theory) relations 
+    \begin{equation*}
+        [\hat A_\mu (\mathbf x), \hat A_\nu (\mathbf y)] =[\hat \pi_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = 0 ~, \quad [\hat A_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = i \eta_{\mu\nu} \delta^3 (\mathbf x - \mathbf y) ~.
+    \end{equation*}
+
+\section{Plane waves} 
+
+    Since the general solution of $\Box A^\mu = 0$ are a linear combinations of plane waves, we write 
+    \begin{equation*}
+        \hat A_\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \Big ( \hat \xi_\mu (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + \hat \xi_\mu^\dagger (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x)) ~,
+    \end{equation*}
+    where $\xi_\mu (\mathbf p)$ is the polarisation $4$-vector. We introduce an orthonormal basis for the polarisation $4$-vectors $\epsilon_\mu^{(\lambda)}$, with $\lambda = 0, 1, 2, 3$, such that $\epsilon_\mu^{(\lambda)} \epsilon^{\mu (\lambda')} = \eta^{\lambda \lambda'}$ or $\epsilon_\mu^{(\lambda)} \epsilon_\nu^{(\lambda')} \eta_{\lambda \lambda'} = \eta_{\mu\nu}$. The coefficients on this expansion are the annihilation operators
+    \begin{equation*}
+        \hat \xi_\mu (\mathbf p) = \sum_{\lambda=0}^3 \epsilon_\mu^{(\lambda)} (\mathbf p) \hat a_{\mathbf p}^{(\lambda)} ~.
+    \end{equation*}
+
+    Therefore 
+    \begin{equation*}
+        \hat A_\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + \hat a_{\mathbf p}^{\dagger (\lambda)} (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~,
+    \end{equation*}
+    \begin{equation*}
+        \hat \pi^\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} i \sqrt{\frac{|\mathbf p|}{2}} \sum_{\lambda=0}^{3} \epsilon^{\mu(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) - \hat a_{\mathbf p}^{\dagger (\lambda)} (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~.
+    \end{equation*}
+
+    To make contact with the $2$ transversal polarisation of an electromagnetic wave, we chiise $\epsilon_\mu^{(1)}$ and $\epsilon_\mu^{(2)}$ to be orthogonal to the motion, such that $\epsilon_\mu^{(1)} p^\mu = \epsilon_\mu^{(2)} p^\mu = 0$. For example, if $p^\mu = (E, 0, 0, E)$ lies along the $z$-direction, we have $\epsilon_\mu^{(1)} p^\mu = \epsilon_0^{(1)} p^0 + \epsilon_3^{(1)} p^3 = E (\epsilon_0^{(1)} + \epsilon_3^{(1)}) = 0$, which means $\epsilon_0^{(1)} = -\epsilon_3^{(1)}$ that for convenience we put to zero $\epsilon_0^{(1)} = \epsilon_3^{(1)} = 0$. Similarly, we have $\epsilon_\mu^{(2)} p^\mu = \epsilon_0^{(2)} p^0 + \epsilon_3^{(2)} p^3 = E (\epsilon_0^{(2)} + \epsilon_3^{(2)}) = 0$, which means $\epsilon_0^{(2)} = -\epsilon_3^{(2)}$ that for convenience we put to zero $\epsilon_0^{(2)} = \epsilon_3^{(2)} = 0$. Therefore, if we choose $\epsilon_1^{(1)} = -1$, $\epsilon_2^{(1)} = 0$, $\epsilon_1^{(2)} = 0$ and $\epsilon_2^{(2)} = -1$. In matrix notation, 
+    \begin{equation*}
+        \epsilon^{\mu (0)} = \begin{bmatrix}
+            1 \\ 0 \\ 0 \\ 0 \\
+        \end{bmatrix} ~,  \epsilon^{\mu (1)} = \begin{bmatrix}
+            0 \\ 1 \\ 0 \\ 0 \\
+        \end{bmatrix} ~, \epsilon^{\mu (2)} = \begin{bmatrix}
+            0 \\ 0 \\ 1 \\ 0 \\
+        \end{bmatrix} ~, \epsilon^{\mu (3)} = \begin{bmatrix}
+            0 \\ 0 \\ 0 \\ 1 \\
+        \end{bmatrix} ~,
+    \end{equation*}
+    where $\epsilon^{\mu (0)}$ is timelike, $\epsilon^{\mu (1)}$ and $\epsilon^{\mu (2)}$ are spacelike and $\epsilon^{\mu (3)}$ is the longitudinal polarisation.
+
+    The commutation relations induced by the canonical ones on the ladder operators are 
+    \begin{equation*}
+        [\hat a_{\mathbf p}^{(\lambda)}, \hat a_{\mathbf q}^{(\lambda')}] = [\hat a_{\mathbf p}^{\dagger (\lambda)}, \hat a_{\mathbf q}^{\dagger (\lambda')}] = 0 ~, \quad [\hat a_{\mathbf p}^{(\lambda)}, \hat a_{\mathbf q}^{\dagger(\lambda')}] = - (2\pi)^3 \eta^{\lambda \lambda'} \delta^3 (\mathbf p - \mathbf q) ~.
+    \end{equation*}
+    or, explicitly the latter, 
+    \begin{equation*}
+        [\hat a_{\mathbf p}^{(0)}, \hat a_{\mathbf q}^{\dagger (0)}] = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~, \quad [\hat a_{\mathbf p}^{(i)}, \hat a_{\mathbf q}^{\dagger (i)}] = (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~.
+    \end{equation*}
+    Notice that there is a problem, since we do not have a probabilistic intepretation for a negative norm (only for the temporal components). We cannot neither interpret $\hat a$ as a creation operator, beacuse we would have problems for the spatial components. This kind of states are called ghosts. We could have seen it already by the lagrangian, since we had a minus sign in the temporal component
+    \begin{equation*}
+        \mathcal L = \frac{1}{2} (- (\dot A_0)^2 + (\dot A_1)^2 + (\dot A_2)^2 +(\dot A_3)^2 ) + \ldots ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Quantisation with Lorenz gauge}

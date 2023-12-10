@@ -18,7 +18,7 @@
         f = f(\tilde q^i, ~\tilde p_i)
     \end{equation*}
 
-    The time evolution is governed by a real function, called the hamiltonian $H(q^i, ~p_i, ~t)$, which is the solution of the equations of motion, called the Hamilton's equations
+    The time evolution is governed by a real function, called hamiltonian $H(q^i, ~p_i, ~t)$, which is the solution of the equations of motion, called the Hamilton's equations
     \begin{equation*}
         \dot q^i = \pdv{H}{p_i} \quad \dot p_i = - \pdv{H}{q^i}
     \end{equation*}
@@ -211,10 +211,14 @@
             k_B \log \Big ( \Gamma_1(E^*_1) \Gamma(E^*_2) \Big ) \leq k_B \log \Gamma(E) \leq k_B \log \Big ( \frac{E}{\Delta E}\Gamma(E^*_1) \Gamma(E^*_2) \Big )
         \end{equation*}
         \begin{equation*}
-            k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2) \leq k_B \log \Gamma(E) \leq k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)
+        \begin{aligned}
+            k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2) & \leq k_B \log \Gamma(E) \\ & \leq k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)
+        \end{aligned}
         \end{equation*}
         \begin{equation*}
-            \frac{k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2)}{N} \leq \frac{k_B \log \Gamma(E)}{N} \leq \frac{k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)}{N}
+        \begin{aligned}
+            \frac{k_B \log \Gamma_1(E^*_1) + k_B \log \Gamma(E^*_2)}{N} & \leq \frac{k_B \log \Gamma(E)}{N} \\ & \leq \frac{k_B \log \frac{E}{\Delta E} + k_B \log \Gamma(E^*_1) + k_B \log \Gamma(E^*_2)}{N}
+        \end{aligned}
         \end{equation*}
 
         In the thermodynamic limit, the last term vanishes, since $\lim_{td} \frac{1}{N} \log \frac{N}{\Delta N} = 0$. Hence 
@@ -283,15 +287,15 @@
     A canonical ensemble is a system which is immersed in a bigger environment or reservoir, which can exchange energy but not matter, so $T$, $N$ and $V$ are fixed. Globally, energy is conserved, since the universe composed by the union of the system and the environment can be considered as a microcanonical ensemble. 
 
     The canonical probability density distribution is 
-    \begin{equation*}
+    \begin{equation}\label{candist}
         \rho_c (q^i, p_i) = \frac{1}{Z_N} \exp (-\beta \mathcal H(q^i, p_i))
-    \end{equation*}
+    \end{equation}
     where $\beta$ is 
     \begin{equation*}
         \beta = \frac{1}{k_B T}
     \end{equation*}
     and $Z_N$ is the partition function 
-    \begin{equation}
+    \begin{equation}\label{zn}
         Z_N[V, T] = \int_{\mathcal M^N} d\Omega ~\exp (-\beta \mathcal H(q^i, p_i))
     \end{equation}
     which depends on the temperature through $\beta$ and volume and temperature due to the integration domain $\mathcal M^N = V \otimes \mathbb R^d$.
@@ -439,7 +443,7 @@
     \end{equation}
     
     The internal energy can also be written as 
-    \begin{equation}\label{can:en}
+    \begin{equation}\label{can:e}
         E = - \pdv{}{\beta} \ln Z_N
     \end{equation}
 

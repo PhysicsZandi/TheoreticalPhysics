@@ -26,7 +26,11 @@
     \end{equation*} 
     is the projector onto the energy eigenspace. Notice that we can expand the hamiltonian using~\eqref{spec}
     \begin{equation}\label{endec}
-        \hat H = \sum_j E_j \hat P_j ~.
+        \hat H = \sum_j E_j \hat P_j 
+    \end{equation}
+    or the total number operator 
+    \begin{equation}\label{numb}
+        \hat N = \sum_j n_j \hat P_j ~.
     \end{equation}
 
     The average of an observable $\hat A$ in the microcanonical ensemble is 
@@ -236,7 +240,7 @@
         Moreover, using~\eqref{endec} and~\eqref{numb}
         \begin{equation*}
         \begin{aligned}
-            \rho_{gc} & = C \sum_N \sum_j \exp(- \beta (E_j - \mu N)) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} - \mu N))^k \underbrace{\hat P_j^{(N)}}_{(P_j^{(N)})^k} \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} \hat P_j^{(N)} - \nu N P_j^{(N)}))^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_N \sum_j (E_j^{(N)} \hat P_j^{(N)} - \mu N P_j^{(N)}))^k \\ & = C \exp(- \beta (\underbrace{\sum_j \sum_N E_j^{(N)} \hat P_j^{(N)}}_{\hat H}) - \mu \underbrace{\sum_j \sum_N N \hat P_j^{(N)}}_{\hat N}) \\ & = C \exp(- \beta (\hat H - \mu \hat N)) ~,
+            \rho_{gc} & = C \sum_N \sum_j \exp(- \beta (E_j - \mu N)) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} - \mu N))^k \underbrace{\hat P_j^{(N)}}_{(P_j^{(N)})^k} \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} \hat P_j^{(N)} - \mu N P_j^{(N)}))^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_N \sum_j (E_j^{(N)} \hat P_j^{(N)} - \mu N P_j^{(N)}))^k \\ & = C \exp(- \beta (\underbrace{\sum_j \sum_N E_j^{(N)} \hat P_j^{(N)}}_{\hat H}) - \mu \underbrace{\sum_j \sum_N N \hat P_j^{(N)}}_{\hat N}) \\ & = C \exp(- \beta (\hat H - \mu \hat N)) ~,
         \end{aligned}
         \end{equation*}
         where we have used the Taylor expansion of the exponential, one of the properties of the projectors~\eqref{idem} and we have exchanged the two series.
@@ -247,7 +251,9 @@
         \end{equation*}
         hence 
         \begin{equation*}
-            \mathcal Z = \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) = \sum_{N=0}^{\infty} \tr_{\mathcal H_{tot}} \exp(- \beta (\hat H - \mu \hat N)) = \sum_{N=0}^{\infty} z^N \underbrace{\tr_{\mathcal H_{tot}} \exp(- \beta \hat H)}_{Z_N} = \sum_N z^N Z_N ~.
+        \begin{aligned}
+            \mathcal Z & = \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) \\ & = \sum_{N=0}^{\infty} \tr_{\mathcal H_{tot}} \exp(- \beta (\hat H - \mu \hat N)) \\ & = \sum_{N=0}^{\infty} z^N \underbrace{\tr_{\mathcal H_{tot}} \exp(- \beta \hat H)}_{Z_N} \\ & = \sum_N z^N Z_N ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
 
@@ -445,7 +451,7 @@
         Similarly, in the $3$-dimensional case
         \begin{equation*}
         \begin{aligned}
-            \sum_{n_1, n_2, n_3=- \infty}^\infty \underbrace{\Delta n_1 \Delta n_2 \Delta n_3}_1 \rightarrow \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 = \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 = \Big ( \frac{L}{2\pi} \Big)^3 \int dk^3 = \Big ( \frac{L}{2\pi} \Big)^3 4 \pi \int dk ~ k^2 = \frac{V}{2\pi^2} \int dk~k^2 ~. 
+            \sum_{n_1, n_2, n_3=- \infty}^\infty \underbrace{\Delta n_1 \Delta n_2 \Delta n_3}_1 & \rightarrow \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 \\ & = \Big ( \frac{L}{2\pi} \Big)^3 \int dk_1 dk_2 dk_3 \\ & = \Big ( \frac{L}{2\pi} \Big)^3 \int dk^3 \\ & = \Big ( \frac{L}{2\pi} \Big)^3 4 \pi \int dk ~ k^2 \\ & = \frac{V}{2\pi^2} \int dk~k^2 ~. 
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -469,7 +475,7 @@
         we obtain 
         \begin{equation*}
         \begin{aligned}
-            \Omega_\mp & = \pm \frac{AV}{\beta} \int_0^\infty \underbrace{d\epsilon \sqrt{\epsilon}}_{\frac{2}{3} d \epsilon^{\frac{3}{2}}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \int_0^\infty d \epsilon^{\frac{3}{2}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \underbrace{\epsilon^{\frac{3}{2}}}_{0 \textnormal{ for } \epsilon = 0} \underbrace{\log  (1 \mp \exp (-\beta (\epsilon_k - \mu)))}_{0 \textnormal{ for } \epsilon = \infty} \Big \vert_0^\infty \mp \frac{2}{3} \frac{AV}{\beta} \beta \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3}AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3} AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} ~.
+            \Omega_\mp & = \pm \frac{AV}{\beta} \int_0^\infty \underbrace{d\epsilon \sqrt{\epsilon}}_{\frac{2}{3} d \epsilon^{\frac{3}{2}}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \int_0^\infty d \epsilon^{\frac{3}{2}} \log  (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \\ & = \pm \frac{2}{3} \frac{AV}{\beta} \underbrace{\epsilon^{\frac{3}{2}}}_{0 \textnormal{ for } \epsilon = 0} \underbrace{\log  (1 \mp \exp (-\beta (\epsilon_k - \mu)))}_{0 \textnormal{ for } \epsilon = \infty} \Big \vert_0^\infty \\ & \quad \mp \frac{2}{3} \frac{AV}{\beta} \beta \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3}AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} \\ & = \mp \frac{2}{3} AV \int_0^\infty d \epsilon^{\frac{3}{2}} \frac{1}{\exp(\beta(\epsilon - \mu)) \mp 1} ~.
         \end{aligned}
         \end{equation*}
         where we have integrated by parts and, introducing the degeneracy ($g = 2s+1$ for spin particles), we have called 
@@ -621,3 +627,5 @@
     We can study the behaviour of the chemical potential $\mu$. It goes to $-\infty$ for $T \rightarrow \infty$ but the equilibrium condition implies that $\pdv{\mu}{T} < 0$, therefore, it cannot increase. 
 
 \section{Low temperature limit}
+
+\section{Bose-Einstein condensate}

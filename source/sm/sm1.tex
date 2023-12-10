@@ -1,6 +1,6 @@
 \part{Thermodynamics}
 
-\chapter{Equilibrium and the laws of Thermodynamics}
+\chapter{The 2 laws of thermodynamics, which are 4}
 
     In this chapter, we will recall some notions of thermodynamics.
 
@@ -107,6 +107,8 @@
     \end{law}
 
     It is a limitation law because it limits the configuration that a system can reach in isolation to whose in which $T \neq 0$.
+
+\chapter{Thermodynamic potentials}
 
 \section{The fundamental equation of thermodynamics}
 
@@ -298,8 +300,6 @@
 
     There are different thermodynamic potentials, which are functions of $3$ independent variables that can be used to define a different chart for $\mathcal M$. Therefore, there are different aproaches to thermodynamics.
 
-\chapter{Thermodynamic potentials}
-
     Thermodynamic potentials can be obtained by various kind of Legendre transforms of~\eqref{de}, which exchange the role of an extensive variable to its conjugate intensive variable as independent variable. We require that the hypothesis of the inverse function theorem are satisfied, e.g. 
     \begin{equation*}
         \pdvdu{E}{S} \Big \vert_{V,N} \neq 0 ~, \quad \pdvdu{E}{V} \Big \vert_{S,N} \neq 0 ~, \quad \pdvdu{E}{N} \Big \vert_{S, V} \neq 0 ~.
@@ -307,7 +307,7 @@
 
     The thermodynamic potentials are the Helmoltz free energy $F$, the entalpy $H$, the Gibbs free energy $G$ and the granpotential $\Omega$.
 
-\section{Helmoltz free energy $F$} 
+\section{Helmoltz free energy} 
 
     The Helmoltz free energy is defined as 
     \begin{equation*}
@@ -413,7 +413,7 @@
         \end{equation*}
     \end{proof}
 
-\section{Enthalpy $H$} 
+\section{Enthalpy} 
 
     The enthalpy is defined as 
     \begin{equation*}
@@ -519,7 +519,7 @@
         \end{equation*}
     \end{proof}
 
-\section{Gibbs free energy $G$} 
+\section{Gibbs free energy} 
 
     The Gibbs free energy is defined as 
     \begin{equation*}
@@ -626,7 +626,7 @@
 
     \end{proof}
 
-\section{Granpotential $\Omega$} 
+\section{Granpotential} 
 
     The granpotential is defined as 
     \begin{equation}\label{ome}
@@ -760,6 +760,8 @@
         \end{equation*}
     \end{proof}
 
+\chapter{Maxwell's relations and stability conditions}
+
 \section{Maxwell's relations}
 
     Integrability condition can be written as jacobian determinant. 
@@ -810,7 +812,7 @@
 
     The intergability conditions written in term of jacobian determinant give rise to the geometrical interpretation: the coordinate transformations, which mean that we changed into a different chart of independent variables, preserves the volume.
 
-\section{Stable conditions}
+\section{Stability conditions}
 
     Every thermodynamic potential has a natural chart. In fact, the configuration of stable equilbrium can be obtained by a set of variational principle, which can be derived by fixing to constants the natural independent variables. This variations principle derive from the second law of thermodynamics, since all systems evolve spontaneously to maximise the entropy. Therefore, minima of the thermodynamic potentials correspond to stable equilibrium under boundary condition which keep constant the natural variables
     \begin{equation*}
@@ -843,8 +845,6 @@
             T_A = T_B ~, \quad p_A = p_B ~, \quad \mu_A = \mu_B ~.
         \end{equation*}
     \end{proof}
-
-\section{Stability conditions}
 
     At $T, p, N = const$, the stability condition is 
     \begin{equation}\label{stab}
@@ -1038,56 +1038,3 @@
         \end{equation*}
     \end{proof}
     
-\section{$\pdv{\mu}{T}$}
-
-
-    Using~\eqref{gdrel}
-    \begin{equation*}
-        d\mu = v dp - s dT
-    \end{equation*}
-    hence 
-    \begin{equation*}
-        \pdv{\mu}{T} = - s < 0 ~.
-    \end{equation*}
-
-\chapter{Summary}
-
-\section{Thermodynamical potentials}
-
-    See Table~\ref{table:2}.
-
-    \begin{table}[h!]
-        \centering
-        \begin{tabular}{c | c}
-        Potentials & Differential \\
-        \hline
-        Internal energy $E(S, ~V, ~N) = TS - pV + \mu N$ & $dE = TdS - pdV + \mu dN$ \\ 
-        Helmotz free energy $F(T, ~V, ~N) = E - TS = -pV + \mu N$ & $dF = -SdT - pdV + \mu dN$ \\ 
-        Entalpy $H(S, ~p, ~N) = E + pV = St + \mu N$ & $dH = TdS + Vdp + \mu dN$ \\ 
-        Gibbs free energy $G(T, ~p, ~N) = E - TS + pV = \mu N$ & $dG = -SdT + V dp + \mu dN$ \\ 
-        Granpotential $\Omega (T, ~V, ~\mu) = E - TS - \mu N = -pV$ & $d\Omega = -SdT - pdV - N d \mu$ \\ 
-        \end{tabular}
-    \caption{Thermodynamical potentials.}
-    \label{table:2}
-    \end{table}
-
-    \begin{proof}
-        Maybe in the future.
-    \end{proof}
-
-    See Table~\ref{table:3}.
-
-    \begin{table}[h!]
-        \centering
-        \begin{tabular}{c | c | c}
-        Inequality & Constant quantities & \\
-        \hline
-        $d E \leq 0$ & $S, V, N$\\ 
-        $d F \leq 0$ & $T, V, N$\\ 
-        $d H \leq 0$ & $S, p, N$\\ 
-        $d G \leq 0$ & $T, p, N$\\ 
-        $d \Omega \leq 0$ & $T, V, \mu$\\ 
-        \end{tabular}
-    \caption{Thermodynamical variation principles.}
-    \label{table:3}
-    \end{table}
