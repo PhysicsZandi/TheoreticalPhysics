@@ -820,10 +820,31 @@
 
     The Noether charge is 
     \begin{equation*}
-        Q = \int d^3 x j^0 = 
+        \hat Q = q \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} ((\hat b^\dagger_{\mathbf p})^s \hat b^r_{\mathbf p} - (\hat c_{\mathbf p}^\dagger)^r \hat c^s_{\mathbf p}) ~.
     \end{equation*}
     \begin{proof}
-        Maybe in the future.
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            Q = \int d^3 x ~ j^0 = \int d^3 x ~ q \overline \psi \gamma^0 \psi = q \int d^3 x ~  \psi^\dagger (\gamma^0)^2 \psi = q \int d^3 x ~ \psi^\dagger \psi ~.
+        \end{aligned}
+        \end{equation*}
+
+        Promoting to operator 
+        \begin{equation*}
+        \begin{aligned}
+            \hat Q & = q \int d^3 x ~ \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big ( (\hat b^\dagger_{\mathbf p})^s (u^\dagger)^s (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) + \hat c^s_{\mathbf p} (v^\dagger)^s(\mathbf p) \exp(i \mathbf p \cdot \mathbf x) \Big) \\ & \quad \sum_{r=1}^{2} \int \frac{d^3 q}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf q}}} \Big ( \hat b^r_{\mathbf q} u^r (\mathbf q) \exp(i \mathbf q \cdot \mathbf x) + (\hat c_{\mathbf q}^\dagger)^r v^r(\mathbf q) \exp(- i \mathbf q \cdot \mathbf x) \Big) \\ & = q \sum_{s=1}^{2} \sum_{r=1}^{2} \int \frac{d^3 x ~ d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2 \sqrt{E_{\mathbf q} E_{\mathbf q}}}  \Big ( (\hat b^\dagger_{\mathbf p})^s \hat b^r_{\mathbf q}  (u^\dagger)^s (\mathbf p) u^r (\mathbf q) \underbrace{\exp(i (- \mathbf p + \mathbf q) \cdot \mathbf x)}_{\delta^3 (\mathbf p - \mathbf q)} \\ & \quad + (\hat b^\dagger_{\mathbf p})^s (\hat c_{\mathbf q}^\dagger)^r (u^\dagger)^s (\mathbf p) v^r(\mathbf q) \underbrace{\exp( -i (\mathbf p + \mathbf q) \cdot \mathbf x)}_{\delta^3 (\mathbf p + \mathbf q)} \\ & \quad + \hat c^s_{\mathbf p} \hat b^r_{\mathbf q} (v^\dagger)^s (\mathbf p) u^r (\mathbf q) \underbrace{\exp(i (\mathbf p + \mathbf q) \cdot \mathbf x)}_{\delta^3 (\mathbf p + \mathbf q)} \\ & \quad + \hat c^s_{\mathbf p} (\hat c_{\mathbf q}^\dagger)^r (v^\dagger)^s(\mathbf p) v^r(\mathbf q) \underbrace{\exp(i (\mathbf p - \mathbf q) \cdot \mathbf x)}_{\delta^3 (\mathbf p - \mathbf q)} \Big )
+        \end{aligned}
+        \end{equation*} 
+        \begin{equation*}
+        \begin{aligned}
+            & = q \sum_{s=1}^{2} \sum_{r=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 \sqrt{E_{\mathbf q} E_{\mathbf q}}}  \Big ( (\hat b^\dagger_{\mathbf p})^s \hat b^r_{\mathbf p} \underbrace{(u^\dagger)^s (\mathbf p) u^r (\mathbf p)}_{2 |\mathbf p| \delta^{rs}} + (\hat b^\dagger_{\mathbf p})^s (\hat c_{ - \mathbf p}^\dagger)^r \underbrace{(u^\dagger)^s (\mathbf p) v^r( -\mathbf p)}_0 \\ & \quad + \hat c^s_{\mathbf p} \hat b^r_{ - \mathbf p} \underbrace{(v^\dagger)^s (\mathbf p) u^r ( - \mathbf p)}_0 + \hat c^s_{\mathbf p} (\hat c_{\mathbf p}^\dagger)^r \underbrace{(v^\dagger)^s(\mathbf p) v^r(\mathbf p)}_{2 |\mathbf p| \delta^{rs}}  \Big ) \\ & = q \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 |\mathbf p|} (2 |\mathbf p|) ((\hat b^\dagger_{\mathbf p})^s \hat b^r_{\mathbf p} + \hat c^s_{\mathbf p} (\hat c_{\mathbf p}^\dagger)^r) ~,
+        \end{aligned}
+        \end{equation*}
+        which in (anticommutating) normal ordering is 
+        \begin{equation*}
+            \hat Q = q \sum_{s=1}^{2} \int \frac{d^3 p}{(2\pi)^3} ((\hat b^\dagger_{\mathbf p})^s \hat b^r_{\mathbf p} - (\hat c_{\mathbf p}^\dagger)^r \hat c^s_{\mathbf p}) ~.
+        \end{equation*}
     \end{proof}
 
     We can see that it distinguishes indeed $b$ and $c$-particles, since it associates an eigenvalue of $+q$ for $b$ and $-q$ for $c$.

@@ -228,7 +228,7 @@
 
     Now, in Schoedinger picture, we promote $A^\mu(x)$ and $\pi^\mu(x)$ to operators in the Fock space by imposing the canoncial commutation (since an half-integer spin theory) relations 
     \begin{equation*}
-        [\hat A_\mu (\mathbf x), \hat A_\nu (\mathbf y)] =[\hat \pi_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = 0 ~, \quad [\hat A_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = i \eta_{\mu\nu} \delta^3 (\mathbf x - \mathbf y) ~.
+        [\hat A_\mu (\mathbf x), \hat A_\nu (\mathbf y)] = [\hat \pi_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = 0 ~, \quad [\hat A_\mu (\mathbf x), \hat \pi_\nu (\mathbf y)] = i \eta_{\mu\nu} \delta^3 (\mathbf x - \mathbf y) ~.
     \end{equation*}
 
 \section{Plane waves} 
@@ -277,7 +277,17 @@
         \mathcal L = \frac{1}{2} (- (\dot A_0)^2 + (\dot A_1)^2 + (\dot A_2)^2 +(\dot A_3)^2 ) + \ldots ~.
     \end{equation*}
     \begin{proof}
-        Maybe in the future.
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            [\hat A_\mu (\mathbf x), \hat \pi^\nu (\mathbf y)] & = [\int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} \exp(i \mathbf p \cdot \mathbf x) + \hat a_{\mathbf p}^{\dagger (\lambda)} \exp(- i \mathbf p \cdot \mathbf x) \Big), \\ & \quad \int \frac{d^3 q}{(2\pi)^3} i \sqrt{\frac{|\mathbf q|}{2}} \sum_{\lambda'=0}^{3} \epsilon^{\nu(\lambda')} (\mathbf q) \Big ( \hat a_{\mathbf q}^{(\lambda')}  \exp(i \mathbf q \cdot \mathbf y) - \hat a_{\mathbf q}^{\dagger (\lambda')} \exp(- i \mathbf q \cdot \mathbf y) \Big)] \\ & = \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \int \frac{d^3 p ~ d^3 q}{(2\pi)^6} \frac{i}{2} \sqrt{\frac{|\mathbf q|}{|\mathbf p|}} \epsilon_\mu^{(\lambda)} \epsilon^{\nu(\lambda')} \Big ( \underbrace{[\hat a_{\mathbf p}^{(\lambda)} , \hat a_{\mathbf q}^{(\lambda')}]}_0 \exp(i (\mathbf p \cdot \mathbf x + \mathbf q \cdot \mathbf y)) \\ & \quad - \underbrace{[\hat a_{\mathbf p}^{(\lambda)} , \hat a_{\mathbf q}^{\dagger (\lambda')}]}_{- (2\pi)^3 \eta^{\lambda \lambda'} \delta^3 (\mathbf p - \mathbf q)} \exp(i (\mathbf p \cdot \mathbf x - \mathbf q \cdot \mathbf y)) \\ & \quad + \underbrace{[\hat a_{\mathbf p}^{\dagger (\lambda)} , \hat a_{\mathbf q}^{(\lambda')}]}_{(2\pi)^3 \eta^{\lambda \lambda'} \delta^3 (\mathbf p - \mathbf q)} \exp(i (- \mathbf p \cdot \mathbf x + \mathbf q \cdot \mathbf y)) \\ & \quad - \underbrace{[\hat a_{\mathbf p}^{\dagger(\lambda)} , \hat a_{\mathbf q}^{\dagger(\lambda')}]}_0 \exp(i (- \mathbf p \cdot \mathbf x - \mathbf q \cdot \mathbf y)) \Big)
+        \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            & = \sum_{\lambda=0}^{3} \int \frac{d^3 p}{(2\pi)^3} \frac{i}{2} \underbrace{\epsilon_\mu^{(\lambda)} \epsilon^{\nu(\lambda)}}_{\eta^\nu_{\phantom \nu \mu}} \Big ( \underbrace{\exp(i \mathbf p \cdot (\mathbf x - \mathbf y))}_{\delta^3 (\mathbf x - \mathbf y)} + \underbrace{\exp(- i \mathbf p \cdot (\mathbf x - \mathbf y))}_{\delta^3 (\mathbf x - \mathbf y)} \Big) \\ & = i \eta^\nu_{\phantom \nu \mu} \delta^3 (\mathbf x - \mathbf y) ~.
+        \end{aligned}
+        \end{equation*}
     \end{proof}
 
 \section{Quantisation with Lorenz gauge}
