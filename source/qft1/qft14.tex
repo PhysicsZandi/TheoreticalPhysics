@@ -272,7 +272,7 @@
     \begin{equation*}
         [\hat a_{\mathbf p}^{(0)}, \hat a_{\mathbf q}^{\dagger (0)}] = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~, \quad [\hat a_{\mathbf p}^{(i)}, \hat a_{\mathbf q}^{\dagger (i)}] = (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~.
     \end{equation*}
-    Notice that there is a problem, since we do not have a probabilistic intepretation for a negative norm (only for the temporal components). We cannot neither interpret $\hat a$ as a creation operator, beacuse we would have problems for the spatial components. This kind of states are called ghosts. We could have seen it already by the lagrangian, since we had a minus sign in the temporal component
+    Notice that there is a problem, since we do not have a probabilistic intepretation for a negative norm (only for the temporal components). We cannot neither interpret $\hat a$ as a creation operator, because we would have problems for the spatial components. This kind of states are called ghosts. We could have seen it already by the lagrangian, since we had a minus sign in the temporal component
     \begin{equation*}
         \mathcal L = \frac{1}{2} (- (\dot A_0)^2 + (\dot A_1)^2 + (\dot A_2)^2 +(\dot A_3)^2 ) + \ldots ~.
     \end{equation*}
@@ -291,3 +291,178 @@
     \end{proof}
 
 \section{Quantisation with Lorenz gauge}
+
+    Since the Lorenz gauge contains a time derivative, we go into the Heisenberg picture. However, there are different possible ways to impose the gauge fixing conditions. 
+    \begin{enumerate}
+        \item $\partial_\mu \hat A^\mu = 0$, 
+        \item $(\partial_\mu \hat A^\mu) \ket{\psi} = 0$, 
+        \item $\bra{\psi} \partial_\mu \hat A^\mu \ket{\psi} = 0$.
+    \end{enumerate}
+
+    Let us consider the first case. A contradiction arises because, on one hande we have 
+    \begin{equation*}
+        \hat \pi^0 = - \partial_\mu \hat A^\mu = 0 ~,
+    \end{equation*}
+    on the other hand, the commutation relations at fixed time
+    \begin{equation*}
+        [\hat A_0 (\mathbf x), \hat \pi_0 (\mathbf y)] = i \eta_{00} \delta^3 (\mathbf x - \mathbf y) \neq 0 ~.
+    \end{equation*}
+
+    Let us consider the second case. The vacuum state is not physical anymore, since positive norm physical state are such that
+    \begin{equation*}
+        (\partial_\mu \hat A^\mu) \ket{\psi} ~,
+    \end{equation*}
+    but for the vacuum state, defining
+    \begin{equation*}
+        \hat A_\mu (x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + \hat a_{\mathbf p}^{\dagger (\lambda)} (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big) = \hat A^+_\mu (x) + \hat A^-_\mu (x) ~,
+    \end{equation*}
+    where $\hat A^+_\mu (x)$ contains only creation operators and $\hat A^-_\mu (x)$ contains only annihilation operators. Hence 
+    \begin{equation*}
+        \partial^\mu \hat A_\mu \ket{0} = \partial^\mu \hat A_\mu^+ \ket{0} = \partial^\mu \hat A_\mu^- \ket{0} = i p^\mu \hat A_\mu^+ \ket{0} - i p^\mu \cancel{\hat A_\mu^- \ket{0}} \neq 0 ~,
+    \end{equation*}
+    which means that vacuum state does not satisfy the Lorenz gauge and it is not physical.
+
+    Let us consider the third case. We impose the Gupta-Bleuler conditions which defines what is the phisical Fock space
+    \begin{equation}\label{GB}
+        \partial^\mu \hat A^+_\mu \ket{\psi} = 0 \iff \bra{\psi} \partial^\mu \hat A^-_\mu = 0 \iff \bra{\psi} \partial_\mu \hat A^\mu \ket{\psi} = 0~.
+    \end{equation}
+    This condition translates into the constrain that the number of timelike photons are the same number of longitudinal photons, which implies that ghost with only timelike photons cannot exist.
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+            \hat A^-_\mu (x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) ~,
+        \end{equation*}
+        \begin{equation*}
+            \partial^\mu \hat A^-_\mu (x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} p^\mu \epsilon_\mu^{(\lambda)} (\mathbf p) \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) ~,
+        \end{equation*}
+        which contains the term $p^\mu \epsilon_\mu^{(\lambda)}$. Notice that it vanishes for transversal photons $\lambda = 1,2$. We choose $p^\mu = (E, 0, 0, E)$ and we obtain 
+        \begin{equation*}
+            0 = (\epsilon^{(0)}_\mu p^\mu \hat a^{(0)}_{\mathbf p} + \epsilon^{(3)}_\mu p^\mu \hat a^{(3)}_{\mathbf p}) \ket{\psi} = E (\underbrace{\epsilon^{(0)}_1}_1 \hat a^{(0)}_{\mathbf p} + \underbrace{\epsilon^{(3)}_3}_{-1} \hat a^{(3)}_{\mathbf p}) \ket{\psi} = E (\hat a^{(0)}_{\mathbf p} - \hat a^{(3)}_{\mathbf p}) \ket{\psi} ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \hat a^{(0)}_{\mathbf p} \ket{\psi } = \hat a^{(3)}_{\mathbf p} \ket{\psi} \iff \bra{\psi} \hat a^{\dagger(0)}_{\mathbf p} = \bra{\psi} \hat a^{\dagger(3)}_{\mathbf p}  ~.
+        \end{equation*}
+        Finally 
+        \begin{equation*}
+            \bra{\psi} \hat a^{\dagger(0)}_{\mathbf p} \hat a^{(0)}_{\mathbf p} \ket{\psi} = \bra{\psi} \hat a^{\dagger(3)}_{\mathbf p} \hat a^{(3)}_{\mathbf p} \ket{\psi} ~,
+        \end{equation*}
+        \begin{equation*}
+            \bra{\psi} \hat n^{(0)}_{\mathbf p} \ket{\psi} = \bra{\psi} \hat n^{(3)}_{\mathbf p} \ket{\psi} ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Fock space}
+
+    A negative norm state with only timelike photons is unphysical, since $\ket{\mathbf q, \lambda = 0} = \hat a^{\dagger (0)}_{\mathbf q} \ket{0}$ such that 
+    \begin{equation*}
+        (\hat a^{(0)}_{\mathbf p} - \hat a^{(3)}_{\mathbf p}) \ket{\mathbf q, \lambda = 0} = \underbrace{\hat a^{(0)}_{\mathbf p} \hat a^{\dagger (0)}_{\mathbf q}}_{- (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} - \cancel{\hat a^{(3)}_{\mathbf p} \hat a^{\dagger (0)}_{\mathbf q}} \ket{0} = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} \neq 0 ~.
+    \end{equation*}
+
+    We make a change of basis in the Fock space, from 
+    \begin{equation*}
+        \hat a^{\dagger(0)}_{\mathbf p} ~, \quad \hat a^{\dagger(1)}_{\mathbf p} ~, \quad \hat a^{\dagger(2)}_{\mathbf p} ~, \quad \hat a^{\dagger(3)}_{\mathbf p} ~,
+    \end{equation*}
+    to 
+    \begin{equation*}
+        \hat a^{\dagger(1)}_{\mathbf p} ~, \quad \hat a^{\dagger(2)}_{\mathbf p} ~, \quad \hat b_{\pm, \mathbf p} = \hat a^{\dagger(0)}_{\mathbf p} \pm \hat a^{\dagger(3)}_{\mathbf p} ~.
+    \end{equation*}
+    This implies that 
+    \begin{equation*}
+        \hat a^{\dagger(1)}_{\mathbf p} \ket{0} = \ket{\mathbf p, \lambda = 1} ~, \quad \hat a^{\dagger(2)}_{\mathbf p} \ket{0} = \ket{\mathbf p, \lambda = 2} ~, \quad \hat b_{\pm, \mathbf p} \ket{0} = \ket{\mathbf p, \lambda = 0} \pm \ket{\mathbf p, \lambda = 3} ~.
+    \end{equation*}
+
+    Furthermore, the commutation relations becomes 
+    \begin{equation*}
+        [\hat b_{-, \mathbf p}, \hat b_{-, \mathbf q}^\dagger] = 0 ~, \quad [\hat b_{-, \mathbf p}, \hat b_{+, \mathbf q}^\dagger] = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) ~.
+    \end{equation*}
+    \begin{proof}
+        For the first 
+        \begin{equation*}
+        \begin{aligned}
+            [\hat b_{-, \mathbf p}, \hat b_{-, \mathbf q}^\dagger] & = [\hat a^{(0)}_{\mathbf p} - \hat a^{(3)}_{\mathbf p}, \hat a^{\dagger(0)}_{\mathbf q} - \hat a^{\dagger(3)}_{\mathbf q}] \\ & = \underbrace{[\hat a^{(0)}_{\mathbf p} , \hat a^{\dagger(0)}_{\mathbf q}]}_{-(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} - \underbrace{[\hat a^{(0)}_{\mathbf p} , \hat a^{\dagger(3)}_{\mathbf q}] }_0 - \underbrace{[\hat a^{(3)}_{\mathbf p}, \hat a^{\dagger(0)}_{\mathbf q}]}_0 + \underbrace{[\hat a^{(3)}_{\mathbf p}, \hat a^{\dagger(3)}_{\mathbf q}]}_{(2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The condition for physical states $\ket{\psi}$ is that $\hat b_{\pm, \mathbf p} \ket{\psi} = 0$. Hence transverse photons are physical, timelike and longitudinal photons are unphysical, the combination with plus of timelike and longitudinal photons are unphysical,the combination with minus of timelike and longitudinal photons are physical. However, the latter has zero-norm. To summarise, Fock space contains all states such that it is satisfied~\eqref{GB}, which brings to positive norm states (transversal photons) and zero norm states ($\ket{S} - \ket{L}$ photons).
+    \begin{proof}
+        For the transverse photons $\ket{T}$
+        \begin{equation*}
+            \hat b_{-, \mathbf p} \ket{\mathbf q, \lambda= 1,2} = \hat b_{-, \mathbf p} \hat a_{\mathbf q}^{\dagger (1,2)} \ket{0} = 0 ~.
+        \end{equation*}
+
+        For the longitudinal photons $\ket{L}$
+        \begin{equation*}
+        \begin{aligned}
+            \hat b_{-, \mathbf p} \ket{\mathbf q, \lambda=3} & = \hat b_{-, \mathbf p} \hat a_{\mathbf q}^{\dagger (3)} \ket{0} \\ & = \hat b_{-, \mathbf p} \frac{\hat b^\dagger_{+, \mathbf p} - \hat b^\dagger_{-, \mathbf p}}{2} \ket{0} \\ &  = \frac{1}{2} \underbrace{\hat b_{-, \mathbf p} \hat b^\dagger_{+, \mathbf p}}_{[\hat b_{-, \mathbf p} ,\hat b^\dagger_{+, \mathbf p}] + \hat b^\dagger_{+, \mathbf p} \hat b_{-, \mathbf p} } \ket{0} - \frac{1}{2} \underbrace{\hat b_{-, \mathbf p} \hat b^\dagger_{-, \mathbf p}}_{[\hat b_{-, \mathbf p}, \hat b^\dagger_{-, \mathbf p}] + \hat b^\dagger_{-, \mathbf p} \hat b_{-, \mathbf p}} \ket{0} \\ & = \frac{1}{2} \underbrace{[\hat b_{-, \mathbf p} ,\hat b^\dagger_{+, \mathbf p}]}_{- (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} + \frac{1}{2} \hat b^\dagger_{+, \mathbf p} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 - \frac{1}{2} \underbrace{[\hat b_{-, \mathbf p}, \hat b^\dagger_{-, \mathbf p}]}_{0} \ket{0} - \frac{1}{2} \hat b^\dagger_{-, \mathbf p} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 \\ & = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} \neq 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used 
+        \begin{equation*}
+            \hat a^{\dagger (3)}_{\mathbf p} = \frac{\hat b^\dagger_{+, \mathbf p} - \hat b^\dagger_{-, \mathbf p}}{2} ~.
+        \end{equation*}
+
+        For the timelike photons $\ket{S}$
+        \begin{equation*}
+        \begin{aligned}
+            \hat b_{-, \mathbf p} \ket{\mathbf q, \lambda=0} & = \hat b_{-, \mathbf p} \hat a_{\mathbf q}^{\dagger (0)} \ket{0} \\ & = \hat b_{-, \mathbf p} \frac{\hat b^\dagger_{+, \mathbf p} + \hat b^\dagger_{-, \mathbf p}}{2} \ket{0} \\ &  = \frac{1}{2} \underbrace{\hat b_{-, \mathbf p} \hat b^\dagger_{+, \mathbf p}}_{[\hat b_{-, \mathbf p} ,\hat b^\dagger_{+, \mathbf p}] + \hat b^\dagger_{+, \mathbf p} \hat b_{-, \mathbf p} } \ket{0} + \frac{1}{2} \underbrace{\hat b_{-, \mathbf p} \hat b^\dagger_{-, \mathbf p}}_{[\hat b_{-, \mathbf p}, \hat b^\dagger_{-, \mathbf p}] + \hat b^\dagger_{-, \mathbf p} \hat b_{-, \mathbf p}} \ket{0} \\ & = \frac{1}{2} \underbrace{[\hat b_{-, \mathbf p} ,\hat b^\dagger_{+, \mathbf p}]}_{- (2\pi)^3 \delta^3 (\mathbf p - \mathbf q)} \ket{0} + \frac{1}{2} \hat b^\dagger_{+, \mathbf p} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 + \frac{1}{2} \underbrace{[\hat b_{-, \mathbf p}, \hat b^\dagger_{-, \mathbf p}]}_{0} \ket{0} + \frac{1}{2} \hat b^\dagger_{-, \mathbf p} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 \\ & = - (2\pi)^3 \delta^3 (\mathbf p - \mathbf q) \ket{0} \neq 0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used 
+        \begin{equation*}
+            \hat a^{\dagger (0)}_{\mathbf p} = \frac{\hat b^\dagger_{+, \mathbf p} + \hat b^\dagger_{-, \mathbf p}}{2} ~.
+        \end{equation*}
+
+        For the $\ket{S} + \ket{L}$ photons
+        \begin{equation*}
+        \begin{aligned}
+            \hat b_{-, \mathbf p} \ket{\mathbf q, S + L} & = \underbrace{\hat b_{-, \mathbf p} \hat b_{+,\mathbf q}^{\dagger}}_{[\hat b_{-, \mathbf p}, \hat b_{+,\mathbf q}^{\dagger}] + \hat b_{+,\mathbf q}^{\dagger} \hat b_{-, \mathbf p} } \ket{0} \\ & = \underbrace{[\hat b_{-, \mathbf p}, \hat b_{+,\mathbf q}^{\dagger}]}_{- (2\pi)^3 \delta^3 (\mathbf p -\mathbf q)} \ket{0} + \hat b_{+,\mathbf q}^{\dagger} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 \\ & = - (2\pi)^3 \delta^3 (\mathbf p -\mathbf q) \ket{0} \neq 0 ~.
+        \end{aligned}
+        \end{equation*}
+
+        For the $\ket{S} - \ket{L}$ photons
+        \begin{equation*}
+        \begin{aligned}
+            \hat b_{-, \mathbf p} \ket{\mathbf q, S - L} & = \underbrace{\hat b_{-, \mathbf p} \hat b_{-,\mathbf q}^{\dagger}}_{[\hat b_{-, \mathbf p}, \hat b_{-,\mathbf q}^{\dagger}] + \hat b_{-,\mathbf q}^{\dagger} \hat b_{-, \mathbf p} } \ket{0} \\ & = \underbrace{[\hat b_{-, \mathbf p}, \hat b_{-,\mathbf q}^{\dagger}]}_{0} \ket{0} + \hat b_{-,\mathbf q}^{\dagger} \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Notice that the photons $\ket{S} - \ket{L}$ or $\ket{S} + \ket{L}$ have zero norm. 
+    \begin{proof}
+        In fact, given
+        \begin{equation*}
+            \hat b_{-, \mathbf p}^\dagger \ket{0} = \ket{\mathbf p, S - L} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+        \begin{aligned}
+            \braket{\mathbf p, S-L}{\mathbf p, S-L} & = \bra{0} \hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger \ket{0} \\ & = \bra{0} \underbrace{\hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger}_{[\hat b_{-, \mathbf p} , \hat b_{-, \mathbf p}^\dagger] + \hat b_{-, \mathbf p}^\dagger \hat b_{-, \mathbf p}} \ket{0} \\ & = \bra{0} \underbrace{[\hat b_{-, \mathbf p} , \hat b_{-, \mathbf p}^\dagger]}_0 \ket{0} + \bra{0} \hat b_{-, \mathbf p}^\dagger \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 = 0 ~.
+        \end{aligned}
+        \end{equation*}
+        Simirly, given
+        \begin{equation*}
+            \hat b_{+, \mathbf p}^\dagger \ket{0} = \ket{\mathbf p, S + L} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+        \begin{aligned}
+            \braket{\mathbf p, S+L}{\mathbf p, S+L} & = \bra{0} \hat b_{+, \mathbf p} \hat b_{+, \mathbf p}^\dagger \ket{0} \\ & = \bra{0} \underbrace{\hat b_{+, \mathbf p} \hat b_{+, \mathbf p}^\dagger}_{[\hat b_{+, \mathbf p} , \hat b_{+, \mathbf p}^\dagger] + \hat b_{+, \mathbf p}^\dagger \hat b_{+, \mathbf p}} \ket{0} \\ & = \bra{0} \underbrace{[\hat b_{+, \mathbf p} , \hat b_{+, \mathbf p}^\dagger]}_0 \ket{0} + \bra{0} \hat b_{+, \mathbf p}^\dagger \underbrace{\hat b_{+, \mathbf p} \ket{0}}_0 = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    \begin{example}
+        Consider a state in which $2$ photons have polarisation $\ket{T}$ and $\ket{S} - \ket{L}$. It has zero norm. In fact, given
+        \begin{equation*}
+            \hat b_{-, \mathbf p}^\dagger \hat a_{\mathbf q}^{\dagger (1,2)} \ket{0} = \ket{\mathbf q, T; \mathbf p, S-L} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+        \begin{aligned}
+            \braket{\mathbf q, T; \mathbf p, S-L}{\mathbf q, T; \mathbf p, S-L} & = \bra{0} \hat a_{\mathbf q}^{(1,2)} \hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger \hat a_{\mathbf q}^{\dagger (1,2)} \ket{0} \\ & = \bra{0} \hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger \underbrace{\hat a_{\mathbf q}^{\dagger (1,2)} \hat a_{\mathbf q}^{(1,2)}}_{[\hat a_{\mathbf q}^{\dagger (1,2)} , \hat a_{\mathbf q}^{(1,2)}] + \hat a_{\mathbf q}^{(1,2)} \hat a_{\mathbf q}^{\dagger (1,2)}} \ket{0} \\ & = \bra{0} \hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger \underbrace{[\hat a_{\mathbf q}^{\dagger (1,2)} , \hat a_{\mathbf q}^{(1,2)}] }_{(2\pi)^3 \delta^3 (0) } \ket{0} + \bra{0} \hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger \hat a_{\mathbf q}^{(1,2)} \underbrace{\hat a_{\mathbf q}^{\dagger (1,2)} \ket{0}}_0 \\ & = (2\pi)^3 \delta^3 (0) \bra{0} \underbrace{\hat b_{-, \mathbf p} \hat b_{-, \mathbf p}^\dagger}_{[\hat b_{-, \mathbf p} , \hat b_{-, \mathbf p}^\dagger] + \hat b_{-, \mathbf p}^\dagger \hat b_{-, \mathbf p}} \ket{0} \\ & = (2\pi)^3 \delta^3 (0) \bra{0} \underbrace{[\hat b_{-, \mathbf p} , \hat b_{-, \mathbf p}^\dagger]}_0 \ket{0} + (2\pi)^3 \delta^3 (0) \bra{0} \hat b_{-, \mathbf p}^\dagger \underbrace{\hat b_{-, \mathbf p} \ket{0}}_0 = 0 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{example}
+    

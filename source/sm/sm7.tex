@@ -1,3 +1,170 @@
 \part{Phase transition}
 
+\chapter{Classical phase transitions}
+
+    Consider the phase diagram of the water. Microscopically, they all have the same hamiltonian, however, the macroscopical variables changes. There are three phases 
+    \begin{enumerate}
+        \item solid, i.e. it has its own shape and volume, 
+        \item liquid, i.e. it has its own volume but it has the shape of the container,
+        \item gas, i.e. it has the shape and volume of the container. 
+    \end{enumerate}
+    There are lines, called coexistence lines, along which $2$ phases are in equilibrium. They are lines because, other than $T_1 = T_2$ and $p_1 = p_2$, we have a costrain 
+    \begin{equation*}
+        \mu_1(p, T) = \mu_2 (p, T) ~.
+    \end{equation*}
+    This reduce to a line. 
+
+    Furthermore, there are points, called coexistence points or triple point, in which $3$ phases are in equailibrium. They are points because, other than $T_1 = T_2 = T_3$ and $p_1 = p_2 = p_3$, we have the costrains
+    \begin{equation*}
+        \mu_1(p, T) = \mu_2 (p, T) = \mu_3 (p, T) ~.
+    \end{equation*}
+    This reduce to a point.
+    
+\section{Symmetries} 
+
+    We can use symmetries of the system to study it. We can distinguish solid from fluid by the translation or rotations invariance. In fact, solid has only discrete invariance, whereas fluid has continuous invariance. However, we cannot distinguish with symmetries between gas and liquid.
+
+\section{Clausius-Clapeyron equation}
+
+    On the coexistence line, the Clausius-Clapeyron equation is 
+    \begin{equation*}
+        \dv{p}{T} = \frac{s_2 - s_1}{v_1 - v_2} = \frac{\Delta q}{T \Delta v}  ~.
+    \end{equation*}
+    \begin{proof}
+        In order to remain on the coexistence line, the costrain relation holds
+        \begin{equation*}
+            \mu_1(p, T) = \mu_2 (p, T) ~.
+        \end{equation*}
+        We differentiate it, keeping in mind that $p = p(T)$
+        \begin{equation*}
+            \pdv{\mu_1}{T} \Big \vert_p + \dv{\mu_1}{p} \Big \vert_T \dv{p}{T} = \pdv{\mu_2}{T} \Big \vert_p + \dv{\mu_2}{p} \Big \vert_T \dv{p}{T} ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \dv{p}{T} = \frac{\pdv{\mu_1}{T} \vert_p - \pdv{\mu_2}{T} \vert_p}{\pdv{\mu_2}{p} \vert_T - \pdv{\mu_2}{p} \vert_T} ~.
+        \end{equation*}
+
+        At fixed number of particle, we can use the Gibbs free energy $G(p, T, N) = \mu (p, T) N$ or the Gibbs free energy per particle 
+        \begin{equation*}
+            g = \frac{G}{N} = \mu(p,T) ~.
+        \end{equation*}
+        Using the relations~\eqref{ges}
+        \begin{equation*}
+            \pdv{\mu}{p} \Big \vert_T = \pdv{g}{p} \Big \vert_T = \frac{1}{N} \pdv{G}{p} \Big \vert_T = \frac{V}{N} = v ~,
+        \end{equation*}
+        \begin{equation*}
+            \pdv{\mu}{T} \Big \vert_p = \pdv{g}{T} \Big \vert_p = \frac{1}{N} \pdv{G}{T} \Big \vert_p = - \frac{S}{N} = - s ~,
+        \end{equation*}
+        we obtain
+        \begin{equation*}
+            \dv{p}{T} = \frac{\pdv{\mu_1}{T} \vert_p - \pdv{\mu_2}{T} \vert_p}{\pdv{\mu_2}{p} \vert_T - \pdv{\mu_2}{p} \vert_T} = \frac{s_2 - s_1}{v_2 - v_1} ~.
+        \end{equation*}
+
+        Furthermore, when there is a phase change, temperature remains constant whereas the thermal energy put in the system is transformed into latent heat
+        \begin{equation*}
+            \Delta s = \frac{\Delta q}{T} ~.
+        \end{equation*}
+        Therefore
+        \begin{equation*}
+            \dv{p}{T} = \frac{\Delta q}{T \Delta v} ~.
+        \end{equation*}
+    \end{proof}
+
+
+    There could be $2$ different kind of phase transitions 
+    \begin{enumerate}
+        \item $1$st order phase transitions, i.e. those in which the $1$st derivatives of thermodynamic potentials are discontinuous;
+        \item continuous phase transitions, i.e. those in which the higher derivatives of thermodynamic potentials are discontinuous.
+    \end{enumerate}
+
+    In our case, the former are those in which there is a jump $v_2 \neq v_1$ and $s_2 \neq s_1$ and the latter are those in which $v_2 = v_1$ and $s_2 = s_1$. 
+
+\chapter{Theorems of Lee and Young}
+
+    Consider a classical fluid in a volume $V \subset \mathbb R^3$. We treat it in the grancanonical ensemble. The grancanonical partition function is 
+    \begin{equation*}
+        \mathcal Z [V, T, z] = \sum_{N=0}^\infty z^n Z_N[T, V] ~.
+    \end{equation*}
+
+    The canonical partition function is 
+    \begin{equation*}
+        Z_N = \frac{1}{N! h^{3N}} \int_{V^N} \prod_i d^3 q^i \underbrace{\int_{\mathbb R^{3N}} \prod_i d^3 p^i  \exp (- \beta \sum_j \frac{p_j}{2m}}_{\frac{1}{\lambda_T^{3N}}} + U_N(q^i)) = \frac{1}{N! \lambda_T^{3N}} \underbrace{\int_{V^N}\prod_i d^3 q^i \exp (- \beta U_N(q^i))}_{Q_N (T, V)} = \frac{Q_N(T, V)}{N! \lambda_T^{3N}} ~.
+    \end{equation*}
+    Notice that $Q_N(T,V) > 0$.
+
+    Therefore 
+    \begin{equation*}
+        \mathcal Z = \sum_{N=0}^\infty z^n \frac{Q_N}{N! \lambda_T^{3N}} ~.
+    \end{equation*}
+    which is a power series in $z$. Now we promote $z$ into a complex variables, keeping in mind that the physical states are only the ones for $z \in \mathbb R^+$
+
+    We make the assumption that $U_N \geq - BN$ with $B > 0$, which means that it grows no more than $N$ order. This implies that 
+    \begin{equation*}
+        \exp(- \beta U_N) \leq \exp(\beta B N) ~,
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        Q_N = \int_{V^N} \prod_i d^3 q^i \exp (- \beta U_N(q^i)) \leq \exp(\beta B N) \int_{V^N}\prod_i d^3 q^i = \exp(\beta B N) V^N 
+    \end{equation*}
+    and 
+    \begin{equation*}
+        Z_N = \frac{Q_N}{N! \lambda_T^{3N}} \leq \frac{V^N}{N! \lambda^{3N}_T} \exp(\beta B N) ~.
+    \end{equation*}
+    Therefore 
+    \begin{equation*}
+        |\mathcal Z| \leq \sum_{N=0}^\infty \frac{|z|^N}{N! \lambda_T^{3N}} V^N \exp(\beta B N) = \exp(\frac{V \exp(\beta B) |z|}{\lambda_T^3}) ~,
+    \end{equation*}
+    which, given the fact that it is an exponential, has an infinite convergence radius. We have proved that it is analytical $\forall z \in \mathbb C$, in particular for $z \in \mathbb R^+$. Furthermore, $\mathcal Z$ cannot become vanishing since it is convergent and it is a sum of positive terms. We introduce the granpotential 
+    \begin{equation*}
+        \Omega = - \frac{1}{\beta} \ln \mathcal Z ~,
+    \end{equation*}
+    which is well defined, since $\mathcal Z \neq 0$ and analytical $\forall z \in \mathbb R^+$. 
+
+    Finally, all thermodynamic functions are analytical for $z \in \mathbb R^+$ and there are no phase transitions. How it it possible? We have not yet computed the thermodynamic limit.
+
+    Consider a system composed of hard sphere occupying a finite volume $v$. The maximum number of particles is $M = \frac{V}{v}$. $\mathcal Z$ is a polynomial function in $z$ of degree $M$ and, by the fundamental theorem of algebra, it has $M$ zeroes but none in $\mathbb R^+$. If we go into the thermodynamic limit, $V \rightarrow \infty$, $M \rightarrow \infty$ and the number of zeroes increases. However, it holds that 
+    \begin{enumerate}
+        \item $\forall V, M$, there exists an open subset of $\mathbb R^+$ which does not contain zeroes, i.e. $\mathcal Z (V \rightarrow \infty, T, \mu)$ has no zeroes on $\mathbf R^+$,
+        \item if zeroes accumulate towards a certain $z = z_c$, then  $\mathcal Z (V \rightarrow \infty, T, \mu)$ has a zero in $z = z_c$.
+    \end{enumerate}
+    This means that $\Omega$ is no longer analytical at $z = z_c$. Now, there is no more equilbrium and phase transitions come up from the dark. 
+
+    This statements can be written down in terms of 
+    \begin{equation*}
+        \psi = \lim_{td} \frac{\ln \mathcal Z}{V} ~.
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        p \beta = \psi ~, \quad n = z \pdv{}{z} \psi ~.
+    \end{equation*}
+    \begin{proof}
+        For the first 
+        \begin{equation*}
+            \Omega = - p V = - \frac{1}{\beta} \ln \mathcal Z ~,
+        \end{equation*}
+        hence
+        \begin{equation*}
+            p \beta = \frac{\ln \mathcal Z}{V} = \psi ~.
+        \end{equation*}
+
+        For the second,
+        \begin{equation*}
+            N = z \pdv{}{z} \ln \Omega = - \frac{z}{\beta} \pdv{}{z} \ln \Omega ~,
+        \end{equation*}
+        hence
+        \begin{equation*}
+            n = \frac{N}{V} = - \frac{z}{\beta} \pdv{}{z} \frac{\ln \Omega}{V} =  - \frac{z}{\beta} \pdv{}{z} \psi ~.
+        \end{equation*}
+    \end{proof}
+
+    \begin{theorem}
+        If $U_N \geq - BN$ with $B > 0$, if the boundary of the volume does not increases fastes than $V^{2/3}$, in order to neglect surface terms, then $\psi$ exists, it is continuous and monotonically increasing.
+    \end{theorem}
+    \begin{theorem}
+        Given an open subset of an interval of $\mathbb R^+$ such that it doesn not contain zeroes, then $\psi$ exists and it is analytic.
+    \end{theorem}
+    \begin{corollary}
+        A phase transitions may appear at $z = z_c$ if it is an accumulation point of zeroes. This point divides $\mathbb R^+$ into $2$ regions corresponding to $2$ different phases. Furthermore, $\psi$ is continuous but it is not analytic: $1st$ order phase transitions or continuous phase transitions.
+    \end{corollary}
+
 \chapter{Ising model}

@@ -1,0 +1,497 @@
+\part{Introduction}
+
+\chapter{Relativistic quantum mechanics}
+
+    Nature is described by quantum mechanics at short distances and by special relativity at large velocities. However, quantum mechanics does not include relativistic effects, since the energy used is non-relativistic
+    \begin{equation*}
+        E_{CM} = \frac{m}{2} v^2 \neq E_{SR} = \sqrt{p^2 c^2 + m^2 c^4} ~.
+    \end{equation*}
+    On the other hand, special relativity does not include quantum effects, since observables are not operators and energy is not quantised.
+
+    The quantum mechanics framework consists into promoting observables to operator via the canonical commutation relations 
+    \begin{equation*}
+        [\hat x, \hat p] = i \hbar \Rightarrow \hat p = - i \hbar \dv{}{x} ~, \quad [\hat t, \hat H] = i \hbar \Rightarrow \hat H = - i \hbar \dv{}{t} ~.
+    \end{equation*}
+    This operators act on an Hilbert space, which is a complex infinite-dimensional linear space endowed with an inner product. As basis of this space, we could use the eigenstates of the energy and the eigenvalues are the values of the energy. A system of fixed number of particles is described by a state in this space.
+
+    A first attempt could be to use the quantum mechanics framework with the relativistic hamiltonian 
+    \begin{equation*}
+        i \hbar \pdv{}{t} \psi(t, x) = \hat H \psi(t, x) = \sqrt{\hat p^2 c^2 + m^2 c^4} \psi(t, x) ~.
+    \end{equation*}
+    This solution fails for three reasons
+    \begin{enumerate}
+        \item the number of particle is not fixed;
+        \item it violates causality, i.e. information cannot travel faster than light;
+        \item there is an infinite tower of negative energy states.
+    \end{enumerate}
+
+\section{Number of particle is not fixed}
+
+    Experimentally, the number of particles is not conserved. Into colliders, like LHC, there are the creation of new particles and the destruction of old ones. Into decays processes, a particle can decay into more different particles. This happens due to antiparticles. 
+
+    Heuristically, consider a particle of mass $m$ in a box of length $L$. In order to be inside the box, we must have $\Delta x \sim L$. By the uncertainty principle, $\Delta x \Delta p \sim L \delta p \sim \hbar$. Hence $\Delta p \sim \hbar / L$. In the ultra-relativistic limit, the energy is $E \sim p c$. Hence $\Delta E \sim c \Delta p \sim \hbar c / L$. Therefore, if $L \rightarrow 0$, then $E \rightarrow \infty$. But we could have enough energy to produce two particles of mass $m$ from the vacuum, i.e. $\delta E \sim 2 m c^2$, where they must have opposite charge in order to preserve charge conservation, called particles and antiparticles. They would survive only for $\Delta t \sim \hbar / \Delta E$ and they would annihilate into the vaccum. However, for $L \rightarrow 0$ and $E \rightarrow \infty$, there will be more and more particles created. Important effects will happen when $c \hbar / L \sim m c^2$, which means for length of the order of the Compton wavelength
+    \begin{equation*}
+        \lambda_C \sim \frac{\hbar}{mc^2} .
+    \end{equation*}
+    This means that at distances shorter thn the Compton wavelength, there is a non-zero probability to detect a pair creation of a particle and an antiparticle.
+
+\section{Causality}
+
+    Quantum mechanics violates causality. In fact, if we compute the probability to freely propagate from a point $\mathbf x$ to $\mathbf y$ after a time $t$, we obtain 
+    \begin{equation*}
+        A_{\mathbf x \rightarrow \mathbf y} (t) = (\frac{m}{2 \pi i \hbar t})^{3/2} \exp(\frac{i m}{2 \hbar t} |\mathbf x - \mathbf y|^2) \neq 0 ~,
+    \end{equation*}
+    which means that for points outside the light cone $|\mathbf x - \mathbf y| \gg ct$, there is a non-zero probability. Causality is indeed violated, but it is okay, since we did not assume locality in the axioms of quantum mechanics.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Relativistic uantum mechanics violates causality. In fact, if we compute the probability to freely propagate from a point $\mathbf x$ to $\mathbf y$ after a time $t$, we obtain 
+    \begin{equation*}
+        A_{\mathbf x \rightarrow \mathbf y} (t) \neq 0 ~,
+    \end{equation*}
+    which means that for points outside the light cone $|\mathbf x - \mathbf y| \gg ct$, there is a non-zero probability. Causality is indeed violated, but it is okay, since we did not assume locality in the axioms of quantum mechanics.
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Fock space}
+
+    For unspecified number of particles, we use the concept of Fock space 
+    \begin{equation*}
+        \mathcal F = \sum_n \mathcal H_n ~,
+    \end{equation*}
+    where $\mathcal H_n$ is the Hilbert space with fixed $n$ particles. A vector in a Fock space would have a projection on each Hilbert space.
+
+
+\chapter{Unites and scales}
+
+    There are $3$ fundamental constants 
+    \begin{enumerate}
+        \item $c$, speed of light;
+        \item $\hbar$, Planck's constant;
+        \item $G_N$, Newton's constant.
+    \end{enumerate}
+    Their dimensional analysis is 
+    \begin{equation*}
+        [c] = [L][T]^{-1} ~, \quad [\hbar] = [M] [L]^2 [T]^{-1} ~, \quad [G_N] = [L]^3 [M]^{-1} [T]^{-2} ~.
+    \end{equation*}
+    \begin{proof}
+        For $c$, which is a velocity,
+        \begin{equation*}
+            [c] = [L][T]^{-1} ~.
+        \end{equation*}
+
+        For $\hbar$, which is an action,
+        \begin{equation*}
+            [c] = [E][T] = [M] [L]^2 [T]^{-2} [T] = [M] [L]^2 [T]^{-1}  ~.
+        \end{equation*}
+
+        For $G_N$, which is an energy per length divided by mass square,
+        \begin{equation*}
+            [G_N] = [E] [L] [M]^{-2} = [M] [L]^2 [T]^{-2} [L] [M]{-2} = [L]^3 [M]^{-1} [T]^{-2} ~.
+        \end{equation*}
+    \end{proof}
+
+    Now, we introduce the natural units, in which everything is measured in masses
+    \begin{equation*}
+        \hbar = c = 1~.
+    \end{equation*}
+    Therefore 
+    \begin{equation*}
+        [L] = [T] = [E]^{-1} = [M]^{-1} ~.
+    \end{equation*}
+    The Newton's constant is 
+    \begin{equation*}
+        [G] = [M]^{-2} ~.
+    \end{equation*}
+
+    Combining the three constants, we can define important quantities
+    \begin{enumerate}
+        \item Planck's mass \begin{equation*}
+            m_P \sim 10^{19} GeV ~,
+        \end{equation*}
+        \item Planck's length \begin{equation*}
+            l_p = \frac{1}{M_p} \sim 10^{-35} m ~,
+        \end{equation*}
+    \end{enumerate}
+    where we have $1 Gev = 10^{16} m^{-1}$.
+
+    Relevant energy scales in Nature are 
+    \begin{enumerate}
+        \item $m_P \sim 10^{19} GeV$, 
+        \item $E_{GUT} \sim 10^{16} GeV$, 
+        \item $E_{LHC}\sim 10^{13} GeV$, 
+        \item $m_{top} \sim 170 GeV$, 
+        \item $m_{Higgs} \sim 125 GeV$, 
+        \item $m_{W, Z} \sim 90 GeV$, 
+        \item $m_{\mu} \sim 0.1 GeV$, 
+        \item $m_{e} \sim 10^{-3} GeV$, 
+        \item $m_{\nu} \sim 10^{-11} GeV$, 
+        \item $H_0 \sim 10^{16} GeV$.
+    \end{enumerate}
+
+\chapter{Quantum field theory}
+
+    We need to change paradigm and introduce the new framework of quamtum field theory. Fundamental quantity are quantum field and each particle iemerges as a quanta/oscillation of its own associated field, which is spread everywhere in the spacetime. This means that if there is nothing, it is in the groud state, whereas if there is the particle, it is in an excited state. Examples are photons for the electromagentic field, electron for the electronic field and Higgs bosons for the Higgs field. This new point of view enesures locality, since interactions are local; causality, since nothing can travel faster than light; fields can describe systems with arbitrary number of particles, since there ai creation and annihilation of particles and antiparticles. There is a change also in the coordinate sin which we describe the system: in quantum mechanics, position and time were the finite number of degrees of freedom, whereas, in quantum field theory, field configuration are the infinite number of degrees of freedom, since they are functions of the spacetime coordinates. In fact, $t$ and $\mathbf x$ are only labels to indicate which field of the infinite continuous number that there are. Fields are therefore promoted to operators acting on a Fock space $\hat \psi (t, \mathbf x)$ via generalised commutations relations.
+
+    Moreover, there are other features that emerge from this description. All particles of the same kind are identical, even if they are produced far far away, since they are quanta of the same field. This implies that to be more fundamental is the field underneath them. In quantum mechanics, the correct spin-statistics relations are imposed by hand, wheres in quantum field theory, they emerge from the theory. Given a wavefunction which described $n$ identical particles $\psi(x_1, \ldots x_n)$, we can have two alternatives 
+    \begin{enumerate}
+        \item $\psi$ is symmetric 
+            \begin{equation*}
+                \psi(\ldots, x_i, \ldots, x_j, \ldots) = \psi(\ldots, x_j, \ldots, x_i, \ldots) ~,
+             \end{equation*}
+            which is the Bose-Einstein statistics and it happens for integer-spin particles, called bosons;
+        \item $\psi$ is antisymmetric 
+            \begin{equation*}
+                \psi(\ldots, x_i, \ldots, x_j, \ldots) = - \psi(\ldots, x_j, \ldots, x_i, \ldots) ~,
+             \end{equation*}
+            which is the Fermi-Dirac statistics and it happens for half integer-spin particles, called fermions;
+    \end{enumerate}
+    In quantum field theory, this is realised by imposing commutation relations fo bosons and anticommutation relations for fermions.
+
+\chapter{Mechanical model of a quantum string}
+
+    Consider an elastic string, which is the continuum limit of a $1$-dimensional lattics of $N$ atoms. Our discrete model is therefore composed by $N$ atoms of a discrete string of mass $m$ and they are coupled via a spring of elastic constant $k$. This preserve locality, since eacj only interacts with its own neighbourhood. 
+
+    An example can be a metastable system, for which the equilibrium position is $x = 0$, i.e. $F(x = 0) = 0$ and it can be Taylor expanded into 
+    \begin{equation}
+        F(x) = F(x = 0) + \underbrace{\dv{F}{x} \Big \vert_{x = 0}}_{-k} x + O(x^2) = - k x ~.
+    \end{equation}
+
+    Let us focus on the displacement along the $y$-axis with fixed lattice spacing $\Delta$ in $x$. The equilibrium points are $y_j = 0$ and the system can be viewed as a system of $N$ coupled harmonic oscillators. In the continuum limit $\Delta \rightarrow 0$ and $ N \rightarrow \infty$, the $y$-displacements $u_j (t)$ become a field $\phi(t, x)$.
+
+\section{Classical string}
+
+    The lagrangian of the system is 
+    \begin{equation*}
+        L = \sum_{j = 1}^{N} \Big ( \frac{m}{2} \dot y_j^2 (t) - \frac{k}{2} (y_j(t) - y_{j+1} (t) )^2 \Big) ~,
+    \end{equation*}
+    where the displacement with resepct to the equilibrium position is $y_j(t) - y_{j+1} (t)$. Furthermore, we impose periodic boundary condition, for which $y_{j + N} (t) = y_{j} (t)$. We have a closed string with translational invariance for $j \rightarrow j + N$.
+
+    We assume the regime of small oscillations, i.e. 
+    \begin{equation*}
+        \frac{y_j - y_{j+1}}{\Delta} \ll 1 ~.
+    \end{equation*}
+
+    The lagrangian becomes 
+    \begin{equation*}
+    \begin{aligned}
+        L & = \sum_{j = 1}^{N} \Big ( \frac{m}{2} \dot y_j^2 (t) - \frac{k}{2} (y_j(t) - y_{j+1} (t) )^2 \Big) \\ & = \sum_{j = 1}^{N} \Big ( \frac{m}{2} \dot y_j^2 (t) - \frac{k \Delta}{2} (\frac{y_j(t) - y_{j+1} (t) }{\Delta})^2 \Big) \\ & = \sum_{j = 1}^{N} \frac{m}{2}\Big ( \dot y_j^2 (t) - v^2 (\frac{y_j(t) - y_{j+1} (t) }{\Delta})^2 \Big) ~,
+    \end{aligned}
+    \end{equation*}
+    where we have defined 
+    \begin{equation*}
+        \tilde k = k \Delta^2 = m v^2 ~,
+    \end{equation*}
+    since $[\tilde K] = [E]$.
+
+    The equations of motion are 
+    \begin{equation*}
+        \ddot y_j (t) = - \frac{v}{\Delta^2} ( 2 y_j(t) - y_{j+1} (t) - y_{j-1}(t)) ~.
+    \end{equation*}
+    \begin{proof}
+        Using the Euler-Lagrange equations and noticing that in the sum $y_j$ compare where the index is $j - 1$ and $j$, we have
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \pdv{L}{y_j} - \dv{}{t} \pdv{L}{\dot y_j} \\ & = - \frac{v^2}{\Delta^2} \pdv{}{y_j} ((y_{j-1} - y_j)^2 + (y_j - y_{j+1})^2 ) - 2 m \ddot y_j \\ & = - \frac{ v^2}{\Delta^2} ( - 2 (y_{j-1} - y_j) + 2 (y_j - y_{j+1})) - 2 m \ddot y_j \\ & = - \frac{v^2}{\Delta^2} (4 y_j - 2 y_{j-1} - 2 y_{j+1}) - 2 m \ddot y_j ~, 
+        \end{aligned}
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            \ddot y_j = - \frac{v}{\Delta^2} ( 2 y_j(t) - y_{j+1} (t) - y_{j-1}(t)) ~.
+        \end{equation*}
+    \end{proof}
+
+    In order to solve this problem containing $N$ coupled harmonic oscillators, we used the discrete Fourier transform
+    \begin{equation*}
+        y_j (t) = \frac{1}{\sqrt{N}} \sum_{s = 1}^N \exp(i \frac{2\pi}{N} s j) \tilde y_s(t) ~.
+    \end{equation*}
+    We obtained a system of $N$ decoupled simple harmonic oscillators, one for each $s$,
+    \begin{equation*}
+        \ddot{\tilde y_s} (t) = - \Big ( \frac{2 v}{N} \sin \frac{\pi s}{N}\Big)^2  \tilde y_s (t) ~,
+    \end{equation*}
+    of $N$ different frequencies $\omega_s = 2 v / \Delta \sin (\pi s /N)$. The equations of motion are 
+    \begin{equation*}
+        \tilde y_s (t) + \omega^2_s y_s (t) = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    Therefore, the solution for each $s$ is 
+    \begin{equation*}
+        \tilde y_s (t) = A_s \exp(- i \omega_s t) 
+    \end{equation*}
+    and the total solution is a linear combinations of sound waves 
+    \begin{equation*}
+        y_j (t) = \frac{1}{\sqrt{N}} \sum_{s = 1}^N \exp(i (\frac{2\pi}{N} s j - \omega_s t)) ~,
+    \end{equation*}
+    with $N$ discrete wave numbers $k_s = 2 \pi s / N \Delta = 2 \pi / \lambda_s$ or $N$ discrete wavelength $\lambda_s = N \Delta / s$, which are $N\Delta, N\Delta/2, \ldots$. Each sound waves has different velocity 
+    \begin{equation*}
+        v_s = \frac{\omega_s}{k_s} = \frac{\frac{2 v }{\Delta} \sin \frac{\pi s}{N}}{\frac{2 \pi s}{N \Delta}} = \frac{v N}{\pi s} \sin \frac{\pi s}{N} = v \frac{\sin \frac{\pi s}{N}}{\frac{\pi s}{N}} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    In the continuum limit, $j \Delta \rightarrow x$, $k \rightarrow p$, $v_s \rightarrow v$.
+
+    We have $N-1$ degrees of freedom, because there is $\omega_{s = N} = 0$. However, we can exploit the symmetries of the sine functions to reduce $2$ real degrees of freedom into $1$ complex degree of freedom. $y$ must be real but $\tilde y$ is complex such that $y = \exp(i \ldots) \tilde y$ is real. In fact, $\tilde y_s$ and $\tilde y_{N - s}$ have the same frequency. Therefore 
+    \begin{equation*}
+        y_j (t) = \frac{1}{\sqrt{N}} \sum_{s = 1}^{N/2 -1} \Big ( \exp(\frac{2\pi}{N} j s) \tilde y_s + \exp(- \frac{2\pi}{N} j s) \tilde y_{N - s} \Big) ~,
+    \end{equation*}
+    \begin{equation*}
+        y_j^* (t) = \frac{1}{\sqrt{N}} \sum_{s = 1}^{N/2 -1} \Big (- \exp(\frac{2\pi}{N} j s) \tilde y_s^* + \exp(\frac{2\pi}{N} j s) \tilde y_{N - s}^* \Big) ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+    The conditions in order to have $y$ real, i.e. $y = y^*$, are 
+    \begin{equation*}
+        \tilde y_s = \tilde y_{N-s}^* ~, \quad \tilde y_s^* = \tilde y_{N-s} ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+    We could have use directly the lagrangian, and diagonalise it to decouple the equations of motion, to obtain the same results 
+    \begin{equation*}
+        K = \frac{1}{2} m \sum_{j=1}^{N} \dot y_j^2 = \frac{1}{2} m \sum_{s = 1}^{N/2 - 1} 2 \dot{\tilde y_s} \dot{\tilde y_{N-s}} = m \sum_{s=1}^{N/2 - 1} |\dot{\tilde y}|^2 ~,
+    \end{equation*}
+    \begin{equation*}
+        V = \frac{1}{2} \frac{m v^2}{\Delta^2} \sum_{j=1}^{N} (y_j - y_{j-1})^2 = m \sum_{s=1}^{N/2 - 1} \omega^2_s |\tilde y|^2 ~.
+    \end{equation*}
+    \begin{proof}
+        Maybe in the future.
+    \end{proof}
+
+\section{Harmonic oscillator}
+
+    Now, we quantise the system, which means to quantise $N$ decoupled harmonic oscillators. Recall the simple quantum harmonic oscillator of $m = 1$. The hamiltonian is 
+    \begin{equation*}
+        \hat H = \frac{\hat p^2}{2} + \frac{\omega^2}{2} \hat y^2 ~,
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        [\hat y, \hat p] = i ~.
+    \end{equation*}
+    The equilibrium point is $y = 0$. The creation and annihilation operators are 
+    \begin{equation*}
+        \hat a = \sqrt{\frac{\omega}{2}} \hat y + \frac{i}{\sqrt{2\omega}} \hat p ~, \quad \hat a^\dagger = \sqrt{\frac{\omega}{2}} \hat y - \frac{i}{\sqrt{2\omega}} \hat p ~,
+    \end{equation*}
+    which inverted looks like 
+    \begin{equation*}
+        \hat y = \frac{\hat a + \hat a^\dagger}{\sqrt{2 \omega}} ~, \quad \hat p = i \sqrt{\frac{\omega}{2}} (\hat a - \hat a^\dagger) ~,
+    \end{equation*}
+    such that 
+    \begin{equation*}
+        [\hat a, \hat a^\dagger] = 1~.
+    \end{equation*}
+    Therefore, the hamiltonian becomes 
+    \begin{equation*}
+        \hat H = \omega (\hat a^\dagger \hat a + \frac{1}{2}) = \omega (\hat n + \frac{1}{2}) ~,
+    \end{equation*}
+    where the number operator is $\hat n$. The zero point energy (ground state) is $\omega/2$ and a generic $n$ point energy is $n \omega /2$. The commutation relations are
+    \begin{equation*}
+        [\hat H, \hat a^\dagger] = \omega \hat a^\dagger ~, \quad [\hat H, \hat a] = - \omega \hat a ~.
+    \end{equation*}
+    The eigenstates of the number operator are the same of the hamiltonian 
+    \begin{equation*}
+        \hat H \ket{n} = E_{n} \ket{n} ~,
+    \end{equation*}
+    therefore 
+    \begin{equation*}
+        \hat H \hat a^\dagger \ket{n} = [\hat H, \hat a^\dagger] \ket{n} + \hat a^\dagger \hat H \ket{n} = (\omega + E_n) \hat a^\dagger \ket{n} ~.
+    \end{equation*}
+    This means that 
+    \begin{equation*}
+        \hat a^\dagger \ket{n} = c_{n+1} \ket{n+1} ~, \quad \hat a \ket{n} = c_{n-1} \ket{n-1} ~.
+    \end{equation*}
+    For the ground state, we have $\hat a \ket{0} = 0$, whereas for a generic excited state $(\hat a^\dagger)^n \ket{0} = \sqrt{n!} \ket{n}$.
+
+\section{Quantum string}
+
+    To quantise, we decompose $\tilde y_s$ into its real and complex part 
+    \begin{equation*}
+        \tilde y_s = \frac{1}{\sqrt{2}} (\real \tilde y_s + i \imm \tilde y_s) ~,
+    \end{equation*}
+    and we promote them to operators 
+    \begin{equation*}
+        \hat{(\real \tilde y_s)} = \frac{1}{\sqrt{\omega_s}} (\hat a_s^{(R)} + \hat a_s^{\dagger(R)}) ~, \quad \hat{(\imm \tilde y_s)} = \frac{1}{\sqrt{\omega_s}} (\hat a_s^{(I)} + \hat a_s^{\dagger(I)}) ~,
+    \end{equation*}
+    \begin{equation*}
+        \hat p_s^{(R)} = - i \sqrt{\frac{\omega_s}{2}} (\hat a_s^{(R)} - \hat a_s^{\dagger(R)}) ~, \quad \hat p_s^{(I)} = - i \sqrt{\frac{\omega_s}{2}} (\hat a_s^{(I)} - \hat a_s^{\dagger(I)}) ~,
+    \end{equation*}
+    where $\omega_s = 2 v / \Delta \sin (\pi s / N)$ for $s = 1, \ldots N - 1 /2$. 
+
+\section{Fock space}
+
+    There are several Hilbert spaces. Each quantum harmonic oscillator has its own Hilbert space spanned by the eigenstates of the hamiltonian and created by the action on the vacuum of the creation operators. These quantised excitation of vibrations of a solid (string) are called quasi-particles or phonons. The total space is called Fock space 
+    \begin{equation*}
+        \mathcal F = \sum_{n = 1}^\infty \mathcal H = \mathcal H_1 \oplus \ldots \oplus \mathcal H_n ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        \mathcal H_n = \otimes_{n} \mathcal H_1 = \mathcal H_1 \otimes \ldots \otimes \mathcal H_1 ~.
+    \end{equation*}
+    Recall that in $\oplus$ we take the same of the axis and in $otimes$ we take all the combinations. In our case 
+    \begin{equation*}
+        \mathcal H_1 = \oplus_{s = 1}^{N/2 - 1} \mathcal H_{1, s}
+    \end{equation*}
+    where each phonons can have frequency $\omega_s$. We can build our Fock space with the ladder operators. $\mathcal H_1$ is spanned by the states $\hat a_i^{\dagger(R, I)} \ket{0} = \hat a_i^\dagger \ket{0}$. $\mathcal H_2$ is spanned by the states $\hat a_i^\dagger \hat a_j^\dagger \ket{0}$ and $\hat a_j^\dagger \hat a_i^\dagger \ket{0}$ which in general are not the same. $\mathcal H_N$ is spanned by the states $(\hat a_{i_1}^\dagger)^{n_1}  \ldots (\hat a_{i_l}^\dagger)^{n_l} \ket{0}$ and $\hat a_j^\dagger \hat a_i^\dagger \ket{0}$ with constrain $n_1 + \ldots n_l = n$.
+
+    The vacuum is defined as the state with no phonons, in which all the harmonic oscillators are in the ground state
+    \begin{equation*}
+        \ket{0, \ldots 0} = \ket{0}_{\omega_1}^{(R)} \otimes \ket{0}_{\omega_1}^{(I)} \otimes \ldots \otimes \ket{0}_{\omega_{N/2-1}}^{(R)} \otimes \ket{0}_{\omega_{N/2-1}}^{(I)} ~.
+    \end{equation*}
+    Hence, for example
+    \begin{equation*}
+        \ket{1, 0, \ldots 0} = \hat a^{\dagger(R)}_1 \ket{0} ~, \quad \ket{1, 0, 1, 0 \ldots 0} = \hat a^{\dagger(R)}_1 \hat a^{\dagger(R)}_2 \ket{0} ~.
+    \end{equation*}
+    An arbitrary basis element can be written as 
+    \begin{equation*}
+        \ket{n_1^{(R)}, n_1^{(I)}, \ldots, n_{N/2-1}^{(R)}, n_{N/2-1}^{(I)}} = C (\hat a_1^{\dagger (R)})^{n_1^{(R)}} (\hat a_1^{\dagger (R)})^{n_1^{(R)}} \ldots (\hat a_{N/2-1}^{\dagger (R)})^{n_{N/2-1}{(R)}} (\hat a_{N/2-1}^{\dagger (R)})^{n_{N/2-1}^{(R)}} \ket{0} ~,
+    \end{equation*}
+    where $\mathcal C$ is a normalisation constant.
+    An arbitrary state of the Fock state can be written as 
+    \begin{equation*}
+        \ket{\psi} = \sum_{n_1^{(R)} = 1}^\infty \sum_{n_1^{(I)} = 1}^\infty \ldots \sum_{n_{N/2-1}^{(R)} = 1}^\infty \sum_{n_{N/2-1}^{(I)} = 1}^\infty C_{n_1^{(R)}} C_{n_1^{(I)}} \ldots C_{n_{N/2-1}^{(R)}} C_{n_{N/2-1}^{(I)}} \ket{n_1^{(R)}, n_1^{(I)}, \ldots, n_{N/2-1}^{(R)}, n_{N/2-1}^{(I)}} ~,
+    \end{equation*}
+    where $|C_{n_1^{(R)}} C_{n_1^{(I)}} \ldots C_{n_{N/2-1}^{(R)}} C_{n_{N/2-1}^{(I)}}|^2$ gives the probability that a quantum elastic fiscrete string is in a state with $n_1^{(R)} + n_1^{(I)}$ phonons with frequency $\omega_1$, $n_2^{(R)} + n_2^{(I)}$ phonons with frequency $\omega_2$, etc. The normalisation condition holds 
+    \begin{equation*}
+        ||\ket{\psi}||^2 = \braket{\psi}{\psi} = \sum_{n_1^{(R)} = 1}^\infty \sum_{n_1^{(I)} = 1}^\infty \ldots \sum_{n_{N/2-1}^{(R)} = 1}^\infty \sum_{n_{N/2-1}^{(I)} = 1}^\infty |C_{n_1^{(R)}} C_{n_1^{(I)}} \ldots C_{n_{N/2-1}^{(R)}} C_{n_{N/2-1}^{(I)}}|^2 = 1 ~.
+    \end{equation*}
+    The hamiltonian becomes 
+    \begin{equation*}
+        \hat H = \sum_{s=1}^{N/2-1} \omega_s (\hat a^{\dagger(R)}_s \hat a^{(R)}_s + \hat a^{\dagger(I)}_s \hat a^{(I)}_s + 1) = \sum_{s=1}^{N/2-1} \omega_s (\hat N^{(R)}_s + \hat N^{(I)}_s + 1) = \sum_{s=1}^{N/2-1} \omega_s (\hat N_s + 1) ~,
+    \end{equation*}
+    where $\hat N^{(R)}_s + \hat N^{(I)}_s = \hat N_s$. Therefore, the vacuum energy is 
+    \begin{equation*}
+        E_0 = \sum_{s=1}^{N/2-1} \omega_s ~.
+    \end{equation*}
+
+\section{Continuum limit}
+
+    Now, we go into the continuum limit, for which $\Delta \rightarrow 0$ and $N \rightarrow \infty$. The following quantities become continuum variables 
+    \begin{equation*}
+        k_s \rightarrow k ~, \quad \lambda_s = \frac{2\pi}{k_s} \rightarrow \lambda = \frac{2\pi}{k}~, \quad j \Delta \rightarrow x ~, \quad y_j(t) \rightarrow \phi(t, x) ~.
+    \end{equation*}
+    Furthermore, 
+    \begin{equation*}
+        v_s = \frac{\omega_s}{k_s} = v_s \sin(\frac{\pi s}{N}) \frac{N}{\pi s} \rightarrow v \frac{\pi s}{N} \frac{N}{\pi s} = v ~.
+    \end{equation*}
+    Upon quantisation, we find phonons (quanta of excitations of elestic string) characterised by $\omega = v k$. If $v = c$, we find 
+    \begin{equation*}
+        \omega = c k ~, \quad \hbar \omega = c \hbar k ~, \quad E_p = \hbar p ~,
+    \end{equation*}
+    which means that each phonon is a photon, since it is the energy relation for massless particles. There are infinitely many decoupled harmonic oscillators each for a value of $p$.
+
+\section{Particle intepretation}
+
+    $\phi(t, x)$ can be seen as the field associated to a massless relativistic particle upon quantisation part of the momentum $p = \hbar k$, which emerges as quanta of excitations over its own ground state. $\hat a^\dagger_k$ and $\hat a_k$ are ladder operators of a particle with momentum $p$. The mass can be obtained by means of the addition of springs with respect to $y_j = 0$ with elastic constant $k_\mu$. The lagrangian becomes 
+    \begin{equation*}
+        L = \sum_{j = 1}^{N} \Big ( \frac{m}{2} \dot y_j^2 (t) - \frac{k}{2} (y_j(t) - y_{j+1} (t) )^2 - \frac{1}{2} k_\mu y_j^2(t) \Big) = \frac{m}{2} \Big ( \dot y_j^2 (t) - v^2 (\frac{y_j(t) - y_{j+1} (t)}{\Delta} )^2 - \frac{1}{2} \frac{k_\mu}{m} y_j^2(t) \Big) ~,
+    \end{equation*}
+    which in the continuum limit, for $v = 1$, we have
+    \begin{equation*}
+        \sum_{j = 1}^{N} \rightarrow \int dx ~, \quad y_j \rightarrow \phi ~. \quad \partial_0 \phi = \dot y_j \rightarrow \dot \phi ~, \quad \frac{y_j(t) - y_{j+1} (t)}{\Delta} \rightarrow \partial_x \phi ~,
+    \end{equation*}
+    hence 
+    \begin{equation*}
+        L = \int dx (\frac{m}{2} \partial_0 \phi \partial_0 \phi - \frac{m}{2} \partial_x \phi \partial_x \phi  - \frac{1}{2} k_\mu \phi^2 ) = \int dx \mathcal L~.
+    \end{equation*}
+    We calle $\mathcal L$ lagrangian density, which in covariant notation becomes 
+    \begin{equation*}
+        \mathcal L = \frac{1}{2} m \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} k_\mu \phi^2 =  \frac{1}{2} m \partial_0 \phi \partial^0 \phi - \frac{1}{2} m \partial_x \phi \partial^x \phi- \frac{1}{2} k_\mu \phi^2 ~.
+    \end{equation*}
+    The equations of motion are 
+    \begin{equation*}
+        \pdv{\mathcal L}{\phi} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi} = m \partial^\mu \partial_\mu \phi + k_\mu = 0 ~,
+    \end{equation*}
+    \begin{equation*}
+        (\Box + \frac{k_\mu }{m}) \phi = 0 ~,
+    \end{equation*}
+    which in non-covariant notation is 
+    \begin{equation*}
+        \ddot \phi(t, x) = \phi_{xx} (t, x) - \frac{k_\mu}{m} \phi(t, x) ~.
+    \end{equation*}
+    It is always a system of infinitely many coupled harmonic oscillators, which can be decoupled via Fourier transform 
+    \begin{equation*}
+        y_j(t) = \frac{1}{\sqrt{N}} \sum_{j=1}^N \exp(i \frac{2 \pi}{N} s j) \tilde y(t) = \frac{1}{\sqrt{N}} \sum_{j=1}^N \exp(i k_s j \Delta) \tilde y(t) \rightarrow \phi(t, x) = \frac{1}{2\pi} \int dk \exp(i k x) \tilde \phi(t, k) ~.
+    \end{equation*}
+    The equations of motion becomes 
+    \begin{equation*}
+        \ddot{\tilde \phi} (t, k) = - (k^2 + \frac{k_\mu}{m}) \tilde \phi(t, k) ~,
+    \end{equation*}
+    which are a system of decoupled harmonic oscillators with frequency $\omega^2 = k^2 - k_\mu / m$. 
+    \begin{proof}
+        In fact, given 
+        \begin{equation*}
+            \phi(t, x) = \frac{1}{2\pi} \int dk \exp(i k x) \tilde \phi(t, k)  ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \dot \phi(t, x) = \frac{1}{2\pi} \int dk \exp(i k x) \dot{\tilde \phi(t, k)} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            \ddot \phi(t, x) = \frac{1}{2\pi} \int dk \exp(i k x) \ddot{\tilde \phi(t, k)} ~. 
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            \ddot \phi(t, x) = \phi_{xx} (t, x) - \frac{k_\mu}{m} \phi(t, x) 
+        \end{equation*}
+        becomes 
+        \begin{equation*}
+            \cancel{\frac{1}{2\pi} \int dk \exp(i k x)} \ddot{\tilde \phi(t, k)} = k^2 \cancel{ \frac{1}{2\pi} \int dk \exp(i k x)} \tilde \phi(t, k) - \frac{k_\mu}{m} \cancel{\frac{1}{2\pi} \int dk \exp(i k x)} \tilde \phi(t, k) ~.
+        \end{equation*}
+        Finally, 
+        \begin{equation*}
+            \ddot{\tilde \phi} (t, k) = - (k^2 + \frac{k_\mu}{m}) \tilde \phi(t, k) ~.
+        \end{equation*}
+    \end{proof}
+
+    Furthermore 
+    \begin{equation*}
+        \omega^2 = k^2 - \frac{k_\mu}{m} ~, \quad \hbar^2 \omega^2 = c^2 \hbar^2 k^2 - \hbar^2 \frac{k_\mu}{m} ~, \quad E^2 = c^2 p^2 + \mu^2 c^4 ~,
+    \end{equation*}
+    where $k_\mu = c^2 \mu^2 m / \hbar^2$. Putting $c = \hbar = 1$, we obtain 
+    \begin{equation*}
+        (\Box + \mu^2) \phi(t, x) = 0 ~,
+    \end{equation*}
+    which is the Klein-Gordon equation.
+
+    Now, we quantise with the operators 
+    \begin{equation*}
+        \hat \phi_k = \frac{1}{\sqrt{2 \omega_k}} (\hat a_k + \hat a^\dagger_k) ~, \quad \hat \pi_k = - i \sqrt{\frac{\omega_k}{2}} (\hat a_k - \hat a^\dagger_k)  ~.
+    \end{equation*}
+    A generic basis element of the Fock space is 
+    \begin{equation*}
+        (\hat a_{k_1}^\dagger)^{n_1} \ldots (\hat a_{k_l}^\dagger)^{n_l} \ket{0} ~,
+    \end{equation*}
+    which is a state of defined energy 
+    \begin{equation*}
+        E = \sum_{i=1}^{l} n_i \omega_i + \frac{1}{2} \int dk \omega_k ~.
+    \end{equation*}
+    Notice that $\omega_k \sim k$ and the second intergal, which is the vacuum energy, diverges. The first reason is that it is an integral over an infinite range of $\omega$ and the second because $\omega$ goes to infinity as $k$ increases. Vacuum energy is infinite. This means that there is a regime in which the theory is wrong, which is for energies at the scale of the Planck's mass, where gravity becomes no more negligible. Notice that this divergence is a consequenceof the continuum limit. Therefore, if we set a cutoff for $k \Delta \sim 1$, $E_0$ becomes finite. Notice also that at fixed energy, we can have different states with different number of particle which have the same energy 
+    \begin{equation*}
+        E = \sum_{i = 1}^{l} n_i \omega_i = \sum_{i' = 1}^{l'} n_i' \omega_i' ~.
+    \end{equation*}
+    Hence, we can describe transitions between different states with the same energy but with the number of particles that changes. This is impossible in quantum mechanics. For example 
+    \begin{equation*}
+        E = 2 \omega + 2 \omega \rightarrow E = \omega + \omega + \omega + \omega ~.
+    \end{equation*}
+    However, this is possible only with interactions that can change the configuration of the system. Interaction can be introduced with small perturbation of the free theory, which are subleading terms in the Taylor expansion of the lagrangian
+    \begin{equation*}
+        \mathcal L = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - V(\phi) ~,
+    \end{equation*}
+    where 
+    \begin{equation*}
+        V(\phi) = \frac{\mu}{2} \phi^2 + c_3 \phi^3 + c_4 \phi^4 + \ldots ~.
+    \end{equation*}
+    This is an expansion around the equilibrium position $\phi = 0$, $V(0) = 0$ and it is a maximum $V'' > 0$
+    \begin{equation*}
+        V(\phi) = V(\phi_{min}) + V_\phi (\phi_{min}) (\phi - \phi_{min}) + \frac{1}{2} \underbrace{V_{\phi \phi} (\phi_{min})}_{\mu^2} (\phi - \phi_{min})^2 + \underbrace{\frac{1}{3!} V_{\phi \phi \phi} (\phi_{min})}_{c_3} (\phi - \phi_{min})^3 + \underbrace{\frac{1}{4!} V_{\phi \phi \phi \phi} (\phi_{min})}_{c_4} (\phi - \phi_{min})^4 + \ldots ~.
+    \end{equation*} 
+    $c_3$ and $c_4$ are coupling constant that describe how strong is the interaction.
