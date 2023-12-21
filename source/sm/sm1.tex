@@ -1,51 +1,49 @@
 \part{Thermodynamics}
 
-\chapter{The 2 laws of thermodynamics, which are 4}
+\chapter{The 2 laws, which are 4}
 
-    In this chapter, we will recall some notions of thermodynamics.
+    In this chapter, we will recall some notions of thermodynamics: states, equilibrium and the laws of thermodynamics.
 
 \section{Equilibrium}
 
-    Thermodynamics studies large systems that reach equilbrium configurations. But, what is equilibrium? 
-
-    Suppose we have a system immersed in its surroundings. It can be isolated or it can exchange matter and/or energy (mechanical, electric, magnetic, chemical work). The configuration it reaches and its stability can be selected by the boundary conditions, i.e. the specification on how the system is in contact and how it interacts with its surroundings. In other words, there is only one and only one final equilibrium configuration towards the system evolves, once the boundary conditions have beeen given. However, the way the system reaches the equilibrium configuration is irreversible. Equilibrium therefore means that once the system has reached its final configuration, it will stay there forever. 
+    The topic of which thermodynamics studies is a class of systems composed by a large amount of particles, roughly speaking Avogadro number $N_A \simeq 6 \times 10^{23}$ consituents, once it reaches a macroscopical equilibrium configuration. To understand the notion of equilibrium, consider a system immersed in its surroundings which can interact with the latter by exchanging matter and/or energy (mechanical, electric, magnetic, chemical work) or it can be completely isolated. Once a sufficient amount of time has gone past, it reaches a configuration. Which particular configuration and its stability can be selected by the different boundary conditions the system finds itself in, i.e.~the specification on how the system is in contact and how it interacts with its surroundings. In other words, there is only one and only one final equilibrium configuration towards to the system evolves, once boundary conditions have been given. However, the way the system reaches the equilibrium configuration is irreversible. Equilibrium therefore means that once the system has reached its final configuration, it will stay there forever. 
 
 \section{States}
 
-    In thermodynamics, a state is a macroscopic configuration. It is defined by a set of macroscopic quantities, called thermodynamical variables. They can be divided into two groups, one conjugate to the other, according to their behaviour when the physical system is rescaled, i.e.~when the volume and the number of particles change: extensive variables do scale with it whereas intensive ones do not. See Table~\ref{table:1}. 
-    
-    \begin{table}[h!]
+    A state is a macroscopic configuration. Mathematically speaking, it is a point in the manifold $\mathcal M$ of thermodynamic states. To describe it, we need a chart, given by macroscopical physical quantities, called thermodynamical variables. They can be divided into two groups, one conjugate to the other, according to their behaviour when the physical system is rescaled, i.e.~when volume and number of particles change: extensive variables do scale with it whereas intensive ones do not. Some of them are written in Table~\ref{table:td:1}. However, we have to be careful, since only volume is (by definition) extensive and all the others quantities can be considered extensive only if the surface terms are negligible when we take the thermodynamic limit. 
+
+    Each physical system has an equation of state, i.e.~a functional relation among thermodynamic quantities, which restrict the number of independent variables. Geometrically, it means that the only admissible states are a submanifold of the entire manifold of states, given by the constrain induced by the equation of state.
+
+    \begin{example}[Perfect gas]
+        Consider a perfect gas. A chart on its $3$-dimensional manifold can be $(p, V, T)$ and its equation of state is $PV = N k_B T$. This means that the allowed states are in a $2$-dimensional manifold embedded in $\mathbb R^3$.
+    \end{example}
+
+    \begin{table}
         \centering
         \begin{tabular}{c | c }
             Extensive & Intensive \\
             \hline
-            Energy $E$ & - \\ 
-            Entropy $S$ & Temperature $T$ \\ 
-            Volume $V$ & Pression $p$\\ 
-            Number of particles $E$ & Chemical potential $\mathbf \mu$ \\ 
-            Polarization $\mathbf P$ & Electric field $\mathbf E$ \\ 
-            Magnetization $\mathbf M$ & Magnetic field $\mathbf B$ \\ 
+            energy $E$ & - \\ 
+            entropy $S$ & temperature $T$ \\ 
+            volume $V$ & pression $p$\\ 
+            number of particles $N$ & chemical potential $\mu$ \\ 
+            polarization $\mathbf P$ & electric field $\mathbf E$ \\ 
+            magnetization $\mathbf M$ & magnetic field $\mathbf B$ \\ 
         \end{tabular}
         \caption{Extensive and intensive thermodynamical variables.}
-        \label{table:1}
+        \label{table:td:1}
     \end{table}
-
-    However, we have to be careful, since only volume is by definition extensive and all the others quantities can be considered extensive only if the surfaces terms are neglectible when we take the thermodynamic limit. An equation of state is a functional relation among them, which restrict the number of independent variables. Geometrically, it means that the only admissible states are a submanifold of the entire manifold of states. 
-
-    \begin{example}[Perfect gas]
-        A perfect gas is described by $3$ state variables $(p, V, T)$ and an equation of state $PV = N k_B T$. This means that the allowed states are in a $2$-dimensional manifold embedd in $\mathbb R^3$.
-    \end{example}
 
 \section{The laws of thermodynamics}
 
-    Thermodynamics is governed by a set of laws that every system must obey. However, they are limitation laws, since they tell us only which processes cannot happen. 
+    Thermodynamics is governed by a set of laws which every system must obey. They are particular kind of laws, since they are limitation laws: they tell us only which processes cannot happen. 
 
     \begin{law}[0th]
-        Let $A$ and $B$ be $2$ thermodynamic systems in thermal contact. At equilibrium, only a subset of states $\mathcal M_A \times \mathcal M_B$ is accessible. Mathematically, it means that there exists a functional relation 
+        Let $A$ and $B$ be $2$ thermodynamic systems in thermal contact. At equilibrium, only a subset of states $\mathcal A \subset \mathcal M_A \times \mathcal M_B$ is accessible and not the whole manifold. Mathematically, it means that there exists a functional relation of the kind
         \begin{equation}\label{a1}
             F_{AB} (a,b)= 0 ~,
         \end{equation}
-        with $a \in \mathcal M_A$ and $b \in \mathcal M_B$. Moreover, thermal equilibrium is an equivalence class. It can be proved that the latter means that 
+        with $a \in \mathcal M_A$ and $b \in \mathcal M_B$. Moreover, thermal equilibrium is an equivalence class, which can be proved that it means 
         \begin{equation}\label{a2}
             F_{AB} (a,b) = f_A(a) - f_B(b) ~.
         \end{equation}
@@ -55,25 +53,27 @@
         \end{equation*}
     \end{law}
 
-    It is a limitation law because it limit the configuration that a system can reach in thermal contact with a second one. 
+    It is a limitation law because it limits which possible configuration a system can reach, when in thermal contact with a second one. 
 
     \begin{law}[1st]
-        Let $\delta Q$ be the infinitesimal heat and $\delta L$ the infinitesimal work exchanged in a quasi-static process ($\delta Q > 0$ means absorbed by the system, $\delta L > 0$ means performed by the system). For any cyclic process 
+        Let $\delta Q$ be the infinitesimal heat and $\delta L$ the infinitesimal work exchanged in a quasi-static process ($\delta Q > 0$ means absorbed by the system, $\delta L > 0$ means performed by the system). For any cyclic process, i.e.~processes in which the initial and the final state coincide, we have
         \begin{equation*}
             \oint (\delta Q - \delta L) = 0 ~.
         \end{equation*}
-        This means that $\delta Q - \delta L$ is a one-form, which vanishes line-integrated along a closed curve in $\mathcal M$. This implies, by the Poincaré lemma, that it is an exact differential 
+        This means that $\delta Q - \delta L$ is a $1$-form, which vanishes when line-integrated along a closed curve in $\mathcal M$. This implies, by the Poincaré lemma, that it is an exact differential 
         \begin{equation*}
             dE = \delta Q - \delta L ~,
         \end{equation*}
-        called the internal energy. However, notice that heat and word are not exact differential, since $\oint \delta Q \neq 0$ and $\oint \delta H \neq 0$. We can generalised to a system that can exchange matter with 
-        \begin{equation}\label{first}
-            \oint (\delta Q - \delta L + \mu dN) = 0 ~, \quad dE = \delta Q - \delta L + \mu dN ~,
+        called the internal energy. However, notice that heat and work are not exact differential, since $\oint \delta Q \neq 0$ and $\oint \delta H \neq 0$. 
+        
+        The generalisation to a system that can exchange matter is given by
+        \begin{equation}\label{td:1st}
+            \oint (\delta Q - \delta L + \mu dN) = \oint dE = 0 ~, \quad dE = \delta Q - \delta L + \mu dN ~,
         \end{equation} 
-        where $\mu$ is the chemical potential (the necessary energy to add or remove a particle). Furthermore, we can expressed both $\delta Q$ and $\delta L$ as a linear combination of infinitesimal change of independent coordinates. We assume that the internal energy is extensive. Therefore, the chemical potential is intensive.
+        where $\mu$ is the chemical potential (the necessary energy to add or remove a particle). Furthermore, we can expressed both $\delta Q$ and $\delta L$ as a linear combination of infinitesimal change of independent coordinates, e.g. $\delta L = p dV + B dM$. We assume that the internal energy is extensive and, therefore, the chemical potential is intensive.
     \end{law}
 
-    It is a limitation law because it limits the configuration that a system can reach in isolation to whose with $E = const$. 
+    It is a limitation law because it limits the configuration that a system can reach in isolation to those with $E = const$. 
 
     \begin{law}[2nd]
         For any cyclic process
@@ -83,12 +83,12 @@
                 < 0 & \textnormal{irreversible process} \\
             \end{cases} ~.
         \end{equation*}
-        For reversible processes, $\pdv{\delta Q}{T} = 0$ is an exact differential. This implies that we can define 
+        For reversible processes, $\frac{\delta Q}{T} = 0$ is an exact differential. This implies that we can define a function
         \begin{equation*}
             S(a) - S(b) = \int_a^b \frac{\delta S}{T} ~,
         \end{equation*}
         called the entropy. The integral is along any reversible path. Therefore, we have  
-        \begin{equation}\label{second}
+        \begin{equation}\label{td:2nd}
             dS \begin{cases}
                 = 0 & \textnormal{reversible process} \\
                 < 0 & \textnormal{irreversible process} \\
@@ -99,51 +99,52 @@
     It is a limitation law because it limits the configuration that a system can reach in isolation to whose in which entropy cannot decrease. 
 
     \begin{law}[3rd]
-        Isothermal and adiabatic processes coincides whet $T=0$, or, equivalently, it is impossible to reach $T=0$ with a finite number of processes. Mathematically 
+        Isothermal and adiabatic processes coincides whet $T=0$, or, equivalently, it is impossible to reach $T=0$ with a finite number of processes. Mathematically,
         \begin{equation*}
-        \Delta S \rightarrow 0 ~\textnormal{as}~ T \rightarrow 0 ~.
+            \Delta S \rightarrow 0 ~\textnormal{as}~ T \rightarrow 0 ~.
         \end{equation*}
-        Therefore, $T=0$ is a singular point. Furthermore, if it were possible to reach $T=0$, the second law $\delta Q \leq 0$ implies that it is impossible to raise the temperature. It is a thermodynamic features, since it can be proved that it is impossible to realize an engine with efficency $\eta = 1$
+        Therefore, $T=0$ is a singular point. Furthermore, if it were possible to reach $T=0$, the second law $\delta Q \leq 0$ implies that it is impossible to raise the temperature. It is a thermodynamic features, since it can be proved that it is impossible to realize an engine with efficency $\eta = 1$.
     \end{law}
 
     It is a limitation law because it limits the configuration that a system can reach in isolation to whose in which $T \neq 0$.
 
 \chapter{Thermodynamic potentials}
 
-\section{The fundamental equation of thermodynamics}
+    In this chapter, we will study thermodynamic potentials: energy, entropy, Helmolts free energy, enthalpy, Gibbs free energy and grand potential. We will derive their definition, their differential and their equations of state.
 
-    Combining~\eqref{first} and~\eqref{second}, we obtain 
-    \begin{equation}\label{de}
-        dE \begin{cases}
-            = T dS - pdV + \mu dN & \textnormal{reversible process} \\
-            < T dS - pdV + \mu dN & \textnormal{irreversible process} \\
-        \end{cases} ~.
+\section{Internal energy}
+
+\subsection{Fundamental equation}
+
+    Thermodynamic potentials are functions defined in the manifold, which are suited for a particolar choice of the $3$ coordinates and therefore they are useful if we find the system with the other coordinates constant. The first thermodynamic potential we are going to study is the internal energy $E$. It is defined by the first law of thermodynamic and its differential is
+    \begin{equation}\label{td:d:e}
+        dE \leq T dS - pdV + \mu dN ~.
     \end{equation}
+    This relation is called the fundamental equation of thermodynamics.
     \begin{proof}
-        In fact, we invert~\eqref{first}
+        In fact, we invert~\eqref{td:1st}
         \begin{equation*}
             \delta Q = dE + \delta L - \mu dN ~,
         \end{equation*}
-        we use $\delta L = p dV$ 
-        \begin{equation*}
-            \delta Q = dE + p dV - \mu dN ~,
-        \end{equation*}
-        and we put it into~\eqref{second}
+        we use $\delta L = p dV$ and we put it into~\eqref{td:2nd}
         \begin{equation}
-            dS \leq \frac{\delta Q}{T} = \frac{dE + p dV - \mu dN}{T} ~,
+            dS \leq \frac{\delta Q}{T} = \frac{dE + p dV - \mu dN}{T} ~.
         \end{equation}
+        Finally, we isolate $dE$
         \begin{equation}
             dE \leq TdS - p dV + \mu dN ~.
         \end{equation}
     \end{proof} 
 
+\subsection{Equation of state}
+
     Notice that the non-differential variables are intensive and the differential variables are extensive. This tells us that $E(S, V, N)$ is a function of the extensive variables $S$, $V$ and $N$. The intensive variables $T$, $p$ and $\mu$ can be derived from $E$ by the following relations 
-    \begin{equation}\label{tpm}
+    \begin{equation}\label{td:es:e}
         T = \pdv{E}{S} \Big \vert_{V,N} ~, \quad p = - \pdv{E}{V} \Big \vert_{S,N} ~, \quad \mu = \pdv{E}{N} \Big \vert_{S,V} ~. 
     \end{equation}
-    This are called the equation of state of the system, since we can calculate one variable from it, e.g. $T = T(S,V,N)$, $p = p(S,V,N)$ or $\mu = \mu(S,V,N)$. It is important to say that this is all thermodynamics can tell us, thus in order to find the explicit expression of $E$, we must go into statistical mechanics.
+    This are called the equation of state of the system, since we can calculate one variable from it, e.g. $T = T(S,V,N)$, $p = p(S,V,N)$ or $\mu = \mu(S,V,N)$. 
     \begin{proof}
-        At constant $V$ and $N$,~\eqref{de} becomes
+        At constant $V$ and $N$,~\eqref{td:d:e} becomes
         \begin{equation*}
             dE = TdS - p \underbrace{dV}_0 + \mu \underbrace{dN}_0 = TdS ~,
         \end{equation*}
@@ -152,7 +153,7 @@
             T = \pdv{E}{S} \Big \vert_{V,N} ~.
         \end{equation*}
 
-        At constant $S$ and $N$,~\eqref{de} becomes
+        At constant $S$ and $N$,~\eqref{td:d:e} becomes
         \begin{equation*}
             dE = T\underbrace{dS}_0 - p dV + \mu \underbrace{dN}_0 = - p dV ~,
         \end{equation*}
@@ -161,7 +162,7 @@
             p = - \pdv{E}{V} \Big \vert_{S,N} ~.
         \end{equation*}
 
-        At constant $S$ and $V$,~\eqref{de} becomes
+        At constant $S$ and $V$,~\eqref{td:d:e} becomes
         \begin{equation*}
             dE = T\underbrace{dS}_0 - p \underbrace{dV}_0 + \mu dN = \mu dN ~,
         \end{equation*}
@@ -171,17 +172,17 @@
         \end{equation*}
     \end{proof}
 
+\subsection{Extensive and intensive}
+
     $E$ is an extensive variable, i.e.~an homogeneous function of degree one of the extensive variables 
     \begin{equation*}
         E(\lambda S, \lambda V, \lambda N) = \lambda E(S, V, N) ~, \quad \forall \lambda > 0 ~.
     \end{equation*}
     The physical meaning is that if we rescale the volume, the energy is rescaled bu the same amount.
-
     Moreover, the intensive variable are homogeneous function of degree zero of the extensive variables 
     \begin{equation}\label{a5}
         T(S, V, N) = T(\frac{S}{N}, \frac{V}{N}) ~, \quad p(S, V, N) = p(\frac{S}{N}, \frac{V}{N}) ~, \quad \mu(S, V, N) = \mu(\frac{S}{N}, \frac{V}{N}) ~.
     \end{equation}
-
     By homogeneity properties 
     \begin{equation*}
         E = N E (\frac{S}{N}, \frac{V}{N}, 1) = N e ~, \quad  S = N S(\frac{E}{N}, \frac{V}{N}, 1) = N s ~,
@@ -191,52 +192,19 @@
         e = \frac{E}{N} = e(s, v) ~, \quad s = \frac{S}{N} = s(e, v) ~,
     \end{equation*}
     where $v = \frac{V}{N}$ is the specific volume.
-
     The Euler's theorem allows us to state that, if $E$ is smooth, it can be written as 
     \begin{equation*}
         E = S \pdv{E}{S} + V \pdv{E}{V} + N \pdv{E}{N} ~,
     \end{equation*}
-    or, using~\eqref{de} and~\eqref{tpm}, 
-    \begin{equation}\label{e}
+    or, using~\eqref{td:d:e} and~\eqref{td:es:e}, 
+    \begin{equation}\label{td:e}
         E = TS - pV + \mu N ~.
     \end{equation}
 
-    The Gibbs-Duhem relation expresses $\mu$ in terms of $p$ and $T$ 
-    \begin{equation}\label{gdrel}
-        S dT - Vdp + N d\mu = 0 ~, \quad \mu = v dp - s dT ~.
-    \end{equation}
-    \begin{proof}
-        Computing the differential of~\eqref{e} 
-        \begin{equation*}
-            dE = T dS + S dT -p dV + \mu dN + N d\mu 
-        \end{equation*}
-        and comparing it with~\eqref{de}
-        \begin{equation*}
-            dE = \cancel{T dS} + S dT - \cancel{p dV} + - V dp + \cancel{\mu dN} + N d\mu = \cancel{T dS} - \cancel{p dV} + \cancel{\mu dN} ~,
-        \end{equation*}
-        we obtain 
-        \begin{equation*}
-            S dT - V dp + N d\mu = 0 ~.
-        \end{equation*}
-        which can be written as 
-        \begin{equation*}
-            d \mu = \frac{V}{N} dp - \frac{S}{N} dT = v dp - s dT ~.
-        \end{equation*}
-    \end{proof}
+\subsection{Integrability condition} 
 
-    Inverting~\eqref{de}, we obtained the entropy differential
-    \begin{equation}\label{ds}
-        dS = \frac{1}{T} dE + \frac{p}{T} dV - \frac{\mu}{T} dN ~.
-    \end{equation}
-    Its equations of state are 
-    \begin{equation}\label{ses}
-        \frac{1}{T} = \pdv{S}{E} \Big \vert_{V, N} ~, \quad \frac{p}{T} = \pdv{S}{V} \Big \vert_{E, N} ~, \quad - \frac{\mu}{T} = \pdv{S}{N} \Big \vert_{E, V} ~.
-    \end{equation}
-
-\section{Integrability condition} 
-
-    In order to be an exact differential, the exterior derivative of the right handed side of~\eqref{de} must have vanishing exterior derivative
-    \begin{equation}\label{intconden}
+    In order to be an exact differential, the exterior derivative of the right handed side of~\eqref{td:d:e} must have a null exterior derivative
+    \begin{equation}\label{td:int:e}
         - \pdv{T}{V} \Big \vert_{S,N} = \pdv{p}{S} \Big \vert_{V,N} ~, \quad 
         \pdv{T}{N} \Big \vert_{S,V} = \pdv{\mu}{S} \Big \vert_{N, V} ~, \quad 
         - \pdv{p}{N} \Big \vert_{V,S} = \pdv{\mu}{V} \Big \vert_{N, S} ~. 
@@ -283,6 +251,42 @@
         \end{equation*}
     \end{proof}
 
+\section{Entropy}
+
+\subsection{Gibbs-Duhen relation}
+
+    The Gibbs-Duhem relation expresses the chemical potential $\mu$ in terms of the pressure $p$ and the temperature $T$ 
+    \begin{equation}\label{td:gd}
+        S dT - Vdp + N d\mu = 0 ~, \quad d \mu = v dp - s dT ~.
+    \end{equation}
+    \begin{proof}
+        Computing the differential of~\eqref{td:e} 
+        \begin{equation*}
+            dE = T dS + S dT -p dV + \mu dN + N d\mu 
+        \end{equation*}
+        and comparing it with~\eqref{td:d:e}
+        \begin{equation*}
+            dE = \cancel{T dS} + S dT - \cancel{p dV} + - V dp + \cancel{\mu dN} + N d\mu = \cancel{T dS} - \cancel{p dV} + \cancel{\mu dN} ~,
+        \end{equation*}
+        we obtain 
+        \begin{equation*}
+            S dT - V dp + N d\mu = 0 ~.
+        \end{equation*}
+        which can be written as 
+        \begin{equation*}
+            d \mu = \frac{V}{N} dp - \frac{S}{N} dT = v dp - s dT ~.
+        \end{equation*}
+    \end{proof}
+
+    Inverting~\eqref{td:d:e}, we obtained the entropy differential
+    \begin{equation}\label{td:d:s}
+        dS = \frac{1}{T} dE + \frac{p}{T} dV - \frac{\mu}{T} dN ~.
+    \end{equation}
+    Its equations of state are 
+    \begin{equation}\label{td:es:s}
+        \frac{1}{T} = \pdv{S}{E} \Big \vert_{V, N} ~, \quad \frac{p}{T} = \pdv{S}{V} \Big \vert_{E, N} ~, \quad - \frac{\mu}{T} = \pdv{S}{N} \Big \vert_{E, V} ~.
+    \end{equation}
+
 \section{Thermodynamic states as a manifold}
 
     $S$, $V$ and $N$ as independent (local) coordinates, i.e.~a chart for $\mathcal M$. In our case, it can be thought as an open subset of $\mathbb R^3$. A reversible process is a path. An irreversible process is an oriented path. Different thermodynamic systems are not connected by any process. Therefore, the manifold is path-connected and simply connected. Solving thermodynamics means find the fundamental equation 
@@ -300,7 +304,7 @@
 
     There are different thermodynamic potentials, which are functions of $3$ independent variables that can be used to define a different chart for $\mathcal M$. Therefore, there are different aproaches to thermodynamics.
 
-    Thermodynamic potentials can be obtained by various kind of Legendre transforms of~\eqref{de}, which exchange the role of an extensive variable to its conjugate intensive variable as independent variable. We require that the hypothesis of the inverse function theorem are satisfied, e.g. 
+    Thermodynamic potentials can be obtained by various kind of Legendre transforms of~\eqref{td:d:e}, which exchange the role of an extensive variable to its conjugate intensive variable as independent variable. We require that the hypothesis of the inverse function theorem are satisfied, e.g. 
     \begin{equation*}
         \pdvdu{E}{S} \Big \vert_{V,N} \neq 0 ~, \quad \pdvdu{E}{V} \Big \vert_{S,N} \neq 0 ~, \quad \pdvdu{E}{N} \Big \vert_{S, V} \neq 0 ~.
     \end{equation*}
@@ -314,9 +318,9 @@
         F = E - TS ~.
     \end{equation*}
     Its differential is 
-    \begin{equation*}
+    \begin{equation}\label{td:d:f}
         dF \leq - S dT - p dV + \mu dN ~.
-    \end{equation*}
+    \end{equation}
     Therefore
     \begin{equation*}
         F = F(T, V, N) ~.
@@ -333,7 +337,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}\label{fes}
+    \begin{equation}\label{td:es:f}
         S = - \pdv{F}{T} \Big \vert_{V,N} ~, \quad p = - \pdv{F}{V} \Big \vert_{T,N} ~, \quad \mu = \pdv{F}{N} \Big \vert_{T,V} ~. 
     \end{equation}
     \begin{proof}
@@ -366,7 +370,7 @@
     \end{proof}
 
     The integrability conditions are 
-    \begin{equation}\label{intcondhel}
+    \begin{equation}\label{td:int:f}
         \pdv{S}{V} \Big \vert_{T,N} = \pdv{p}{T} \Big \vert_{V,N} ~, \quad 
         - \pdv{S}{N} \Big \vert_{T,V} = \pdv{\mu}{T} \Big \vert_{N, V} ~, \quad 
         - \pdv{p}{N} \Big \vert_{V,T} = \pdv{\mu}{V} \Big \vert_{N, T} ~. 
@@ -420,9 +424,9 @@
         H = E + pV ~.
     \end{equation*}
     Its differential is 
-    \begin{equation*}
+    \begin{equation}\label{td:d:h}
         dH \leq TdS + Vdp + \mu dN ~.
-    \end{equation*}
+    \end{equation}
     Therefore
     \begin{equation*}
         H = H(p, S, N) ~.
@@ -439,7 +443,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}
+    \begin{equation}\label{td:es:h}
         T = \pdv{H}{S} \Big \vert_{p,N} ~, \quad V = - \pdv{H}{p} \Big \vert_{S,N} ~, \quad \mu = \pdv{H}{N} \Big \vert_{S, p} ~. 
     \end{equation}
     \begin{proof}
@@ -472,7 +476,7 @@
     \end{proof}
 
     The integrability conditions are 
-    \begin{equation}\label{intcondent}
+    \begin{equation}\label{td:int:h}
         \pdv{V}{S} \Big \vert_{p,N} = \pdv{T}{p} \Big \vert_{S,N} ~, \quad 
         \pdv{V}{N} \Big \vert_{p,S} = \pdv{\mu}{p} \Big \vert_{N, S} ~, \quad 
         \pdv{\mu}{S} \Big \vert_{N,p} = \pdv{T}{N} \Big \vert_{S, p} ~. 
@@ -526,9 +530,9 @@
         G = E - TS + pV = F + pV = H - TS ~.
     \end{equation*}
     Its differential is 
-    \begin{equation*}
+    \begin{equation} \label{td:d:g}
         dG \leq - SdT + Vdp + \mu dN ~.
-    \end{equation*}
+    \end{equation}
     Therefore
     \begin{equation*}
         G = G(p, T, N) ~.
@@ -545,7 +549,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}\label{ges}
+    \begin{equation}\label{td:es:g}
         S = - \pdv{G}{T} \Big \vert_{p,N} ~, \quad V = \pdv{G}{p} \Big \vert_{T,N} ~, \quad \mu = \pdv{G}{N} \Big \vert_{p,T} ~. 
     \end{equation}
     \begin{proof}
@@ -578,7 +582,7 @@
     \end{proof}
 
     The integrability conditions are 
-    \begin{equation}\label{intcondgib}
+    \begin{equation}\label{td:int:g}
         - \pdv{V}{T} \Big \vert_{p,N} = \pdv{S}{p} \Big \vert_{T,N} ~, \quad 
         \pdv{V}{N} \Big \vert_{p,T} = \pdv{\mu}{p} \Big \vert_{N, T} ~, \quad 
         - \pdv{S}{N} \Big \vert_{T,p} = \pdv{\mu}{T} \Big \vert_{N, p} ~. 
@@ -626,16 +630,16 @@
 
     \end{proof}
 
-\section{Granpotential} 
+\section{Grand potential} 
 
-    The granpotential is defined as 
-    \begin{equation}\label{ome}
+    The grand potential is defined as 
+    \begin{equation}\label{td:o}
         \Omega = E - TS - \mu N = F - \mu N ~.
     \end{equation}
     Its differential is 
-    \begin{equation*}
+    \begin{equation}\label{td:d:o}
         d\Omega \leq - SdT - pdV - N d\mu ~.
-    \end{equation*}
+    \end{equation}
     Therefore
     \begin{equation*}
         \Omega = \Omega(T, V, \mu) ~.
@@ -652,7 +656,7 @@
     \end{proof}
 
     The equations of state are
-    \begin{equation}
+    \begin{equation}\label{td:es:o}
         S = - \pdv{\Omega}{T} \Big \vert_{\mu,V} ~, \quad p = - \pdv{\Omega}{V} \Big \vert_{T,\mu} ~, \quad \mu = - \pdv{\Omega}{N} \Big \vert_{T,V} ~. 
     \end{equation}
     \begin{proof}
@@ -685,7 +689,7 @@
     \end{proof}
 
     The integrability conditions are 
-    \begin{equation}\label{intcondom}
+    \begin{equation}\label{td:int:o}
         \pdv{S}{\mu} \Big \vert_{T,V} = \pdv{N}{T} \Big \vert_{\mu,V} ~, \quad 
         \pdv{S}{V} \Big \vert_{T,\mu} = \pdv{p}{T} \Big \vert_{V, \mu} ~, \quad 
         \pdv{p}{\mu} \Big \vert_{V,T} = \pdv{N}{V} \Big \vert_{\mu, T} ~. 
@@ -743,24 +747,95 @@
         g(T, p) = \mu(T, p) ~.
     \end{equation}
     \begin{proof}
-        In fact, using~\eqref{ges} and \eqref{a6}
+        In fact, using~\eqref{td:es:g} and \eqref{a6}
         \begin{equation*}
             \mu = \pdv{G}{N} = \pdv{Ng }{N} = g ~.
         \end{equation*}
     \end{proof}
 
-    Notice that 
+    Furthermore, notice that 
     \begin{equation*}
         \Omega = - pV ~.
     \end{equation*}
     \begin{proof}
-        Using~\eqref{e} and~\eqref{ome}
+        Using~\eqref{td:e} and~\eqref{td:o}
         \begin{equation*}
             \Omega = E - TS - \mu N = \cancel{TS} - pV + \cancel{\mu N} - \cancel{TS} - \cancel{\mu N} = - pV ~.
         \end{equation*}
     \end{proof}
 
+\section{Summary I}
+
+    A summary of all charts and differentials is given by 
+    \begin{equation*}
+        E(S, V, N) ~, \quad dE = TdS - p dV + \mu dN ~,
+    \end{equation*}
+    \begin{equation*}
+        S(E, V, N) ~, \quad dS = dE/T + p dV/T - \mu dN/T ~,
+    \end{equation*}
+    \begin{equation*}
+        F(T, V, N) ~, \quad dF = - S dT - p dV + \mu dN ~,
+    \end{equation*}
+    \begin{equation*}
+        H(S, p, N) ~, \quad dH = TdS + V dp + \mu dN ~,
+    \end{equation*}
+    \begin{equation*}
+        G(T, p, N) ~, \quad d G = - SdT + V dp + \mu dN ~,
+    \end{equation*}
+    \begin{equation*}
+        \Omega(T, V, \mu) ~, \quad d\Omega = TdS - p dV + \mu dN ~.
+    \end{equation*}
+
+    A summary of all the equations of state is given by 
+    \begin{equation*}
+        T = \pdv{E}{S} \Big \vert_{V,N} ~, \quad p = - \pdv{E}{V} \Big \vert_{S,N} ~, \quad \mu = \pdv{E}{N} \Big \vert_{S,V} ~,
+    \end{equation*}
+    \begin{equation*}
+        \frac{1}{T} = \pdv{S}{E} \Big \vert_{V, N} ~, \quad \frac{p}{T} = \pdv{S}{V} \Big \vert_{E, N} ~, \quad - \frac{\mu}{T} = \pdv{S}{N} \Big \vert_{E, V} ~,
+    \end{equation*}
+    \begin{equation*}
+        S = - \pdv{F}{T} \Big \vert_{V,N} ~, \quad p = - \pdv{F}{V} \Big \vert_{T,N} ~, \quad \mu = \pdv{F}{N} \Big \vert_{T,V} ~,
+    \end{equation*}
+    \begin{equation*}
+        T = \pdv{H}{S} \Big \vert_{p,N} ~, \quad V = - \pdv{H}{p} \Big \vert_{S,N} ~, \quad \mu = \pdv{H}{N} \Big \vert_{S, p} ~,
+    \end{equation*}
+    \begin{equation*}
+        S = - \pdv{G}{T} \Big \vert_{p,N} ~, \quad V = \pdv{G}{p} \Big \vert_{T,N} ~, \quad \mu = \pdv{G}{N} \Big \vert_{p,T} ~,
+    \end{equation*}
+    \begin{equation*}
+        S = - \pdv{\Omega}{T} \Big \vert_{\mu,V} ~, \quad p = - \pdv{\Omega}{V} \Big \vert_{T,\mu} ~, \quad \mu = - \pdv{\Omega}{N} \Big \vert_{T,V} ~.
+    \end{equation*}
+
+    A summary of all integrability conditions is given by 
+    \begin{equation*}
+        - \pdv{T}{V} \Big \vert_{S,N} = \pdv{p}{S} \Big \vert_{V,N} ~, \quad 
+        \pdv{T}{N} \Big \vert_{S,V} = \pdv{\mu}{S} \Big \vert_{N, V} ~, \quad 
+        - \pdv{p}{N} \Big \vert_{V,S} = \pdv{\mu}{V} \Big \vert_{N, S} ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{S}{V} \Big \vert_{T,N} = \pdv{p}{T} \Big \vert_{V,N} ~, \quad 
+        - \pdv{S}{N} \Big \vert_{T,V} = \pdv{\mu}{T} \Big \vert_{N, V} ~, \quad 
+        - \pdv{p}{N} \Big \vert_{V,T} = \pdv{\mu}{V} \Big \vert_{N, T} ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{V}{S} \Big \vert_{p,N} = \pdv{T}{p} \Big \vert_{S,N} ~, \quad 
+        \pdv{V}{N} \Big \vert_{p,S} = \pdv{\mu}{p} \Big \vert_{N, S} ~, \quad 
+        \pdv{\mu}{S} \Big \vert_{N,p} = \pdv{T}{N} \Big \vert_{S, p} ~,
+    \end{equation*}
+    \begin{equation*}
+        - \pdv{V}{T} \Big \vert_{p,N} = \pdv{S}{p} \Big \vert_{T,N} ~, \quad 
+        \pdv{V}{N} \Big \vert_{p,T} = \pdv{\mu}{p} \Big \vert_{N, T} ~, \quad 
+        - \pdv{S}{N} \Big \vert_{T,p} = \pdv{\mu}{T} \Big \vert_{N, p} ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{S}{\mu} \Big \vert_{T,V} = \pdv{N}{T} \Big \vert_{\mu,V} ~, \quad 
+        \pdv{S}{V} \Big \vert_{T,\mu} = \pdv{p}{T} \Big \vert_{V, \mu} ~, \quad 
+        \pdv{p}{\mu} \Big \vert_{V,T} = \pdv{N}{V} \Big \vert_{\mu, T} ~.
+    \end{equation*}
+
 \chapter{Maxwell's relations and stability conditions}
+
+    In this 
 
 \section{Maxwell's relations}
 
@@ -771,7 +846,7 @@
         \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{\mu, S, N}{N, S, V} ~.
     \end{equation*}
     \begin{proof}
-        Using the first of~\eqref{intconden}
+        Using the first of~\eqref{td:int:e}
         \begin{equation*}
             - \pdv{T}{V} \Big \vert_{S, N} = - \pdv{p}{S} \Big \vert_{V, N} \rightarrow \pdv{(T, N, S)}{(V, N, S)} = - \pdv{(p, N, V)}{(S, N, V)} = \pdv{(p, N, V)}{(V, N, S)} ~,
         \end{equation*} 
@@ -780,7 +855,7 @@
             1 = \pdv{(T, N, S)}{(V, N, S)} \pdv{(p, N, V)}{(V, N, S)}^{-1} = \pdv{(T, N, S)}{(V, N, S)} \pdv{(V, N, S)}{(p, N, V)} = \pdv{(T, N, S)}{(p, N, V)} ~.
         \end{equation*} 
 
-        Using the second of~\eqref{intconden}
+        Using the second of~\eqref{td:int:e}
         \begin{equation*}
             \pdv{T}{N} \Big \vert_{S, V} = - \pdv{\mu}{S} \Big \vert_{N, V} \rightarrow \pdv{(T, V, S)}{(N, V, S)} = - \pdv{(\mu, V, N)}{(S, V, N)} = \pdv{(\mu, V, N)}{(N, V, S)} ~,
         \end{equation*} 
@@ -789,7 +864,7 @@
             1 = \pdv{(T, V, S)}{(N, V, S)} \pdv{(\mu, V, N)}{(N, V, S)}^{-1} = \pdv{(T, V, S)}{(N, V, S)} \pdv{(N, V, S)}{(\mu, V, N)} = \pdv{(T, V, S)}{(\mu, V, N)} ~.
         \end{equation*} 
 
-        Using the third of~\eqref{intconden}
+        Using the third of~\eqref{td:int:e}
         \begin{equation*}
             \pdv{p}{N} \Big \vert_{V, S} = - \pdv{\mu}{V} \Big \vert_{N, S} \rightarrow \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{(\mu, S, N)}{(N, S, V)} ~,
         \end{equation*} 
@@ -834,7 +909,7 @@
         \begin{equation*}
             S = S_A + S_B = S_A(E_A, V_A, N_A) - S_B(E - E_A, V-V_A, N-N_A) ~.
         \end{equation*}
-        Computing its derivative and imposing it to zero, using~\eqref{ses}
+        Computing its derivative and imposing it to zero, using~\eqref{td:es:s}
         \begin{equation*}
         \begin{aligned}
             0 & = \delta S = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A \\ & \quad + \pdv{S_B}{E_B} \underbrace{\delta (E - E_A)}_{- \delta E_A} + \pdv{S_B}{V_B} \underbrace{\delta (V - V_A)}_{- \delta V_A} + \pdv{S_B}{N_B} \underbrace{\delta (N - N_A)}_{- \delta N_A} \\ & = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A - \pdv{S_B}{E_B} \delta E_A - \pdv{S_B}{V_B}  \delta V_A - \pdv{S_B}{N_B} \delta N_A  \\ & = \delta E_A \Big ( \underbrace{\pdv{S_A}{E_A}}_{\frac{1}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{1}{T_B}} \Big) + \delta V_A \Big ( \underbrace{\pdv{S_A}{V_A}}_{\frac{p_A}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{p_B}{T_B}} \Big) + \delta N_A \Big (\underbrace{\pdv{S_A}{N_A}}_{ - \frac{\mu_A}{T_A}} - \underbrace{\pdv{S_B}{N_B}}_{- \frac{\mu_B}{T_B}} \Big) \\ & = \delta E_A \Big ( \frac{1}{T_A} - \frac{1}{T_B} \Big) + \delta V_A \Big ( \frac{p_A}{T_A} - \frac{p_B}{T_B} \Big) + \delta N_A \Big (- \frac{\mu_A}{T_A} + \frac{\mu_B}{T_B} \Big) ~,
@@ -972,7 +1047,7 @@
         \end{aligned}
         \end{equation*}
 
-        Now we use~\eqref{gdrel}
+        Now we use~\eqref{td:gd}
         \begin{equation*}
             \pdv{p}{\mu} \Big \vert_{V, T} = \pdv{p}{\mu} \Big \vert_{N, T} = \Big ( \pdv{\mu}{p} \Big \vert_T \Big) = \frac{N}{V} ~,
         \end{equation*}
@@ -1037,4 +1112,7 @@
             \frac{C_p}{C_V} = \frac{\chi_T}{\chi_S} ~.
         \end{equation*}
     \end{proof}
+
+\section{Statistical mechanics}
     
+    It is important to say that this is all thermodynamics can tell us, thus in order to find the explicit expression of $E$, we must go into statistical mechanics.

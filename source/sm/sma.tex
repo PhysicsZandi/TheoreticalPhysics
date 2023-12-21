@@ -1,6 +1,136 @@
 \appendix
+
 \part{Appendix}
-\chapter{Volume of an N-sphere}
+
+\chapter{Volume of an N-dimensional sphere}
+
+    In this appendix chapter, we will prove that the volume of an $N$-dimensional sphere of radius $R$ is 
+    \begin{equation}\label{app:volumen}
+        V_n (R) = \frac{\pi^{n/2} R^n}{\Gamma(n/2 + 1)} ~.
+    \end{equation}
+    \begin{proof}
+        Consider the rotationally invariant function $f$ 
+        \begin{equation*}
+            f(x_1, \ldots x_n) = \exp(- \frac{1}{2} \sum_{i=1}^{n} x_i^2 ) = \prod_{i=1}^{n} \exp(- \frac{1}{2} x_i^2 ) =~.
+        \end{equation*}
+        Using the Gaussian integral, this function can be integrated over all $\mathbb R^n$, with volume element $dV = dx_1 \ldots dx_n$, and it gives
+        \begin{equation*}
+        \begin{aligned}
+            \int_{\mathbb R^n} dV ~ f & = \int_{\mathbb R^n} \prod_{i=1}^n dx_i ~ f = \int_{\mathbb R^n} \prod_{i=1}^n dx_i ~ \exp(- \frac{1}{2} \sum_{i=1}^{n} x_i^2 ) \\ & = \prod_{i=1}^{n} \underbrace{( \int_{\mathbb R} dx_i ~ \exp(- \frac{1}{2} x_i^2 ))}_{(2 \pi)^{1/2}} = \prod_{i=1}^{n} (2 \pi)^{1/2} = (2 \pi)^{n/2} ~.
+        \end{aligned}
+        \end{equation*}
+        Exploiting the rotational invariant property, we can decomposed the volume element into a surface element $dA$, which integrated gives an $(n-1)$-dimensional sphere $S^{n-1} (r)$ of radius $r$, multiplied by a length element $dr$, i.e.
+        \begin{equation*}
+            \int_{\mathbb R^n} dV ~ f = \int_0^\infty dr \int_{S^{n-1} (r)} dA ~ f ~.
+        \end{equation*}
+        Since the area is proportial to the radius, e.g.~for $n=3$ the area is $A \propto r^2$, the radius-dependence of the area is given by $A_{n-1}(r) = r^{n-1} A_{n-1} (1)$. Therefore, putting it inside the integral, we obtain 
+        \begin{equation*}
+            A_{n-1} (1) \int_0^\infty dr r^{n-1} \exp(- \frac{1}{2} r^2) ~.
+        \end{equation*}
+        Now, we make a change of variables into 
+        \begin{equation*}
+            t = \frac{r^2}{2} ~, \quad r = (2t)^{1/2} ~, \quad dr = 2^{-1/2} t^{-1/2} dt
+        \end{equation*}
+        to have the integral of the gamma function
+        \begin{equation*}
+        \begin{aligned}
+            \int_0^\infty dr ~ r^{n-1} \exp(- \frac{1}{2} r^2) & = 2^{(n-1)/2} 2^{-1/2}\int_0^\infty dt ~ t^{(n-1)/2} t^{-1/2} \exp(-t) \\ & = 2^{n/2 - 1} \underbrace{\int_0^\infty dt ~ t^{n/2 - 1} \exp(-t)}_{\Gamma(n/2)} = 2^{n/2 - 1} \Gamma(n/2) ~.
+        \end{aligned}
+        \end{equation*}
+        Now, we combine the two results together to obtain the surface
+        \begin{equation*}
+            (2 \pi)^{n/2} = A_{n-1} (1) 2^{n/2 - 1} \Gamma(n/2) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            A_{n-1} (1) = \frac{2 \pi^{n/2}}{\Gamma(n/2)} ~.
+        \end{equation*}
+        Finally, in order to find the volume we need to integrate from $0$ to $R$ 
+        \begin{equation*}
+        \begin{aligned}
+            V_n(R) & = \int_0^R dr A_{n-1} (r) = \int_0^R dr ~ A_{n-1} (1) r^{n-1} = \frac{2 \pi^{n/2}}{\Gamma(n/2)} \int_0^R dr ~ r^{n-1} \\ & = \frac{2 \pi^{n/2}}{\Gamma(n/2)} \frac{r^n}{n} \Big \vert_0^R = \frac{2 \pi^{n/2}}{n\Gamma(n/2)} R^n = \frac{\pi^{n/2} R^n}{\Gamma(n/2 + 1)} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
 \chapter{Stirling approximation}
+
+    In this appendix chapter, we will prove the Stirling approximation 
+    \begin{equation}\label{app:stirl}
+        \ln n! \simeq n \ln n - n ~.
+    \end{equation}
+    \begin{proof}
+        The factorial can be expressed in integral form via the gamma function 
+        \begin{equation*}
+            \Gamma (n + 1) = n! = \int_0^\infty dt ~ t^n \exp(-t) ~.
+        \end{equation*}
+        Now, we make a change of variables into 
+        \begin{equation*}
+            t = n x ~, \quad x = \frac{t}{n} ~, \quad dx = \frac{dt}{n} ~,
+        \end{equation*}
+        to have 
+        \begin{equation*}
+        \begin{aligned}
+            \int_0^\infty dt ~ t^n \exp(-t) & = int_0^\infty dt ~ \exp(\ln t^n) \exp(-t) \\ & = \int_0^\infty dt ~ \exp(n\ln t - t) \\ & = n \int_0^\infty dx ~ \exp(n \ln (nx) - nx) \\ & = n \int_0^\infty dx ~ \exp(n \ln x + n \ln n - nx) \\ & = n \exp(n \ln n) \int_0^\infty dx ~ \exp(n (\ln x - x)) ~.
+        \end{aligned}
+        \end{equation*}
+        In the limit for which $n$ is large, we can use the Laplace approximation method 
+        \begin{equation*}
+            \int_a^b dx ~ \exp(n f(x)) \simeq \exp(n f(x_0)) \sqrt{\frac{2\pi}{n |f'' (x_0)|}} ~.
+        \end{equation*}
+        where $x_0 \in [a, b]$ is a stationary point of $f(x)$. A simple sketch of the proof is given by means of the Taylor expansion around $x_0$
+        \begin{equation*}
+            f(x) \simeq f(x_0) - \frac{1}{2} |f''(x_0)| (x - x_0)^2 ~,
+        \end{equation*}
+        hence, integrating the Gaussian integral,
+        \begin{equation*}
+        \begin{aligned}
+            \int_a^b dx ~ \exp(n f(x)) & \simeq \exp(n f(x_0)) \int_a^b dx ~ \exp(- \frac{n}{2} |f''(x_0)| (x - x_0)^2) \\ & = \sqrt{\frac{2\pi}{n |f'' (x_0)|}} ~.
+        \end{aligned}
+        \end{equation*}
+        In our case, $a=0$, $b=\infty$ and $f(x) = \ln x - x$, which has a maximum in $x_0 = 1$ and second derivatives equals to $|f''(x)| = 1 / x^2$. Therefore
+        \begin{equation*}
+            \int_0^\infty dx ~ \exp(n (\ln x - x)) \simeq \exp(n (\ln x_0 - x_0)) \sqrt{\frac{2\pi x_0^2}{n}} \Big \vert_{x_0 = 1} = \exp(- n) \sqrt{\frac{2\pi}{n}} ~.
+        \end{equation*}
+        Now, we combine the two results together
+        \begin{equation*}
+            n! \simeq n \exp(n \ln n) \exp(- n) \sqrt{\frac{2\pi}{n}} = \exp(n \ln n - n) \sqrt{2 \pi n} = n^n \exp(-n) \sqrt{\frac{2\pi}{n}} ~,
+        \end{equation*}
+        which can be rewritten in terms of logarithms rather than exponentials 
+        \begin{equation*}
+            \ln n! \simeq \ln (n^n \exp(-n) \sqrt{\frac{2\pi}{n}} ) = n \ln n - n + O(\ln n) ~.
+        \end{equation*}
+    \end{proof}
+
 \chapter{Gaussian integral}
 
+    In this appendix chapter, we will prove that the Gaussian integral is
+    \begin{equation}\label{app:gauss}
+        \int_{-\infty}^\infty dx ~ \exp(- x^2) = \sqrt{\pi} ~.
+    \end{equation}
+    \begin{proof}
+        We start from the square Gaussian integral, which it is the square same integral for the mute properties of the integration variables 
+        \begin{equation*}
+        \begin{aligned}
+            \Big (\int_{-\infty}^\infty dx ~ \exp(- x^2) \Big)^2 & = \int_{-\infty}^\infty dx ~ \exp(- x^2) \int_{-\infty}^\infty dy ~ \exp(- y^2) \\ & = \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy ~ \exp(- (x^2 + y^2)) ~.
+        \end{aligned}
+        \end{equation*}
+        Now, we make a change of variables and we use polar coordinates $(r, \theta)$
+        \begin{equation*}
+            r^2 = x^2 + y^2 ~, \quad \theta = \arctan \frac{y}{x} ~, \quad dx ~ dy = r ~ dr ~ d\theta ~, \quad (r, \theta) \in [0, \infty) \times [0, 2\pi] ~,
+        \end{equation*} 
+        to obtain
+        \begin{equation*}
+        \begin{aligned}
+            \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy ~ \exp(- (x^2 + y^2)) & = \underbrace{\int_0^{2\pi} d\theta}_{2\pi} \int_0^\infty dr ~ r \exp(- r^2) \\ & = 2 \pi \int_0^\infty dr ~ r \exp(- r^2) \\ & = \pi \int_0^\infty dr ~ 2 r \exp(- r^2) \\ & = \pi \exp(- r^2) \Big \vert_0^{\cancel \infty} = \pi ~.
+        \end{aligned}
+        \end{equation*}
+        Now, we combine the two results together
+        \begin{equation*}
+            \Big (\int_{-\infty}^\infty dx ~ \exp(- x^2) \Big)^2 = \pi ~,
+        \end{equation*}
+        hence
+        \begin{equation*}
+            \int_{-\infty}^\infty dx ~ \exp(- x^2) = \sqrt{\pi} ~.
+        \end{equation*}
+    \end{proof}

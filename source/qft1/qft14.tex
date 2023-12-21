@@ -244,10 +244,10 @@
 
     Therefore 
     \begin{equation*}
-        \hat A_\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) + \hat a_{\mathbf p}^{\dagger (\lambda)} (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~,
+        \hat A_\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} \exp(i \mathbf p \cdot \mathbf x) + \hat a_{\mathbf p}^{\dagger (\lambda)}  \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~,
     \end{equation*}
     \begin{equation*}
-        \hat \pi^\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} i \sqrt{\frac{|\mathbf p|}{2}} \sum_{\lambda=0}^{3} \epsilon^{\mu(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} (\mathbf p) \exp(i \mathbf p \cdot \mathbf x) - \hat a_{\mathbf p}^{\dagger (\lambda)} (\mathbf p) \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~.
+        \hat \pi^\mu (\mathbf x) = \int \frac{d^3 p}{(2\pi)^3} i \sqrt{\frac{|\mathbf p|}{2}} \sum_{\lambda=0}^{3} \epsilon^{\mu(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)} \exp(i \mathbf p \cdot \mathbf x) - \hat a_{\mathbf p}^{\dagger (\lambda)}  \exp(- i \mathbf p \cdot \mathbf x) \Big)  ~.
     \end{equation*}
 
     To make contact with the $2$ transversal polarisation of an electromagnetic wave, we chiise $\epsilon_\mu^{(1)}$ and $\epsilon_\mu^{(2)}$ to be orthogonal to the motion, such that $\epsilon_\mu^{(1)} p^\mu = \epsilon_\mu^{(2)} p^\mu = 0$. For example, if $p^\mu = (E, 0, 0, E)$ lies along the $z$-direction, we have $\epsilon_\mu^{(1)} p^\mu = \epsilon_0^{(1)} p^0 + \epsilon_3^{(1)} p^3 = E (\epsilon_0^{(1)} + \epsilon_3^{(1)}) = 0$, which means $\epsilon_0^{(1)} = -\epsilon_3^{(1)}$ that for convenience we put to zero $\epsilon_0^{(1)} = \epsilon_3^{(1)} = 0$. Similarly, we have $\epsilon_\mu^{(2)} p^\mu = \epsilon_0^{(2)} p^0 + \epsilon_3^{(2)} p^3 = E (\epsilon_0^{(2)} + \epsilon_3^{(2)}) = 0$, which means $\epsilon_0^{(2)} = -\epsilon_3^{(2)}$ that for convenience we put to zero $\epsilon_0^{(2)} = \epsilon_3^{(2)} = 0$. Therefore, if we choose $\epsilon_1^{(1)} = -1$, $\epsilon_2^{(1)} = 0$, $\epsilon_1^{(2)} = 0$ and $\epsilon_2^{(2)} = -1$. In matrix notation, 
@@ -466,3 +466,113 @@
         \end{equation*}
     \end{example}
     
+    Actually, the hamiltonian (or any observable) depends only on the number of tranversal photons and the zero-norm $\ket{S} - \ket{L}$ photons are not considered at all. In fact, the hamiltonian is 
+    \begin{equation*}
+        \hat H = \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| ( - \hat a_{\mathbf p}^{\dagger (0)} \hat a_{\mathbf p}^{(0)} + \hat a_{\mathbf p}^{\dagger (1)} \hat a_{\mathbf p}^{(1)} + \hat a_{\mathbf p}^{\dagger (2)} \hat a_{\mathbf p}^{(2)} + \hat a_{\mathbf p}^{\dagger (3)} \hat a_{\mathbf p}^{(3)})  ~.
+    \end{equation*}
+    Therefore, given a physical state $\ket{\psi}$ which satisfies~\eqref{GB}, the expectation value of the hamiltonian is given only by the transversal polarisations
+    \begin{equation*}
+    \begin{aligned}
+        \bra{\psi} \hat H \ket{\psi} & = \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| ( - \cancel{\bra{\psi} \hat a_{\mathbf p}^{\dagger (0)} \hat a_{\mathbf p}^{(0)} \ket{\psi}} + \bra{\psi} \hat a_{\mathbf p}^{\dagger (1)} \hat a_{\mathbf p}^{(1)} \ket{\psi} + \bra{\psi} \hat a_{\mathbf p}^{\dagger (2)} \hat a_{\mathbf p}^{(2)} \ket{\psi} + \cancel{\bra{\psi} \hat a_{\mathbf p}^{\dagger (3)} \hat a_{\mathbf p}^{(3)} \ket{\psi}} ) \\ & = \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| ( \bra{\psi} \hat a_{\mathbf p}^{\dagger (1)} \hat a_{\mathbf p}^{(1)} \ket{\psi} + \bra{\psi} \hat a_{\mathbf p}^{\dagger (2)} \hat a_{\mathbf p}^{(2)} \ket{\psi} ) ~.
+    \end{aligned}
+    \end{equation*}
+    \begin{proof}
+        The lagrangian is 
+        \begin{equation*}
+        \begin{aligned}
+            \mathcal L & = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2} \partial_\mu A^\mu \partial_\nu A^\nu \\ & = - \frac{1}{4} (\partial_\mu A_\nu - \partial_\nu A_\mu) (\partial^\mu A^\nu - \partial^\nu A^\mu) - \frac{1}{2} \partial_\mu A^\mu \partial_\nu A^\nu \\ & = - \frac{1}{4} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{4} \partial_\mu A_\nu \partial^\nu A^\mu + \frac{1}{4} \partial_\nu A_\mu \partial^\mu A^\nu - \frac{1}{4} \partial_\nu A_\mu \partial^\nu A^\mu - \frac{1}{2} \partial_\mu A^\mu \partial_\nu A^\nu \\ & = - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \underbrace{(\partial_\mu A_\nu \partial^\nu A^\mu - \partial_\mu A^\mu \partial_\nu A^\nu) }_{ - A_\nu  \partial_\mu \partial^\nu A^\mu - A^\mu \partial_\mu \partial_\nu A^\nu + \textnormal{boundary terms}} \\ & = - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} (- A_\nu  \partial_\mu \partial^\nu A^\mu - A^\mu \partial_\mu \partial_\nu A^\nu) \\ & = - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} (- \cancel{A_\mu  \partial_\nu \partial^\mu A^\nu} + \cancel{A^\mu \partial_\nu \partial_\mu A^\nu}) \\ & = - \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu ~,
+        \end{aligned}
+        \end{equation*}
+        where we have integrated by parts since the lagrangian is always integrated to obtain the action. The conjugate field is 
+        \begin{equation*}
+            \pi^\mu = \pdv{\mathcal L}{\dot A_\mu} = - \dot A_\mu ~.
+        \end{equation*}
+        The hamiltonian is 
+        \begin{equation*}
+        \begin{aligned}
+            \mathcal H & = \pi^\mu \underbrace{\dot A_\mu}_{- \pi_\mu} - \mathcal L \\ & = - \pi^\mu \pi_\mu + \frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu \\ & = - \pi^\mu \pi_\mu + \frac{1}{2} \underbrace{\dot A^\mu \dot A_\mu}_{\pi^\mu \pi_\mu} + \frac{1}{2} \partial_i A_\mu \partial^i A^\mu \\ & = - \frac{1}{2} \pi^\mu \pi_\mu + \frac{1}{2} \partial_i A_\mu \partial^i A^\mu ~.
+        \end{aligned}
+        \end{equation*}
+
+        Now, we promote to operator. 
+        \begin{equation*}
+            \hat H = \int d^3 x ~ \mathcal H ~.
+        \end{equation*}
+
+        The first part is 
+        \begin{equation*}
+        \begin{aligned}
+            \hat H_1 & = - \frac{1}{2} \int d^3 x ~ \hat \pi^\mu \hat \pi_\mu \\ & = - \frac{1}{2} \int d^3 x \int \frac{d^3 p}{(2\pi)^3} i \sqrt{\frac{|\mathbf p|}{2}} \sum_{\lambda=0}^{3} \epsilon^{\mu(\lambda)} (\mathbf p) \Big ( \hat a_{\mathbf p}^{(\lambda)}   \exp(i \mathbf p \cdot \mathbf x) - \hat a_{\mathbf p}^{\dagger (\lambda)}   \exp(- i \mathbf p \cdot \mathbf x) \Big) \\ & \quad \int \frac{d^3 q}{(2\pi)^3} i \sqrt{\frac{|\mathbf q|}{2}} \sum_{\lambda'=0}^{3} \epsilon_{\mu(\lambda')} (\mathbf q)  \Big ( \hat a_{\mathbf q}^{(\lambda')}   \exp(i \mathbf q \cdot \mathbf x) - \hat a_{\mathbf q}^{\dagger (\lambda')}   \exp(- i \mathbf q \cdot \mathbf x) \Big) \\ & = \frac{1}{4} \int \frac{d^3 x ~ d^3 p ~ d^3 q}{(2\pi)^6} \sqrt{|\mathbf p| |\mathbf q|} \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \underbrace{\epsilon^{\mu(\lambda)} (\mathbf p) \epsilon_{\mu(\lambda')} (\mathbf q)}_{\eta^{\lambda \lambda'}} ( \hat a_{\mathbf p}^{(\lambda)}   \hat a_{\mathbf q}^{(\lambda')}   \underbrace{\exp(i  \mathbf x \cdot (\mathbf p + \mathbf q)) }_{\delta(\mathbf p + \mathbf q)}  \\ & \quad - \hat a_{\mathbf p}^{(\lambda)}  \hat a_{\mathbf q}^{\dagger (\lambda')}   \underbrace{\exp(i  \mathbf x \cdot (\mathbf p - \mathbf q)) }_{\delta(\mathbf p - \mathbf q)} - \hat a_{\mathbf p}^{\dagger (\lambda)}   \hat a_{\mathbf q}^{(\lambda')}   \underbrace{\exp(i  \mathbf x \cdot (- \mathbf p + \mathbf q)) }_{\delta(\mathbf p - \mathbf q)} \\ & \quad + \hat a_{\mathbf p}^{\dagger (\lambda)}   \hat a_{\mathbf q}^{\dagger (\lambda')}   \underbrace{\exp(- i  \mathbf x \cdot (\mathbf p + \mathbf q)) }_{\delta(\mathbf p + \mathbf q)} )
+        \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            & = \frac{1}{4} \int \frac{d^3 x}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} ( \hat a_{\mathbf p}^{(\lambda)} \hat a_{- \mathbf p}^{(\lambda')}  - \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')}  - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')} + \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{- \mathbf p}^{\dagger (\lambda')} ) ~.
+        \end{aligned}
+        \end{equation*}
+
+        Given 
+        \begin{equation*}
+            \partial_i \hat A_\mu = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( (- i p_i )\hat a_{\mathbf p}^{(\lambda)} \exp(i \mathbf p \cdot \mathbf x) + (i p_i)\hat a_{\mathbf p}^{\dagger (\lambda)}  \exp(- i \mathbf p \cdot \mathbf x) \Big) ~,
+        \end{equation*}
+        the second part is
+        \begin{equation*}
+        \begin{aligned}
+            \hat H_2 & = \frac{1}{2} \int d^3 x ~ \partial_i \hat A_\mu \partial^i \hat A^\mu \\ & = \frac{1}{2} \int d^3 x \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf p|}} \sum_{\lambda=0}^{3} \epsilon_\mu^{(\lambda)} (\mathbf p) \Big ( (- i p_i ) \hat a_{\mathbf p}^{(\lambda)} \exp(i \mathbf p \cdot \mathbf x) + (i p_i)\hat a_{\mathbf p}^{\dagger (\lambda)}  \exp(- i \mathbf p \cdot \mathbf x) \Big) \\ & \quad \int \frac{d^3 q}{(2\pi)^3} \frac{1}{\sqrt{2 |\mathbf q}} \sum_{\lambda'=0}^{3} \epsilon^{\mu(\lambda')} (\mathbf q) \Big ( (- i q^i )\hat a_{\mathbf q}^{(\lambda')} \exp(i \mathbf q \cdot \mathbf x) + (i q^i)\hat a_{\mathbf q}^{\dagger (\lambda')} \exp(- i \mathbf q \cdot \mathbf x) \Big) \\ & = \frac{1}{2} \int \frac{d^3 x ~ d^3 p ~ d^3 q}{(2\pi)^6} \frac{1}{2\sqrt{|\mathbf p| |\mathbf q|}} \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \underbrace{\epsilon^{\mu(\lambda)} (\mathbf p) \epsilon_{\mu}^{(\lambda')} (\mathbf q)}_{\eta^{\lambda \lambda'}} p_i q^i ( \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf q}^{(\lambda)} \underbrace{\exp(i  \mathbf x \cdot (\mathbf p + \mathbf q)) }_{\delta(\mathbf p + \mathbf q)} \\ & \quad - \hat a_{\mathbf p}^{(\lambda)}\hat a_{\mathbf q}^{\dagger (\lambda)} \underbrace{\exp(i \mathbf x \cdot (\mathbf p - \mathbf q)) }_{\delta(\mathbf p - \mathbf q)} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf q}^{(\lambda)} \underbrace{\exp( i  \mathbf x \cdot ( -\mathbf p + \mathbf q)) }_{\delta(\mathbf p - \mathbf q)} \\ & \quad + \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf q}^{\dagger (\lambda)} \underbrace{\exp(- i  \mathbf x \cdot (\mathbf p + \mathbf q)) }_{\delta(\mathbf p + \mathbf q)})
+        \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+        \begin{aligned}
+            & = \frac{1}{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 |\mathbf p|} \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} |\mathbf p|^2 (- \hat a_{\mathbf p}^{(\lambda)} \hat a_{- \mathbf p}^{(\lambda')} - \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{-\mathbf p}^{\dagger (\lambda')} ) \\ & = \frac{1}{4} \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} (- \hat a_{\mathbf p}^{(\lambda)} \hat a_{- \mathbf p}^{(\lambda')} - \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{-\mathbf p}^{\dagger (\lambda')} ) ~.
+        \end{aligned}
+        \end{equation*}
+
+        Putting everything together 
+        \begin{equation*}
+        \begin{aligned}
+            \hat H & = \frac{1}{4} \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} (- \cancel{\hat a_{\mathbf p}^{(\lambda)} \hat a_{- \mathbf p}^{(\lambda')}} - \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')} - \cancel{\hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{-\mathbf p}^{\dagger (\lambda')}} ) \\ & \quad + \frac{1}{4} \int \frac{d^3 x}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} ( \cancel{\hat a_{\mathbf p}^{(\lambda)} \hat a_{- \mathbf p}^{(\lambda')}}  - \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')}  - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')} + \cancel{\hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{- \mathbf p}^{\dagger (\lambda')}} ) \\ & = \frac{1}{2} \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} (- \hat a_{\mathbf p}^{(\lambda)} \hat a_{\mathbf p}^{\dagger (\lambda')} - \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')})
+        \end{aligned}
+        \end{equation*}
+        which in normal ordering is 
+        \begin{equation*}
+        \begin{aligned}
+            \hat H & = \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} \sum_{\lambda'=0}^{3} \eta^{\lambda \lambda'} (- \hat a_{\mathbf p}^{\dagger (\lambda)} \hat a_{\mathbf p}^{(\lambda')}) = \int \frac{d^3 p}{(2\pi)^3} |\mathbf p| \sum_{\lambda=0}^{3} (- \hat a_{\mathbf p}^{\dagger (0)} \hat a_{\mathbf p}^{(0)} + \hat a_{\mathbf p}^{\dagger (1)} \hat a_{\mathbf p}^{(1)} + \hat a_{\mathbf p}^{\dagger (2)} \hat a_{\mathbf p}^{(2)}+ \hat a_{\mathbf p}^{\dagger (3)} \hat a_{\mathbf p}^{(3)}) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+\chapter{Massive photons}    
+
+    Massless photons have only $2$ degrees of freedom (the $2$ transverse polarisations of an electromagnetic wave), but a massive photon has $3$ degrees of freedom. The Proca lagrangian is 
+    \begin{equation*}
+        \mathcal L = - \frac{1}{4} F^{\mu\nu} F_{\mu\nu} - \frac{m^2}{2} A_\mu A^\mu ~,
+    \end{equation*}
+    where the equations of motion are 
+    \begin{equation*}
+        \partial_\mu F^{\mu\nu} + m^2 A^\nu = 0~.
+    \end{equation*}
+
+    Notice that the Lorenz gauge is automatically always satisfied and it is not imposed by hand.
+    \begin{proof}
+        In fact 
+        \begin{equation}
+            0 = \underbrace{\partial_\mu \partial_\nu}_{\text{symm}} \underbrace{F^{\mu\nu}}_{\text{anti}} + m^2 \partial_\nu A^\nu = m^2 \partial_\nu A^\nu ~.
+        \end{equation}
+    \end{proof}
+
+    The equations of motion become
+    \begin{equation*}
+        (\Box + m^2) A^\mu (x) = 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact
+        \begin{equation*}
+            0 = \partial_\mu F^{\mu\nu} + m^2 A^\nu = \partial_\mu \partial^\mu A^\nu - \cancel{\partial_\mu \partial^\nu A^\nu} + m^2 A^\nu = (\Box + m^2) A^\nu ~.
+        \end{equation*}
+    \end{proof}
+    Therefore, each $A^\mu$ satisfies the Klein-Gordon equation but there are only $3$ independent degrees of fredom by the Lorenz gauge. 
+
+    Finally, notice that the mass term breaks the gauge symmetry, since for a gauge transformation ${A'}_\mu = A_\mu + \partial_\mu \lambda$
+    \begin{equation*}
+        \frac{m}{2} {A'}^\mu {A'}_\mu \neq \frac{m}{2} A^\mu A_\mu ~.
+    \end{equation*}

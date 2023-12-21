@@ -29,7 +29,7 @@
             \sum_i p^2_i \leq 2mE ~.
         \end{equation*}
 
-        Hence, by the volume of a $dN$-sphere of radius $\sqrt{2mE}$ (See Appendix 1),
+        Hence, by the volume of a $dN$-sphere of radius $\sqrt{2mE}$~\eqref{app:volumen},
         \begin{equation*}
         \begin{aligned}
             \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i p^2_i \leq 2mE} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{V^N} \prod_i d^d q_i}_{V^N} \underbrace{\int_{\sum_i p^2_i \leq 2mE} \prod_i d^d p_i}_{\frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)}} \\ & = \frac{V^N}{h^{dN} \xi_N} \frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)} \\ & = \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} ~.
@@ -74,7 +74,7 @@
         \end{cases} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the Stirling approximation (See Appendix 2),
+        By definition, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             \frac{S}{k_B} & = \ln \Sigma (E) \\ & = \ln \Big ( \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} \Big ) \\ & = \cancel{\ln 2} + N \ln V - \ln \xi_N - \cancel{\ln d} - \cancel{\ln N} - \ln \Gamma (dN/2) + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & =  N \ln V - \ln \xi_N - \underbrace{\ln \Gamma (dN/2)}_{\frac{dN}{2} \ln \frac{dN}{2} - \frac{dN}{2}} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - \frac{dN}{2} \ln \frac{dN}{2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - N \ln \Big(\frac{dN}{2} \Big)^{d/2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = - \ln \xi_N + \frac{dN}{2} + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
@@ -194,7 +194,7 @@
             \sum_j x^2_j \leq 1 ~.
         \end{equation*}
 
-        Hence, by the volume of a $2dN$-sphere of radius $1$ (See Appendix 1),
+        Hence, by the volume of a $2dN$-sphere of radius $1$~\eqref{app:volumen},
         \begin{equation*}
         \begin{aligned}
             \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) \leq E} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} (2mE)^{dN/2} \Big (\frac{2E}{m\omega^2} \Big )^{dN/2} \underbrace{\int_{\sum_j x^2_j \leq 1} \prod_j d x_j}_{ \frac{\pi^{dN}}{\Gamma (dN + 1)}} \\ & = \frac{1}{\xi_N \Gamma (dN + 1)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} \\ & = \frac{1}{\xi_N \Gamma (dN) dN} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} ~.
@@ -223,7 +223,7 @@
         \end{cases} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the Stirling approximation (See Appendix 2),
+        By definition, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             \frac{S}{k_B} & = \ln \Sigma (E) \\ & = \ln \frac{1}{\xi_N \Gamma(dN/2) d N} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} \\ & = - \ln \xi_N - \ln \Gamma (dN) - \cancel{\ln d} - \cancel{\ln N} + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & - \ln \xi_N - \underbrace{\ln \Gamma (dN)}_{dN \ln (dN) - dN} + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & = - \ln \xi_N - dN \ln (dN) + d N + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & = - \ln \xi_N + d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} ~.
@@ -271,7 +271,7 @@
         Z = \frac{V^N}{\xi_N \lambda^{dN}_T} = \frac{V^N}{ \xi_N} (\frac{2 m \pi}{\beta h^2})^{dN/2} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral (See appendix 3),
+        By definition, using the gaussian integral~\eqref{app:gauss},
         \begin{equation*}
         \begin{aligned}
             Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{V^N}{h^{dN} \xi_N} (\frac{2 m \pi}{\beta})^{dN/2} \\ & = \frac{V^N}{ \xi_N} (\frac{2 m \pi}{\beta h^2})^{dN/2} \\ & = \frac{V^N}{\xi_N \lambda^{dN}_T}
@@ -293,7 +293,7 @@
         \ln Z = N (1 - \ln (\frac{N}{V} \lambda_T^d)) = N (1 - \ln (n \lambda_T^d)) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation (See Appendix 2),
+        In fact, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             \ln Z & = \ln \frac{V^N}{N! \lambda^{dN}_T} \\ & = N \ln (V \lambda_T^d) - \underbrace{\ln N!}_{N \ln N - N} \\ & = N - N \frac{V \lambda_T^d}{N} \\ & = N (1 - \ln (\frac{N}{V} \lambda_T^d)) \\ & = N (1 - \ln (n \lambda_T^d))  ~,
@@ -488,7 +488,7 @@
         Z = \frac{1}{\xi_N} \Big (\frac{2 \pi k_B T}{h \omega})^{dN} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral (See appendix 3),
+        By definition, using the gaussian integral~\eqref{app:gauss},
         \begin{equation*}
         \begin{aligned}
             Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i \exp(- \beta \frac{m \omega^2}{2} q_i^2)}_{(\frac{2 \pi}{m \omega \beta})^{dN/2}} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{1}{h^{dN} \xi_N} (\frac{2 \pi}{m \omega \beta})^{dN/2} (\frac{2 m \pi}{\beta})^{dN/2} \\ & = \frac{1}{\xi_N} \Big (\frac{2\pi}{h \omega \beta} \Big )^{dN} \\ & = \frac{1}{\xi_N} \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{dN} ~.
@@ -506,7 +506,7 @@
         \ln Z = d N \ln \frac{2 \pi k_B T}{h \omega} ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation (See Appendix 2),
+        In fact, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
             \ln Z = \ln \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{dN} = d N \ln \frac{2 \pi k_B T}{h \omega} ~.
         \end{equation*}
@@ -678,7 +678,7 @@
         Z = \frac{1}{\xi_N} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral (See appendix 3),
+        By definition, using the gaussian integral~\eqref{app:gauss},
         \begin{equation*}
         \begin{aligned}
             Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^3 q_i d^3 p_i}{h^{3N} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} \xi_N} \int_{\mathcal M^N} \prod_i d^3 q_i d^3 p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i) \\ & = \frac{V^N}{h^{3N} \xi_N} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i) ~.
@@ -714,7 +714,7 @@
         \ln Z = N (1 - \ln \frac{n (\beta h c)^3}{8\pi}) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation (See Appendix 2),
+        In fact, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             \ln Z & = \ln \frac{1}{N!} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N \\ & = - \underbrace{\ln N!}_{N \ln N - N} + N \ln \frac{8\pi V}{(\beta h c)^3} \\ & = N (1 - \ln \frac{N (\beta h c)^3}{8\pi V}) \\ & = N (1 - \ln \frac{n (\beta h c)^3}{8\pi})  ~,
@@ -872,7 +872,7 @@
         \begin{equation*}
             \rho_c (q_i, p_i) = \mathcal N \exp (- \beta ( \frac{p^2_i}{2m} + V(q_i) )) ~,
         \end{equation*}
-        where the normalisation constant is, using the gaussian integral (see appendix 3) 
+        where the normalisation constant is, using the gaussian integral~\eqref{app:gauss} 
         \begin{equation*}
         \begin{aligned}
             1 & = \int_{\mathbb R^6} \prod_i d^3 q ~ d^3 p \mathcal N \exp(- \beta ( \frac{p^2}{2m} + V(q))) \\ & = \mathcal N \int_{\mathbb R^3} d^3 q ~ \exp(- \beta V(q))  \underbrace{\int_{\mathbb R^3} d^3 p ~ \exp(- \beta \frac{p^2}{2m})}_{\Big ( \frac{2\pi m}{\beta}\Big)^{3/2}} \\ & = \mathcal N  \Big ( \frac{2\pi m}{\beta}\Big)^{3/2} \int_{\mathbb R^3} d^3 q ~ \exp(- \beta V(q)) ~,
@@ -1285,7 +1285,7 @@
         p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
     \end{equation*}
     \begin{proof}
-        The entropy is, using the Stirling approximation (see Appendix 2),
+        The entropy is, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             S & = \ln W_{n_r} \\ & = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) \\ & = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} \\ & = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} \\ & = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
@@ -1348,7 +1348,7 @@
         n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) + 1} ~.
     \end{equation*}
     \begin{proof}
-        The entropy is, using the Stirling approximation (see Appendix 2),
+        The entropy is, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             S & = \ln W_{n_r} \\ & = \ln \Big (\prod_r \frac{g_r!}{n_r! (g_r - n_r)!} \Big) \\ & = \sum_r \Big ( \underbrace{\ln g_r!}_{g_r \ln g_r - g_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - n_r)!}_{(g_r - n_r) \ln (g_r - n_r) - g_r + n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - \cancel{g_r} - n_r \ln n_r + \cancel{n_r} - (g_r - n_r) \ln (g_r - n_r) + \cancel{g_r} - \cancel{n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) 
@@ -1403,7 +1403,7 @@
         n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) - 1} ~.
     \end{equation*}
     \begin{proof}
-        The entropy is, using the Stirling approximation (see Appendix 2),
+        The entropy is, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             S & = \ln W_{n_r} \\ & = \ln \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} \\ & = \sum_r \Big (\underbrace{\ln (n_r + g_r - 1)!}_{(n_r + g_r - 1) \ln (n_r + g_r - 1) - n_r - g_r + 1} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - 1)!}_{(g_r - 1) \ln (g_r - 1) - g_r + 1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) - \cancel{n_r} - \cancel{g_r} + \cancel{1} \\ & \quad - n_r \ln n_r + \cancel{n_r }- (g_r - 1) \ln (g_r - 1) + \cancel{g_r} - \cancel{1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) 
@@ -1460,7 +1460,7 @@
         S = - N k_B \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} ) \Big ) ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the Stirling approximation (see Appendix 2),
+        By definition, using the Stirling approximation~\eqref{app:stirl},
         \begin{equation*}
         \begin{aligned}
             \frac{S}{k_B} & = \ln \Omega (E) \\ & = \ln \frac{N!}{n_+! n_-!} \\ & = \underbrace{\ln N!}_{N \ln N - N} - \underbrace{\ln n_+!}_{n_+ \ln n_+ - n_+} - \underbrace{\ln n_-!}_{n_- \ln n_- - n_-} \\ & = N \ln N - \cancel{N} - n_+ \ln n_+ + \cancel{n_+} - n_- \ln n_- + \cancel{n_-} \\ & = N \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = (n_+ + n_-) \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = n_+ \ln \frac{N}{n_+} + n_- \ln \frac{N}{n_-} \\ & = (\frac{N}{2} + \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} + \frac{E}{2\epsilon}} + (\frac{N}{2} - \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} - \frac{E}{2\epsilon}} \\ & = N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} + \frac{E}{2\epsilon N}} + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} - \frac{E}{2\epsilon N}} \Big ) \\ & = - N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} )\Big ) ~.
