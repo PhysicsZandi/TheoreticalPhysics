@@ -1108,7 +1108,7 @@
     A plot of this is in Figure~\ref{can:magen}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- coth(1 / x) + x', 5, 1.2, 10, True, True, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '- coth(1 / x) + x', 5, 1.2, 8, True, True, False)}}
         \caption{A plot of the internal energy $E$ as a function of $T$. We have used $x = \frac{1}{\beta \mu B}$ and $f(x) = \frac{E}{N \mu B}$.}
         \label{can:magen}
     \end{figure}
@@ -1156,7 +1156,7 @@
     A plot of this is in Figure~\ref{can:mag}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'coth(x) - 1 / x', 7, 1, 8, True, True, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', 'coth(x) - 1 / x', 7, 1, 9, True, True, True)}}
         \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{M_z}{N \mu}$.}
         \label{can:mag}
     \end{figure}
@@ -1176,7 +1176,7 @@
     A plot of this is in Figure~\ref{can:sus}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'x * (1 / x**2 - 1 / sinh(x)**2)', 5, 0.5, 9, True, True, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', 'x * (1 / x**2 - 1 / sinh(x)**2)', 5, 0.5, 10, True, True, True)}}
         \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{B \chi_\beta}{N \mu}$.}
         \label{can:sus}
     \end{figure}
@@ -1204,7 +1204,7 @@
         \end{equation*}
     \end{proof}
 
-\chapter{Grancanonical ensemble}
+\chapter{Grand canonical ensemble}
 
 \section{Non-relativistic ideal gas in d-dimensions}
 
@@ -1261,7 +1261,203 @@
         \end{equation*}
     \end{proof}
 
-\section{Van der Waals potential}
+\section{Virial expansion and Van der Waals gases} 
+
+    Consider the basic equations (of state) of the grand canonical ensemble~\eqref{gc:o} and~\eqref{gc:n2} 
+    \begin{equation}\label{gc:es}
+        \Omega = - pV = - \frac{1}{\beta} \ln \mathcal Z~, \quad N = z \pdv{}{z} \ln \mathcal Z ~.
+    \end{equation}
+    The goal of the virial expansion is to expand the equations of state in powers of the density $n = N/V$ or in the inverse of the specific volume $v = V / N$. The system we are treating is a gas of particles with the same mass $m$ and with an interacting potential depending only on the reciprocate distance 
+    \begin{equation*}
+        H = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U_{ij} = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U (|q_i - q_j|) ~.
+    \end{equation*}
+    The grand canonical partition function~\eqref{gc:z} can be considered a series expansion in terms of $z \ll 1$ 
+    \begin{equation*}
+        \mathcal Z = \sum_{N=0}^\infty z^N Z_N \simeq 1 + z Z_1 + z^2 Z_2 + \ldots ~.
+    \end{equation*}
+    Notice that an expansion is $z \ll 1$ means indeed an expansion in density $n \ll 1$, which physically is a diluite gas.
+
+    At first order, we have 
+    \begin{equation*}
+        \mathcal Z \simeq 1 + z Z_1 + O(z^2) ~,
+    \end{equation*}
+    where the partition function for $1$ particle is 
+    \begin{equation*}
+        Z_1 = \frac{V}{\lambda^3_T} 
+    \end{equation*}
+    and $\lambda_T^3$ is the thermal wavelength
+    \begin{equation*}
+        \lambda_T = \sqrt{\frac{\beta h^2}{2 \pi m}} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{c:z}, the gaussian integral~\eqref{app:gauss} and not considering the potential, since $1$ particle does not interact with itself,
+        \begin{equation*}
+            Z_1 = \int_{\mathcal M^1} d\Omega \exp(- \beta H) = \int_V \int_{\mathbb R^3} \frac{d^3 q ~d^3 p}{h^3} \exp(- \beta \frac{p^2}{2m}) = \underbrace{\int_V d^3 q}_V \underbrace{\int_{\mathbb R^3} \frac{d^3 p}{h^3} \exp(- \beta \frac{p^2}{2m})}_{\frac{1}{\lambda_T^3}} = \frac{V}{\lambda^3_T} ~.
+        \end{equation*}
+    \end{proof}
+    Hence, the equation of state can be written as 
+    \begin{equation*}
+         PV = n k_B T ~,
+    \end{equation*}
+    which means that at first order, we have recovered a perfect gas.
+    \begin{proof}
+        For the first of~\eqref{gc:es}, we obtain 
+        \begin{equation*}
+            p V = \frac{1}{\beta} \ln \mathcal Z \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3}) + O(z^2) \simeq \frac{z V}{\beta \lambda_T^3} + O(z^2) ~,
+        \end{equation*}
+        where we have used $\ln (1 + x) \simeq x$ for $x \ll 1$.
+        For the second of~\eqref{gc:es}, we obtain 
+        \begin{equation*}
+            N = z \pdv{}{z} \ln \mathcal Z \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3}) + O(z^2) \simeq z \pdv{}{z} \frac{z V}{\lambda_T^3} = \frac{z V}{\lambda_T^3} + O(z^2) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            z = \frac{N \lambda_T^3}{V} ~.
+        \end{equation*}
+        Finally, combining the two by substituing $z$, we have
+        \begin{equation*}
+            p V \simeq \frac{N \lambda_T^3}{V} \frac{V}{\beta \lambda_T^3} = \frac{N}{\beta} = N k_B T ~.
+        \end{equation*}
+    \end{proof}
+
+    At second order, we have 
+    \begin{equation*}
+        \mathcal Z \simeq 1 + z Z_1 + \frac{z^2 Z_2}{2!} + O(z^3) ~,
+    \end{equation*}
+    where the partition function for $2$ particles is 
+    \begin{equation*}
+        Z_2 = \frac{V}{2 \lambda_T^6} J_2 (\beta) 
+    \end{equation*}
+    and, using center of mass coordinates $r = q_1 - q_2$,
+    \begin{equation*}
+        J_2 (\beta) = \int d^3 r ~ \exp(- \beta U(r)) ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{c:z} and the gaussian integral~\eqref{app:gauss}
+        \begin{equation*}
+        \begin{aligned}
+            Z_2 & = \int_{\mathcal M^2} d \Omega \exp(- \beta H) \\ & = \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
+        \end{aligned}
+        \end{equation*}
+        Now, we make a change into the center of mass coordinates $R = (q_1 + q_2)/2$ and $r = |q_1 - q_2|$, and we find
+        \begin{equation*}
+            Z_2 = \frac{1}{\lambda_T^6} \underbrace{\int_V d^3 R}_V \underbrace{\int_V d^3 r \exp(- \beta U(r)) }_{J_2 (\beta)} = \frac{V}{\lambda_T^6} J_2 (\beta) ~.
+        \end{equation*}
+    \end{proof}
+    Hence, the two equations of state can be written as 
+    \begin{equation*}
+        \beta p = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) ~, \quad N = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~,
+    \end{equation*}
+    where we have defined 
+    \begin{equation*}
+        \tilde J_2 (\beta) = J_2 (\beta) - V = \int_V d^3 r (\exp(- \beta U(r)) - 1) ~.
+    \end{equation*}
+    \begin{proof}
+        For the first of~\eqref{gc:es}, we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            p V & = \frac{1}{\beta} \ln \mathcal Z \\ & \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) + O(3) \\ & \simeq \frac{1}{\beta} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) ~,
+        \end{aligned}
+        \end{equation*}
+        where we have used $\ln (1 + x) \simeq x - x^2/2$ for $x \ll 1$.
+        For the second of~\eqref{gc:es}, we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            N & = z \pdv{}{z} \ln \mathcal Z \\ & \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) \\ & \simeq z \pdv{}{z} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3)
+            \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = z \pdv{}{z} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) \\ & = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    Now, we have to solve this system of second degree by imposing an ansatz for $z(n)$
+    \begin{equation*}
+        z (n) = A n + B n^2 + O(n^3) ~,
+    \end{equation*}
+    which gives rise to the equation of state of an interacting gas in the approximation of a diluite gas
+    \begin{equation*}
+        p \beta = n - n^2 \frac{\tilde J(2)}{2} + O(n^3) ~.
+    \end{equation*}
+    Notice that the first order is the same as the perfect gas, whereas the second order is a correction due to the interactions.
+    \begin{proof}
+        In fact, using 
+        \begin{equation*}
+            n = \frac{N}{V} = \frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta) ~,
+        \end{equation*}
+        we find 
+        \begin{equation*}
+        \begin{aligned}
+            z & = A n + B n^2 + O(n^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta))^2 + O(z^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B \frac{z^2}{\lambda_T^6} + O(z^3) \\ & = z \frac{A}{\lambda_T^3} + z^2 ( \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6}) + O (z^3) ~,
+        \end{aligned}
+        \end{equation*}
+        which implies that, since the coefficient in z must be $1$ and in $z^2$ must be $0$, 
+        \begin{equation*}
+            \frac{A}{\lambda_T^3} = 1 ~, \quad \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6} = 0 ~,
+        \end{equation*}
+        \begin{equation*}
+            A = \lambda_T^3 ~, \quad B = - \lambda^3_T \tilde J_2(\beta) ~,
+        \end{equation*}
+        hence 
+        \begin{equation*}
+            z = \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2 ~,
+        \end{equation*}
+        which they are called respectively the first virial and the second virial coefficients.
+        Finally, combining all two, we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            p \beta & = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) + O(n^3) \\ & = \frac{1}{\lambda_T^3} (\lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2) + \frac{\tilde J_2 (\beta)}{2 \lambda_T^6} ( \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2)^2 + O(n^3) \\ & = n - n^2 \tilde J_2 (\beta) + \frac{1}{2} n^2 \tilde J_2 (\beta) + O(n^3) \\ & = n - n^2 \frac{\tilde J_2(\beta)}{2} + O(n^3) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    Notice that $z \propto \lambda^3_T \ll 1$ physically means that $T \gg 1$. Therefore, this approximation is valid for hot diluite gas.
+
+    Now, we build a physical model to calculate explicitly this expansion. Particles are considered as hard rigid spheres of radius $r_0$ that do not overlap. Instead, the potential is repulsive for small distances, attractive for large distances and it behaves at $0$ and at $\infty$ as
+    \begin{equation*}
+        U(r \rightarrow 0) \rightarrow \infty ~, \quad U(r \rightarrow \infty) \rightarrow 0~.
+    \end{equation*}
+    One of the most famous potential that behaves so is the Lennard-Jones one. A plot of this is in Figure~\ref{gran:lj}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x**(-12) - x**(-6)', 4, 1, 11, True, True, False)}}
+        \caption{A plot of a Lennard-Jones-like potential. We have used $x = r$ and $f(x) = r^{-12} - r^{-6}$.}
+        \label{gran:lj}
+    \end{figure}
+
+    The equation of state becomes 
+    \begin{equation*}
+        (p + \frac{a}{v^2}) (v - b) = k_B T ~,
+    \end{equation*}
+    where $a$ is the average attractive potential and $b$ is the finite volume.
+    \begin{proof}
+        First, we need to evaluate $\tilde J_2 (\beta)$ 
+        \begin{equation*}
+        \begin{aligned}
+            \tilde J_2 (\beta) & = \int d^3 r (\exp(- \beta U(r)) - 1) \\ & = 4 \pi \int_0^{2r_0} dr ~ r^2 \underbrace{(\exp(- \beta U(r)) - 1)}_{-1} + 4\pi \int_{2r_0}^\infty dr ~ r^2\underbrace{(\exp(- \beta U(r)) - 1)}_{\beta U(r)} \\ & \simeq - \underbrace{4 \pi \int_0^{2r_0} dr ~ r^2}_{2b} + \beta \underbrace{4\pi \int_{2r_0}^\infty dr ~ r^2 U(r)}_{2 a} \\ & = - 2 b + 2 \beta a ~,
+        \end{aligned}
+        \end{equation*}
+        where for the first integral we have used 
+        \begin{equation*}
+            \exp(-\beta U(r)) - 1 \rightarrow{r \rightarrow 0} (-1) 
+        \end{equation*}
+        and for the second integral we have used 
+        \begin{equation*}
+            \exp(-\beta U(r)) - 1 \rightarrow{r \rightarrow \infty} 1 - \beta U(r) - 1 = - \beta U(r) ~.
+        \end{equation*}
+        Hence 
+        \begin{equation*}
+            \frac{\tilde J_2(\beta)}{2} = b - \beta a 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            p \beta = n - n^2 \frac{\tilde J(2)}{2} = n - n^2 (b - \beta a) = n( 1 + n (b - \beta a)) ~.
+        \end{equation*}
+        Finally, after some manipulations, using $v = 1 / n$,
+        \begin{equation*}
+            \beta (p + a n^2) = n (1 + n b) ~,
+        \end{equation*}
+        \begin{equation*}
+            k_B T = \frac{p + a n^2}{n (1 + n b)} \simeq \frac{1}{n}(p + a n^2) (1 - n b) = v (p + \frac{a}{v^2}) (1 - \frac{b}{v}) = (p + \frac{a}{v^2}) (v - b) ~,
+        \end{equation*}
+        where we have used $(1 + x)^{-1} \simeq 1 - x$ for $x \ll 1$.
+    \end{proof}
 
 \chapter{Entropy}
 
@@ -1323,7 +1519,7 @@
     A plot of this is in Figure~\ref{en:bol}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 5, 10, 11, True, False, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 5, 10, 12, True, False, True)}}
         \caption{A plot of the probability density distribution $p_r^*$ as a function of $\beta E_r$. We have used $x = \beta E_r$ and $f(x) = p_r^* \frac{\sum_r g_r \exp(- \beta E_r)}{g_r}$.}
         \label{en:bol}
     \end{figure}
@@ -1378,7 +1574,7 @@
     A plot of this is in Figure~\ref{en:fd}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) + 1)', 5, 2, 12, True, False, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) + 1)', 5, 2, 13, True, False, True)}}
         \caption{A plot of the Fermi-Dirac distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
         \label{en:fd}
     \end{figure}
@@ -1434,7 +1630,7 @@
     A plot of this is in Figure~\ref{en:be}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) - 1)', 5, 5, 13, True, False, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) - 1)', 5, 5, 14, True, False, True)}}
         \caption{A plot of the Bose-Einstein distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
         \label{en:be}
     \end{figure}
@@ -1470,7 +1666,7 @@
     A plot of this is in Figure~\ref{en:s}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '-( (1 / 2 + x) * ln (1/2 + x) +  (1 / 2 - x) * ln (1/2 - x) )', 1, 1, 14, True, False, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', '-( (1 / 2 + x) * ln (1/2 + x) +  (1 / 2 - x) * ln (1/2 - x) )', 1, 1, 15, True, False, True)}}
         \caption{A plot of the entropy $S$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{S}{N k_B}$.}
         \label{en:s}
     \end{figure}
@@ -1490,8 +1686,7 @@
     A plot of this is in Figure~\ref{en:t}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 / (ln ( (0.5 - x) / (0.5 + x) ) )', 10, 10, 15, True, False, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '1 / (ln ( (0.5 - x) / (0.5 + x) ) )', 10, 10, 16, True, False, False)}}
         \caption{A plot of the temperature $T$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{k_B T}{2 \epsilon}$.}
         \label{en:t}
     \end{figure}
-

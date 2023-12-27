@@ -1,5 +1,21 @@
 \usepackage[a4paper, top = 4cm, bottom = 4cm, left = 3cm, right = 3cm]{geometry}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pythontex} 
+\usepackage{nopageno} 
+\usepackage{pgf}
+
+\usepackage{tocloft}
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{listofequations}{equ}{\listequationsname}
+\newcommand{\myequation}[1]{%
+	\addcontentsline{equ}{equation}{\protect\numberline{\theequation}#1}\par
+}
+\makeatletter
+\let\l@equation\l@figure
+\makeatother
+
 \usepackage{xcolor}
 \xdefinecolor{mycolor}{RGB}{0,175,179} 
 \usepackage{hyperref}
@@ -121,11 +137,8 @@
 \DeclareMathOperator{\imm}{Im}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\vol}{vol}
 
+\usetikzlibrary{positioning, arrows.meta}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{pythontex} 
-\usepackage{nopageno} 
-\usepackage{pgf}
 

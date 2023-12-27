@@ -1,22 +1,20 @@
-\part{Quantum mechanics}
+\part{Identical particles and second quantisation}
 
 \chapter{Quantum Mechanics}
 
-    In this chapter, we will study the mathematical framework necessary to study quantum statistical mechanics.
+    In this chapter, we will study the mathematical framework of quantum mechanics necessary to study quantum statistical mechanics.
 
-\section{States}
+\section{States and projectors}
 
-    In quantum mechanics, a pure state of a quantum particle is represented by a normalised vector in a Hilbert space $\ket{\psi} \in \mathcal H$. An Hilbert space $\mathcal H$ is a vector space on $\mathbb C$, i.e.~in which a linear superposition of is still in the space 
+    In quantum mechanics, a pure state of a quantum particle is represented by a normalised vector in a (separable) Hilbert space $\ket{\psi} \in \mathcal H$. This is the best knowledge we can have. An Hilbert space $\mathcal H$ is a vector space on $\mathbb C$, i.e.~in which a linear superposition of vectors is still in the space 
     \begin{equation*}
         \lambda \ket{\psi} + \mu \ket{\phi} \in \mathcal H ~, \quad \forall \ket{\psi}, \ket{\phi} \in \mathcal H ~, \forall \lambda, \mu \in \mathbb C ~, 
     \end{equation*}
-    endowed with a scalar product $\braket{\psi}{\phi}$. In particular, via the scalar product, it is possible to associate a norm to the state, which is set to zero by the probability intepretation $||\psi||^2 = \braket{\psi}{\psi} = 1$. In the Schoredinger representation, this means that the wave function is a square-integrable function $\psi(t,\mathbf x) \in L^2(\mathbb R^d)$, the probability intepretation tells us that $|\psi(t, \mathbf x)|$ is the probability density to find the particle in a volume element $d^d x$ at time $t$ and the normalisation condition that the total probability to find the particle in the whole $\mathbb R^d$ is $1$ 
+    endowed with a scalar product $\braket{\psi}{\phi}$. In particular, via the scalar product, it is possible to associate a norm to the state, which is set to $1$ by the probability intepretation $||\psi||^2 = \braket{\psi}{\psi} = 1$. In the Schroedinger representation, this means that the wave function is a square-integrable function $\psi(t,\mathbf x) \in L^2(\mathbb R^d)$. The probability intepretation tells us that $|\psi(t, \mathbf x)|$ is the probability density to find the particle in a volume element $d^d x$ at time $t$ and the normalisation condition that the total probability to find the particle in the whole $\mathbb R^d$ is $1$ 
     \begin{equation*}
         \int_{\mathbb R^d} d^d x ~ |\psi(t,x)|^2 = 1 ~.
     \end{equation*}
-    However, by the normalisation condition, a state is not associated to a single vector, but a class of equivalence of them, called a ray in the Hilbert space, since two states are physically equivalent if $\ket{\psi'} = \exp(i \varphi) \ket{\psi}$, because their norms are the same.
-
-\subsection{Projectors}
+    However, by the normalisation condition, a state is not associated to a single vector, but a class of equivalence of them, called a ray in the Hilbert space, since two states are physically equivalent if $\ket{\psi'} = \exp(i \varphi) \ket{\psi}$, because their norms are the same. This is the best knlowledge we can have.
 
     To remove this ambiguity, we introduce the notion of projection operators or projectors, which uniquely determine a state
     \begin{equation*}
@@ -104,15 +102,13 @@
         \end{equation*}
     \end{proof}
 
-\subsection{Trace}
-
     Given an orthonormal basis $\{\ket{e_n}\}_{n=1}^\infty$ of a separable Hilbert space, the trace is defined as 
     \begin{equation*}
         \tr A = \sum_{n=1}^\infty A_{nn} = \sum_{n=1}^\infty \bra{e_n} A \ket{e_n} ~.
     \end{equation*}
     It may happen that this series is not convergent. If it is convergent, the operator $A$ is called a trace-class operator. Furthermore, if it is absolute convergent, the trace is independent on the choice of the basis. Recall that in the finite-dimensional case, the trace of a matrix is always convergent and independent on the choice of the basis.
 
-\section{Observables}
+\section{Observables and time evolution}
 
     An observable is a linear hermitian operator $\hat A$ acting on the Hilbert space. We require the self-adjointness because, by the spectral theorem, they are always diagonalisable with a positive spectrum. This means that its eigenvalues are real and it always admit an orthonormal eigenbasis $\{\ket{\psi_n}\}$
     \begin{equation}\label{eigen}
@@ -148,8 +144,6 @@
             \end{equation}
     \end{enumerate}
 
-\subsection{Measure}
-
     Prepare a quantum system in a state $\ket{\psi}$. A measurement of an observable $\hat A$ has outcomes corresponding to its eigenvalues $\lambda_n$ with probability $p_n = |c_n|^2$. Recall that $\lambda_n$ are the coefficients in~\eqref{eigen} and $c_n$ in~\eqref{exp}. Its average value is 
     \begin{equation}\label{avval}
         \av{A} = \bra{\psi} \hat A \ket{\psi} = \sum_{n} \lambda_n |c_n|^2 = \sum_{n} \lambda_n p_n ~,
@@ -167,9 +161,7 @@
         \end{equation*}
     \end{proof}
 
-    Notice that measurement in quantum mechanics is a destructive process, since the wave function collapses into one of the eigenstates.
-
-\subsection{Time evolution}
+    Notice that measurement in quantum mechanics is a destructive process, since the wave function collapses into one of the eigenstates. 
 
     Time evolution of a quantum system is governed by a special observable, the hamiltonian $\hat H$, through the Schroedinger equation
     \begin{equation*}
@@ -362,11 +354,37 @@
     \end{equation*}
     where $P$ belongs to the permutation group. In the next chapter, we will evaluate the phase factor $\alpha_P$.
 
-\chapter{Permutation group}
+\chapter{Identical particles}
 
-\section{Permutation as consecutive transpositions}
+    In Quantum Mechanics, particles are said to be identical if they have all the same quantum numbers, like charge, mass, spin, etc. It follows from the uncertainty principle that identical particles are also indistinguishable, because it prevent the only way to completely distinguish each others: tracking their trajectories. This leads to properties that arise only in the quantum world, like Fermi-Dirac or Bose-Einstein statistics.
 
-    The premutation of $N$ elements form a group $P_N$. The composition of $2$ permutations $PP'$ is defined as the permutation obtained by applying first $P$ and then $P'$. The identity permutation $\mathbb I$ does not change anything and the inverse is the permutation such that $P P^{-1} = \mathbb I$. 
+    To understand how we can implement indistinguishability into our framework, consider a system composed by $N$ identical particles that can live in $\mathbb R^d$. The wavefunction describing them will be a square-intergable complex function $\psi(\mathbf x_1, \ldots, \mathbf x_N) \in L_2(\mathbb R^{Nd})$. Indistinguishability implies that all observables must be invariant under permutation of particles and $2$ states that differ only for a permutation must have the same probability. Combining together this two requests means that the physical quantity to be invariant is $|\psi|^2$ and not $\psi$, so that 
+    \begin{equation*}
+        |\psi(P(x_1, \ldots, x_N))|^2 = |\psi(x_1, \ldots, x_N)|^2 ~,
+    \end{equation*}
+    where $P$ is a permutation such that $P(\mathbf x_1, \ldots, \mathbf x_N) = (\mathbf x_{i_1}, \ldots, \mathbf x_{i_N})$. Therefore, the two wave function are the same up to a globally $U(1)$ phase factor $\alpha_P$, depending on the permutation
+    \begin{equation}\label{perm:phase}
+        \psi(P(x_1, \ldots x_N)) = \exp(i \alpha_P) \psi (x_1, \ldots x_N) ~.
+    \end{equation}
+
+\section{Permutation group}
+
+    The permutation of $N$ elements form a group $P_N$. In fact, the composition of $2$ permutations $PQ$ is defined as the permutation obtained by applying first $P$ and then $Q$, the identity permutation $\mathbb I$ does not change anything and the inverse is the permutation such that $P P^{-1} = \mathbb I$. This group is generated by transposition, i.e.~a swap of two consecutive elements, since any permutation $P \in P_N$ can be decomposed, into a sequences of 
+    \begin{equation*}
+        \sigma_i \colon (1,2,\ldots, i, i+1, \ldots N) \mapsto (1,2,\ldots, i+1, i, \ldots N) ~,
+    \end{equation*}
+    in the following way 
+    \begin{equation}\label{per:dec}
+        P = \sigma_{\alpha_1} \sigma_{\alpha_2} \ldots ~.
+    \end{equation}
+    However, this decomposition is not unique but there is a quantity that conserve in each possible decomposition: the number of transpositions is always even or odd. Therefore, we can define the sign of a permutation $\forall P \in P_N$
+    \begin{equation*}
+        \sgn(P) = \begin{cases}
+            + 1 & \textnormal{even number of transposition in its decomposition } \\
+            - 1 & \textnormal{odd number of transposition in its decomposition } \\
+        \end{cases} ~.
+    \end{equation*}
+
     \begin{example}
         Given $4$ numbers $(1,2,3,4)$, 
         \begin{enumerate}
@@ -376,50 +394,45 @@
                 \end{equation*}
             \item the inverse of  
                 \begin{equation*}
-                    (1,2,3,4) \xmapsto{P} (4,2,1,3) ~,
+                    (1,2,3,4) \xmapsto{P} (2,3,1,4) 
                 \end{equation*}
                 is 
                 \begin{equation*}
-                    (1,2,3,4) \xmapsto{P^{-1}} (3,2,4,1) ~,
+                    (1,2,3,4) \xmapsto{P^{-1}} (3,1,2,4) ~,
                 \end{equation*}
-                since 
+                so that 
                 \begin{equation*}
-                    (1,2,3,4) \xmapsto{P} (4,3,1,3) \xmapsto{P^{-1}} (1,2,3,4) ~,
+                    (1,2,3,4) \xmapsto{P} (2,3,1,4) \xmapsto{P^{-1}} (1,2,3,4) ~.
                 \end{equation*}
         \end{enumerate}
+        Furthermore, $P$ can be decomposed into  
+        \begin{equation*}
+            (1,2,3,4) \xmapsto{\sigma_1} (2,1,3,4) \xmapsto{\sigma_2} (2,3,1,4) ~,
+        \end{equation*}
+        so that $P = \sigma_1 \sigma_2$ and its sign is $\sgn(P) = +1$. To see that it is not unique, we can find another more complicated decomposition 
+        \begin{equation*}
+        \begin{aligned}
+            (1,2,3,4) & \xmapsto{\sigma_3} (1,2,4,3) \xmapsto{\sigma_1} (2,1,4,3) \xmapsto{\sigma_2} (2,4,1,3) \\ & \xmapsto{\sigma_3} (2,4,3,1) \xmapsto{\sigma_2} (2,3,4,1) \xmapsto{\sigma_3} (2,3,1,4)  ~,
+        \end{aligned}
+        \end{equation*}
+        so that $P = \sigma_3 \sigma_1 \sigma_2 \sigma_3 \sigma_2 \sigma_3$.
     \end{example}
-    
-    This group is generated by transposition, since any permutation $P \in P_N$ can be decomposed and written as a consecutive swap of two near elements 
-    \begin{equation*}
-        \sigma_i \colon (1,2,\ldots, i, i+1, \ldots N) \mapsto (1,2,\ldots, i+1, i, \ldots N) ~,
-    \end{equation*}
-    in the following way 
-    \begin{equation}\label{decomp}
-        P = \sigma_{\alpha_1} \ldots \sigma_{\alpha_k} ~.
-    \end{equation}
-    However, this decomposition is not unique but the number of transposition in its decomposition is always even or odd. Therefore, we can define the sign of a permutation $\forall P \in P_N$
-    \begin{equation*}
-        \sgn(P) = \begin{cases}
-            + 1 & \textnormal{even number of transposition in its decomposition } \\
-            - 1 & \textnormal{odd number of transposition in its decomposition } \\
-        \end{cases} ~.
-    \end{equation*}
 
-    Transpositions follow the properties 
+    Useful properties of transpositions are
     \begin{enumerate}
         \item if $|i - j| > 2$, which means that they are not next to each other,
-        \begin{equation}\label{prop1}
+        \begin{equation}\label{perm:1}
             \sigma_i \sigma_j = \sigma_j \sigma_i ~,
         \end{equation} 
-        \item \begin{equation}\label{prop2}
+        \item \begin{equation}\label{perm:2}
             \sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1} ~,
         \end{equation}
-        \item \begin{equation}\label{prop3}
+        \item \begin{equation}\label{perm:3}
             (\sigma_i)^2 = \mathbb I ~.
         \end{equation}
     \end{enumerate}
     \begin{proof}
-        A transposition can be pictorially seen in Figure~\ref{fig:trasp}. The proofs can be seen in Figure~\ref{fig:traspij}, Figure~\ref{fig:traspi1} and Figure~\ref{fig:trasp2}.
+        A transposition can be pictorially seen in Figure~\ref{fig:trasp}. Proofs can be seen in Figure~\ref{fig:traspij}, Figure~\ref{fig:traspi1} and Figure~\ref{fig:trasp2}.
     \end{proof}
 
     \begin{figure}[h]
@@ -427,58 +440,56 @@
         \begin{tikzpicture}
         % Draw vertical lines
         \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.7/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,5) node[above] {\label};
+            \draw (\x,0) -- (\x,1.5) node[above] {\label};
         }
     
-        
         % Exchange between the i and j lines
-        \draw[thick, white] (2.1,2) -- (2.1,3);
-        \draw[thick, white] (2.6,2) -- (2.6,3);
-        \draw[thick, black] (2.1,2) -- (2.6,3) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (2.6,2) -- (2.1,3);
+        \draw[thick, white] (2.1,0.5) -- (2.1,1);
+        \draw[thick, white] (2.6,0.5) -- (2.6,1);
+        \draw[thick, black] (2.1,0.5) -- (2.6,1) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (2.6,0.5) -- (2.1,1);
     
-        
         % Add numbers below the lines
         \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i+1, 2.6/i, 3.7/\ldots~N~~~~~} {
             \node at (\x,-0.3) {\label};
         }
     
         \end{tikzpicture}
-        \caption{A pictorial diagram of a transposition $\sigma_i$}
+        \caption{A pictorial diagram of a transposition $\sigma_i$.}
         \label{fig:trasp}
     \end{figure}
     
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \begin{tikzpicture}
         % Draw vertical lines
         \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.4/j, 3.9/j+1, 5/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,5) node[above] {\label};
+            \draw (\x,0) -- (\x,2.5) node[above] {\label};
         }
     
         \foreach \x/\label in {7/~~~~1~\ldots, 8.1/i, 8.6/i+1, 9.4/j, 9.9/j+1, 11/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,5) node[above] {\label};
+            \draw (\x,0) -- (\x,2.5) node[above] {\label};
         }
     
         
         % Exchange between the i and j lines
-        \draw[thick, white] (2.1,3) -- (2.1,4);
-        \draw[thick, white] (2.6,3) -- (2.6,4);
-        \draw[thick, black] (2.1,3) -- (2.6,4) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (2.6,3) -- (2.1,4);
-        \draw[thick, white] (3.4,1) -- (3.4,2);
-        \draw[thick, white] (3.9,1) -- (3.9,2);
-        \draw[thick, black] (3.4,1) -- (3.9,2) node[right] {$\sigma_j$};
-        \draw[thick, black] (3.9,1) -- (3.4,2);
+        \draw[thick, white] (2.1,1.5) -- (2.1,2);
+        \draw[thick, white] (2.6,1.5) -- (2.6,2);
+        \draw[thick, black] (2.1,1.5) -- (2.6,2) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (2.6,1.5) -- (2.1,2);
+        \draw[thick, white] (3.4,0.5) -- (3.4,1);
+        \draw[thick, white] (3.9,0.5) -- (3.9,1);
+        \draw[thick, black] (3.4,0.5) -- (3.9,1) node[right] {$\sigma_j$};
+        \draw[thick, black] (3.9,0.5) -- (3.4,1);
     
-        \draw[thick, white] (8.1,1) -- (8.1,2);
-        \draw[thick, white] (8.6,1) -- (8.6,2);
-        \draw[thick, black] (8.1,1) -- (8.6,2) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (8.6,1) -- (8.1,2);
-        \draw[thick, white] (9.4,3) -- (9.4,4);
-        \draw[thick, white] (9.9,3) -- (9.9,4);
-        \draw[thick, black] (9.4,3) -- (9.9,4) node[right] {$\sigma_j$} ;
-        \draw[thick, black] (9.9,3) -- (9.4,4);
+        \draw[thick, white] (8.1,0.5) -- (8.1,1);
+        \draw[thick, white] (8.6,0.5) -- (8.6,1);
+        \draw[thick, black] (8.1,0.5) -- (8.6,1) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (8.6,0.5) -- (8.1,1);
+        \draw[thick, white] (9.4,1.5) -- (9.4,2);
+        \draw[thick, white] (9.9,1.5) -- (9.9,2);
+        \draw[thick, black] (9.4,1.5) -- (9.9,2) node[right] {$\sigma_j$} ;
+        \draw[thick, black] (9.9,1.5) -- (9.4,2);
         
         % Add numbers below the lines
         \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i+1, 2.6/i, 3.4/j+1, 3.9/j, 5/\ldots~N~~~~~} {
@@ -489,80 +500,49 @@
             \node at (\x,-0.3) {\label};
         }
         \end{tikzpicture}
-        \caption{A pictorial diagram of a transposition $\sigma_i \sigma_j$ on the left and $\sigma_j \sigma_i$ on the right, where $|i - j| > 2$}
+        \caption{A pictorial diagram of a transposition $\sigma_i \sigma_j$ on the left and $\sigma_j \sigma_i$ on the right, where $|i - j| > 2$.}
         \label{fig:traspij}
     \end{figure}
     
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}
-        % Draw vertical lines
-        \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.7/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,5) node[above] {\label};
-        }
-    
-        
-        % Exchange between the i and j lines
-        \draw[thick, white] (2.1,1) -- (2.1,2);
-        \draw[thick, white] (2.6,1) -- (2.6,2);
-        \draw[thick, black] (2.1,1) -- (2.6,2) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (2.6,1) -- (2.1,2);
-    
-        \draw[thick, white] (2.1,3) -- (2.1,4);
-        \draw[thick, white] (2.6,3) -- (2.6,4);
-        \draw[thick, black] (2.1,3) -- (2.6,4) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (2.6,3) -- (2.1,4);
-    
-        
-        % Add numbers below the lines
-        \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.7/\ldots~N~~~~~} {
-            \node at (\x,-0.3) {\label};
-        }
-    
-        \end{tikzpicture}
-        \caption{A pictorial diagram of a transposition $(\sigma_i)^2$}
-        \label{fig:trasp2}
-    \end{figure}
-    
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \begin{tikzpicture}
         % Draw vertical lines
         \foreach \x/\label in {1/~~~~1~\ldots, 2.2/i, 3/i+1, 3.7/i+2, 5/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,7) node[above] {\label};
+            \draw (\x,0) -- (\x,3.5) node[above] {\label};
         }
     
         \foreach \x/\label in {7/~~~~1~\ldots, 8.2/i, 9/i+1, 9.7/i+2, 11/\ldots~N~~~~~} {
-            \draw (\x,0) -- (\x,7) node[above] {\label};
+            \draw (\x,0) -- (\x,3.5) node[above] {\label};
         }
     
         
         % Exchange between the i and j lines
-        \draw[thick, white] (2.2,5) -- (2.2,6);
-        \draw[thick, white] (3,5) -- (3,6);
-        \draw[thick, black] (2.2,5) -- (3,6) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (3,5) -- (2.2,6);
-        \draw[thick, white] (3,3) -- (3,4);
-        \draw[thick, white] (3.7,3) -- (3.7,4);
-        \draw[thick, black] (3,3) -- (3.7,4) node[right] {$\sigma_{i+1}$};
-        \draw[thick, black] (3.7,3) -- (3,4);
-        \draw[thick, white] (2.2,1) -- (2.2,2);
-        \draw[thick, white] (3,1) -- (3,2);
-        \draw[thick, black] (2.2,1) -- (3,2) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (3,1) -- (2.2,2);
+        \draw[thick, white] (2.2,2.5) -- (2.2,3);
+        \draw[thick, white] (3,2.5) -- (3,3);
+        \draw[thick, black] (2.2,2.5) -- (3,3) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (3,2.5) -- (2.2,3);
+        \draw[thick, white] (3,1.5) -- (3,2);
+        \draw[thick, white] (3.7,1.5) -- (3.7,2);
+        \draw[thick, black] (3,1.5) -- (3.7,2) node[right] {$\sigma_{i+1}$};
+        \draw[thick, black] (3.7,1.5) -- (3,2);
+        \draw[thick, white] (2.2,0.5) -- (2.2,1);
+        \draw[thick, white] (3,0.5) -- (3,1);
+        \draw[thick, black] (2.2,0.5) -- (3,1) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (3,0.5) -- (2.2,1);
     
-        \draw[thick, white] (8.2,3) -- (8.2,4);
-        \draw[thick, white] (9,3) -- (9,4);
-        \draw[thick, black] (8.2,3) -- (9,4) node[right] {$\sigma_i$} ;
-        \draw[thick, black] (9,3) -- (8.2,4);
-        \draw[thick, white] (9,1) -- (9,2);
-        \draw[thick, white] (9.7,1) -- (9.7,2);
-        \draw[thick, black] (9,1) -- (9.7,2) node[right] {$\sigma_{i+1}$};
-        \draw[thick, black] (9.7,1) -- (9,2);
-        \draw[thick, white] (9,5) -- (9,6);
-        \draw[thick, white] (9.7,5) -- (9.7,6);
-        \draw[thick, black] (9,5) -- (9.7,6) node[right] {$\sigma_{i+1}$};
-        \draw[thick, black] (9.7,5) -- (9,6);
+        \draw[thick, white] (8.2,1.5) -- (8.2,2);
+        \draw[thick, white] (9,1.5) -- (9,2);
+        \draw[thick, black] (8.2,1.5) -- (9,2) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (9,1.5) -- (8.2,2);
+        \draw[thick, white] (9,0.5) -- (9,1);
+        \draw[thick, white] (9.7,0.5) -- (9.7,1);
+        \draw[thick, black] (9,0.5) -- (9.7,1) node[right] {$\sigma_{i+1}$};
+        \draw[thick, black] (9.7,0.5) -- (9,1);
+        \draw[thick, white] (9,2.5) -- (9,3);
+        \draw[thick, white] (9.7,2.5) -- (9.7,3);
+        \draw[thick, black] (9,2.5) -- (9.7,3) node[right] {$\sigma_{i+1}$};
+        \draw[thick, black] (9.7,2.5) -- (9,3);
         
         
         % Add numbers below the lines
@@ -574,30 +554,60 @@
             \node at (\x,-0.3) {\label};
         }
         \end{tikzpicture}
-        \caption{A pictorial diagram of a transposition $\sigma_i \sigma_{i+1} \sigma_i$ on the left and $\sigma_{i+1} \sigma_i \sigma_{i+1}$ on the right}
+        \caption{A pictorial diagram of a transposition $\sigma_i \sigma_{i+1} \sigma_i$ on the left and $\sigma_{i+1} \sigma_i \sigma_{i+1}$ on the right.}
         \label{fig:traspi1}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+        % Draw vertical lines
+        \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.7/\ldots~N~~~~~} {
+            \draw (\x,0) -- (\x,2.5) node[above] {\label};
+        }
+    
+        
+        % Exchange between the i and j lines
+        \draw[thick, white] (2.1,0.5) -- (2.1,1);
+        \draw[thick, white] (2.6,0.5) -- (2.6,1);
+        \draw[thick, black] (2.1,0.5) -- (2.6,1) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (2.6,0.5) -- (2.1,1);
+    
+        \draw[thick, white] (2.1,1.5) -- (2.1,2);
+        \draw[thick, white] (2.6,1.5) -- (2.6,2);
+        \draw[thick, black] (2.1,1.5) -- (2.6,2) node[right] {$\sigma_i$} ;
+        \draw[thick, black] (2.6,1.5) -- (2.1,2);
+    
+        
+        % Add numbers below the lines
+        \foreach \x/\label in {1/~~~~1~\ldots, 2.1/i, 2.6/i+1, 3.7/\ldots~N~~~~~} {
+            \node at (\x,-0.3) {\label};
+        }
+    
+        \end{tikzpicture}
+        \caption{A pictorial diagram of a transposition $(\sigma_i)^2$.}
+        \label{fig:trasp2}
     \end{figure}
 
 \section{Bosons and fermions}
 
-    Hence, we can calculate explicitly~\eqref{perm}, which is 
+    Now, we are able to calculate explicitly~\eqref{perm:phase}, which is 
     \begin{equation}
         \alpha_P = \alpha_1 + \ldots \alpha_N~,
     \end{equation}
-    where $\alpha_i$ is the phase factor of a transposition $\sigma_{\alpha_i}$
+    where $\alpha_i$ is the phase factor that label the transposition $\sigma_{\alpha_i}$, i.e.
     \begin{equation*}
         \psi(\sigma_{\alpha_i}(x_1,\ldots x_N)) = \exp(i \alpha_i) \psi (x_1,\ldots x_N) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using~\eqref{decomp}
+        In fact, using~\eqref{perm:dec} and properties of exponentials, we obtain
         \begin{equation*}
         \begin{aligned}
-        \psi(P(x_1,\ldots x_N)) & = \psi((\sigma_{\alpha_1} \ldots \sigma_{\alpha_N}) (x_1,\ldots x_N)) \\ & = \exp (i \alpha_1) \psi((\sigma_{\alpha_2} \ldots \sigma_{\alpha_N}) ) \\ & ~~ \vdots \\ & = \exp (i \alpha_1) \ldots \exp (i \alpha_N) \psi(x_1,\ldots x_N) \\ & = \exp (i (\alpha_1 + \ldots \alpha_N)) \psi(x_1,\ldots x_N) \\ &  = \exp (i \alpha_P) \psi(x_1,\ldots x_N)~.
+            \psi(P(x_1,\ldots, x_N)) & = \psi((\sigma_{\alpha_1} \ldots \sigma_{\alpha_N}) (x_1,\ldots, x_N)) \\ & = \exp (i \alpha_1) \psi((\sigma_{\alpha_2} \ldots \sigma_{\alpha_N}) (x_1,\ldots, x_N)) \\ & ~~ \vdots \\ & = \exp (i \alpha_1) \ldots \exp (i \alpha_N) \psi(x_1,\ldots, x_N) \\ & = \exp (i \underbrace{(\alpha_1 + \ldots \alpha_N)}_{\alpha_P}) \psi(x_1,\ldots x_N) \\ &  = \exp (i \alpha_P) \psi(x_1,\ldots, x_N) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
-    Furthermore, there are only two possibilities for $\alpha_P$ 
+    Furthermore, we can also find which are the possible values of $\alpha_P$:
     \begin{enumerate}
         \item $\alpha_P = 0$ and $\exp(i \alpha_P) = 1$, which correspond respectively to a bosonic totally symmetric wavefunction, i.e.~under $P$
         \begin{equation*}
@@ -606,14 +616,14 @@
         \item $\alpha_P = \pi$ and $\exp(i \alpha_P) = \sgn(P)$, which correspond respectively to a fermionic totally antysymmetric wavefunction, i.e.~under $P$
         \begin{equation*}
             \psi(x_1, \ldots x_N) \xmapsto{P} \sgn(P) \psi(x_1, \ldots x_N) = \begin{cases}
-                + \psi(x_1, \ldots x_N) & \textnormal{sign(P) = +1} \\
-                - \psi(x_1, \ldots x_N) & \textnormal{sign(P) = - 1} \\
-            \end{cases}~.
+                + \psi(x_1, \ldots x_N) & \sgn(P) = +1 \\
+                - \psi(x_1, \ldots x_N) & \sgn(P) = - 1 \\
+            \end{cases} ~.
         \end{equation*}
     \end{enumerate}
-    By the spin-statistic theorem, bosons, which have symmetric wavefunctions, are associated to integer spin particles and fermions, which have antisymmetric wavefunctions, are associated to half-integer spin particles.
+    Coming to hand a theorem that can be proved only in the realm of quantum field theory,  the spin-statistic theorem, we can associate a particular value of the spin to this two statistics: bosons, which have symmetric wavefunctions, are associated to integer spin particles, whereas fermions, which have antisymmetric wavefunctions, are associated to half-integer spin particles.
     \begin{proof}
-        Using~\eqref{prop1}
+        Using~\eqref{perm:1}
         \begin{equation*}
             \psi(x_1, \ldots x_N) \xmapsto{\sigma_i} \exp(i \alpha_i) \psi(x_1, \ldots x_N)\xmapsto{\sigma_i \sigma_j} \exp(i \alpha_i) \exp(i \alpha_j) \psi(x_1, \ldots x_N) ~,
         \end{equation*}
@@ -628,8 +638,7 @@
         \begin{equation}\label{pr1}
             \alpha_i + \alpha_j = \alpha_j +\alpha_i ~.
         \end{equation}
-
-        Using~\eqref{prop2}
+        Using~\eqref{perm:2}
         \begin{equation*}
         \begin{aligned}
             \psi(x_1, \ldots x_N) & \xmapsto{\sigma_i} \exp(i \alpha_i) \psi(x_1, \ldots x_N) \\ & \xmapsto{\sigma_i \sigma_{i+1}} \exp(i \alpha_i) \exp(i \alpha_{i+1}) \psi(x_1, \ldots x_N) \\ & \xmapsto{\sigma_i \sigma_{i+1} \sigma_i} \exp(i \alpha_i) \exp(i \alpha_{i+1}) \exp(i \alpha_i) \psi(x_1, \ldots x_N) ~,
@@ -648,7 +657,6 @@
         \begin{equation}\label{pr2}
            \alpha_i + \alpha_{i+1} + \alpha_i = \alpha_{i+1} + \alpha_i + \alpha_{i+1} ~. 
         \end{equation}
-        
         Putting together this two properties~\eqref{pr1} and ~\eqref{pr2}, we have
         \begin{equation*}
             \alpha_i + \alpha_{i+1} + \alpha_i = \alpha_{i+1} + \alpha_i + \alpha_{i+1} ~,
@@ -660,7 +668,6 @@
             \alpha_i = \alpha_{i+1} ~.
         \end{equation*}
         Therefore, $\forall i= 1, \ldots N-1$ and $\alpha_i \in [0, 2\pi[$ we have $\alpha_i = \alpha_{i+1} = \alpha$.
-
         Using~\eqref{prop3}
         \begin{equation*}
             \exp(i \alpha)^2 = \exp (2 i \alpha) = \mathbb I = \exp(0) ~,
@@ -669,7 +676,6 @@
         \begin{equation*}
             \alpha = 0, \pi ~.
         \end{equation*}
-
         Finally, there are only two possibilities 
         \begin{equation*}
             \psi(x_1, \ldots x_N) \xmapsto{\sigma_i} \underbrace{\exp(i 0)}_{+1} \psi(x_1, \ldots x_N) = \psi(x_1, \ldots x_N)
@@ -682,7 +688,7 @@
 
     The Hilbert space of indistinguishable particle is smaller than the distinguishable one, because we have seen that the phase factor can only have two possible values. In the next chapters, we will see how we can describe such spaces, in terms of the symmetrised or antisymmetrised Hilbert space $\mathcal H_{S/A}$ in the language of first quantisation and in terms of the Fock space $\mathcal F_{B/F}$ in the language of second quantisation.
 
-\chapter{First quantisation}
+\chapter{Second quantisation}
 
 \section{Symmetric/antisymmetric Hilbert space} 
 
@@ -796,8 +802,6 @@
     On the contrary for the distinguishable case, now we lose information, because we know only how many particle are in each state and not anymore which is in which state. We label the states with $n_1, \ldots n_k, \dots$ with $j=1, \ldots \infty$, which are the occupation number. For bosons, we have $n_k = 0, 1, \ldots, \infty$, whereas for fermions, we have $n_k = 0, 1$. For both cases, there is the constrain $N = \sum_k n_k$, which is an infinite sum but mostly are zero occupied. Moreover, given the set $\alpha_k$, we uniquely determine the occupation number $n_k$, but given the occupation number $n_k$, we use the symmetric or antisymmetric property to uniquely determine the state, because it is in $1-1$ correspondence to the set $n_k$. 
 
     Nonetheless, there is another way to describe fermionic or bosonic quantum space in a intrinsic way, called the second quantisation because we make a further quantisation, promoting fields to operators.
-
-\chapter{Second quantisation} 
 
 \section{Bosonic case}
    

@@ -3,7 +3,6 @@
 \input{../packages.tex}
 
 \title{statistical mechanics}
-\author{Matteo Zandi \\ ~ \\ (matteo.zandi2@studio.unibo.it)}
 \date{\today}
 
 \newcommand{\subt}{what happens when there are too many particles?}
@@ -22,21 +21,33 @@
 
 \chapter*{Introduction}
 
-    In these lectures notes, we will cover the part of physics which studies systems composed by a large amount of constituents, like particles: thermodynamics and statistical mehcanics. In the first part, we will recall some notions of thermodynamics, in the language of differential geometry: the laws of thermodynamics and thermodynamics potentials. In the second part, we will study classical statistical mechanics, starting from the basic notions of classical (hamiltonian) mechanics till the $3$ ensembles: microcanonical, canonical and grancanonical. In the third part, we will study quantum statistical mechanics, starting from the basic notions of quantum mechanics, in the language of canonical and second quantisation, till the properties of bosons and fermions. At the end of each of these last $2$ parts, there will be some applications and exercises. In the last part, we will superficially introduce classical phase transitions and the classical Ising model. 
+    In these notes, we will study the mathematical framework of statistical mechanics: the part of physics which focuses on systems composed by a large amount of microscopic constituents, like atoms or molecules. Statistical mechanics arises out from thermodynamics that deals with macroscopic physical quantities and it is able to explain them by means of the notions of ensemble and probability density distribution. In the first part, we will focus on classical systems, starting from some notions of thermodynamics in the language of differential geometry and classical Hamiltonian mechanics, passing through microcanonical, canonical and grand canonical ensembles, finishing with a superficially introduction of classical phase transitions. In the second part, we will focus on quantum systems: ensembles of identical particles in the language of second quantisation to describe Fermi-Dirac and Bose-Einstein gases.
+    
+\input{sm_td.tex}
+\input{sm_csm.tex}
+\input{sm_csm_app.tex}
+\input{sm_ph.tex}
 
-\input{sm1.tex}
-\input{sm2.tex}
-\input{sm3.tex}
-\input{sm4.tex}
+\input{sm_qm.tex}
 \input{sm5.tex}
 \input{sm6.tex}
-\input{sm7.tex}
+
 \input{sma.tex}
 
 \backmatter
 
 \nocite{smlecture}
 \nocite{ercolessi}
+\nocite{mussardo}
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
+\listofequations
 
 \clearpage
 \phantomsection

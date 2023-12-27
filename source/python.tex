@@ -21,6 +21,7 @@ def plot4(x, f, g, h, l, rangex, rangey, fig, leg, negx, negy):
         rangeyy = 0
     x = sy.Symbol('x')
     p = sy.plot((f, (x, -rangexx, rangex)), (g, (x, -rangex, rangex)), (h, (x, -rangex, rangex)), (l, (x, -rangex, rangex)), ylim=[-rangeyy, rangey], legend= leg, show=False, line_color='#00AFB3')
+    p[3].line_color='black'
     p.save(f'fig{fig}.pgf')
     print(r'\input{fig'+ rf'{fig}' + r'.pgf}')
 
