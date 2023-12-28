@@ -53,6 +53,7 @@
 \newtheorem{lemma}{Lemma}[chapter]
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
 \renewcommand\qedsymbol{q.e.d.}
 
 \theoremstyle{remark}
@@ -121,6 +122,9 @@
 \let\oldexample\example
 \renewcommand{\example}{\color{darkgray}\oldexample}
 
+\let\oldexercise\exercise
+\renewcommand{\exercise}{\color{darkgray}\oldexercise}
+
 \usepackage{cancel}
 \usepackage{indentfirst}
 
@@ -139,6 +143,5 @@
 \DeclareMathOperator{\spann}{span}
 \DeclareMathOperator{\vol}{vol}
 
-\usetikzlibrary{positioning, arrows.meta}
 
 

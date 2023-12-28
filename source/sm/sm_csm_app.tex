@@ -1,89 +1,100 @@
-\part{Applications of classical statistical mechanics}
+\chapter{Applications}
 
-\chapter{Microcanonical ensemble}
+    In this chapter, we will study different physical systems. In the microcanonical ensemble, we will analyse a non-relativistic ideal gas and a gas of harmonic oscillators. In the canonical ensemble, we will analyse a non-relativistic ideal gas, a gas of harmonic oscillators, an ultra-relativistic gas and a magnetic solid. In the grand canonical ensemble, we will analyse a non-relativistic ideal gas. Furthermore, we will investigate the Maxwell-Boltzmann distribution, the virial expansion and Van der Waals gases.
 
-\section{Non-relativistic ideal gas in d-dimensions}
+\section{Microcanonical non-relativistic ideal gas}
 
-    Consider a non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. Its hamiltonian is 
-    \begin{equation*}
-        H = \sum_i \frac{p^2_i}{2m} ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a non-relativistic ideal (non-interacting) gas of $N$ particles with mass $m$, living in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \frac{p^2_i}{2m} ~.
+        \end{equation*}
+        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state. Finally, express the same physical quantities in the case $d = 3$.
+    \end{exercise}
 
     The number of states $\Sigma(E)$ is 
     \begin{equation*}
         \Sigma(E) = \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} ~.
     \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        \Sigma(E) = \frac{2V^{N}}{\xi_N 3 N \Gamma(3N/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{3N/2} ~.
+    \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{cm:vol}, we have
         \begin{equation*}
         \begin{aligned}
             \Sigma (E) = \int_{H (q_i, p_i) \leq E} d\Omega = \int_{H (q_i, p_i) \leq E} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} = \frac{1}{h^{dN} \xi_N} \int_{H (q_i, p_i) \leq E} \prod_i d^d q_i d^d p_i ~.
         \end{aligned}
         \end{equation*}
-
-        From the energy,
+        In order to find the domain of integration, we compute the following inequality
         \begin{equation*}
-            H = \sum_i \frac{p^2_i}{2m} \leq E ~,
+            H = \sum_i \frac{p^2_i}{2m} \leq E ~, \quad \sum_i p^2_i \leq 2mE ~.
         \end{equation*}
-        \begin{equation*}
-            \sum_i p^2_i \leq 2mE ~.
-        \end{equation*}
-
-        Hence, by the volume of a $dN$-sphere of radius $\sqrt{2mE}$~\eqref{app:volumen},
+        Hence, by the volume of a $dN$-sphere of radius $\sqrt{2mE}$~\eqref{app:volumen}, we find
         \begin{equation*}
         \begin{aligned}
-            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i p^2_i \leq 2mE} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{V^N} \prod_i d^d q_i}_{V^N} \underbrace{\int_{\sum_i p^2_i \leq 2mE} \prod_i d^d p_i}_{\frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)}} \\ & = \frac{V^N}{h^{dN} \xi_N} \frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)} \\ & = \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} ~.
+            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i p^2_i \leq 2mE} \prod_i d^d q_i d^d p_i = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{V^N} \prod_i d^d q_i}_{V^N} \underbrace{\int_{\sum_i p^2_i \leq 2mE} \prod_i d^d p_i}_{\frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)}} \\ & = \frac{V^N}{h^{dN} \xi_N} \frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)} = \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} ~,
         \end{aligned}
         \end{equation*}
+        where we have used a property of the Gamma function $\Gamma(n + 1) = n \Gamma (n)$
     \end{proof}
 
-    The density state $\omega(E)$ is
+    The density of states $\omega(E)$ is
     \begin{equation*}
-        \omega (E) = \frac{V^N}{\xi_N \Gamma(dN/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{\frac{dN}{2}} E^{dN/2-1} ~.
+        \omega (E) = \frac{V^N}{\xi_N \Gamma(dN/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{dN/2} E^{dN/2-1} ~.
+    \end{equation*}
+    In the case $d = 3$, we obtain  
+    \begin{equation*}
+        \omega (E) = \frac{V^N}{\xi_N \Gamma(3N/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{3N/2} E^{3N/2-1} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{cm:denst}, we have
         \begin{equation*}
         \begin{aligned}
-            \omega (E) &= \pdv{\Sigma (E)}{E} \\ & = \pdv{}{E} \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \\ & = \Big (\frac{2 \pi m}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \pdv{E^{dN/2}}{E} \\ & = \Big (\frac{2 \pi m}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \frac{dN}{2} E^{dN/2 - 1} \\ & = \frac{V^N}{\xi_N \Gamma(dN/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{\frac{dN}{2}} E^{dN/2-1} ~.
+            \omega (E) &= \pdv{\Sigma (E)}{E} = \pdv{}{E} \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} = \Big (\frac{2 \pi m}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \pdv{E^{dN/2}}{E} \\ & = \Big (\frac{2 \pi m}{h^2} \Big)^{dN/2} \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \frac{dN}{2} E^{dN/2 - 1} = \frac{V^N}{\xi_N \Gamma(dN/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{dN/2} E^{dN/2-1} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
     Notice that 
-    \begin{equation}\label{mc1}
-        \omega(E) = \frac{dN}{2E} \Sigma(E) ~, \quad \Gamma(E) = \omega(E) \Delta E = \frac{dN}{2E} \Sigma(E) \Delta E ~.
-    \end{equation}
-    As a consequence, in the thermodynamic limit, we have the following equivalent relations
+    \begin{equation*}
+        \omega(E) = \frac{dN}{2E} \Sigma(E) ~, \quad \Gamma(E) = \omega(E) \Delta E = \frac{dN}{2E} \Sigma(E) \Delta E ~,
+    \end{equation*}
+    which prove, in the thermodynamic limit, that the relations~\eqref{mc:tdlim} are equivalents
     \begin{equation*}
         \lim_{TD} \frac{\ln \Gamma (E)}{N} = \lim_{TD} \frac{\ln \omega (E)}{N} = \lim_{TD} \frac{\ln \Sigma (E)}{N} ~.
     \end{equation*}
     \begin{proof}
-        Observing~\eqref{mc1}, we find that the logarithmic expression differs only for factors $\ln \Delta E$ and $\ln \frac{dN}{2E}$, which are neglectible in the thermodynamic limit since they do not scale as $N$.
+        $\omega(E)$, $\Gamma(E)$ and $\Sigma(E)$ differ only, in the logarithmic expression, by factors $\ln \Delta E$ and $\ln \frac{dN}{2E}$, which are negligible in the thermodynamic limit because they do not scale at least as $N$.
     \end{proof}
-
-    The entropy is 
+    The entropy $S$ is
     \begin{equation*}
         \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{dN}{2E} + \ln \Delta E ~,
     \end{equation*}
-    In the thermodynamic limit, it becomes
+    and, in the thermodynamic limit, it becomes
     \begin{equation*}
         S = k_B \begin{cases}
             \frac{d}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) & \textnormal{for distinguishable particles} \\
             \frac{d + 2}{2} N + N \ln \Big ( \frac{V}{N} (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) & \textnormal{for indistinguishable particles} \\
-        \end{cases} ~.
+        \end{cases} ~,
+    \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        S = k_B \begin{cases}
+            \frac{3}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for distinguishable particles} \\
+            \frac{5}{2} N + N \ln \Big ( \frac{V}{N} (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for indistinguishable particles} \\
+        \end{cases} ~,
     \end{equation*}
     \begin{proof}
-        By definition, using the Stirling approximation~\eqref{app:stirl},
+        By definition~\eqref{mc:s}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            \frac{S}{k_B} & = \ln \Sigma (E) \\ & = \ln \Big ( \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} \Big ) \\ & = \cancel{\ln 2} + N \ln V - \ln \xi_N - \cancel{\ln d} - \cancel{\ln N} - \ln \Gamma (dN/2) + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & =  N \ln V - \ln \xi_N - \underbrace{\ln \Gamma (dN/2)}_{\frac{dN}{2} \ln \frac{dN}{2} - \frac{dN}{2}} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - \frac{dN}{2} \ln \frac{dN}{2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - N \ln \Big(\frac{dN}{2} \Big)^{d/2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = - \ln \xi_N + \frac{dN}{2} + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
+            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \Big ( \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} \Big ) \\ & = \cancel{\ln 2} + N \ln V - \ln \xi_N - \cancel{\ln d} - \cancel{\ln N} - \ln \Gamma (dN/2) + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & =  N \ln V - \ln \xi_N - \underbrace{\ln \Gamma (dN/2)}_{\frac{dN}{2} \ln \frac{dN}{2} - \frac{dN}{2}} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - \frac{dN}{2} \ln \frac{dN}{2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - N \ln \Big(\frac{dN}{2} \Big)^{d/2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = - \ln \xi_N + \frac{dN}{2} + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~,
         \end{aligned}
         \end{equation*}
-
-        Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
+        where we have neglected terms that do not scale at least as N, like $\ln 2$, $\ln d$ and $\ln N$. Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
         \begin{equation*}
-            \frac{S}{k_B} = - \ln 1 + \frac{dN}{2} + N \ln \Big (V \frac{4 \pi m E}{dNh^2} \Big )^{d/2} = \frac{d}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
+            \frac{S}{k_B} = - \cancel{\ln 1} + \frac{dN}{2} + N \ln \Big (V \frac{4 \pi m E}{dNh^2} \Big )^{d/2} = \frac{d}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
         \end{equation*}
         For indistinguishable particles $\xi_N = N!$, we find
         \begin{equation*}
@@ -97,147 +108,128 @@
     \begin{equation*}
         E = \frac{d N k_B T}{2} ~.
     \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        E = \frac{3 N k_B T}{2}
+    \end{equation*}
     \begin{proof}
-        By~\eqref{ses}
+        Using the first of~\eqref{td:es:e}, we have
         \begin{equation*}
             \frac{1}{T} = \pdv{S}{E} = k_B \frac{dN}{2} \pdv{}{E} \ln E = k_B \frac{dN}{2E} ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             E = \frac{d N k_B T}{2} ~.
         \end{equation*}
     \end{proof}
-
     The equation of state is  
     \begin{equation*}
-        p V = N k_B T ~.
+        p V = N k_B T ~,
     \end{equation*}
+    which is the same for all dimensions.
     \begin{proof}
-        By~\eqref{ses}
+        By the second of~\eqref{td:es:s}, we have
         \begin{equation*}
             \frac{p}{T} = \pdv{S}{V} = k_B N \pdv{}{V} \ln V = k_B \frac{N}{V}  ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             pV = N k_B T ~.
         \end{equation*}
     \end{proof}
 
-\section{Non-relativistic ideal gas in 3-dimensions}
+\section{Microcanonical gas of harmonic oscillators}
 
-    Now, consider the case in which $d = 3$.
-    The number of states $\Sigma(E)$ is 
-    \begin{equation*}
-        \Sigma(E) = \frac{2V^{N}}{\xi_N d N \Gamma(3N/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{3N/2} ~.
-    \end{equation*}
-    The density state $\omega(E)$ is
-    \begin{equation*}
-        \omega (E) = \frac{V^N}{\xi_N \Gamma(3N/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{\frac{3N}{2}} E^{3N/2-1} ~.
-    \end{equation*}
-    Notice that 
-    \begin{equation*}
-        \omega(E) = \frac{3N}{2E} \Sigma(E) ~, \quad \Gamma(E) = \omega(E) \Delta E = \frac{3N}{2E} \Sigma(E) \Delta E ~.
-    \end{equation*}
-    The entropy is 
-    \begin{equation*}
-        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{3N}{2E} + \ln \Delta E ~,
-    \end{equation*}
-    In the thermodynamic limit, it becomes
-    \begin{equation*}
-        S = k_B \begin{cases}
-            \frac{3}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for distinguishable particles} \\
-            \frac{5}{2} N + N \ln \Big ( \frac{V}{N} (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for indistinguishable particles} \\
-        \end{cases} ~.
-    \end{equation*}
-    The internal energy is 
-    \begin{equation*}
-        E = \frac{3}{2} N k_B T ~.
-    \end{equation*}
-    The equation of state is  
-    \begin{equation*}
-        p V = N k_B T ~.
-    \end{equation*}
-
-\section{Gas of harmonic oscillators in 3-dimensions}
-
-    Consider a non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$. Its hamiltonian is 
-    \begin{equation*}
-        H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
+        \end{equation*}
+        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state. Finally, express the same physical quantities in the case $d = 3$.
+    \end{exercise}
 
     The number of states $\Sigma(E)$ is 
     \begin{equation*}
-        \Sigma(E) = \frac{1}{\xi_N \Gamma(dN/2) d N} \Big ( \frac{2 \pi E}{h \omega}\Big)^{dN} ~.
+        \Sigma(E) = \frac{1}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{dN} ~.
+    \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        \Sigma(E) = \frac{1}{\xi_N 3N \Gamma(3N/2)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{3N} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{cm:vol}, we have
         \begin{equation*}
         \begin{aligned}
             \Sigma (E) = \int_{H (q_i, p_i) \leq E} d\Omega = \int_{H (q_i, p_i) \leq E} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} = \frac{1}{h^{dN} \xi_N} \int_{H (q_i, p_i) \leq E} \prod_i d^d q_i d^d p_i ~.
         \end{aligned}
         \end{equation*}
-
-        We make a change of variable into $x_j$, with $j = 1, \ldots 2dN$,
+        We make a change of variable, similar to~\eqref{cm:symplcoord}, into $x_j$, with $j = 1, \ldots 2dN$, given by
         \begin{equation*}
-            p_i = \sqrt{2mE} x_j ~, \quad q_i = \sqrt{\frac{2E}{m\omega^2}} x_{dN + j} ~.
+            p_i = \sqrt{2mE} x_j ~, \quad q_i = \sqrt{\frac{2E}{m\omega^2}} x_{dN + j} ~,
         \end{equation*}
-        The differentials become 
         \begin{equation*}
             d p_i = \sqrt{2mE} dx_j  ~, \quad d q_i = \sqrt{\frac{2E}{m\omega^2}} d x_{dN + j} ~.
         \end{equation*}
-
-        From the energy,
+        In order to find the domain of integration, we express energy in terms of the new variable and we compute the following inequality
         \begin{equation*}
-            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big )  \leq E ~,
+            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) = \sum_j E x_j^2 \leq E ~, \quad \sum_j x^2_j \leq 1 ~.
         \end{equation*}
-        \begin{equation*}
-            \sum_j x^2_j \leq 1 ~.
-        \end{equation*}
-
-        Hence, by the volume of a $2dN$-sphere of radius $1$~\eqref{app:volumen},
+        Hence, by the volume of a $2dN$-sphere of radius $1$~\eqref{app:volumen}, we find
         \begin{equation*}
         \begin{aligned}
-            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) \leq E} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} (2mE)^{dN/2} \Big (\frac{2E}{m\omega^2} \Big )^{dN/2} \underbrace{\int_{\sum_j x^2_j \leq 1} \prod_j d x_j}_{ \frac{\pi^{dN}}{\Gamma (dN + 1)}} \\ & = \frac{1}{\xi_N \Gamma (dN + 1)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} \\ & = \frac{1}{\xi_N \Gamma (dN) dN} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} ~.
+            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) \leq E} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} (2mE)^{dN/2} \Big (\frac{2E}{m\omega^2} \Big )^{dN/2} \underbrace{\int_{\sum_j x^2_j \leq 1} \prod_j d x_j}_{ \frac{\pi^{dN}}{\Gamma (dN + 1)}} \\ & = \frac{1}{\xi_N \Gamma (dN + 1)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} = \frac{1}{\xi_N dN \Gamma (dN)} \Big (\frac{2 \pi E}{h \omega} \Big)^{dN} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
     The density state $\omega(E)$ is
     \begin{equation*}
         \omega (E) = \frac{1}{\xi_N \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} E^{dN-1} ~.
     \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        \omega (E) = \frac{1}{\xi_N \Gamma (3N)} \Big (\frac{2 \pi}{h \omega} \Big )^{3N} E^{3N-1} ~.
+    \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{cm:denst}, we have
         \begin{equation*}
         \begin{aligned}
-            \omega (E) &= \pdv{\Sigma (E)}{E} \\ & = \pdv{}{E} \frac{1}{\xi_N \Gamma (dN) dN} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} \\ & = \frac{1}{\xi_N \Gamma (dN) dN} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} \pdv{}{E} E^{dN} \\ & = \frac{1}{\xi_N \Gamma (dN) dN} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} dN E^{dN-1} \\ & = \frac{1}{\xi_N \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} E^{dN-1} ~.
+            \omega (E) & = \pdv{\Sigma (E)}{E} = \pdv{}{E} \frac{1}{\xi_N dN \Gamma (dN)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} = \frac{1}{\xi_N dN \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} \pdv{}{E} E^{dN} \\ & = \frac{1}{\xi_N dN \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} dN E^{dN-1} = \frac{1}{\xi_N \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} E^{dN-1} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
-    In the thermodynamic limit, the entropy becomes
+    The entropy $S$ is
+    \begin{equation*}
+        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{dN}{E} + \ln \Delta E ~,
+    \end{equation*}
+    and, in the thermodynamic limit, it becomes
     \begin{equation*}
         S = k_B \begin{cases}
-            d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big)^{d} & \textnormal{for distinguishable particles} \\
-            (d+1) N + N \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega d N} )^d \Big ) & \textnormal{for indistinguishable particles} \\
+            d N + N d \ln \Big (\frac{2 \pi E }{h \omega d N} \Big) & \textnormal{for distinguishable particles} \\
+            (d+1) N + N d \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega d N} ) \Big ) & \textnormal{for indistinguishable particles} \\
+        \end{cases} ~.
+    \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        S = k_B \begin{cases}
+            3 N + 3 N \ln \Big (\frac{2 \pi E }{h \omega 3 N} \Big)  & \textnormal{for distinguishable particles} \\
+            4 N + 3 N \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega 3 N} ) \Big ) & \textnormal{for indistinguishable particles} \\
         \end{cases} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the Stirling approximation~\eqref{app:stirl},
+        By definition~\eqref{mc:s}, using the Stirling approximation~\eqref{app:stirl}, the entropy is
         \begin{equation*}
         \begin{aligned}
-            \frac{S}{k_B} & = \ln \Sigma (E) \\ & = \ln \frac{1}{\xi_N \Gamma(dN/2) d N} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} \\ & = - \ln \xi_N - \ln \Gamma (dN) - \cancel{\ln d} - \cancel{\ln N} + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & - \ln \xi_N - \underbrace{\ln \Gamma (dN)}_{dN \ln (dN) - dN} + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & = - \ln \xi_N - dN \ln (dN) + d N + N \ln \Big (\frac{2 \pi E }{h \omega} \Big )^{d} \\ & = - \ln \xi_N + d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} ~.
+            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \frac{1}{\xi_N \Gamma(dN/2) d N} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} \\ & = - \ln \xi_N - \ln \Gamma (dN) - \cancel{\ln d} - \cancel{\ln N} + d N \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & - \ln \xi_N - \underbrace{\ln \Gamma (dN)}_{dN \ln (dN) - dN} + d N \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N - dN \ln (dN) + d N + dN \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~,
         \end{aligned}
         \end{equation*}
-
-        Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
+        where we have neglected terms that do not scale at least as N, like $\ln d$ and $\ln N$. Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
         \begin{equation*}
-            \frac{S}{k_B} = - \ln 1 + d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} = d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} ~.
+            \frac{S}{k_B} = - \ln 1 + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) = d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~.
         \end{equation*}
         For indistinguishable particles $\xi_N = N!$, we find
         \begin{equation*}
         \begin{aligned}
-            \frac{S}{k_B} & = - \underbrace{\ln N!}_{N \ln N - N} + d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} \\ & =  - N \ln N + N + d N + N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big )^{d} \\ & = (d+1) N + N \ln \Big ( \frac{1}{N} \frac{2 \pi E }{h \omega d N} \Big )^{d} ~.
+            \frac{S}{k_B} & = - \underbrace{\ln N!}_{N \ln N - N} + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) \\ & =  - N \ln N + N + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) \\ & = (d+1) N + d N \ln \Big ( \frac{1}{N} \frac{2 \pi E }{h \omega d N} \Big ) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -246,483 +238,520 @@
     \begin{equation*}
         E = d N k_B T ~.
     \end{equation*}
+    In the case $d = 3$, we obtain 
+    \begin{equation*}
+        E = 3 N k_B T ~.
+    \end{equation*}
     \begin{proof}
-        By~\eqref{ses}
+        Using the first of~\eqref{td:es:s}, we have
         \begin{equation*}
             \frac{1}{T} = \pdv{S}{E} = k_B dN \pdv{}{E} \ln E = k_B \frac{dN}{E} ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             E = d N k_B T ~.
         \end{equation*}
     \end{proof}
-
-\chapter{Canonical ensemble}
-
-\section{Non-relativistic ideal gas in d-dimensions}
-
-    Consider an indistinguishable non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. If we did not confined the particles is a finite volume, we would have found undesidered divergences. Its hamiltonian is 
+    The equation of state is  
     \begin{equation*}
-        H = \sum_i \frac{p^2_i}{2m} ~.
+        p = 0 ~,
+    \end{equation*}
+    which is the same for all dimensions.
+    \begin{proof}
+        By the second of~\eqref{td:es:s}, we have
+        \begin{equation*}
+            \frac{p}{T} = \pdv{S}{V} = 0 ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            p = 0 ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Canonical non-relativistic ideal gas}
+
+    \begin{exercise}
+        Consider a non-relativistic ideal (non-interacting) gas of $N$ indistinguishable particles with mass $m$, living in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \frac{p^2_i}{2m} ~.
+        \end{equation*}
+        Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the equation of state, the chemical potential $\mu$ and the specific heats $C_V$ and $C_p$. Finally, express the same physical quantities in the case $d = 3$.
+    \end{exercise}
+
+    In the following, we will use the thermal wavelength 
+    \begin{equation*}
+        \lambda_T = \sqrt{\frac{\beta h^2}{2 m \pi}} ~.
     \end{equation*}
 
     The canonical partition function $Z$ is 
+    \begin{equation}\label{idcan}
+        Z = \frac{V^N}{N! \lambda^{dN}_T} ~.
+    \end{equation}
+    In the case $d = 3$, we obtain 
     \begin{equation*}
-        Z = \frac{V^N}{\xi_N \lambda^{dN}_T} = \frac{V^N}{ \xi_N} (\frac{2 m \pi}{\beta h^2})^{dN/2} ~.
+        Z = \frac{V^N}{N! \lambda^{3N}_T} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral~\eqref{app:gauss},
+        By definition~\eqref{c:z}, using the gaussian integral~\eqref{app:gauss}, we have
         \begin{equation*}
         \begin{aligned}
-            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{V^N}{h^{dN} \xi_N} (\frac{2 m \pi}{\beta})^{dN/2} \\ & = \frac{V^N}{ \xi_N} (\frac{2 m \pi}{\beta h^2})^{dN/2} \\ & = \frac{V^N}{\xi_N \lambda^{dN}_T}
+            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} N!} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{V^N}{h^{dN} N!} (\frac{2 m \pi}{\beta})^{dN/2} = \frac{V^N}{ N!} (\frac{2 m \pi}{\beta h^2})^{dN/2} = \frac{V^N}{N! \lambda^{dN}_T} ~.
         \end{aligned}
         \end{equation*}
-        where we have defined the thermal wavelength 
-        \begin{equation*}
-            \lambda_T = \sqrt{\frac{\beta h^2}{2 m \pi}} ~.
-        \end{equation*}
     \end{proof}
-
-    For indistinguishable particles, the canonical partition function $Z$ is 
-    \begin{equation*}
-        Z = \frac{V^N}{N! \lambda^{dN}_T} = \frac{V^N}{N!} (\frac{2 m \pi}{\beta h^2})^{dN/2} ~.
-    \end{equation*}
-
     An useful intermediary formula is 
     \begin{equation*}
-        \ln Z = N (1 - \ln (\frac{N}{V} \lambda_T^d)) = N (1 - \ln (n \lambda_T^d)) ~.
+        \ln Z = N (1 - \ln (n \lambda_T^d)) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation~\eqref{app:stirl},
+        In fact, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            \ln Z & = \ln \frac{V^N}{N! \lambda^{dN}_T} \\ & = N \ln (V \lambda_T^d) - \underbrace{\ln N!}_{N \ln N - N} \\ & = N - N \frac{V \lambda_T^d}{N} \\ & = N (1 - \ln (\frac{N}{V} \lambda_T^d)) \\ & = N (1 - \ln (n \lambda_T^d))  ~,
+            \ln Z & = \ln \frac{V^N}{N! \lambda^{dN}_T}= N \ln (V \lambda_T^d) - \underbrace{\ln N!}_{N \ln N - N} = N - N \frac{V \lambda_T^d}{N} \\ & = N (1 - \ln (\frac{N}{V} \lambda_T^d)) = N (1 - \ln (n \lambda_T^d))  ~.
         \end{aligned}
         \end{equation*}
-        where we have defined the density
-        \begin{equation*}
-            n = \frac{N}{V} ~.
-        \end{equation*}
     \end{proof}
-    
     The internal energy $E$ is 
     \begin{equation*}
         E = \frac{d}{2} N k_B T ~.
     \end{equation*}
+    In the case $d=3$, we obtain 
+    \begin{equation*}
+        E = \frac{3}{2} N k_B T ~.
+    \end{equation*}
     \begin{proof}
-        By~\eqref{can:e}
+        Using~\eqref{c:e2}, we have
         \begin{equation*}
         \begin{aligned}
-            E & = - \pdv{\ln Z}\beta \\ & = - \pdv{}{\beta} N (1 - \ln (n \lambda_T^d)) \\ & = - Nd \pdv{}{\beta} \ln (\lambda_T) \\ & = - Nd \pdv{}{\beta} \ln (\beta^{1/2}) \\ & = \frac{Nd}{2} \frac{1}{\beta} \\ & = \frac{d}{2} N k_B T ~.
+            E & = - \pdv{\ln Z}\beta  = - \pdv{}{\beta} N (1 - \ln (n \lambda_T^d)) = - Nd \pdv{}{\beta} \ln (\lambda_T) \\ & = - Nd \pdv{}{\beta} \ln (\beta^{1/2}) = \frac{Nd}{2} \frac{1}{\beta} = \frac{d}{2} N k_B T ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-    
     The Helmoltz free energy $F$ is 
     \begin{equation*}
         F = \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) ~.
     \end{equation*}
+    In the case $d=3$, we obtain 
+    \begin{equation*}
+        F = \frac{N}{\beta} (\ln (n \lambda_T^3) - 1) ~.
+    \end{equation*}
     \begin{proof}
-        By~\eqref{can:f}
+        Using~\eqref{c:f}, we have
         \begin{equation*}
             F = - \frac{\ln Z}{\beta} = \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) ~.
         \end{equation*}
     \end{proof}
-    
     The entropy $S$ is 
     \begin{equation*}
         S = N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) ~.
     \end{equation*}
+    In the case $d=3$, we obtain 
+    \begin{equation*}
+        S = N k_B \Big ( \frac{5}{2} - \ln (n \lambda_T^3) \Big ) ~.
+    \end{equation*}
     \begin{proof}
-        By~\eqref{can:s}
+        Using~\eqref{c:s}, we have
         \begin{equation*}
         \begin{aligned}
-            S & = \frac{E - F}{T} \\ & = \frac{1}{T} \Big ( \frac{d}{2} N k_B T - \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) \Big ) \\ & = \frac{N}{\beta T} \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) \\ & = N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big )
+            S & = \frac{E - F}{T} = \frac{1}{T} \Big ( \frac{d}{2} N k_B T - \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) \Big ) \\ & = \frac{N}{\beta T} \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big )  = N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big )
         \end{aligned}
         \end{equation*}
     \end{proof}
-
     Entropy becomes negative at a certain critical temperature
     \begin{equation*}
         T_c = \frac{2 m \pi k_B}{h^2} e^{(d+2)/2} n^{-2/d} ~.
     \end{equation*}
-    \begin{proof}
-        In fact, $S < 0$ for 
-        \begin{equation*}
-            N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) < 0 ~,
-        \end{equation*}
-        \begin{equation*}
-            \frac{d+2}{2} - \ln (n \lambda_T^d) < 0 ~,
-        \end{equation*}
-        \begin{equation*}
-            \frac{d+2}{2} < \ln (n \lambda_T^d) ~,
-        \end{equation*}
-        \begin{equation*}
-            e^{(d+2)/2} < n \lambda_T^d  ~,
-        \end{equation*}
-        \begin{equation*}
-            e^{(d+2)/2} < n \Big ( \frac{h^2 \beta}{2 m \pi} \Big )^{d/2}  ~,
-        \end{equation*}
-        \begin{equation*}
-            e^{(d+2)/d} n^{2/d} < \frac{h^2 \beta}{2 m \pi} ~,
-        \end{equation*}
-        \begin{equation*}
-            \frac{2 m \pi}{h^2} e^{(d+2)/2} n^{-2/d} < \beta ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            T < \frac{2 m \pi k_B}{h^2} e^{(d+2)/2} n^{-2/d} = T_c ~.
-        \end{equation*}
-    \end{proof}
-    
-    The equation of state is 
-    \begin{equation}\label{ides}
-        p V = N k_B T ~.
-    \end{equation}
-    \begin{proof}
-        By\eqref{fes}
-        \begin{equation*}
-            p = - \pdv{F}{V} = - \pdv{}{V} \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) = \frac{N}{\beta} \pdv{}{V} \ln V = \frac{N}{V \beta} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            p V = N k_B T ~.
-        \end{equation*}
-    \end{proof}
-    
-    The chemical potential $\mu$ is 
+    In the case $d=3$, we obtain 
     \begin{equation*}
-        \mu = frac{1}{\beta} \ln (n \lambda_T^d) ~.
+        T_c = \frac{2 m \pi k_B}{h^2} e^{5/2} n^{-2/3} ~.
     \end{equation*}
-    \begin{proof}
-        By~\eqref{fes}
-        \begin{equation*}
-            \mu = \pdv{F}{N} = \pdv{}{N} \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) = \frac{1}{\beta} (\ln (n \lambda_T^d) - \cancel{1}) + \cancel{\frac{1}{\beta} } = frac{1}{\beta} \ln (n \lambda_T^d) ~.
-        \end{equation*}
-    \end{proof}
-
-    The specific heats $C_V$ and $C_p$ are 
-    \begin{equation*}
-        C_V = N \frac{d}{2} k_B ~, \quad C_p = N \frac{d+2}{2} k_B ~. 
-    \end{equation*}
-    \begin{proof}
-        At $V$ constant
-        \begin{equation*}
-            C_V = \pdv{E}{T} = \pdv{}{T} \frac{d}{2} N k_B T = N \frac{d}{2} k_B ~.
-        \end{equation*}
-
-        At $p$ constant, using~\eqref{ides}
-        \begin{equation*}
-            C_p = C_V + p \pdv{V}{T} = = C_V + p \pdv{}{T} \frac{N k_B T}{p} = N \frac{d}{2} k_B + N k_B = \frac{d + 2}{2} k_B ~.
-        \end{equation*}
-    \end{proof}
-
-\section{Non-relativistic ideal gas in 3-dimensions}
-
-    Now, consider the case in which $d = 3$.
-    For indistinguishable particles, the canonical partition function $Z$ is 
-    \begin{equation*}
-        Z = \frac{V^N}{N! \lambda^{3N}_T} = \frac{V^N}{N!} (\frac{2 m \pi}{\beta h^2})^{3N/2} ~.
-    \end{equation*}
-    
-    The internal energy $E$ is 
-    \begin{equation*}
-        E = \frac{3}{2} N k_B T ~.
-    \end{equation*}
-    
-    The Helmoltz free energy $F$ is 
-    \begin{equation*}
-        F = \frac{N}{\beta} (\ln (n \lambda_T^3) - 1) ~.
-    \end{equation*}
-    
-    The entropy $S$ is 
-    \begin{equation*}
-        S = N k_B \Big ( \frac{5}{2} - \ln (n \lambda_T^3) \Big ) ~.
-    \end{equation*}
-    
-    Entropy becomes negative at a certain critical temperature
-    \begin{equation*}
-        T_c = \frac{2 m \pi k_B}{h^2} e^{3/2} n^{-2/3} ~.
-    \end{equation*}
-    A plot of this is in Figure~\ref{can:ent}.
+    A plot of the entropy as a function of $T$ is in Figure~\ref{fig:c:ent}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '5/2 - log(1 / x**(3/2))', 1, 3, 0, True, False, False)}}
         \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{2 \pi m k_B T n^{2/3}}{h^2}$ and $f(x) = \frac{S}{N k_B}$.}
-        \label{can:ent}
+        \label{fig:c:ent}
     \end{figure}
-    
+    \begin{proof}
+        In fact, after a series of manipulations, $S < 0$ for 
+        \begin{equation*}
+            N k_B \Big ( \frac{d+2}{2} - \ln (n \lambda_T^d) \Big ) < 0 ~, \quad \frac{d+2}{2} - \ln (n \lambda_T^d) < 0 ~, \quad \frac{d+2}{2} < \ln (n \lambda_T^d) ~,
+        \end{equation*}
+        \begin{equation*}
+            e^{(d+2)/2} < n \lambda_T^d  ~, \quad e^{(d+2)/2} < n \Big ( \frac{h^2 \beta}{2 m \pi} \Big )^{d/2}  ~, \quad e^{(d+2)/d} n^{2/d} < \frac{h^2 \beta}{2 m \pi} ~,
+        \end{equation*}
+        \begin{equation*}
+            \frac{2 m \pi}{h^2} e^{(d+2)/2} n^{-2/d} < \beta ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            T < \frac{2 m \pi k_B}{h^2} e^{(d+2)/2} n^{-2/d} = T_c ~.
+        \end{equation*}
+    \end{proof}
     The equation of state is 
-    \begin{equation*}
+    \begin{equation}\label{ides}
         p V = N k_B T ~.
-    \end{equation*}
-    
+    \end{equation}
+    which is the same for all dimensions.
+    \begin{proof}
+        By the second of~\eqref{td:es:f}, we have
+        \begin{equation*}
+            p = - \pdv{F}{V} = - \pdv{}{V} \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) = \frac{N}{\beta} \pdv{}{V} \ln V = \frac{N}{V \beta} ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            p V = N k_B T ~.
+        \end{equation*}
+    \end{proof}
     The chemical potential $\mu$ is 
+    \begin{equation*}
+        \mu = \frac{1}{\beta} \ln (n \lambda_T^d) ~.
+    \end{equation*}
+    In the case $d=3$, we obtain 
     \begin{equation*}
         \mu = \frac{1}{\beta} \ln (n \lambda_T^3) ~.
     \end{equation*}
-    A plot of this is in Figure~\ref{can:mu}.
+    A plot of the chemical potential as a function of $T$ is in Figure~\ref{fig:c:chem}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x**(3/2)) ', 2, 3, 1, True, False, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x**(3/2)) ', 2, 2, 1, True, False, False)}}
         \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{2 \pi m k_B T n^{2/3}}{h^2}$ and $f(x) = \frac{2 \pi m \mu}{h^2 n^{3/2}}$.}
-        \label{can:mu}
+        \label{fig:c:chem}
     \end{figure}
-    
+    \begin{proof}
+        By the third of~\eqref{td:es:f}, we have
+        \begin{equation*}
+            \mu = \pdv{F}{N} = \pdv{}{N} \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) = \frac{1}{\beta} (\ln (n \lambda_T^d) - 1) + \frac{1}{\beta} = \frac{1}{\beta} \ln (n \lambda_T^d) ~.
+        \end{equation*}
+    \end{proof}
     The specific heats $C_V$ and $C_p$ are 
+    \begin{equation*}
+        C_V = N \frac{d}{2} k_B ~, \quad C_p = N \frac{d+2}{2} k_B ~. 
+    \end{equation*}
+    In the case $d=3$, we obtain 
     \begin{equation*}
         C_V = N \frac{3}{2} k_B ~, \quad C_p = N \frac{5}{2} k_B ~. 
     \end{equation*}
-
+    \begin{proof}
+        At $V$ constant, by definition~\eqref{td:cv2}, we find
+        \begin{equation*}
+            C_V = \pdv{E}{T} = \pdv{}{T} \frac{d}{2} N k_B T = N \frac{d}{2} k_B ~.
+        \end{equation*}
+        At $p$ constant, using~\eqref{td:cp2} and~\eqref{ides}, we find
+        \begin{equation*}
+            C_p = C_V + p \pdv{V}{T} = C_V + p \pdv{}{T} \frac{N k_B T}{p} = N \frac{d}{2} k_B + N k_B = \frac{d + 2}{2} k_B ~.
+        \end{equation*}
+    \end{proof}
     Notice that there are two problems: entropy cannot be negative and the specific heat $C_V \rightarrow 0$ for $T \rightarrow 0$, by thermodynamics. This means that this model is not correct and we must go quantum.
-    
-\section{Gas of harmonic oscillators in d-dimensions}
 
-    Consider a distinguishable non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$. Its hamiltonian is 
-    \begin{equation*}
-        H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
-    \end{equation*}
+\section{Canonical gas of harmonic oscillators}
+
+    \begin{exercise}
+        Consider a non-relativistic (non-interacting) gas of $N$ distinguishable particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
+        \end{equation*}
+        Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the equation of state, the chemical potential $\mu$ and the specific heats $C_V$ and $C_p$. Finally, express the same physical quantities in the case $d = 1$.
+    \end{exercise}
 
     The canonical partition function $Z$ is 
+    \begin{equation}\label{harmz}
+        Z = \Big (\frac{1}{\hbar \omega \beta} \Big )^{dN} ~.
+    \end{equation}
+    In the case $d = 1$, we obtain
     \begin{equation*}
-        Z = \frac{1}{\xi_N} \Big (\frac{2 \pi k_B T}{h \omega})^{dN} ~.
+        Z = \Big (\frac{1}{\hbar \omega \beta} \Big )^{N} ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral~\eqref{app:gauss},
+        By definition~\eqref{c:z}, using the gaussian integral~\eqref{app:gauss}, we have
         \begin{equation*}
         \begin{aligned}
-            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i \exp(- \beta \frac{m \omega^2}{2} q_i^2)}_{(\frac{2 \pi}{m \omega \beta})^{dN/2}} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{1}{h^{dN} \xi_N} (\frac{2 \pi}{m \omega \beta})^{dN/2} (\frac{2 m \pi}{\beta})^{dN/2} \\ & = \frac{1}{\xi_N} \Big (\frac{2\pi}{h \omega \beta} \Big )^{dN} \\ & = \frac{1}{\xi_N} \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{dN} ~.
+            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} } \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} } \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} } \underbrace{\int_{ V^N} \prod_i d^d q_i \exp(- \beta \frac{m \omega^2}{2} q_i^2)}_{(\frac{2 \pi}{m \omega \beta})^{dN/2}} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{1}{h^{dN} } (\frac{2 \pi}{m \omega \beta})^{dN/2} (\frac{2 m \pi}{\beta})^{dN/2} = \Big (\frac{2\pi}{h \omega \beta} \Big )^{dN} = \Big (\frac{1}{\hbar \omega \beta} \Big )^{dN}~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
-    For distinguishable particles, the canonical partition function $Z$ is 
-    \begin{equation*}
-        Z = \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{dN} = (Z_1)^N ~.
-    \end{equation*}
-
     An useful intermediary formula is 
     \begin{equation*}
-        \ln Z = d N \ln \frac{2 \pi k_B T}{h \omega} ~.
+        \ln Z = - d N \ln (\hbar \omega \beta) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation~\eqref{app:stirl},
+        In fact, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
-            \ln Z = \ln \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{dN} = d N \ln \frac{2 \pi k_B T}{h \omega} ~.
+            \ln Z = - \ln (\frac{}{\hbar \omega \beta})^{dN} = - d N \ln (\hbar \omega \beta)  ~.
         \end{equation*}
     \end{proof}
-    
     The internal energy $E$ is 
     \begin{equation*}
         E = d N k_B T ~.
     \end{equation*}
+    In the case $d = 1$, we obtain 
+    \begin{equation*}
+        E = N k_B T~.
+    \end{equation*}
     \begin{proof}
-        By~\eqref{can:e}
+        Using~\eqref{c:e2}, we have
         \begin{equation*}
-            E = - \pdv{\ln Z}\beta = - \pdv{}{\beta} d N \ln \frac{2 \pi}{h \omega \beta} = d N \frac{1}{\beta} = d N k_B T ~.
+            E = - \pdv{\ln Z}{\beta} = \pdv{}{\beta} d N \ln (\hbar \omega \beta) = d N \frac{1}{\beta} = d N k_B T ~.
         \end{equation*}
     \end{proof}
-    
     The Helmoltz free energy $F$ is 
     \begin{equation*}
-        F = \frac{dN}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
+        F = \frac{dN}{\beta} \ln (\hbar \omega \beta) ~.
+    \end{equation*}
+    In the case $d = 1$, we obtain 
+    \begin{equation*}
+        F = \frac{N}{\beta} \ln (\hbar \omega \beta) ~.
     \end{equation*}
     \begin{proof}
-        By~\eqref{can:f}
+        Using~\eqref{c:f}, we have
         \begin{equation*}
-            F = - \frac{\ln Z}{\beta} = - \frac{dN}{\beta} \ln \frac{2 \pi k_B T}{h \omega} = \frac{dN}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
+            F = - \frac{\ln Z}{\beta} = \frac{dN}{\beta} \ln (\hbar \omega \beta) ~.
         \end{equation*}
     \end{proof}
-    
     The entropy $S$ is 
     \begin{equation*}
-        S = d N k_B (1 - \ln \frac{h \omega}{2 \pi k_B T}) ~.
+        S = d N k_B (1 - \ln (\hbar \omega \beta)) ~.
+    \end{equation*}
+    In the case $d=1$, we obtain 
+    \begin{equation*}
+        S = N k_B (1 - \ln (\hbar \omega \beta)) ~.
     \end{equation*}
     \begin{proof}
-        By~\eqref{can:s}
+        Using~\eqref{c:s}, we have
         \begin{equation*}
-            S = \frac{E - F}{T} = \frac{1}{T} \Big ( d N k_B T - \frac{dN}{\beta} \ln \frac{h \omega}{2 \pi k_B T} \Big ) = d N k_B (1 - \ln \frac{h \omega}{2 \pi k_B T}) ~.
+            S = \frac{E - F}{T} = \frac{1}{T} \Big ( d N k_B T - \frac{dN}{\beta} \ln (\hbar \omega \beta) \Big ) = d N k_B (1 - \ln (\hbar \omega \beta)) ~.
         \end{equation*}
     \end{proof}
-
     Entropy becomes negative at a certain critical temperature
     \begin{equation*}
-        T_c = \frac{h \omega}{2 \pi k_B e} ~.
+        T_c = \frac{\hbar \omega}{k_B e} ~.
     \end{equation*}
+    which is the same for all dimensions.
+    A plot of the entropy $S$ as a function of $T$ is in Figure~\ref{fig:c:ent2}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 - log(1 / x)', 2, 3, 2, True, False, False)}}
+        \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{S}{N k_B}$.}
+        \label{fig:c:ent2}
+    \end{figure}
     \begin{proof}
-        In fact, $S < 0$ for 
+        In fact, after a series of manipulations, $S < 0$ for 
         \begin{equation*}
-            d N k_B (1 - \ln \frac{h \omega}{2 \pi k_B T}) < 0 ~,
+            d N k_B (1 - \ln (\hbar \omega \beta)) < 0 ~, \quad 1 - \ln (\hbar \omega \beta) < 0 ~,
         \end{equation*}
         \begin{equation*}
-            1 - \ln \frac{h \omega}{2 \pi k_B T} < 0 ~,
+            1 < \ln (\hbar \omega \beta) ~, \quad e < \hbar \omega \beta = \frac{\hbar \omega}{k_B T}  ~,
         \end{equation*}
+        hence, we find
         \begin{equation*}
-            1 < \ln \frac{h \omega}{2 \pi k_B T} ~,
-        \end{equation*}
-        \begin{equation*}
-            e < \frac{h \omega}{2 \pi k_B T}  ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            T < \frac{h \omega}{2 \pi k_B e} = T_c ~.
+            T < \frac{\hbar \omega}{k_B e} = T_c ~.
         \end{equation*}
     \end{proof}
-    
     The equation of state is 
     \begin{equation}\label{idesharm}
         p = 0 ~.
     \end{equation}
+    which is the same for all dimensions.
     \begin{proof}
-        By\eqref{fes}
+        By the second of~\eqref{td:es:f}, we have
         \begin{equation*}
             p = - \pdv{F}{V} = 0 ~.
         \end{equation*}
     \end{proof}
-    
     The chemical potential $\mu$ is 
     \begin{equation*}
-        \mu = \frac{d}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
+        \mu = \frac{d}{\beta} \ln (\hbar \omega \beta) ~.
     \end{equation*}
+    In the case $d=1$, we obtain
+    \begin{equation*}
+        \mu = \frac{1}{\beta} \ln (\hbar \omega \beta) ~.
+    \end{equation*}
+    A plot of this the chemical potential $\mu$ as a function of $T$ is in Figure~\ref{fig:c:mu2}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x)', 3, 3, 3, True, False, False)}}
+        \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{2 \pi \mu}{h \omega}$.}
+        \label{fig:c:mu2}
+    \end{figure}
     \begin{proof}
-        By~\eqref{fes}
+        By the third of~\eqref{td:es:f}, we have
         \begin{equation*}
-            \mu = \pdv{F}{N} = \pdv{}{N} \frac{dN}{\beta} \ln \frac{h \omega}{2 \pi k_B T} = \frac{d}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
+            \mu = \pdv{F}{N} = \pdv{}{N} \frac{dN}{\beta} \ln (\hbar \omega \beta) = \frac{d}{\beta} \ln (\hbar \omega \beta) ~.
         \end{equation*}
     \end{proof}
-
     The specific heats $C_V$ and $C_p$ are 
     \begin{equation*}
         C_V = d N k_B  ~, \quad C_p = d N k_B ~. 
     \end{equation*}
     \begin{proof}
-        At $V$ constant
+        At $V$ constant, by definition~\eqref{td:cv2}, we find
         \begin{equation*}
             C_V = \pdv{E}{T} = \pdv{}{T} d N k_B T  = d N k_B ~.
         \end{equation*}
-
-        At $p$ constant, using~\eqref{idesharm}
+        At $p$ constant, using~\eqref{td:cp2} and~\eqref{idesharm}, we find
         \begin{equation*}
-            C_p = C_V + p \pdv{V}{T} = = C_V + p \pdv{}{T} \frac{N k_B T}{p} = C_V = d N k_B  ~.
+            C_p = C_V + p \pdv{V}{T} = C_V = d N k_B ~.
         \end{equation*}
     \end{proof}
-
-\section{Gas of harmonic oscillators in 1-dimension}
-
-    Now, consider the case in which $d = 1$.
-    For distinguishable particles, the canonical partition function $Z$ is 
-    \begin{equation*}
-        Z = \Big (\frac{2 \pi k_B T}{h \omega} \Big )^{N} = (Z_1)^N ~.
-    \end{equation*}
-    
-    The internal energy $E$ is 
-    \begin{equation*}
-        E = N k_B T ~.
-    \end{equation*}
-   
-    The Helmoltz free energy $F$ is 
-    \begin{equation*}
-        F = \frac{N}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
-    \end{equation*}
-    
-    The entropy $S$ is 
-    \begin{equation*}
-        S = N k_B (1 - \ln \frac{h \omega}{2 \pi k_B T}) ~.
-    \end{equation*}
- 
-    Entropy becomes negative at a certain critical temperature
-    \begin{equation*}
-        T_c = \frac{h \omega}{2 \pi k_B e} ~.
-    \end{equation*}
-    A plot of this is in Figure~\ref{can:ent2}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 - log(1 / x)', 2, 3, 2, True, False, False)}}
-        \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{S}{N k_B}$.}
-        \label{can:ent2}
-    \end{figure}
-
-    The equation of state is 
-    \begin{equation*}
-        p = 0 ~.
-    \end{equation*}
-    
-    The chemical potential $\mu$ is 
-    \begin{equation*}
-        \mu = \frac{1}{\beta} \ln \frac{h \omega}{2 \pi k_B T} ~.
-    \end{equation*}
-    A plot of this is in Figure~\ref{can:mu2}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x)', 3, 3, 3, True, False, False)}}
-        \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{2 \pi k_B T}{h \omega}$ and $f(x) = \frac{2 \pi \mu}{h \omega}$.}
-        \label{can:mu2}
-    \end{figure}
-
-    The specific heats $C_V$ and $C_p$ are 
-    \begin{equation*}
-        C_V = N k_B  ~, \quad C_p = N k_B ~. 
-    \end{equation*}
 
     Notice that also here there are two problems: entropy cannot be negative and the specific heat $C_V \rightarrow 0$ for $T \rightarrow 0$, by thermodynamics. This means that this model is not correct and we must go quantum.
 
-\section{Ultra-relativistic ideal gas}
+\section{Grand canonical non-relativistic ideal gas}
 
-    Consider an indistinguishable ultra-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. Its hamiltonian is 
-    \begin{equation*}
-        H = \sum_i c |p_i| ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a non-relativistic ideal (non-interacting) gas of $N$ indistinguishable particles with mass $m$, living in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \frac{p^2_i}{2m} ~.
+        \end{equation*}
+        Find the grand canonical partition function $Z$, the internal energy $E$, the number of particles $N$ and the equation of state.
+    \end{exercise}
 
-    The canonical partition function $Z$ is 
+    The grancanonical partition function $\mathcal Z$ is 
     \begin{equation*}
-        Z = \frac{1}{\xi_N} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N ~.
+        \mathcal Z = \exp(\frac{z V}{\lambda_T^d}) ~.
     \end{equation*}
     \begin{proof}
-        By definition, using the gaussian integral~\eqref{app:gauss},
+        By definition~\eqref{gc:z}, using~\eqref{idcan} and the Taylor expansion of the exponential, we have
+        \begin{equation*}
+            \mathcal Z = \sum_{N=0}^\infty z^N Z_N = \sum_{N=0}^\infty \frac{1}{N!} \Big ( \frac{z V}{\lambda_T^d} \Big)^N = \exp(\frac{z V}{\lambda_T^d}) ~.
+        \end{equation*}
+    \end{proof}
+    The internal energy $E$ is 
+    \begin{equation*}
+        E = \frac{z V}{\lambda^d_T} \frac{d}{2 \beta} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{gc:e2}, we have
         \begin{equation*}
         \begin{aligned}
-            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) \\ & = \int_{\mathcal M^N} \frac{\prod_i d^3 q_i d^3 p_i}{h^{3N} \xi_N} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} \xi_N} \int_{\mathcal M^N} \prod_i d^3 q_i d^3 p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} \xi_N} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i) \\ & = \frac{V^N}{h^{3N} \xi_N} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i) ~.
+            E & = - \pdv{\ln \mathcal Z}{\beta} \Big \vert_z = - \pdv{}{\beta} \ln \exp(\frac{z V}{\lambda_T^d}) = - \pdv{}{\beta} \frac{z V}{\lambda^d_T} \\ & = - \frac{1}{zV} \pdv{}{\beta} \Big ( \frac{2 m \pi} {\beta h^2} \Big )^{d/2} = - \frac{1}{z V} \Big ( \frac{2 m \pi}{h^2} \Big )^{d/2} \pdv{}{\beta} \beta^{-d/2} \\ & = \frac{1}{zV} \Big ( \frac{h^2}{2 m \pi} \Big )^{d/2} \frac{d}{2} \beta^{-d/2 - 1} = \frac{z V}{\lambda^d_T} \frac{d}{2 \beta} ~.
         \end{aligned}
         \end{equation*}
-
-        Now, in order to evaluate the integral, we use the polar coordinates in the momentum space $(p, \theta, \phi)$
+    \end{proof}
+    The number of particle $N$ is 
+    \begin{equation*}
+        N = \frac{V}{\lambda_T^d} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{gc:n2}, we have
         \begin{equation*}
-            \prod_i \int_{\mathcal M^N} d^3 p_i \exp(- \beta c p_i) = \prod_i 4 \pi \int_0^\infty dp ~ p^2 \exp(- \beta c p_i)
+            N = z \pdv{}{z} \ln \mathcal Z = z \pdv{}{z} \frac{z V}{\lambda_T^d} = \frac{V}{\lambda_T^d} ~.
         \end{equation*}
-        We change variable 
+    \end{proof}
+    The equation of state is 
+    \begin{equation*}
+        p = \frac{z}{\beta \lambda_T^d} ~.
+    \end{equation*}
+    \begin{proof}
+        By the second of~\eqref{td:es:o} and~\eqref{gc:o}, we have
         \begin{equation*}
-            z = \beta c p ~, \quad dz = - \beta c dp ~,
-        \end{equation*}
-        and we find 
-        \begin{equation*}
-            \prod_i \frac{4\pi}{(\beta c)^3} \underbrace{\int_0^\infty dz ~ z^2 \exp(- z)}_{\Gamma (3)} = \prod_i \frac{4\pi}{(\beta c)^3} \underbrace{\Gamma (3)}_2 = \prod_i \frac{8\pi}{(\beta c)^3} = \Big (\frac{8\pi}{(\beta c)^3} \Big )^N ~.
-        \end{equation*}
-
-        Therefore 
-        \begin{equation*}
-            Z = \frac{V^N}{h^{3N} \xi_N} \Big (\frac{8\pi}{(\beta c)^3} \Big )^N = \frac{1}{\xi_N} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N ~.
+            p = - \pdv{\Omega}{V} = - \frac{1}{\beta V} \ln \mathcal Z = \frac{1}{\beta V} \frac{z V}{\lambda_T^d} = \frac{z}{\beta \lambda_T^d} ~.
         \end{equation*}
     \end{proof}
 
-    For indistinguishable particles, the canonical partition function $Z$ is 
+\section{Grand canonical gas of harmonic oscillators}
+
+    \begin{exercise}
+        Consider a non-relativistic (non-interacting) gas of $N$ distinguishable particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$, with Hamiltonian 
+        \begin{equation*}
+            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
+        \end{equation*}
+        Find the grand canonical partition function $Z$, the internal energy $E$, the number of particles $N$ and the equation of state.
+    \end{exercise}
+
+    The grancanonical partition function $\mathcal Z$ is 
+    \begin{equation*}
+        \mathcal Z = \frac{1}{1 - \frac{z}{\hbar \beta \omega}} ~.
+    \end{equation*}
+    Notice that this series converges only if $\hbar \beta \omega \ll 1$, which is the high temperature limit.
+    \begin{proof}
+        By definition~\eqref{gc:z}, using~\eqref{harmz} and the geometrical series, we have
+        \begin{equation*}
+            \mathcal Z = \sum_{N=0}^\infty z^N Z_N = \sum_{N=0}^\infty \Big ( \frac{z}{\hbar \beta \omega} \Big) = \frac{1}{1 - \frac{z}{\hbar \beta \omega}}  ~.
+        \end{equation*}
+    \end{proof}
+    The internal energy $E$ is 
+    \begin{equation*}
+        E = \frac{z}{\beta (\hbar \omega \beta - z)} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{gc:e2}, we have
+        \begin{equation*}
+        \begin{aligned}
+            E & = - \pdv{\ln \mathcal Z}{\beta} \Big \vert_z = - \pdv{}{\beta} \ln \frac{1}{1 - \frac{z}{\hbar \beta \omega}} = \pdv{}{\beta} \ln (1 - \frac{z}{\hbar \beta \omega} ) \\ & = \frac{1}{1 - \frac{z}{\hbar \beta \omega}} \frac{z}{\hbar \omega \beta^2} = \frac{z}{\beta (\hbar \omega \beta - z)} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    The number of particle $N$ is 
+    \begin{equation*}
+        N = \frac{z}{\hbar \omega \beta - z} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{gc:n2}, we have
+        \begin{equation*}
+            N = z \pdv{}{z} \ln \mathcal Z = z \pdv{}{z} \ln \frac{1}{1 - \frac{z}{\hbar \beta \omega}} = - z \pdv{}{z} \ln (1 - \frac{z}{\hbar \beta \omega}) = \frac{1}{1 - \frac{z}{\hbar \beta \omega}}\frac{z}{\hbar \omega \beta} = \frac{z}{\hbar \omega \beta - z}~.
+        \end{equation*}
+    \end{proof}
+    The equation of state is 
+    \begin{equation*}
+        p = - \frac{1}{\beta V}\ln (1 - \frac{z}{\hbar \beta \omega}) ~.
+    \end{equation*}
+    \begin{proof}
+        By the second of~\eqref{td:es:o} and~\eqref{gc:o}, we have
+        \begin{equation*}
+            p = - \pdv{\Omega}{V} = - \frac{1}{\beta V} \ln \mathcal Z = \frac{1}{\beta V} \ln (1 - \frac{z}{\hbar \beta \omega}) ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Canonical ultra-relativistic ideal gas}
+
+    \begin{exercise}
+        Consider an ultra-relativistic ($p_i c \gg m c^2$) ideal (non-interacting) gas of $N$ indistinguishable particles with mass $m$, living in an $3$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{3N}$, with Hamiltonian
+        \begin{equation*}
+            H = \sum_i \sqrt{m^2 c^4 + p_i^2 c^2} \xrightarrow{p_i c \gg m c^2} \sum_i c |p_i| ~.
+        \end{equation*}
+        Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the equation of state, the chemical potential $\mu$ and the specific heats $C_V$ and $C_p$. 
+    \end{exercise}
+
+    The canonical partition function $Z$ is 
     \begin{equation*}
         Z = \frac{1}{N!} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N ~.
     \end{equation*}
+    \begin{proof}
+        By definition~\eqref{c:z}, using the gaussian integral~\eqref{app:gauss}, we have
+        \begin{equation*}
+        \begin{aligned}
+            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) = \int_{\mathcal M^N} \frac{\prod_i d^3 q_i d^3 p_i}{h^{3N} N!} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} N!} \int_{\mathcal M^N} \prod_i d^3 q_i d^3 p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{3N} N!} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i)  = \frac{V^N}{h^{3N} N!} \prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta c p_i) ~.
+        \end{aligned}
+        \end{equation*}
+        Now, in order to evaluate the integral, we use the polar coordinates in the momentum space $(p, \theta, \phi) = (p, \Omega)$ 
+        \begin{equation*}
+            \prod_i \int_{\mathcal M^N} d^3 p_i \exp(- \beta c p_i) = \prod_i 4 \pi \int_0^\infty dp ~ p^2 \exp(- \beta c p_i)
+        \end{equation*}
+        where $\int d\Omega = 4\pi$. We make a change of variables into
+        \begin{equation*}
+            z = \beta c p ~, \quad dz = - \beta c dp ~,
+        \end{equation*}
+        and we obtain 
+        \begin{equation*}
+            \prod_i \frac{4\pi}{(\beta c)^3} \underbrace{\int_0^\infty dz ~ z^2 \exp(- z)}_{\Gamma (3)} = \prod_i \frac{4\pi}{(\beta c)^3} \underbrace{\Gamma (3)}_2 = \prod_i \frac{8\pi}{(\beta c)^3} = \Big (\frac{8\pi}{(\beta c)^3} \Big )^N ~.
+        \end{equation*}
+        Hence, we find 
+        \begin{equation*}
+            Z = \frac{V^N}{h^{3N} N!} \Big (\frac{8\pi}{(\beta c)^3} \Big )^N = \frac{1}{N!} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N ~.
+        \end{equation*}
+    \end{proof}
 
     An useful intermediary formula is 
     \begin{equation*}
         \ln Z = N (1 - \ln \frac{n (\beta h c)^3}{8\pi}) ~.
     \end{equation*}
     \begin{proof}
-        In fact, using the Stirling approximation~\eqref{app:stirl},
+        In fact, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            \ln Z & = \ln \frac{1}{N!} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N \\ & = - \underbrace{\ln N!}_{N \ln N - N} + N \ln \frac{8\pi V}{(\beta h c)^3} \\ & = N (1 - \ln \frac{N (\beta h c)^3}{8\pi V}) \\ & = N (1 - \ln \frac{n (\beta h c)^3}{8\pi})  ~,
+            \ln Z & = \ln \frac{1}{N!} \Big (\frac{8\pi V}{(\beta h c)^3} \Big )^N = - \underbrace{\ln N!}_{N \ln N - N} + N \ln \frac{8\pi V}{(\beta h c)^3} \\ & = N (1 - \ln \frac{N (\beta h c)^3}{8\pi V}) = N (1 - \ln \frac{n (\beta h c)^3}{8\pi}) ~.
         \end{aligned}
-        \end{equation*}
-        where we have defined the density
-        \begin{equation*}
-            n = \frac{N}{V} ~.
         \end{equation*}
     \end{proof}
     
@@ -731,16 +760,16 @@
         E = 3 N k_B T ~.
     \end{equation*}
     \begin{proof}
-        By~\eqref{can:e}
+        Using~\eqref{c:e2}
         \begin{equation*}
             E = - \pdv{\ln Z}{\beta} = - \pdv{}{\beta} N (1 - \ln \frac{n (\beta h c)^3}{8\pi}) = N \pdv{}{\beta} \ln (\beta^3) = 3 N \frac{\beta^2}{\beta^3} = 3 N \frac{1}{\beta} = 3 N k_B T ~.
         \end{equation*}
 
-        As an aside, it can be also derived from the generalised equipartion theorem~\eqref{equi}. In fact
+        As an aside, it can be also derived from the generalised equipartion theorem~\eqref{equi:thm}. In fact, we have
         \begin{equation*}
             k_B T = \av{p_i \pdv{H}{p_i}} = \av{p_i \pdv{}{p_i} c \sqrt{p_1^2 + p_2^2 + p_3^2}} = \av{c \frac{p_i^2}{\sqrt{p_1^2 + p_2^2 + p_3^2}}} ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             \av{H} = \av{c \frac{p_1^2 + p_2^2 + p_3^2}{\sqrt{p_1^2 + p_2^2 + p_3^2}}} = \sum_{i=1}^3 \underbrace{\av{c \frac{p_i^2}{\sqrt{p_1^2 + p_2^2 + p_3^2}}}}_{k_B T} = 3 k_B T ~.
         \end{equation*}
@@ -751,7 +780,7 @@
         F = \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) ~.
     \end{equation*}
     \begin{proof}
-        By~\eqref{can:f}
+        Using~\eqref{c:f}, we have
         \begin{equation*}
             F = - \frac{\ln Z}{\beta} = \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) ~.
         \end{equation*}
@@ -762,61 +791,48 @@
         S = N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) ~.
     \end{equation*}
     \begin{proof}
-        By~\eqref{can:s}
+        Using~\eqref{c:s}
         \begin{equation*}
         \begin{aligned}
-            S & = \frac{E - F}{T} \\ & = \frac{1}{T} \Big ( 3 N k_B T - \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1)  \Big ) \\ & = 3 N k_B - N k_B (\ln \frac{n (\beta h c)^3}{8\pi} - 1) \\ & = N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) ~.
+            S & = \frac{E - F}{T} = \frac{1}{T} \Big ( 3 N k_B T - \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1)  \Big ) \\ & = 3 N k_B - N k_B (\ln \frac{n (\beta h c)^3}{8\pi} - 1) = N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-
     Entropy becomes negative at a certain critical temperature
     \begin{equation*}
         T_c = \frac{hc}{k_B} \Big (\frac{n}{8\pi e^4} \Big)^{1/3} ~.
     \end{equation*}
-    \begin{proof}
-        In fact, $S < 0$ for 
-        \begin{equation*}
-            N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) < 0 ~,
-        \end{equation*}
-        \begin{equation*}
-            4 - \ln \frac{n (\beta h c)^3}{8\pi} < 0 ~,
-        \end{equation*}
-        \begin{equation*}
-            4 < \ln \frac{n (\beta h c)^3}{8\pi} ~,
-        \end{equation*}
-        \begin{equation*}
-            e^{4} < \frac{n (\beta h c)^3}{8\pi} ~,
-        \end{equation*}
-        \begin{equation*}
-            e^{4} < \frac{n (h c)^3}{8\pi k_B^3 T^3}  ~,
-        \end{equation*}
-        \begin{equation*}
-            T^3 < \frac{n (h c)^3}{8\pi k_B^3 e^4} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            T < \frac{hc}{k_B} \Big (\frac{n}{8\pi e^4} \Big)^{1/3} = T_c ~.
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{can:ent3}.
+    A plot of the entropy $S$ as a function of $T$ is in Figure~\ref{fig:c:ent3}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '4 - log(1 / x**3)', 3, 5, 4, True, False, False)}}
         \caption{A plot of the entropy $S$ as a function of $T$. We have used $x = \frac{(8 \pi)^{1/3} k_B T}{h c n^{1/3}}$ and $f(x) = \frac{S}{N k_B}$.}
-        \label{can:ent3}
+        \label{fig:c:ent3}
     \end{figure}
+    \begin{proof}
+        In fact, after a series of manipulations, $S < 0$ for 
+        \begin{equation*}
+            N k_B (4 - \ln \frac{n (\beta h c)^3}{8\pi} ) < 0 ~, \quad  4 - \ln \frac{n (\beta h c)^3}{8\pi} < 0 ~, \quad 4 < \ln \frac{n (\beta h c)^3}{8\pi} ~,
+        \end{equation*}
+        \begin{equation*}
+             \quad e^{4} < \frac{n (\beta h c)^3}{8\pi} ~, \quad e^{4} < \frac{n (h c)^3}{8\pi k_B^3 T^3}  ~, \quad T^3 < \frac{n (h c)^3}{8\pi k_B^3 e^4} ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            T < \frac{hc}{k_B} \Big (\frac{n}{8\pi e^4} \Big)^{1/3} = T_c ~.
+        \end{equation*}
+    \end{proof}
     
     The equation of state is 
     \begin{equation}\label{idesultra}
         p V = N k_B T ~.
     \end{equation}
     \begin{proof}
-        By\eqref{fes}
+        By the second of~\eqref{td:es:f}, we have
         \begin{equation*}
             p = - \pdv{F}{V} = - \pdv{}{V} \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) = \frac{N}{\beta} \pdv{}{V} \ln V = \frac{N}{V \beta} ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             p V = N k_B T ~.
         \end{equation*}
@@ -826,35 +842,229 @@
     \begin{equation*}
         \mu = \frac{1}{\beta} \ln \frac{n (\beta h c)^3}{8\pi} ~.
     \end{equation*}
-    \begin{proof}
-        By~\eqref{fes}
-        \begin{equation*}
-            \mu = \pdv{F}{N} = \pdv{}{N} \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) = \frac{1}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1 + 1) = \frac{1}{\beta} \ln \frac{n (\beta h c)^3}{8\pi} ~.
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{can:mu3}.
+    A plot of the chemical potential $\mu$ as a function of $T$ is in Figure~\ref{fig:c:mu3}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x * log(1 / x**3)', 3, 4, 5, True, False, False)}}
         \caption{A plot of the chemical potential $\mu$ as a function of $T$. We have used $x = \frac{(8 \pi)^{1/3} k_B T}{h c n^{1/3}}$ and $f(x) = \frac{(8 \pi)^{1/3} \mu}{h c n^{1/3}}$.}
-        \label{can:mu3}
+        \label{fig:c:mu3}
     \end{figure}
+    \begin{proof}
+        By the third of~\eqref{td:es:f}, we have
+        \begin{equation*}
+            \mu = \pdv{F}{N} = \pdv{}{N} \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) = \frac{1}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1 + 1) = \frac{1}{\beta} \ln \frac{n (\beta h c)^3}{8\pi} ~.
+        \end{equation*}
+    \end{proof}
 
     The specific heats $C_V$ and $C_p$ are 
     \begin{equation*}
         C_V = 3 N k_B ~, \quad C_p = 4 N k_B T ~. 
     \end{equation*}
     \begin{proof}
-        At $V$ constant
+        At $V$ constant, by definition~\eqref{td:cv2}, we find
         \begin{equation*}
             C_V = \pdv{E}{T} = \pdv{}{T} 3 N k_B T = 3 N k_B ~.
         \end{equation*}
-
-        At $p$ constant, using~\eqref{idesultra}
+        At $p$ constant, using~\eqref{td:cp2} and~\eqref{ides}, we find
         \begin{equation*}
-            C_p = C_V + p \pdv{V}{T} =  C_V + p \pdv{}{T} \frac{N k_B T}{p} = 3 N k_B + N k_B = 4 N k_B T ~.
+            C_p = C_V + p \pdv{V}{T} = C_V + p \pdv{}{T} \frac{N k_B T}{p} = 3 N k_B + N k_B = 4 N k_B T ~.
         \end{equation*}
     \end{proof}
+
+\section{Canonical magnetic solid}
+
+    \begin{exercise}
+        Consider a solid composed by $N$ atoms or molecules with an intrinsic magnetic moment $\boldsymbol \mu$ in an external magnetic field $\mathbf B$. The phase phase is a $2$-dimensional sphere that can be parametrised by $(\theta, phi)$. The conjugate coordinate and momentum are $q = \phi$ and $p = \cos \theta$. The Hamiltonian is 
+        \begin{equation*}
+            H = - \sum_i \boldsymbol \mu \cdot \mathbf B = - \mu B \sum_i \cos \theta_i ~,
+        \end{equation*}
+        where we have oriented $\mathbf B = B \mathbf k$. Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the magnetisation $\mathbf M$ and the isothermal susceptibility $\chi_\beta$. 
+    \end{exercise}
+
+    The canonical partition function $Z$ is 
+    \begin{equation*}
+        Z = \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{c:z}, we have
+        \begin{equation*}
+        \begin{aligned}
+            Z & = \int_{\mathcal M} d \Omega \exp(- \beta H (\theta_i)) = \underbrace{\prod_i \int_0^{2\pi} d\phi_i}_{(2\pi)^N} \prod_i \int_0^\pi d\theta_i ~ \sin \theta_i \exp(- \beta \mu B \cos \theta_i) \\ & = (2\pi)^N \prod_i \int_0^\pi d\theta_i ~ \sin \theta_i \exp(- \beta \mu B \cos \theta_i)  ~.
+        \end{aligned}
+        \end{equation*}
+        Now, in order to evaluate the integral, we make a change of variables into
+        \begin{equation*}
+            x_i  = \cos \theta_i ~, \quad d x_i = - \sin \theta_i d\theta_i ~,
+        \end{equation*}
+        with extrema 
+        \begin{equation*}
+            \theta_i = 0 \rightarrow x_i = 1 ~, \quad \theta_i = \pi \rightarrow x_i = 0 ~,
+        \end{equation*}
+        hence,
+        \begin{equation*}
+        \begin{aligned}
+            Z & = (2\pi)^N \prod_i \int_{-1}^1 dx_i ~ \exp(- \beta \mu B x) = (2\pi)^N \Big ( \frac{\exp(- \beta \mu B x)}{- \beta \mu B} \Big \vert_{-1}^{1} \Big )^N \\ & = (2\pi)^N \Big ( \frac{1}{- \beta \mu B} \underbrace{(\exp(- \beta \mu B) - \exp(\beta \mu B))}_{- 2 \sinh \beta \mu B}\Big )^N \\ & = (2\pi)^N \Big ( \frac{1}{\beta \mu B} (2 \sinh (\beta \mu B)) \Big )^N = \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    An useful intermediary formula is 
+    \begin{equation*}
+        \ln Z = N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, we have
+        \begin{equation*}
+            \ln Z = \ln \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N = N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  ~.
+        \end{equation*}
+    \end{proof}
+    
+    The internal energy $E$ is 
+    \begin{equation*}
+        E = - N \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) ~.
+    \end{equation*}
+    A plot of the internal energy $E$ as a function of $T$ is in Figure~\ref{fig:c:magen}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '- coth(1 / x) + x', 5, 1.2, 8, True, True, False)}}
+        \caption{A plot of the internal energy $E$ as a function of $T$. We have used $x = \frac{1}{\beta \mu B}$ and $f(x) = \frac{E}{N \mu B}$.}
+        \label{fig:c:magen}
+    \end{figure}
+    \begin{proof}
+        Using~\eqref{c:e2}, we have
+        \begin{equation*}
+        \begin{aligned}
+            E & = - \pdv{\ln Z}{\beta} = - \pdv{}{\beta} N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} = - N \pdv{}{\beta} \ln \sinh (\beta \mu B) + N \pdv{}{\beta} \ln \beta \\ & = - N \mu B \coth (\beta \mu B) + \frac{N}{\beta} = - N \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) ~.
+        \end{aligned}
+        \end{equation*}
+
+        We compute the limit for $\beta \rightarrow 0$ or $T \rightarrow \infty$
+        \begin{equation*}
+            \lim_{x \rightarrow 0} \frac{E}{N \mu B} (x) \simeq \py{limit('x', '- 1 * ((exp(x) + exp(-x))/((exp(x) - exp(-x)))) + 1 / x', 0)} ~,
+        \end{equation*}
+        hence, we obtain
+        \begin{equation*}
+            E \xrightarrow{T \rightarrow \infty} 0 ~.
+        \end{equation*}
+        We compute the limit for $\beta \rightarrow \infty$ or $T \rightarrow 0$
+        \begin{equation*}
+            \lim_{x \rightarrow \infty} \frac{E}{N \mu B} (x) \simeq \py{limit('x', '- coth(1 / x) + x', 0)} ~,
+        \end{equation*}
+        hence, we obtain
+        \begin{equation*}
+            E \xrightarrow{T \rightarrow 0} - N \mu B ~.
+        \end{equation*}
+    \end{proof}
+    
+    The Helmoltz free energy $F$ is 
+    \begin{equation*}
+        F = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{c:f}, we have
+        \begin{equation*}
+            F = - \frac{\ln Z}{\beta} = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} ~.
+        \end{equation*}
+    \end{proof}
+    
+    The entropy $S$ is 
+    \begin{equation*}
+        S = N k_B \Big ( \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  - \beta \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) \Big ) ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{c:s}, we have
+        \begin{equation*}
+        \begin{aligned}
+            S & = \frac{E - F}{T} = \frac{1}{T} \Big (- N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) + \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  \Big ) \\ & = N k_B \Big ( \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  - \beta \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) \Big )~. 
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    An useful intermediary formula is 
+    \begin{equation*}
+        \mathbf M = - \pdv{F}{\mathbf B} \Big \vert_{\beta} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{c:av} and~\eqref{c:f}, we obtain 
+        \begin{equation*}
+        \begin{aligned}
+            \mathbf M & = \sum_i \av{\boldsymbol \mu_i}_c = \int d\Omega ~ \rho_c \sum_i \boldsymbol \mu_i  = \int d\Omega ~ \frac{\exp(\beta \sum_i \boldsymbol \mu_i \cdot \mathbf B)}{Z} \sum_i \boldsymbol \mu_i \\ & = \frac{1}{\beta Z} \pdv{}{\mathbf B} \underbrace{\int d\Omega ~ \exp(\beta \sum_i \boldsymbol \mu_i \cdot \mathbf B)}_Z = \frac{1}{\beta Z} \pdv{Z}{\mathbf B} = \frac{1}{\beta} \pdv{\ln Z}{\mathbf B} = - \pdv{F}{\mathbf B} \Big \vert_{\beta} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    The magnetisation $\mathbf M$ is 
+    \begin{equation*}
+        \mathbf M = (0, 0, N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B})) ~.
+    \end{equation*}
+    A plot of the magnetisation $\mathbf M$ as a function of $\beta$ is in Figure~\ref{fig:c:mag}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'coth(x) - 1 / x', 7, 1, 9, True, True, True)}}
+        \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{M_z}{N \mu}$.}
+        \label{fig:c:mag}
+    \end{figure}
+    \begin{proof}
+        Since we have oriented $\mathbf B = (0, 0, B)$, in the transversal directions we have
+        \begin{equation*}
+            M_x = - \pdv{F}{B_x} = M_y = - \pdv{F}{B_y} = 0 ~,
+        \end{equation*}
+        but in the longitudinal direction we find
+        \begin{equation*}
+        \begin{aligned}
+            M_z & = - \pdv{F}{B} = \pdv{}{B} \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} = \frac{N}{\beta} \pdv{}{\beta} \ln \sinh (\beta \mu B) - \frac{N}{\beta} \pdv{}{B} \ln B \\ & = N \mu \coth(\beta \mu B) - \frac{N}{\beta B} = N \mu \Big (\coth (\beta \mu B) - \frac{1}{\beta \mu B} \Big ) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    
+    The isothermal susceptibility $\chi_\beta$, defined as 
+    \begin{equation*}
+        \chi_\beta = \pdv{M}{B} \Big \vert_\beta ~,
+    \end{equation*}  
+    is 
+    \begin{equation*}
+        \chi_\beta = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
+    \end{equation*}
+    A plot of the isothermal susceptibility $\chi_\beta$, as a function of $\beta$ is in Figure~\ref{fig:c:sus}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x * (1 / x**2 - 1 / sinh(x)**2)', 5, 0.5, 10, True, True, True)}}
+        \caption{A plot of the isothermal susceptibility $\chi_\beta$, as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{B \chi_\beta}{N \mu}$.}
+        \label{fig:c:sus}
+    \end{figure}
+    \begin{proof}
+        By definition, we have
+        \begin{equation*}
+        \begin{aligned}
+            \chi_\beta & = \pdv{M}{B} = \pdv{}{B} N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B}) = N \mu ( - \frac{\beta \mu}{\sinh^2 (\beta \mu B)} + \frac{\beta \mu}{(\beta \mu B)^2} ) \\ & = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    
+    For $T \rightarrow \infty$, we can recover the Curie law 
+    \begin{equation*}
+        \chi_\beta = \frac{C}{T} ~,
+    \end{equation*}
+    where the Curie constant is 
+    \begin{equation*}
+        C = \frac{N \mu^2}{3 k_B} ~.
+    \end{equation*}
+    \begin{proof}
+        To study the limit for $\beta \rightarrow 0$ or $T \rightarrow \infty$, we Taylor expand for the variable $x = \beta \mu B$
+        \begin{equation*}
+            \frac{B \chi_\beta}{N \mu} (x) \simeq \py{Taylor('x', 'x * ( x**(-2) - sinh(x)**(-2))', 0, 2)} ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \frac{B \chi_\beta}{N \mu} = \frac{\beta \mu B}{3} ~,
+        \end{equation*}
+        which means that
+        \begin{equation*}
+            \chi_\beta = \frac{N \mu^2}{3 k_B} \frac{1}{T} = \frac{C}{T} ~.
+        \end{equation*}
+    \end{proof}
+
+\chapter{Grand canonical ensemble}
 
 \section{Maxwell-Boltzmann velocity distribution}
 
@@ -1025,239 +1235,6 @@
         \begin{aligned}
             \av{v^2} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \Big ( \frac{2}{m \beta} \Big)^{1/2} \underbrace{\int_0^\infty dt ~ t^{3/2} \exp(- t)}_{\Gamma (5/2)} \\ & = \frac{4}{\sqrt{\pi} m \beta} \underbrace{\Gamma (5/2)}_{\frac{3 \sqrt{\pi}}{4}} \\ & = \frac{3}{\beta m} \\ & = \frac{3 k_B T}{m} ~.
         \end{aligned}
-        \end{equation*}
-    \end{proof}
-
-\section{Magnetic solid}
-
-    A solid, composed by $N$ atoms/molecules with an intrinsic magnetic moment $\boldsymbol \mu$ in an external magnetic field $\mathbf B$, can be modelled by an hamiltonian 
-    \begin{equation*}
-        H = - \sum_i \boldsymbol \mu \cdot \mathbf B = - \mu B \sum_i \cos \theta_i ~.
-    \end{equation*}
-    where the phase space coordinates are $\phi_i$ and $\theta_i$.
-
-    The canonical partition function $Z$ is 
-    \begin{equation*}
-        Z = \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N ~.
-    \end{equation*}
-    \begin{proof}
-        By definition
-        \begin{equation*}
-        \begin{aligned}
-            Z & = \int_{\mathcal M} d \Omega \exp(- \beta H (\theta_i)) \\ & = \underbrace{\prod_i \int_0^{2\pi} d\phi_i}_{(2\pi)^N} \prod_i \int_0^\pi d\theta_i ~ \sin \theta_i \exp(- \beta \mu B \cos \theta_i) \\ & = (2\pi)^N \prod_i \int_0^\pi d\theta_i ~ \sin \theta_i \exp(- \beta \mu B \cos \theta_i)  ~.
-        \end{aligned}
-        \end{equation*}
-        
-
-        We make a change of variable 
-        \begin{equation*}
-            x_i  = \cos \theta_i ~, \quad d x_i = - \sin \theta_i d\theta_i ~,
-        \end{equation*}
-        with extremis 
-        \begin{equation*}
-            \theta_i = 0 \rightarrow x_i = 1 ~, \quad \theta_i = \pi \rightarrow x_i = 0 ~,
-        \end{equation*}
-        hence
-        \begin{equation*}
-        \begin{aligned}
-            Z & = (2\pi)^N \prod_i \int_{-1}^1 dx_i ~ \exp(- \beta \mu B x) \\ & = (2\pi)^N \Big ( \frac{\exp(- \beta \mu B x)}{- \beta \mu B} \Big \vert_{-1}^{1} \Big )^N \\ & = (2\pi)^N \Big ( \frac{1}{- \beta \mu B} \underbrace{(\exp(- \beta \mu B) - \exp(\beta \mu B))}_{- 2 \sinh \beta \mu B}\Big )^N \\ & = (2\pi)^N \Big ( \frac{1}{\beta \mu B} (2 \sinh (\beta \mu B)) \Big )^N \\ & = \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-
-    An useful intermediary formula is 
-    \begin{equation*}
-        \ln Z = N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  ~.
-    \end{equation*}
-    \begin{proof}
-        In fact,
-        \begin{equation*}
-            \ln Z = \ln \Big (\frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \Big )^N = N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  ~.
-        \end{equation*}
-    \end{proof}
-    
-    The internal energy $E$ is 
-    \begin{equation*}
-        E = - N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) ~.
-    \end{equation*}
-    \begin{proof}
-        By~\eqref{can:e}
-        \begin{equation*}
-        \begin{aligned}
-            E & = - \pdv{\ln Z}{\beta} \\ & = - \pdv{}{\beta} N \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \\ & = - N \pdv{}{\beta} \ln \sinh (\beta \mu B) + N \pdv{}{\beta} \ln \beta \\ & = - N \mu B \coth (\beta \mu B) + \frac{N}{\beta} \\ & = - N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) ~.
-        \end{aligned}
-        \end{equation*}
-
-        To study the limit for $\beta \rightarrow 0$ or $T \rightarrow \infty$, we Taylor expand for the variable $x = \beta \mu B$
-        \begin{equation*}
-            \lim_{x \rightarrow 0} \frac{E}{N \mu B} (x) \simeq \py{limit('x', '- 1 * ((exp(x) + exp(-x))/((exp(x) - exp(-x)))) + 1 / x', 0)} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            E \xrightarrow{T \rightarrow \infty} 0 ~.
-        \end{equation*}
-        To study the limit for $\beta \rightarrow \infty$ or $T \rightarrow 0$, we Taylor expand for the variable $x = \beta \mu B$
-        \begin{equation*}
-            \lim_{x \rightarrow \infty} \frac{E}{N \mu B} (x) \simeq \py{limit('x', '- coth(1 / x) + x', 0)} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            E \xrightarrow{T \rightarrow 0} - N \mu B ~.
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{can:magen}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- coth(1 / x) + x', 5, 1.2, 8, True, True, False)}}
-        \caption{A plot of the internal energy $E$ as a function of $T$. We have used $x = \frac{1}{\beta \mu B}$ and $f(x) = \frac{E}{N \mu B}$.}
-        \label{can:magen}
-    \end{figure}
-    
-    The Helmoltz free energy $F$ is 
-    \begin{equation*}
-        F = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} ~.
-    \end{equation*}
-    \begin{proof}
-        By~\eqref{can:f}
-        \begin{equation*}
-            F = - \frac{\ln Z}{\beta} = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} ~.
-        \end{equation*}
-    \end{proof}
-    
-    The entropy $S$ is 
-    \begin{equation*}
-        S = N k_B \Big ( \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  - \beta \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) \Big ) ~.
-    \end{equation*}
-    \begin{proof}
-        By~\eqref{can:s}
-        \begin{equation*}
-        \begin{aligned}
-            S & = \frac{E - F}{T} = \frac{1}{T} \Big (- N \mu B (\coth (\beta \mu B) + \frac{1}{\beta \mu B} ) + \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  \Big ) \\ & = N k_B \Big ( \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B}  - \beta \mu B (\coth (\beta \mu B) - \frac{1}{\beta \mu B} ) \Big )~. 
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-
-    The intrinsic magnetic moment $\mathbf M$ is 
-    \begin{equation*}
-        \mathbf M = (0, 0, N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B})) ~.
-    \end{equation*}
-    \begin{proof}
-        By definition, since we have oriented $\mathbf B = (0, 0, B)$,
-        \begin{equation*}
-            M_x = - \pdv{F}{B_x} = M_y = - \pdv{F}{B_y} = 0 ~,
-        \end{equation*}
-        but 
-        \begin{equation*}
-        \begin{aligned}
-            M_z & = - \pdv{F}{B} \\ & = \pdv{}{B} \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} \\ & = \frac{N}{\beta} \pdv{}{\beta} \ln \sinh (\beta \mu B) - \frac{N}{\beta} \pdv{}{B} \ln B \\ & = N \mu \coth(\beta \mu B) - \frac{N}{\beta B} \\ & = N \mu \Big (\coth (\beta \mu B) - \frac{1}{\beta \mu B} \Big ) ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{can:mag}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'coth(x) - 1 / x', 7, 1, 9, True, True, True)}}
-        \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{M_z}{N \mu}$.}
-        \label{can:mag}
-    \end{figure}
-
-    The isothermal susceptibility $\chi_\beta$ is 
-    \begin{equation*}
-        \chi_\beta = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
-    \end{equation*}
-    \begin{proof}
-        By definition
-        \begin{equation*}
-        \begin{aligned}
-            \chi_\beta & = \pdv{M}{B} \\ & = \pdv{}{B} N\mu (\coth(\beta \mu B) - \frac{1}{\beta \mu B}) \\ & = N \mu ( - \frac{\beta \mu}{\sinh^2 (\beta \mu B)} + \frac{\beta \mu}{(\beta \mu B)^2} ) \\ & = N \mu^2 \beta ( \frac{1}{(\beta \mu B)^2} - \frac{1}{\sinh^2 (\beta \mu H)}) ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{can:sus}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'x * (1 / x**2 - 1 / sinh(x)**2)', 5, 0.5, 10, True, True, True)}}
-        \caption{A plot of the intrinsic magnetic moment $\mathbf M$ as a function of $\beta$. We have used $x = \beta \mu B$ and $f(x) = \frac{B \chi_\beta}{N \mu}$.}
-        \label{can:sus}
-    \end{figure}
-
-    For $T \rightarrow \infty$, the Curie law is 
-    \begin{equation*}
-        \chi_\beta = \frac{C}{T} ~,
-    \end{equation*}
-    where the Curie constant is 
-    \begin{equation*}
-        C = \frac{N \mu^2}{3 k_B} ~.
-    \end{equation*}
-    \begin{proof}
-        To study the limit for $\beta \rightarrow 0$ or $T \rightarrow \infty$, we Taylor expand for the variable $x = \beta \mu B$
-        \begin{equation*}
-            \frac{B \chi_\beta}{N \mu} (x) \simeq \py{Taylor('x', 'x * ( x**(-2) - sinh(x)**(-2))', 0, 2)} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \frac{B \chi_\beta}{N \mu} = \frac{\beta \mu B}{3} ~,
-        \end{equation*}
-        which means 
-        \begin{equation*}
-            \chi_\beta = \frac{N \mu^2}{3 k_B} \frac{1}{T} = \frac{C}{T} ~.
-        \end{equation*}
-    \end{proof}
-
-\chapter{Grand canonical ensemble}
-
-\section{Non-relativistic ideal gas in d-dimensions}
-
-    Consider an indistinguishable non-relativistic ideal (non-interacting) gas of $N$ particles in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M_N = V^N \times \mathbb R^{dN}$. 
-
-    Recall that the canonical partition function is
-    \begin{equation*}
-        Z = \frac{V^N}{N! \lambda^{dN}_T} = \frac{V^N}{N!} (\frac{2 m \pi}{\beta h^2})^{dN/2} ~.
-    \end{equation*}
-
-    The grancanonical partition function is 
-    \begin{equation*}
-        \mathcal Z = \exp(\frac{z V}{\lambda_T^d}) ~.
-     \end{equation*}
-    \begin{proof}
-        By definition, using the Taylor expansion of the exponential,
-        \begin{equation*}
-            \mathcal Z = \sum_{N=0}^\infty z^N Z_N = \sum_{N=0}^\infty \frac{1}{N!} \Big ( \frac{z V}{\lambda_T^d} \Big)^N = \exp(\frac{z V}{\lambda_T^d}) ~.
-        \end{equation*}
-    \end{proof}
-    
-    The internal energy $E$ is 
-    \begin{equation*}
-        E = \frac{z V}{\lambda^d_T} \frac{d}{2 \beta} ~.
-    \end{equation*}
-    \begin{proof}
-        By~\eqref{gran:e}
-        \begin{equation*}
-        \begin{aligned}
-            E & = - \pdv{\ln \mathcal Z}{\beta} \Big \vert_z \\ & = - \pdv{}{\beta} \ln \exp(\frac{z V}{\lambda_T^d}) \\ & = - \pdv{}{\beta} \frac{z V}{\lambda^d_T} \\ & = - \frac{1}{zV} \pdv{}{\beta} \Big ( \frac{2 m \pi} {\beta h^2} \Big )^{d/2} \\ & = - \frac{1}{z V} \Big ( \frac{2 m \pi}{h^2} \Big )^{d/2} \pdv{}{\beta} \beta^{-d/2} \\ & = \frac{1}{zV} \Big ( \frac{h^2}{2 m \pi} \Big )^{d/2} \frac{d}{2} \beta^{-d/2 - 1} \\ & = \frac{z V}{\lambda^d_T} \frac{d}{2 \beta} ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    
-    The number of particle $N$ is 
-    \begin{equation*}
-        N = \frac{V}{\lambda_T^d} ~.
-    \end{equation*}
-    \begin{proof}
-        By~\eqref{gran:n}
-        \begin{equation*}
-            N = z \pdv{}{z} \ln \mathcal Z = z \pdv{}{z} \frac{z V}{\lambda_T^d} = \frac{V}{\lambda_T^d} ~.
-        \end{equation*}
-    \end{proof}
-    
-    The equation of state is 
-    \begin{equation*}
-        p = \frac{z}{\beta \lambda_T^d} ~.
-    \end{equation*}
-    \begin{proof}
-        By definition
-        \begin{equation*}
-            p = \frac{1}{\beta V} \ln \mathcal Z = \frac{1}{\beta V} \frac{z V}{\lambda_T^d} = \frac{z}{\beta \lambda_T^d} ~.
         \end{equation*}
     \end{proof}
 

@@ -284,9 +284,9 @@
 \section{Thermodynamic states as a manifold}
 
     Since an equilibrium state is a point in the manifold $\mathcal M$, we need a chart to describe it, which in our case can be thought as an open subset of $\mathbb R^3$. An example of independent local coordinates are $S$, $V$ and $N$ and they can be used to solve thermodynamic, i.e.~to find explicitly the fundamental equation 
-    \begin{equation*}
+    \begin{equation}\label{td:coord:e}
         E = E(S, V, N) ~.
-    \end{equation*}
+    \end{equation}
     However, we could have chosen another thermodynamic potential, like the entropy
     \begin{equation}\label{td:coord:s}
         S = S(E, V, N) 
@@ -797,7 +797,7 @@
 
 \section{Maxwell's relations}
 
-    Integrability condition can be written as Jacobian determinant in the following way 
+    Integrability condition, called also Maxwell's relations, can be written as Jacobian determinant in the following way 
     \begin{equation*}
         \pdv{a}{b} \Big \vert_{c, d} = \pdv{(a, c, d)}{(b, c, d)} ~,
     \end{equation*}
@@ -808,7 +808,7 @@
     
     For the energy, they are 
     \begin{equation*}
-        \pdv{(T, S, N)}{(p, V, N)} = 1 ~, \quad \pdv{(T, S, V)}{(\mu, N, V)} = - 1 ~, \quad \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~.
+        \pdv{(T, S, N)}{(p, V, N)} = 1 ~, \quad \pdv{(T, S, V)}{(N, \mu, V)} = 1 ~, \quad \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~.
     \end{equation*}
     \begin{proof}
         Using the first of~\eqref{td:int:e}, we obtain
@@ -821,11 +821,11 @@
         \end{equation*} 
         Using the second of~\eqref{td:int:e}, we obtain
         \begin{equation*}
-            \pdv{T}{N} \Big \vert_{S, V} = \pdv{\mu}{S} \Big \vert_{N, V} \rightarrow \pdv{(T, S, V)}{(N, S, V)} = \pdv{(\mu, N, V)}{(S, N, V)} = - \pdv{(\mu, N, V)}{(N, S, V)} ~,
+            \pdv{T}{N} \Big \vert_{S, V} = \pdv{\mu}{S} \Big \vert_{N, V} \rightarrow \pdv{(T, S, V)}{(N, S, V)} = \pdv{(\mu, N, V)}{(S, N, V)} = - \pdv{(\mu, N, V)}{(N, S, V)} = \pdv{(N, \mu, V)}{(N, S, V)} ~,
         \end{equation*} 
         hence, inverting the right-handed side, we find
         \begin{equation*}
-            - 1 = \pdv{(T, S, V)}{(N, S, V)} \pdv{(\mu, N, V)}{(N, S, V)}^{-1} = \pdv{(T, S, V)}{(N, S, V)} \pdv{(N, S, V)}{(\mu, N, V)} = \pdv{(T, S, V)}{(\mu, N, V)} ~.
+            1 = \pdv{(T, S, V)}{(N, S, V)} \pdv{(N, \mu, V)}{(N, S, V)}^{-1} = \pdv{(T, S, V)}{(N, S, V)} \pdv{(N, S, V)}{(N, \mu, V)} = \pdv{(T, S, V)}{(N, \mu, V)} ~.
         \end{equation*} 
         Using the third of~\eqref{td:int:e}, we obtain
         \begin{equation*}
@@ -836,69 +836,166 @@
             1 = \pdv{(p, V, S)}{(N, V, S)} \pdv{(\mu, N, S)}{(N, V ,S)}^{-1} = \pdv{(p, V, S)}{(N, V, S)} \pdv{(N, V ,S)}{(\mu, N, S)} = \pdv{(p, V, S)}{(\mu, N, S)} ~.
         \end{equation*} 
     \end{proof}
-
-
-    
-    For the energy, they are
+    For the Helmoltz free energy, they are 
     \begin{equation*}
-        \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{(\mu, S, N)}{(N, S, V)} ~.
+        \pdv{(S, T, N)}{(V, p, N)} = 1 ~, \quad \pdv{(S, T, V)}{(\mu, N, V)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~.
     \end{equation*}
     \begin{proof}
-        Using the first of~\eqref{td:int:e}
+        Using the first of~\eqref{td:int:f}, we obtain
         \begin{equation*}
-            - \pdv{T}{V} \Big \vert_{S, N} = - \pdv{p}{S} \Big \vert_{V, N} \rightarrow \pdv{(T, N, S)}{(V, N, S)} = - \pdv{(p, N, V)}{(S, N, V)} = \pdv{(p, N, V)}{(V, N, S)} ~,
+            \pdv{S}{V} \Big \vert_{T, N} = \pdv{p}{T} \Big \vert_{V, N} \rightarrow \pdv{(S, T, N)}{(V, T, N)} = \pdv{(p, V, N)}{(T, V, N)} = - \pdv{(p, V, N)}{(V, T, N)} = \pdv{(V, p, N)}{(V, T, N)} ~,
         \end{equation*} 
-        hence, inverting the right-handed side
+        hence, inverting the right-handed side, we find
         \begin{equation*}
-            1 = \pdv{(T, N, S)}{(V, N, S)} \pdv{(p, N, V)}{(V, N, S)}^{-1} = \pdv{(T, N, S)}{(V, N, S)} \pdv{(V, N, S)}{(p, N, V)} = \pdv{(T, N, S)}{(p, N, V)} ~.
+            1 = \pdv{(S, T, N)}{(V, T, N)} \pdv{(V, p, N)}{(V, T, N)}^{-1} = \pdv{(S, T, N)}{(V, T, N)} \pdv{(V, T, N)}{(V, p, N)} = \pdv{(S, T, N)}{(V, p, N)} ~.
         \end{equation*} 
-
-        Using the second of~\eqref{td:int:e}
+        Using the second of~\eqref{td:int:f}, we obtain
         \begin{equation*}
-            \pdv{T}{N} \Big \vert_{S, V} = - \pdv{\mu}{S} \Big \vert_{N, V} \rightarrow \pdv{(T, V, S)}{(N, V, S)} = - \pdv{(\mu, V, N)}{(S, V, N)} = \pdv{(\mu, V, N)}{(N, V, S)} ~,
+            - \pdv{S}{N} \Big \vert_{T, V} = \pdv{\mu}{T} \Big \vert_{N, V} \rightarrow \pdv{(S, T, V)}{(N, T, V)} = - \pdv{(\mu, N, V)}{(T, N, V)} = \pdv{(\mu, N, V)}{(N, T, V)} ~,
         \end{equation*} 
-        hence, inverting the right-handed side
+        hence, inverting the right-handed side, we find
         \begin{equation*}
-            1 = \pdv{(T, V, S)}{(N, V, S)} \pdv{(\mu, V, N)}{(N, V, S)}^{-1} = \pdv{(T, V, S)}{(N, V, S)} \pdv{(N, V, S)}{(\mu, V, N)} = \pdv{(T, V, S)}{(\mu, V, N)} ~.
+            1 = \pdv{(S, T, V)}{(N, T, V)}  \pdv{(\mu, N, V)}{(N, T, V)}^{-1} = \pdv{(S, T, V)}{(N, T, V)} \pdv{(N, T, V)}{(\mu, N, V)} = \pdv{(S, T, V)}{(\mu, N, V)} ~.
         \end{equation*} 
-
-        Using the third of~\eqref{td:int:e}
+        Using the third of~\eqref{td:int:f}, we obtain
         \begin{equation*}
-            \pdv{p}{N} \Big \vert_{V, S} = - \pdv{\mu}{V} \Big \vert_{N, S} \rightarrow \pdv{(p, S, V )}{(N, S, V)} = - \pdv{(\mu, S, N)}{(V, S, N)} = \pdv{(\mu, S, N)}{(N, S, V)} ~,
+            - \pdv{p}{N} \Big \vert_{V, T} = \pdv{\mu}{V} \Big \vert_{N, T} \rightarrow \pdv{(p, V, T)}{(N, V, T)} = - \pdv{(\mu, N, T)}{(V, N ,T)} = \pdv{(\mu, N, T)}{(N, V ,T)} ~,
         \end{equation*} 
-        hence, inverting the right-handed side
+        hence, inverting the right-handed side, we find
         \begin{equation*}
-            1 = \pdv{(p, S, V )}{(N, S, V)} \pdv{(\mu, S, N)}{(N, S, V)}^{-1} = \pdv{(p, S, V )}{(N, S, V)} \pdv{(N, S, V)}{(\mu, S, N)} = \pdv{(p, S, V )}{(\mu, S, N)} ~.
+            1 = \pdv{(p, V, T)}{(N, V, T)} \pdv{(\mu, N, T)}{(N, V ,T)}^{-1} = \pdv{(p, V, T)}{(N, V, T)} \pdv{(N, V ,T)}{(\mu, N, T)} = \pdv{(p, V, T)}{(\mu, N, T)} ~.
+        \end{equation*} 
+    \end{proof}
+    For the enthalpy, they are 
+    \begin{equation*}
+        \pdv{(V, p, N)}{(S, T, N)} = 1 ~, \quad \pdv{(V, p, S)}{(N, \mu, S)} = 1 ~, \quad \pdv{(\mu, N, p)}{(S, T, p)} = 1 ~.
+    \end{equation*}
+    \begin{proof}
+        Using the first of~\eqref{td:int:h}, we obtain
+        \begin{equation*}
+            \pdv{V}{S} \Big \vert_{p, N} = \pdv{T}{p} \Big \vert_{S, N} \rightarrow \pdv{(V, p, N)}{(S, p, N)} = \pdv{(T, S, N)}{(p, S, N)} = - \pdv{(T, S, N)}{(S, p, N)} = \pdv{(S, T, N)}{(S, p, N)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(V, p, N)}{(S, p, N)} \pdv{(S, T, N)}{(S, p, N)}^{-1} = \pdv{(V, p, N)}{(S, p, N)} \pdv{(S, p, N)}{(S, T, N)} = \pdv{(V, p, N)}{(S, T, N)} ~.
+        \end{equation*} 
+        Using the second of~\eqref{td:int:h}, we obtain
+        \begin{equation*}
+            \pdv{V}{N} \Big \vert_{p, S} = \pdv{\mu}{p} \Big \vert_{N, S} \rightarrow \pdv{(V, p, S)}{(N, p, S)} = \pdv{(\mu, N, S)}{(p, N, S)} = - \pdv{(\mu, N, S)}{(N, p, S)} = \pdv{(N, \mu, S)}{(N, p, S)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(V, p, S)}{(N, p, S)} \pdv{(N, \mu, S)}{(N, p, S)}^{-1} = \pdv{(V, p, S)}{(N, p, S)} \pdv{(N, p, S)}{(N, \mu, S)} = \pdv{(V, p, S)}{(N, \mu, S)} ~.
+        \end{equation*} 
+        Using the third of~\eqref{td:int:h}, we obtain
+        \begin{equation*}
+            \pdv{\mu}{S} \Big \vert_{N, p} = \pdv{T}{N} \Big \vert_{S, p} \rightarrow \pdv{(\mu, N, p)}{(S, N, p)} = \pdv{(T, S, p)}{(N, S, p)} = - \pdv{(T, S, p)}{(S, N,p)} = \pdv{(S, T, p)}{(S, N, p)}~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(\mu, N, p)}{(S, N, p)} \pdv{(S, T, p)}{(S, N, p)}^{-1} = \pdv{(\mu, N, p)}{(S, N, p)} \pdv{(S, N, p)}{(S, T, p)} = \pdv{(\mu, N, p)}{(S, T, p)} ~.
+        \end{equation*} 
+    \end{proof}
+    For the Gibbs free energy, they are 
+    \begin{equation*}
+        \pdv{(V, p, N)}{(S, T, N)} = 1 ~, \quad \pdv{(V, p, T)}{(N, \mu, T)} = 1 ~, \quad \pdv{(S, T, p)}{(\mu, N, p)} = 1 ~.
+    \end{equation*}
+    \begin{proof}
+        Using the first of~\eqref{td:int:g}, we obtain
+        \begin{equation*}
+            - \pdv{V}{T} \Big \vert_{p, N} = \pdv{S}{p} \Big \vert_{T, N} \rightarrow \pdv{(V, p, N)}{(T, p, N)} = - \pdv{(S, T, N)}{(p, T, N)} = \pdv{(S, T, N)}{(T, p, N)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(V, p, N)}{(T, p, N)} \pdv{(S, T, N)}{(T, p, N)}^{-1} = \pdv{(V, p, N)}{(T, p, N)} \pdv{(T, p, N)}{(S, T, N)} = \pdv{(V, p, N)}{(S, T, N)} ~.
+        \end{equation*} 
+        Using the second of~\eqref{td:int:g}, we obtain
+        \begin{equation*}
+            \pdv{V}{N} \Big \vert_{p, T} = \pdv{\mu}{p} \Big \vert_{N, T} \rightarrow \pdv{(V, p, T)}{(N, p, T)} = \pdv{(\mu, N, T)}{(p, N, T)} = - \pdv{(\mu, N, T)}{(N, p, T)} = \pdv{(N, \mu, T)}{(N, p, T)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(V, p, T)}{(N, p, T)} \pdv{(N, \mu, T)}{(N, p, T)}^{-1} = \pdv{(V, p, T)}{(N, p, T)} \pdv{(N, p, T)}{(N, \mu, T)} = \pdv{(V, p, T)}{(N, \mu, T)} ~.
+        \end{equation*} 
+        Using the third of~\eqref{td:int:g}, we obtain
+        \begin{equation*}
+            - \pdv{S}{N} \Big \vert_{T, p} = \pdv{\mu}{T} \Big \vert_{N, p} \rightarrow \pdv{(S, T, p)}{(N, T, p)} = - \pdv{(\mu, N, p)}{(T, N, p)} = \pdv{(\mu, N, p)}{(N, T, p)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(S, T, p)}{(N, T, p)} \pdv{(\mu, N, p)}{(N, T, p)}^{-1} = \pdv{(S, T, p)}{(N, T, p)} \pdv{(N, T, p)}{(\mu, N, p)} = \pdv{(S, T, p)}{(\mu, N, p)} ~.
+        \end{equation*} 
+    \end{proof}
+    For the grand potential, they are 
+    \begin{equation*}
+        \pdv{(S, T, V)}{(\mu, N, V)} = 1 ~, \quad \pdv{(S, T, \mu)}{(V, p, \mu)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~.
+    \end{equation*}
+    \begin{proof}
+        Using the first of~\eqref{td:int:o}, we obtain
+        \begin{equation*}
+            \pdv{S}{\mu} \Big \vert_{T, V} = \pdv{N}{T} \Big \vert_{\mu, V} \rightarrow \pdv{(S, T, V)}{(\mu, T, V)} = \pdv{(N, \mu, V)}{(T, \mu, V)} = - \pdv{(N, \mu, V)}{(\mu, T, V)} = \pdv{(\mu, N, V)}{(\mu, T, V)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(S, T, V)}{(\mu, T, V)} \pdv{(\mu, N, V)}{(\mu, T, V)}^{-1} = \pdv{(S, T, V)}{(\mu, T, V)} \pdv{(\mu, T, V)}{(\mu, N, V)} = \pdv{(S, T, V)}{(\mu, N, V)} ~.
+        \end{equation*} 
+        Using the second of~\eqref{td:int:o}, we obtain
+        \begin{equation*}
+            \pdv{S}{V} \Big \vert_{T, \mu} = \pdv{p}{T} \Big \vert_{V, \mu} \rightarrow \pdv{(S, T, \mu)}{(V, T, \mu)} = \pdv{(p, V, \mu)}{(T, V, \mu)} = - \pdv{(p, V, \mu)}{(V, T, \mu)} = \pdv{(V, p, \mu)}{(V, T, \mu)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(S, T, \mu)}{(V, T, \mu)} \pdv{(V, p, \mu)}{(V, T, \mu)}^{-1} = \pdv{(S, T, \mu)}{(V, T, \mu)} \pdv{(V, T, \mu)}{(V, p, \mu)} = \pdv{(S, T, \mu)}{(V, p, \mu)} ~.
+        \end{equation*} 
+        Using the third of~\eqref{td:int:o}, we obtain
+        \begin{equation*}
+            \pdv{p}{\mu} \Big \vert_{V, T} = \pdv{N}{V} \Big \vert_{\mu, T} \rightarrow \pdv{(p, V, T)}{(\mu, V, T)} = \pdv{(N, \mu, T)}{(V, \mu, T)} = - \pdv{(N, \mu, T)}{(\mu, V, T)} = \pdv{(\mu, N, T)}{(\mu, V, T)} ~,
+        \end{equation*} 
+        hence, inverting the right-handed side, we find
+        \begin{equation*}
+            1 = \pdv{(p, V, T)}{(\mu, V, T)} \pdv{(\mu, N, T)}{(\mu, V, T)}^{-1} = \pdv{(p, V, T)}{(\mu, V, T)} \pdv{(\mu, V, T)}{(\mu, N, T)} = \pdv{(p, V, T)}{(\mu, N, T)} ~.
         \end{equation*} 
     \end{proof}
 
-    TO BE CONTINUED.
-
-
-    Not all the Maxwell's relations are independent, but only $6$ of them 
+    A summary of all integrability conditions is given by 
     \begin{equation*}
-        \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~, \quad \pdv{(p, V, N)}{(T, S, N)} = 1 ~, 
+        \pdv{(T, S, N)}{(p, V, N)} = 1 ~, \quad \pdv{(T, S, V)}{(N, \mu, V)} = 1 ~, \quad \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~,
     \end{equation*}
     \begin{equation*}
-        \pdv{(T, S, \mu)}{(p, V, \mu)} = 1 ~, \quad \pdv{(T, S, p)}{(N, \mu, p)} = 1 ~, \quad \pdv{(T, S, V)}{(N, \mu, V)} = 1 ~.
+        \pdv{(S, T, N)}{(V, p, N)} = 1 ~, \quad \pdv{(S, T, V)}{(\mu, N, V)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{(V, p, N)}{(S, T, N)} = 1 ~, \quad \pdv{(V, p, S)}{(N, \mu, S)} = 1 ~, \quad \pdv{(\mu, N, p)}{(S, T, p)} = 1 ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{(V, p, N)}{(S, T, N)} = 1 ~, \quad \pdv{(V, p, T)}{(N, \mu, T)} = 1 ~, \quad \pdv{(S, T, p)}{(\mu, N, p)} = 1 ~,
+    \end{equation*}
+    \begin{equation*}
+        \pdv{(S, T, V)}{(\mu, N, V)} = 1 ~, \quad \pdv{(S, T, \mu)}{(V, p, \mu)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~.
     \end{equation*}
 
-    The geometrical interpretation is that coordinate transformations, which mean that we changed into a different chart of independent variables, preserve volumes. 
+    Notice that not all the Maxwell's relations are independent, but only $6$ of them are
+    \begin{equation}\label{td:max}
+    \begin{gathered}
+        \pdv{(p, V, S)}{(\mu, N, S)} = 1 ~, \quad \pdv{(p, V, T)}{(\mu, N, T)} = 1 ~, \quad \pdv{(p, V, N)}{(T, S, N)} = 1 ~, \\ \pdv{(T, S, \mu)}{(p, V, \mu)} = 1 ~, \quad \pdv{(T, S, p)}{(N, \mu, p)} = 1 ~, \quad \pdv{(T, S, V)}{(N, \mu, V)} = 1 ~.
+    \end{gathered}
+    \end{equation}
+    The geometrical interpretation is that coordinate transformations, which mean that we changed into a different chart of independent thermodynamic variables, preserve volumes. 
 
 \section{Stability conditions}
 
-    Every thermodynamic potential has a natural chart. In fact, the configuration of stable equilbrium can be obtained by a set of variational principle, which can be derived by fixing to constants the natural independent variables. This variations principle derive from the second law of thermodynamics, since all systems evolve spontaneously to maximise the entropy. Therefore, minima of the thermodynamic potentials correspond to stable equilibrium under boundary condition which keep constant the natural variables
+    Every thermodynamic potential has a natural chart. In fact, the configuration of stable equilbrium can be obtained by a set of variational principle, which can be derived by fixing to constants the natural independent variables. This variations principle derive from the second law of thermodynamics, since all systems evolve spontaneously to maximise entropy. Therefore, minima of the thermodynamic potentials correspond to stable equilibrium under boundary condition which keep constant the natural variables
     \begin{equation*}
-        (T, V, N) = const \rightarrow \delta F = 0 ~, \delta^2 F > 0 ~, 
+        (T, V, N) = \text{const} \rightarrow \delta F = 0 ~, \delta^2 F > 0 ~, 
     \end{equation*}
     \begin{equation*}
-        (S, p, N) = const \rightarrow \delta H = 0 ~, \delta^2 H > 0 ~, 
+        (S, p, N) = \text{const} \rightarrow \delta H = 0 ~, \delta^2 H > 0 ~, 
     \end{equation*}
     \begin{equation*}
-        (T, p, N) = const \rightarrow \delta G = 0 ~, \delta^2 G > 0 ~, 
+        (T, p, N) = \text{const} \rightarrow \delta G = 0 ~, \delta^2 G > 0 ~, 
     \end{equation*}
     \begin{equation*}
-        (T, V, \mu) = const \rightarrow \delta \Omega = 0 ~, \delta^2 \Omega > 0 ~.
+        (T, V, \mu) = \text{const} \rightarrow \delta \Omega = 0 ~, \delta^2 \Omega > 0 ~.
     \end{equation*}
 
     Equilibrium of two subsystems requires that $T$, $p$ and $\mu$ are equal.
@@ -910,80 +1007,92 @@
         Computing its derivative and imposing it to zero, using~\eqref{td:es:s}
         \begin{equation*}
         \begin{aligned}
-            0 & = \delta S = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A \\ & \quad + \pdv{S_B}{E_B} \underbrace{\delta (E - E_A)}_{- \delta E_A} + \pdv{S_B}{V_B} \underbrace{\delta (V - V_A)}_{- \delta V_A} + \pdv{S_B}{N_B} \underbrace{\delta (N - N_A)}_{- \delta N_A} \\ & = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A - \pdv{S_B}{E_B} \delta E_A - \pdv{S_B}{V_B}  \delta V_A - \pdv{S_B}{N_B} \delta N_A  \\ & = \delta E_A \Big ( \underbrace{\pdv{S_A}{E_A}}_{\frac{1}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{1}{T_B}} \Big) + \delta V_A \Big ( \underbrace{\pdv{S_A}{V_A}}_{\frac{p_A}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{p_B}{T_B}} \Big) + \delta N_A \Big (\underbrace{\pdv{S_A}{N_A}}_{ - \frac{\mu_A}{T_A}} - \underbrace{\pdv{S_B}{N_B}}_{- \frac{\mu_B}{T_B}} \Big) \\ & = \delta E_A \Big ( \frac{1}{T_A} - \frac{1}{T_B} \Big) + \delta V_A \Big ( \frac{p_A}{T_A} - \frac{p_B}{T_B} \Big) + \delta N_A \Big (- \frac{\mu_A}{T_A} + \frac{\mu_B}{T_B} \Big) ~,
+            0 = \delta S & = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A \\ & \quad + \pdv{S_B}{E_B} \underbrace{\delta (E - E_A)}_{- \delta E_A} + \pdv{S_B}{V_B} \underbrace{\delta (V - V_A)}_{- \delta V_A} + \pdv{S_B}{N_B} \underbrace{\delta (N - N_A)}_{- \delta N_A} \\ & = \pdv{S_A}{E_A} \delta E_A + \pdv{S_A}{V_A} \delta V_A + \pdv{S_A}{N_A} \delta N_A - \pdv{S_B}{E_B} \delta E_A - \pdv{S_B}{V_B}  \delta V_A - \pdv{S_B}{N_B} \delta N_A  \\ & = \delta E_A \Big ( \underbrace{\pdv{S_A}{E_A}}_{\frac{1}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{1}{T_B}} \Big) + \delta V_A \Big ( \underbrace{\pdv{S_A}{V_A}}_{\frac{p_A}{T_A}} - \underbrace{\pdv{S_B}{E_B}}_{\frac{p_B}{T_B}} \Big) + \delta N_A \Big (\underbrace{\pdv{S_A}{N_A}}_{ - \frac{\mu_A}{T_A}} - \underbrace{\pdv{S_B}{N_B}}_{- \frac{\mu_B}{T_B}} \Big) \\ & = \delta E_A \Big ( \frac{1}{T_A} - \frac{1}{T_B} \Big) + \delta V_A \Big ( \frac{p_A}{T_A} - \frac{p_B}{T_B} \Big) + \delta N_A \Big (- \frac{\mu_A}{T_A} + \frac{\mu_B}{T_B} \Big) ~,
         \end{aligned}
         \end{equation*}
-        hence, by the arbitrarity of $\delta E_A$, $\delta V_A$ and $\delta N_A$,
+        hence, by arbitrarity of $\delta E_A$, $\delta V_A$ and $\delta N_A$,
         \begin{equation*}
             T_A = T_B ~, \quad p_A = p_B ~, \quad \mu_A = \mu_B ~.
         \end{equation*}
     \end{proof}
 
     At $T, p, N = const$, the stability condition is 
-    \begin{equation}\label{stab}
+    \begin{equation}\label{td:stab}
     \begin{aligned}
-        & E_{SS} = \pdv{T}{S} \Big \vert_V > 0 ~, \quad E_{VV} = - \pdv{p}{V} \Big \vert_S > 0 ~, \\ & E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~, 
+        & E_{SS} = \pdv{T}{S} \Big \vert_V > 0 ~, \quad E_{VV} = - \pdv{p}{V} \Big \vert_S > 0 ~, \\ & E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~.
     \end{aligned}
     \end{equation}
     \begin{proof}
-        We know that $E = E(S, V, N)$. AT constant $N$, its variation is 
+        We know that $E = E(S, V, N)$ by~\eqref{td:coord:e}. At constant $N$, its variation is 
         \begin{equation*}
         \begin{aligned}
             \delta E & = \underbrace{\pdv{E}{S} \Big \vert_V }_T \delta S + \underbrace{\pdv{E}{V} \Big \vert_S}_{-p} \delta V  \\ & \quad + \frac{1}{2} \Big ( \underbrace{\pdvdu{E}{S} \Big \vert_V}_{E_{SS}} \delta S^2 + 2 \underbrace{\pdvd{E}{S}{V}}_{E_{SV}} \delta S \delta V + \underbrace{\pdvdu{E}{V} \Big \vert_S }_{E_{VV}} \delta V^2 \Big) \\ & = T \delta S - p \delta V + \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) ~.
         \end{aligned}
         \end{equation*}
-
-        The first derivative terms vanishes, since 
+        Via the variation of the Gibbs free energy, the first derivative terms vanishes. In fact
         \begin{equation*}
         \begin{aligned}
-            \delta G &= \delta E - T \delta S + p \delta V \\ & = \cancel{T \delta S} - \cancel{p \delta V} + \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) - \cancel{T \delta S} + \cancel{p \delta V} \\ & = \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) ~.
+            0 = \delta G &= \delta E - T \delta S + p \delta V \\ & = \cancel{T \delta S} - \cancel{p \delta V} + \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) - \cancel{T \delta S} + \cancel{p \delta V} \\ & = \frac{1}{2} \Big ( E_{SS} \delta S^2 + 2 E_{SV} \delta S \delta V + E_{VV} \delta V^2 \Big) ~.
         \end{aligned}
         \end{equation*}
-
-        The condition to be a minimum is that 
+        By imposing that $\delta^2 E > 0$, the condition to be a minimum is that 
         \begin{equation*}
-            E_{SS} > 0 ~, \quad E_{VV} > 0 ~, \quad E_{SS} E_{VV} - E_{SV}^2 > 0 ~.
+            E_{SS} > 0 ~, \quad E_{VV} > 0 ~, \quad E_{SS} E_{VV} - E_{SV}^2 > 0 ~,
         \end{equation*}
-
-        Respectively, they become 
+        which, respectively, become, using~\eqref{td:es:e} 
         \begin{equation*}
-            E_{SS} = \pdv{}{S} \underbrace{\pdv{E}{S}}_{T} = \pdv{T}{S} > 0 ~,
+            E_{SS} = \pdv{}{S} \underbrace{\pdv{E}{S} \Big \vert_V}_{T}  = \pdv{T}{S} \Big \vert_V > 0 ~,
         \end{equation*}
         \begin{equation*}
-            E_{VV} = \pdv{}{V} \underbrace{\pdv{E}{V}}_{-p} = - \pdv{p}{V} > 0 ~,
+            E_{VV} = \pdv{}{V} \underbrace{\pdv{E}{V} \Big \vert_S}_{-p} = - \pdv{p}{V} \Big \vert_S > 0 ~,
         \end{equation*}
         \begin{equation*}
-            E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~.
+            E_{SS}E_{VV} - E^2_{SV} = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{p}{S} \Big \vert_V \Big )^2 = - \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S - \Big ( \pdv{T}{V} \Big \vert_S \Big )^2 > 0 ~,
+        \end{equation*}
+        where we have computed, using the fact that partial derivatives commute,
+        \begin{equation*}
+            E_{SV} = \pdv{}{S} \Big \vert_V \underbrace{\pdv{E}{V} \Big \vert_S}_{-p} = - \pdv{p}{S} \Big \vert_V = \pdv{}{V} \Big \vert_S \underbrace{\pdv{E}{S} \Big \vert_V}_{T} = \pdv{T}{V} \Big \vert_S ~.
         \end{equation*}
     \end{proof}
 
-    We define the stability conditions in terms of the specific heat 
+\section{Specific heats and compressibilities}
+
+    Stability conditions can be written in terms of two thermodynamic quantities that are defined as second derivatives of thermodynamic potentials: specific heat at constant volume or pressure and adiabatic or isothermal compressibility.
+
+    Specific heat at constant volume is defined as 
+    \begin{equation}\label{td:cv}
+        C_V = \frac{\delta Q}{d T} \Big \vert_V = T \pdv{S}{T} \Big \vert_V ~,
+    \end{equation}
+    specific heat at constant pressure is defined as 
+    \begin{equation}\label{td:cp}
+        C_p = \frac{\delta Q}{d T} \Big \vert_p = T \pdv{S}{T} \Big \vert_p ~,
+    \end{equation}
+    adiabatic compressibility is defined as 
     \begin{equation*}
-        C_V = T \pdv{S}{T} \Big \vert_{V} > 0 ~,
+        \chi_S = - \frac{1}{V} \pdv{V}{p} \Big \vert_S 
     \end{equation*}
-    the adiabatic compressibility
+    and isothermal compressibility is defined as 
+    \begin{equation}
+        \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T ~.
+    \end{equation}
+    Therefore, stability conditions can be writtes as 
     \begin{equation*}
-        \chi_S = - \frac{1}{V} \pdv{V}{p} \Big \vert_S > 0
-    \end{equation*}
-    and the isothermal compressibility 
-    \begin{equation*}
-        \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T > 0 ~.
+        C_V > 0 ~, \quad C_p > 0 ~, \quad  \chi_S > 0 ~, \quad \chi_T > 0 ~.
     \end{equation*}
     \begin{proof}
-        For the first, using~\eqref{stab} and $T > 0$
+        For the first, using the first of~\eqref{td:stab} and $T > 0$,
         \begin{equation*}
             C_V = T \pdv{S}{T} \Big \vert_{V} > 0 ~.
         \end{equation*}
-
-        For the second, using~\eqref{stab} and $V > 0$
+        For the second, using the fact that $C_p > C_V > 0$.
+        For the third, using the second of~\eqref{td:stab} and $V > 0$
         \begin{equation*}
             \chi_S = - \frac{1}{V} \pdv{V}{p} \Big \vert_S > 0 ~.
         \end{equation*}
-        
-        For the third, using~\eqref{stab} and~\eqref{intcondgib}
+        For the fourth, using the third of~\eqref{td:stab} and~\eqref{td:int:g}
         \begin{equation*}
         \begin{aligned}
-            0 & < \pdv{T}{V} \Big \vert_S \pdv{T}{V} \Big \vert_S + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S \\ &  - \pdv{T}{V} \Big \vert_S \pdv{p}{S} \Big \vert_V + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S \\ & = \pdv{(T,p)}{(S,V)} \\ & = \pdv{(T,p)}{(S,V)} = \pdv{(T,p)}{(T,V)} \pdv{(T,V)}{(S,V)} \\ & = \pdv{p}{V} \Big \vert_T \pdv{T}{S} \Big \vert_V \\ & = \frac{T}{C_V} \pdv{p}{V} \Big \vert_T ~,
+            0 & < \pdv{T}{V} \Big \vert_S \pdv{T}{V} \Big \vert_S + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S = - \pdv{T}{V} \Big \vert_S \pdv{p}{S} \Big \vert_V + \pdv{T}{S} \Big \vert_V \pdv{p}{V} \Big \vert_S \\ & = \pdv{(T,p)}{(S,V)} = \pdv{(T,p)}{(T,V)} \pdv{(T,V)}{(S,V)} = \pdv{p}{V} \Big \vert_T \pdv{T}{S} \Big \vert_V = \frac{T}{C_V} \pdv{p}{V} \Big \vert_T ~,
         \end{aligned}
         \end{equation*}
         hence, by $T>0$, $C_V>0$ and $V>0$, 
@@ -991,126 +1100,194 @@
             \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T > 0 ~.
         \end{equation*}
     \end{proof}
-
-    Consequently to stability, $F$ is a concave of $T$ and covex of $V$, whereas $G$ is concave of both $T$ and $p$. 
-    \begin{proof}
-        For the concavity of $F$ of $T$
-        \begin{equation*}
-            C_V = T \pdv{S}{T} \Big \vert_{V} = - T \pdvdu{F}{T} \Big \vert_V > 0 ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \pdvdu{F}{T} \Big \vert_V < 0 ~.
-        \end{equation*}
-
-        For the convexity of $F$ of $V$
-        \begin{equation*}
-            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = \Big ( V \pdvdu{F}{V} \Big \vert_T \Big)^{-1} > 0 ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \pdvdu{F}{V} \Big \vert_T > 0 ~.
-        \end{equation*}
-
-        For the concavity of $G$ of $T$
-        \begin{equation*}
-            C_P = T \pdv{S}{T} \Big \vert_{P} = - T \pdvdu{G}{T} \Big \vert_p > 0 ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \pdvdu{G}{T} \Big \vert_p < 0 ~.
-        \end{equation*}
-
-        For the concavity of $G$ of $p$
-        \begin{equation*}
-            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = - \frac{1}{V} \pdvdu{G}{p} \Big \vert_T > 0 ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \pdvdu{G}{p} \Big \vert_T < 0 ~.
-        \end{equation*}
-    \end{proof}
-
-    Furthermore, the second law of thermodynamics can be expressed, in order to maximise the entropy, by imposing that first derivatives vanish and the hessian, i.e. the matrix with its second derivatives, must be negative defined. Therefore, it must be (locally) concave in $E$, $V$ and $N$.
-
-    When cease to work at constant $N$, the stability condition is 
+    Moreover, we have the relations between the specific heats and compressibilities are
     \begin{equation*}
-        \pdv{N}{\mu} \Big \vert_{V, T} = \frac{N^2}{V} \chi_T > 0 ~.
-    \end{equation*}
-    \begin{proof}
-        In fact 
-        \begin{equation*}
-        \begin{aligned}
-            \pdv{N}{\mu} \Big \vert_{V, T} & = \pdv{(N, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(p, V, T)} 1 \pdv{(p, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(p, V, T)} \pdv{(p, V, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} \\ & = - \pdv{V}{p} \Big \vert_{N, T}  \pdv{p}{\mu} \Big \vert_{V, T}  \pdv{p}{\mu} \Big \vert_{N, T} 
-        \end{aligned}
-        \end{equation*}
-
-        Now we use~\eqref{td:gd}
-        \begin{equation*}
-            \pdv{p}{\mu} \Big \vert_{V, T} = \pdv{p}{\mu} \Big \vert_{N, T} = \Big ( \pdv{\mu}{p} \Big \vert_T \Big) = \frac{N}{V} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-        \pdv{N}{\mu} \Big \vert_{V, T} = - \frac{N^2}{V^2} \pdv{V}{p} \Big \vert_{N,T} = \frac{N^2}{V} \chi_T > 0 ~.
-        \end{equation*}
-    \end{proof}
-
-    Moreover, we have the relation 
-    \begin{equation*}
-        \chi_T (C_P - C_V) = T V \alpha_p^2 ~,
+        \chi_T (C_P - C_V) = T V \alpha_p^2 ~, \quad C_p (\chi_T - \chi_S) = T V \alpha_p^2 ~,
     \end{equation*}
     which implies that 
     \begin{equation*}
         C_P > C_V \iff \chi_T > \chi_S ~.
     \end{equation*}
-
     \begin{proof}
-        We start from
+        Using~\eqref{td:d:e}, at constant $V$, we have
+        \begin{equation*}
+            T dS = dE ~,
+        \end{equation*}
+        and at constant $p$, we have
+        \begin{equation*}
+            T dS = dE + p dV ~,
+        \end{equation*}
+        hence, we find
         \begin{equation*}
             C_V = T \pdv{S}{T} \Big \vert_V = \pdv{E}{T} \Big \vert_V ~,
         \end{equation*}
-        \begin{equation*}
-            C_p = T \pdv{S}{T} \Big \vert_p = \pdv{E}{T} \Big \vert_p + p \pdv{V}{T} \Big \vert_p  ~,
-        \end{equation*}
-        which imply that 
+        which imply that, by isolating $TdS$,
         \begin{equation*}
             T dS = C_V dT + ( \pdv{E}{V} \Big \vert_{T} + p) dV = C_V dT + T \pdv{p}{T} \Big \vert_V dV ~,
         \end{equation*}
+        and 
+        \begin{equation*}
+            C_p = T \pdv{S}{T} \Big \vert_p = \pdv{E}{T} \Big \vert_p + p \pdv{V}{T} \Big \vert_p  ~,
+        \end{equation*}
+        which implies that, by isolating $TdS$,
         \begin{equation*}
             T dS = C_p dT + ( \pdv{E}{p} \Big \vert_T + \pdv{V}{p} \Big \vert_T ) dp = C_p dT - T \pdv{V}{T} \Big \vert_p dp ~.
         \end{equation*}
-
-        Comparing them 
+        Comparing them, we find 
         \begin{equation*}
             (C_p - C_V) dT = T (\pdv{V}{T} \Big \vert_p dp + \pdv{p}{T} \Big \vert_V dV) ~,
         \end{equation*}
+        which, assuming that $T(p, V)$, becomes
         \begin{equation*}
             (C_p - C_V) = T \pdv{V}{T} \Big \vert_p \pdv{p}{T} \Big \vert_V ~.
         \end{equation*}
-
-        We use 
+        Now, we compute
         \begin{equation*}
-            \pdv{p}{T} \Big \vert_V = \pdv{(p, V)}{T, V} = \pdv{(p,V)}{(p, T)} \pdv{(p, T)}{(T, V)} = - \pdv{V}{T} \Big \vert_p \pdv{p}{V} \Big \vert_T ~,
+            \pdv{p}{T} \Big \vert_V = \pdv{(p, V)}{(T, V)} = \pdv{(p,V)}{(p, T)} \pdv{(p, T)}{(T, V)} = - \pdv{(p,V)}{(p, T)} \pdv{(p, T)}{(V, T)} = - \pdv{V}{T} \Big \vert_p \pdv{p}{V} \Big \vert_T ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
-            C_p - C_V = \frac{T}{V \chi_T} \Big ( \pdv{V}{T} \Big \vert_p \Big)^2 ~,
+            C_p - C_V = - T \pdv{V}{T} \Big \vert_p \pdv{V}{T} \Big \vert_p \underbrace{\pdv{p}{V} \Big \vert_T}_{- \frac{1}{V \chi_T}} = \frac{T}{V \chi_T} \Big ( \pdv{V}{T} \Big \vert_p \Big)^2 ~,
         \end{equation*}
-        or, defining the thermal expansion coefficient
-        \begin{equation}
-            \alpha_p = \frac{1}{V} \pdv{V}{T} \Big \vert_p~,
+        or, equivalently,
+        \begin{equation*}
+            \chi_T (C_P - C_V) = T V \alpha_p^2 ~.
+        \end{equation*}
+        where we have defined the thermal expansion coefficient
+         \begin{equation}
+            \alpha_p = \frac{1}{V} \pdv{V}{T} \Big \vert_p ~.
         \end{equation}
-        we have 
+        Moreover, using
         \begin{equation*}
-            \chi_T (C_P - C_V) = T V \alpha_p^2 ~,
+            \pdv{a}{b} \Big \vert_c = \pdv{a}{b} \Big \vert_d + \pdv{a}{d} \Big \vert_b \pdv{d}{b} \Big \vert_c ~,
         \end{equation*}
-
-        Finally, we obtain 
+        we can express $C_V$ in terms of $C_p$, using~\eqref{td:int:g} 
         \begin{equation*}
-            \frac{C_p}{C_V} = \frac{\chi_T}{\chi_S} ~.
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_S - \frac{1}{V} \pdv{V}{S} \Big \vert_p \pdv{S}{p} \Big \vert_T = \chi_S - \frac{1}{V} \pdv{V}{S} \Big \vert_p \pdv{S}{p} \Big \vert_T ~,
+        \end{equation*}
+        hence, we find, using the first of~\eqref{td:int:g}
+        \begin{equation*}
+        \begin{aligned}
+            \chi_T - \chi_S & = - \frac{1}{V} \pdv{V}{S} \Big \vert_p \pdv{S}{p} \Big \vert_T = \frac{1}{V} \pdv{V}{S} \Big \vert_p \pdv{V}{T} \Big \vert_p = \frac{1}{V} \pdv{(V, p)}{(S, p)} \pdv{(V, p)}{(T, p)} = \frac{1}{V} \pdv{(V, p)}{(T, p)} \pdv{(T, p)}{(S, p)} \pdv{(V, p)}{(T, p)} = \frac{1}{V} \pdv{(T, p)}{(S, p)} (\pdv{(V, p)}{(T, p)})^2 = \frac{1}{V} \underbrace{\pdv{T}{S} \Big \vert_p}_{\frac{C}{C_p}} (\underbrace{\pdv{V}{T} \Big \vert_p}_{V \alpha_p})^2 = \frac{T V \alpha_p^2}{C_p} 
+        \end{aligned}
+        \end{equation*}
+        or, equivalently,
+        \begin{equation*}
+            C_p (\chi_T - \chi_S) = T V \alpha_p^2 ~.
+        \end{equation*}
+        Finally, comparing the two expressions, we have 
+        \begin{equation*}
+            T V \alpha_p^2 = C_p (\chi_T - \chi_S) = \chi_T (C_p - C_T) ~,
+        \end{equation*}
+        \begin{equation*}
+            \frac{C_p - C_V}{C_p} = 1 - \frac{C_V}{C_p} = \frac{\chi_T - \chi_S}{\chi_T} = 1 - \frac{\chi_S}{\chi_T} ~,
+        \end{equation*}
+        hence, we find 
+        \begin{equation*}
+            \frac{C_p}{C_V} = \frac{\chi_S}{\chi_T} ~.
         \end{equation*}
     \end{proof}
 
-\section{Statistical mechanics}
+    In order to explicitly compute these quantities, it is useful to see that $C_V$ is 
+    \begin{equation}\label{td:cv2}
+        C_V = \pdv{E}{T} \Big \vert_{V, N}
+    \end{equation}
+    and that $C_V$ and $C_p$ are related by 
+    \begin{equation}\label{td:cp2}
+        C_p = C_V + p \pdv{V}{T} \Big \vert_{p, N}~.
+    \end{equation}
+    \begin{proof}
+        For the first, at constant $V$ and $N$,~\eqref{td:d:e} becomes 
+        \begin{equation*}
+            dE = T dS ~,
+        \end{equation*}
+        hence, using~\eqref{td:cv}, we find 
+        \begin{equation*}
+            C_V = T \pdv{S}{T} \Big \vert_{V, N} = \pdv{E}{T} \Big \vert_{V, N} ~.
+        \end{equation*}
+        For the second, at constant $p$ and $N$,~\eqref{td:d:e} becomes 
+        \begin{equation*}
+            dE = T dS - pdV ~,
+        \end{equation*}
+        hence, using~\eqref{td:cp}, we find 
+        \begin{equation*}
+            C_p = T \pdv{S}{T} \Big \vert_{p, N} = \pdv{E}{T} \Big \vert_{V, N} + p \pdv{V}{T} \Big \vert_{p, N} = C_V + p \pdv{V}{T} \Big \vert_{p, N} ~.
+        \end{equation*}
+    \end{proof}
+
+    Consequently to stability, $F$ is a concave of $T$ and convex of $V$, whereas $G$ is concave of both $T$ and $p$
+    \begin{equation*}
+        \pdvdu{F}{T} \Big \vert_V < 0 ~, \quad \pdvdu{F}{V} \Big \vert_T > 0 ~, \quad \pdvdu{G}{T} \Big \vert_p < 0 ~, \quad \pdvdu{G}{p} \Big \vert_T < 0 ~.
+    \end{equation*}
+    \begin{proof}
+        For the concavity of $F$ in $T$, using the first of~\eqref{td:es:f}, we have
+        \begin{equation*}
+            C_V = T \pdv{S}{T} \Big \vert_{V} = - T \pdvdu{F}{T} \Big \vert_V > 0 ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \pdvdu{F}{T} \Big \vert_V < 0 ~.
+        \end{equation*}
+        For the convexity of $F$ in $V$, using the second of~\eqref{td:es:f} and inverting it, we have
+        \begin{equation*}
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = \Big ( V \pdvdu{F}{V} \Big \vert_T \Big)^{-1} > 0 ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \pdvdu{F}{V} \Big \vert_T > 0 ~.
+        \end{equation*}
+        For the concavity of $G$ in $T$, using the first of~\eqref{td:es:g}, we have
+        \begin{equation*}
+            C_P = T \pdv{S}{T} \Big \vert_{P} = - T \pdvdu{G}{T} \Big \vert_p > 0 ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \pdvdu{G}{T} \Big \vert_p < 0 ~.
+        \end{equation*}
+        For the concavity of $G$ in $p$, using the second of~\eqref{td:es:g}, we have
+        \begin{equation*}
+            \chi_T = - \frac{1}{V} \pdv{V}{p} \Big \vert_T = - \frac{1}{V} \pdvdu{G}{p} \Big \vert_T > 0 ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \pdvdu{G}{p} \Big \vert_T < 0 ~.
+        \end{equation*}
+    \end{proof}
+    Furthermore, the second law of thermodynamics~\eqref{td:2nd} can be expressed, in order to maximise entropy, by imposing that its first derivatives vanish and the hessian, i.e.~the matrix with its second derivatives, must be negative defined. Therefore, it must be (locally) concave in $E$, $V$ and $N$
+    \begin{equation*}
+        \pdvdu{S}{E} \Big \vert_{V, N} < 0 ~, \quad \pdvdu{S}{V} \Big \vert_{E, N} < 0 ~, \quad \pdvdu{S}{N} \Big \vert_{E, V} < 0 ~.
+    \end{equation*}
+
+    When we cease to work at constant $N$, the stability condition becomes
+    \begin{equation*}
+        \pdv{N}{\mu} \Big \vert_{V, T} = \frac{N^2}{V} \chi_T > 0 ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using the second of~\eqref{td:max} and the properties of the Jacobian determinant, we obtain
+        \begin{equation*}
+        \begin{aligned}
+            \pdv{N}{\mu} \Big \vert_{V, T} & = \pdv{(N, V, T)}{(\mu, V, T)} = \pdv{(N, V, T)}{(\mu, V, T)} \pdv{(p, V, T)}{(\mu, N, T)} = \pdv{(N, V, T)}{(N, p, T)}\pdv{(N, p, T)}{(\mu, V, T)} \pdv{(p, V, T)}{(\mu, N, T)} \\ & = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(p, V, T)} \pdv{(p, V, T)}{(\mu, V, T)} \pdv{(p, V, T)}{(\mu, N, T)} = \pdv{(N, V, T)}{(N, p, T)} \pdv{(N, p, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} \\ & = - \pdv{(V, N, T)}{(p, N, T)} \pdv{(p, N, T)}{(\mu, N, T)} \pdv{(p, V, T)}{(\mu, V, T)} = - \pdv{V}{p} \Big \vert_{N, T}  \pdv{p}{\mu} \Big \vert_{V, T} \pdv{p}{\mu} \Big \vert_{N, T} ~.
+        \end{aligned}
+        \end{equation*}
+        Now, using~\eqref{td:gd} and the fact that $\mu$ is intensive, we have
+        \begin{equation*}
+            \pdv{p}{\mu} \Big \vert_{V, T} = \pdv{p}{\mu} \Big \vert_{N, T} = \Big ( \pdv{\mu}{p} \Big \vert_T \Big)^{-1} = \frac{1}{v} = \frac{N}{V} ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+        \pdv{N}{\mu} \Big \vert_{V, T} = - \frac{N^2}{V^2} \pdv{V}{p} \Big \vert_{N,T} = \frac{N^2}{V} \chi_T > 0 ~.
+        \end{equation*}
+    \end{proof}
+
+    Finally, we find an important stability condition
+    \begin{equation}\label{td:muT}
+        \pdv{\mu}{T} \Big \vert_N \leq 0 ~.
+    \end{equation}
+    \begin{proof}
+        In fact, using~\eqref{td:gd} and the second law of thermodynamic~\eqref{td:2nd}, we find 
+        \begin{equation*}
+            \pdv{\mu}{T} \Big \vert_{N, p} = - s \leq 0 ~.
+        \end{equation*}
+    \end{proof}
+
     
-    It is important to say that this is all thermodynamics can tell us, thus in order to find the explicit expression of $E$, we must go into statistical mechanics.
