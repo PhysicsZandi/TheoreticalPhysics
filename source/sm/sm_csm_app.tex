@@ -327,7 +327,7 @@
         \end{aligned}
         \end{equation*}
     \end{proof}
-    The Helmoltz free energy $F$ is 
+    The Helmholtz free energy $F$ is 
     \begin{equation*}
         F = \frac{N}{\beta} (\ln (n \lambda_T^d) - 1) ~.
     \end{equation*}
@@ -358,9 +358,9 @@
         \end{equation*}
     \end{proof}
     Entropy becomes negative at a certain critical temperature
-    \begin{equation*}
+    \begin{equation}\label{ex:negs1}
         T_c = \frac{2 m \pi k_B}{h^2} e^{(d+2)/2} n^{-2/d} ~.
-    \end{equation*}
+    \end{equation}
     In the case $d=3$, we obtain 
     \begin{equation*}
         T_c = \frac{2 m \pi k_B}{h^2} e^{5/2} n^{-2/3} ~.
@@ -494,7 +494,7 @@
             E = - \pdv{\ln Z}{\beta} = \pdv{}{\beta} d N \ln (\hbar \omega \beta) = d N \frac{1}{\beta} = d N k_B T ~.
         \end{equation*}
     \end{proof}
-    The Helmoltz free energy $F$ is 
+    The Helmholtz free energy $F$ is 
     \begin{equation*}
         F = \frac{dN}{\beta} \ln (\hbar \omega \beta) ~.
     \end{equation*}
@@ -523,9 +523,9 @@
         \end{equation*}
     \end{proof}
     Entropy becomes negative at a certain critical temperature
-    \begin{equation*}
+    \begin{equation}\label{ex:negs2}
         T_c = \frac{\hbar \omega}{k_B e} ~.
-    \end{equation*}
+    \end{equation}
     which is the same for all dimensions.
     A plot of the entropy $S$ as a function of $T$ is in Figure~\ref{fig:c:ent2}.
     \begin{figure}
@@ -775,7 +775,7 @@
         \end{equation*}
     \end{proof}
     
-    The Helmoltz free energy $F$ is 
+    The Helmholtz free energy $F$ is 
     \begin{equation*}
         F = \frac{N}{\beta} (\ln \frac{n (\beta h c)^3}{8\pi} - 1) ~.
     \end{equation*}
@@ -956,7 +956,7 @@
         \end{equation*}
     \end{proof}
     
-    The Helmoltz free energy $F$ is 
+    The Helmholtz free energy $F$ is 
     \begin{equation*}
         F = - \frac{N}{\beta} \ln \frac{4 \pi \sinh (\beta \mu B)}{\beta \mu B} ~.
     \end{equation*}
@@ -1064,31 +1064,32 @@
         \end{equation*}
     \end{proof}
 
-\chapter{Grand canonical ensemble}
+\section{Canonical Maxwell-Boltzmann distribution}
 
-\section{Maxwell-Boltzmann velocity distribution}
-
-    Consider a non-relativistic ideal (non-interacting) gas of $N$ particles in an $3$-dimensional manifold $\mathcal M^N = \mathbb R^6$, confined into a potential $V(q_i)$ . In this discussion we put $h = 1$. Its hamiltonian is 
-    \begin{equation*}
-        H = \sum_i \Big ( \frac{p^2_i}{2m} + V(q_i) \Big ) ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a non-relativistic ideal (non-interacting) gas of $N$ particles in an $3$-dimensional manifold $\mathcal M^N = \mathbb R^6$ confined into a potential $V(q_i)$, with Hamiltonian
+        \begin{equation*}
+            H = \sum_i \Big ( \frac{p^2_i}{2m} + V(q_i) \Big ) ~.
+        \end{equation*}
+        Find the probability distribution density $\rho_c$, the marginal $\rho(q^i)$, the momentum $\rho(p_i)$, the velocity $\rho(v_i$) and the square velocity $\rho(v)$ ones. Furthermore, compute the most probable velocity $v_p$, the mean velocity $\av{v}$ and the e mean square velocity $\av{v^2}$. Put $h = 1$. 
+    \end{exercise}
 
     The probability distribution density $\rho_c$ for each particle is 
     \begin{equation*}
         \rho_c (q_i, p_i) = \frac{\exp (- \beta ( \frac{p^2_i}{2m} + V(q_i) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{c:pdd}, we have
         \begin{equation*}
             \rho_c (q_i, p_i) = \mathcal N \exp (- \beta ( \frac{p^2_i}{2m} + V(q_i) )) ~,
         \end{equation*}
-        where the normalisation constant is, using the gaussian integral~\eqref{app:gauss} 
+        where, using the gaussian integral~\eqref{app:gauss}, the normalisation constant is  
         \begin{equation*}
         \begin{aligned}
             1 & = \int_{\mathbb R^6} \prod_i d^3 q ~ d^3 p \mathcal N \exp(- \beta ( \frac{p^2}{2m} + V(q))) \\ & = \mathcal N \int_{\mathbb R^3} d^3 q ~ \exp(- \beta V(q))  \underbrace{\int_{\mathbb R^3} d^3 p ~ \exp(- \beta \frac{p^2}{2m})}_{\Big ( \frac{2\pi m}{\beta}\Big)^{3/2}} \\ & = \mathcal N  \Big ( \frac{2\pi m}{\beta}\Big)^{3/2} \int_{\mathbb R^3} d^3 q ~ \exp(- \beta V(q)) ~,
         \end{aligned}
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             \mathcal N = \Big ( \Big ( \frac{2\pi m}{\beta}\Big)^{3/2} \int_{\mathbb R^3} d^3 q ~ \exp(- \beta V(q))  \Big )^{-1} ~.
         \end{equation*}
@@ -1099,10 +1100,10 @@
         \rho(q_i) = \frac{\exp (- \beta V(q_i) )}{\int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition, we have
         \begin{equation*}
         \begin{aligned}
-            \rho(q_i) & = \int_{\mathbb R^3} d^3 p ~ \rho_c (q_i, p) \\ & = \int_{\mathbb R^3} d^3 p ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q_i) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} \\ & = \frac{\exp (- \beta V(q_i) )}{\int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} \frac{\cancel{\int_{\mathbb R^3} d^3 p ~ \exp(- \beta \frac{p^2}{2m})}}{\cancel{(\frac{2\pi m}{\beta})^{3/2}}} \\ & = \frac{\exp (- \beta V(q_i) )}{\int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} ~.
+            \rho(q_i) & = \int_{\mathbb R^3} d^3 p ~ \rho_c (q_i, p) = \int_{\mathbb R^3} d^3 p ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q_i) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} \\ & = \frac{\exp (- \beta V(q_i) )}{\int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} \frac{\cancel{\int_{\mathbb R^3} d^3 p ~ \exp(- \beta \frac{p^2}{2m})}}{\cancel{(\frac{2\pi m}{\beta})^{3/2}}} = \frac{\exp (- \beta V(q_i) )}{\int_{\mathbb R^3} d^3 q \exp(- \beta V(q))} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -1116,7 +1117,7 @@
     \end{equation*}
     the probability is null outside this region and uniform inside it. 
     \begin{proof}
-        In fact 
+        In fact, we find
         \begin{equation*}
             \rho(q_i) = \frac{1}{\int_{\mathcal A} d^3 q} = \frac{1}{\mathcal A} ~. 
         \end{equation*}
@@ -1126,32 +1127,32 @@
     \begin{equation*}
         \rho(p) = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
     \end{equation*}
+    A plot of the momentum probability density distribution is in Figure~\ref{fig:mb:mom}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'exp(- x**2)', 3, 2, 6, True, False, True)}}
+        \caption{A plot of the momentum probability density distribution. We have used $x = \sqrt{\frac{\beta}{2m}} p$ and $f(x) = (2\pi m k_B T)^{3/2} \rho$.}
+        \label{fig:mb:mom}
+    \end{figure}
     \begin{proof}
-        By definition, 
+        By definition, we have
         \begin{equation*}
         \begin{aligned}
-            \rho(p) & = \int_{\mathbb R^3} d^3 q ~ \rho_c (q, p) \\ & = \int_{\mathbb R^3} d^3 q ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))} \\ & = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \frac{\cancel{\int_{\mathbb R^3} d^3 q ~ \exp (- \beta V(q) )}}{\cancel{\int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))}} \\ & = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \\ & = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) \\ & = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
+            \rho(p) & = \int_{\mathbb R^3} d^3 q ~ \rho_c (q, p) = \int_{\mathbb R^3} d^3 q ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))} \\ & = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \frac{\cancel{\int_{\mathbb R^3} d^3 q ~ \exp (- \beta V(q) )}}{\cancel{\int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))}} = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \\ & = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{max:mom}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'exp(- x**2)', 3, 2, 6, True, False, False)}}
-        \caption{A plot of the momentum probability density distribution. We have used $x = \sqrt{\frac{\beta}{2m}} p$ and $f(x) = (2\pi m k_B T)^{3/2} \rho$.}
-        \label{max:mom}
-    \end{figure}
     
     The velocity probability density distribution is
     \begin{equation*}
         \rho(p) = (\frac{m}{2\pi k_B T})^{1/2} \exp(- \beta \frac{m v^2_i}{2}) ~.
     \end{equation*}
     \begin{proof}
-        With a change of variable 
+        In order to have velocities instead of momenta, we make a change of variables into
         \begin{equation*}
             p_i = m v_i ~, \quad \rho(v_i) dv_i = \rho(p_i) dp_i = \rho(p_i) m dv_i ~,
         \end{equation*}
-        we find
+        hence, we find
         \begin{equation*}
             \rho(v_i) = m \rho (p_i) = (\frac{2\pi k_B T}{m})^{-1/2} \exp(- \beta \frac{m^2 v^2_i}{2m}) = (\frac{m}{2\pi k_B T})^{1/2} \exp(- \beta \frac{m v^2_i}{2}) ~.
         \end{equation*}
@@ -1161,34 +1162,34 @@
     \begin{equation*}
         \rho (v) = (\frac{m}{2\pi k_B T})^{3/2} 4 \pi v^2 \exp(- \beta \frac{m v^2}{2}) ~.
     \end{equation*}
-    \begin{proof}
-        With a change of variable into the polar coordinates $(v, \theta, \phi)$
-        \begin{equation*}
-            \rho(v_1, v_2, v_3) dv_1 dv_2 dv_3 = \rho(v_1, v_2, v_3) v^2 \sin \theta d\theta d\phi dv = \rho(\theta, \phi, v) d\theta d\phi dv ~,
-        \end{equation*}
-        we find
-        \begin{equation*}
-            \rho(v) = 4 \pi v^2 \prod_i \rho (v_i) = (\frac{m}{2\pi k_B T})^{3/2} 4 \pi v^2 \exp(- \beta \frac{m v^2}{2})  ~.
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{max:vel}.
+    A plot of the velocity modulus probability density distribution is in Figure~\ref{fig:mb:vel}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'x**2 * exp(- x**2)', 3, 0.5, 7, True, True, True)}}
         \caption{A plot of the velocity modulus probability density distribution. We have used $x = \sqrt{\frac{\beta m}{2}} v$ and $f(x) = \rho$.}
-        \label{max:vel}
+        \label{fig:mb:vel}
     \end{figure}
-
+    \begin{proof}
+        In order to have square modulus velocities, we make a change of variable into the polar coordinates $(v, \theta, \phi)$
+        \begin{equation*}
+            \rho(v_1, v_2, v_3) dv_1 dv_2 dv_3 = \rho(v_1, v_2, v_3) v^2 \sin \theta d\theta d\phi dv = \rho(\theta, \phi, v) d\theta d\phi dv ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \rho(v) = 4 \pi v^2 \prod_i \rho (v_i) = (\frac{m}{2\pi k_B T})^{3/2} 4 \pi v^2 \exp(- \beta \frac{m v^2}{2})  ~.
+        \end{equation*}
+    \end{proof}
+    
     The most probable velocity value is 
     \begin{equation*}
         v_p = \sqrt{\frac{2 k_B T}{m}} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition, we have
         \begin{equation*}
             0 = \dv{\rho(v)}{v} = 2 v \exp(- \beta \frac{m v^2}{2}) - \beta m v^3 \exp(- \beta \frac{m v^2}{2}) ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             v_p = \sqrt{\frac{2k_B T}{m}} ~.
         \end{equation*}
@@ -1199,19 +1200,18 @@
         \av{v} = \sqrt{\frac{8 k_B T}{\pi m}} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition, we have
         \begin{equation*}
             \av{v} = \int_{\mathbb R^3} dv ~ \rho(v) v = (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \int_{\mathbb R^3} dv ~ v^3 \exp(- \beta \frac{m v^2}{2}) ~.
         \end{equation*}
-
-        We make a change of variables 
+        Now, in order to evaluate the integral, we make a change of variables into
         \begin{equation*}
             t = \frac{m \beta v^2}{2} ~, \quad dt = m \beta v dv ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
         \begin{aligned}
-            \av{v} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \underbrace{\int_0^\infty dt ~ t \exp(- t)}_{\Gamma (2)} \\ & = \sqrt{\frac{8}{m \pi \beta}} \underbrace{\Gamma (2)}_1 = \sqrt{\frac{8}{m \pi \beta}} \\ & = \sqrt{\frac{8 k_B T}{\pi m}} ~.
+            \av{v} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \underbrace{\int_0^\infty dt ~ t \exp(- t)}_{\Gamma (2)} \\ & = \sqrt{\frac{8}{m \pi \beta}} \underbrace{\Gamma (2)}_1 = \sqrt{\frac{8}{m \pi \beta}} = \sqrt{\frac{8 k_B T}{\pi m}} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -1221,30 +1221,29 @@
         \av{v^2} = \frac{3 k_B T}{m} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition, we have
         \begin{equation*}
             \av{v^2} = \int_{\mathbb R^3} dv ~ \rho(v) v^2 = (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \int_{\mathbb R^3} dv ~ v^4 \exp(- \beta \frac{m v^2}{2}) ~.
         \end{equation*}
-
-        We make a change of variables 
+        Now, in order to evaluate the integral, we make a change of variables into
         \begin{equation*}
             t = \frac{m \beta v^2}{2} ~, \quad dt = m \beta v dv ~,
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
         \begin{aligned}
-            \av{v^2} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \Big ( \frac{2}{m \beta} \Big)^{1/2} \underbrace{\int_0^\infty dt ~ t^{3/2} \exp(- t)}_{\Gamma (5/2)} \\ & = \frac{4}{\sqrt{\pi} m \beta} \underbrace{\Gamma (5/2)}_{\frac{3 \sqrt{\pi}}{4}} \\ & = \frac{3}{\beta m} \\ & = \frac{3 k_B T}{m} ~.
+            \av{v^2} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \Big ( \frac{2}{m \beta} \Big)^{1/2} \underbrace{\int_0^\infty dt ~ t^{3/2} \exp(- t)}_{\Gamma (5/2)} \\ & = \frac{4}{\sqrt{\pi} m \beta} \underbrace{\Gamma (5/2)}_{\frac{3 \sqrt{\pi}}{4}} = \frac{3}{\beta m} = \frac{3 k_B T}{m} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
 
-\section{Virial expansion and Van der Waals gases} 
+\section{Grand canonical virial expansion} 
 
-    Consider the basic equations (of state) of the grand canonical ensemble~\eqref{gc:o} and~\eqref{gc:n2} 
+    Consider the basic equations of state of the grand canonical ensemble~\eqref{gc:o}~\eqref{td:o2} and~\eqref{gc:n2} 
     \begin{equation}\label{gc:es}
         \Omega = - pV = - \frac{1}{\beta} \ln \mathcal Z~, \quad N = z \pdv{}{z} \ln \mathcal Z ~.
     \end{equation}
-    The goal of the virial expansion is to expand the equations of state in powers of the density $n = N/V$ or in the inverse of the specific volume $v = V / N$. The system we are treating is a gas of particles with the same mass $m$ and with an interacting potential depending only on the reciprocate distance 
+    The goal of the virial expansion is to expand the equations of state in powers of the density $n = N/V$ or in the inverse of the specific volume $v = V / N$. The system we are treating is a gas of particles with the same mass $m$ and with an interacting potential depending only on the reciprocated distance 
     \begin{equation*}
         H = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U_{ij} = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U (|q_i - q_j|) ~.
     \end{equation*}
@@ -1349,7 +1348,7 @@
     \begin{equation*}
         z (n) = A n + B n^2 + O(n^3) ~,
     \end{equation*}
-    which gives rise to the equation of state of an interacting gas in the approximation of a diluite gas
+    which gives rise to the equation of state of an interacting gas in the approximation of a dilute gas
     \begin{equation*}
         p \beta = n - n^2 \frac{\tilde J(2)}{2} + O(n^3) ~.
     \end{equation*}
@@ -1384,7 +1383,9 @@
         \end{aligned}
         \end{equation*}
     \end{proof}
-    Notice that $z \propto \lambda^3_T \ll 1$ physically means that $T \gg 1$. Therefore, this approximation is valid for hot diluite gas.
+    Notice that $z \propto \lambda^3_T \ll 1$ physically means that $T \gg 1$. Therefore, this approximation is valid for hot dilute gas.
+
+\section{Grand canonical Van der Waals gas}
 
     Now, we build a physical model to calculate explicitly this expansion. Particles are considered as hard rigid spheres of radius $r_0$ that do not overlap. Instead, the potential is repulsive for small distances, attractive for large distances and it behaves at $0$ and at $\infty$ as
     \begin{equation*}
@@ -1397,7 +1398,6 @@
         \caption{A plot of a Lennard-Jones-like potential. We have used $x = r$ and $f(x) = r^{-12} - r^{-6}$.}
         \label{gran:lj}
     \end{figure}
-
     The equation of state becomes 
     \begin{equation*}
         (p + \frac{a}{v^2}) (v - b) = k_B T ~,
@@ -1418,7 +1418,7 @@
         \begin{equation*}
             \exp(-\beta U(r)) - 1 \rightarrow{r \rightarrow \infty} 1 - \beta U(r) - 1 = - \beta U(r) ~.
         \end{equation*}
-        Hence 
+        Hence, we find
         \begin{equation*}
             \frac{\tilde J_2(\beta)}{2} = b - \beta a 
         \end{equation*}
@@ -1436,82 +1436,84 @@
         where we have used $(1 + x)^{-1} \simeq 1 - x$ for $x \ll 1$.
     \end{proof}
 
-\chapter{Entropy}
+\section{Entropic Maxwell-Boltzmann distribution}
 
-\section{Maxwell-Boltzmann distribution}
+    \begin{exercise}
+        Consider $N$ distinguishable particles. Find its probability distribution, using the method of counting of states.
+    \end{exercise}
 
-    We can distribute $N$ particle in $p$ boxes in ways 
+    We have to evaluate the two terms of~\eqref{e:count}. For the first, we can distribute $N$ particle in $p$ boxes in the following way 
     \begin{equation*}
         W^{(1)}_{n_r} = \frac{N!}{n_1! \ldots n_p!} ~,
     \end{equation*}
-    whereas there is no restriction for the states 
+    whereas, for the second, there is no restriction for the states 
     \begin{equation*}
         W^{(2)}_{n_r} = \prod_r g_r^{n_r} ~,
     \end{equation*}
-    hence 
+    hence, we obtain
     \begin{equation*}
         W_{n_r} = \frac{N!}{n_1! \ldots n_p!} \prod_{r=1}^p g_r^{n_r} = N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} ~.
     \end{equation*}
 
-    Maximising the constrained entropy, we find the Boltzmann canonical distribution 
+    Maximising the constrained entropy, we find the Boltzmann distribution 
     \begin{equation*}
         p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
     \end{equation*}
-    \begin{proof}
-        The entropy is, using the Stirling approximation~\eqref{app:stirl},
-        \begin{equation*}
-        \begin{aligned}
-            S & = \ln W_{n_r} \\ & = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) \\ & = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} \\ & = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} \\ & = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
-        \end{aligned}
-        \end{equation*}
-
-        The constrained entropy is
-        \begin{equation*}
-            S =  N \ln N + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
-        \end{equation*}
-
-        The maximum is 
-        \begin{equation*}
-            0 = \pdv{S}{n_r} = \ln g_r - \ln n_r - 1 - \alpha - \beta E_r ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            n_r^* = \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~.
-        \end{equation*}
-
-        We find $\alpha$ by the normalisation condition 
-        \begin{equation*}
-            N = \sum_r n_r^* = \sum_r \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            \exp(1 + \alpha) = \frac{\sum_r g_r \exp(- \beta E_r)}{N} ~.
-        \end{equation*}
-
-        Finally, if we identify $\beta = 1/k_B T$ the probability distribution density is
-        \begin{equation*}
-            p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{en:bol}.
+    A plot of the Boltzmann distribution $p_r^*$ as a function of $\beta E_r$ is in Figure~\ref{en:bol}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 5, 10, 12, True, False, True)}}
         \caption{A plot of the probability density distribution $p_r^*$ as a function of $\beta E_r$. We have used $x = \beta E_r$ and $f(x) = p_r^* \frac{\sum_r g_r \exp(- \beta E_r)}{g_r}$.}
         \label{en:bol}
     \end{figure}
+    \begin{proof}
+        By definition~\eqref{e:shannon2}, using the Stirling approximation~\eqref{app:stirl}, we have
+        \begin{equation*}
+        \begin{aligned}
+            S & = \ln W_{n_r} = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} \\ & = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
+        \end{aligned}
+        \end{equation*}
+        Adding the constraints~\eqref{e:constrain}, we have
+        \begin{equation*}
+            S =  N \ln N + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
+        \end{equation*}
+        Computing the maximum by putting the derivative to zero, we obtain
+        \begin{equation*}
+            0 = \pdv{S}{n_r} = \ln g_r - \ln n_r - 1 - \alpha - \beta E_r ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            n_r^* = \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~.
+        \end{equation*}
+        We find $\alpha$ by the normalisation condition 
+        \begin{equation*}
+            N = \sum_r n_r^* = \sum_r \frac{g_r \exp(- \beta E_r)}{\exp(1 + \alpha)} ~,
+        \end{equation*}
+        hence, we find
+        \begin{equation*}
+            \exp(1 + \alpha) = \frac{\sum_r g_r \exp(- \beta E_r)}{N} ~.
+        \end{equation*}
+        Finally, if we identify $\beta = 1/k_B T$, we obtain
+        \begin{equation*}
+            p_r^* = \frac{n_r^*}{N} = \frac{g_r \exp(- \beta E_r)}{\sum_r g_r \exp(- \beta E_r)} ~.
+        \end{equation*}
+    \end{proof}
+    
+\section{Entropic Fermi-Dirac distribution}
 
-\section{Fermi-Dirac distribution}
+    \begin{exercise}
+        Consider $N$ fermionic indistinguishable particles. Find its probability distribution, using the method of counting of states.
+    \end{exercise}
 
-    For fermions, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable
+    We have to evaluate the two terms of~\eqref{e:count}. For the first, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable,
     \begin{equation*}
         W^{(1)}_{n_r} = 1 ~,
     \end{equation*}
-    whereas we can distribute $n_r$ objects in $g_r$ boxes
+    whereas, for the second, we can distribute $n_r$ objects in $g_r$ boxes in the following way
     \begin{equation*}
         W^{(2)}_{n_r} = \prod_r \binom{g_r}{n_r} = \prod_r \frac{g_r!}{n_r! (g_r - n_r)!} ~,
     \end{equation*}
-    hence 
+    hence, we obtain
     \begin{equation*}
         W_{n_r} = \prod_r \binom{g_r}{n_r} = \prod_r \frac{g_r!}{n_r! (g_r - n_r)!} ~.
     \end{equation*}
@@ -1520,27 +1522,32 @@
     \begin{equation*}
         n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) + 1} ~.
     \end{equation*}
+    A plot of the Fermi-Dirac distribution $n_r^*$ as a function of $\alpha + \beta E_r$ is in Figure~\ref{en:fd}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) + 1)', 5, 2, 13, True, False, True)}}
+        \caption{A plot of the Fermi-Dirac distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
+        \label{en:fd}
+    \end{figure}
     \begin{proof}
-        The entropy is, using the Stirling approximation~\eqref{app:stirl},
+        By definition~\eqref{e:shannon2}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            S & = \ln W_{n_r} \\ & = \ln \Big (\prod_r \frac{g_r!}{n_r! (g_r - n_r)!} \Big) \\ & = \sum_r \Big ( \underbrace{\ln g_r!}_{g_r \ln g_r - g_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - n_r)!}_{(g_r - n_r) \ln (g_r - n_r) - g_r + n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - \cancel{g_r} - n_r \ln n_r + \cancel{n_r} - (g_r - n_r) \ln (g_r - n_r) + \cancel{g_r} - \cancel{n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) 
+            S & = \ln W_{n_r} = \ln \Big (\prod_r \frac{g_r!}{n_r! (g_r - n_r)!} \Big) = \sum_r \Big ( \underbrace{\ln g_r!}_{g_r \ln g_r - g_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - n_r)!}_{(g_r - n_r) \ln (g_r - n_r) - g_r + n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - \cancel{g_r} - n_r \ln n_r + \cancel{n_r} - (g_r - n_r) \ln (g_r - n_r) + \cancel{g_r} - \cancel{n_r} \Big) \\ & = \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) 
              ~.
         \end{aligned}
         \end{equation*}
-    
-        The constrained entropy is
+        Adding the constraints~\eqref{e:constrain}, we have
         \begin{equation*}
             S =  \sum_r \Big ( g_r \ln g_r - n_r \ln n_r - (g_r - n_r) \ln (g_r - n_r) \Big) + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
         \end{equation*}
-    
-        The maximum is 
+        Computing the maximum by putting the derivative to zero, we obtain
         \begin{equation*}
         \begin{aligned}
-            0 & = \pdv{S}{n_r} \\ & = - \ln n_r - \cancel{1} + \ln (g_r - n_r) + \cancel{1} - \alpha - \beta E_r \\ & = - \ln n_r + \ln (g_r - n_r) - \alpha - \beta E_r \\ & = \ln (\frac{g_r}{n_r} - 1) - \alpha - \beta E_r~ ,
+            0 & = \pdv{S}{n_r} = - \ln n_r - \cancel{1} + \ln (g_r - n_r) + \cancel{1} - \alpha - \beta E_r \\ & = - \ln n_r + \ln (g_r - n_r) - \alpha - \beta E_r = \ln (\frac{g_r}{n_r} - 1) - \alpha - \beta E_r~ ,
         \end{aligned}
         \end{equation*}
-        hence 
+        hence, we find
         \begin{equation*}
             \frac{g_r}{n_r} - 1 = \exp(\alpha + \beta E_r) ~,
         \end{equation*}
@@ -1548,25 +1555,22 @@
             n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) + 1} ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{en:fd}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) + 1)', 5, 2, 13, True, False, True)}}
-        \caption{A plot of the Fermi-Dirac distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
-        \label{en:fd}
-    \end{figure}
+    
+\section{Entropic Bose-Einstein distribution}
 
-\section{Bose-Einstein distribution}
-
-    For bosons, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable
+    \begin{exercise}
+        Consider $N$ bosonic indistinguishable particles. Find its probability distribution, using the method of counting of states.
+    \end{exercise}
+    
+    We have to evaluate the two terms of~\eqref{e:count}. For the first, there is no restriction on how we can distribute $N$ particle in $p$ boxes in ways, since they are indistinguishable,
     \begin{equation*}
         W^{(1)}_{n_r} = 1 ~,
     \end{equation*}
-    whereas we can distribute $n_r$ objects in $g_r$ boxes
+    whereas, for the second, we can distribute $n_r$ objects in $g_r$ boxes in the following way
     \begin{equation*}
         W^{(2)}_{n_r} = \prod_r \binom{n_r + g_r - 1}{n_r} = \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} ~,
     \end{equation*}
-    hence 
+    hence, we obtain
     \begin{equation*}
         W_{n_r} = \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} ~.
     \end{equation*}
@@ -1575,28 +1579,33 @@
     \begin{equation*}
         n_r^* = \frac{g_r}{\exp(\alpha + \beta E_r) - 1} ~.
     \end{equation*}
+    A plot of the Bose-Einstein distribution $n_r^*$ as a function of $\alpha + \beta E_r$  is in Figure~\ref{en:be}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) - 1)', 5, 5, 14, True, False, True)}}
+        \caption{A plot of the Bose-Einstein distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
+        \label{en:be}
+    \end{figure}
     \begin{proof}
-        The entropy is, using the Stirling approximation~\eqref{app:stirl},
+        By definition~\eqref{e:shannon2}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            S & = \ln W_{n_r} \\ & = \ln \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} \\ & = \sum_r \Big (\underbrace{\ln (n_r + g_r - 1)!}_{(n_r + g_r - 1) \ln (n_r + g_r - 1) - n_r - g_r + 1} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - 1)!}_{(g_r - 1) \ln (g_r - 1) - g_r + 1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) - \cancel{n_r} - \cancel{g_r} + \cancel{1} \\ & \quad - n_r \ln n_r + \cancel{n_r }- (g_r - 1) \ln (g_r - 1) + \cancel{g_r} - \cancel{1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) 
+            S & = \ln W_{n_r} = \ln \prod_r \frac{(n_r + g_r - 1)!}{n_r! (g_r - 1)!} \\ & = \sum_r \Big (\underbrace{\ln (n_r + g_r - 1)!}_{(n_r + g_r - 1) \ln (n_r + g_r - 1) - n_r - g_r + 1} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} - \underbrace{\ln (g_r - 1)!}_{(g_r - 1) \ln (g_r - 1) - g_r + 1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) - \cancel{n_r} - \cancel{g_r} + \cancel{1} \\ & \quad - n_r \ln n_r + \cancel{n_r }- (g_r - 1) \ln (g_r - 1) + \cancel{g_r} - \cancel{1} \Big ) \\ & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) 
         \end{aligned}
         \end{equation*}
-    
-        The constrained entropy is
+        Adding the constraints~\eqref{e:constrain}, we have
         \begin{equation*}
         \begin{aligned}
             S & = \sum_r \Big ( (n_r + g_r - 1) \ln (n_r + g_r - 1) \ln n_r - n_r \ln n_r - (g_r - 1) \ln (g_r - 1) \Big ) \\ & \quad + \alpha \Big (N - \sum_{r=1}^p n_r \Big) + \beta \Big (E - \sum_{r=1}^p n_r E_r \Big ) ~.
         \end{aligned}
         \end{equation*}
-    
-        The maximum is 
+        Computing the maximum by putting the derivative to zero, we obtain
         \begin{equation*}
         \begin{aligned}
-            0 & = \pdv{S}{n_r} \\ & = \ln (n_r + g_r - 1) + \cancel{1} - \ln n_r - \cancel{1} - \alpha - \beta E_r \\ & = \ln (n_r + g_r - 1) - \ln n_r - \alpha - \beta E_r \\ & = \ln (\frac{g_r - 1}{n_r} + 1) - \alpha - \beta E_r~ ,
+            0 & = \pdv{S}{n_r} = \ln (n_r + g_r - 1) + \cancel{1} - \ln n_r - \cancel{1} - \alpha - \beta E_r \\ & = \ln (n_r + g_r - 1) - \ln n_r - \alpha - \beta E_r = \ln (\frac{g_r - 1}{n_r} + 1) - \alpha - \beta E_r~ ,
         \end{aligned}
         \end{equation*}
-        hence, for $g_r \gg 1$,
+        hence, for $g_r \gg 1$, we find
         \begin{equation*}
             \frac{g_r - 1}{n_r} + 1 = \exp(\alpha + \beta E_r) ~,
         \end{equation*}
@@ -1604,66 +1613,62 @@
             n_r^* = \frac{g_r - 1}{\exp(\alpha + \beta E_r) - 1} \simeq \frac{g_r}{\exp(\alpha + \beta E_r) - 1} ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{en:be}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', '1 / ( exp(x) - 1)', 5, 5, 14, True, False, True)}}
-        \caption{A plot of the Bose-Einstein distribution $n_r^*$ as a function of $\alpha + \beta E_r$. We have used $x = \alpha + \beta E_r $ and $f(x) = \frac{n_r^*}{g_r}$.}
-        \label{en:be}
-    \end{figure}
 
-\section{Two-levels system}
+\section{Entropic Two-levels system}
 
-    Consider a system composed by $2$ levels of energies $\epsilon_+ = + \epsilon$ and $\epsilon_- = - \epsilon$. The constrains are 
-    \begin{equation*}
-        E = \epsilon (n_+ - n_-) ~, \quad N = n_+ + n_- ~.
-    \end{equation*}
-    They can be inverted as
+    \begin{exercise}
+        Consider a system composed by two levels of energies $\epsilon_+ = + \epsilon$ and $\epsilon_- = - \epsilon$, subjected to constrains
+        \begin{equation*}
+            E = \epsilon (n_+ - n_-) ~, \quad N = n_+ + n_- ~.
+        \end{equation*}. Find, using the method of counting of states, the entropy $S$ and the tempretaure $T$.
+    \end{exercise}
+
+    Constraints can be inverted to find
     \begin{equation}
         n_+ = \frac{N}{2} + \frac{E}{2\epsilon} ~, \quad n_+ = \frac{N}{2} - \frac{E}{2\epsilon} ~.
     \end{equation}
-
-    We can distribute $N$ objects in $n_+$ boxes
+    We can distribute $N$ objects in $n_+$ boxes in the following way
     \begin{equation*}
         \Omega(E) = \binom{N}{n_+} = \frac{N!}{n_+! (N - n_+)!}  = \frac{N!}{n_+! n_-!} ~.
     \end{equation*}
     
-    The entropy is 
+    The entropy $S$ is 
     \begin{equation*}
         S = - N k_B \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} ) \Big ) ~.
     \end{equation*}
-    \begin{proof}
-        By definition, using the Stirling approximation~\eqref{app:stirl},
-        \begin{equation*}
-        \begin{aligned}
-            \frac{S}{k_B} & = \ln \Omega (E) \\ & = \ln \frac{N!}{n_+! n_-!} \\ & = \underbrace{\ln N!}_{N \ln N - N} - \underbrace{\ln n_+!}_{n_+ \ln n_+ - n_+} - \underbrace{\ln n_-!}_{n_- \ln n_- - n_-} \\ & = N \ln N - \cancel{N} - n_+ \ln n_+ + \cancel{n_+} - n_- \ln n_- + \cancel{n_-} \\ & = N \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = (n_+ + n_-) \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = n_+ \ln \frac{N}{n_+} + n_- \ln \frac{N}{n_-} \\ & = (\frac{N}{2} + \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} + \frac{E}{2\epsilon}} + (\frac{N}{2} - \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} - \frac{E}{2\epsilon}} \\ & = N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} + \frac{E}{2\epsilon N}} + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} - \frac{E}{2\epsilon N}} \Big ) \\ & = - N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} )\Big ) ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    A plot of this is in Figure~\ref{en:s}.
+    A plot of the entropy $S$ as a function of $E$ is in Figure~\ref{en:s}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '-( (1 / 2 + x) * ln (1/2 + x) +  (1 / 2 - x) * ln (1/2 - x) )', 1, 1, 15, True, False, True)}}
         \caption{A plot of the entropy $S$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{S}{N k_B}$.}
         \label{en:s}
     \end{figure}
-
-    The temperature is 
-    \begin{equation*}
-        T = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
-    \end{equation*}
     \begin{proof}
-        Using~\eqref{T}
+        By definition~\eqref{mc:s}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            T & = (\pdv{S}{E})^{-1} \\ & = - (\frac{k_B}{2\epsilon} \ln (\frac{1}{2} + \frac{E}{2 \epsilon N}) + \cancel{\frac{k_B}{2\epsilon}} - \frac{k_B}{2\epsilon} \ln (\frac{1}{2} - \frac{E}{2 \epsilon N}) - \cancel{\frac{k_B}{2\epsilon}} )^{-1} \\ & = - (\frac{k_B}{2\epsilon} \ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}})^{-1} \\ & = - \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}}} \\ & = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
+            \frac{S}{k_B} & = \ln \Omega (E) = \ln \frac{N!}{n_+! n_-!} = \underbrace{\ln N!}_{N \ln N - N} - \underbrace{\ln n_+!}_{n_+ \ln n_+ - n_+} - \underbrace{\ln n_-!}_{n_- \ln n_- - n_-} \\ & = N \ln N - \cancel{N} - n_+ \ln n_+ + \cancel{n_+} - n_- \ln n_- + \cancel{n_-} \\ & = N \ln N - n_+ \ln n_+ - n_- \ln n_- = (n_+ + n_-) \ln N - n_+ \ln n_+ - n_- \ln n_- \\ & = n_+ \ln \frac{N}{n_+} + n_- \ln \frac{N}{n_-} = (\frac{N}{2} + \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} + \frac{E}{2\epsilon}} + (\frac{N}{2} - \frac{E}{2\epsilon}) \ln \frac{N}{\frac{N}{2} - \frac{E}{2\epsilon}} \\ & = N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} + \frac{E}{2\epsilon N}} + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln \frac{1}{\frac{1}{2} - \frac{E}{2\epsilon N}} \Big ) \\ & = - N \Big ( (\frac{1}{2} + \frac{E}{2\epsilon N}) \ln (\frac{1}{2} + \frac{E}{2\epsilon N} ) + (\frac{1}{2} - \frac{E}{2\epsilon N}) \ln (\frac{1}{2} - \frac{E}{2\epsilon N} )\Big ) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{en:t}.
+    
+    The temperature $T$ is 
+    \begin{equation*}
+        T = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
+    \end{equation*}
+    A plot of the temperature $T$ as a function of $E$ is in Figure~\ref{en:t}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot1('x', '1 / (ln ( (0.5 - x) / (0.5 + x) ) )', 10, 10, 16, True, False, False)}}
         \caption{A plot of the temperature $T$ as a function of $E$. We have used $x = \frac{E}{2 \epsilon N} $ and $f(x) = \frac{k_B T}{2 \epsilon}$.}
         \label{en:t}
     \end{figure}
+    \begin{proof}
+        Using the first of~\eqref{td:es:s}, we have
+        \begin{equation*}
+        \begin{aligned}
+            T & = (\pdv{S}{E})^{-1} = - (\frac{k_B}{2\epsilon} \ln (\frac{1}{2} + \frac{E}{2 \epsilon N}) + \cancel{\frac{k_B}{2\epsilon}} - \frac{k_B}{2\epsilon} \ln (\frac{1}{2} - \frac{E}{2 \epsilon N}) - \cancel{\frac{k_B}{2\epsilon}} )^{-1} \\ & = - (\frac{k_B}{2\epsilon} \ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}})^{-1} = - \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} + \frac{E}{2 \epsilon N}}{\frac{1}{2} - \frac{E}{2 \epsilon N}}} = \frac{2 \epsilon}{k_B} \frac{1}{\ln \frac{\frac{1}{2} - \frac{E}{2 \epsilon N}}{\frac{1}{2} + \frac{E}{2 \epsilon N}}} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+    

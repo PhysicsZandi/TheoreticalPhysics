@@ -2,7 +2,7 @@
 
 \chapter{Classical mechanics}
 
-    In this chapter, we will recall some basic notion of Classical (Hamiltonian) Mechanics: starting from general definitions of states, equations of motion, observables, time evolution and investigate the nature of phase space with its foliation using constant energy hypersurfaces, Liouville's theorem and ergodicity.
+    In this chapter, we will recall some basic notion of classical (Hamiltonian) mechanics: starting from general definitions of states, equations of motion, observables, time evolution and investigate the nature of phase space with its foliation using constant energy hypersurfaces, Liouville's theorem and ergodicity.
 
 \section{States, observables, time evolution}
     
@@ -298,7 +298,7 @@
             Ensemble & Thermodynamic potential \\
             \hline
             microcanonical & entropy $S$ \\ 
-            canonical & Helmoltz free energy $F$ \\ 
+            canonical & Helmholtz free energy $F$ \\ 
             grand canonical & grand potential $\Omega$ \\ 
         \end{tabular}
         \caption{Ensembles with associated thermodynamic potential.}
@@ -614,9 +614,9 @@
         \av{f(q^i, p_i)}_{c} = \int_{\mathcal M} d\Omega ~ \rho_{c} f = \int_{\mathcal M} d\Omega ~ \frac{\exp (-\beta H)}{Z_N} f ~.
     \end{equation}
 
-\section{Helmoltz free energy as canonical potential}
+\section{Helmholtz free energy as canonical potential}
 
-    A local chart with coordinates $(T, V, N)$ is suitable for Helmoltz free energy~\eqref{td:coord:f}. Hence, we need to find an expression for this thermodynamic potential. The first guess is to define the canonical Helmoltz free energy as 
+    A local chart with coordinates $(T, V, N)$ is suitable for Helmholtz free energy~\eqref{td:coord:f}. Hence, we need to find an expression for this thermodynamic potential. The first guess is to define the canonical Helmholtz free energy as 
     \begin{equation}\label{c:zf}
         Z_N [V, T] = \exp(-\beta F[T, V, N]) ~,
     \end{equation}
@@ -983,9 +983,9 @@
         H = - \sum_{i=1}^{N} p_i \ln p_i + \alpha \Big( \sum_{i=1}^{N} p_i - 1 \Big) + \beta \Big( \sum_{i=1}^{N} p_i f(x_i) - \av{f} \Big) + \text{other constraints} \ldots~.
     \end{equation}
     In particular, we can manipulate the first term and express the result in terms of how many states are occupied. In fact, if we introduce the number of ways $W_{\{n_r\}}$ we can find $n_r$ systems with energy $E_r$, given a set of discrete energy levels $E_r$, each of degeneracy $g_r$ on which we distribute $n_r$ particles, the inference problem transforms into finding the density distribution $n_r^*$, i.e.~the one which maximises~\eqref{e:constrain}, with entropy
-    \begin{equation*}
+    \begin{equation}\label{e:shannon2}
         S = \ln W_{\{n_r\}}
-    \end{equation*} 
+    \end{equation} 
     and constraint on energy and number of particles
     \begin{equation*}
         N = \sum_{r} n_r ~, \quad E = \sum_r n_r E_r ~.
@@ -994,5 +994,5 @@
     \begin{equation}\label{e:count}
         W_{\{n_r\}} = W_{\{n_r\}}^{(1)} W_{\{n_r\}}^{(2)} ~,
     \end{equation}
-    where $W_{\{n_r\}}^{(1)}$ counts in how many we can put $n_r$ particles in the energy level $E_r$ and $W_{\{n_r\}}^{(2)}$ takes into account the degeneracy of these levels. In this way, under the assumption of validity of Stirling's approximation (large number of particles) and of smoothness of $n_r$, Boltzmann's classical, Fermi-Dirac's and Bose-Einstein's quantum distributions can be all derived. See chapter 12.
+    where $W_{\{n_r\}}^{(1)}$ counts in how many we can put $n_r$ particles in the energy level $E_r$ and $W_{\{n_r\}}^{(2)}$ takes into account the degeneracy of these levels. In this way, under the assumption of validity of Stirling's approximation (large number of particles) and of smoothness of $n_r$, Boltzmann's classical, Fermi-Dirac's and Bose-Einstein's quantum distributions can be all derived.
 
