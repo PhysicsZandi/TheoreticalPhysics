@@ -12,6 +12,21 @@ def plot1(x, f, rangex, rangey, fig, leg, negx, negy):
     p.save(f'fig/fig{fig}.pgf')
     print(r'\input{fig/fig'+ rf'{fig}' + r'.pgf}')
 
+def plot3(x, f, g, h, rangex, rangey, fig, leg, negx, negy):
+    rangexx = rangex
+    rangeyy = rangey
+    if negx == True:
+        rangexx = 0
+    if negy == True:
+        rangeyy = 0
+    x = sy.Symbol('x')
+    p = sy.plot((f, (x, -rangexx, rangex)), (g, (x, -rangexx, rangex)), (h, (x, -rangexx, rangex)), ylim=[-rangeyy, rangey], legend= leg, show=False, line_color='#00AFB3')
+    p[0].line_color='red'
+    p[1].line_color='violet'
+    p[2].line_color='blue'
+    p.save(f'fig/fig{fig}.pgf')
+    print(r'\input{fig/fig'+ rf'{fig}' + r'.pgf}')
+
 def plot4(x, f, g, h, l, rangex, rangey, fig, leg, negx, negy):
     rangexx = rangex
     rangeyy = rangey
@@ -43,6 +58,11 @@ def defint(integrand, x, min, max):
 def infint(integrand, x): 
     x = sy.Symbol(x) 
     integral = sy.integrate(integrand, (x, float('-inf'), float('inf'))) 
+    return sy.latex(integral) 
+
+def infzint(integrand, x): 
+    x = sy.Symbol(x) 
+    integral = sy.integrate(integrand, (x, 0, float('inf'))) 
     return sy.latex(integral) 
 
 def ode(ode, y, x): 
