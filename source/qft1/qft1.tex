@@ -1,12 +1,11 @@
-\documentclass[a4paper, 12pt, openany]{memoir}
+\documentclass[a4paper, 12pt]{memoir}
 
 \input{../packages.tex}
 
 \title{quantum field theory I}
-\author{Matteo Zandi}
 \date{\today}
 
-\newcommand{\subt}{or second quantisation of free theories}
+\newcommand{\subt}{second quantisation of free theories}
 
 \begin{document}
 
@@ -18,13 +17,21 @@
 
 \mainmatter
 
+\input{../python.tex}
+
+\chapter*{Abstract}
+
+    In these notes, we will study the mathematical framework of quantum field of free theory without interactions. Quantum fields arise out from second quantisation of classical theories, like Klein-Gordon, Dirac or Maxwell. In the first part, we will introduce the passage from standard quantum mechanics to quantum field theory, with the example of the mechanical model of a string. In the second part, we will review classical field theories: Euler-Lagrange equations and Noether's theorem. In the third part, we will quantise those free theory, focusing on field operators, normal ordering, Noether's charges of quantum fields describing particles with spin $0$, $1/2$ and $1$.
+    
 \input{qft10.tex}
 \input{qft11.tex}
 \input{qft12.tex}
 \input{qft13.tex}
-\input{qft14.tex}
+\input{qft1_max.tex}
 
 \backmatter
+
+\nocite{qft1lecture}
 
 \clearpage
 \phantomsection

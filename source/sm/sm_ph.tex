@@ -312,7 +312,7 @@
     However, we can make an useful approximation by neglecting the quadratic fluctuation term in the expansion of the interacting term in the Hamiltonian
     \begin{equation*}
     \begin{aligned}
-        \sigma_i \sigma_j & = ((\sigma_i - m) + m)((\sigma_j - m) + m) \\ & = m^2 + m(\sigma_i - m) + m (\sigma_j - m) + (\sigma_i - m)(\sigma_j - m) \\ & \simeq m^2 + m(\sigma_i - m) + m (\sigma_j - m) \\ & = m^2 + m\sigma_i - m^2 + m \sigma_j - m^2 \\ & = - m^2 + m (\sigma_i + \sigma_j) ~,
+        \sigma_i \sigma_j & = ((\sigma_i - m) + m)((\sigma_j - m) + m) \\ & = m^2 + m(\sigma_i - m) + m (\sigma_j - m) + (\sigma_i - m)(\sigma_j - m) \\ & \simeq m^2 + m(\sigma_i - m) + m (\sigma_j - m) \\ & = m^2 + m\sigma_i - m^2 + m \sigma_j - m^2 = - m^2 + m (\sigma_i + \sigma_j) ~,
     \end{aligned}
     \end{equation*}
     where $m = M / N$.
@@ -324,26 +324,26 @@
         In fact, the Hamiltonian is 
         \begin{equation*}
         \begin{aligned}
-            H_{mf} & = - J \sum_{i~\text{near}~j}  (- m^2 + m(\sigma_i + \sigma_j)) - B \sum_i \sigma_i \\ & = m^2 J \underbrace{\sum_{i~\text{near}~j} 1}_{\frac{Nz}{2}} - J m \sum_{i~\text{near}~j}  (\sigma_i + \sigma_j) - B \sum_i \sigma_i \\ & = \frac{m^2 z N J}{2} - Jmz \sum_i \sigma_i - B \sum_i \sigma_i \\ & = \frac{m^2 z N J}{2} - (J m z + B) \sum_i \sigma_i ~,
+            H_{mf} & = - J \sum_{i~\text{near}~j}  (- m^2 + m(\sigma_i + \sigma_j)) - B \sum_i \sigma_i \\ & = m^2 J \underbrace{\sum_{i~\text{near}~j} 1}_{\frac{Nz}{2}} - J m \sum_{i~\text{near}~j}  (\sigma_i + \sigma_j) - B \sum_i \sigma_i \\ & = \frac{m^2 z N J}{2} - Jmz \sum_i \sigma_i - B \sum_i \sigma_i = \frac{m^2 z N J}{2} - (J m z + B) \sum_i \sigma_i ~,
         \end{aligned}
         \end{equation*}
         where we have estimates that the number of links, given the coordination number $z$ which tells how many neighboring sites, is $Nz/2$.
         The canonical partition function becomes
         \begin{equation*}
         \begin{aligned}
-            Z_N^{mf} & = \sum_{\{\sigma_i = \pm 1\}} \exp(- \beta H_{mf}) \\ & = \exp(- \beta \frac{J z n m^2}{2}) \sum_{\{\sigma_i = \pm 1\}} \exp(\beta (B + Jmz) \sum_i \sigma_i) \\ & = \exp(- \beta \frac{J z n m^2}{2}) (\sum_{\{\sigma_i = \pm 1\}} \exp(\beta (B + Jmx) \sigma_i))^N \\ & = \exp(- \beta \frac{J z n m^2}{2}) (\exp(\beta(B + Jmz)) + \exp(- \beta (B + Jmz)))^N \\ & = \exp(- \beta \frac{J z n m^2}{2}) (2 \cosh (\beta (B + Jmz)))^N ~.
+            Z_N^{mf} & = \sum_{\{\sigma_i = \pm 1\}} \exp(- \beta H_{mf}) = \exp(- \beta \frac{J z n m^2}{2}) \sum_{\{\sigma_i = \pm 1\}} \exp(\beta (B + Jmz) \sum_i \sigma_i) \\ & = \exp(- \beta \frac{J z n m^2}{2}) (\sum_{\{\sigma_i = \pm 1\}} \exp(\beta (B + Jmx) \sigma_i))^N \\ & = \exp(- \beta \frac{J z n m^2}{2}) (\exp(\beta(B + Jmz)) + \exp(- \beta (B + Jmz)))^N \\ & = \exp(- \beta \frac{J z n m^2}{2}) (2 \cosh (\beta (B + Jmz)))^N ~.
         \end{aligned}
         \end{equation*}
         The Helmoltz free energy is 
         \begin{equation*}
         \begin{aligned}
-            F & = - \frac{1}{\beta} \ln Z_N^{mf} \\ & = - \frac{1}{\beta} (- \beta \frac{J z N m^2}{2}) N \ln (2 \cosh (\beta (B + Jmz))) \\ & = \frac{J z N m^2}{2} N \ln (2 \cosh (\beta (B + Jmz))) ~.
+            F & = - \frac{1}{\beta} \ln Z_N^{mf} = - \frac{1}{\beta} (- \beta \frac{J z N m^2}{2}) N \ln (2 \cosh (\beta (B + Jmz))) \\ & = \frac{J z N m^2}{2} N \ln (2 \cosh (\beta (B + Jmz))) ~.
         \end{aligned}
         \end{equation*}
         The magnetisation is 
         \begin{equation*}
         \begin{aligned}
-             m & = \frac{1}{N} \av{\sum_i \sigma_i}_c \\ & = \frac{1}{N} \sum_{\{\sigma_i = \pm 1\}} \sum_i \sigma_i \exp(- \beta H) \\ & = - \frac{1}{\beta N} \sum_{\{\sigma_i = \pm 1\}} \frac{1}{Z_N} \pdv{}{\beta} \exp(- \beta H) \\ & = - \frac{1}{\beta N} \pdv{\ln Z_N}{\beta} ~.
+             m & = \frac{1}{N} \av{\sum_i \sigma_i}_c = \frac{1}{N} \sum_{\{\sigma_i = \pm 1\}} \sum_i \sigma_i \exp(- \beta H) \\ & = - \frac{1}{\beta N} \sum_{\{\sigma_i = \pm 1\}} \frac{1}{Z_N} \pdv{}{\beta} \exp(- \beta H) = - \frac{1}{\beta N} \pdv{\ln Z_N}{\beta} ~.
         \end{aligned}
         \end{equation*}
         Hence 
@@ -491,7 +491,7 @@
 
 \section{Critical exponents and universality classes}
 
-    During the study of phase transitions, we some parameters like~\eqref{ph:beta},~\eqref{ph:gamma} and~\eqref{ph:nu}. These are the critical exponents and they describe the behavior of physical quantities near the critical temperature of a phase transitions. We define the reduced temperature 
+    During the study of phase transitions, we some parameters like~\eqref{ph:beta},~\eqref{ph:eta} and~\eqref{ph:nu}. These are the critical exponents and they describe the behavior of physical quantities near the critical temperature of a phase transitions. We define the reduced temperature 
     \begin{equation*}
         \epsilon = \frac{T_c - T}{T_c} ~,
     \end{equation*}

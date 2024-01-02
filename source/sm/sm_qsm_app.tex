@@ -1,32 +1,38 @@
-\part{Application of quantum statistical mechanics}
+\chapter{Applications}
+
+    In this chapter, we will study different physical systems. As quantum gases, we will analysea quantum magnetic spins with $s= 1/2$ and $s =1$ and quantum harmonic oscillators. As fermionic gases, we will analyse a relativistic gas at $T=0$ and a white dwarf. As bosonic gases, we will analyse a $2$-dimensional Bose-Einstein condensate and the blackbody radiation.
 
 \section{Quantum magnetic 1/2-spin}
 
-    Consider a system composed by $N$ distinguishable magnetic dipoles in an external magnetic field along the $z$-axis, with spin $S = 1/2$. Its hamiltonian is 
-    \begin{equation*}
-        \hat H = \sum_i S^{(z)}_i B ~,
-    \end{equation*}
-    where
-    \begin{equation*}
-        S^{(z)}_i = \frac{1}{2} \begin{bmatrix}
-            1 & 0 \\
-            0 & -1 \\
-        \end{bmatrix} ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a system composed by $N$ distinguishable magnetic dipoles in an external magnetic field along the $z$-axis, with spin $S = 1/2$, with Hamiltonian 
+        \begin{equation*}
+            \hat H = \sum_i S^{(z)}_i B ~,
+        \end{equation*}
+        where
+        \begin{equation*}
+            S^{(z)}_i = \frac{1}{2} \begin{bmatrix}
+                1 & 0 \\
+                0 & -1 \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)}$.
+        Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the magnetisation $M$.
+    \end{exercise}
 
-    The canonical partition function is 
+    The canonical partition function $Z$ is 
     \begin{equation*}
         Z = \Big ( 2 \cosh \frac{\beta B}{2} \Big)^N ~.
     \end{equation*}
     \begin{proof}
-        By definition, for distinguishable particles,
+        By definition, for distinguishable particles~\eqref{c:zdist} and~\eqref{qgc:cz},
         \begin{equation*}
         \begin{aligned}
-            Z & = (Z_1)^N \\ & = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N \\ & = \Big (\tr_{\mathcal H} \exp(- \beta B \begin{bmatrix}
+            Z & = (Z_1)^N = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N = \Big (\tr_{\mathcal H} \exp(- \beta B \begin{bmatrix}
                 \frac{1}{2} & 0 \\ 0 & - \frac{1}{2} \\ 
             \end{bmatrix}) \Big)^N \\ & = \Big(\tr_{\mathcal H} \begin{bmatrix}
                 \exp(- \frac{\beta B}{2}) & 0 \\ 0 & \exp(\frac{\beta B}{2}) \\ 
-            \end{bmatrix} \Big )^N \\ & = \Big( \exp(- \frac{\beta B}{2}) + \exp(\frac{\beta B}{2}) \Big)^N \\ & = \Big ( 2 \cosh \frac{\beta B}{2} \Big)^N ~.
+            \end{bmatrix} \Big )^N = \Big( \exp(- \frac{\beta B}{2}) + \exp(\frac{\beta B}{2}) \Big)^N \\ & = \Big ( 2 \cosh \frac{\beta B}{2} \Big)^N ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -36,7 +42,7 @@
         F = - N k_B T \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:cf}, we have
         \begin{equation*}
             F = - \frac{\ln Z}{\beta} = - N k_B T \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
         \end{equation*}
@@ -47,15 +53,15 @@
         E = - N \frac{B}{2} \tanh \frac{\beta B}{2} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:ce}, we have 
         \begin{equation*}
             E = - \pdv{\ln Z}{\beta} = - N \pdv{\beta} \ln \Big (2 \cosh \frac{\beta B}{2} \Big) = - N \frac{B}{2} \tanh \frac{\beta B}{2} ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{qm:e}.
+    A plot of the energy $E$ as a function of $T$ is in Figure~\ref{qm:e}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- ( tanh (1 / x))', 4, 1, 20, True, True, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '- ( tanh (1 / x))', 4, 1, 19, True, True, False)}}
         \caption{A plot of the energy $E$ as a function of $T$. We have used $x = \frac{2 k_B T}{B} $ and $f(x) = \frac{2E}{BN}$.}
         \label{qm:e}
     \end{figure}
@@ -65,47 +71,50 @@
         M = - \frac{N}{2} \tanh \frac{\beta B}{2} ~. 
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{c:mag}, we have
         \begin{equation*}
             M = \pdv{F}{B} = - N k_B T \pdv{}{B} \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) = - \frac{N}{2} \tanh \frac{\beta B}{2} ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{qm:m}.
+    A plot of the magnetisation $M$ as a function of $T$ is in Figure~\ref{qm:m}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- ( tanh (1 / x))', 4, 1, 21, True, True, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '- ( tanh (1 / x))', 4, 1, 20, True, True, False)}}
         \caption{A plot of the magnetisation $M$ as a function of $T$. We have used $x = \frac{2 k_B T}{B} $ and $f(x) = \frac{2M}{N}$.}
         \label{qm:m}
     \end{figure}
 
 \section{Quantum magnetic 1-spin}
 
-    Consider a system composed by $N$ distinguishable magnetic dipoles in an external magnetic field along the $z$-axis, with spin $S = 1$. Its hamiltonian is 
-    \begin{equation*}
-        \hat H = \sum_i S^{(z)}_i B ~,
-    \end{equation*}
-    where
-    \begin{equation*}
-        S^{(z)}_i = \begin{bmatrix}
-            1 & 0 & 0 \\
-            0 & 0 & 0 \\
-            0 & 0 & - 1 \\
-        \end{bmatrix} ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a system composed by $N$ distinguishable magnetic dipoles in an external magnetic field along the $z$-axis, with spin $S = 1$, with Hamiltonian 
+        \begin{equation*}
+            \hat H = \sum_i S^{(z)}_i B ~,
+        \end{equation*}
+        where
+        \begin{equation*}
+            S^{(z)}_i = \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & - 1 \\
+            \end{bmatrix} ~.
+        \end{equation*}
+        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)}$. Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the magnetisation $M$.
+    \end{exercise}
 
-    The canonical partition function is 
+    The canonical partition function $Z$ is 
     \begin{equation*}
         Z = \Big ( 2 \cosh (\beta B) + 1 \Big)^N ~.
     \end{equation*}
     \begin{proof}
-        By definition, for distinguishable particles,
+        By definition, for distinguishable particles~\eqref{c:zdist} and~\eqref{qgc:cz},
         \begin{equation*}
         \begin{aligned}
-            Z & = (Z_1)^N \\ & = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N \\ & = \Big (\tr_{\mathcal H} \exp(- \beta B \begin{bmatrix}
+            Z & = (Z_1)^N = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N = \Big (\tr_{\mathcal H} \exp(- \beta B \begin{bmatrix}
                 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & - 1 \\ 
             \end{bmatrix}) \Big)^N \\ & = \Big(\tr_{\mathcal H} \begin{bmatrix}
                 \exp(- \beta B) & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & \exp(\beta B) \\ 
-            \end{bmatrix} \Big )^N \\ & = \Big( \exp(- \beta B) + 1 + \exp(\beta B) \Big)^N \\ & = \Big ( 2 \cosh (\beta B) + 1 \Big)^N ~.
+            \end{bmatrix} \Big )^N = \Big( \exp(- \beta B) + 1 + \exp(\beta B) \Big)^N \\ & = \Big ( 2 \cosh (\beta B) + 1 \Big)^N ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -115,7 +124,7 @@
         F = - N k_B T \ln \Big ( 2 \cosh (\beta B) + 1 \Big) ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:cf}, we have
         \begin{equation*}
             F = - \frac{\ln Z}{\beta} = - N k_B T \ln \Big ( 2 \cosh (\beta B) + 1 \Big) ~.
         \end{equation*}
@@ -126,15 +135,15 @@
         E = - 2 N B \frac{\sinh (\beta B)}{2 \cosh (\beta B) + 1} ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:ce}, we have
         \begin{equation*}
             E = - \pdv{\ln Z}{\beta} = - N \pdv{}{\beta} \ln \Big ( 2 \cosh (\beta B) + 1 \Big) = - 2 N B \frac{\sinh (\beta B)}{2 \cosh (\beta B) + 1} ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{qm:e1}.
+    A plot of the energy $E$ as a function of $T$ is in Figure~\ref{qm:e1}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- (( sinh(1 / x) ) / (2 * cosh (1 /x) + 1))', 4, 1, 22, True, True, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '- (( sinh(1 / x) ) / (2 * cosh (1 /x) + 1))', 4, 1, 21, True, True, False)}}
         \caption{A plot of the energy $E$ as a function of $T$. We have used $x = \frac{k_B T}{B} $ and $f(x) = \frac{2E}{BN}$.}
         \label{qm:e1}
     \end{figure}
@@ -144,36 +153,38 @@
         M = - \frac{N}{2} \frac{\sinh (\beta B)}{2 \cosh (\beta B) + 1} ~. 
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{c:mag}, we have
         \begin{equation*}
             M = \pdv{F}{B} = - N k_B T \pdv{}{B} \ln \Big ( 2 \cosh (\beta B) + 1 \Big) = - 2 N \frac{\sinh (\beta B)}{2 \cosh (\beta B) + 1}  ~.
         \end{equation*}
     \end{proof}
-    A plot of this is in Figure~\ref{qm:m2}.
+    A plot of the magnetisation $M$ as a function of $T$ is in Figure~\ref{qm:m2}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', '- (( sinh (1 / x) ) / (2 * cosh (1 / x) + 1))', 4, 1, 23, True, True, False)}}
+        \scalebox{0.7}{\pyc{plot1('x', '- (( sinh (1 / x) ) / (2 * cosh (1 / x) + 1))', 4, 1, 22, True, True, False)}}
         \caption{A plot of the magnetisation $M$ as a function of $T$. We have used $x = \frac{2 k_B T}{B} $ and $f(x) = \frac{M}{2N}$.}
         \label{qm:m2}
     \end{figure}
 
 \section{Quantum harmonic oscillators}
 
-    Consider a system composed by $N$ distinguishable quantum harmonic oscillators. Its hamiltonian is 
-    \begin{equation*}
-        \hat H = \sum_i \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2}) ~.
-    \end{equation*}
+    \begin{exercise}
+        Consider a system composed by $N$ distinguishable quantum harmonic oscillators, with Hamiltonian 
+        \begin{equation*}
+            \hat H = \sum_i \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2}) ~.
+        \end{equation*}
+        Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the specific heat per particle $c_V$.
+    \end{exercise}
 
-    The canonical partition function is 
+    The canonical partition function $Z$ is 
     \begin{equation*}
         Z = \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big)^N ~.
     \end{equation*}
     \begin{proof}
-        By definition, for distinguishable particles,
+        By definition, for distinguishable particles~\eqref{c:zdist} and~\eqref{qgc:cz},
         \begin{equation*}
         \begin{aligned}
-            Z & = (Z_1)^N \\ & = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N \\ & = \Big (\tr_{\mathcal H_i} \exp(- \beta \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2})) \Big)^N \\ & = \Big ( \sum_i \bra{n_i}\exp(- \beta \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2})) \ket{n_i }\Big)^N \\ & = \Big ( \sum_i \exp(- \beta \hbar \omega (n_i + \frac{1}{2})) \Big)^N \\ & = \Big ( \exp(- \frac{\beta \hbar \omega}{2}) \sum_i \exp(- \beta \hbar \omega)^{n_i} \Big)^N \\ & = \Big ( \exp(- \frac{\beta \hbar \omega}{2}) \frac{1}{1 - \exp(- \beta \hbar \omega)} \Big)^N
-            \\ & = \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big)^N ~.
+            Z & = (Z_1)^N = \Big (\tr_{\mathcal H} \exp(- \beta \hat H_1) \Big)^N = \Big (\tr_{\mathcal H_i} \exp(- \beta \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2})) \Big)^N \\ & = \Big ( \sum_i \bra{n_i}\exp(- \beta \hbar \omega (\hat a_i \hat a_i^\dagger + \frac{1}{2})) \ket{n_i }\Big)^N \\ & = \Big ( \sum_i \exp(- \beta \hbar \omega (n_i + \frac{1}{2})) \Big)^N = \Big ( \exp(- \frac{\beta \hbar \omega}{2}) \sum_i \exp(- \beta \hbar \omega)^{n_i} \Big)^N \\ & = \Big ( \exp(- \frac{\beta \hbar \omega}{2}) \frac{1}{1 - \exp(- \beta \hbar \omega)} \Big)^N = \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big)^N ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -183,10 +194,10 @@
         F = N k_B T ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:cf}, we have
         \begin{equation*}
         \begin{aligned}
-            F & = - \frac{\ln Z}{\beta} \\ & = - N k_B T \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N k_B T ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N k_B T ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N k_B T ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) ~.
+            F & = - \frac{\ln Z}{\beta} = - N k_B T \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N k_B T ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N k_B T ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N k_B T ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -196,10 +207,10 @@
         E = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) ~.
     \end{equation*}
     \begin{proof}
-        By definition, 
+        By definition~\eqref{qgc:ce}, we have
         \begin{equation*}
         \begin{aligned}
-            F & = - \pdv{\ln Z}{\beta} \\ & = - N \pdv{}{\beta} \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N \pdv{}{\beta} ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N \pdv{}{\beta} ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N \pdv{}{\beta} ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N ( \frac{\hbar \omega}{2} - \frac{\hbar \omega}{1 - \exp(- \beta \hbar \omega)} ) \\ & = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) ~.
+            E & = - \pdv{\ln Z}{\beta} = - N \pdv{}{\beta} \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N \pdv{}{\beta} ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N \pdv{}{\beta} ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N \pdv{}{\beta} ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N ( \frac{\hbar \omega}{2} - \frac{\hbar \omega}{1 - \exp(- \beta \hbar \omega)} ) = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -209,17 +220,103 @@
         C_V = N \frac{\hbar^2 \omega^2}{k_B T^2} \frac{\exp(\beta \hbar \omega)}{(\exp(\beta \hbar \omega) - 1)^2} ~.
     \end{equation*}
     \begin{proof}
-        In fact 
+        In fact, using~\eqref{td:cv2}, we find
         \begin{equation*}
             C_V = \pdv{E}{T} = N \pdv{}{T} ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) = N \frac{\hbar^2 \omega^2}{k_B T^2} \frac{\exp(\beta \hbar \omega)}{(\exp(\beta \hbar \omega) - 1)^2} ~.
         \end{equation*}
     \end{proof}
 
-\chapter{Fermions}
-
 \section{Fermionic relativistic gas at T=0}
 
-\section{Fermionic White dwarf}
+    \begin{exercise}
+        Consider a quantum relativistic gas of fermions confined in a finite volume $V$ at equilibrium. Since they are relativistic, the energy is $\epsilon = \sqrt{m^2 c^4 + p^2 c^2} - m c^2$. 
+        Find the number of particles $N$, the energy $E$, the grand potential $\Omega$, the Fermi energy $\epsilon_F$ and at $T=0$, the energy and the pressure.
+    \end{exercise}
+
+    Since we are dealing with momentum, we can integrate with respect to it instead of the energy 
+    \begin{equation}\label{tdlim2}
+        \sum_k \rightarrow \frac{4 \pi V}{h^3} \int_0^\infty dp ~ p^2 ~.
+    \end{equation}  
+    \begin{proof}
+        In fact, using $p = \hbar k$ and the polar coordinates in momentum space $(p, \theta, \phi)$, we have
+        \begin{equation*}
+            \sum_k \rightarrow \frac{V}{(2\pi)^3} \int d^3 k = \frac{V}{(2\pi)^3} \hbar^3 \int d^3 p = \frac{V}{(2\pi)^3} 4 \pi \hbar^3 \int_0^\infty dp ~ p^2 = \frac{4 \pi V}{h^3} \int_0^\infty dp ~ p^2 ~.
+        \end{equation*}
+    \end{proof}
+
+    The number of particles $N$ is 
+    \begin{equation*}
+        N = \frac{4 \pi V g}{h^3} \int_0^\infty dp ~ \frac{p^2}{\exp(\beta \epsilon(p) - \mu) + 1} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{qg:n1} and~\eqref{tdlim2}, we have 
+        \begin{equation}
+            N = \sum_k \frac{1}{\exp(\beta(\epsilon_k - \mu)) + 1} \rightarrow \frac{4 \pi V g}{h^3} \int_0^\infty dp ~ p^2 \frac{1}{\exp(\beta(\epsilon (p) - \mu)) + 1} ~.
+        \end{equation}
+    \end{proof}
+
+    The energy $E$ is 
+    \begin{equation*}
+        E = \frac{4 \pi V g}{h^3} \int_0^\infty dp ~ \frac{p^2 \epsilon(p)}{\exp(\beta \epsilon(p) - \mu) + 1} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{qg:e1} and~\eqref{tdlim2}, we have 
+        \begin{equation}
+            E = \sum_k \frac{\epsilon_k}{\exp(\beta(\epsilon_k - \mu)) + 1} \rightarrow \frac{4 \pi V g}{h^3} \int_0^\infty dp ~ p^2 \frac{\epsilon(p)}{\exp(\beta(\epsilon (p) - \mu)) + 1} ~.
+        \end{equation}
+    \end{proof}
+
+    The grand potential $\Omega$ is 
+    \begin{equation*}
+        \Omega = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^4 c^2}{\exp(\beta \epsilon(p) - \mu) + 1} \frac{1}{\sqrt{m^2 c^4 + p^2 c^2}} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, using~\eqref{o1} and~\eqref{tdlim2}, we have 
+        \begin{equation}
+        \begin{aligned}
+            \Omega & = - \frac{1}{\beta} \sum_k \ln (1 + \exp(\beta(\epsilon_k - \mu))) \rightarrow - \frac{4 \pi V g}{h^3 \beta} \int_0^\infty dp ~ p^2 \ln (1 + \exp(\beta(\epsilon_k - \mu))) \\ & = - \frac{4 \pi V g}{h^3 \beta} \Big ( \underbrace{ \frac{p^3}{3} }_{0 ~ \text{for} ~ 0} \underbrace{\ln (1 + \exp(\beta(\epsilon_k - \mu)))}_{0 ~ \text{for} ~ \infty}  \Big \vert_0^\infty - \frac{-\beta}{3} \int_0^\infty \int_0^\infty dp ~ \frac{p^3 \epsilon'(p) \exp(- \beta \epsilon(p) - \mu)}{1 + \exp(- \beta \epsilon(p) - \mu)} \Big ) \\ & = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^3 \epsilon'(p)}{\exp(\beta \epsilon(p) - \mu) + 1} ~.
+        \end{aligned}
+        \end{equation}
+        Now, we evaluate 
+        \begin{equation}
+            \epsilon'(p) = \dv{\epsilon(p)}{p} = \frac{p c^2}{\sqrt{m^2 c^4 + p^2 c^2}}
+        \end{equation}
+        and we find 
+        \begin{equation}
+            \Omega = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^3 \epsilon'(p)}{\exp(\beta \epsilon(p) - \mu) + 1} = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^4 c^2}{\exp(\beta \epsilon(p) - \mu) + 1} \frac{1}{\sqrt{m^2 c^4 + p^2 c^2}} ~.
+        \end{equation}
+    \end{proof}
+
+    The equation of state is 
+    \begin{equation}
+        pV = - \Omega = \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^4 c^2}{\exp(\beta \epsilon(p) - \mu) + 1} \frac{1}{\sqrt{m^2 c^4 + p^2 c^2}} ~.
+    \end{equation}
+
+    At $T=0$, we have the Fermi momentum $p_F$ and the Fermi energy $\epsilon_F$
+    \begin{equation}
+        p_F = \Big ( \frac{3 h^3 n}{4 \pi g} \Big)^{1/3} ~, \quad \epsilon_F = \sqrt{m^2 c^4 + p_F^2 c^2} - mc^2 ~.
+    \end{equation}
+    \begin{proof}
+        At $T=0$, the Fermi-Dirac distribution becomes~\eqref{fdtz} and we have
+        \begin{equation}
+            n = \frac{4 \pi g}{h^3} \int_0^{p_F} dp ~ p^2 = \frac{4 \pi g}{3 h^3} p_F^3 ~,
+        \end{equation}
+        which inverted is 
+        \begin{equation}
+            p_F = \Big ( \frac{3 h^3 n}{4 \pi g} \Big)^{1/3} ~.
+        \end{equation}
+    \end{proof}
+
+    At $T=0$, the equation of state becomes
+    \begin{equation}
+        p = \frac{4 \pi V g}{3 h^3} \int_0^{p_F} dp ~ \frac{p^4 c^2}{\sqrt{m^2 c^4 + p^2 c^2}}  ~.
+    \end{equation}
+    At $T=0$, the energy becomes
+    \begin{equation}
+        E = \frac{4 \pi V g}{h^3} \int_0^{p_F} dp ~ p^2 \epsilon(p) = \frac{4 \pi V g}{h^3} \int_0^{p_F} dp ~ p^2 (\sqrt{m^2 c^4 + p^2 c^2} - mc^2 ) ~.
+    \end{equation}
+
+\section{Fermionic white dwarf}
 
     A white dwarf is an helium star woth mass $M \sim 10^{30} kg$ and a density of $\rho = 10^{10} kg/m^3$ at a temperature of $10^{7} K$. Our approxiated model is composed by $N$ electrons and $N/2$ helium nuclei.
 
@@ -360,6 +457,305 @@
         P = \frac{m^4 c^5}{12 \pi \hbar^3} (x_F^4 - x_F^2) = \frac{\alpha G M^2}{4 \pi R^4} ~.
     \end{equation*}
 
-\section{Bose-Einstein condensate in 2D}
+\section{Bosonic BEC in 2D}
+
+    \begin{exercise}
+        Consider a Bose-Einstein condensate of non-relativistic particles in $2$ dimension, with energy $\epsilon = p^2 / 2m$.
+        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$.
+    \end{exercise}
+
+    The density of states $\omega(E)$ is 
+    \begin{equation*}
+        \omega(E) = \frac{A m}{2 \pi \hbar^2} ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{cm:vol}, we have
+        \begin{equation*}
+        \begin{aligned}
+            \Sigma (E) = \int_{H \leq \epsilon} d\Omega = \int_{H \leq \epsilon} \frac{d^2 x ~ d^2 p}{h^2} ~.
+        \end{aligned}
+        \end{equation*}
+        In order to find the domain of integration, we compute the following inequality
+        \begin{equation*}
+            H = \frac{p^2}{2m} \leq \epsilon ~, \quad p^2 \leq 2 m \epsilon ~.
+        \end{equation*}
+        Therefore, using polar coordinates in momentum space $(p, \theta)$ and adding the degeneracy, we find
+        \begin{equation*}
+            \Sigma (E) = \underbrace{\int_A d^2 x}_A \int_{p^2 < 2mE} d^2 p = \frac{2 \pi A}{h^2} \int_0^{\sqrt{2mE}} dp p = \frac{A m}{2 \pi \hbar^2} \epsilon ~,
+        \end{equation*}
+        Finally, by definition~\eqref{cm:denst}, we have
+        \begin{equation*}
+            \omega (E) = \pdv{\Sigma (epsilon)}{epsilon} = \pdv{}{\epsilon} \frac{A m}{2 \pi \hbar^2} \epsilon = \frac{A m}{2 \pi \hbar^2} ~.
+        \end{equation*}
+    \end{proof}
+
+    The number of particles $N$ is 
+    \begin{equation*}
+        N = -\frac{A m}{2 \pi \hbar^2 \beta} \ln z ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{q:n}, we have 
+        \begin{equation}
+            N = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{1}{\exp(\beta \epsilon) - 1} = \frac{A m}{2 \pi \hbar^2} \int_0^\infty d\epsilon ~ \frac{1}{\exp(\beta (\epsilon - \mu)) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            t = \exp(\beta (\epsilon - \mu)) ~, \quad d\epsilon = \frac{dt}{\beta t} 
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+        \begin{aligned}
+            N & = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ \frac{1}{t (t+1)} = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ (\frac{1}{t} - \frac{1}{t+1} ) \\ & = \frac{A m}{2 \pi \hbar^2 \beta} (\ln t - \ln (1+t) \Big \vert_{\exp(-\beta \mu)}^{\cancel \infty} ) = \frac{A m}{2 \pi \hbar^2 \beta} (- \ln z) = -\frac{A m}{2 \pi \hbar^2 \beta} \ln z ~.
+        \end{aligned}
+    \end{equation*}
+    \end{proof}
+
+    The critical temperature $T_c$ is 
+    \begin{equation*}
+        T_c = 0 ~,
+    \end{equation*}
+    \begin{proof}
+        In fact, putting $z = 1$, we have $T=0$ in order to keep $n$ fixed.
+    \end{proof}
+
+\section{Bosonic BEC of harmonic oscillators in 2D}
+
+    \begin{exercise}
+        Consider a Bose-Einstein condensate of harmonic oscillators in $2$ dimension, with energy $\epsilon = p^2 / 2m + m \omega^2 x^2 / 2$.
+        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$.
+    \end{exercise}
+
+    The density of states $\omega(E)$ is 
+    \begin{equation*}
+        \omega(E) = \Big (\frac{1}{\hbar \omega} \Big )^{2} \epsilon ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{harmosc} with $d = 2$ and $N = 1$, we have
+        \begin{equation}
+            \omega(E) = \frac{1}{\Gamma (2)} \Big (\frac{1}{\hbar \omega} \Big )^{2} \epsilon = \Big (\frac{1}{\hbar \omega} \Big )^{2} \epsilon ~.
+        \end{equation}
+    \end{proof}
+
+    The number of particles $N$ is 
+    \begin{equation*}
+        N = \Big (\frac{1}{\hbar \omega \beta} \Big )^{2} \int_0^\infty d x ~ \frac{x}{z^{-1} \exp (x) - 1} ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{q:n}, we have 
+        \begin{equation}
+            N = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{1}{\exp(\beta \epsilon) - 1} = \Big (\frac{1}{\hbar \omega} \Big )^{2} \int_0^\infty d\epsilon ~ \frac{\epsilon}{\exp(\beta (\epsilon - \mu)) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            x = \beta \epsilon ~, 
+        \end{equation}
+        hence, we find, using the 
+        \begin{equation*}
+            N = \Big (\frac{1}{\hbar \omega \beta} \Big )^{2} \int_0^\infty d x ~ \frac{x}{z^{-1} \exp (x) - 1} ~.
+        \end{equation*}
+    \end{proof}
+
+    The critical temperature $T_c$ is 
+    \begin{equation*}
+            T_c = \frac{\hbar \omega}{k_B T} (6N)^{1/2} ~.
+    \end{equation*}
+    \begin{proof}
+        In fact, putting $z = 1$, we have 
+        \begin{equation}
+            N = \Big (\frac{1}{\hbar \omega \beta} \Big )^{2} \underbrace{\int_0^\infty d x ~ \frac{x}{\exp (x) - 1} }_{\zeta(2) = \pi^2 / 6} = \frac{1}{6} \Big (\frac{\pi}{\hbar \omega \beta} \Big )^{2} ~,
+        \end{equation}
+        which inverted is 
+        \begin{equation}
+            T_c = \frac{\hbar \omega}{k_B T} (6N)^{1/2} ~.
+        \end{equation}
+    \end{proof}
 
 \section{Bosonic blackbody radiation}
+
+    \begin{exercise}
+        Consider a gas of photons confined in a finite volume $V$ at equilibrium. Since they are ultra-relativistic, the energy is $\epsilon = c |\mathbf p|$. 
+        Find the density of states $\omega(E)$, the grand potential $\omega$, the number of particles $N$, the energy $E$, the equation of state and the specific heat $C_V$. Furthermore, find the Planck's distribution, Wien's and Rayleigh-Jeans' laws.
+    \end{exercise}
+
+    There are only two indepeendent polarisation degrees of freedome, therefore $g=2$. Since they can be absorbed and emitted, the number of particle is not conserved and $\mu (T) = 0$. 
+
+    The density of states $\omega(E)$ is 
+    \begin{equation*}
+        \omega(E) = \frac{V \epsilon^2}{\hbar^3 \pi^2 c^3} ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{cm:vol}, we have
+        \begin{equation*}
+        \begin{aligned}
+            \Sigma (E) = \int_{H \leq \epsilon} d\Omega = \int_{H \leq \epsilon} \frac{d^3 x ~ d^3 p}{h^3} ~.
+        \end{aligned}
+        \end{equation*}
+        In order to find the domain of integration, we compute the following inequality
+        \begin{equation*}
+            H = c p \leq \epsilon ~, \quad p \leq \frac{\epsilon}{c} ~.
+        \end{equation*}
+        Therefore, using polar coordinates in momentum space $(p, \theta, \phi)$ and adding the degeneracy, we find
+        \begin{equation*}
+        \begin{aligned}
+            \Sigma (E) & = \frac{g}{h^3} \underbrace{\int_V d^3 x}_V \int_{p < E/c} d^3 p = \frac{8 \pi V}{h^3} \int_0^{\epsilon/c} dp ~p^2 = \frac{V}{\hbar^3 \pi^2} \frac{p^3}{3} \Big \vert_0^{\epsilon/c} = \frac{V \epsilon^3}{3 \hbar^3 \pi^2 c^3}~,
+        \end{aligned}
+        \end{equation*}
+        Finally, by definition~\eqref{cm:denst}, we have
+        \begin{equation*}
+            \omega (E) = \pdv{\Sigma (epsilon)}{epsilon} = \pdv{}{\epsilon} \frac{V \epsilon^3}{3 \hbar^3 \pi^2 c^3} = \frac{V \epsilon^2}{\hbar^3 \pi^2 c^3} ~.
+        \end{equation*}
+    \end{proof}
+
+    In the following, we define 
+    \begin{equation}
+        \zeta (n+1) = \int_0^\infty dx ~ \frac{x^n}{\exp(x) - 1} ~.
+    \end{equation}
+
+    The grand potential $\Omega$ is 
+    \begin{equation*}
+        \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) 
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{q:o}, we have 
+        \begin{equation}
+        \begin{aligned}
+            \Omega & = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln(1 - \exp(- \beta \epsilon)) = \frac{V}{\hbar^3 \pi^2 c^3 \beta} \int_0^\infty d\epsilon ~ \epsilon^2 \ln(1 - \exp(- \beta \epsilon)) \\ & = \frac{V}{\hbar^3 \pi^2 c^3 \beta} \Big ( \underbrace{\frac{\epsilon^3}{3} }_{0 ~ \text{for} ~ 0}\underbrace{\ln(1 - \exp(- \beta \epsilon)) }_{0 ~ \text{for} ~ \infty} \Big \vert_0^\infty - \frac{\beta}{3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3 \exp(- \beta \epsilon)}{1 - \exp(- \beta \epsilon)} \Big) \\ & = \frac{V}{3 \hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+        \end{aligned}
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            x = \beta \epsilon ~,
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+        \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+        \end{equation*}
+    \end{proof}
+
+    The number of particles $N$ is 
+    \begin{equation*}
+        N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \zeta(3) ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{q:n}, we have 
+        \begin{equation}
+            N = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{1}{\exp(\beta \epsilon) - 1} = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            x = \beta \epsilon ~,
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+            N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \underbrace{\int_0^\infty dx ~ \frac{x^2}{\exp(x) - 1}}_{\zeta(3)} = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \zeta(3) ~.
+        \end{equation*}
+    \end{proof}
+    The energy $E$ is 
+    \begin{equation*}
+        E = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+    \end{equation*}
+    \begin{proof}
+        By definition~\eqref{q:n}, we have 
+        \begin{equation}
+            E = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{\epsilon}{\exp(\beta \epsilon) - 1} = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            x = \beta \epsilon ~,
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+            N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+        \end{equation*}
+    \end{proof}
+    The equation of state is 
+    \begin{equation}
+        pV = - \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) = \frac{E}{3} ~.
+    \end{equation}
+    The specific heat $C_V$ is 
+    \begin{equation}
+        C_V = \frac{4 k_B^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) T^3 ~.
+    \end{equation}
+    \begin{proof}
+        In fact, using~\eqref{td:cv2}, we have 
+        \begin{equation}
+            C_V = \pdv{E}{T} = \pdv{}{T} \frac{k_B^4 T^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) = \frac{4 k_B^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) T^3 ~.
+        \end{equation}
+    \end{proof}
+
+    The number spectral distribution is 
+    \begin{equation}
+        \frac{8 \pi V}{c^3} \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
+    \end{equation}
+    \begin{proof}
+        We introduce the number of photons with an energy of $\epsilon \in [0, h\nu]$
+        \begin{equation}
+            N(\nu) = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} = \frac{8 \pi V}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            \epsilon = h \nu ~,
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+            N = \frac{8 \pi V}{h^3 c^3} h^3 \int_0^{1} d\nu ~ \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
+        \end{equation*}
+        We define the spectral distribution 
+        \begin{equation}
+            f(\nu) = \dv{N(\nu)}{\nu} = \frac{8 \pi V}{c^3} \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
+        \end{equation}
+    \end{proof}
+
+    The energy spectral distribution is 
+    \begin{equation}
+        u(\nu) = \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
+    \end{equation}
+    A plot of the Planck's distribution $u(\nu)$ as a function of $\nu$ is in Figure~\ref{br:p}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x**3 / (exp(x) - 1)', 10, 2, 23, True, True, True)}}
+        \caption{A plot of the Planck's distribution $u(\nu)$ as a function of $\nu$. We have used $x = \beta h \nu$ and $f(x) = \frac{u c^3}{8 \pi h^4 \beta^3}$.}
+        \label{br:p}
+    \end{figure}
+    \begin{proof}
+        We introduce the energy density of photons with an energy of $\epsilon \in [0, h\nu]$
+        \begin{equation}
+            U(\nu) = \frac{E}{V} = \frac{1}{\hbar^3 \pi^2 c^3} \int_0^{h \nu} d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} = \frac{8 \pi}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+        \end{equation}
+        Now, we make a change of variable into 
+        \begin{equation}
+            \epsilon = h \nu ~,
+        \end{equation}
+        hence, we find 
+        \begin{equation*}
+            U = \frac{8 \pi}{h^3 c^3} h^4 \int_0^{1} d\nu ~ \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
+        \end{equation*}
+        We define the energy spectral distribution 
+        \begin{equation}
+            u(\nu) = \dv{U(\nu)}{\nu} = \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
+        \end{equation}
+    \end{proof}
+
+    Its approximation of $\beta h \nu \gg 1$ is 
+    \begin{equation}
+        u(\nu) \simeq \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu)} ~,
+    \end{equation}
+    where we have only neglected the minus at the denominator. A plot of the Wien's law $u(\nu)$ as a function of $\nu$ is in Figure~\ref{br:w}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x**3 / (exp(x))', 10, 2, 24, True, True, True)}}
+        \caption{A plot of the Wien's law $u(\nu)$ as a function of $\nu$. We have used $x = \beta h \nu$ and $f(x) = \frac{u c^3}{8 \pi h^4 \beta^3}$.}
+        \label{br:w}
+    \end{figure}
+
+    Its approximation of $\beta h \nu \ll 1$ is 
+    \begin{equation}
+        u(\nu) \simeq \frac{8 \pi}{c^3} \frac{\nu^2}{\beta} ~.
+    \end{equation}
+    where we have only expanded at first order the exponential. A plot of the Rayleigh-Jeans's law $u(\nu)$ as a function of $\nu$ is in Figure~\ref{br:rj}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot1('x', 'x**2', 10, 2, 25, True, True, True)}}
+        \caption{A plot of the Rayleigh-Jeans's law $u(\nu)$ as a function of $\nu$. We have used $x = \nu$ and $f(x) = \frac{u \beta c^3}{8 \pi}$.}
+        \label{br:rj}
+    \end{figure}

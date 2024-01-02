@@ -1,86 +1,117 @@
-\part{Dirac theory}
+\part{Dirac's theory}
 
-\chapter{Dirac action}
+\chapter{Dirac's action and spinors}
+
+    In this chapter, we will review some notion of classical Dirac theory: spinor representation of the Lorentz group, Dirac's Lagrangian that leads to the Dirac's equation and plane waves solutions.
 
 \section{Spinor representation of the Lorentz group}    
 
-    The reducible representation of a Dirac spinor is 
+    It follows from group theory that the reducible representation of a Dirac spinor is 
     \begin{equation*}
         {\psi'}_D = \exp(-\frac{i}{2} \omega_{\mu\nu} \Sigma^{\mu\nu}) \psi_D ~,
     \end{equation*}
-    where $\psi_D$ is a four-components complex vector, $\Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu]$ and the gamma matrices satisfy 
+    where $\psi_D$ is a four-components complex vector, $\Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu]$ and the gamma matrices satisfy the Clifford algebra
     \begin{equation*}
         \{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb I_4 ~.
     \end{equation*}
-    In the Weyl basis, the Dirac matrices become 
+    There are several basis in which we can write down these matrices. The one we will use in these notes is the Weyl or chiral basis, in which gamma matrices are
     \begin{equation*}
         \gamma^0 = \begin{bmatrix}
             0 & \mathbb I_2 \\ \mathbb I_2 & 0 \\ 
-        \end{bmatrix} ~.
+        \end{bmatrix} ~, \quad \gamma^i = \begin{bmatrix}
+            0 & \sigma^i \\ - \sigma^i & 0 \\ 
+        \end{bmatrix} ~,
     \end{equation*}
-    It is useful to redefine the matrix 
+    where $\sigma^i$ are the Pauli matrices. It is useful to define the matrix 
     \begin{equation*}
-        S^{\mu\nu} = - i \Sigma^{\mu\nu} = \frac{i}{4} [\gamma^\mu, \gamma^\nu] ~,
+        S^{\mu\nu} = - i \Sigma^{\mu\nu} = \frac{1}{4} [\gamma^\mu, \gamma^\nu] ~,
     \end{equation*}
-    such that 
+    such that a Dirac spinor transforms as
     \begin{equation}\label{lorspin}
-        {\psi'}_D^\alpha (x) = \exp(\frac{1}{2} \omega_{\mu\nu} S^{\mu\nu})^\alpha_{\phantom \alpha \beta} \psi^\beta_D (x) = S^\alpha_\beta \psi^\beta_D (x) ~,
+        {\psi'}_D^\alpha (x) = \underbrace{\exp(\frac{1}{2} \omega_{\mu\nu} S^{\mu\nu})^\alpha_{\phantom \alpha \beta}}_{S^\alpha_{\phantom \alpha \beta} } \psi^\beta_D (x) = S^\alpha_{\phantom \alpha \beta} \psi^\beta_D (x) ~,
     \end{equation}
-    where $\alpha, \beta = 1,2,3,4$.
+    where $\alpha, \beta = 1,2,3,4$ are not Minkovski indices.
 
-    Notice that 
+    Now, we study the properties of gamma matrices and Dirac spinor in order to find invariant quantities in function of $\psi_D$ and the construct a Lorentz invariant Lagrangian. First, notice that 
     \begin{equation}\label{gammadag}
         (\gamma^\mu)^\dagger = \gamma^0 \gamma^\mu \gamma^0 ~.
     \end{equation}
     \begin{proof}
-        Maybe in the future.
-    \end{proof}
-
-\section{Invariant quantities}
-
-    In order to have a Lorentz invariant action, we need to built Lorentz invariant quantities in function of $\psi$. Observe that the quantity $\psi \psi^\dagger$ is not a scalar. 
-    \begin{proof}
-        In fact, 
+        For $\mu = 0$, we have
         \begin{equation*}
-            {\psi'}^\dagger \psi' = \psi^\dagger S^\dagger S \psi \neq \psi^\dagger \psi ~,
+            (\gamma^0)^\dagger = \underbrace{\gamma^0 \gamma^0}_{\mathbb I} \gamma^0 = \gamma^0 ~.
         \end{equation*}
-        since $S^\dagger \neq S^{-1}$.
+        For $\mu = i$, we have 
+        \begin{equation*}
+            (\gamma^i)^\dagger = \underbrace{\gamma^0 \gamma^i}_{- \gamma^i \gamma^0} \gamma^0 = - \underbrace{\gamma^0 \gamma^0}_{\mathbb I} \gamma^i = - \gamma^i ~.
+        \end{equation*}
     \end{proof}
-
-    However, $S$ satisfies $S^\dagger = \gamma^0 S^{-1} \gamma^0$.
+    The first guess to have a Lorentz invariant is the bilinear $\psi \psi^\dagger$. However, it is not a scalar, since the Dirac representation is not unitary, but it satisfies the relation 
+    \begin{equation*}
+        S^\dagger = \gamma^0 S^{-1} \gamma^0 ~.
+    \end{equation*}. 
     \begin{proof}
-        In fact, consider the spinor representation
+        Consider the spinor representation
         \begin{equation*}
             S = \exp ( \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) ~,
         \end{equation*}
         its hermitian 
         \begin{equation*}
-            S = \exp ( \frac{1}{2} \omega_{\mu\nu} (S^\dagger)^{\mu\nu})
+            S^\dagger = \exp ( \frac{1}{2} \omega_{\mu\nu} (S^{\mu\nu})^\dagger)
         \end{equation*}
         and its inverse 
         \begin{equation*}
-            S = \exp ( - \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) ~.
+            S^{-1} = \exp ( - \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) ~.
         \end{equation*}
+        This implies that if $S^{-1} = S^{\dagger}$ then $(S^{\mu\nu})^\dagger = - S^{\mu\nu}$ and the generators are hermitian $(\Sigma^{\mu\nu})^\dagger = \Sigma^{\mu\nu}$. However, notice that
+        \begin{equation*}
+            (\Sigma^{\mu\nu})^\dagger = - \frac{i}{4} [\gamma^\mu, \gamma^\nu]^\dagger = - \frac{i}{4} [(\gamma^\nu)^\dagger, (\gamma^\mu)^\dagger] = - \Sigma^{\mu\nu} = - \frac{i}{4} [\gamma^\nu, \gamma^\mu]
+        \end{equation*}
+        which means that all gamma matrices are hermitian or antihermitian $(\gamma^\mu)^\dagger = \pm \gamma^\mu$. But this is impossible since spatial gamma matrices are anti-hermitian
+        \begin{equation*}
+            (\gamma^i)^2 = - \mathbb I ~, \quad \lambda^2 = - 1 ~, \quad \lambda \in \imm ~,
+        \end{equation*}
+        and temporal gamma matrix is hermitian 
+        \begin{equation*}
+            (\gamma^0)^2 = - \mathbb I ~, \quad \lambda^2 = 1 ~, \quad \lambda \in \real ~.
+        \end{equation*}
+        Hence, we find
+        \begin{equation*}
+            {\psi'}^\dagger \psi' = \psi^\dagger S^\dagger S \psi \neq \psi^\dagger \psi ~.
+        \end{equation*}
+        Finally, using~\eqref{gammadag}, we have
+        \begin{equation*}
+        \begin{aligned}
+            (S^{\mu\nu})^\dagger & = - i (\Sigma^{\mu\nu})^\dagger = - \frac{1}{4} (\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu)^\dagger = - \frac{1}{4} ((\gamma^\nu)^\dagger (\gamma^\mu)^\dagger + (\gamma^\mu)^\dagger (\gamma^\nu)^\dagger ) \\ & = - \frac{1}{4} (\gamma^0 \gamma^\nu \underbrace{\gamma^0 \gamma^0}_{\mathbb I} \gamma^\mu \gamma^0 + \gamma^0 \gamma^\mu \underbrace{\gamma^0 \gamma^0}_{\mathbb I} \gamma^\nu \gamma^0) = - \gamma^0 \frac{1}{4} [\gamma^\mu, \gamma^\nu] \gamma^0 = - \gamma^0 S^{\mu\nu} \gamma^0 ~,
+        \end{aligned}
+        \end{equation*}
+        which implies that
+        \begin{equation*}
+        \begin{aligned}
+            S^\dagger & = \exp ( \frac{1}{2} \omega_{\mu\nu} (S^{\mu\nu})^\dagger) = \exp ( - \frac{1}{2} \omega_{\mu\nu} \gamma^0 S^{\mu\nu} \gamma^0) = \sum_k \frac{1}{k!} \Big (- \frac{1}{2} \omega_{\mu\nu} \gamma^0 S^{\mu\nu} \gamma^0 \Big)^k \\ & = \gamma^0 \sum_k \frac{1}{k!} \Big (- \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu} \Big)^k \gamma^0 = \gamma^0 \exp ( - \frac{1}{2} \omega_{\mu\nu} S^{\mu\nu}) \gamma^0 = \gamma^0 S^{-1} \gamma^0 ~,
+        \end{aligned}
+        \end{equation*}
+        where we have extracted $\gamma^0$ since in every multiplication we have $\gamma^0 \gamma^0 = \mathbb I$ except at the beginning and and the end.
     \end{proof}
 
-    We define the adjoint Dirac spinor 
+    We need to look for another quantity. we define the adjoint Dirac spinor 
     \begin{equation*}
-        \overline \psi (x) = \psi^\dagger (x) \gamma^0 ~.
+        \overline \psi (x) = \psi^\dagger (x) \gamma^0 
     \end{equation*}
-    With this, we can construct a Lorentz invariant bilinear spinor 
+    and with it, we can construct a Lorentz invariant bilinear spinor 
     \begin{equation*}
         \overline \psi \psi ~.
     \end{equation*}
     \begin{proof}
-        In fact, 
+        In fact, we have
         \begin{equation*}
             \overline \psi' \psi' = {\psi'}^\dagger \gamma^0 \psi' = \psi^\dagger \underbrace{S^\dagger}_{\gamma^0 S^{-1} \gamma^0} \gamma^0 S \psi = = \psi^\dagger \gamma^0 S^{-1} \underbrace{\gamma^0 \gamma^0}_1 S \psi = \psi^\dagger \gamma^0 \underbrace{S^{-1} S}_1 \psi = \psi^\dagger \gamma^0 \psi = \overline \psi \psi ~.
         \end{equation*}
     \end{proof}
 
-    Now, we want to build a $4$-vector $\overline \psi \gamma^\mu \psi$ such that
+    Furthermore, it is possible to build a $4$-vector $\overline \psi \gamma^\mu \psi$ such that
     \begin{equation*}
-        \overline psi' \gamma^\mu \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \nu} \gamma^\nu \psi ~,
+        \overline \psi' \gamma^\mu \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \nu} \gamma^\nu \psi ~,
     \end{equation*}
     or equivalently 
     \begin{equation*}
@@ -94,7 +125,7 @@
 
     Furthermore, $\Sigma^{\mu\nu}$ is a $2$-tensor 
     \begin{equation*}
-        \overline psi' \Sigma^{\mu\nu} \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \alpha} \Lambda^\nu_{\phantom \nu \beta} \Sigma^{\alpha\beta} \psi ~.
+        \overline \psi' \Sigma^{\mu\nu} \psi' = \overline \psi \Lambda^\mu_{\phantom \mu \alpha} \Lambda^\nu_{\phantom \nu \beta} \Sigma^{\alpha\beta} \psi ~.
     \end{equation*}
     \begin{proof}
         Maybe in the future.
@@ -136,7 +167,7 @@
         Maybe in the future.
     \end{proof}
 
-\chapter{Chiral spinors}
+\section{Chiral spinors}
 
     Recall that the Dirac representation $(\frac{1}{2}, 0) \oplus (0, \frac{1}{2})$ is reducible and it can be decomposed into $2$ irreducible Weyl representations $(\frac{1}{2}, 0)$ and $(0, \frac{1}{2})$. 
 
@@ -222,7 +253,7 @@
         Maybe in the future.
     \end{proof}
 
-\chapter{Solutions of the Dirac equation}
+\section{Solutions of the Dirac equation}
 
     Since each components of the Dirac spinor $\psi(x)$ satisfies the Klein-Gordon equation, the plane waves are solutions 
     \begin{equation*}
@@ -389,7 +420,7 @@
         \end{bmatrix} = (-1) \xi ~,
     \end{equation*}
 
-\chapter{Useful formulas} 
+\section{Useful formulas} 
 
 \section{Inner product}
 
@@ -593,7 +624,9 @@
         \end{equation*}
     \end{proof}
 
-\chapter{How to not quantise the Dirac theory}
+\chapter{Quantisation}
+
+\section{How to not quantise the Dirac theory}
 
     We quantise the theory with the same procedure we used for the scalar field. The conjugate field is 
     \begin{equation*}
@@ -732,7 +765,7 @@
 
     To summarise, if we try to quantise Dirac theory with commutation relations, we get into troubles since $b$-particles have both positive norms and energies, but $c$-particles have either positive norm/negative energies or negative norms/positive energies. 
 
-\chapter{How to rightly quantise Dirac theory}
+\section{How to rightly quantise Dirac theory}
 
     Since bosons follow the Bose-Eistein statistics, in which 
     \begin{equation*}

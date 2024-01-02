@@ -182,9 +182,9 @@
         \end{equation*}
     \end{proof}
     The density state $\omega(E)$ is
-    \begin{equation*}
+    \begin{equation}\label{harmosc}
         \omega (E) = \frac{1}{\xi_N \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} E^{dN-1} ~.
-    \end{equation*}
+    \end{equation}
     In the case $d = 3$, we obtain 
     \begin{equation*}
         \omega (E) = \frac{1}{\xi_N \Gamma (3N)} \Big (\frac{2 \pi}{h \omega} \Big )^{3N} E^{3N-1} ~.
@@ -981,9 +981,9 @@
     \end{proof}
 
     An useful intermediary formula is 
-    \begin{equation*}
+    \begin{equation}\label{c:mag}
         \mathbf M = - \pdv{F}{\mathbf B} \Big \vert_{\beta} ~.
-    \end{equation*}
+    \end{equation}
     \begin{proof}
         In fact, using~\eqref{c:av} and~\eqref{c:f}, we obtain 
         \begin{equation*}
@@ -1312,7 +1312,7 @@
         In fact, using~\eqref{c:z} and the gaussian integral~\eqref{app:gauss}
         \begin{equation*}
         \begin{aligned}
-            Z_2 & = \int_{\mathcal M^2} d \Omega \exp(- \beta H) \\ & = \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
+            Z_2 & = \int_{\mathcal M^2} d \Omega \exp(- \beta H) = \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
         \end{aligned}
         \end{equation*}
         Now, we make a change into the center of mass coordinates $R = (q_1 + q_2)/2$ and $r = |q_1 - q_2|$, and we find
@@ -1332,15 +1332,15 @@
         For the first of~\eqref{gc:es}, we obtain 
         \begin{equation*}
         \begin{aligned}
-            p V & = \frac{1}{\beta} \ln \mathcal Z \\ & \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) + O(3) \\ & \simeq \frac{1}{\beta} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) ~,
+            p V & = \frac{1}{\beta} \ln \mathcal Z \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) + O(3) \\ & \simeq \frac{1}{\beta} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) = \frac{1}{\beta} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) ~,
         \end{aligned}
         \end{equation*}
         where we have used $\ln (1 + x) \simeq x - x^2/2$ for $x \ll 1$.
         For the second of~\eqref{gc:es}, we obtain 
         \begin{equation*}
         \begin{aligned}
-            N & = z \pdv{}{z} \ln \mathcal Z \\ & \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) \\ & \simeq z \pdv{}{z} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3)
-            \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = z \pdv{}{z} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) \\ & = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~.
+            N & = z \pdv{}{z} \ln \mathcal Z \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) \\ & \simeq z \pdv{}{z} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3)
+            \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = z \pdv{}{z} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3)  = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -1361,7 +1361,7 @@
         we find 
         \begin{equation*}
         \begin{aligned}
-            z & = A n + B n^2 + O(n^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta))^2 + O(z^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B \frac{z^2}{\lambda_T^6} + O(z^3) \\ & = z \frac{A}{\lambda_T^3} + z^2 ( \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6}) + O (z^3) ~,
+            z & = A n + B n^2 + O(n^3) = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta))^2 + O(z^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B \frac{z^2}{\lambda_T^6} + O(z^3) = z \frac{A}{\lambda_T^3} + z^2 ( \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6}) + O (z^3) ~,
         \end{aligned}
         \end{equation*}
         which implies that, since the coefficient in z must be $1$ and in $z^2$ must be $0$, 
@@ -1379,7 +1379,7 @@
         Finally, combining all two, we obtain 
         \begin{equation*}
         \begin{aligned}
-            p \beta & = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) + O(n^3) \\ & = \frac{1}{\lambda_T^3} (\lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2) + \frac{\tilde J_2 (\beta)}{2 \lambda_T^6} ( \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2)^2 + O(n^3) \\ & = n - n^2 \tilde J_2 (\beta) + \frac{1}{2} n^2 \tilde J_2 (\beta) + O(n^3) \\ & = n - n^2 \frac{\tilde J_2(\beta)}{2} + O(n^3) ~.
+            p \beta & = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) + O(n^3) \\ & = \frac{1}{\lambda_T^3} (\lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2) + \frac{\tilde J_2 (\beta)}{2 \lambda_T^6} ( \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2)^2 + O(n^3) \\ & = n - n^2 \tilde J_2 (\beta) + \frac{1}{2} n^2 \tilde J_2 (\beta) + O(n^3) = n - n^2 \frac{\tilde J_2(\beta)}{2} + O(n^3) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -1407,7 +1407,7 @@
         First, we need to evaluate $\tilde J_2 (\beta)$ 
         \begin{equation*}
         \begin{aligned}
-            \tilde J_2 (\beta) & = \int d^3 r (\exp(- \beta U(r)) - 1) \\ & = 4 \pi \int_0^{2r_0} dr ~ r^2 \underbrace{(\exp(- \beta U(r)) - 1)}_{-1} + 4\pi \int_{2r_0}^\infty dr ~ r^2\underbrace{(\exp(- \beta U(r)) - 1)}_{\beta U(r)} \\ & \simeq - \underbrace{4 \pi \int_0^{2r_0} dr ~ r^2}_{2b} + \beta \underbrace{4\pi \int_{2r_0}^\infty dr ~ r^2 U(r)}_{2 a} \\ & = - 2 b + 2 \beta a ~,
+            \tilde J_2 (\beta) & = \int d^3 r (\exp(- \beta U(r)) - 1) \\ & = 4 \pi \int_0^{2r_0} dr ~ r^2 \underbrace{(\exp(- \beta U(r)) - 1)}_{-1} + 4\pi \int_{2r_0}^\infty dr ~ r^2\underbrace{(\exp(- \beta U(r)) - 1)}_{\beta U(r)} \\ & \simeq - \underbrace{4 \pi \int_0^{2r_0} dr ~ r^2}_{2b} + \beta \underbrace{4\pi \int_{2r_0}^\infty dr ~ r^2 U(r)}_{2 a} = - 2 b + 2 \beta a ~,
         \end{aligned}
         \end{equation*}
         where for the first integral we have used 
@@ -1470,7 +1470,7 @@
         By definition~\eqref{e:shannon2}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            S & = \ln W_{n_r} = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} \\ & = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
+            S & = \ln W_{n_r} = \ln \Big (N! \prod_{r=1}^p \frac{g_r^{n_r}}{n_r!} \Big) = \ln N! + \sum_{r=1}^p \ln \frac{g_r^{n_r}}{n_r!} = \underbrace{\ln N!}_{N \ln N - N} + \sum_{r=1}^p (\ln g_r^{n_r} - \underbrace{\ln n_r!}_{n_r \ln n_r - n_r} ) \\ & = N \ln N - \cancel{N} + \sum_{r=1}^p n_r \ln g_r - \sum_{r=1}^p n_r \ln n_r - \cancel{\sum_{r=1}^p n_r} = N \ln N + \sum_{r=1}^p n_r \ln g_r + \sum_{r=1}^p n_r \ln n_r ~.
         \end{aligned}
         \end{equation*}
         Adding the constraints~\eqref{e:constrain}, we have

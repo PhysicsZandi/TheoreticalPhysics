@@ -452,9 +452,9 @@
         \rho_c = \frac{1}{Z_N } \sum_j \exp(- \beta E_j) \hat P_j = \frac{\exp(- \beta \hat H)}{Z_N} ~,
     \end{equation*}
     where the quantum canonical partition function is 
-    \begin{equation*}
+    \begin{equation}\label{qgc:cz}
         Z_N(T,V) = \tr_{\mathcal H_{tot}} \exp(- \beta \hat H) ~.
-    \end{equation*}
+    \end{equation}
     Notice that they are similar to the classical case~\eqref{c:pdd} and~\eqref{c:z}.
     \begin{proof}
         For a mixed state, the density matrix is~\eqref{mix}
@@ -480,13 +480,13 @@
     \end{proof}
 
     Similarly to the classical case~\eqref{c:zf} and~\eqref{c:f}, we define the Helmholtz free energy
-    \begin{equation*}
+    \begin{equation}\label{qgc:cf}
         Z_N = \exp(- \beta F) ~, \quad F = - \frac{1}{\beta} \ln Z_N ~.
-    \end{equation*}
+    \end{equation}
     The average energy is 
-    \begin{equation*}
+    \begin{equation}\label{qgc:ce}
         E = \av{\hat H}_c = - \pdv{}{\beta} \ln Z_N ~.
-    \end{equation*}
+    \end{equation}
     Notice that it is similar to the classical case~\eqref{c:e2}.
     \begin{proof}
         Using~\eqref{avobs}, we have
@@ -956,7 +956,7 @@
             \alpha_i = \alpha_{i+1} ~.
         \end{equation*}
         Therefore, $\forall i= 1, \ldots N-1$ and $\alpha_i \in [0, 2\pi[$ we have $\alpha_i = \alpha_{i+1} = \alpha$.
-        Using~\eqref{prop3}
+        Using~\eqref{perm:3}
         \begin{equation*}
             \exp(i \alpha)^2 = \exp (2 i \alpha) = \mathbb I = \exp(0) ~,
         \end{equation*}
@@ -1939,21 +1939,32 @@
         \end{equation*}
     \end{proof}
 
-\chapter{Fermions}
+    As an aside, we can recover all the formulas of the previous sections, starting from the phase space. In fact, using~\eqref{cm:denst}, we have 
+    \begin{equation}\label{q:o}
+        \Omega = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln (1 \mp \exp(- \beta (\epsilon - \mu))) ~,
+    \end{equation}
+    \begin{equation}\label{q:e}
+        E = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) \epsilon ~,
+    \end{equation}
+    \begin{equation}\label{q:n}
+        N = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) ~.
+    \end{equation}
 
-    In this chapter, we will restrict ourselves with the fully-quantum fermionic case, in particular we will study the $T = 0$ limit.
+\chapter{Fermi energy and Bose-Einstein condensate}
 
-    Recall that for~\eqref{qg:n3} and~\eqref{qg:p}, we have
+    In this chapter, we will restrict ourselves with the fully-quantum fermionic case, in particular we will study the $T = 0$ limit, and with the fully-quantum fermionic case, in particular we will study the Bose-Einstein condensate.
+
+\section{Fermions at T=0}
+
+    In the fermionic case, recall that for~\eqref{qg:n3} and~\eqref{qg:p}, we have
     \begin{equation*}
-        n = \frac{g}{\lambda_T^3} f_{\frac{3}{2}}^+ (z) ~, \quad \beta p = \frac{g}{\lambda_T^3} f_{\frac{5}{2}}^+ (z) ~,
+        n = \frac{g}{\lambda_T^3} f_{\frac{3}{2}}^- (z) ~, \quad \beta p = \frac{g}{\lambda_T^3} f_{\frac{5}{2}}^- (z) ~,
     \end{equation*}
     where for~\eqref{ser2}
     \begin{equation*}
-        f_l^+ (z) = \sum_{n=0}^\infty \frac{(-1)^n z^{n+1}}{(n+1)^l} ~.
+        f_l^- (z) = \sum_{n=0}^\infty \frac{(-1)^n z^{n+1}}{(n+1)^l} ~.
     \end{equation*}
     Notice that this series in an alternate-sign power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and pointwisely converges for $z > 1$. Moreover, it is a monotonic function in $z$. 
-
-\section{T = 0}
 
     For the zero temperature limit $T = 0$, the Fermi-Dirac distribution~\eqref{fdbe} becomes 
     \begin{equation}\label{fdtz}
@@ -1966,17 +1977,9 @@
     A plot of the Fermi-Dirac distribution is in Figure~\ref{fig:fd}.
     \begin{figure}
         \centering
-        \scalebox{0.7}{\pyc{plot3('x', '1 / ( exp(x) + 1)', '1 / ( exp(5 * x) + 1)','1 / ( exp(100 * x) + 1)', 5, 2, 16, True, False, True)}}
+        \scalebox{0.7}{\pyc{plot3('x', '1 / ( exp(x) + 1)', '1 / ( exp(5 * x) + 1)','1 / ( exp(100 * x) + 1)', 5, 2, 17, True, False, True)}}
         \caption{A plot of the Fermi-Dirac distribution as a function of $\beta (\epsilon - \mu)$ at different temperature (red is hot, blue is cold). We have used $\beta (\epsilon - \mu)$ and $f(x) = n$.}
         \label{fig:fd}
-    \end{figure}
-
-    A plot of the Bose-Enstein distribution is in Figure~\ref{fig:be}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot3('x', '1 / ( exp(x) - 1)', '1 / ( exp(5 * x) - 1)','1 / ( exp(90 * x) - 1)', 5, 2, 17, True, True, True)}}
-        \caption{A plot of the Bose-Eintein distribution as a function of $\beta (\epsilon - \mu)$ at different temperature (red is hot, blue is cold). We have used $\beta (\epsilon - \mu)$ and $f(x) = n$.}
-        \label{fig:be}
     \end{figure}
     
     Notice that it is a discontinuous step function $\theta (\mu(T=0) - \epsilon)$ with a step in $\epsilon = \mu(T = 0)$, called Fermi energy $\epsilon_F = \mu(T=0)$. Physically, it means that all the states below this energy level are occupied. Hence, for $\epsilon < \epsilon_F$, we have as many states as particles. If we add a particle, we increase $\epsilon_F$, whereas if we remove a particle, we decrease $\epsilon_F$. This is the procedure to dope a material.
@@ -2029,26 +2032,222 @@
         E = \frac{3}{5} N \epsilon_F \Big (1 - \frac{5 \pi^2 T^2}{12 \epsilon_F^2} \Big ) + \ldots ~, \quad p = \frac{2}{5} n \epsilon_F \Big (1 - \frac{5 \pi^2 T^2 k_B^2}{12 \epsilon_F^2} \Big ) + \ldots ~.
     \end{equation*}
 
-\chapter{Bosons}
+\section{Bosons at low temperature}
 
-    In this chapter, we restrict ourselves with the bosonic case. The equations of state are 
+    In the bosonic case, recall that for~\eqref{qg:n3} and~\eqref{qg:p}, we have
     \begin{equation*}
-        n = \frac{g}{\lambda^3_T} f^-_{\frac{3}{2}} (z) ~, \quad \beta p = \frac{g}{\lambda^3_T} f^-_{\frac{5}{2}} (z)
+        n = \frac{g}{\lambda_T^3} f_{\frac{3}{2}}^+ (z) ~, \quad \beta p = \frac{g}{\lambda_T^3} f_{\frac{5}{2}}^+ (z) ~,
     \end{equation*}
-    where 
+    where for~\eqref{ser2}
     \begin{equation*}
-        f_l^- (z) = \sum_{n=0}^\infty \frac{z^{n+1}}{(n+1)^l}
+        f_l^+ (z) = \sum_{n=0}^\infty \frac{z^{n+1}}{(n+1)^l} ~.
     \end{equation*}
-    which is a positive-terms power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and converges for $z > 1$ only if $l < 2$. Moreover, it is a monotonic function in $z$. At $z = 1$, it becomes the Riemann zeta 
+    Notice that this series in an positive-terms power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and converges for $z > 1$ only if $l < 2$. Moreover, it is a monotonic function in $z$. At $z = 1$, it becomes the Riemann zeta 
     \begin{equation*}
-        g_{\frac{3}{2}} (z=1) = \sum_{n=0}^\infty \frac{1}{n+1}^{\frac{3}{2}} = \zeta(\frac{3}{2}) ~.
+        f^+_{3/2} (z=1) = \sum_{n=0}^\infty \frac{1}{(n+1)^{3/2}} = \zeta(\frac{3}{2}) ~.
+    \end{equation*}
+    At $z = 1$, it has a vertical derivative, and for $z > 1$, it is not defined according to the physical $\mu > 0$ in the grandcanonical ensemble. See Figure~\eqref{fig:z}.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+        \draw[->] (-0.5,0) -- (5,0) node[right] {$z$};
+        \draw[->] (0,-0.5) -- (0,3.5) node[right] {$f^+_{3/2}$};
+                
+        \draw[thick] (0,0) to[bend right=40] (2.5,2.5);
+
+        \filldraw[black] (2.5,0) circle (0.05) node[below right] {$z=1$};
+        \filldraw[black] (0,2.5) circle (0.05) node[below right] {$\zeta(3/2)$};
+        
+        \end{tikzpicture}
+        \caption{Qualitative plot of $f^+_{3/2}$ in function of $z$.}
+        \label{fig:z}
+    \end{figure}
+
+    Now, we study the behaviour of the chemical potential $\mu$. It goes to $-\infty$ for $T \rightarrow \infty$ and  the equilibrium condition implies that $\pdv{\mu}{T} < 0$ for~\eqref{td:muT}, therefore, it cannot increase. If $\mu = 0$, the density becomes 
+    \begin{equation*}
+        n(\epsilon) = \frac{1}{\exp(\beta(\epsilon - \mu)) - 1} \Big \vert_{\mu = 0} = \frac{1}{\exp(\beta \epsilon) - 1} ~,
+    \end{equation*}
+    which shows that in the ground state, for $\epsilon \rightarrow 0$, all bosons are at this level and the occupation number $n_0$ becomes macroscopically important
+    \begin{equation}\label{ninf}
+        n(\epsilon) \xrightarrow{\epsilon \rightarrow 0} n_0 =\infty ~.
+    \end{equation}
+    A plot of the Bose-Enstein distribution is in Figure~\ref{fig:be}.
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot3('x', '1 / ( exp(x) - 1)', '1 / ( exp(5 * x) - 1)','1 / ( exp(90 * x) - 1)', 5, 2, 18, True, True, True)}}
+        \caption{A plot of the Bose-Eintein distribution as a function of $\beta (\epsilon - \mu)$ at different temperature (red is hot, blue is cold). We have used $\beta (\epsilon - \mu)$ and $f(x) = n$.}
+        \label{fig:be}
+    \end{figure}
+    However, we can even $\mu(T=T_c) = 0$ for a different temperature, higher than $T=0$, called critical temperature 
+    \begin{equation*}
+        T_c = \frac{2 \pi \hbar^2}{m k_B} \Big ( \frac{n}{\zeta(3/2)} \Big)^{2/3} ~.
+    \end{equation*}
+    This is possible since $\mu < 0$ and it cannot pass the $T$-axis, but it cannot even decrease, so it must remain on the $T$-axis. See Figure~\eqref{fig:mu}. 
+    \begin{proof}
+        The condition to have $\mu = 0$ is that $z = 1$, which for~\eqref{qg:n3} implies that 
+        \begin{equation*}
+            n = \frac{g}{\lambda_T^3} f^+_{3/2} (z=1) = g \Big (\frac{2 \pi \hbar^2}{m k_B T} \Big)^{3/2} \zeta(3/2) ~.
+        \end{equation*}
+        Hence, we find
+        \begin{equation*}
+            T_c = \frac{2 \pi \hbar^2}{m k_B} \Big ( \frac{n}{\zeta(3/2)} \Big)^{2/3} ~.
+        \end{equation*}
+    \end{proof}
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+        \draw[->] (-0.5,0) -- (5,0) node[right] {$T$};
+        \draw[->] (0,-3.5) -- (0,0.5) node[right] {$\mu$};
+                
+        \draw[thick] (5,-3.5) to[bend right=30] (1,0);
+        \draw[thick] (1,0) -- (0,0);
+
+        \filldraw[black] (1,0) circle (0.05) node[above right] {$T=T_c$};
+        
+        \end{tikzpicture}
+        \caption{Qualitative plot of $\mu(T)$ in function of $T$.}
+        \label{fig:mu}
+    \end{figure}
+
+    Therefore, we should have density that behaves as 
+    \begin{equation*}
+        n = \begin{cases}
+            \frac{g}{\lambda_T^3} f^+_{3/2} (z) & T > T_c \\
+            \frac{g}{\lambda_T^3} \zeta(3/2) & T \leq T_c \\
+        \end{cases} ~.
+    \end{equation*}
+    Howver, we have made a mistake, since for $T \rightarrow 0$ we have 
+    \begin{equation*}
+        n \propto T^{1/2} \xrightarrow{T \rightarrow 0} 0 ~,
+    \end{equation*}
+    but it is in contradiction with the previous result~\eqref{ninf}. To fix it, we notice that $n(\epsilon)$ must be infinitesimal with respect to $N$ in order to recover 
+    \begin{equation*}
+        N = \int_0^\infty d\epsilon ~ n(\epsilon) g(\epsilon) ~,
+    \end{equation*}
+    but, for $\epsilon = 0$ at $T \leq T_c$, this does not hold since $n(\epsilon = 0) \sim N$. This happens because in the thermodynamic limit we have lost a null-measure point which can be recovered by setting 
+    \begin{equation*}
+        N = \sum_k \frac{1}{\exp(\beta(\epsilon_k - \mu)) - 1} = N_0 + \sum_{k\neq 0} n(k) ~,
+    \end{equation*}
+    which implies that 
+    \begin{equation*}
+        n = n_0 + \frac{g}{\lambda_T^3} f^+_{3/2} (z) ~,
+    \end{equation*}
+    where the second term is the normal particle contribution that goes to zero for low T but there is the first terms which is the ground state contribution that does not go to zero and implies that all particles are in the ground state. To summarise, we have 
+    \begin{equation}\label{nnnn}
+        n = \begin{cases}
+            \frac{g}{\lambda_T^3} f^+_{3/2} (z) & T > T_c \\
+            \frac{g}{\lambda_{T_c}^3} \zeta(3/2) & T = T_c \\
+            n_0(T) + n_n(T) = n_0 (T) + \frac{g}{\lambda_{T}^3} \zeta(3/2) & T < T_c \\
+        \end{cases} ~.
+    \end{equation}
+    Furthermore, we can estimate the ground state contribution, which is 
+    \begin{equation*}
+        n_0 (T) = n (1 - \Big (\frac{T}{T_c} \Big)^{3/2}) ~.
+    \end{equation*} 
+    A plot of the density at ground state $n_0$ and normal $n_n$ for $T \leq T_c$ is in Figure~\ref{fig:nn}. Notice that it is continuous but not differentiable in $T = T_c$ and the sum of them is constant $n = n_0 + n_n$.
+    \begin{proof}
+        In fact, inverting the middle of~\eqref{nnnn}, we obtain 
+        \begin{equation*}
+            \zeta(3/2) = \frac{n}{\lambda_{T_c}^2}{g} ~,
+        \end{equation*}
+        hence, we find 
+        \begin{equation*}
+            n_n (T) = \frac{g}{\lambda_T^3} \zeta(3/2) = \frac{g}{\lambda_T^3} \frac{n}{\lambda_{T_c}^2}{g} = n \Big (\frac{T}{T_c} \Big)^{3/2} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            n_0 (T) = n - n_n(T) = n - n \Big (\frac{T}{T_c} \Big)^{3/2} = n (1 - \Big (\frac{T}{T_c} \Big)^{3/2}) ~.
+        \end{equation*}
+    \end{proof}
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot2('x', 'Piecewise((x**(3/2), x < 1), (1, True))', 'Piecewise((1 - x**(3/2), x < 1), (0, True))', 3, 2, 19, False, True, True)}}
+        \caption{A plot of the density at ground state $n_0$ in blue and normal $n_n$ in red as a function of $T$. We have used $x = T / T_c$ and $f(x) = n_0 / n$.}
+        \label{fig:nn}
+    \end{figure}
+    In the phase transition language, $n_0$ is an order parameter, since 
+    \begin{equation*}
+        n_0 (T) \begin{cases}
+            = 0 & T \geq T_c \\
+            \neq 0 & T < T_c \\
+        \end{cases} ~.
     \end{equation*}
 
-    Notice that in $z = 1$, it has a vertical derivative, and for $z > 1$, it is not defined according to the physical $\mu > 0$ in the grandcanonical ensemble. 
+    Now, we can study thermodynamics. The pressure is 
+    \begin{equation*}
+        p \beta = \frac{g}{\lambda_T^3} f^+_{5/2} (z) 
+    \end{equation*}
+    and energy is
+    \begin{equation}\label{eeee}
+        E = \frac{3pV}{2} = \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) ~.
+    \end{equation} 
+    This relations are valid $\forall T$. Notice that $f^+_{5/2}$ is absolutely convergent since $5/2 > 2$. We can define the energy per particle 
+    \begin{equation*}
+        u(T) = \frac{E}{N} = \begin{cases}
+            \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T geq T_c \\
+            \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
+        \end{cases} ~.
+    \end{equation*}
+    It is continuous in $T=T_c$ but not differentiable. Therefore, the specific heat per particle $c_v = \partial u / \partial T$ has a cusp and we can classify this as a first order phase transition.
+    \begin{proof}
+        In fact, using~\eqref{eeee} and~\eqref{nnnn}, we have 
+        \begin{equation*}
+        \begin{aligned}
+            u(T) = \frac{E}{N} = \frac{E}{V} \frac{V}{N} = \begin{cases}
+                \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z)  \frac{\lambda_T^3}{g f^+_{3/2} (z)} & T \geq T_c \\
+                \frac{3 g}{2 \lambda_T^3 \beta} \zeta(5/2) \frac{\lambda_T^3}{g \zeta(3/2)} \Big ( \frac{T}{T_c} \Big )^{3/2} & T < T_c \\
+            \end{cases} = \begin{cases}
+                \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T \geq T_c \\
+                \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
+            \end{cases} ~.
+        \end{aligned}
+        \end{equation*}
+        It is continuous, since for $T = T_c$, we have
+        \begin{equation*}
+            \lim_{T \rightarrow T_c^-} u(T) = \lim_{T \rightarrow T_c^+} u(T) = \frac{3}{2} k_B T_c \frac{\zeta(5/2)}{\zeta(3/2)} ~.
+        \end{equation*}
+    \end{proof}
+    The entropy per particle is 
+    \begin{equation*}
+        s = \begin{cases}
+            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) & T \geq T_c \\
+            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta (3/2)} \frac{5}{2} \zeta(5/2)  & T \geq T_c \\
+        \end{cases} ~.
+    \end{equation*}
+    \begin{proof}
+        Using~\eqref{td:o} and~\eqref{qg:p}, we have 
+        \begin{equation*}
+            S = \frac{1}{T} (E - \underbrace{\Omega}_{- \frac{2}{3}E} - \underbrace{\mu}_{\frac{1}{\beta} \ln z} N) = \frac{1}{T} (\frac{5}{3} E - N \frac{1}{\beta} \ln z)  ~.
+        \end{equation*}
+        Hence, using~\eqref{nnnn} and~\eqref{eeee}, we find for $T \geq T_c$
+        \begin{equation*}
+        \begin{aligned}
+            s & = \frac{S}{N} = \frac{V}{N} \frac{S}{V} = \frac{1}{n} \frac{1}{T} (\frac{5}{3} \frac{E}{V} - \frac{N}{V} \frac{1}{\beta} \ln z) \\ & = \frac{\lambda_{T_c}^3}{g \zeta(3/2)} k_B \beta ( \frac{5}{3} \frac{3g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) - \frac{g}{\lambda_T^3} f^+_{3/2} (z) \frac{1}{\beta} \ln z) = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) ~,
+        \end{aligned}
+        \end{equation*}
+        whereas for $T > T_c$, we simply put $z = 1$ 
+        \begin{equation*}
+            s = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta (3/2)} \frac{5}{2} \zeta(5/2) ~.
+        \end{equation*}
+    \end{proof}
+    Notice that, for $T \rightarrow T_c^+$, we have 
+    \begin{equation*}
+        S \xrightarrow{T \rightarrow T_c^+} \frac{5}{2} \frac{\eta(5/2)}{\eta(3/2)} ~,
+    \end{equation*}
+    but for for $T \rightarrow 0$, we have 
+    \begin{equation*}
+        S \xrightarrow{T \rightarrow 0} 0 ~,
+    \end{equation*} 
+    which is consistent with the fact that all particles are in the ground state and it is the only possible state. Therefore, in the range $[0, T_c]$, we have a lose of entropy which means a latent heat transfer $\Delta Q = T_c \Delta S$
+    \begin{equation*}
+        \Delta S = S(T=T_c) - S(T=0) = \frac{5}{2} \frac{\eta(5/2)}{\eta(3/2)} = \frac{\Delta Q}{T_c} ~.
+    \end{equation*}
+    Notice that, if all particles are in the ground state, we can describe them with a single wavefunction and the system behaves like a single quantum object with macroscopic quantum effects and associated probability $|\psi_{gs}|^2 dV$. 
 
-    We can study the behaviour of the chemical potential $\mu$. It goes to $-\infty$ for $T \rightarrow \infty$ but the equilibrium condition implies that $\pdv{\mu}{T} < 0$, therefore, it cannot increase. 
-
-\section{Low temperature limit}
-
-\section{Bose-Einstein condensate}
-
+    To coclude, we mention some notions of how it was experimentally realised a Bose-Einstein condensate. The assumptions to have a Bose-Einstein condensate are 
+    \begin{enumerate}
+        \item quantum non-interacting bosonic $3$-dimensional gas, 
+        \item thermal wavelength of the same order of De Broglie wavelength $\lambda_T \simeq \lambda_{DB} = h / p$,
+        \item average distance between two particle is $d \simeq \lambda_{DB}$, in order to have quantum effects.
+    \end{enumerate}
+    In 1938, it was thought that $He^4$ was found in a BEC, but it was a false allarm since at that temperature of $T \simeq 2 K$ Helium is an highly interacting liquid. They discovered a superfluid. It was only in 1995 that a cloud of $Rb^{87}$ was experimentally found at a temperature of $T \sim 10 nK - 1 \mu K$. It was realised using a set of tecnique, called laser cooling, Doppler cooling and magneto-optical trap, which essentially uses beam of laser to cool down the gas (Doopler because the freqency is slightly different from the one of emission to have a DOppler effect) and magnetic field to trap it. It was seen by analysing the gas expand once all traps have been switching off. 
