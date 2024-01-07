@@ -1,24 +1,24 @@
 \chapter{Applications}
 
-    In this chapter, we will study different physical systems. In the microcanonical ensemble, we will analyse a non-relativistic ideal gas and a gas of harmonic oscillators. In the canonical ensemble, we will analyse a non-relativistic ideal gas, a gas of harmonic oscillators, an ultra-relativistic gas and a magnetic solid. In the grand canonical ensemble, we will analyse a non-relativistic ideal gas. Furthermore, we will investigate the Maxwell-Boltzmann distribution, the virial expansion and Van der Waals gases.
+    In this chapter, we will study different physical systems. In the microcanonical ensemble, we will analyse a non-relativistic ideal gas and a gas of harmonic oscillators. In the canonical ensemble, we will analyse a non-relativistic ideal gas, a gas of harmonic oscillators, an ultra-relativistic gas, a magnetic solid and the Maxwell-Boltzmann distribution. In the grand canonical ensemble, we will analyse a non-relativistic ideal gas and a gas of harmonic oscillators. Furthermore, we will investigate the counting of state approach with the Maxwell-Boltzmann, Fermi-Dirac and Bose-Einstein distributions, and the two-level system.
 
 \section{Microcanonical non-relativistic ideal gas}
 
     \begin{exercise}
-        Consider a non-relativistic ideal (non-interacting) gas of $N$ particles with mass $m$, living in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
+        Consider a non-relativistic ideal, i.e.~non-interacting, gas of $N$ particles with mass $m$, living in an $2dN$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
         \begin{equation*}
-            H = \sum_i \frac{p^2_i}{2m} ~.
+            H = \sum_{i=1}^{dN} \frac{p^2_i}{2m} ~.
         \end{equation*}
-        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state. Finally, express the same physical quantities in the case $d = 3$.
+        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state $p = p(V, T, N)$. Finally, express the same physical quantities in the case $d = 3$.
     \end{exercise}
 
     The number of states $\Sigma(E)$ is 
     \begin{equation*}
-        \Sigma(E) = \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} ~.
+        \Sigma(E) = \frac{V^{N}}{\xi_N \Gamma(dN/2 + 1)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} ~.
     \end{equation*}
     In the case $d = 3$, we obtain 
     \begin{equation*}
-        \Sigma(E) = \frac{2V^{N}}{\xi_N 3 N \Gamma(3N/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{3N/2} ~.
+        \Sigma(E) = \frac{V^{N}}{\xi_N \Gamma(3N/2 + 1)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{3N/2} ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{cm:vol}, we have
@@ -34,16 +34,15 @@
         Hence, by the volume of a $dN$-sphere of radius $\sqrt{2mE}$~\eqref{app:volumen}, we find
         \begin{equation*}
         \begin{aligned}
-            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i p^2_i \leq 2mE} \prod_i d^d q_i d^d p_i = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{V^N} \prod_i d^d q_i}_{V^N} \underbrace{\int_{\sum_i p^2_i \leq 2mE} \prod_i d^d p_i}_{\frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)}} \\ & = \frac{V^N}{h^{dN} \xi_N} \frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)} = \frac{2 V^N}{\Gamma (dN/2)\xi_N d N} \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} ~,
+            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i p^2_i \leq 2mE} \prod_i d^d q_i d^d p_i = \frac{1}{h^{dN} \xi_N} \underbrace{\int_{V^N} \prod_i d^d q_i}_{V^N} \underbrace{\int_{\sum_i p^2_i \leq 2mE} \prod_i d^d p_i}_{\frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)}} \\ & = \frac{V^N}{h^{dN} \xi_N} \frac{\pi^{dN/2} (2mE)^{dN/2}}{\Gamma (dN/2 + 1)} = \frac{V^N}{\Gamma (dN/2 + 1) \xi_N} \Big (\frac{2 \pi m E}{h^2} \Big)^{dN/2} ~.
         \end{aligned}
         \end{equation*}
-        where we have used a property of the Gamma function $\Gamma(n + 1) = n \Gamma (n)$
     \end{proof}
 
     The density of states $\omega(E)$ is
-    \begin{equation*}
+    \begin{equation}\label{freegas}
         \omega (E) = \frac{V^N}{\xi_N \Gamma(dN/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{dN/2} E^{dN/2-1} ~.
-    \end{equation*}
+    \end{equation}
     In the case $d = 3$, we obtain  
     \begin{equation*}
         \omega (E) = \frac{V^N}{\xi_N \Gamma(3N/2)} \Big ( \frac{2 \pi m}{h^2} \Big )^{3N/2} E^{3N/2-1} ~.
@@ -60,7 +59,7 @@
     \begin{equation*}
         \omega(E) = \frac{dN}{2E} \Sigma(E) ~, \quad \Gamma(E) = \omega(E) \Delta E = \frac{dN}{2E} \Sigma(E) \Delta E ~,
     \end{equation*}
-    which prove, in the thermodynamic limit, that the relations~\eqref{mc:tdlim} are equivalents
+    which proves, in the thermodynamic limit, that the relations~\eqref{mc:tdlim} are equivalents
     \begin{equation*}
         \lim_{TD} \frac{\ln \Gamma (E)}{N} = \lim_{TD} \frac{\ln \omega (E)}{N} = \lim_{TD} \frac{\ln \Sigma (E)}{N} ~.
     \end{equation*}
@@ -69,7 +68,7 @@
     \end{proof}
     The entropy $S$ is
     \begin{equation*}
-        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{dN}{2E} + \ln \Delta E ~,
+        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) + \ln \frac{dN}{2E} + \ln \Delta E ~,
     \end{equation*}
     and, in the thermodynamic limit, it becomes
     \begin{equation*}
@@ -83,18 +82,18 @@
         S = k_B \begin{cases}
             \frac{3}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for distinguishable particles} \\
             \frac{5}{2} N + N \ln \Big ( \frac{V}{N} (\frac{4 \pi m E}{3 N h^2})^{3/2} \Big) & \textnormal{for indistinguishable particles} \\
-        \end{cases} ~,
+        \end{cases} ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{mc:s}, using the Stirling approximation~\eqref{app:stirl}, we have
         \begin{equation*}
         \begin{aligned}
-            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \Big ( \frac{2V^{N}}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} \Big ) \\ & = \cancel{\ln 2} + N \ln V - \ln \xi_N - \cancel{\ln d} - \cancel{\ln N} - \ln \Gamma (dN/2) + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & =  N \ln V - \ln \xi_N - \underbrace{\ln \Gamma (dN/2)}_{\frac{dN}{2} \ln \frac{dN}{2} - \frac{dN}{2}} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - \frac{dN}{2} \ln \frac{dN}{2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - N \ln \Big(\frac{dN}{2} \Big)^{d/2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = - \ln \xi_N + \frac{dN}{2} + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~,
+            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \Big ( \frac{V^{N}}{\xi_N \Gamma(dN/2 + 1)} \Big ( \frac{2 \pi m E}{h^2}\Big)^{dN/2} \Big ) \\ & =  N \ln V - \ln \xi_N - \underbrace{\ln \Gamma (dN/2 + 1)}_{\frac{dN}{2} \ln \frac{dN}{2} - \frac{dN}{2}} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - \frac{dN}{2} \ln \frac{dN}{2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = N \ln V - \ln \xi_N - N \ln \Big(\frac{dN}{2} \Big)^{d/2} + \frac{dN}{2} + N \ln \Big (\frac{2 \pi m E}{h^2} \Big )^{d/2} \\ & = - \ln \xi_N + \frac{dN}{2} + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
         \end{aligned}
-        \end{equation*}
-        where we have neglected terms that do not scale at least as N, like $\ln 2$, $\ln d$ and $\ln N$. Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
+        \end{equation*} 
+        Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
         \begin{equation*}
-            \frac{S}{k_B} = - \cancel{\ln 1} + \frac{dN}{2} + N \ln \Big (V \frac{4 \pi m E}{dNh^2} \Big )^{d/2} = \frac{d}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
+            \frac{S}{k_B} = - \underbrace{\ln 1}_0 + \frac{dN}{2} + N \ln \Big (V \frac{4 \pi m E}{dNh^2} \Big )^{d/2} = \frac{d}{2} N + N \ln \Big ( V (\frac{4 \pi m E}{d N h^2})^{d/2} \Big) ~.
         \end{equation*}
         For indistinguishable particles $\xi_N = N!$, we find
         \begin{equation*}
@@ -141,20 +140,20 @@
 \section{Microcanonical gas of harmonic oscillators}
 
     \begin{exercise}
-        Consider a non-relativistic (non-interacting) gas of $N$ particles in an $d$-dimensional manifold confined by an harmonic potential of frequency $\omega$, with Hamiltonian 
+        Consider a non-relativistic, i.e.~non-interacting, gas of $N$ particles with mass $m$, living in an $2dN$-dimensional manifold confined by an harmonic potential of frequency $\omega$, with Hamiltonian 
         \begin{equation*}
-            H = \sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
+            H = \sum_{i =1}^{dN} \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) ~.
         \end{equation*}
-        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state. Finally, express the same physical quantities in the case $d = 3$.
+        Find the number of states $\Sigma(E)$, the density of states $\omega(E)$, the entropy $S$, the internal energy $E$ and the equation of state $p = p(V, T, N)$. Finally, express the same physical quantities in the case $d = 1$.
     \end{exercise}
 
     The number of states $\Sigma(E)$ is 
     \begin{equation*}
-        \Sigma(E) = \frac{1}{\xi_N d N \Gamma(dN/2)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{dN} ~.
+        \Sigma(E) = \frac{1}{\xi_N\Gamma(dN + 1)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{dN} ~.
     \end{equation*}
-    In the case $d = 3$, we obtain 
+    In the case $d = 1$, we obtain 
     \begin{equation*}
-        \Sigma(E) = \frac{1}{\xi_N 3N \Gamma(3N/2)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{3N} ~.
+        \Sigma(E) = \frac{1}{\xi_N \Gamma(N+1)} \Big ( \frac{2 \pi E}{h \omega}\Big)^{N} ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{cm:vol}, we have
@@ -177,7 +176,7 @@
         Hence, by the volume of a $2dN$-sphere of radius $1$~\eqref{app:volumen}, we find
         \begin{equation*}
         \begin{aligned}
-            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) \leq E} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} (2mE)^{dN/2} \Big (\frac{2E}{m\omega^2} \Big )^{dN/2} \underbrace{\int_{\sum_j x^2_j \leq 1} \prod_j d x_j}_{ \frac{\pi^{dN}}{\Gamma (dN + 1)}} \\ & = \frac{1}{\xi_N \Gamma (dN + 1)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} = \frac{1}{\xi_N dN \Gamma (dN)} \Big (\frac{2 \pi E}{h \omega} \Big)^{dN} ~.
+            \Sigma (E) & = \frac{1}{h^{dN} \xi_N} \int_{\sum_i \Big ( \frac{p^2_i}{2m} + \frac{m \omega^2}{2} q_i^2 \Big ) \leq E} \prod_i d^d q_i d^d p_i \\ & = \frac{1}{h^{dN} \xi_N} (2mE)^{dN/2} \Big (\frac{2E}{m\omega^2} \Big )^{dN/2} \underbrace{\int_{\sum_j x^2_j \leq 1} \prod_j d x_j}_{ \frac{\pi^{dN}}{\Gamma (dN + 1)}} \\ & = \frac{1}{\xi_N \Gamma (dN + 1)} \Big (\frac{2 \pi E}{h \omega} \Big )^{dN} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -185,9 +184,9 @@
     \begin{equation}\label{harmosc}
         \omega (E) = \frac{1}{\xi_N \Gamma (dN)} \Big (\frac{2 \pi}{h \omega} \Big )^{dN} E^{dN-1} ~.
     \end{equation}
-    In the case $d = 3$, we obtain 
+    In the case $d = 1$, we obtain 
     \begin{equation*}
-        \omega (E) = \frac{1}{\xi_N \Gamma (3N)} \Big (\frac{2 \pi}{h \omega} \Big )^{3N} E^{3N-1} ~.
+        \omega (E) = \frac{1}{\xi_N \Gamma (N)} \Big (\frac{2 \pi}{h \omega} \Big )^{N} E^{N-1} ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{cm:denst}, we have
@@ -199,7 +198,7 @@
     \end{proof}
     The entropy $S$ is
     \begin{equation*}
-        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) = \ln \Sigma(E) + \ln \frac{dN}{E} + \ln \Delta E ~,
+        \frac{S}{k_B} = \ln \Gamma(E) = \ln \omega(E) + \ln \Delta E = \ln \Sigma(E) + \ln \frac{dN}{E} + \ln \Delta E ~,
     \end{equation*}
     and, in the thermodynamic limit, it becomes
     \begin{equation*}
@@ -208,23 +207,23 @@
             (d+1) N + N d \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega d N} ) \Big ) & \textnormal{for indistinguishable particles} \\
         \end{cases} ~.
     \end{equation*}
-    In the case $d = 3$, we obtain 
+    In the case $d = 1$, we obtain 
     \begin{equation*}
         S = k_B \begin{cases}
-            3 N + 3 N \ln \Big (\frac{2 \pi E }{h \omega 3 N} \Big)  & \textnormal{for distinguishable particles} \\
-            4 N + 3 N \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega 3 N} ) \Big ) & \textnormal{for indistinguishable particles} \\
+            N + N \ln \Big (\frac{2 \pi E }{h \omega N} \Big)  & \textnormal{for distinguishable particles} \\
+            2N + N \ln \Big ( \frac{1}{N} (\frac{2 \pi E }{h \omega N} ) \Big ) & \textnormal{for indistinguishable particles} \\
         \end{cases} ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{mc:s}, using the Stirling approximation~\eqref{app:stirl}, the entropy is
         \begin{equation*}
         \begin{aligned}
-            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \frac{1}{\xi_N \Gamma(dN/2) d N} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} \\ & = - \ln \xi_N - \ln \Gamma (dN) - \cancel{\ln d} - \cancel{\ln N} + d N \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & - \ln \xi_N - \underbrace{\ln \Gamma (dN)}_{dN \ln (dN) - dN} + d N \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N - dN \ln (dN) + d N + dN \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~,
+            \frac{S}{k_B} & = \ln \Sigma (E) = \ln \frac{1}{\xi_N \Gamma(dN + 1)} \Big ( \frac{2 \pi E}{h \omega} \Big)^{dN} \\ & = - \ln \xi_N - \underbrace{\ln \Gamma (dN + 1)}_{dN \ln (dN) - dN} + d N \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N - dN \ln (dN) + d N + dN \ln \Big (\frac{2 \pi E }{h \omega} \Big ) \\ & = - \ln \xi_N + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~.
         \end{aligned}
         \end{equation*}
-        where we have neglected terms that do not scale at least as N, like $\ln d$ and $\ln N$. Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
+        Now, we treat the distinguishable and indistinguishable case separately. For distinguishable particles $\xi_N = 1$, we find
         \begin{equation*}
-            \frac{S}{k_B} = - \ln 1 + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) = d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~.
+            \frac{S}{k_B} = - \underbrace{\ln 1}_0 + d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) = d N + d N \ln \Big (\frac{2 \pi E }{h \omega d N} \Big ) ~.
         \end{equation*}
         For indistinguishable particles $\xi_N = N!$, we find
         \begin{equation*}
@@ -271,11 +270,11 @@
 \section{Canonical non-relativistic ideal gas}
 
     \begin{exercise}
-        Consider a non-relativistic ideal (non-interacting) gas of $N$ indistinguishable particles with mass $m$, living in an $d$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
+        Consider a non-relativistic ideal, i.e.~non-interacting, gas of $N$ indistinguishable particles with mass $m$, living in an $2dN$-dimensional manifold with a finite volume $V^N$: $\mathcal M^N = V^N \times \mathbb R^{dN}$, with Hamiltonian 
         \begin{equation*}
-            H = \sum_i \frac{p^2_i}{2m} ~.
+            H = \sum_{i=1}^{dN} \frac{p^2_i}{2m} ~.
         \end{equation*}
-        Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the equation of state, the chemical potential $\mu$ and the specific heats $C_V$ and $C_p$. Finally, express the same physical quantities in the case $d = 3$.
+        Find the canonical partition function $Z$, the internal energy $E$, the Helmholtz partition function $F$, the entropy $S$ (and the temperature $T_c$ under which it becomes negative), the equation of state $p = p(V, T, N)$, the chemical potential $\mu$ and the specific heats $C_V$ and $C_p$. Finally, express the same physical quantities in the case $d = 3$.
     \end{exercise}
 
     In the following, we will use the thermal wavelength 
@@ -295,7 +294,7 @@
         By definition~\eqref{c:z}, using the gaussian integral~\eqref{app:gauss}, we have
         \begin{equation*}
         \begin{aligned}
-            Z & = \int_{\mathcal M^N} d\Omega \exp(- \beta H (q_i, p_i)) = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} N!} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{V^N}{h^{dN} N!} (\frac{2 m \pi}{\beta})^{dN/2} = \frac{V^N}{ N!} (\frac{2 m \pi}{\beta h^2})^{dN/2} = \frac{V^N}{N! \lambda^{dN}_T} ~.
+            Z & = \int_{\mathcal M^N} d\Omega ~ \exp(- \beta H (q_i, p_i)) = \int_{\mathcal M^N} \frac{\prod_i d^d q_i d^d p_i}{h^{dN} N!} \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \int_{\mathcal M^N} \prod_i d^d q_i d^d p_i ~ \exp(- \beta H (q_i, p_i)) \\ & = \frac{1}{h^{dN} N!} \underbrace{\int_{ V^N} \prod_i d^d q_i}_{V^N} \underbrace{\prod_i \int_{\mathcal M^N} d^d p_i ~ \exp(- \beta \frac{p^2_i}{2m})}_{(\frac{2 m \pi}{\beta})^{dN/2}} \\ & = \frac{V^N}{h^{dN} N!} (\frac{2 m \pi}{\beta})^{dN/2} = \frac{V^N}{ N!} (\frac{2 m \pi}{\beta h^2})^{dN/2} = \frac{V^N}{N! \lambda^{dN}_T} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -630,12 +629,12 @@
     \end{proof}
     The number of particle $N$ is 
     \begin{equation*}
-        N = \frac{V}{\lambda_T^d} ~.
+        N = \frac{zV}{\lambda_T^d} ~.
     \end{equation*}
     \begin{proof}
         Using~\eqref{gc:n2}, we have
         \begin{equation*}
-            N = z \pdv{}{z} \ln \mathcal Z = z \pdv{}{z} \frac{z V}{\lambda_T^d} = \frac{V}{\lambda_T^d} ~.
+            N = z \pdv{}{z} \ln \mathcal Z = z \pdv{}{z} \frac{z V}{\lambda_T^d} = \frac{zV}{\lambda_T^d} ~.
         \end{equation*}
     \end{proof}
     The equation of state is 
@@ -1235,205 +1234,6 @@
             \av{v^2} & =  (\frac{m}{2\pi k_B T})^{3/2} 4 \pi \Big (\frac{2}{m \beta} \Big) \frac{1}{m \beta} \Big ( \frac{2}{m \beta} \Big)^{1/2} \underbrace{\int_0^\infty dt ~ t^{3/2} \exp(- t)}_{\Gamma (5/2)} \\ & = \frac{4}{\sqrt{\pi} m \beta} \underbrace{\Gamma (5/2)}_{\frac{3 \sqrt{\pi}}{4}} = \frac{3}{\beta m} = \frac{3 k_B T}{m} ~.
         \end{aligned}
         \end{equation*}
-    \end{proof}
-
-\section{Grand canonical virial expansion} 
-
-    Consider the basic equations of state of the grand canonical ensemble~\eqref{gc:o}~\eqref{td:o2} and~\eqref{gc:n2} 
-    \begin{equation}\label{gc:es}
-        \Omega = - pV = - \frac{1}{\beta} \ln \mathcal Z~, \quad N = z \pdv{}{z} \ln \mathcal Z ~.
-    \end{equation}
-    The goal of the virial expansion is to expand the equations of state in powers of the density $n = N/V$ or in the inverse of the specific volume $v = V / N$. The system we are treating is a gas of particles with the same mass $m$ and with an interacting potential depending only on the reciprocated distance 
-    \begin{equation*}
-        H = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U_{ij} = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i < j} U (|q_i - q_j|) ~.
-    \end{equation*}
-    The grand canonical partition function~\eqref{gc:z} can be considered a series expansion in terms of $z \ll 1$ 
-    \begin{equation*}
-        \mathcal Z = \sum_{N=0}^\infty z^N Z_N \simeq 1 + z Z_1 + z^2 Z_2 + \ldots ~.
-    \end{equation*}
-    Notice that an expansion is $z \ll 1$ means indeed an expansion in density $n \ll 1$, which physically is a diluite gas.
-
-    At first order, we have 
-    \begin{equation*}
-        \mathcal Z \simeq 1 + z Z_1 + O(z^2) ~,
-    \end{equation*}
-    where the partition function for $1$ particle is 
-    \begin{equation*}
-        Z_1 = \frac{V}{\lambda^3_T} 
-    \end{equation*}
-    and $\lambda_T^3$ is the thermal wavelength
-    \begin{equation*}
-        \lambda_T = \sqrt{\frac{\beta h^2}{2 \pi m}} ~.
-    \end{equation*}
-    \begin{proof}
-        In fact, using~\eqref{c:z}, the gaussian integral~\eqref{app:gauss} and not considering the potential, since $1$ particle does not interact with itself,
-        \begin{equation*}
-            Z_1 = \int_{\mathcal M^1} d\Omega \exp(- \beta H) = \int_V \int_{\mathbb R^3} \frac{d^3 q ~d^3 p}{h^3} \exp(- \beta \frac{p^2}{2m}) = \underbrace{\int_V d^3 q}_V \underbrace{\int_{\mathbb R^3} \frac{d^3 p}{h^3} \exp(- \beta \frac{p^2}{2m})}_{\frac{1}{\lambda_T^3}} = \frac{V}{\lambda^3_T} ~.
-        \end{equation*}
-    \end{proof}
-    Hence, the equation of state can be written as 
-    \begin{equation*}
-         PV = n k_B T ~,
-    \end{equation*}
-    which means that at first order, we have recovered a perfect gas.
-    \begin{proof}
-        For the first of~\eqref{gc:es}, we obtain 
-        \begin{equation*}
-            p V = \frac{1}{\beta} \ln \mathcal Z \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3}) + O(z^2) \simeq \frac{z V}{\beta \lambda_T^3} + O(z^2) ~,
-        \end{equation*}
-        where we have used $\ln (1 + x) \simeq x$ for $x \ll 1$.
-        For the second of~\eqref{gc:es}, we obtain 
-        \begin{equation*}
-            N = z \pdv{}{z} \ln \mathcal Z \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3}) + O(z^2) \simeq z \pdv{}{z} \frac{z V}{\lambda_T^3} = \frac{z V}{\lambda_T^3} + O(z^2) ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            z = \frac{N \lambda_T^3}{V} ~.
-        \end{equation*}
-        Finally, combining the two by substituing $z$, we have
-        \begin{equation*}
-            p V \simeq \frac{N \lambda_T^3}{V} \frac{V}{\beta \lambda_T^3} = \frac{N}{\beta} = N k_B T ~.
-        \end{equation*}
-    \end{proof}
-
-    At second order, we have 
-    \begin{equation*}
-        \mathcal Z \simeq 1 + z Z_1 + \frac{z^2 Z_2}{2!} + O(z^3) ~,
-    \end{equation*}
-    where the partition function for $2$ particles is 
-    \begin{equation*}
-        Z_2 = \frac{V}{2 \lambda_T^6} J_2 (\beta) 
-    \end{equation*}
-    and, using center of mass coordinates $r = q_1 - q_2$,
-    \begin{equation*}
-        J_2 (\beta) = \int d^3 r ~ \exp(- \beta U(r)) ~.
-    \end{equation*}
-    \begin{proof}
-        In fact, using~\eqref{c:z} and the gaussian integral~\eqref{app:gauss}
-        \begin{equation*}
-        \begin{aligned}
-            Z_2 & = \int_{\mathcal M^2} d \Omega \exp(- \beta H) = \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
-        \end{aligned}
-        \end{equation*}
-        Now, we make a change into the center of mass coordinates $R = (q_1 + q_2)/2$ and $r = |q_1 - q_2|$, and we find
-        \begin{equation*}
-            Z_2 = \frac{1}{\lambda_T^6} \underbrace{\int_V d^3 R}_V \underbrace{\int_V d^3 r \exp(- \beta U(r)) }_{J_2 (\beta)} = \frac{V}{\lambda_T^6} J_2 (\beta) ~.
-        \end{equation*}
-    \end{proof}
-    Hence, the two equations of state can be written as 
-    \begin{equation*}
-        \beta p = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) ~, \quad N = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~,
-    \end{equation*}
-    where we have defined 
-    \begin{equation*}
-        \tilde J_2 (\beta) = J_2 (\beta) - V = \int_V d^3 r (\exp(- \beta U(r)) - 1) ~.
-    \end{equation*}
-    \begin{proof}
-        For the first of~\eqref{gc:es}, we obtain 
-        \begin{equation*}
-        \begin{aligned}
-            p V & = \frac{1}{\beta} \ln \mathcal Z \simeq \frac{1}{\beta} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) + O(3) \\ & \simeq \frac{1}{\beta} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3) \\ & = \frac{1}{\beta} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) = \frac{1}{\beta} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3) ~,
-        \end{aligned}
-        \end{equation*}
-        where we have used $\ln (1 + x) \simeq x - x^2/2$ for $x \ll 1$.
-        For the second of~\eqref{gc:es}, we obtain 
-        \begin{equation*}
-        \begin{aligned}
-            N & = z \pdv{}{z} \ln \mathcal Z \simeq z \pdv{}{z} \ln (1 + \frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) \\ & \simeq z \pdv{}{z} \Big ( (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta)) - \frac{1}{2} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta))^2 \Big) + O(z^3) \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} J_2 (\beta) - \frac{z^2 V^2}{2 \lambda_T^6}) + O(z^3)
-            \\ & = z \pdv{}{z} (\frac{z V}{\lambda_T^3} + \frac{z^2 V}{2 \lambda_T^6} \underbrace{(J_2 (\beta) - V)}_{\tilde J_2 (\beta)}) + O(z^3) \\ & = z \pdv{}{z} (\frac{zV}{\lambda_T^3} + \frac{z^2V}{2 \lambda_T^6} \tilde J_2 (\beta)) + O(z^3)  = \frac{z V}{\lambda_T^3} + \frac{z^2 V }{\lambda_T^6} \tilde J_2 (\beta) ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    Now, we have to solve this system of second degree by imposing an ansatz for $z(n)$
-    \begin{equation*}
-        z (n) = A n + B n^2 + O(n^3) ~,
-    \end{equation*}
-    which gives rise to the equation of state of an interacting gas in the approximation of a dilute gas
-    \begin{equation*}
-        p \beta = n - n^2 \frac{\tilde J(2)}{2} + O(n^3) ~.
-    \end{equation*}
-    Notice that the first order is the same as the perfect gas, whereas the second order is a correction due to the interactions.
-    \begin{proof}
-        In fact, using 
-        \begin{equation*}
-            n = \frac{N}{V} = \frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta) ~,
-        \end{equation*}
-        we find 
-        \begin{equation*}
-        \begin{aligned}
-            z & = A n + B n^2 + O(n^3) = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta))^2 + O(z^3) \\ & = A (\frac{z}{\lambda_T^3} + \frac{z^2}{\lambda_T^6} \tilde J_2 (\beta)) + B \frac{z^2}{\lambda_T^6} + O(z^3) = z \frac{A}{\lambda_T^3} + z^2 ( \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6}) + O (z^3) ~,
-        \end{aligned}
-        \end{equation*}
-        which implies that, since the coefficient in z must be $1$ and in $z^2$ must be $0$, 
-        \begin{equation*}
-            \frac{A}{\lambda_T^3} = 1 ~, \quad \frac{\tilde J_2 (\beta)}{\lambda_T^6} + {1}{\lambda_T^6} = 0 ~,
-        \end{equation*}
-        \begin{equation*}
-            A = \lambda_T^3 ~, \quad B = - \lambda^3_T \tilde J_2(\beta) ~,
-        \end{equation*}
-        hence 
-        \begin{equation*}
-            z = \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2 ~,
-        \end{equation*}
-        which they are called respectively the first virial and the second virial coefficients.
-        Finally, combining all two, we obtain 
-        \begin{equation*}
-        \begin{aligned}
-            p \beta & = \frac{z}{\lambda_T^3} + \frac{z^2}{2 \lambda_T^6} \tilde J_2 (\beta) + O(n^3) \\ & = \frac{1}{\lambda_T^3} (\lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2) + \frac{\tilde J_2 (\beta)}{2 \lambda_T^6} ( \lambda_T^3 n - \lambda^3_T \tilde J_2(\beta) n^2)^2 + O(n^3) \\ & = n - n^2 \tilde J_2 (\beta) + \frac{1}{2} n^2 \tilde J_2 (\beta) + O(n^3) = n - n^2 \frac{\tilde J_2(\beta)}{2} + O(n^3) ~.
-        \end{aligned}
-        \end{equation*}
-    \end{proof}
-    Notice that $z \propto \lambda^3_T \ll 1$ physically means that $T \gg 1$. Therefore, this approximation is valid for hot dilute gas.
-
-\section{Grand canonical Van der Waals gas}
-
-    Now, we build a physical model to calculate explicitly this expansion. Particles are considered as hard rigid spheres of radius $r_0$ that do not overlap. Instead, the potential is repulsive for small distances, attractive for large distances and it behaves at $0$ and at $\infty$ as
-    \begin{equation*}
-        U(r \rightarrow 0) \rightarrow \infty ~, \quad U(r \rightarrow \infty) \rightarrow 0~.
-    \end{equation*}
-    One of the most famous potential that behaves so is the Lennard-Jones one. A plot of this is in Figure~\ref{gran:lj}.
-    \begin{figure}
-        \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'x**(-12) - x**(-6)', 4, 1, 11, True, True, False)}}
-        \caption{A plot of a Lennard-Jones-like potential. We have used $x = r$ and $f(x) = r^{-12} - r^{-6}$.}
-        \label{gran:lj}
-    \end{figure}
-    The equation of state becomes 
-    \begin{equation*}
-        (p + \frac{a}{v^2}) (v - b) = k_B T ~,
-    \end{equation*}
-    where $a$ is the average attractive potential and $b$ is the finite volume.
-    \begin{proof}
-        First, we need to evaluate $\tilde J_2 (\beta)$ 
-        \begin{equation*}
-        \begin{aligned}
-            \tilde J_2 (\beta) & = \int d^3 r (\exp(- \beta U(r)) - 1) \\ & = 4 \pi \int_0^{2r_0} dr ~ r^2 \underbrace{(\exp(- \beta U(r)) - 1)}_{-1} + 4\pi \int_{2r_0}^\infty dr ~ r^2\underbrace{(\exp(- \beta U(r)) - 1)}_{\beta U(r)} \\ & \simeq - \underbrace{4 \pi \int_0^{2r_0} dr ~ r^2}_{2b} + \beta \underbrace{4\pi \int_{2r_0}^\infty dr ~ r^2 U(r)}_{2 a} = - 2 b + 2 \beta a ~,
-        \end{aligned}
-        \end{equation*}
-        where for the first integral we have used 
-        \begin{equation*}
-            \exp(-\beta U(r)) - 1 \rightarrow{r \rightarrow 0} (-1) 
-        \end{equation*}
-        and for the second integral we have used 
-        \begin{equation*}
-            \exp(-\beta U(r)) - 1 \rightarrow{r \rightarrow \infty} 1 - \beta U(r) - 1 = - \beta U(r) ~.
-        \end{equation*}
-        Hence, we find
-        \begin{equation*}
-            \frac{\tilde J_2(\beta)}{2} = b - \beta a 
-        \end{equation*}
-        and 
-        \begin{equation*}
-            p \beta = n - n^2 \frac{\tilde J(2)}{2} = n - n^2 (b - \beta a) = n( 1 + n (b - \beta a)) ~.
-        \end{equation*}
-        Finally, after some manipulations, using $v = 1 / n$,
-        \begin{equation*}
-            \beta (p + a n^2) = n (1 + n b) ~,
-        \end{equation*}
-        \begin{equation*}
-            k_B T = \frac{p + a n^2}{n (1 + n b)} \simeq \frac{1}{n}(p + a n^2) (1 - n b) = v (p + \frac{a}{v^2}) (1 - \frac{b}{v}) = (p + \frac{a}{v^2}) (v - b) ~,
-        \end{equation*}
-        where we have used $(1 + x)^{-1} \simeq 1 - x$ for $x \ll 1$.
     \end{proof}
 
 \section{Entropic Maxwell-Boltzmann distribution}

@@ -1,6 +1,6 @@
 \chapter{Applications}
 
-    In this chapter, we will study different physical systems. As quantum gases, we will analysea quantum magnetic spins with $s= 1/2$ and $s =1$ and quantum harmonic oscillators. As fermionic gases, we will analyse a relativistic gas at $T=0$ and a white dwarf. As bosonic gases, we will analyse a $2$-dimensional Bose-Einstein condensate and the blackbody radiation.
+    In this chapter, we will study different physical systems. As quantum gases, we will analyse a quantum gas of magnetic spins with $s= 1/2, 1$ and a quantum gas of harmonic oscillators. As fermionic gases, we will analyse a relativistic gas at $T=0$ and a white dwarf. As bosonic gases, we will analyse a $2$-dimensional Bose-Einstein condensate of non-interacting particles and harmonic oscillators, and the blackbody radiation (a gas of photons).
 
 \section{Quantum magnetic 1/2-spin}
 
@@ -16,7 +16,7 @@
                 0 & -1 \\
             \end{bmatrix} ~.
         \end{equation*}
-        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)}$.
+        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)} = \mathbb C^{2N}$.
         Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the magnetisation $M$.
     \end{exercise}
 
@@ -39,12 +39,12 @@
 
     The Helmoltz free energy $F$ is 
     \begin{equation*}
-        F = - N k_B T \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
+        F = - \frac{N}{\beta} \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{qgc:cf}, we have
         \begin{equation*}
-            F = - \frac{\ln Z}{\beta} = - N k_B T \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
+            F = - \frac{\ln Z}{\beta} = - \frac{N}{\beta} \ln \Big ( 2 \cosh \frac{\beta B}{2} \Big) ~.
         \end{equation*}
     \end{proof}
 
@@ -55,7 +55,7 @@
     \begin{proof}
         By definition~\eqref{qgc:ce}, we have 
         \begin{equation*}
-            E = - \pdv{\ln Z}{\beta} = - N \pdv{\beta} \ln \Big (2 \cosh \frac{\beta B}{2} \Big) = - N \frac{B}{2} \tanh \frac{\beta B}{2} ~.
+            E = - \pdv{\ln Z}{\beta} = - N \pdv{}{\beta} \ln \Big (2 \cosh \frac{\beta B}{2} \Big) = - N \frac{B}{2} \tanh \frac{\beta B}{2} ~.
         \end{equation*}
     \end{proof}
     A plot of the energy $E$ as a function of $T$ is in Figure~\ref{qm:e}.
@@ -99,7 +99,7 @@
                 0 & 0 & - 1 \\
             \end{bmatrix} ~.
         \end{equation*}
-        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)}$. Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the magnetisation $M$.
+        Since spin is the only degree of freedom, the Hilbert space is $\mathbf H = \mathbb C^{N (2S + 1)} = \mathbb C^{3N}$. Find the canonical partition function $Z$, the Helmholtz free energy $F$, the energy $E$ and the magnetisation $M$.
     \end{exercise}
 
     The canonical partition function $Z$ is 
@@ -282,9 +282,11 @@
             \epsilon'(p) = \dv{\epsilon(p)}{p} = \frac{p c^2}{\sqrt{m^2 c^4 + p^2 c^2}}
         \end{equation}
         and we find 
-        \begin{equation}
-            \Omega = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^3 \epsilon'(p)}{\exp(\beta \epsilon(p) - \mu) + 1} = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^4 c^2}{\exp(\beta \epsilon(p) - \mu) + 1} \frac{1}{\sqrt{m^2 c^4 + p^2 c^2}} ~.
-        \end{equation}
+        \begin{equation*}
+        \begin{aligned}
+            \Omega & = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^3 \epsilon'(p)}{\exp(\beta \epsilon(p) - \mu) + 1} \\ & = - \frac{4 \pi V g}{3 h^3} \int_0^\infty dp ~ \frac{p^4 c^2}{\exp(\beta \epsilon(p) - \mu) + 1} \frac{1}{\sqrt{m^2 c^4 + p^2 c^2}} ~.
+        \end{aligned}
+        \end{equation*}
     \end{proof}
 
     The equation of state is 
@@ -318,7 +320,7 @@
 
 \section{Fermionic white dwarf}
 
-    A white dwarf is an helium star woth mass $M \sim 10^{30} kg$ and a density of $\rho = 10^{10} kg/m^3$ at a temperature of $10^{7} K$. Our approxiated model is composed by $N$ electrons and $N/2$ helium nuclei.
+    A white dwarf is an helium star with mass $M \sim 10^{30} kg$ and a density of $\rho = 10^{10} kg/m^3$ at a temperature of $10^{7} K$. Our approxiated model is composed by $N$ electrons and $N/2$ helium nuclei.
 
     Assuming $M = N(m_e + 2 m_p) \sim 2 N m_p$, the electronic dentity is 
     \begin{equation*}
@@ -362,21 +364,20 @@
         E = \frac{\pi V m^4 c^5}{\pi^2 \hbar^3} f(x_F) ~.
     \end{equation*}
     \begin{proof}
-        In fact,
+        In fact, we have
         \begin{equation*}
         \begin{aligned}
-            E & = g \sum_{n} \epsilon \rightarrow g \frac{V}{(2\pi)^3} \int d^3 k \epsilon \\ & = g \frac{V}{(2\pi \hbar)^3} \int d^3 p \epsilon \\ & = g \frac{4 \pi V}{(2\pi \hbar)^3} \int_0^{p_F} dp p^2 \epsilon \\ & = g \frac{4 \pi V}{(2\pi \hbar)^3} \int_0^{p_F} dp p^2 c \sqrt{p^2 + (mc)^2} ~.
+            E & = g \sum_{n} \epsilon \rightarrow g \frac{V}{(2\pi)^3} \int d^3 k ~ \epsilon = g \frac{V}{(2\pi \hbar)^3} \int d^3 p ~ \epsilon \\ & = g \frac{4 \pi V}{(2\pi \hbar)^3} \int_0^{p_F} dp ~ p^2 \epsilon = g \frac{4 \pi V}{(2\pi \hbar)^3} \int_0^{p_F} dp ~ p^2 c \sqrt{p^2 + (mc)^2} ~.
         \end{aligned}
         \end{equation*}
-
-        Now we make a change of variable 
+        Now, we make a change of variable into
         \begin{equation*}
             x = \frac{p}{mc} ~, \quad dp = mc dx ~,
         \end{equation*}
         hence 
         \begin{equation*}
         \begin{aligned}
-            E & = g \frac{4 \pi V}{(2\pi \hbar)^3} c (mc)^3 \int_0^{x_F} dx ~ x^2 (mc)\sqrt{x^2 + 1} \\ & =  \frac{4 g \pi V m^4 c^5}{h^3} \int_0^{x_F} dx ~ x^2\sqrt{x^2 + 1} \\ & = \frac{4 g \pi V m^4 c^5}{h^3} f(x_F) \\ & = \frac{V m^4 c^5}{\pi^2 \hbar^3} f(x_F) ~,
+            E & = g \frac{4 \pi V}{(2\pi \hbar)^3} c (mc)^3 \int_0^{x_F} dx ~ x^2 (mc)\sqrt{x^2 + 1} \\ & =  \frac{4 g \pi V m^4 c^5}{h^3} \int_0^{x_F} dx ~ x^2\sqrt{x^2 + 1} = \frac{4 g \pi V m^4 c^5}{h^3} f(x_F) = \frac{V m^4 c^5}{\pi^2 \hbar^3} f(x_F) ~,
         \end{aligned}
         \end{equation*}
         where 
@@ -390,10 +391,10 @@
         P = \frac{m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{x_F^3}{3} \sqrt{1 + x_F^2} - f(x_F)) ~.
     \end{equation*}
     \begin{proof}
-        In fact,
+        In fact, we have
         \begin{equation*}
         \begin{aligned}
-            P & = - \pdv{E}{V} \\ & = - \pdv{}{V} \frac{ V m^4 c^5}{\pi^2 \hbar^3} f(x_F) \\ & = - \frac{\pi m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{ V m^4 c^5}{\pi^2 \hbar^3} \pdv{x_F}{V} \pdv{f(x_F)}{x_F} \\ & = - \frac{ m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{ V m^4 c^5}{\pi^2 \hbar^3} \pdv{}{V} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) \pdv{f(x_F)}{x_F} \\ & = - \frac{m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{V m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) \pdv{}{V} V^{-1/3} \pdv{f(x_F)}{x_F} \\ & = - \frac{m^4 c^5}{\pi^2 \hbar^3} f(x_F) + \frac{1}{3} \frac{V m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) V^{-4/3} \pdv{f(x_F)}{x_F} \\ & = \frac{m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{x_F^3}{3} \sqrt{1 + x_F^2} - f(x_F)) ~.
+            P & = - \pdv{E}{V} = - \pdv{}{V} \frac{ V m^4 c^5}{\pi^2 \hbar^3} f(x_F) = - \frac{\pi m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{ V m^4 c^5}{\pi^2 \hbar^3} \pdv{x_F}{V} \pdv{f(x_F)}{x_F} \\ & = - \frac{ m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{ V m^4 c^5}{\pi^2 \hbar^3} \pdv{}{V} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) \pdv{f(x_F)}{x_F} \\ & = - \frac{m^4 c^5}{\pi^2 \hbar^3} f(x_F) - \frac{V m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) \pdv{}{V} V^{-1/3} \pdv{f(x_F)}{x_F} \\ & = - \frac{m^4 c^5}{\pi^2 \hbar^3} f(x_F) + \frac{1}{3} \frac{V m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{h}{mc} \Big ( \frac{3 N}{4 \pi g V} \Big)^{1/3}) V^{-4/3} \pdv{f(x_F)}{x_F} \\ & = \frac{m^4 c^5}{\pi^2 \hbar^3} \Big (\frac{x_F^3}{3} \sqrt{1 + x_F^2} - f(x_F)) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -439,7 +440,7 @@
         \end{equation*}
         Imposing the equilibrium condition, 
         \begin{equation*}
-            0 = dE = dE_g + dE_p = alpha \frac{GM^2}{R^2} dR - 4 \pi p R^2 dR ~,
+            0 = dE = dE_g + dE_p = \alpha \frac{GM^2}{R^2} dR - 4 \pi p R^2 dR ~,
         \end{equation*}
         hence 
         \begin{equation*}
@@ -460,8 +461,8 @@
 \section{Bosonic BEC in 2D}
 
     \begin{exercise}
-        Consider a Bose-Einstein condensate of non-relativistic particles in $2$ dimension, with energy $\epsilon = p^2 / 2m$.
-        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$.
+        Consider a bosonic gas of non-relativistic particles in $2$ dimension, with energy $\epsilon = p^2 / 2m$.
+        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$ below which there is a Bose-Einstein condensation.
     \end{exercise}
 
     The density of states $\omega(E)$ is 
@@ -469,23 +470,9 @@
         \omega(E) = \frac{A m}{2 \pi \hbar^2} ~.
     \end{equation*}
     \begin{proof}
-        By definition~\eqref{cm:vol}, we have
+        Using~\eqref{freegas} with $d = 2$ and $N=1$, we have
         \begin{equation*}
-        \begin{aligned}
-            \Sigma (E) = \int_{H \leq \epsilon} d\Omega = \int_{H \leq \epsilon} \frac{d^2 x ~ d^2 p}{h^2} ~.
-        \end{aligned}
-        \end{equation*}
-        In order to find the domain of integration, we compute the following inequality
-        \begin{equation*}
-            H = \frac{p^2}{2m} \leq \epsilon ~, \quad p^2 \leq 2 m \epsilon ~.
-        \end{equation*}
-        Therefore, using polar coordinates in momentum space $(p, \theta)$ and adding the degeneracy, we find
-        \begin{equation*}
-            \Sigma (E) = \underbrace{\int_A d^2 x}_A \int_{p^2 < 2mE} d^2 p = \frac{2 \pi A}{h^2} \int_0^{\sqrt{2mE}} dp p = \frac{A m}{2 \pi \hbar^2} \epsilon ~,
-        \end{equation*}
-        Finally, by definition~\eqref{cm:denst}, we have
-        \begin{equation*}
-            \omega (E) = \pdv{\Sigma (epsilon)}{epsilon} = \pdv{}{\epsilon} \frac{A m}{2 \pi \hbar^2} \epsilon = \frac{A m}{2 \pi \hbar^2} ~.
+            \omega (E) = \frac{A}{\Gamma(1)} \frac{m}{2 \pi \hbar^2} = \frac{A m}{2 \pi \hbar^2} ~.
         \end{equation*}
     \end{proof}
 
@@ -521,8 +508,8 @@
 \section{Bosonic BEC of harmonic oscillators in 2D}
 
     \begin{exercise}
-        Consider a Bose-Einstein condensate of harmonic oscillators in $2$ dimension, with energy $\epsilon = p^2 / 2m + m \omega^2 x^2 / 2$.
-        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$.
+        Consider a bosonic gas of harmonic oscillators in $2$ dimension, with energy $\epsilon = p^2 / 2m + m \omega^2 x^2 / 2$.
+        Find the density of states $\omega(E)$, the density $n$ and the critical temperature $T_c$ below which there is a Bose-Einstein condensation.
     \end{exercise}
 
     The density of states $\omega(E)$ is 
@@ -573,11 +560,11 @@
 \section{Bosonic blackbody radiation}
 
     \begin{exercise}
-        Consider a gas of photons confined in a finite volume $V$ at equilibrium. Since they are ultra-relativistic, the energy is $\epsilon = c |\mathbf p|$. 
-        Find the density of states $\omega(E)$, the grand potential $\omega$, the number of particles $N$, the energy $E$, the equation of state and the specific heat $C_V$. Furthermore, find the Planck's distribution, Wien's and Rayleigh-Jeans' laws.
+        Consider a gas of photons confined in a finite volume $V$ at equilibrium. Since they are ultra-relativistic, the energy is $\epsilon = c |\mathbf p| = cp$. 
+        Find the density of states $\omega(E)$, the grand potential $\omega$, the number of particles $N$, the energy $E$, the equation of state $p = p(E)$ and the specific heat $C_V$. Furthermore, find the Planck's distribution $u(\nu)$, Wien's and Rayleigh-Jeans' laws respectively at short and long  wavelengths.
     \end{exercise}
 
-    There are only two indepeendent polarisation degrees of freedome, therefore $g=2$. Since they can be absorbed and emitted, the number of particle is not conserved and $\mu (T) = 0$. 
+    Photons are ultra-relativistic bosonic particles. In the vacuum, they have only two independent polarisation degrees of freedom (2 transversal polarisations), therefore, the degeneracy is $g=2$. Since they can be easilily absorbed and emitted by the wall of the box, the number of particle is not conserved and talking about chemical potential makes no sense $\mu (T) = 0$. 
 
     The density of states $\omega(E)$ is 
     \begin{equation*}
@@ -597,49 +584,49 @@
         Therefore, using polar coordinates in momentum space $(p, \theta, \phi)$ and adding the degeneracy, we find
         \begin{equation*}
         \begin{aligned}
-            \Sigma (E) & = \frac{g}{h^3} \underbrace{\int_V d^3 x}_V \int_{p < E/c} d^3 p = \frac{8 \pi V}{h^3} \int_0^{\epsilon/c} dp ~p^2 = \frac{V}{\hbar^3 \pi^2} \frac{p^3}{3} \Big \vert_0^{\epsilon/c} = \frac{V \epsilon^3}{3 \hbar^3 \pi^2 c^3}~,
+            \Sigma (E) & = \frac{g}{h^3} \underbrace{\int_V d^3 x}_V \int_{p < E/c} d^3 p = \frac{8 \pi V}{h^3} \int_0^{\epsilon/c} dp ~p^2 = \frac{8 \pi V}{h^3} \frac{p^3}{3} \Big \vert_0^{\epsilon/c} = \frac{8 \pi V \epsilon^3}{3 h^3 c^3}~,
         \end{aligned}
         \end{equation*}
-        Finally, by definition~\eqref{cm:denst}, we have
+        where we have used $g = 2$. Finally, by definition~\eqref{cm:denst}, we have
         \begin{equation*}
-            \omega (E) = \pdv{\Sigma (epsilon)}{epsilon} = \pdv{}{\epsilon} \frac{V \epsilon^3}{3 \hbar^3 \pi^2 c^3} = \frac{V \epsilon^2}{\hbar^3 \pi^2 c^3} ~.
+            \omega (E) = \pdv{\Sigma (\epsilon)}{\epsilon} = \pdv{}{\epsilon} \frac{8 \pi V \epsilon^3}{3 h^3 c^3} = \frac{8 \pi V \epsilon^2}{h^3 c^3} ~.
         \end{equation*}
     \end{proof}
 
-    In the following, we define 
+    In the following, we use the Riemann zeta function 
     \begin{equation}
         \zeta (n+1) = \int_0^\infty dx ~ \frac{x^n}{\exp(x) - 1} ~.
     \end{equation}
 
     The grand potential $\Omega$ is 
     \begin{equation*}
-        \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) 
+        \Omega = - \frac{8 \pi V}{3 h^3 c^3 \beta^4} \zeta(4) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{q:o}, we have 
         \begin{equation}
         \begin{aligned}
-            \Omega & = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln(1 - \exp(- \beta \epsilon)) = \frac{V}{\hbar^3 \pi^2 c^3 \beta} \int_0^\infty d\epsilon ~ \epsilon^2 \ln(1 - \exp(- \beta \epsilon)) \\ & = \frac{V}{\hbar^3 \pi^2 c^3 \beta} \Big ( \underbrace{\frac{\epsilon^3}{3} }_{0 ~ \text{for} ~ 0}\underbrace{\ln(1 - \exp(- \beta \epsilon)) }_{0 ~ \text{for} ~ \infty} \Big \vert_0^\infty - \frac{\beta}{3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3 \exp(- \beta \epsilon)}{1 - \exp(- \beta \epsilon)} \Big) \\ & = \frac{V}{3 \hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+            \Omega & = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln(1 - \exp(- \beta \epsilon)) = \frac{8 \pi V}{3 h^3 c^3 \beta} \int_0^\infty d\epsilon ~ \epsilon^2 \ln(1 - \exp(- \beta \epsilon)) \\ & = \frac{8 \pi V}{3 h^3 c^3 \beta} \Big ( \underbrace{\frac{\epsilon^3}{3} }_{0 ~ \text{for} ~ 0}\underbrace{\ln(1 - \exp(- \beta \epsilon)) }_{0 ~ \text{for} ~ \infty} \Big \vert_0^\infty - \frac{\beta}{3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3 \exp(- \beta \epsilon)}{1 - \exp(- \beta \epsilon)} \Big) \\ & = - \frac{8 \pi V}{3 h^3 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
         \end{aligned}
         \end{equation}
-        Now, we make a change of variable into 
+        where we have integrated by parts. Now, we make a change of variable into 
         \begin{equation}
             x = \beta \epsilon ~,
         \end{equation}
         hence, we find 
         \begin{equation*}
-        \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+        \Omega = - \frac{8 \pi V}{3 h^3 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = - \frac{8 \pi V}{3 h^3 c^3 \beta^4} \zeta(4) ~.
         \end{equation*}
     \end{proof}
 
     The number of particles $N$ is 
     \begin{equation*}
-        N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \zeta(3) ~.
+        N = \frac{8 \pi V}{h^3 c^3 \beta^3} \zeta(3) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{q:n}, we have 
         \begin{equation}
-            N = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{1}{\exp(\beta \epsilon) - 1} = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
+            N = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{1}{\exp(\beta \epsilon) - 1} = \frac{8 \pi V}{h^3 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
         \end{equation}
         Now, we make a change of variable into 
         \begin{equation}
@@ -647,17 +634,17 @@
         \end{equation}
         hence, we find 
         \begin{equation*}
-            N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \underbrace{\int_0^\infty dx ~ \frac{x^2}{\exp(x) - 1}}_{\zeta(3)} = \frac{V}{\hbar^3 \pi^2 c^3 \beta^3} \zeta(3) ~.
+            N = \frac{8 \pi V}{h^3 c^3 \beta^3} \underbrace{\int_0^\infty dx ~ \frac{x^2}{\exp(x) - 1}}_{\zeta(3)} = \frac{8 \pi V}{h^3 c^3 \beta^3} \zeta(3) ~.
         \end{equation*}
     \end{proof}
     The energy $E$ is 
     \begin{equation*}
-        E = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+        E = \frac{8 \pi V}{h^3 c^3 \beta^4} \zeta(4) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{q:n}, we have 
         \begin{equation}
-            E = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{\epsilon}{\exp(\beta \epsilon) - 1} = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+            E = \int_0^\infty d\epsilon ~ \omega(\epsilon) \frac{\epsilon}{\exp(\beta \epsilon) - 1} = \frac{8 \pi V}{h^3 c^3} \int_0^\infty d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
         \end{equation}
         Now, we make a change of variable into 
         \begin{equation}
@@ -665,32 +652,39 @@
         \end{equation}
         hence, we find 
         \begin{equation*}
-            N = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = \frac{V}{\hbar^3 \pi^2 c^3 \beta^4} \zeta(4) ~.
+            E = \frac{8 \pi V}{3 h^3 c^3 \beta^4} \underbrace{\int_0^\infty dx ~ \frac{x^3}{\exp(x) - 1}}_{\zeta(4)} = \frac{8 \pi V}{h^3 c^3 \beta^4} \zeta(4) ~.
         \end{equation*}
     \end{proof}
     The equation of state is 
     \begin{equation}
-        pV = - \Omega = \frac{V}{3 \hbar^3 \pi^2 c^3 \beta^4} \zeta(4) = \frac{E}{3} ~.
+        pV = \frac{E}{3} ~.
     \end{equation}
+    \begin{proof}
+        Using~\eqref{td:o2}, we have 
+        \begin{equation*}
+            p V = - \Omega = \frac{8 \pi V}{3 h^3 c^3 \beta^4} \zeta(4) = \frac{E}{3} ~.
+        \end{equation*}
+    \end{proof}
+
     The specific heat $C_V$ is 
     \begin{equation}
-        C_V = \frac{4 k_B^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) T^3 ~.
+        C_V = \frac{32 \pi V}{h^3 c^3} \zeta(4) k_B^4 T^3 ~.
     \end{equation}
     \begin{proof}
         In fact, using~\eqref{td:cv2}, we have 
         \begin{equation}
-            C_V = \pdv{E}{T} = \pdv{}{T} \frac{k_B^4 T^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) = \frac{4 k_B^4 V}{\hbar^3 \pi^2 c^3} \zeta(4) T^3 ~.
+            C_V = \pdv{E}{T} = \pdv{}{T} \Big ( \frac{8 \pi V}{h^3 c^3} \zeta(4) k_B^4 T^4 \Big )= \frac{32 \pi V}{h^3 c^3} \zeta(4) k_B^4 T^3 ~.
         \end{equation}
     \end{proof}
 
     The number spectral distribution is 
     \begin{equation}
-        \frac{8 \pi V}{c^3} \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
+        f (\nu) = \frac{8 \pi V}{c^3} \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
     \end{equation}
     \begin{proof}
-        We introduce the number of photons with an energy of $\epsilon \in [0, h\nu]$
+        We introduce the number of photons with an energy of $\epsilon \in [0, h\nu]$ and we find
         \begin{equation}
-            N(\nu) = \frac{V}{\hbar^3 \pi^2 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} = \frac{8 \pi V}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
+            N(\nu) = \frac{8 \pi V}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^2}{\exp(\beta \epsilon) - 1} ~.
         \end{equation}
         Now, we make a change of variable into 
         \begin{equation}
@@ -698,15 +692,15 @@
         \end{equation}
         hence, we find 
         \begin{equation*}
-            N = \frac{8 \pi V}{h^3 c^3} h^3 \int_0^{1} d\nu ~ \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
+            N = \frac{8 \pi V}{h^3 c^3} h^3 \int_0^{1} d\nu ~ \frac{\nu^2}{\exp(\beta h \nu) - 1} = \frac{8 \pi V}{c^3} \int_0^{1} d\nu ~ \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
         \end{equation*}
-        We define the spectral distribution 
+        Finally, we define the number spectral distribution as
         \begin{equation}
             f(\nu) = \dv{N(\nu)}{\nu} = \frac{8 \pi V}{c^3} \frac{\nu^2}{\exp(\beta h \nu) - 1} ~.
         \end{equation}
     \end{proof}
 
-    The energy spectral distribution is 
+    The energy spectral distribution $u (\nu)$, called Planck's distribution, is 
     \begin{equation}
         u(\nu) = \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
     \end{equation}
@@ -720,7 +714,7 @@
     \begin{proof}
         We introduce the energy density of photons with an energy of $\epsilon \in [0, h\nu]$
         \begin{equation}
-            U(\nu) = \frac{E}{V} = \frac{1}{\hbar^3 \pi^2 c^3} \int_0^{h \nu} d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} = \frac{8 \pi}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
+            U(\nu) = \frac{E}{V} = \frac{8 \pi}{h^3 c^3} \int_0^{h\nu} d\epsilon ~ \frac{\epsilon^3}{\exp(\beta \epsilon) - 1} ~.
         \end{equation}
         Now, we make a change of variable into 
         \begin{equation}
@@ -728,15 +722,15 @@
         \end{equation}
         hence, we find 
         \begin{equation*}
-            U = \frac{8 \pi}{h^3 c^3} h^4 \int_0^{1} d\nu ~ \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
+            U = \frac{8 \pi}{h^3 c^3} h^4 \int_0^{1} d\nu ~ \frac{\nu^3}{\exp(\beta h \nu) - 1} = \frac{8 \pi h}{c^3} \int_0^{1} d\nu ~ \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
         \end{equation*}
-        We define the energy spectral distribution 
+        Finally, we define the energy spectral distribution 
         \begin{equation}
             u(\nu) = \dv{U(\nu)}{\nu} = \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu) - 1} ~.
         \end{equation}
     \end{proof}
 
-    Its approximation of $\beta h \nu \gg 1$ is 
+    Its approximation of $\beta h \nu \gg 1$, which means short wavelengths and quantum energy bigger than thermal one, is 
     \begin{equation}
         u(\nu) \simeq \frac{8 \pi h}{c^3} \frac{\nu^3}{\exp(\beta h \nu)} ~,
     \end{equation}
@@ -748,7 +742,7 @@
         \label{br:w}
     \end{figure}
 
-    Its approximation of $\beta h \nu \ll 1$ is 
+    Its approximation of $\beta h \nu \ll 1$, which means long wavelengths and quantum energy smaller than thermal one, is 
     \begin{equation}
         u(\nu) \simeq \frac{8 \pi}{c^3} \frac{\nu^2}{\beta} ~.
     \end{equation}
@@ -758,4 +752,13 @@
         \scalebox{0.7}{\pyc{plot1('x', 'x**2', 10, 2, 25, True, True, True)}}
         \caption{A plot of the Rayleigh-Jeans's law $u(\nu)$ as a function of $\nu$. We have used $x = \nu$ and $f(x) = \frac{u \beta c^3}{8 \pi}$.}
         \label{br:rj}
+    \end{figure}
+
+    A comparation of the three laws in is Figure~\ref{br:3}.
+
+    \begin{figure}
+        \centering
+        \scalebox{0.7}{\pyc{plot3('x', 'x**2', 'x**3 / (exp(x))', 'x**3 / (exp(x) - 1)', 10, 2, 26, True, True, True)}}
+        \caption{Comparation of the Rayleigh-Jeans' law (in red), the Wien's law (in violet) and the Planck's law (in blue) as functions of $\nu$.}
+        \label{br:3}
     \end{figure}

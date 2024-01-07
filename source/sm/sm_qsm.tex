@@ -6,11 +6,11 @@
 
 \section{States and projectors}
 
-    In quantum mechanics, a pure state of a quantum particle is represented by a normalised vector in a (separable) Hilbert space $\ket{\psi} \in \mathcal H$. This is the best knowledge we can have. An Hilbert space $\mathcal H$ is a vector space on $\mathbb C$, i.e.~in which a linear superposition of vectors is still in the space 
+    In quantum mechanics, a pure state is represented by a normalised vector in a (separable) Hilbert space $\ket{\psi} \in \mathcal H$. This is the best knowledge we can have. An Hilbert space $\mathcal H$ is a vector space on $\mathbb C$, i.e.~in which a linear superposition of vectors is still in the space 
     \begin{equation*}
         \lambda \ket{\psi} + \mu \ket{\phi} \in \mathcal H ~, \quad \forall \ket{\psi}, \ket{\phi} \in \mathcal H ~, \forall \lambda, \mu \in \mathbb C ~, 
     \end{equation*}
-    endowed with a scalar product $\braket{\psi}{\phi}$. In particular, via the scalar product, it is possible to associate a norm to the state, which is set to $1$ by the probability interpretation $||\psi||^2 = \braket{\psi}{\psi} = 1$. In the Schroedinger representation, this means that the wave function is a square-integrable function $\psi(t,\mathbf x) \in L^2(\mathbb R^d)$. Furthermore, the probability interpretation tells us that $|\psi(t, \mathbf x)|$ is the probability density to find the particle in a volume element $d^d x$ at time $t$ and the normalisation condition that the total probability to find the particle in the whole $\mathbb R^d$ is $1$ 
+    endowed with a scalar product $\braket{\psi}{\phi}$. In particular, via the scalar product, it is possible to associate a norm to the state, which is set to $1$ by the probability interpretation $||\psi||^2 = \braket{\psi}{\psi} = 1$. In the Schroedinger representation, this means that the wave function is a square-integrable function $\psi(t,\mathbf x) \in L^2(\mathbb R^d)$. Furthermore, the probability interpretation tells us that $|\psi(t, \mathbf x)|^2$ is the probability density to find the particle in a volume element $d^d x$ at time $t$ and the normalisation condition that the total probability to find the particle in the whole $\mathbb R^d$ is the unity
     \begin{equation*}
         \int_{\mathbb R^d} d^d x ~ |\psi(t,x)|^2 = 1 ~.
     \end{equation*}
@@ -43,7 +43,7 @@
             P_\psi \ket{\phi} = \alpha P_\psi \ket{\psi} + \beta P_\psi \ket{\psi^\perp} = \alpha \ket{\psi} \underbrace{\braket{\psi}{\psi}}_1 + \beta \ket{\psi} \underbrace{\braket{\psi}{\psi^\perp}}_0 = \alpha \ket{\psi} \in \mathcal H_\psi ~.
         \end{equation*}
     \end{proof}
-    Moreover, since projectors are orthogonal, we can define the projector onto the orthogonal subspace as $P_\psi^\perp = \mathbb I - P_\psi$ such that it satisfies $P_\psi P_\psi^\perp = P_\psi^\perp P_\psi = 0$. This can be generalised for a generic set of orthogonal subspaces. In fact, given an orthonormal basis $\{\ket{e_n}\}$, a projector onto an element of this basis is $P_n = \ket{e_n} \bra{e_n}$ and the orthonormality condition reads as $P_n P_m = P_m P_n = 0$ for $n \neq m$. Projectors satisfy the following properties 
+    Moreover, since projectors are orthogonal, we can define the projector onto the orthogonal subspace as $P_\psi^\perp = \mathbb I - P_\psi$ such that it satisfies $P_\psi P_\psi^\perp = P_\psi^\perp P_\psi = 0$. This can be generalised for a generic set of orthogonal subspaces. In fact, given an orthonormal basis $\{\ket{e_n}\}$, a projector onto an element of this basis is $P_n = \ket{e_n} \bra{e_n}$ and the orthonormality condition reads as $P_n P_m = P_m P_n = \delta_{mn}$. Projectors satisfy the following properties 
     \begin{enumerate}
         \item boundness, i.e. 
             \begin{equation*}
@@ -70,11 +70,11 @@
     \begin{proof}
         For the boundness, $\forall \ket{\phi} \in \mathcal H$
         \begin{equation*}
-            ||P_\psi \ket{\phi}||^2 = \bra{\phi} P_\psi^\dagger P_\psi \ket{\phi} = \braket{\phi}{\psi} \underbrace{\braket{\psi}{\psi}}_1 \braket{\psi}{\phi} = |\braket{\psi}{\phi}|^2 \leq ||\phi||^1 ~,
+            ||P_\psi \ket{\phi}||^2 = \bra{\phi} P_\psi^\dagger P_\psi \ket{\phi} = \braket{\phi}{\psi} \underbrace{\braket{\psi}{\psi}}_1 \braket{\psi}{\phi} = |\braket{\psi}{\phi}|^2 \leq ||\ket{\psi}||^2 ||\ket{\phi}||^2 \leq ||\ket{\phi}||^2 ~,
         \end{equation*}
-        hence,
+        where we have used the Cauchy-Schwarz inequality and we have imposed the last inequality since norms are in the interval $[0, 1]$. Hence,
         \begin{equation*}
-            ||P_\psi|| = \frac{||P_\psi \ket{\phi}||}{||\phi||} \leq 1 ~.
+            ||P_\psi|| = \frac{||P_\psi \ket{\phi}||}{||\ket{\phi}||} \leq 1 ~.
         \end{equation*}
         For the hermiticity
         \begin{equation*}
@@ -90,7 +90,7 @@
         \end{equation*}
         For the trace, since it is independent from the choice of the basis, we choose $\ket{\psi} = \ket{\psi_1}$ such that $\braket{\psi}{\psi_n} = \delta_{n,1}$ and 
         \begin{equation*}
-            \tr P_\psi = \sum_{n=0}^{\infty} \bra{\psi_n} P_\psi \ket{\psi_n} = \sum_{n=0}^{\infty} \underbrace{\braket{\psi_n}{\psi}}_{\delta_{n,1}} \braket{\psi}{\psi_n} = \sum_{n=0}^{\infty} \underbrace{\delta_{n,1}}_{n=1} \braket{\psi}{\psi_n} = \braket{\psi}{\psi_1} = \braket{\psi_1}{\psi_1} = 1 ~.
+            \tr P_\psi = \sum_{n=0}^{\infty} \bra{\psi_n} P_\psi \ket{\psi_n} = \sum_{n=0}^{\infty} \underbrace{\braket{\psi_n}{\psi}}_{\delta_{n,1}} \braket{\psi}{\psi_n} = \sum_{n=0}^{\infty} \underbrace{\delta_{n,1}}_{n=1} \braket{\psi}{\psi_n} = \braket{\underbrace{\psi}_{\ket{\psi_1}}}{\psi_1} = \braket{\psi_1}{\psi_1} = 1 ~.
         \end{equation*}
     \end{proof}
 
@@ -104,7 +104,7 @@
 
     An observable is a linear hermitian operator $\hat A$ acting on the Hilbert space. We require the self-adjointness because, by the spectral theorem, they are always diagonalisable with a positive spectrum. This means that its eigenvalues are real and it always admits an orthonormal eigenbasis $\{\ket{\psi_n}\}$
     \begin{equation}\label{eigen}
-        A \ket{\psi_n} = \lambda_n \ket{\psi_n} ~,
+        \hat A \ket{\psi_n} = \lambda_n \ket{\psi_n} ~,
     \end{equation}
     where $\lambda_n \in \mathbb R$. In this way, $\forall \ket{\phi} \in \mathcal H$, we can expand it into the eigenbasis 
     \begin{equation}\label{exp}
@@ -136,17 +136,23 @@
     \end{enumerate}
     Consider a quantum system in a state $\ket{\psi}$. A measurement of an observable $\hat A$ has outcomes corresponding to its eigenvalues $\lambda_n$ with probability $p_n = |c_n|^2$. Recall that $\lambda_n$ are the coefficients in~\eqref{eigen} and $c_n$ in~\eqref{exp}. Its average value is 
     \begin{equation}\label{avval}
-        \av{A} = \bra{\psi} \hat A \ket{\psi} = \sum_{n} \lambda_n |c_n|^2 = \sum_{n} \lambda_n p_n ~,
+        \av{\hat A} = \bra{\psi} \hat A \ket{\psi} = \sum_{n} \lambda_n |c_n|^2 = \sum_{n} \lambda_n p_n ~,
     \end{equation}
     whereas its standard deviation is 
     \begin{equation*}
-        (\Delta A)^2 = \av{A^2} - \av{A}^2 ~.
+        (\Delta \hat A)^2 = \av{\hat A^2} - \av{\hat A}^2 ~.
     \end{equation*}
     \begin{proof}
         In fact, using~\eqref{eigen} and~\eqref{exp}
         \begin{equation*}
         \begin{aligned}
-            \av{A} & = \bra{\psi} \hat A \ket{\psi} = \sum_{m=0}^{\infty} c_m^* \bra{\psi_m} \sum_{n=0}^{\infty} c_n \underbrace{\hat A \ket{\psi_n}}_{\lambda_n \ket{\psi_n}} = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} \lambda_n c^*_m c^n \underbrace{\braket{\psi_m}{\psi_n}}_{\delta_{nm}} \\ & = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} \lambda_n c^*_m c^n \underbrace{\delta_{nm}}_{n=m} = \sum_{n=0}^{\infty} \lambda_n \underbrace{c^*_n c_n}_{|c_n|^2} = \sum_{n} \lambda_n |c_n|^2 ~.
+            \av{\hat A} & = \bra{\psi} \hat A \ket{\psi} = \sum_{m=0}^{\infty} c_m^* \bra{\psi_m} \sum_{n=0}^{\infty} c_n \underbrace{\hat A \ket{\psi_n}}_{\lambda_n \ket{\psi_n}} = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} \lambda_n c^*_m c^n \underbrace{\braket{\psi_m}{\psi_n}}_{\delta_{nm}} \\ & = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} \lambda_n c^*_m c^n \underbrace{\delta_{nm}}_{n=m} = \sum_{n=0}^{\infty} \lambda_n \underbrace{c^*_n c_n}_{|c_n|^2} = \sum_{n} \lambda_n |c_n|^2 ~.
+        \end{aligned}
+        \end{equation*}
+        Furthermore, 
+        \begin{equation*}
+        \begin{aligned}
+            (\Delta A)^2 & = \av{(\hat A - \av{\hat A})^2} = \av{\hat A^2 - 2 \hat A \av{\hat A} + \av{\hat A}^2} \\ & = \av{\hat A^2} - 2 \av{\hat A}^2 + \av{\hat A}^2 = \av{\hat A^2} - \av{\hat A}^2 ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -166,6 +172,14 @@
         \hat U^\dagger (t) = \exp(- \frac{i}{\hbar} \hat H t) = \hat U(-t) = U^{-1} (t) ~,
     \end{equation*}
     it preserves the probability.
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            ||\ket{\psi(t)}||^2 & = \braket{\psi(t)}{\psi(t)} = \bra{\psi(0)} \underbrace{\hat U^\dagger (t)}_{\hat U^{-1} (t)} \hat U (t) \ket{\psi(0)} \\ & = \bra{\psi(0)} \hat U^{-1} (t) \hat U (t) \ket{\psi(0)} = \braket{\psi(0)}{\psi(0)} = ||\ket{\psi(0)}||^2 ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
 
 \section{Density matrices and mixed states}
 
@@ -189,7 +203,9 @@
     \begin{proof}
         In fact, using~\eqref{tev}
         \begin{equation*}
-            \rho_\psi (t) = \ket{\psi(t)} \bra{\psi(t)} = \exp(- \frac{i}{\hbar} \hat H t) \underbrace{\ket{\psi(0)} \bra{\psi(0)}}_{\rho_\psi (0)} \exp(\frac{i}{\hbar} \hat H t) = \exp(- \frac{i}{\hbar} \hat H t) \rho_\psi (0) \exp(\frac{i}{\hbar} \hat H t) ~.
+        \begin{aligned}
+            \rho_\psi (t) & = \ket{\psi(t)} \bra{\psi(t)} = \exp(- \frac{i}{\hbar} \hat H t) \underbrace{\ket{\psi(0)} \bra{\psi(0)}}_{\rho_\psi (0)} \exp(\frac{i}{\hbar} \hat H t) \\ & = \exp(- \frac{i}{\hbar} \hat H t) \rho_\psi (0) \exp(\frac{i}{\hbar} \hat H t) ~.
+        \end{aligned}
         \end{equation*}
     \end{proof}
 
@@ -197,7 +213,7 @@
     \begin{equation*}
         \{\ket{\psi_n}, p_n\} ~,
     \end{equation*}
-    where $p_n \geq 0$ and $\sum_{n=0}^{\infty} p_n = 1$. The difference from a pure state is that, in a mixed state, the system is in a classical fixed state before the measurement whereas, in a pure state, the state is in a quantum superposition. The density matrix of a mixed state is 
+    where $p_n \in [0, 1]$ and $\sum_{n=0}^{\infty} p_n = 1$. The difference from a pure state is that, in a mixed state, the system is in a classical fixed state before the measurement whereas, in a pure state, the state is in a quantum superposition. The density matrix of a mixed state is 
     \begin{equation}\label{mix}
         \rho = \sum_n p_k \ket{\psi_n} \bra{\psi_n} = \sum_n p_n \rho_n ~,
     \end{equation}
@@ -232,9 +248,9 @@
         \begin{equation*}
             p_n^2 = p_n ~,
         \end{equation*}
-        which means that $p_{\overline n} = 1$ for a single $\overline n$ and for all the others $p_n = 0$ for $n \neq \overline n$, but this is indeed a pure state $\rho = \ket{\psi_{\overline n}} \bra{\psi_{\overline n}}$.
+        which means that $p_{n'} = 1$ for a single $n'$ and for all the others $p_n = 0$ for $n \neq n'$, but this is indeed a pure state $\rho = \ket{\psi_{n'}} \bra{\psi_{n'}}$.
     \end{proof}
-    The average value of an observable is the same as the pure states 
+    The average value of an observable is the same as in the pure state case
     \begin{equation}\label{avobs}
         \av{\hat A} = \bra{\psi} \hat A \ket{\psi} = \tr (\rho \hat A) ~.
     \end{equation}
@@ -283,7 +299,7 @@
     \end{equation}
     its orthonormal basis is 
     \begin{equation*}
-        \ket{e_{n_1}} \ldots \ket{e_{n_N}} 
+        \ket{e_{n_1}} \ldots \ket{e_{n_N}} = \ket{e_{n_1} \ldots e_{n_N}}
     \end{equation*}
     and its scalar product is 
     \begin{equation*}
@@ -313,7 +329,7 @@
     \begin{equation}\label{eneigen}
         \hat H \ket{k,\alpha} = E_k \ket{k,\alpha} ~,
     \end{equation}
-    where $\alpha = 1, \ldots n_k$ running over a discrete and finite set. Being orthonormal and complete, it satisfies the properties 
+    where $\alpha = 1, \ldots n_k$ running over a discrete and finite set since we are in a finite volume, otherwise it would be continuous and infinite. Being orthonormal and complete, it satisfies the properties 
     \begin{equation*}
         \braket{k, \alpha}{k', \beta} = \delta_{kk'} \delta_{\alpha\beta} ~, \quad \sum_{k, \alpha} \ket{k,\alpha} \bra{k,\alpha} = \mathbb I ~.
     \end{equation*}
@@ -332,7 +348,7 @@
         P_j = \sum_{\alpha=1}^{n_j} \ket{j, \alpha} \bra{j, \alpha}
     \end{equation*} 
     is the projector onto the energy eigenspace $\mathcal H_k$. 
-    Notice that in the classical case, to derive~\eqref{mc:pdd}, we were free to choose a sharped interval $[E, E + \Delta E]$ and then go to the limit $\Delta E \rightarrow 0$. In quantum mechanics, we have to be careful since the uncertainty principle holds. In fact, in order do to this procedure, we have to respect $\delta E \delta t \sim \hbar$ and we have to wait a suffiecient long time.
+    Notice that in the classical case, to derive~\eqref{mc:pdd}, we were free to choose a sharped interval $[E, E + \Delta E]$ and then go to the limit $\Delta E \rightarrow 0$. In quantum mechanics, we have to be careful since the uncertainty principle holds. In fact, in order do to this procedure, we have to respect $\delta E \delta t \sim \hbar$ and we have to wait a sufficient long time.
     Using~\eqref{spec}, we can expand observables into the eigenbasis, like the Hamiltonian
     \begin{equation}\label{endec}
         \hat H = \sum_j E_j \hat P_j 
@@ -375,23 +391,6 @@
         \begin{equation*}
         \begin{aligned}
             \rho_{mc} & = \begin{bmatrix}
-                \begin{bmatrix}
-                    \frac{1}{n_1} & 0 & \ldots & 0 \\
-                    0 & \frac{1}{n_1} & \ldots & 0 \\
-                    \ldots & \ldots & \ldots & \ldots \\
-                    0 & 0 & \ldots & \frac{1}{n_1} \\
-                \end{bmatrix} & 0 & \ldots & 0 & \ldots \\ 0 & 
-                \ldots & \ldots & 0 & \ldots \\ 
-                \ldots & \ldots & \ldots & \ldots & \ldots \\
-                0 & 0 & \ldots & \begin{bmatrix}
-                    \frac{1}{n_j} & 0 & \ldots & 0 \\
-                    0 & \frac{1}{n_j} & \ldots & 0 \\
-                    \ldots & \ldots & \ldots \\
-                    0 & 0 & \ldots & \frac{1}{n_j} \\
-                \end{bmatrix} & \ldots \\
-                \ldots & \ldots & \ldots & \ldots & \ldots  \\
-                \ldots & \ldots & \ldots & \ldots & \ldots \\
-            \end{bmatrix} \\ & = \sum_j \begin{bmatrix}
                 0 & 0 & \ldots & 0 & \ldots \\ 
                 0 & 0 & \ldots & 0 & \ldots \\ 
                 \ldots & \ldots & \ldots & \ldots & \ldots & \\
@@ -428,22 +427,11 @@
         \end{equation*}
     \end{proof}
 
-    Notice that entropy is always a positive function, since there is at least one state occupied $n_j \geq 1$, which implies $S \geq 0$. This solve one of the problems in exercises~\eqref{ex:negs1} and~\eqref{ex:negs2}, in which under a certain temperature, entropy becomes negative. Furthermore, in the thermodynamic limit, the important quantity is specific entropy 
-    \begin{equation*}
-        s = \lim_{td} \frac{S}{V} ~,
-    \end{equation*}
-    which is valid only if $n_j$ grows slower than exponentially with $V$.
-    Finally, when $T \rightarrow 0$, we have that the most stable equilibrium state is the ground state and 
-    \begin{equation*}
-        S = k_B \ln {(n_0)}_j ~,
-    \end{equation*}
-    which agrees with the $3rd$ law of thermodynamics.
+    Notice that entropy is always a positive function, since there is at least one state occupied $n_j \geq 1$, which implies $S \geq 0$. This solve one of the problems in exercises~\eqref{ex:negs1} and~\eqref{ex:negs2}, in which under a certain temperature, entropy becomes negative.
 
 \section{Canonical ensemble}
 
-    The canonical ensemble is characterised by constant $V$, $T$ and $N$. Since N
-    is fixed, we can work in the Hilbert space $H_{tot}$ (and not in the Fock space).
-    By the same arguments of the classical case, energy, which can be exchange in an external reservoir, can be in one of the eigenstates~\eqref{eneigen} with probability 
+    The canonical ensemble is characterised by constant $V$, $T$ and $N$. Since N is fixed, we can work in the Hilbert space $H_{tot}$ (and not in the Fock space). By the same arguments of the classical case, energy, which can be exchange with an external reservoir, can be in one of the eigenstates~\eqref{eneigen} with probability 
     \begin{equation}\label{prob}
         p_j \propto \exp(- \beta E_j) ~.
     \end{equation}
@@ -462,13 +450,12 @@
             \rho_c = \sum_j p_j \hat P_j = C \sum_j \exp(- \beta E_j) \hat P_J ~,
         \end{equation*}
         where the probability is given by~\eqref{prob} and $C$ is a normalisation function.
-        Using~\eqref{endec}, we have
+        Using~\eqref{endec} and~\eqref{compl}, we have
         \begin{equation*}
         \begin{aligned}
-            \rho_c & = C \sum_j \exp(- \beta E_j) \hat P_j = C \sum_j \sum_k \frac{1}{k!} (-\beta E_j)^k \underbrace{\hat P_j}_{(P_j)^k} = C \sum_j \sum_k \frac{1}{k!} (-\beta E_j \hat P_j)^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_j E_j \hat P_j)^k = C \exp(- \beta \underbrace{\sum_j E_j \hat P_j}_{\hat H}) = C \exp(- \beta \hat H) ~,
+            \rho_c & = C \sum_j \exp(- \beta E_j) \hat P_j = C \sum_j \exp(- \beta E_j \mathbb I) \hat P_j = C \sum_j \exp(- \beta \underbrace{\sum_j E_j \hat P_j}_{\hat H}) \hat P_j \\ & = C \exp(- \beta \hat H) \sum_j \hat P_j = C \exp(- \beta \hat H) ~.
         \end{aligned}
         \end{equation*}
-        where we have used the Taylor expansion of the exponential, one of the properties of the projectors~\eqref{idem} and we have exchanged the two series.
         Finally, we set $C = \frac{1}{Z_N}$, where $Z_N$ is the quantum canonical partition function, and by the normalisation condition
         \begin{equation*}
             1 = \tr_{\mathcal H_{tot}} \rho_c = \frac{1}{Z_N} \tr_{\mathcal H_{tot}} \exp(- \beta \hat H) ~,
@@ -514,15 +501,11 @@
 
 \section{Grand canonical ensemble}
 
-    The grand canonical ensemble is characterised by constant $V$, $T$ and $\mu$. Since $N$ is not fixed, we work in the full Fock space $\mathcal F$, which is the direct sum of fixed number of particles Hilbert space $\mathcal H_N$. However, we restrict the Hamiltonian operator in the Fock space to the condition that it conserves the number of particles, i.e. $[\hat H, \hat N] = 0$ 
-    \begin{equation*}
-        \hat H \Big \vert_{\mathcal F} = \hat H_N ~.
-    \end{equation*}
-    In this way we will have different representation of the Hamiltonian for each $N$. An example of physical system which does not satisfy this condition is a photons absorbed by an electron. 
+    The grand canonical ensemble is characterised by constant $V$, $T$ and $\mu$. Since $N$ is not fixed, we work in the full Fock space $\mathcal F$, which is the direct sum of fixed number of particles Hilbert space $\mathcal H_N$. However, we restrict the Hamiltonian operator in the Fock space to the condition that it conserves the number of particles, i.e. $[\hat H, \hat N] = 0$. In this way we will have different representation of the Hamiltonian for each $N$. An example of physical system which does not satisfy this condition is a system composed by photons, since they are continuously absorbed. 
 
     By the same arguments of the classical case, energy can be in one of the energy eigenstates, each for a fixed $N$,
     \begin{equation*}
-        \hat H^{(N)} \ket{j, \alpha, (N)} = E_j^{(N)} \ket{j, \alpha, (N)} ~,
+        \hat H^{(N)} \ket{j, \alpha}^{(N)} = E_j^{(N)} \ket{j, \alpha}^{(N)} ~,
     \end{equation*}
     with probability 
     \begin{equation}\label{prob2}
@@ -530,7 +513,7 @@
     \end{equation}
     Now, consider a family of projectors $\{\hat P_j^{(N)}\}$ of the eigenstates
     \begin{equation*}
-        \hat P_j^{N} = \sum_\alpha \ket{j, \alpha, (N)} \bra{}{j, \alpha, (N)} ~,
+        \hat P_j^{(N)} = \sum_\alpha \ket{j, \alpha}^{(N)} \bra{j, \alpha}^{(N)} ~,
     \end{equation*}  
     the density matrix of mixed states is 
     \begin{equation*}
@@ -547,13 +530,12 @@
             \rho_{gc} = \sum_N \sum_j p_j \hat P_j^{(N)} = C \sum_N \sum_j \exp(- \beta (E_j^{(N)} - \mu N)) \hat P_j^{(N)} ~,
         \end{equation*}
         where the probability is given by~\eqref{prob2} and $C$ is a normalisation function.
-        Using~\eqref{endec} and~\eqref{numb}, we have
+        Using~\eqref{endec} and~\eqref{numb} and~\eqref{compl}, we have
         \begin{equation*}
         \begin{aligned}
-            \rho_{gc} & = C \sum_N \sum_j \exp(- \beta (E_j - \mu N)) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} - \mu N))^k \underbrace{\hat P_j^{(N)}}_{(\hat P_j^{(N)})^k} \\ & = C \sum_j \sum_k \frac{1}{k!} (-\beta (E_j^{(N)} \hat P_j^{(N)} - \mu N \hat P_j^{(N)}))^k \\ & = C \sum_k \frac{1}{k!} (-\beta \sum_N \sum_j (E_j^{(N)} \hat P_j^{(N)} - \mu N \hat P_j^{(N)}))^k \\ & = C \exp(- \beta (\underbrace{\sum_j \sum_N E_j^{(N)} \hat P_j^{(N)}}_{\hat H}) - \mu \underbrace{\sum_j \sum_N N \hat P_j^{(N)}}_{\hat N}) \\ & = C \exp(- \beta (\hat H - \mu \hat N)) ~,
+            \rho_{gc} & = C \sum_N \sum_j \exp(- \beta (E_j^{(N)} - \mu N)) \hat P_j^{(N)} = C \sum_N \sum_j \exp(- \beta (E_j^{(N)} - \mu N) \mathbb I) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \exp(- \beta \sum_N \sum_j (E_j^{(N)} - \mu N)\hat P_j^{(N)}) \hat P_j^{(N)} \\ & = C \sum_N \sum_j \exp(- \beta \underbrace{\sum_N \sum_j (E_j^{(N)} - \mu N)\hat P_j^{(N)}}_{\hat H - \mu \hat N}) \hat P_j^{(N)} \\ & = C \exp(-\beta (\hat H - \mu \hat N )) \sum_N \sum_j \hat P_j^{(N)} = C \exp(-\beta (\hat H - \mu \hat N ))  ~.
         \end{aligned}
-        \end{equation*}
-        where we have used the Taylor expansion of the exponential, one of the properties of the projectors~\eqref{idem} and we have exchanged the two series. Finally, We set $C = \frac{1}{\mathcal Z}$, where $\mathcal Z$ is the quantum canonical partition function, and by the normalisation condition 
+        \end{equation*} Finally, We set $C = \frac{1}{\mathcal Z}$, where $\mathcal Z$ is the quantum canonical partition function, and by the normalisation condition 
         \begin{equation*}
             1 = \tr_{\mathcal F} \rho_{gc} = \sum_N \frac{1}{\mathcal H_{tot}} \tr_{\mathcal F} \exp(- \beta (\hat H - \mu \hat N)) ~,
         \end{equation*}
@@ -569,7 +551,7 @@
     \begin{equation}\label{qgc:av}
         \av{\hat A}_{gc} = \tr_{\mathcal F} (\hat A \rho_{gc}) = \frac{1}{\mathcal Z} \sum_{N=0}^{\infty} z^N Z_N \av{\hat A_N}_c ~,
     \end{equation}
-    where $\hat A_N$ is the restriction of $hat A$ on $\mathcal H_N$.
+    where $\hat A_N$ is the restriction of $\hat A$ on $\mathcal H_N$.
     \begin{proof}
         In fact, using~\eqref{avobs}, we have
         \begin{equation*}
@@ -602,7 +584,7 @@
         S = \frac{E - \mu N - \Omega}{T} ~.
     \end{equation*}
     \begin{proof}
-        In fact 
+        In fact, using~\eqref{mc:unibol} and~\eqref{avobs}, we have
         \begin{equation*}
         \begin{aligned}
             S & = - k_B \av{\ln \rho_{gc}}_{gc} = - k_B \tr_{\mathcal F} ( \rho_{gc} \ln \rho_{gc}) \\ & = - k_B \tr_{\mathcal F} \Big ( \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} \ln \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} \Big) \\ & = - k_B \tr_{\mathcal F} \Big ( \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} (\ln \exp(- \beta (\hat H - \mu \hat N)) - \ln \mathcal Z) \Big) \\ & = k_B \beta \underbrace{\tr_{\mathcal F} \frac{\exp(- \beta (\hat H - \mu \hat N))}{\mathcal Z} (\hat H - \mu \hat N)}_{E - \mu N} + k_B \underbrace{\tr_{\mathcal F} \ln \mathcal Z }_{- \beta \Omega} = \frac{E - \mu N - \Omega}{T} ~.
@@ -616,9 +598,9 @@
 
 \section{Indistinguishability}
 
-    In quantum mechanics, particles are said to be identical if they have all the same quantum numbers, like charge, mass, spin, etc. It follows from the uncertainty principle that identical particles are also indistinguishable, because it prevents the only way to completely distinguish each others: tracking their trajectories. This leads to properties that arise only in the quantum world, like Fermi-Dirac or Bose-Einstein statistics.
+    In quantum mechanics, particles are said to be identical if they have all the same quantum numbers, like charge, mass, spin, etc. It follows from the uncertainty principle that identical particles are also indistinguishable, because quantum mechanics prevents the only way to completely distinguish each others: tracking their trajectories. This leads to properties that arise only in the quantum world, like Fermi-Dirac or Bose-Einstein statistics.
 
-    For now, we treat distinguishable particles. A single particle living in $\mathbb R^3$ with Hilbert space $\mathcal H = L^2 (\mathbb R^3) \ni \psi(x)$ and scalar product
+    For now, we treat distinguishable particles. In the Schroedinger representation, a single particle lives in $\mathbb R^3$ with Hilbert space $\mathcal H = L^2 (\mathbb R^3) \ni \psi(x)$ and scalar product
     \begin{equation*}
         \braket{\psi}{\phi} = \int d^3 x ~ \psi^*(x) \phi(x) ~,
     \end{equation*}
@@ -632,13 +614,13 @@
     \end{equation*}. 
     and an orthonormal basis is 
     \begin{equation*}
-        \{u_{\alpha_1 (x_1)} \ldots u_{\alpha_N (x_N)} = u_{\alpha_1 \ldots \alpha_N} (x_1, \ldots x_N)\} ~,
+        \{u_{\alpha_1}(x_1) \ldots u_{\alpha_N} (x_N) = u_{\alpha_1 \ldots \alpha_N} (x_1, \ldots x_N)\} ~,
     \end{equation*} 
-    where $\{u_\alpha (x)\}$ is the single particle orthonormal basis. A generic state can be expanded in this basis as 
+    where $\{u_\alpha (x)\}$ is the single particle orthonormal basis and $\alpha_1 \ldots \alpha_N$ are label for the quantum numbers. A generic state can be expanded in this basis as 
     \begin{equation*}
         \psi(x_1, \ldots x_N) = \sum_{\alpha_1 \ldots \alpha_N} c_{\alpha_1 \ldots \alpha_N} u_{\alpha_1 \ldots \alpha_N} (x_1, \ldots x_N) ~.
     \end{equation*}
-    Now, we can distinguish between distinguishable and indistinguishable particles. In fact, for distinguishable particles, choosing $\alpha_1 = a$ and $\alpha_2 = b$ or viceversa, we obtain
+    Now, we can distinguish between distinguishable and indistinguishable particles. In fact, if we restrict ourselves with the $N=2$ case, for distinguishable particles, choosing $\alpha_1 = a$ and $\alpha_2 = b$ or viceversa, we obtain
     \begin{equation*}
         u_{\alpha_1 = a} (x_1) u_{\alpha_2 = b} (x_2) \neq u_{\alpha_1 = b} (x_1) u_{\alpha_2 = a} (x_2) ~,
     \end{equation*}
@@ -646,18 +628,18 @@
     \begin{equation*}
         u_{\alpha_1 = a} (x_1) u_{\alpha_2 = b} (x_2) \propto u_{\alpha_1 = b} (x_1) u_{\alpha_2 = a} (x_2) ~,
     \end{equation*}
-    where the proportionality factor is due to the fact that states are the same up to a global phase factor. Therefore, indistinguishability implies that all observables must be invariant under permutation of particles and $2$ states that differ only for a permutation must have the same probability. Combining all requests means that the physical quantity to be invariant is $|\psi|^2$ and not $\psi$, so that 
+    where the proportionality factor is due to the fact that states are the same up to a global phase factor. Moreover, indistinguishability implies that all observables must be invariant under permutation of particles and $2$ states that differ only for a permutation must have the same probability. Combining all requests means that the physical quantity to be invariant is $|\psi|^2$ and not $\psi$, so that 
     \begin{equation*}
         |\psi(P(x_1, \ldots, x_N))|^2 = |\psi(x_1, \ldots, x_N)|^2 ~,
     \end{equation*}
-    where $P$ is a permutation such that $P(\mathbf x_1, \ldots, \mathbf x_N) = (\mathbf x_{i_1}, \ldots, \mathbf x_{i_N})$. Therefore, the two wave function are the same up to a globally $U(1)$ phase factor $\alpha_P$, depending on the permutation
+    where $P$ is a permutation such that $P(x_1, \ldots, x_N) = (x_{i_1}, \ldots, x_{i_N})$. Therefore, the two wave function are the same up to a globally $U(1)$ phase factor $\alpha_P$, depending on the permutation
     \begin{equation}\label{perm:phase}
         \psi(P(x_1, \ldots x_N)) = \exp(i \alpha_P) \psi (x_1, \ldots x_N) ~.
     \end{equation}
 
 \section{Permutation group}
 
-    The permutation of $N$ elements form a group $P_N$. In fact, the composition of $2$ permutations $PQ$ is defined as the permutation obtained by applying first $P$ and then $Q$, the identity permutation $\mathbb I$ does not change anything and the inverse is the permutation such that $P P^{-1} = \mathbb I$. This group is generated by transposition, i.e.~a swap of two consecutive elements, since any permutation $P \in P_N$ can be decomposed, into a sequence of 
+    The permutation of $N$ elements form a group $P_N$. In fact, the composition of $2$ permutations $PQ$ is defined as the permutation obtained by applying first $Q$ and then $P$, the identity permutation $\mathbb I$ does not change anything and the inverse is the permutation such that $P P^{-1} = \mathbb I$. This group is generated by transposition, i.e.~a swap of two consecutive elements, since any permutation $P \in P_N$ can be decomposed, into a sequence of 
     \begin{equation*}
         \sigma_i \colon (1,2,\ldots, i, i+1, \ldots N) \mapsto (1,2,\ldots, i+1, i, \ldots N) ~,
     \end{equation*}
@@ -897,11 +879,11 @@
     \end{proof}
     Furthermore, we can also find which are the possible values of $\alpha_P$:
     \begin{enumerate}
-        \item $\alpha_P = 0$ and $\exp(i \alpha_P) = 1$, which correspond respectively to a bosonic totally symmetric wavefunction, i.e.~under $P$
+        \item $\alpha_P = 0$ and $\exp(i \alpha_P) = 1$, which correspond to a bosonic totally symmetric wavefunction, i.e.~under $P$
         \begin{equation*}
             \psi(x_1, \ldots x_N) \xmapsto{P} (+ 1) \psi(x_1, \ldots x_N) ~,
         \end{equation*}
-        \item $\alpha_P = \pi$ and $\exp(i \alpha_P) = \sgn(P)$, which correspond respectively to a fermionic totally antysymmetric wavefunction, i.e.~under $P$
+        \item $\alpha_P = \pi$ and $\exp(i \alpha_P) = \sgn(P)$, which correspond to a fermionic totally antysymmetric wavefunction, i.e.~under $P$
         \begin{equation*}
             \psi(x_1, \ldots x_N) \xmapsto{P} \sgn(P) \psi(x_1, \ldots x_N) = \begin{cases}
                 + \psi(x_1, \ldots x_N) & \sgn(P) = +1 \\
@@ -1015,7 +997,7 @@
         - \braket{\psi_S}{\psi_A} & = - \frac{\bra{a}_1\bra{b}_2 + \bra{b}_1\bra{a}_2}{2} \frac{\ket{a}_1 \ket{b}_2 - \ket{b}_1 \ket{a}_2}{2} \\ & = - \frac{1}{4} (\underbrace{\braket{a}{a}_1}_1 \underbrace{\braket{b}{b}_2}_1 - \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2 - \underbrace{\braket{b}{b}_1}_1 \underbrace{\braket{a}{a}_2}_1) \\ & = - \frac{1}{4} (- \braket{a}{b}_1 \braket{b}{a}_2 + \braket{b}{a}_1 \braket{a}{b}_2) \\ & = \frac{1}{4} (- \braket{a}{b}_2 \braket{b}{a}_1 + \braket{b}{a}_2 \braket{a}{b}_1 ) ~,
     \end{aligned}
     \end{equation*}
-    which means that $\braket{\psi_S}{\psi_A} = - \braket{\psi_S}{\psi_A}$. Therefore, the only solution is $\braket{\psi_S}{\psi_A} = 0$.
+    which means that $\braket{\psi_S}{\psi_A} = - \braket{\psi_S}{\psi_A}$. This is true because particles are indistinguishable and the braket of one Hilbert space is the same as the other. Therefore, the only solution is $\braket{\psi_S}{\psi_A} = 0$.
     \end{proof}
     
     Notice that Pauli's exclusion principle is encoded into the antisymmetric part, because if $a = b$ we have $\ket{\psi_A} = 0$.
@@ -1063,27 +1045,27 @@
         \end{equation*}
     \end{example}
     
-    For $N$ distinguishable particle, consider an orthonormal basis for the total Hilbert space
+    For $N$ distinguishable particles, consider an orthonormal basis for the total Hilbert space
     \begin{equation*}
         \{u_{\alpha_1}(x_1) \ldots u_{\alpha_N}(x_N)\}_{\alpha_1, \ldots \alpha_N=0}^\infty ~,
     \end{equation*}
-    where $\{u_{\alpha_K} (x_k)\}_{\alpha_k = 1}^\infty$ is an orthonormal basis for a single Hilbert space $\mathcal H_1$. Notice that they are labelled by the ordered set $(\alpha_1, \ldots \alpha_N)$ and we are specifying which particle is in which states. 
+    where $\{u_{\alpha_k} (x_k)\}_{\alpha_k = 1}^\infty$ is an orthonormal basis for a single Hilbert space $\mathcal H_1$. Notice that they are labelled by the ordered set $(\alpha_1, \ldots \alpha_N)$ and we are specifying which particle is in which states. 
     On the orher hand, in order to construct an orthonormal basis for $\mathcal H_A$ and $\mathcal H_S$ for $N$ indistinguishable particles, we project the distinguishable orthonormal basis respectively with the antisymmetriser and the symmetriser
     \begin{equation}\label{onbas}
         \ket{n_1, \ldots n_j, \ldots} = C \begin{cases} \hat S \\ \hat A \end{cases} ~ u_{\alpha_1}(x_1) \ldots u_{\alpha_N}(x_N) ~,
     \end{equation}
-    where $C$ is a normalisation constant. In fact, bb the properties of the projectors, they are orthonormal but they are not normalised. Therefore, we need to choose a normalisation constant
+    where $C$ is a normalisation constant. In fact, by the properties of the projectors, they are orthonormal but they are not normalised. Therefore, we need to choose a normalisation constant
     \begin{equation*}
         C = \begin{cases}
             \sqrt{\frac{N!}{n_1! \ldots n_k! \ldots}} & \text{for}~ \mathcal H_S \\
             \sqrt{N!} & \text{for}~ \mathcal H_A \\
         \end{cases} ~.
     \end{equation*}
-    On the contrary with respect to the distinguishable case, now we lose information, since we know only how many particles are in each state and not anymore which is in which state. In fact, we label the states with $n_1, \ldots n_k, \dots$ with $j=1, \ldots \infty$, which are the occupation number. For bosons, we have $n_k = 0, 1, \ldots, \infty$, whereas for fermions, we have $n_k = 0, 1$. For both cases, there is the constraint $N = \sum_k n_k$, which is an infinite sum but mostly are zero occupied. Moreover, given the set $\alpha_k$, we uniquely determine the occupation number $n_k$. On the other hand, given the occupation number $n_k$, we use the symmetric or antisymmetric properties~\eqref{onbas} to uniquely determine the state, because it is in $1-1$ correspondence to the set $n_k$. This means that we can describe the system using a different approch, based on the occupation number rathen than what we have done so far, called second quantisation, because we make a further quantisation by promoting fields to operators.
+    On the contrary with respect to the distinguishable case, now we lose information, since we know only how many particles are in each state and not anymore which is in which state. In fact, we label the states with $n_1, \ldots n_k, \dots$ with $j=1, \ldots \infty$, called the occupation number. For bosons, we have $n_k = 0, 1, \ldots, \infty$, whereas for fermions, we have $n_k = 0, 1$. For both cases, there is the constraint $N = \sum_k n_k$, which is an infinite sum but mostly are zero occupied. Moreover, given the set $\alpha_k$, we uniquely determine the occupation number $n_k$. On the other hand, given the occupation number $n_k$, we use the symmetric or antisymmetric properties~\eqref{onbas} to uniquely determine the state, because it is in $1-1$ correspondence to the set $n_k$. This means that we can describe the system using a different approach, based on the occupation number rather than what we have done so far, called occupation representation or second quantisation, because we make a further quantisation by promoting fields to operators.
 
 \section{Bosonic and fermionic ladder operators}
 
-    In order to construct the Fock space, we need operators to move from an Hilbert space to another with different number of particles. By analogy with the harmonic oscillator, we introduce the ladder operators. 
+    Since we are dealing with occupation numbers, it is useful to use the same procedure done with the harmonic oscillator and introduce the ladder operators. This is justified by the fact that for this quantum system we have the number operator, that allows us to count in which excited state is, and creation and annihilation operators, that allow to shift between excited states. In second quantisation, they respectively will count how many particles are in which state and shift between Hilbert space of different number of particles.
 
     The bosonic creation and annihilation operators are the one such that they satisfy the following properties 
     \begin{equation}\label{bos}
@@ -1091,7 +1073,7 @@
     \end{equation}
     Furthermore, the number operator $\hat N = \hat a^\dagger \hat a$ such that 
     \begin{equation*}
-        [\hat N, \hat a] = - \hat a~, \quad [\hat N, \hat a^\dagger] = \hat a^\dagger ~.
+        [\hat N, \hat a]_- = - \hat a~, \quad [\hat N, \hat a^\dagger]_- = \hat a^\dagger ~.
     \end{equation*} 
     The ground state (vacuum) is 
     \begin{equation*}
@@ -1108,7 +1090,7 @@
     \end{equation}
     Furthermore, the number operator $\hat N = \hat a^\dagger \hat a$ such that 
     \begin{equation*}
-        [\hat N, \hat a] = - \hat a~, \quad [\hat N, \hat a^\dagger] = \hat a^\dagger ~.
+        [\hat N, \hat a]_+ = - \hat a~, \quad [\hat N, \hat a^\dagger]_+ = \hat a^\dagger ~.
     \end{equation*} 
     The ground state (vacuum) is
     \begin{equation*}
@@ -1116,18 +1098,16 @@
     \end{equation*}
     and a generic state is defined by
     \begin{equation*}
-        \ket{\psi} = \frac{1}{\sqrt{n!}} (\hat a^\dagger)^N \ket{0} ~.
+        \ket{\psi} = \frac{1}{\sqrt{n!}} (\hat a^\dagger)^n \ket{0} ~.
     \end{equation*}
-    However, the anticommutator relation ensures the validity of the Pauli's exclusion principle. In fact, we have 
+    However, $n$ can be wither $0$ or $1$ and the anticommutator relation ensures the validity of the Pauli's exclusion principle. In fact, we have 
     \begin{equation*}
         \hat a^2 = (\hat a^\dagger)^2 = 0 ~.
     \end{equation*}
 
 \section{Fock space}
 
-    Now, we need to build the Fock space. 
-    
-    First, consider a single particle Hilbert space $\mathcal H$ with an orthonormal basis $\{\ket{e_k}\}_{n=1}^\infty$. To each $\ket{e_k}$, we associate annihilation and creation operators
+    Consider a single particle Hilbert space $\mathcal H$ with an orthonormal basis $\{\ket{e_k}\}_{n=1}^\infty$. To each $\ket{e_k}$, we associate annihilation and creation operators
     \begin{equation*}
         \ket{e_k} \mapsto \{\hat a_k, \hat a_k^\dagger\} ~,
     \end{equation*}
@@ -1147,7 +1127,6 @@
     \begin{equation*}
         \hat n_k \hat a_k^\dagger \ket{0} = 1 \hat a_k^\dagger \ket{0} ~, \quad \hat n_{k'} \hat a_k \ket{0} = 0 \quad k' \neq k ~.
     \end{equation*}
-
     By analogy, we can define the $1$-particle state
     \begin{equation*}
         \ket{0, \ldots, 1_k, \ldots, 0} = \hat a_k^\dagger \ket{0, \ldots, 0} ~,
@@ -1175,7 +1154,7 @@
 
     The general construction can be made, recalling that there is a $1-1$ correspondence between the orthonormal basis $\{\ket{e_n}\}_{n=1}^\infty$ of $\mathcal H$ and the orthonormal basis $\{\hat a_k \ket{0}\}_{k=1}^\infty$ of $\mathcal H_{S/A}$. Hence, for $N$ particles, we define
     \begin{equation*}
-        \mathcal H_{S/A}^{(N)} = \{\ket{n_1, \ldots n_k, \ldots} = \frac{1}{\sqrt{ \prod_j n_j}} (\hat a_1^\dagger)^{n_1} \ldots (\hat a_k^\dagger)^{n_k} \ldots \ket{0} \} ~.
+        \mathcal H_{S/A}^{(N)} = \{\ket{n_1, \ldots n_k, \ldots} = \frac{1}{\sqrt{ \prod_j n_j}} (\hat a_1^\dagger)^{n_1} \ldots (\hat a_k^\dagger)^{n_k} \ldots \ket{0} ~\colon~ \sum_k n_k = N\} ~.
     \end{equation*} 
     If $N$ is not fixed, like the passage from canonical to grand canonical ensemble, the total Fock space is 
     \begin{equation*}
@@ -1215,7 +1194,7 @@
     Having constructed the Fock space, now we are looking for observables, i.e.~operators. 
     Consider a generic particle state, given by the wavefunction $\ket{f} \in \mathcal H$. We can expand it into the basis $\{\ket{e_k}\}$, using the completeness relation, to find 
     \begin{equation*}
-        \ket{f} = \ket{f} \mathbb I = \sum_k \braket{e_k}{f} \ket{e_k} = \sum_k f_k \ket{e_k}
+        \ket{f} = \ket{f} \mathbb I = \sum_k \braket{e_k}{f} \ket{e_k} = \sum_k f_k \ket{e_k} ~,
     \end{equation*}
     which by the previous construction, is equivalent to 
     \begin{equation}\label{op1}
@@ -1240,7 +1219,7 @@
         In fact, using~\eqref{comm}
         \begin{equation*}
         \begin{aligned}
-            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\sum_k f^*_k \hat a_k, \sum_m g_m \hat a^\dagger]_\pm = \sum_k \sum_m f^*_k g_m \underbrace{[\hat a_k, \hat a^\dagger_m]}_{\delta_{km} \mathbb I} \\ & = \sum_k f^*_k g_k \mathbb I = \braket{f}{g} \mathbb I ~,
+            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\sum_k f^*_k \hat a_k, \sum_m g_m \hat a^\dagger]_\pm = \sum_k \sum_m f^*_k g_m \underbrace{[\hat a_k, \hat a^\dagger_m]_\pm}_{\delta_{km} \mathbb I} \\ & = \sum_k f^*_k g_k \mathbb I = \braket{f}{g} \mathbb I ~,
         \end{aligned}
         \end{equation*}
         where we have used 
@@ -1255,10 +1234,17 @@
     \end{equation*}
     which is a linear superposition of annihilation and creation operators. Actually, it is called an operator-valued function because its output is an operator. In fact, $\hat \psi(x)$ and $\hat \psi (f)$ are related by
     \begin{equation*}
-        \hat \psi^\dagger (f) = \sum_k \hat a_k^\dagger f_k = \sum_k \hat a_k^\dagger \int_{\mathbb R^d} d^d x ~ u^*_k(x) f(x) = \int_{\mathbb R^d} d^d x ~ \psi^\dagger (x) \sum_k u_k^* (x) \hat a_k^\dagger ~,
+    \begin{aligned}
+        \hat \psi(f) & = \sum_k f_k^* (x) \hat a_k = \sum_k \braket{f}{u_k(x)} \hat a_k = \sum_k \hat a_k \int_{\mathbf R^d} d^d x ~ f^* (x) u_k (x) \\ & = \int_{\mathbf R^d} d^d x ~ f^* (x)\underbrace{\sum_k \hat a_k u_k (x)}_{\hat \psi (x)} = \int_{\mathbf R^d} d^d x ~ f^* (x) \hat \psi (x)
+    \end{aligned}
     \end{equation*}
-    where we have exchanged sum and integral because they are convergent. 
-    The commutation relation becomes
+    and 
+    \begin{equation*}
+    \begin{aligned}
+        \hat \psi^\dagger(f) & = \sum_k f_k (x) \hat a_k^\dagger = \sum_k \braket{u_k(x)}{f} \hat a_k^\dagger = \sum_k \hat a_k^\dagger \int_{\mathbf R^d} d^d x ~ f (x) u_k^* (x) \\ & = \int_{\mathbf R^d} d^d x ~ f (x)\underbrace{\sum_k \hat a_k^\dagger u_k^* (x)}_{\hat \psi^\dagger (x)} = \int_{\mathbf R^d} d^d x ~ f (x) \hat \psi^\dagger (x) ~,
+    \end{aligned}
+    \end{equation*}
+    where we have exchanged sum and integral because they are convergent. The commutation relation becomes
     \begin{equation*}
         [\hat \psi(x), \hat \psi^\dagger (y)] = \delta (x - y)  \mathbb I ~.
     \end{equation*}
@@ -1266,7 +1252,7 @@
         In fact,
         \begin{equation*}
         \begin{aligned}
-            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\int d^d x ~ f^* (x) \hat \psi(x), \int d^d y ~ g(y) \hat \psi^\dagger (y)]_\pm \\ & = \int d^d x \int d^d y ~ f^*(x) g(y) [\psi(x), \psi^\dagger (y)]  ~,
+            [\hat \psi (f), \hat \psi^\dagger (g)]_\pm & = [\int d^d x ~ f^* (x) \hat \psi(x), \int d^d y ~ g(y) \hat \psi^\dagger (y)]_\pm \\ & = \int d^d x \int d^d y ~ f^*(x) g(y) [\hat \psi(x), \hat \psi^\dagger (y)]  ~,
         \end{aligned}
         \end{equation*}
         which, by~\eqref{commf}, must be equal to 
@@ -1275,7 +1261,7 @@
         \end{equation*}
         Hence, the only possibility is
         \begin{equation*}
-            [\psi(x), \psi^\dagger (y)] = \delta (x - y) \mathbb I ~.
+            [\hat \psi(x), \hat \psi^\dagger (y)] = \delta (x - y) \mathbb I ~.
         \end{equation*}
     \end{proof}
 
@@ -1330,7 +1316,7 @@
     In fact, using~\eqref{evop}, we obtain
     \begin{equation*}
     \begin{aligned}
-        \hat O^{(1)} \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) \\ & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \Big) \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty}  u_{\alpha_1} (x_1) \ldots \underbrace{\hat O(\hat p_j, \hat x_j) u_{\alpha_j} (x_j)}_{\epsilon_{\alpha_j} u_{\alpha_j} (x_j) } \ldots \Big) \\ & = \Big (\sum_{j=1}^{\infty} \epsilon_j n_j \Big ) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) ~.
+        \hat O^{(1)} \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) \\ & = \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) \Big) c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty} \hat O(\hat p_j, \hat x_j) u_{\alpha_1} (x_1) \ldots u_{\alpha_k} (x_k) \ldots \Big) \\ & = c_N \begin{bmatrix} \hat S \\ \hat A \\ \end{bmatrix} \Big ( \sum_{j=1}^{\infty}  u_{\alpha_1} (x_1) \ldots \underbrace{\hat O(\hat p_j, \hat x_j) u_{\alpha_j} (x_j)}_{\epsilon_{\alpha_j} u_{\alpha_j} (x_j) } \ldots \Big) \\ & = \Big (\sum_{j=1}^{\infty} \epsilon_{\alpha_j} \Big ) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) \\ & = \Big (\sum_{j=1}^{\infty} n_j \epsilon_j \Big ) \psi_{n_1 \ldots n_k \ldots} (x_1, \ldots x_k, \ldots) ~.
     \end{aligned}
     \end{equation*}
     \end{proof}
@@ -1392,20 +1378,17 @@
     It is also possible to find different operators than the one-body one, e.g.~ the two particles operator, used to describe interaction potential 
     \begin{equation*}
     \begin{aligned}
-        \hat O^{(2)} & = \sum_{i < j} V(x_i, x_j) = \frac{1}{2} \int dx \int dy V(x,y) \hat \psi^\dagger (x) \hat \psi^\dagger (y) \psi(y) \psi (x) \\ & = \frac{1}{2} \sum_{ijkl} V_{ijkl} \hat a_i^\dagger \hat a_j^\dagger \hat a_k \hat a_l ~,
+        \hat O^{(2)} & = \sum_{i < j} V(x_i, x_j) = \frac{1}{2} \int dx \int dy ~ V(x,y) \hat \psi^\dagger (x) \hat \psi^\dagger (y) \psi(y) \psi (x) \\ & = \frac{1}{2} \sum_{ijkl} V_{ijkl} \hat a_i^\dagger \hat a_j^\dagger \hat a_k \hat a_l ~,
     \end{aligned}
     \end{equation*}
-    where the first expression is basis-independent, while in the last one it is in the eigenbasis. 
-
-    Examples of one-body operators are density operator, number of particles and Hamiltonian.
-
+    where the first expression is basis-independent, while in the last one it is in the eigenbasis. Examples of one-body operators are density operator, number of particles and Hamiltonian.
     The density operator of a single particle $j$ is 
     \begin{equation*}
         \hat \rho_j = \delta (x - x_j)
     \end{equation*}
     and the corresponding field operator is 
     \begin{equation*}
-        \hat \varphi (x_j) = \int d^d x ~ \psi (x) \delta (x - x_j) ~.
+        \hat \psi (x_j) = \int d^d x ~ \psi (x) \delta (x - x_j) ~.
     \end{equation*}
     Therefore, the associated one-body operator is 
     \begin{equation*}
@@ -1415,8 +1398,7 @@
     \begin{equation*}
         \hat \rho_F = \int d^d y ~ \hat \psi^\dagger (y) \delta (x - y) \hat \psi (y) = \hat \psi^\dagger \hat \psi = \sum_{kk'} u_k^* (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} ~.
     \end{equation*}
-
-    The number of particle operator is 
+    The number of particles operator is 
     \begin{equation*}
     \begin{aligned}
         \hat N & = \int d^d x ~ \hat \rho^{(1)}_F (x) = \int d^d x ~ \sum_{kk'} u^*_k (x) u_{k'} (x) \hat a^\dagger_k \hat a_{k'} \\ & = \sum_{kk'} \hat a^\dagger_k \hat a_{k'} \underbrace{\int d^d x ~ u^*_k (x) u_{k'} (x)}_{\delta_{kk'}} = \sum_k \hat a^\dagger_k \hat a_k = \sum_k \hat n_k ~,
@@ -1458,7 +1440,7 @@
             u(x, y, z=0) = u(x, y, z=L) \\
         \end{cases} ~,
     \end{equation*}
-    which transforms the cube into a $3$dimensional-torus.
+    which transforms the cube into a $3$-dimensional-torus.
     The ansatz solution is a plane wave of the kind
     \begin{equation*}
         u_\alpha (\mathbf x) = c \exp(i \mathbf k \cdot \mathbf x) ~,
@@ -1479,11 +1461,11 @@
     \begin{equation*}
         k_x = \frac{2 \pi}{L} n_x ~,
     \end{equation*}
-    where $n \in \mathbb Z$ is an integer number. Applying the same procedure for $y$ and $z$, we have found that
+    where $n_x \in \mathbb Z$ is an integer number. Applying the same procedure for $y$ and $z$, we find that
     \begin{equation*}
         \mathbf k = (k_x, k_y, k_z) = \frac{2\pi}{L} \mathbf n = \frac{2\pi}{L} (n_x, n_y, n_z) 
     \end{equation*}
-    where $n_x, n_y, n_z \in \mathbb Z$. Finally, the energy eigenvalues are 
+    where $n_x, n_y, n_z \in \mathbb Z$ or $\mathbf n \in \mathbb Z^3$. Finally, the energy eigenvalues are 
     \begin{equation*}
         \epsilon_{n_x, n_y, n_z} = - \frac{4\pi^2}{L^2} (n_x^2 + n_y^2 + n_z^2) 
     \end{equation*}
@@ -1493,7 +1475,7 @@
     \end{equation*}
     The normalisation constant can be found by the normalisation condition
     \begin{equation*}
-        1 = ||u_{n_x, n_y, n_z} ||^2 = \int_V dx ~ dy ~ dz ~ |c|^2 |\exp(i \mathbf k \cdot \mathbf x)|^2 = |c|^2 V ~.
+        1 = ||u_{n_x, n_y, n_z} ||^2 = \int_V dx ~ dy ~ dz ~ |c|^2 |\exp(i \mathbf k \cdot \mathbf x)|^2 = |c|^2 V ~,
     \end{equation*}
     which implies that 
     \begin{equation*}
@@ -1552,7 +1534,7 @@
         \end{equation*}
         where in the last passage, we have switched the product with the sum because $n_1, \ldots, n_k, \ldots$ are independent.
     \end{proof}
-    In particular, if we distinguish the bosonic and the fermionic case, wwe obtain
+    In particular, if we distinguish the bosonic and the fermionic case, we obtain
     \begin{equation*}
         \mathcal Z = \begin{cases}
             \prod_k \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))} & \textnormal{bosons} \\
@@ -1572,7 +1554,7 @@
         For bosons~\eqref{bosferm}, $n_k = 0, 1, 2, \ldots$, we have
         \begin{equation*}
         \begin{aligned}
-            \mathcal Z_- & = \prod_k \sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu)n_k) = \prod_k \underbrace{\sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu))^{n_k}}_{\textnormal{geometrical series}} \\ & = \prod_k \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))} ~.
+            \mathcal Z_- & = \prod_k \sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu)n_k) = \prod_k \underbrace{\sum_{n_1, \ldots n_k, \ldots = 0}^\infty \exp(-\beta(\epsilon_k - \mu))^{n_k}}_{ \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))}} \\ & = \prod_k \frac{1}{1 - \exp (- \beta (\epsilon_k - \mu))} ~.
         \end{aligned}
         \end{equation*}
         Convergence of the both expression implies that the spectrum is bounded from below and unbounded from above. In addition, the convergence of the geometrical series implies also that $\mu < \min \epsilon_k = 0$, which we have set to zero for convenience.
@@ -1590,22 +1572,22 @@
         \end{equation*}
     \end{proof}
 
-    The grand canonical average number of particle in an energy level state $\overline k$ is 
+    The average number of particle in an energy level state $k'$ is 
     \begin{equation}\label{fdbe}
-        \av{\hat n_{\overline k}}_{gc} = \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
+        \av{\hat n_{k'}}_pm = \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
     \end{equation}
     These distributions are called Fermi-Dirac distribution for fermions with $+$ and Bose-Einstein distribution for bosons with $-$.
     \begin{proof}
         In fact, using~\eqref{qgc:av} and~\eqref{qgc:o}, we have
         \begin{equation*}
         \begin{aligned}
-            \av{\hat n_{\overline k}}_{gc} & = \tr_{\mathcal F} \Big (\hat n_{\overline k} \frac{\exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k)}{\mathcal Z} \Big) = \frac{1}{\mathcal Z} \tr_{\mathcal F} \Big (- \frac{1}{\beta} \pdv{}{\epsilon_{\overline k}} \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big) \\ & = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{\overline k}} \underbrace{\tr_{\mathcal F} \Big ( \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big)}_{\mathcal Z} = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{\overline k}} \mathcal Z = \pdv{}{\epsilon_{\overline k}} \underbrace{\Big ( - \frac{\ln \mathcal Z}{\beta} \Big)}_\Omega = \pdv{}{\epsilon_{\overline k}} \Omega ~.
+            \av{\hat n_{k'}}_{gc} & = \tr_{\mathcal F} \Big (\hat n_{k'} \frac{\exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k)}{\mathcal Z} \Big) = \frac{1}{\mathcal Z} \tr_{\mathcal F} \Big (- \frac{1}{\beta} \pdv{}{\epsilon_{k'}} \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big) \\ & = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{k'}} \underbrace{\tr_{\mathcal F} \Big ( \exp (-\beta \sum_k (\epsilon_k - \mu) \hat n_k) \Big)}_{\mathcal Z} = - \frac{1}{\beta \mathcal Z} \pdv{}{\epsilon_{k'}} \mathcal Z = \pdv{}{\epsilon_{k'}} \underbrace{\Big ( - \frac{\ln \mathcal Z}{\beta} \Big)}_\Omega = \pdv{}{\epsilon_{k'}} \Omega ~.
         \end{aligned}
         \end{equation*}
         Hence, we find, 
         \begin{equation*}
         \begin{aligned}
-            \pdv{}{\epsilon_{\overline k}} \Omega & = \pdv{}{\epsilon_{\overline k}}  \Big (\pm \frac{1}{\beta} \sum_k \ln (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \Big ) = \pm \frac{1}{\beta} (- \beta) \frac{\exp(- \beta(\epsilon_k - \mu))}{1 \mp \exp(- \beta(\epsilon_k - \mu))} \\ & = \mp \frac{1}{1 \mp \exp(\beta(\epsilon_k - \mu))} = \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
+            \pdv{}{\epsilon_{k'}} \Omega & = \pdv{}{\epsilon_{k'}}  \Big (\pm \frac{1}{\beta} \sum_k \ln (1 \mp \exp (-\beta (\epsilon_k - \mu)) ) \Big ) = \pm \frac{1}{\beta} (- \beta) \frac{\exp(- \beta(\epsilon_k - \mu))}{1 \mp \exp(- \beta(\epsilon_k - \mu))} \\ & = \mp \frac{1}{1 \mp \exp(\beta(\epsilon_k - \mu))} = \frac{1}{\exp(\beta(\epsilon_k - \mu))\mp 1} ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -1626,25 +1608,6 @@
         \end{equation*}
         where we have kept the fugacity $z$ constant.
     \end{proof}
-
-    The grand canonical partition function could be also be written in a basis independent form
-    \begin{equation*}
-        \mathcal Z_{\mp} = \det (1 + \exp(-\beta \hat \gamma))^{\mp 1}  ~,
-    \end{equation*}
-    where $\hat \gamma$ is defined as $\bra{m} \hat \gamma \ket{m'} = t_{mm'} - \mu \delta_{mm'}$ with coefficient taken from~\eqref{genbas}. Therefore, using the identity 
-    \begin{equation*}
-        \det \hat A = \exp (\tr (\ln \hat A))~,
-    \end{equation*}
-    we can recover all the formulas of this section in a basis-independent form. For example, we can write for one particle
-    \begin{equation*}
-        \hat \rho_1 = \frac{1}{\exp(\beta \hat \gamma) \mp 1} ~, \quad \hat N = \tr \hat \rho_1 ~, \quad E = \tr (\hat \rho_1 \hat t) ~, 
-    \end{equation*}
-    \begin{equation*}
-        S = \tr (\beta \hat \gamma \hat \rho_1 \mp \ln (1 \mp \exp(-\beta \hat \gamma))) = \tr (- \hat \rho_1 \ln \hat \rho_1 \pm (1 \pm \hat \rho_1) \ln (1 \pm \hat \rho_1)) ~,
-    \end{equation*}
-    \begin{equation*}
-        \Omega = \frac{1}{\beta} \tr(\beta \hat \gamma \hat \rho_1 + \hat \rho_1 \ln \hat \rho_1 \mp (1 \pm \hat \rho_1) \ln (1 \pm \hat \rho_1)) ~.
-    \end{equation*}
 
 \section{Non-relativistic non-interacting quantum gas}
 
@@ -1759,6 +1722,17 @@
     \begin{equation*}
         \Omega = - \frac{2}{3} A V \int_0^\infty d\epsilon ~ \epsilon^{3/2} n(\epsilon) ~, \quad E = A V \int_0^\infty d\epsilon ~ \epsilon^{3/2} n(\epsilon) ~, \quad N = A V \int_0^\infty d\epsilon ~ \epsilon^{1/2} n(\epsilon) ~.
     \end{equation*}
+
+    As an aside, we can recover all the formulas of the previous sections, starting from the phase space. In fact, using~\eqref{cm:denst}, we have 
+    \begin{equation}\label{q:o}
+        \Omega = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln (1 \mp \exp(- \beta (\epsilon - \mu))) ~,
+    \end{equation}
+    \begin{equation}\label{q:e}
+        E = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) \epsilon ~,
+    \end{equation}
+    \begin{equation}\label{q:n}
+        N = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) ~.
+    \end{equation}
 
 \section{Expansion in power series of the fugacity}
 
@@ -1939,17 +1913,6 @@
         \end{equation*}
     \end{proof}
 
-    As an aside, we can recover all the formulas of the previous sections, starting from the phase space. In fact, using~\eqref{cm:denst}, we have 
-    \begin{equation}\label{q:o}
-        \Omega = \frac{1}{\beta} \int_0^\infty d\epsilon ~ \omega(\epsilon) \ln (1 \mp \exp(- \beta (\epsilon - \mu))) ~,
-    \end{equation}
-    \begin{equation}\label{q:e}
-        E = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) \epsilon ~,
-    \end{equation}
-    \begin{equation}\label{q:n}
-        N = \int_0^\infty d\epsilon ~ \omega(\epsilon) n(\epsilon) ~.
-    \end{equation}
-
 \chapter{Fermi energy and Bose-Einstein condensate}
 
     In this chapter, we will restrict ourselves with the fully-quantum fermionic case, in particular we will study the $T = 0$ limit, and with the fully-quantum fermionic case, in particular we will study the Bose-Einstein condensate.
@@ -2126,7 +2089,7 @@
     \end{equation*}
     but, for $\epsilon = 0$ at $T \leq T_c$, this does not hold since $n(\epsilon = 0) \sim N$. This happens because in the thermodynamic limit we have lost a null-measure point which can be recovered by setting 
     \begin{equation*}
-        N = \sum_k \frac{1}{\exp(\beta(\epsilon_k - \mu)) - 1} = N_0 + \sum_{k\neq 0} n(k) ~,
+        N = \sum_k \frac{1}{\exp(\beta(\epsilon_k - \mu)) - 1} = N_0 + \sum_{k\neq 0} n(k) = \frac{z}{1 - z} + \sum_{k\neq 0} \frac{1}{\exp(\beta(\epsilon_k - \mu)-1) } ~,
     \end{equation*}
     which implies that 
     \begin{equation*}
@@ -2173,18 +2136,26 @@
         \end{cases} ~.
     \end{equation*}
 
+    SEE PATHRIA.
+
     Now, we can study thermodynamics. The pressure is 
     \begin{equation*}
-        p \beta = \frac{g}{\lambda_T^3} f^+_{5/2} (z) 
+        p \beta = \begin{cases}
+            \frac{g}{\lambda_T^3} f^+_{5/2} (z)  & T > T_c \\
+            \frac{g}{\lambda_T^3} \zeta(5/2)  & T \leq T_c \\
+        \end{cases}
     \end{equation*}
     and energy is
     \begin{equation}\label{eeee}
-        E = \frac{3pV}{2} = \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) ~.
+        E = \frac{3pV}{2} = \begin{cases}
+            \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) & T > T_c \\
+            \frac{3 g}{2 \lambda_T^3 \beta} \zeta(5/2) & T \leq T_c \\
+        \end{cases} ~.
     \end{equation} 
-    This relations are valid $\forall T$. Notice that $f^+_{5/2}$ is absolutely convergent since $5/2 > 2$. We can define the energy per particle 
+    Notice that $f^+_{5/2}$ is absolutely convergent since $5/2 > 2$. We can define the energy per particle 
     \begin{equation*}
         u(T) = \frac{E}{N} = \begin{cases}
-            \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T geq T_c \\
+            \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T \geq T_c \\
             \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
         \end{cases} ~.
     \end{equation*}
@@ -2195,7 +2166,7 @@
         \begin{aligned}
             u(T) = \frac{E}{N} = \frac{E}{V} \frac{V}{N} = \begin{cases}
                 \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z)  \frac{\lambda_T^3}{g f^+_{3/2} (z)} & T \geq T_c \\
-                \frac{3 g}{2 \lambda_T^3 \beta} \zeta(5/2) \frac{\lambda_T^3}{g \zeta(3/2)} \Big ( \frac{T}{T_c} \Big )^{3/2} & T < T_c \\
+                \frac{3 g}{2 \lambda_T^3 \beta} \zeta(5/2) \frac{\lambda_{T_c}^3}{g \zeta(3/2)} \Big ( \frac{T}{T_c} \Big )^{3/2} & T < T_c \\
             \end{cases} = \begin{cases}
                 \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T \geq T_c \\
                 \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
@@ -2210,7 +2181,7 @@
     The entropy per particle is 
     \begin{equation*}
         s = \begin{cases}
-            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) & T \geq T_c \\
+            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) & T \geq T_c \\
             \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta (3/2)} \frac{5}{2} \zeta(5/2)  & T \geq T_c \\
         \end{cases} ~.
     \end{equation*}
@@ -2222,7 +2193,7 @@
         Hence, using~\eqref{nnnn} and~\eqref{eeee}, we find for $T \geq T_c$
         \begin{equation*}
         \begin{aligned}
-            s & = \frac{S}{N} = \frac{V}{N} \frac{S}{V} = \frac{1}{n} \frac{1}{T} (\frac{5}{3} \frac{E}{V} - \frac{N}{V} \frac{1}{\beta} \ln z) \\ & = \frac{\lambda_{T_c}^3}{g \zeta(3/2)} k_B \beta ( \frac{5}{3} \frac{3g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) - \frac{g}{\lambda_T^3} f^+_{3/2} (z) \frac{1}{\beta} \ln z) = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) ~,
+            s & = \frac{S}{N} = \frac{V}{N} \frac{S}{V} = \frac{1}{n} \frac{1}{T} (\frac{5}{3} \frac{E}{V} - \frac{N}{V} \frac{1}{\beta} \ln z) \\ & = \frac{\lambda_{T_c}^3}{g \zeta(3/2)} k_B \beta ( \frac{5}{3} \frac{3g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) - \frac{g}{\lambda_T^3} f^+_{3/2} (z) \frac{1}{\beta} \ln z) \\ & = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) ~,
         \end{aligned}
         \end{equation*}
         whereas for $T > T_c$, we simply put $z = 1$ 
@@ -2232,7 +2203,7 @@
     \end{proof}
     Notice that, for $T \rightarrow T_c^+$, we have 
     \begin{equation*}
-        S \xrightarrow{T \rightarrow T_c^+} \frac{5}{2} \frac{\eta(5/2)}{\eta(3/2)} ~,
+        S \xrightarrow{T \rightarrow T_c^+} \frac{5}{2} \frac{\zeta(5/2)}{\zeta(3/2)} ~,
     \end{equation*}
     but for for $T \rightarrow 0$, we have 
     \begin{equation*}
@@ -2240,7 +2211,7 @@
     \end{equation*} 
     which is consistent with the fact that all particles are in the ground state and it is the only possible state. Therefore, in the range $[0, T_c]$, we have a lose of entropy which means a latent heat transfer $\Delta Q = T_c \Delta S$
     \begin{equation*}
-        \Delta S = S(T=T_c) - S(T=0) = \frac{5}{2} \frac{\eta(5/2)}{\eta(3/2)} = \frac{\Delta Q}{T_c} ~.
+        \Delta S = S(T=T_c) - S(T=0) = \frac{5}{2} \frac{\zeta(5/2)}{\zeta(3/2)} = \frac{\Delta Q}{T_c} ~.
     \end{equation*}
     Notice that, if all particles are in the ground state, we can describe them with a single wavefunction and the system behaves like a single quantum object with macroscopic quantum effects and associated probability $|\psi_{gs}|^2 dV$. 
 
