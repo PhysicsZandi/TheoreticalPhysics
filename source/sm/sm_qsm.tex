@@ -2005,11 +2005,11 @@
     \begin{equation*}
         f_l^+ (z) = \sum_{n=0}^\infty \frac{z^{n+1}}{(n+1)^l} ~.
     \end{equation*}
-    Notice that this series in an positive-terms power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and converges for $z > 1$ only if $l < 2$. Moreover, it is a monotonic function in $z$. At $z = 1$, it becomes the Riemann zeta 
+    Notice that this series is a positive-terms power series in $z = \exp(\beta\mu) > 0$, always positive. It absolutely converges for $z < 1$ and converges for $z > 1$ only if $l < 2$. Moreover, it is a monotonic function in $z$. At $z = 1$, it becomes the Riemann zeta 
     \begin{equation*}
         f^+_{3/2} (z=1) = \sum_{n=0}^\infty \frac{1}{(n+1)^{3/2}} = \zeta(\frac{3}{2}) ~.
     \end{equation*}
-    At $z = 1$, it has a vertical derivative, and for $z > 1$, it is not defined according to the physical $\mu > 0$ in the grandcanonical ensemble. See Figure~\eqref{fig:z}.
+    At $z = 1$, it has a vertical derivative, and for $z > 1$, it is not defined according to the physical $\mu > 0$ in the grand canonical ensemble. See Figure~\eqref{fig:z}.
     \begin{figure}[h!]
         \centering
         \begin{tikzpicture}
@@ -2019,7 +2019,9 @@
         \draw[thick] (0,0) to[bend right=40] (2.5,2.5);
 
         \filldraw[black] (2.5,0) circle (0.05) node[below right] {$z=1$};
+        \draw[dashed] (2.5,0) -- (2.5,3.5);
         \filldraw[black] (0,2.5) circle (0.05) node[below right] {$\zeta(3/2)$};
+        \draw[dashed] (0,2.5) -- (5,2.5);
         
         \end{tikzpicture}
         \caption{Qualitative plot of $f^+_{3/2}$ in function of $z$.}
@@ -2034,11 +2036,11 @@
     \begin{equation}\label{ninf}
         n(\epsilon) \xrightarrow{\epsilon \rightarrow 0} n_0 =\infty ~.
     \end{equation}
-    A plot of the Bose-Enstein distribution is in Figure~\ref{fig:be}.
+    A plot of the Bose-Einstein distribution is in Figure~\ref{fig:be}.
     \begin{figure}
         \centering
         \scalebox{0.7}{\pyc{plot3('x', '1 / ( exp(x) - 1)', '1 / ( exp(5 * x) - 1)','1 / ( exp(90 * x) - 1)', 5, 2, 18, True, True, True)}}
-        \caption{A plot of the Bose-Eintein distribution as a function of $\beta (\epsilon - \mu)$ at different temperature (red is hot, blue is cold). We have used $\beta (\epsilon - \mu)$ and $f(x) = n$.}
+        \caption{A plot of the Bose-Einstein distribution as a function of $\beta (\epsilon - \mu)$ at different temperature (red is hot, blue is cold). We have used $\beta (\epsilon - \mu)$ and $f(x) = n$.}
         \label{fig:be}
     \end{figure}
     However, we can even $\mu(T=T_c) = 0$ for a different temperature, higher than $T=0$, called critical temperature 
@@ -2079,7 +2081,7 @@
             \frac{g}{\lambda_T^3} \zeta(3/2) & T \leq T_c \\
         \end{cases} ~.
     \end{equation*}
-    Howver, we have made a mistake, since for $T \rightarrow 0$ we have 
+    However, we have made a mistake, since for $T \rightarrow 0$ we have 
     \begin{equation*}
         n \propto T^{1/2} \xrightarrow{T \rightarrow 0} 0 ~,
     \end{equation*}
@@ -2135,17 +2137,16 @@
             \neq 0 & T < T_c \\
         \end{cases} ~.
     \end{equation*}
+    Accordingly, for $T < T_c$, there are two coexisting phases: the normal phase $n_n$ in which particles are in a excited states and the condensed phase $n_0$ in which particles are in the ground state.
 
-    SEE PATHRIA.
-
-    Now, we can study thermodynamics. The pressure is 
+    Now, we study thermodynamics. The pressure~\eqref{qg:p} is 
     \begin{equation*}
         p \beta = \begin{cases}
             \frac{g}{\lambda_T^3} f^+_{5/2} (z)  & T > T_c \\
             \frac{g}{\lambda_T^3} \zeta(5/2)  & T \leq T_c \\
         \end{cases}
     \end{equation*}
-    and energy is
+    and energy~\eqref{qg:e2} is
     \begin{equation}\label{eeee}
         E = \frac{3pV}{2} = \begin{cases}
             \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) & T > T_c \\
@@ -2159,30 +2160,95 @@
             \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
         \end{cases} ~.
     \end{equation*}
-    It is continuous in $T=T_c$ but not differentiable. Therefore, the specific heat per particle $c_v = \partial u / \partial T$ has a cusp and we can classify this as a first order phase transition.
+    It is continuous in $T=T_c$ but not differentiable.
     \begin{proof}
         In fact, using~\eqref{eeee} and~\eqref{nnnn}, we have 
         \begin{equation*}
-        \begin{aligned}
             u(T) = \frac{E}{N} = \frac{E}{V} \frac{V}{N} = \begin{cases}
-                \frac{3 g}{2 \lambda_T^3 \beta} f^+_{5/2} (z)  \frac{\lambda_T^3}{g f^+_{3/2} (z)} & T \geq T_c \\
-                \frac{3 g}{2 \lambda_T^3 \beta} \zeta(5/2) \frac{\lambda_{T_c}^3}{g \zeta(3/2)} \Big ( \frac{T}{T_c} \Big )^{3/2} & T < T_c \\
-            \end{cases} = \begin{cases}
                 \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} & T \geq T_c \\
                 \frac{3}{2} k_B T \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
-            \end{cases} ~.
-        \end{aligned}
+            \end{cases} ~,
+        \end{equation*}
+        where we have used for $T < T_c$
+        \begin{equation*}
+            n = \Big ( \frac{T}{T_c} \Big)^{2/3} n_n = \Big ( \frac{T}{T_c} \Big)^{2/3} \frac{g}{\lambda_T^3} \zeta(3/2) ~.
         \end{equation*}
         It is continuous, since for $T = T_c$, we have
         \begin{equation*}
             \lim_{T \rightarrow T_c^-} u(T) = \lim_{T \rightarrow T_c^+} u(T) = \frac{3}{2} k_B T_c \frac{\zeta(5/2)}{\zeta(3/2)} ~.
         \end{equation*}
     \end{proof}
+    The specific heat is 
+    \begin{equation*}
+        c_V = \begin{cases}
+            \frac{15}{4} k_B \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} - \frac{9}{4} k_B \frac{f^+_{3/2} (z)}{f^+_{1/2} (z)} & T \geq T_c \\
+            \frac{15}{4} k_B \Big (\frac{T}{T_c} \Big )^{3/2} \frac{\zeta (5/2)}{\zeta (3/2)} & T < T_c \\
+        \end{cases}
+    \end{equation*}
+    It is continuous, but it has a cusp, and we can classify this as a first order phase transition. A qualitative plot is in Figure~\eqref{fig:cv}. Notice that at $T \rightarrow \infty$, we recover the Dulong-Petit law for which $c_V = 3/2 N k_B$.
+    \begin{proof}
+        In fact, by definition~\eqref{td:cv2}, for $T < T_c$ 
+        \begin{equation*}
+            c_V = \pdv{u}{T} = \pdv{}{T} \frac{3}{2} k_B \frac{T^{5/2}}{T_c^{3/2}} \frac{\zeta(5/2)}{\zeta(3/2)} = \frac{15}{4} k_B \Big (\frac{T}{T_c} \Big )^{3/2} \frac{\zeta (5/2)}{\zeta (3/2)} ~.
+        \end{equation*}
+        For $T>T_c$, using 
+        \begin{equation*}
+            f^+_{3/2} = \frac{n \lambda_T^3}{g} ~,
+        \end{equation*}
+        we have to evaluate 
+        \begin{equation*}
+        \begin{aligned}
+            c_V & = \pdv{u}{T} = \pdv{}{T} \frac{3}{2} k_B T \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} \\ & = \pdv{}{T} \frac{3}{2} k_B T \frac{1}{n \lambda_T^3} f^+_{5/2} (z) + \frac{3}{2} k_B T \frac{1}{f^+_{3/2} (z)} \pdv{}{T} f^+_{5/2} (z) \\ & = \frac{15}{4} k_B \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} + \frac{3}{2} k_B T \frac{1}{f^+_{3/2} (z)} \dv{f^+_{5/2} (z)}{z} \dv{z}{T} ~. 
+        \end{aligned}
+        \end{equation*}
+        Now we use the relations 
+        \begin{equation*}
+            z \dv{}{z} f^+_l = g_{l-1} ~,
+        \end{equation*}
+        and, since $n$ is fixed
+        \begin{equation*}
+            0 = \dv{n}{T} = \dv{}{T} \frac{g f^+_{3/2}}{\lambda_T^3} + \frac{g}{\lambda_T^3} \dv{f^+_{3/2}}{z} \dv{z}{T} = \frac{3}{2} \frac{g f^+_{3/2}}{\lambda_T^3 T} + \frac{g}{\lambda_T^3} \frac{f^+_{1/2}}{z} \dv{z}{T} ~,
+        \end{equation*}
+        we have 
+        \begin{equation*}
+            \frac{1}{z} \dv{z}{T} = - \frac{3}{2} \frac{f^+_{3/2}}{f^+_{1/2} T} ~.
+        \end{equation*}
+        Hence, 
+        \begin{equation*}
+            \dv{f^+_{5/2} (z)}{z} \dv{z}{T} = \frac{f^+_{3/2}}{z} \dv{z}{T} = - \frac{3}{2} \frac{f^+_{3/2}}{f^+_{1/2} T}  f^+_{3/2} 
+        \end{equation*}
+        and we find 
+        \begin{equation*}
+            c_V = \frac{15}{4} k_B \frac{f^+_{5/2} (z)}{f^+_{3/2} (z)} - \frac{9}{4} k_B \frac{f^+_{3/2}}{f^+_{1/2} T} ~.
+        \end{equation*}
+
+        It is continuous, since the first term vanishes for $f^+_{1/2} (z = 1) = \infty$.
+    \end{proof}
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+        \draw[->] (-0.5,0) -- (5,0) node[right] {$T$};
+        \draw[->] (0,-0.5) -- (0,5) node[right] {$c_V$};
+                
+        \draw[thick] (0,0) to[bend right=20] (2,4);
+        \draw[thick] (2,4) to[bend right=20] (5,3);
+
+        \filldraw[black] (2,0) circle (0.05) node[below right] {$T=T_c$};
+        \draw[dashed] (2,0) -- (2,5);
+        \filldraw[black] (0,3) circle (0.05) node[below left] {$c_V = 3/2$};
+        \draw[dashed] (0,3) -- (5,3);
+        
+        \end{tikzpicture}
+        \caption{Qualitative plot of $c_v$ in function of $T$.}
+        \label{fig:cv}
+    \end{figure}
+
     The entropy per particle is 
     \begin{equation*}
-        s = \begin{cases}
-            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) & T \geq T_c \\
-            \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta (3/2)} \frac{5}{2} \zeta(5/2)  & T \geq T_c \\
+        \begin{cases}
+            \frac{5}{2} k_B \frac{f^+_{5/2}}{f^+_{3/2}} - k_B \ln z & T \geq T_c \\
+            \frac{5}{2} \Big ( \frac{T}{T_c} \Big)^{3/2} k_B \frac{\zeta(5/2)}{\zeta(3/2)} & T < T_c \\
         \end{cases} ~.
     \end{equation*}
     \begin{proof}
@@ -2190,35 +2256,38 @@
         \begin{equation*}
             S = \frac{1}{T} (E - \underbrace{\Omega}_{- \frac{2}{3}E} - \underbrace{\mu}_{\frac{1}{\beta} \ln z} N) = \frac{1}{T} (\frac{5}{3} E - N \frac{1}{\beta} \ln z)  ~.
         \end{equation*}
-        Hence, using~\eqref{nnnn} and~\eqref{eeee}, we find for $T \geq T_c$
+        Hence, using~\eqref{nnnn} and~\eqref{eeee}, we find
         \begin{equation*}
         \begin{aligned}
-            s & = \frac{S}{N} = \frac{V}{N} \frac{S}{V} = \frac{1}{n} \frac{1}{T} (\frac{5}{3} \frac{E}{V} - \frac{N}{V} \frac{1}{\beta} \ln z) \\ & = \frac{\lambda_{T_c}^3}{g \zeta(3/2)} k_B \beta ( \frac{5}{3} \frac{3g}{2 \lambda_T^3 \beta} f^+_{5/2} (z) - \frac{g}{\lambda_T^3} f^+_{3/2} (z) \frac{1}{\beta} \ln z) \\ & = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\eta(3/2)} (\frac{5}{2} f^+_{5/2} (z) - f^+_{3/2} \ln z) ~,
+            s & = \frac{S}{N} = \frac{V}{N} \frac{S}{V} = \frac{1}{n} \frac{1}{T} (\frac{5}{3} \frac{E}{V} - \frac{N}{V} \frac{1}{\beta} \ln z) \\ & = \begin{cases}
+                \frac{\lambda_T^3}{g f^+_{3/2} T} ( \frac{5}{3} \frac{3g}{2 \lambda_T^3 \beta} f^+_{5/2} - \frac{g}{\lambda^T} f^+_{3/2} \frac{1}{\beta} \ln z) & T \geq T_c \\
+                \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{\lambda_T^3}{g f^+_{3/2} T} \frac{5}{3} \frac{3g}{2 \lambda_T^3} f^+_{5/2} & T < T_c \\
+            \end{cases} \\ & = \begin{cases}
+                \frac{5}{2} k_B \frac{f^+_{5/2}}{f^+_{3/2}} - k_B \ln z & T \geq T_c \\
+                \frac{5}{2} \Big ( \frac{T}{T_c} \Big)^{3/2} k_B \frac{\zeta(5/2)}{\zeta(3/2)} & T< T_c \\
+            \end{cases} ~,
         \end{aligned}
         \end{equation*}
-        whereas for $T > T_c$, we simply put $z = 1$ 
-        \begin{equation*}
-            s = \Big ( \frac{T}{T_c} \Big)^{3/2} \frac{1}{\zeta (3/2)} \frac{5}{2} \zeta(5/2) ~.
-        \end{equation*}
+        where for $T < T_c$, we put $z = 1$.
     \end{proof}
     Notice that, for $T \rightarrow T_c^+$, we have 
     \begin{equation*}
         S \xrightarrow{T \rightarrow T_c^+} \frac{5}{2} \frac{\zeta(5/2)}{\zeta(3/2)} ~,
     \end{equation*}
-    but for for $T \rightarrow 0$, we have 
+    but for $T \rightarrow 0$, we have 
     \begin{equation*}
         S \xrightarrow{T \rightarrow 0} 0 ~,
     \end{equation*} 
-    which is consistent with the fact that all particles are in the ground state and it is the only possible state. Therefore, in the range $[0, T_c]$, we have a lose of entropy which means a latent heat transfer $\Delta Q = T_c \Delta S$
+    which is consistent with the fact that all particles are in the ground state and it is the only possible state. Therefore, in the range $[0, T_c]$, we have a loss of entropy which means a latent heat transfer $\Delta Q = T_c \Delta S$
     \begin{equation*}
         \Delta S = S(T=T_c) - S(T=0) = \frac{5}{2} \frac{\zeta(5/2)}{\zeta(3/2)} = \frac{\Delta Q}{T_c} ~.
     \end{equation*}
     Notice that, if all particles are in the ground state, we can describe them with a single wavefunction and the system behaves like a single quantum object with macroscopic quantum effects and associated probability $|\psi_{gs}|^2 dV$. 
 
-    To coclude, we mention some notions of how it was experimentally realised a Bose-Einstein condensate. The assumptions to have a Bose-Einstein condensate are 
+    To conclude, we mention some notions of how it was experimentally realised a Bose-Einstein condensate. The assumptions to have a Bose-Einstein condensate are 
     \begin{enumerate}
         \item quantum non-interacting bosonic $3$-dimensional gas, 
         \item thermal wavelength of the same order of De Broglie wavelength $\lambda_T \simeq \lambda_{DB} = h / p$,
-        \item average distance between two particle is $d \simeq \lambda_{DB}$, in order to have quantum effects.
+        \item average distance between two particles is $d \simeq \lambda_{DB}$, in order to have quantum effects.
     \end{enumerate}
-    In 1938, it was thought that $He^4$ was found in a BEC, but it was a false allarm since at that temperature of $T \simeq 2 K$ Helium is an highly interacting liquid. They discovered a superfluid. It was only in 1995 that a cloud of $Rb^{87}$ was experimentally found at a temperature of $T \sim 10 nK - 1 \mu K$. It was realised using a set of tecnique, called laser cooling, Doppler cooling and magneto-optical trap, which essentially uses beam of laser to cool down the gas (Doopler because the freqency is slightly different from the one of emission to have a DOppler effect) and magnetic field to trap it. It was seen by analysing the gas expand once all traps have been switching off. 
+    In 1938, it was thought that $He^4$ was found in a BEC, but it was a false alarm since at that temperature of $T \simeq 2 K$ Helium is an highly interacting liquid. They discovered a superfluid. It was only in 1995 that a cloud of $Rb^{87}$ was experimentally found at a temperature of $T \sim 10 nK - 1 \mu K$. It was realised using a set of technique, called laser cooling, Doppler cooling and magneto-optical trap, which essentially uses beam of laser to cool down the gas (Doppler because the frequency is slightly different from the one of emission to have a Doppler effect) and magnetic field to trap it. It was seen by analysing the gas expand once all traps have been switching off. 
