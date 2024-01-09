@@ -873,7 +873,7 @@
 \section{Canonical magnetic solid}
 
     \begin{exercise}
-        Consider a solid composed by $N$ atoms or molecules with an intrinsic magnetic moment $\boldsymbol \mu$ in an external magnetic field $\mathbf B$. The phase phase is a $2$-dimensional sphere that can be parametrised by $(\theta, phi)$. The conjugate coordinate and momentum are $q = \phi$ and $p = \cos \theta$. The Hamiltonian is 
+        Consider a solid composed by $N$ atoms or molecules with an intrinsic magnetic moment $\boldsymbol \mu$ in an external magnetic field $\mathbf B$. The phase phase is a $2$-dimensional sphere that can be parametrised by $(\theta, \phi)$. The conjugate coordinate and momentum are $q = \phi$ and $p = \cos \theta$. The Hamiltonian is 
         \begin{equation*}
             H = - \sum_i \boldsymbol \mu \cdot \mathbf B = - \mu B \sum_i \cos \theta_i ~,
         \end{equation*}
@@ -1124,7 +1124,7 @@
 
     The momentum probability density distribution is 
     \begin{equation*}
-        \rho(p) = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
+        \rho(p_i) = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
     \end{equation*}
     A plot of the momentum probability density distribution is in Figure~\ref{fig:mb:mom}.
     \begin{figure}
@@ -1137,14 +1137,14 @@
         By definition, we have
         \begin{equation*}
         \begin{aligned}
-            \rho(p) & = \int_{\mathbb R^3} d^3 q ~ \rho_c (q, p) = \int_{\mathbb R^3} d^3 q ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))} \\ & = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \frac{\cancel{\int_{\mathbb R^3} d^3 q ~ \exp (- \beta V(q) )}}{\cancel{\int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))}} = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \\ & = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
+            \rho(p_i) & = \int_{\mathbb R^3} d^3 q ~ \rho_c (q, p) = \int_{\mathbb R^3} d^3 q ~ \frac{\exp (- \beta ( \frac{p^2}{2m} + V(q) ))}{(\frac{2\pi m}{\beta})^{3/2} \int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))} \\ & = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \frac{\cancel{\int_{\mathbb R^3} d^3 q ~ \exp (- \beta V(q) )}}{\cancel{\int_{\mathbb R^3} d^3 q' \exp(- \beta V(q'))}} = \frac{\exp(- \beta \frac{p^2}{2m})}{(\frac{2\pi m}{\beta})^{3/2}} \\ & = (2\pi m k_B T)^{-3/2} \exp(- \beta \frac{p^2}{2m}) = \prod_i (2\pi m k_B T)^{-1/2} \exp(- \beta \frac{p^2_i}{2m}) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
     
     The velocity probability density distribution is
     \begin{equation*}
-        \rho(p) = (\frac{m}{2\pi k_B T})^{1/2} \exp(- \beta \frac{m v^2_i}{2}) ~.
+        \rho(v_i) = (\frac{m}{2\pi k_B T})^{1/2} \exp(- \beta \frac{m v^2_i}{2}) ~.
     \end{equation*}
     \begin{proof}
         In order to have velocities instead of momenta, we make a change of variables into

@@ -189,7 +189,7 @@
         \end{equation*}
     \end{proof}
 
-    The Helmoltz free energy $F$ is 
+    The Helmholtz free energy $F$ is 
     \begin{equation*}
         F = N k_B T ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) ~.
     \end{equation*}
@@ -204,13 +204,13 @@
 
     The internal energy $E$ is 
     \begin{equation*}
-        E = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) ~.
+        E = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(\beta \hbar \omega) - 1} ) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{qgc:ce}, we have
         \begin{equation*}
         \begin{aligned}
-            E & = - \pdv{\ln Z}{\beta} = - N \pdv{}{\beta} \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N \pdv{}{\beta} ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N \pdv{}{\beta} ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N \pdv{}{\beta} ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N ( \frac{\hbar \omega}{2} - \frac{\hbar \omega}{1 - \exp(- \beta \hbar \omega)} ) = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(- \beta \hbar \omega) - 1} ) ~.
+            E & = - \pdv{\ln Z}{\beta} = - N \pdv{}{\beta} \ln \Big ( \frac{\exp(- \frac{\beta \hbar \omega}{2})}{1 - \exp(- \beta \hbar \omega)} \Big) \\ & = - N \pdv{}{\beta} ( \ln \exp(- \frac{\beta \hbar \omega}{2}) - \ln (1 - \exp(- \beta \hbar \omega) )) \\ & = - N \pdv{}{\beta} ( - \frac{\beta \hbar \omega}{2} - \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N \pdv{}{\beta} ( \frac{\beta \hbar \omega}{2} + \ln (1 - \exp(- \beta \hbar \omega))) \\ & = N ( \frac{\hbar \omega}{2} - \frac{\hbar \omega \exp(-\beta \hbar \omega)}{1 - \exp(- \beta \hbar \omega)} ) = N ( \frac{\hbar \omega}{2} + \frac{\hbar \omega}{\exp(\beta \hbar \omega) - 1} ) ~.
         \end{aligned}
         \end{equation*}
     \end{proof}
@@ -478,7 +478,7 @@
 
     The number of particles $N$ is 
     \begin{equation*}
-        N = -\frac{A m}{2 \pi \hbar^2 \beta} \ln z ~.
+        N = -\frac{A m}{2 \pi \hbar^2 \beta} \ln (1-z) ~.
     \end{equation*}
     \begin{proof}
         By definition~\eqref{q:n}, we have 
@@ -492,7 +492,7 @@
         hence, we find 
         \begin{equation*}
         \begin{aligned}
-            N & = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ \frac{1}{t (t+1)} = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ (\frac{1}{t} - \frac{1}{t+1} ) \\ & = \frac{A m}{2 \pi \hbar^2 \beta} (\ln t - \ln (1+t) \Big \vert_{\exp(-\beta \mu)}^{\cancel \infty} ) = \frac{A m}{2 \pi \hbar^2 \beta} (- \ln z) = -\frac{A m}{2 \pi \hbar^2 \beta} \ln z ~.
+            N & = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ \frac{1}{t (t+1)} = \frac{A m}{2 \pi \hbar^2 \beta} \int_{\exp(-\beta \mu)}^\infty dt ~ (\frac{1}{t} - \frac{1}{t+1} ) \\ & = \frac{A m}{2 \pi \hbar^2 \beta} (\ln t - \ln (1+t) \Big \vert_{\exp(-\beta \mu)}^{\cancel \infty} ) = \frac{A m}{2 \pi \hbar^2 \beta} (- \ln (1-z)) = -\frac{A m}{2 \pi \hbar^2 \beta} \ln (1-z) ~.
         \end{aligned}
     \end{equation*}
     \end{proof}
@@ -544,7 +544,7 @@
 
     The critical temperature $T_c$ is 
     \begin{equation*}
-            T_c = \frac{\hbar \omega}{k_B T} (6N)^{1/2} ~.
+            T_c = \frac{\hbar \omega}{k_B} (6N)^{1/2} ~.
     \end{equation*}
     \begin{proof}
         In fact, putting $z = 1$, we have 
@@ -553,7 +553,7 @@
         \end{equation}
         which inverted is 
         \begin{equation}
-            T_c = \frac{\hbar \omega}{k_B T} (6N)^{1/2} ~.
+            T_c = \frac{\hbar \omega}{k_B} (6N)^{1/2} ~.
         \end{equation}
     \end{proof}
 

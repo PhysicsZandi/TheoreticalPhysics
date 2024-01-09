@@ -2,7 +2,7 @@
 
 \chapter{Classical phase transitions}
 
-    In the last part of these notes, we will study phase transitions and critical phenomena of classical physical systems. In particular, we will deal with fluids and magnetic (spin) systems.
+    In this part of these notes, we will study phase transitions and critical phenomena of classical physical systems. In particular, we will deal with fluids and magnetic (spin) systems.
 
 \section{Classical fluids}
 
@@ -53,9 +53,9 @@
 
     A coexistence line is a line along which $2$ phases are in equilibrium. A coexistence point or triple point is a point in which $3$ phases are in equilibrium. Examples in the water phase diagram of coexistence lines are $S-L$, $L-V$ and $S-V$ separation lines, whereas there is only a single triple point. To study when coexistence phases system are in equilibrium, we exploit the grand canonical ensemble. For coexistence lines, in order to have equilibrium, we have
     \begin{equation*}
-        T_1 = T_2 ~, \quad T_1 = T_2 ~, \quad p_1 = p_2 ~, \quad \mu_1 = \mu_2 ~,
+        T_1 = T_2 ~, \quad p_1 = p_2 ~, \quad \mu_1 = \mu_2 ~,
     \end{equation*}
-    which provide respectively thermal, mechanical and chemical equilibrium. Writing $\mu$ in terms of the other thermodynamic functions, we obtain a constraint 
+    which provides respectively thermal, mechanical and chemical equilibrium. Writing $\mu$ in terms of the other thermodynamic functions, we obtain a constraint 
     \begin{equation*}
         \mu_1(T,p) = \mu_2(T,p) ~,
     \end{equation*}
@@ -63,7 +63,7 @@
     \begin{equation*}
         T_1 = T_2 = T_3 ~, \quad p_1 = p_2 = p_3 ~, \quad \mu_1 = \mu_2 = \mu_3 ~,
     \end{equation*}
-    where we have denoted with $1,2,3$ different phases. Writing $\mu$ in terms of the other thermodynamic functions, we obtain $2$ constraint s
+    where we have denoted with $1,2,3$ different phases. Writing $\mu$ in terms of the other thermodynamic functions, we obtain $2$ constraints
     \begin{equation*}
         \mu_1(T,p) = \mu_2(T,p) = \mu_3(T,p) ~,
     \end{equation*}
@@ -75,7 +75,7 @@
     \end{equation*} 
     In the water case, $l = 1$ and $r = 3$, so that at most we have indeed $3$ coexisting phases.
 
-    Notice that the coexistence curve $L-V$ terminates at a critical point, in which there is no more distinction between liquid and vapor, because we can circumnavigate from right to go from one phase to the other.
+    Notice that the coexistence curve $L-V$ terminates at a critical point, in which there is no more distinction between liquid and vapor, because we can circumnavigate it in the right to go from one phase to the other.
 
 \section{Classification of phase transitions}
 
@@ -122,7 +122,7 @@
         \end{equation*}
     \end{proof}
 
-    Suppose that in a system there is latent heat. Observing~\eqref{ph:cceq}, we can state that the latent heat $\Delta q$ is different from zero, only when $s_1 \neq s_2$, which corresponds to a change in order of the system. Recalling the first of~\eqref{td:es:g}, we can say that the phase $1$ must be more stable at low temperatures while phase $1$ must be more stable at high temperatures. This implies that there is a cusp-like behaviour of $G$, or equivalently on $\mu$,
+    Suppose that in a system there is latent heat. Observing~\eqref{ph:cceq}, we can state that the latent heat $\Delta q$ is different from zero, only when $s_1 \neq s_2$, which corresponds to a change in order of the system. Recalling the first of~\eqref{td:es:g}, we can say that the phase $1$ must be more stable at high temperatures while phase $2$ must be more stable at low temperatures. This implies that there is a cusp-like behaviour of $G$, or equivalently on $\mu$,
     \begin{equation*}
         \pdv{\mu_1}{T} > \pdv{\mu_2}{T} ~.
     \end{equation*}
@@ -186,7 +186,7 @@
 
     Since we are working in the grand canonical ensemble, we can introduce a redefined grand potential
     \begin{equation*}
-        \psi = \frac{\beta \Omega}{V} = \lim_{td} \frac{\ln \mathcal Z}{V} ~,
+        \psi = - \frac{\beta \Omega}{V} = \lim_{td} \frac{\ln \mathcal Z}{V} ~,
     \end{equation*}
     for which it is valid 
     \begin{equation*}
@@ -203,11 +203,11 @@
         \end{equation*}
         For the second, using the second of~\eqref{gc:es}
         \begin{equation*}
-            N = z \pdv{}{z} \ln \mathcal Z = - \frac{z}{\beta} \pdv{}{z} \ln \Omega ~,
+            N = z \pdv{}{z} \ln \mathcal Z ~,
         \end{equation*}
         hence
         \begin{equation*}
-            n = \frac{N}{V} = - \frac{z}{\beta} \pdv{}{z} \frac{\ln \Omega}{V} =  - \frac{z}{\beta} \pdv{}{z} \psi ~.
+            n = \frac{N}{V} = \frac{z}{\beta} \pdv{}{z} \frac{\ln \mathcal Z}{V} =  z \pdv{}{z} \psi ~.
         \end{equation*}
     \end{proof}
     These results can be formally stated by $2$ theorems, proved by Lee and Young, in terms of $\psi$.
@@ -293,9 +293,9 @@
     \begin{equation*}
         Z_N = \sum_{\sigma_i = \pm 1} \exp(- \beta H(\sigma_i)) ~.
     \end{equation*}
-    The thermodynamic equilibrium corresponds to the configuration of minimum (Helmoltz) free energy.
+    The thermodynamic equilibrium corresponds to the configuration of minimum (Helmholtz) free energy.
 
-    Suppose the external magnetic field is shut down, i.e.~$B = 0$. What is the equilibrium configuration? At low temperature (and low energies), Helmoltz free energy is at minimum when entropy is small and all spins are aligned, because there are only $2$ possible states (all upwards or all downwards). At high temperature (and high energies), Helmoltz free energy is at minimum when entropy is large and all spins are random-aligned, because all spins point in all directions. 
+    Suppose the external magnetic field is shut down, i.e.~$B = 0$. What is the equilibrium configuration? At low temperature (and low energies), Helmholtz free energy is at minimum when entropy is small and all spins are aligned, because there are only $2$ possible states (all upwards or all downwards). At high temperature (and high energies), Helmholtz free energy is at minimum when entropy is large and all spins are random-aligned, because all spins point in all directions. 
     
     By means of the magnetisation
     \begin{equation}\label{ph:m}
@@ -346,7 +346,7 @@
              m & = \frac{1}{N} \av{\sum_i \sigma_i}_c = \frac{1}{N} \sum_{\{\sigma_i = \pm 1\}} \sum_i \sigma_i \exp(- \beta H) \\ & = - \frac{1}{\beta N} \sum_{\{\sigma_i = \pm 1\}} \frac{1}{Z_N} \pdv{}{\beta} \exp(- \beta H) = - \frac{1}{\beta N} \pdv{\ln Z_N}{\beta} ~.
         \end{aligned}
         \end{equation*}
-        Hence 
+        Hence, 
         \begin{equation*}
             m = \tanh (\beta (B + J m z)) ~.
         \end{equation*}
@@ -370,7 +370,7 @@
     which can be solved graphically by finding the intersection between the plots of the right-handed side (a straight line) and of the left-handed side (an hyperbolic tangent).See Figure~\ref{mf:m}.
     \begin{figure}[h!]
         \centering
-        \scalebox{0.7}{\pyc{plot4('x', '2* x', 'x / 2', 'x', 'tanh(x)', 5, 5, 20, True, False, False)}}
+        \scalebox{0.7}{\pyc{plot4('x', '2* x', 'x / 2', 'x', 'tanh(x)', 5, 5, 27, True, False, False)}}
         \caption{A plot of the graphical solution of $T \tilde m / T_c = \tanh \tilde m$ for different value of $T/T_c = 1/2, 1, 2$.}
         \label{mf:m}
     \end{figure}
@@ -425,7 +425,7 @@
     \begin{equation}\label{ph:beta}
         M \sim (T - T_c)^\beta ~,
     \end{equation}
-    where $\beta \in \mathbb R$ is a parameter and $T < T_C$. $beta$ characterises the phase transition, since it tells at which speed $M \rightarrow 0$ when approaching $T \rightarrow T_c$. It is one of the $6$ so-called critical exponents.
+    where $\beta \in \mathbb R$ is a parameter and $T < T_C$. $\beta$ characterises the phase transition, since it tells at which speed $M \rightarrow 0$ when approaching $T \rightarrow T_c$. It is one of the $6$ so-called critical exponents.
 
     Other information can be found in the $2$-point correlation function between $2$ different sites
     \begin{equation*}
@@ -440,13 +440,13 @@
     \end{equation}
     where $\xi$ is the correlation length 
     \begin{equation}\label{ph:nu}
-        \xi(T) = |1 - \frac{T}{T_c}|^{-\nu} \xrightarrow{T \rightarrow T_c} \infty ~.
+        \xi(T) = |1 - \frac{T}{T_c}|^{-\nu} \xrightarrow{T \rightarrow T_c} \infty 
     \end{equation}
-    where $\eta$ and $\nu$ are critical exponents. Physically, $\xi$ tells us what is the radius inside which all the spins are strongly correlated. For $ T = T_c$, all spins are correlated since they are all aligned. See Figure~\eqref{fig:phg}.
+    and $\eta$ and $\nu$ are critical exponents. Physically, $\xi$ tells us what is the radius inside which all the spins are strongly correlated. For $ T = T_c$, all spins are correlated since they are all aligned. See Figure~\eqref{fig:phg}.
 
     \begin{figure}[h!]
         \centering
-        \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 3, 2, 21, True, True, True)}}
+        \scalebox{0.7}{\pyc{plot1('x', 'exp(-x)', 3, 2, 28, True, True, True)}}
         \caption{A plot of the correlation function for $\xi = 1$ at $T \neq T_c$.}
         \label{fig:phg}
     \end{figure}
@@ -491,7 +491,7 @@
 
 \section{Critical exponents and universality classes}
 
-    During the study of phase transitions, we some parameters like~\eqref{ph:beta},~\eqref{ph:eta} and~\eqref{ph:nu}. These are the critical exponents and they describe the behavior of physical quantities near the critical temperature of a phase transitions. We define the reduced temperature 
+    During the study of phase transitions, we have found some parameters like~\eqref{ph:beta},~\eqref{ph:eta} and~\eqref{ph:nu}. These are the critical exponents and they describe the behavior of physical quantities near the critical temperature of a phase transitions. We define the reduced temperature 
     \begin{equation*}
         \epsilon = \frac{T_c - T}{T_c} ~,
     \end{equation*}
@@ -506,20 +506,20 @@
     \begin{proof}
         In fact, for $\epsilon \ll 1$,
         \begin{equation*}
-            \frac{\ln f(\epsilon)}{\ln \epsilon} = \frac{\ln g(\epsilon) |\epsilon|^{\lambda_f}}{\ln \epsilon} = \underbrace{\frac{\ln g(\epsilon)}{\ln \epsilon}}_0 + \frac{\lambda_f \ln \epsilon}{\ln epsilon} \simeq \lambda_f ~.
+            \frac{\ln f(\epsilon)}{\ln \epsilon} = \frac{\ln g(\epsilon) |\epsilon|^{\lambda_f}}{\ln \epsilon} = \underbrace{\frac{\ln g(\epsilon)}{\ln \epsilon}}_0 + \frac{\lambda_f \ln \epsilon}{\ln \epsilon} \simeq \lambda_f ~.
         \end{equation*}
     \end{proof}
     
     The $6$ critical exponents are
     \begin{enumerate}
         \item $\alpha$ in the specific heat $C_{B = 0} \simeq |\epsilon|^{-\alpha}$,
-        \item $\beta$ in the specific heat $\phi \simeq |\epsilon|^{\beta}$,
-        \item $\gamma$ in the specific heat $\chi_{B = 0} \simeq |\epsilon|^{-\gamma}$,
-        \item $\delta$ in the specific heat $B \simeq \sgn(\phi) |\phi|^{\delta}$,
-        \item $\nu$ in the specific heat $\xi \simeq |\epsilon|^{-\nu}$,
-        \item $\eta$ in the specific heat $G(r) \simeq r^{-d+2-\eta}$.
+        \item $\beta$ in the grand potential $\phi \simeq |\epsilon|^{\beta}$,
+        \item $\gamma$ in the susceptibility $\chi_{B = 0} \simeq |\epsilon|^{-\gamma}$,
+        \item $\delta$ in the external magnetic field $B \simeq \sgn(\phi) |\phi|^{\delta}$,
+        \item $\nu$ in the correlation length $\xi \simeq |\epsilon|^{-\nu}$,
+        \item $\eta$ in the Green function $G(r) \simeq r^{-d+2-\eta}$.
     \end{enumerate}
-    $alpha$, $\gamma$ and $\nu$ have a minus sign to prevent divergences. They are calculated with the scaling hypothesis which states that Helmoltz free energy is an homogeneous function of $\epsilon$ and $B$ 
+    $\alpha$, $\gamma$ and $\nu$ have a minus sign to prevent divergences. They are calculated with the scaling hypothesis which states that Helmholtz free energy is an homogeneous function of $\epsilon$ and $B$ 
     \begin{equation*}
         f ( \lambda \epsilon, \lambda B) = \lambda f(\epsilon, B) ~.
     \end{equation*}

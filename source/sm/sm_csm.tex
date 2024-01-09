@@ -135,7 +135,7 @@
         \end{equation*}
         Now, we compute the determinant of this expression, observing that $M = \partial \eta / \partial \xi$ is the Jacobian matrix of this transformation, and we obtain, using the properties of the determinant
         \begin{equation*}
-            \det J = \det (M J M^T) = \det^2 M \det J ~,
+            \det J = \det (M J M^T) = {\det}^2 M \det J ~,
         \end{equation*}
         hence 
         \begin{equation*}
@@ -523,7 +523,7 @@
         Notice that this distribution is normalised, since 
         \begin{equation*}
         \begin{aligned}
-            \int d\Omega_1 ~ \rho^{(1)} & = \frac{1}{\omega(E)} \int d\Omega_1 \omega(E_2 = E - E_1) \\ & = \frac{1}{\omega(E)} \int_0^E dE_1 ~ \underbrace{\int_{S_{E_1}} dS_{H_1}}_{\omega(E-1)} \omega(E_2 = E - E_1) \\ & = \frac{1}{\omega(E)} \underbrace{\int_0^E dE_1 \omega(E_1) \omega(E_2 = E - E_1) }_{\omega(E)} = 1 ~,
+            \int d\Omega_1 ~ \rho^{(1)} & = \frac{1}{\omega(E)} \int d\Omega_1 \omega(E_2 = E - E_1) \\ & = \frac{1}{\omega(E)} \int_0^E dE_1 ~ \underbrace{\int_{S_{E_1}} dS_{H_1}}_{\omega(E-E_1)} \omega(E_2 = E - E_1) \\ & = \frac{1}{\omega(E)} \underbrace{\int_0^E dE_1 \omega(E_1) \omega(E_2 = E - E_1) }_{\omega(E)} = 1 ~,
         \end{aligned}
         \end{equation*}
         where the last expression follows from $E = E_1 + E_2$, $d\Omega = d\Omega_1 d\Omega_2$ and 
@@ -565,7 +565,7 @@
         \end{equation*}
     \end{proof}
 
-    Now, it is important to distinguish $2$ different type of particles: indistinguishable and distinguishable particles. Particles are called indistinguishable if they cannot be distinguished When compared with others and they are called distinguishable otherwise. In principle, in classical physics, there are no indistinguishable particles, because even if they all have the same mass, charge, spin, etc, we could always follow their trajectory. Therefore, indistinguishable particles arise only in quantum mechanics, when the uncertainty principle is introduce and the trajectory distinction cannot be made anymore. To take into account this property, we introduce a new term $\zeta_N$, defined as 
+    Now, it is important to distinguish $2$ different type of particles: indistinguishable and distinguishable particles. Particles are called indistinguishable if they cannot be distinguished washen compared with others and they are called distinguishable otherwise. In principle, in classical physics, there are no indistinguishable particles, because even if they all have the same mass, charge, spin, etc, we could always follow their trajectory. Therefore, indistinguishable particles arise only in quantum mechanics, when the uncertainty principle is introduced and the trajectory distinction cannot be made anymore. To take into account this property, we introduce a new term $\zeta_N$, defined as 
     \begin{equation}\label{cm:dist}
         \zeta_N = \begin{cases}
             1 & \textnormal{distinguishable} \\
@@ -702,16 +702,16 @@
         where we have omitted dimensional and indistinguishability factors for convenience.
         Now, we use a differential relation, which is equivalent to an intergation by parts,
         \begin{equation*}
-            d(\xi_1 \exp(-\beta H)) = d\xi_1 \exp(-\beta H) + \xi \exp(-\beta H) (-\beta) \pdv{H}{\xi_1} d\xi_1  ~,
+            d(\xi_1 \exp(-\beta H)) = d\xi_1 \exp(-\beta H) + \xi_1 \exp(-\beta H) (-\beta) \pdv{H}{\xi_1} d\xi_1  ~,
         \end{equation*}
         we invert it 
         \begin{equation*}
-            d\xi_1 \exp(-\beta H) = d(\xi_1 \exp(-\beta H)) + \beta \xi \exp(-\beta H) \pdv{H}{\xi_1} d\xi_1
+            d\xi_1 \exp(-\beta H) = d(\xi_1 \exp(-\beta H)) + \beta \xi_1 \exp(-\beta H) \pdv{H}{\xi_1} d\xi_1
         \end{equation*}
         and we insert it to find
         \begin{equation*}
         \begin{aligned}        
-            1 & = \frac{1}{Z_N} \int (\prod_{j \neq 1} d \xi_j) (d(\xi_1 \exp(-\beta H)) + \beta \xi \exp(-\beta H) \pdv{H}{\xi_1} d\xi_1) \\ & = \frac{1}{Z_N} \underbrace{\prod_{j \neq 1} d \xi_j [\xi_1 \exp(-\beta H)]_a^b}_{0~\text{by hp}} + \frac{\beta}{Z_N} \int \underbrace{\prod_{j \neq 1} d \xi_j d\xi_1}_{d\Omega} ~ \xi_1 \pdv{H}{\xi_1} \exp (-\beta H) \\ & = \beta \int d\Omega ~ \xi_1 \pdv{H}{\xi_1} \frac{\exp (- \beta H)}{Z_N} = \beta \avp{\xi_1 \pdv{H}{\xi_1}}{c}
+            1 & = \frac{1}{Z_N} \int (\prod_{j \neq 1} d \xi_j) (d(\xi_1 \exp(-\beta H)) + \beta \xi_1 \exp(-\beta H) \pdv{H}{\xi_1} d\xi_1) \\ & = \frac{1}{Z_N} \underbrace{\prod_{j \neq 1} d \xi_j [\xi_1 \exp(-\beta H)]_a^b}_{0~\text{by hp}} + \frac{\beta}{Z_N} \int \underbrace{\prod_{j \neq 1} d \xi_j d\xi_1}_{d\Omega} ~ \xi_1 \pdv{H}{\xi_1} \exp (-\beta H) \\ & = \beta \int d\Omega ~ \xi_1 \pdv{H}{\xi_1} \frac{\exp (- \beta H)}{Z_N} = \beta \avp{\xi_1 \pdv{H}{\xi_1}}{c}
         \end{aligned}
         \end{equation*}
         where we have used the hypothesis~\eqref{equi:cond}.
@@ -1002,7 +1002,7 @@
 
     At second order, we have 
     \begin{equation*}
-        \mathcal Z \simeq 1 + z Z_1 + \frac{z^2 Z_2}{2!} + O(z^3) ~,
+        \mathcal Z \simeq 1 + z Z_1 + z^2 Z_2 + O(z^3) ~,
     \end{equation*}
     where the partition function for $2$ particles is 
     \begin{equation*}
@@ -1016,12 +1016,12 @@
         In fact, using~\eqref{c:z} and the gaussian integral~\eqref{app:gauss}
         \begin{equation*}
         \begin{aligned}
-            Z_2 & = \int_{\mathcal M^2} d \Omega \exp(- \beta H) \\ & = \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
+            Z_2 & = \frac{1}{N!} \int_{\mathcal M^2} d \Omega \exp(- \beta H) \\ & = \frac{1}{2} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \int_V \int_{\mathbb R^3}\frac{d^3 q_1 ~ d^3 p_1}{h^3} \exp(- \beta (\frac{p^2}{2m} + \frac{p^2}{2m} + U(|q_1 - q_2|))) \\ & = \frac{1}{2} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_1}{h^3} \exp(- \beta \frac{p_1^2}{2m})}_{\frac{1}{\lambda_T^3}} \underbrace{\int_{\mathbb R^3} \frac{d^3 p_2}{h^3} \exp(- \beta \frac{p_2^2}{2m})}_{\frac{1}{\lambda_T^3}} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) \\ & = \frac{1}{2} \frac{1}{\lambda_T^6} \int_V d^3 q_1 \int_V d^3 q_2 \exp(- \beta U(|q_i - q_j|)) ~.
         \end{aligned}
         \end{equation*}
         Now, we make a change into the center of mass coordinates $R = (q_1 + q_2)/2$ and $r = |q_1 - q_2|$, and we find
         \begin{equation*}
-            Z_2 = \frac{1}{\lambda_T^6} \underbrace{\int_V d^3 R}_V \underbrace{\int_V d^3 r \exp(- \beta U(r)) }_{J_2 (\beta)} = \frac{V}{\lambda_T^6} J_2 (\beta) ~.
+            Z_2 = \frac{1}{2} \frac{1}{\lambda_T^6} \underbrace{\int_V d^3 R}_V \underbrace{\int_V d^3 r \exp(- \beta U(r)) }_{J_2 (\beta)} = \frac{1}{2} \frac{V}{\lambda_T^6} J_2 (\beta) ~.
         \end{equation*}
     \end{proof}
     Hence, the two equations of state can be written as 
