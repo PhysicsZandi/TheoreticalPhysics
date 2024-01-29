@@ -1,0 +1,426 @@
+\part{Klein-Gordon theory}
+
+\chapter{Klein-Gordon equation}
+
+    In this chapter, after recalling some notions of standard quantum mechanics like the Schroedinger equation, we will study how to find the Klein-Gordon equation.
+
+\section{Schroedinger equation}
+
+    At the beginning of quantum theory, there were no ideas about how to describe quantum systems. Planck introduced the idea of quanta for the black body radiation. Einstein supposed that electromagnetic radiation is made of particles, called photons, of energy $E = h \nu = \hbar \omega$. De Broglie used the inverse procedure for particles and he associated to them a wavefunction 
+    \begin{equation*}
+        \psi (t, \mathbf x) \sim \exp(2 \pi i ( \mathbf k \cdot \mathbf x - \nu t)) ~.
+    \end{equation*}
+    Assuming that the phase is Lorentz-invariant, we can extend the relation between wave quantities $\mathbf k, \nu$ and particle ones $\mathbf p, E$ by means of the Einstein-De Broglie relations 
+    \begin{equation*}
+        E = h \nu ~, \quad \mathbf p = \hbar \mathbf k ~,
+    \end{equation*}
+    or equivalently in covariant formalism 
+    \begin{equation*}
+        p^\mu = h k^\mu ~,
+    \end{equation*}
+    where $k^\mu = (\nu / c, \mathbf k)$ and $p^\mu = (E / c, \mathbf p)$. Therefore, the wavefunction becomes 
+    \begin{equation*}
+        \psi(t, \mathbf x) \sim \exp(2\pi i (\mathbf k \cdot \mathbf x - \nu t)) = \exp(\frac{i}{\hbar} (\mathbf p \cdot \mathbf x - E t)) ~.
+    \end{equation*}
+    Schroedinger obtained the equation that describes how this wavefunction evolves in time 
+    \begin{equation}\label{schro}
+        i \hbar \pdv{}{t} \psi(t, \mathbf x) = E \psi(t, \mathbf x) ~,
+    \end{equation}
+    The construction is made by the substitutions 
+    \begin{equation}\label{subst}
+        E \rightarrow i \hbar \pdv{}{t} ~, \quad \mathbf p \rightarrow - i \hbar \boldsymbol \nabla ~.
+    \end{equation}
+
+    \begin{example}
+        Consider a non-relativistic free particle. Its energy is 
+        \begin{equation*}
+            E = \frac{p^2}{2m} = - \frac{\hbar^2}{2m} \nabla^2 ~,
+        \end{equation*}
+        so that the time evolution can be obtained by solving the Schroedinger equation 
+        \begin{equation*}
+            i \hbar \pdv{}{t} \psi(t, \mathbf x) = - \frac{\hbar^2}{2m } \nabla^2 \psi(t, \mathbf x) ~.
+        \end{equation*}
+    \end{example}
+
+    In order to have a probabilistic interpretation, the wavefunction must be normalised (for infinite space plane waves, we should consider wave packets). In this way, we can interpret $\rho (t, \mathbf x) = |\psi(t, \mathbf x)|^2$ as the density probability to find the particle in $\mathbf x$ at time $t$. In particular, $\rho$ satisfies a continuity equation 
+    \begin{equation*}
+        \pdv{\rho}{t} + \boldsymbol \nabla \cdot \mathbf J = 0 ~,
+    \end{equation*}
+    where $\mathbf J = \frac{\hbar}{2im} (\psi^* \boldsymbol \psi - \psi \boldsymbol \nabla \psi^*)$ is the current density. Physically, it means that particles do not disappear. 
+    \begin{proof}
+        Multiplying~\eqref{schro} by its complex conjugate
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \psi^* (i \hbar \pdv{}{t} + \frac{\hbar^2}{2m } \nabla^2) \psi - \psi (- i \hbar \pdv{}{t} + \frac{\hbar^2}{2m } \nabla^2) \psi^* \\ & = i \hbar (\psi^* \pdv{}{t} \psi + \psi \pdv{}{t} \psi^*) + \frac{\hbar^2}{2m} (\psi^* \nabla^2 \psi - \psi \nabla^2 \psi^*) \\ & = i \hbar \pdv{\psi^* \psi} + \frac{\hbar^2}{2m} \boldsymbol \nabla \cdot (\psi \boldsymbol \nabla \psi^*- \psi^* \boldsymbol \nabla \psi) ~.
+        \end{aligned}
+        \end{equation*}
+        Hence, 
+        \begin{equation*}
+            \pdv{}{t} (\psi^* \psi) - \boldsymbol \nabla \cdot \Big (\frac{\hbar}{2im} (\psi^* \boldsymbol \nabla \psi - \psi \boldsymbol \nabla \psi^*) \Big ) ~.
+        \end{equation*}
+    \end{proof}
+
+\section{Klein-Gordon equation}
+
+    From now on, we will use $\hbar = c = 1$. So far, we have work with non-relativistic free particles satisfy the Schroedinger equation. Now, we take into account also relativistic effects. We start from the relativistic relation between energy and momentum
+    \begin{equation}\label{enmom}
+        E^2 = p^2 + m^2 ~,
+    \end{equation}
+    where $p$ is the $4$-momentum, such that its norm is constant
+    \begin{equation}\label{shell}
+        p^\mu p_\mu = - E^2 + |\vec p|^2 = - m^2 ~,
+    \end{equation}
+    This last relation is called the mass-shell condition. 
+    There are two way to promote the energy-momentum relation to operator. The first one is to use the square-root 
+    \begin{equation*}
+        \hat E = \sqrt{\hat p^2 + m^2}
+    \end{equation*}
+    and then put it inside the Schroedinger equation 
+    \begin{equation*}
+        i \pdv{}{t} \phi(t, \vec x) = \hat H \phi(t, \vec x) = \sqrt{\hat p^2 + m^2} \phi(t, \vec x) ~.
+    \end{equation*}
+    However, the square root of an operator could lead us to a non-local theory and this approach was abandoned. The second approach is the one used by Klein and Gordon, keeping the square. This leads us to the Klein-Gordon equation 
+    and the energy-momentum relation becomes 
+    \begin{equation*}
+        (- \pdvdu{}{t} + \nabla^2 - m^2) \phi(t, \vec x) = 0 ~,
+    \end{equation*}
+    which in covariant notation is 
+    \begin{equation}\label{kgeq}
+        (\partial^\mu \partial_\mu - m^2) \phi(x) = (\Box - m^2) \phi(x) = 0 ~.
+    \end{equation}
+    \begin{proof}
+        In fact, using~\eqref{subst} 
+        \begin{equation*}
+            E^2 = (i \pdv{}{t} )^2 = - \pdvdu{}{t} 
+        \end{equation*}
+        and 
+        \begin{equation*}
+            p^2 = (- i \boldsymbol \nabla)^2 = - \nabla^2 ~,
+        \end{equation*}
+        we find 
+        \begin{equation*}
+            - \pdvdu{}{t} = - \nabla^2  + m^2  ~.
+        \end{equation*}
+        Hence, 
+        \begin{equation*}
+            (- \pdvdu{}{t} + \nabla^2 \psi(x) - m^2 ) \psi(x) = 0 ~.
+        \end{equation*}
+    \end{proof}
+    Notice that we could have started from the covariant relation 
+    \begin{equation*}
+        p^\mu p_\mu + m^2 = 0 ~,
+    \end{equation*}
+    and used the substitution
+    \begin{equation*}
+         p^\mu = - i \partial_\mu ~.
+    \end{equation*}
+
+\chapter{Solutions}
+
+    In this chapter, after recalling some notions of standard quantum mechanics like the Schroedinger equation, we will study more deeply the Klein-Gordon theory: its solutions as plane waves, the probability interpretation, its Green function and its action.
+
+\section{Plane waves}
+
+    Plane waves are solutions of the Klein-Gordon equation by construction. Consider a plane waves ansatz 
+    \begin{equation*}
+        \phi(x) = \exp(i p^\mu x_\mu) ~,
+    \end{equation*}
+    where for now $p^\mu$ is arbitrary. However, using~\eqref{kgeq}
+    \begin{equation*}
+        - (p^\mu p_\mu + m^2) \exp(i p_\mu x^\mu) = 0 ~,
+    \end{equation*}
+    we find that plane wave is a solution only if $p^\mu$ satisfies the mass-shell condition 
+    \begin{equation*}
+        (p^0)^2 = \mathbf p^2 + m^2 ~, \quad p^0 = \pm \sqrt{\mathbf p^2 + m^2} = \pm E_{\mathbf p} ~.
+    \end{equation*}
+    Since $E_p \geq 0$, notice that negative energies are allowed as solutions. This shows that the theory is not stable, since there is no energy limitation from below. They cannot be neglected because interactions lead to negative energy transitions. Therefore, we indicate positive energy solutions as  
+    \begin{equation*}
+        \phi^+_p = \exp(i(-E_p t + \mathbf p \cdot \mathbf x)) ~,
+    \end{equation*}
+    whereas the negative energy solutions are 
+    \begin{equation*}
+        \phi^-_p = \exp(i(E_p t - \mathbf p \cdot \mathbf x)) ~.
+    \end{equation*}
+    A general solution is a linear combination of plane waves 
+    \begin{equation*}
+        \phi (x) = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_p} (a(\mathbf p) \exp(i(-E_p t + \mathbf p \cdot \mathbf x)) + b^*(\mathbf p) \exp(i(E_p t - \mathbf p \cdot \mathbf x)))
+    \end{equation*}
+    and its complex conjugate
+    \begin{equation*}
+        \phi^* (x) = \int \frac{d^3 p}{(2 \pi)^3} \frac{1}{2 E_p} (a^* (\mathbf p) \exp(i(-E_p t + \mathbf p \cdot \mathbf x)) + b(\mathbf p) \exp(i(E_p t - \mathbf p \cdot \mathbf x))) ~,
+    \end{equation*}
+    where $a(\mathbf p)$ and $b(\mathbf p)$ are the Fourier coefficients and the factor $1 / 2 E_{\mathbf p}$ is conventional to keep Lorentz invariant measure. If the field is real, i.e. $\phi = \phi^*$, then $a(\mathbf p) = b(\mathbf p)$.
+
+\section{Continuity equation}
+
+    The density current associated to the Klein-Gordon equation is 
+    \begin{equation}\label{cons}
+        J^\mu = \frac{1}{2im} (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) ~,
+    \end{equation}
+    such that it satisfies the continuity equation 
+    \begin{equation*}
+        \partial_\mu J^\mu = 0 ~.
+    \end{equation*}
+    \begin{proof}
+       Multiplying~\eqref{kgeq} by its complex conjugate
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \phi^* (\Box - m^2) \phi - \phi (\Box - m^2) \phi^* \\ & = \phi^* (\partial_\mu \partial^\mu - m^2) \phi - \phi (\partial_\mu \partial^\mu - m^2) \phi^* \\ & = \partial_\mu (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) ~.
+        \end{aligned}
+        \end{equation*}
+        Hence, the current is 
+        \begin{equation*}
+            J^\mu = (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) ~.
+        \end{equation*}
+        We choose a normalisation constant to make it real and to match $\mathbf J$ with the Schroedinger one
+        \begin{eqnarray}
+            J^\mu = \frac{1}{2im} (\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) ~.
+        \end{eqnarray}
+    \end{proof}
+    The time component, that corresponds to the probability density, is 
+    \begin{equation*}
+        J^0 = \frac{1}{2im} (\phi^* \partial^t \phi - \phi \partial^t \phi^*) = \frac{i}{2m} (\phi^* \partial_t \phi - \phi \partial_t \phi^*) ~,
+    \end{equation*}
+    which is not positive, even though it is real. This is because it can have negative or positive values by the initial condition choice. Recall that Klein-Gordon equation is second-order in time and we must choose both $\phi$ and $\dot \phi$ as initial conditions.
+    
+    \begin{example}
+        For plane waves, we have 
+        \begin{equation*}
+            J^0 (\phi^\pm_{\mathbf p}) = \pm \frac{E_p}{m} ~.
+        \end{equation*}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            J^0 (\phi^\pm_{\mathbf p}) & = \frac{i}{2m} (\exp(\mp i p^\mu x_\mu) \partial_t \exp(\pm i p^\mu x_\mu) - \exp(\pm i p^\mu x_\mu) \partial_t \exp(\mp i p^\mu x_\mu) ) \\ & = \frac{i}{2m} (\pm E_p \pm E_p) = \pm \frac{E_p}{m} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{example}
+    To conclude, there is no probability interpretation, since we do not know what a negative probability is.
+
+\section{Green functions}
+
+    The Green function is a solution of the Klein-Gordon equation in presence of a point-like instantaneous source. For convenience, we put it at the origin. Mathematically, it satisfies the equation 
+    \begin{equation*}
+        (- \Box + m^2) G(x) = \delta^4 (x) ~.
+    \end{equation*}
+    It is useful to determine the solution of a general source $J(x)$ 
+    \begin{equation*}
+        (- \Box + m^2) \phi(x) = J (x) ~,
+    \end{equation*}
+    which are related by 
+    \begin{equation*}
+        \phi (x) = \phi_0 (x) + \int d^4y ~ G(x-y) J (y) ~,
+    \end{equation*}
+    where $\phi_0 (x)$ is a solution of the associated inhomogeneous equation.
+    \begin{proof}
+        In fact, 
+        \begin{equation*}
+        \begin{aligned}
+            (- \Box + m^2) \phi(x) & =  (- \Box + m^2) \Big (\phi_0 (x) + \int d^4y ~ G(x-y) J (y) \Big ) \\ & = \underbrace{(- \Box + m^2) \phi_0 (x)}_0 + (- \Box + m^2) \int d^4y ~ G(x-y) J (y) \\ & =  \int d^4y ~ \underbrace{(- \Box + m^2) G(x-y)}_{\delta^4(x-y)} J (y) \\ & = \int d^4 y ~ \delta^4(x-y) J(y) \\ & = J(x)
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Now, we calculate the Green function, using the Fourier transform 
+    \begin{equation*}
+        G(x) = \int \frac{d^4 p}{(2\pi)^4} \exp(i p_\mu x^\mu) \tilde G(p) ~,
+    \end{equation*}
+    where $\tilde G$ is evaluated to be
+    \begin{equation*}
+        \tilde G(p) = \frac{1}{p^2 + m^2} ~.
+    \end{equation*}
+    Hence,
+    \begin{equation*}
+        G(x) = \int \frac{d^4 p}{(2\pi)^4} \frac{\exp(i p_\mu x^\mu)}{p^2 + m^2}
+    \end{equation*}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            (- \Box + m^2) G(x) & = (- \Box + m^2) \int \frac{d^4 p}{(2\pi)^4} \exp(i p_\mu x^\mu) \tilde G(p) \\ & = (- \Box + m^2) \int \frac{d^4 p}{(2\pi)^4} \exp(i p_\mu x^\mu) (p^\mu p_\mu + m^2) \tilde G(p) ~,
+        \end{aligned}
+        \end{equation*}
+        which is equal to 
+        \begin{equation*}
+            \delta^4 (x) = \int \frac{d^4 p}{(2\pi)^4} \exp(i p_\mu x^\mu) ~.
+        \end{equation*}
+        Hence,
+        \begin{equation*}
+            1 = (p^\mu p_\mu + m^2) \tilde G(p) ~,
+        \end{equation*}
+        and
+        \begin{equation*}
+            \tilde G(p) = \frac{1}{p^2 + m^2} ~.
+        \end{equation*}
+    \end{proof}
+
+    In general, the Green function is not unique, but it depends on boundary conditions at the infinity. We use the Feynman-Stueckelberg prescription which gives the correct quantum interpretation, i.e.~negative energy solutions are antiparticles. This means that positive energy particles propagate forward in time and negative energy particles propagate backward in time. It describes also real particles, i.e.~whose satisfy the mass-shell condition~\eqref{shell} and can travel macroscopical distances, and virtual particles, i.e.~whose do not and are hidden by the uncertainty principle. Mathematically, it means that we shift the poles on the complex plane: one upward and one downward. This means that we add a factor $\epsilon \ll 1$
+    \begin{equation*}
+        G(x) = \int \frac{d^4 p}{(2\pi)^4} \frac{\exp(i p_\mu x^\mu)}{p^2 + m^2 - i \epsilon} = \int \frac{d^4 p}{(2\pi)^4} \frac{\exp(i p_\mu x^\mu)}{(p^0 + E_{p} - i \epsilon)(p^0 + E_{p} + i \epsilon)} ~,
+    \end{equation*}
+    where $E_p = \sqrt{|\mathbf p|^2 + m^2}$.
+
+    The propagator is the Green function which is the amplitude of propagation from a point y to another point x
+    \begin{equation*}
+        \Delta (x - y) = - i G(x - y) ~.
+    \end{equation*}
+    In our case, it becomes 
+    \begin{equation}
+        \Delta (x - y) = - i G(x - y) = \int \frac{d^3 p}{(2\pi)^3} \exp(i \mathbf p \cdot (\mathbf x - \mathbf y)) \frac{\exp(- i E_p |x^o - y^0|)}{2 E_p} ~.
+    \end{equation}
+    \begin{proof}
+        In fact 
+        \begin{equation*}
+        \begin{aligned}
+            - i G(x - y) & = \int \frac{d^4 p}{(2\pi)^4} \frac{ - i \exp(i p_\mu x^\mu)}{(p^0 + E_{p} - i \epsilon)(p^0 + E_{p} + i \epsilon)} \\ & = \int \frac{d^3 p}{(2\pi)^3} \exp(i \mathbf p \cdot (\mathbf x - \mathbf y)) \int \frac{dp^0}{2\pi} \exp(-i p^0 (x^0 - y^0)) \frac{i}{(p^0 + E_{p} - i \epsilon)(p^0 + E_{p} + i \epsilon)} \\ & = \int \frac{d^3 p}{(2\pi)^3} \exp(i \mathbf p \cdot (\mathbf x - \mathbf y)) \Big ( \theta(x^0 - y^0) \frac{\exp(- i E_p (x^0 - y^0))}{2 E_p} + \theta(y^0 - x^0) \frac{\exp(- i E_p (y^0 - x^0))}{2 E_p}\Big) = \int \frac{d^3 p}{(2\pi)^3} \exp(i \mathbf p \cdot (\mathbf x - \mathbf y)) \frac{\exp(- i E_p |x^o - y^0|)}{2 E_p} ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    Yukawa suggested from the Klein-Gordon equation, a theory of nuclear interactions.
+
+\section{Action}
+
+    It is possible to formulate the Klein-Gordon theory in terms of an action principle. In fact, the Klein-Gordon equation is the Euler-Lagrange equation of the action for a complex scalar field $\phi(x)$
+    \begin{equation}\label{complkg}
+        \mathcal L = - \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi ~.
+    \end{equation}
+    \begin{proof}
+        We apply the Euler-Lagrange equation, first for $\phi$
+        \begin{equation*}
+            0 = \pdv{\mathcal L}{\phi} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi} = - m^2 \phi^* + \partial_\mu \partial^\mu \phi^* = (\Box - m^2) \phi^* ~,
+        \end{equation*}
+            which is the Klein-Gordon equation~\eqref{kgeq} for $\phi^*$, and similarly for $\phi^*$ 
+        \begin{equation*}
+            0 = \pdv{\mathcal L}{\phi^*} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi^*} = - m^2 \phi + \partial_\mu \partial^\mu \phi = (\Box - m^2) \phi ~,
+        \end{equation*}
+        which is the Klein-Gordon equation~\eqref{kgeq} for $\phi$.
+    \end{proof}
+
+    Instead, the Klein-Gordon equation for a real scalar field $\phi = \phi^*$ can be obtained by the following Lagrangian
+    \begin{equation}\label{realkg}
+        \mathcal L = - \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{m^2}{2} \phi^2 ~.
+    \end{equation}
+
+    \begin{proof}
+        We apply the Euler-Lagrange equation
+        \begin{equation*}
+            0 = \pdv{\mathcal L}{\phi} - \partial_\mu \pdv{\mathcal L}{\partial_\mu \phi} = - m^2 \phi + \partial_\mu \partial^\mu \phi = (\Box - m^2) \phi ~,
+        \end{equation*}
+        which is the Klein-Gordon equation~\eqref{kgeq}.
+    \end{proof}
+
+    The complex scalar field can be seen as a linear combination of two real fields of the same mass 
+    \begin{equation*}
+        \phi = \frac{\phi_1 + i \phi_2}{\sqrt{2}} ~, \quad \phi^* = \frac{\phi_1 - i \phi_2}{\sqrt{2}} ~,
+    \end{equation*}
+    and the related Lagrangian~\eqref{complkg} becomes~\eqref{realkg}
+    \begin{equation*}
+        \mathcal L = - \partial^\mu \phi^* \partial_\mu \phi - m^2 \phi^* \phi = -\frac{1}{2} \partial^\mu \phi_1 \partial_\mu \phi_1 - \frac{1}{2} \partial^\mu \phi_2 \partial_\mu \phi_2 - \frac{m^2}{2} (\phi_1^2 + \phi^2_2)  ~.
+    \end{equation*}
+
+    The Lagrangian formalism is useful to study symmetries of the symmetry. The free Klein-Gordon complex field has two global symmetries: one associated to the Poincaré group, which gives rise that to the energy-momentum tensor, and a $U(1)$ symmetry, which gives rise to the probability current. 
+
+    First, the free Klein-Gordon complex field is globally invariant under the Poincaré group
+    \begin{equation*}
+        (x')^\mu = \Lambda^\mu_{\phantom \mu \nu} x^\nu + a^\mu ~, \quad \phi'(x') = \phi(x) ~, \quad (\phi')^* (x') = \phi^*(x) ~.
+    \end{equation*}
+    In particular, we are interested in spacetime translations $a^\mu$, which infinitesimally look like
+    \begin{equation*}
+        \delta_\alpha \phi (x) = - a^\mu \partial_\mu \phi(x) ~, \quad \delta_\alpha \phi^* (x) = - a^\mu \partial_\mu \phi^*(x) ~.
+    \end{equation*}
+    We apply the Noether's theorem and we find the associated energy-momentum tensor
+    \begin{equation*}
+        T^{\mu\nu} = \partial^\mu \phi^* \partial^\nu \phi + \partial^\nu \phi^* \partial^\mu \phi + \eta^{\mu\nu} \mathcal L ~,
+    \end{equation*}
+    which satisfies the conserved equation 
+    \begin{equation*}
+        \partial_\mu T^{\mu\nu} = 0 ~.
+    \end{equation*}
+    Its related conserved charges are the total $4$-momentum carried by the field
+    \begin{equation*}
+        P^\mu = \int d^3 x ~ T^{0\mu} ~,
+    \end{equation*}
+    the energy density is 
+    \begin{equation*}
+        \mathcal E = T^{00} = \partial_0 \phi^* \partial_0 \phi + \nabla \phi^* \cdot \nabla \phi + m^2 \phi^* \phi
+    \end{equation*}
+    and the total energy is 
+    \begin{equation*}
+        E = \int d^3 x ~ \mathcal E = \int d^3 x ~ (\partial_0 \phi^* \partial_0 \phi + \nabla \phi^* \cdot \nabla \phi + m^2 \phi^* \phi) ~.
+    \end{equation*}
+    \begin{proof}
+        The action is invariant under a translation. In fact 
+        \begin{equation*}
+            \mathcal L' = - \partial^\mu (\phi')^* \partial_\mu \psi' - m^2 (\phi')^* \phi' = - \partial^\mu \phi^* \partial_\mu \psi - m^2 \phi^* \phi = \mathcal L ~.
+        \end{equation*}
+        We apply the Noether's theorem, we find the boundary term
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \delta L = \partial_\mu \delta \phi \partial^\mu \phi^* + \partial_\mu \phi \partial^\mu \delta \phi^* + m^2 \delta \phi \phi^* + m^2 \phi \delta \phi^* \\ & = \epsilon_\nu \partial_\mu \partial^\nu \phi \partial^\mu \phi^* + \epsilon_\nu \partial_\mu \phi \partial^\mu \partial^\nu \phi^* + m^2 \epsilon_\nu \partial^\nu \phi^* \phi + m^2 \epsilon_\nu \phi^* \partial^\nu \phi \\ & = \epsilon_\nu \partial^\nu (\partial_\mu \phi \partial^\mu \phi^* + m^2 \phi^* \phi) ~,
+        \end{aligned}
+        \end{equation*}
+        which is 
+        \begin{equation*}
+            G = \partial_\mu \phi \partial^\mu \phi^* + m^2 \phi^* \phi ~,
+        \end{equation*}
+        then we find the current
+        \begin{equation*}
+        \begin{aligned}
+            J^\mu & = \pdv{\mathcal L}{\partial_\mu \phi} \delta \phi + \pdv{\mathcal L}{\partial_\mu \phi^*} \delta \phi^* + \epsilon_\nu \eta^{\mu\nu} G \\ & = (- \partial^\mu \phi^*) (- \epsilon_\nu \partial^\nu \phi) + (- \partial^\mu \phi) (- \epsilon_\nu \partial^\nu \phi^*) + \epsilon_\nu \eta^{\mu\nu} \partial_\alpha \phi \partial^\alpha \phi^* + \epsilon_\nu \eta^{\mu\nu} m^2 \phi^* \phi \\ & = \epsilon_\nu (\partial^\mu \phi^* \partial^\nu \phi + \partial^\nu \phi^* \partial^\mu \phi + \eta^{\mu\nu} \mathcal L) ~.
+        \end{aligned}
+        \end{equation*}
+        Hence, the energy-momentum tensor is 
+        \begin{equation*}
+            T^{\mu\nu} = \partial^\mu \phi^* \partial^\nu \phi + \partial^\nu \phi^* \partial^\mu \phi + \eta^{\mu\nu} \mathcal L ~.
+        \end{equation*}
+    \end{proof}
+
+    Second, the free Klein-Gordon complex field is globally invariant under the an the $U(1)$ symmetry
+    \begin{equation*}
+        \phi'(x) = \exp(i \alpha) \phi(x) ~, \quad (\phi')^*(x) = \exp(- i \alpha) \phi^*(x) ~,
+    \end{equation*}
+    which infinitesimally looks like
+    \begin{equation*}
+        \delta_\alpha \phi (x) = i \alpha \phi(x) ~, \quad \delta_\alpha \phi^* (x) = - i \alpha \phi^*(x) ~.
+    \end{equation*}
+    We apply the Noether's theorem and we find associated Noether's current
+    \begin{equation*}
+        J^\mu = i \phi^* \partial^\mu \phi - i (\partial^\mu \phi^*) \phi ~,
+    \end{equation*}
+    which satisfies the continuity equation 
+    \begin{equation*}
+        \partial^\mu J_\mu = 0 ~.
+    \end{equation*}
+    Its related conserved charge is 
+    \begin{equation*}
+        Q = \int d^3 x ~ J^0 = - i \int d^3 x ~ (\phi^* \partial_0 \phi - i \partial_0 \phi^* \phi) ~.
+    \end{equation*}
+    Notice that it is the same as~\eqref{cons} up to a constant.
+    \begin{proof}
+        The action is invariant under an $U(1)$ rotation. In fact
+        \begin{equation*}
+        \begin{aligned}
+            \mathcal L' & = - \partial^\mu (\phi')^* \partial_\mu \psi' - m^2 (\phi')^* \phi' \\ & = - \partial^\mu \phi^* \exp(- i \alpha) \partial_\mu \psi \exp(i \alpha) - m^2 \phi^* \exp(- i \alpha) \phi \exp(i \alpha) \\ & = - \partial^\mu \phi^* \partial_\mu \phi - m^2 \phi^* \phi = \mathcal L ~.
+        \end{aligned}
+        \end{equation*}
+        We apply the Noether's theorem, we find the boundary term
+        \begin{equation*}
+        \begin{aligned}
+            0 & = \delta L = \partial_\mu \delta \phi \partial^\mu \phi^* + \partial_\mu \phi \partial^\mu \delta \phi^* + m^2 \delta \phi \phi^* + m^2 \phi \delta \phi^* \\ & = \partial_\mu i \alpha \phi \partial^\mu \phi^* - \partial_\mu \phi \partial^\mu i \alpha \phi^* + m^2 i \alpha \phi \phi^* - m^2 \phi i \alpha \phi^* \\ & = 0
+             ~,
+        \end{aligned}
+        \end{equation*}
+        which is 
+        \begin{equation*}
+            G = 0 ~,
+        \end{equation*}
+        then we find the current
+        \begin{equation*}
+        \begin{aligned}
+            J^\mu & = \pdv{\mathcal L}{\partial_\mu \phi} \delta \phi + \pdv{\mathcal L}{\partial_\mu \phi^*} \delta \phi^* \\ & = (- \partial^\mu \phi^*) (i \alpha \phi) + (- \partial^\mu \phi) (- i \alpha \phi^*) = \alpha (i \phi^* \partial^\mu \phi - i \partial^\mu \phi^* \phi) ~.
+        \end{aligned}
+        \end{equation*}
+    \end{proof}
+
+    

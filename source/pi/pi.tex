@@ -1,12 +1,11 @@
-\documentclass[a4paper, 12pt, openany]{memoir}
+\documentclass[a4paper, 12pt]{memoir}
 
 \input{../packages.tex}
 
-\title{path integral}
-\author{Matteo Zandi}
+\title{path integrals}
 \date{\today}
 
-\newcommand{\subt}{an alternative way to quantise?}
+\newcommand{\subt}{another approach to quantisation.}
 
 \begin{document}
 
@@ -18,11 +17,18 @@
 
 \mainmatter
 
-\input{pi1.tex}
-\input{pi2.tex}
-\input{pi3.tex}
+\input{../python.tex}
+
+\chapter*{Abstract}
+
+    In these notes, we will study bosonic and fermionic path integrals. After an introduction to quantum mechanical probability amplitude, we will study bosonic path integrals in configuration and phase space, with addition of the link with statistical mechanics through the Wick rotation. We will take into account the examples of the harmonic oscillator, Klein-Gordon field and perturbations theory. In the second part, we will study Grassmann variables, their classical mechanics and canonical quantisation, which will be useful to analyse fermionic path intergrals.
+    
+\input{pi_bos.tex}
+\input{pi_ferm.tex}
 
 \backmatter
+
+\nocite{rqmlecture2}
 
 \clearpage
 \phantomsection

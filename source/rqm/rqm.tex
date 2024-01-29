@@ -1,12 +1,11 @@
-\documentclass[a4paper, 12pt, openany]{memoir}
+\documentclass[a4paper, 12pt]{memoir}
 
 \input{../packages.tex}
 
 \title{relativistic quantum mechanics}
-\author{Matteo Zandi}
 \date{\today}
 
-\newcommand{\subt}{first quantisation of free theories}
+\newcommand{\subt}{first quantisation of free theories.}
 
 \begin{document}
 
@@ -18,14 +17,19 @@
 
 \mainmatter
 
-\input{rqm1.tex}
-\input{rqm2.tex}
-\input{rqm3.tex}
-\input{rqm4.tex}
+\input{../python.tex}
+
+\chapter*{Abstract}
+
+    In these notes, we will study.
+    
+\input{rqm_kg.tex}
+\input{rqm_dirac.tex}
+\input{rqm_pf.tex}
 
 \backmatter
 
-\listoftheorems
+\nocite{rqmlecture2}
 
 \clearpage
 \phantomsection

@@ -420,10 +420,6 @@
         \end{bmatrix} = (-1) \xi ~,
     \end{equation*}
 
-\section{Useful formulas} 
-
-\section{Inner product}
-
     We introduce a basis of the $2$-components spinors 
     \begin{equation*}
         \xi^r ~, \eta^s ~,
@@ -564,9 +560,7 @@
         \end{aligned}
         \end{equation*}
     \end{proof}
-
-\section{Outer product}
-
+    
     We define the following outer products 
     \begin{enumerate}
         \item \begin{equation*}
@@ -915,30 +909,31 @@
         \ket{\mathbf p, s; \mathbf p, s} = - \ket{\mathbf p, s; \mathbf p, s}  \Rightarrow \ket{\mathbf p, s; \mathbf p, s} = 0~.
     \end{equation*}
 
-\chapter{Propagator} 
+\section{Propagator} 
 
     Now, we move into Heisenberg picture. The Dirac spinor depends also on time $\psi(x) = \psi(t, \mathbf x)$ and it satisfies the Heisenberg equation 
     \begin{equation*}
         \pdv{}{t} \hat \psi(x) = i [\hat H, \hat \psi (x)] ~.
     \end{equation*}
-
-    The fermionic propagator is defined by 
+    The field operators become
+    \begin{equation*}
+        \hat \psi(x) = \sum_{s=1}^2 \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big (\hat b_{\mathbf p}^s u^s (\mathbf p) \exp(- i p^\mu x_\mu ) + \hat c_{\mathbf p}^{\dagger s} v^s (\mathbf p) \exp(i p^\mu x_\mu ) \Big) ~, 
+    \end{equation*}
+    \begin{equation*}
+        \hat \psi^\dagger(x) = \sum_{s=1}^2 \int \frac{d^3 p}{(2\pi)^3} \frac{1}{\sqrt{2 E_{\mathbf p}}} \Big (\hat b_{\mathbf p}^{\dagger s} u^{\dagger s} (\mathbf p) \exp(i p^\mu x_\mu ) + \hat c_{\mathbf p}^{s} v^{\dagger s} (\mathbf p) \exp(- i p^\mu x_\mu ) \Big) ~.
+    \end{equation*} 
+    The fermionic propagator is defined in terms of the anticommutator
     \begin{equation*}
         i S_{\alpha\beta} = \{\hat \psi_\alpha (x), \hat{ \overline \psi_\beta} (y)\} ~,
     \end{equation*}
     or in compact notation 
     \begin{equation*}
-        i S(x - y) = \{\hat \psi (x), \hat{\overline \psi(y)}\} ~.
+        i S(x - y) = \{\hat \psi (x), \hat{\overline \psi}(y)\} ~.
     \end{equation*}
-
     We can write it in terms of bosonic propagators 
     \begin{equation*}
         i S(x - y) = (i \gamma^\mu \partial_\mu + m) (D(x-y) - D(y-x)) ~.
     \end{equation*}
-    \begin{proof}
-        Maybe in the future.
-    \end{proof}
-
     Notice that for spacelike separated points, we have seen that $D(x-y) - D(y-x) = 0$, therefore for $(x-y)^2 < 0$
     \begin{equation*}
         \begin{cases}
@@ -946,16 +941,10 @@
             \{\hat \varphi (x), \hat \varphi (y)\} = 0 & \textnormal{fermions} \\
         \end{cases} ~.
     \end{equation*}
-    This ensures that causality is not violated. This holds because all the observables are bilinears of fermions. Hence, they commute and they do not anticommute outside the lightcone. 
-
-    The fermionic propagator satisfies Dirac equation as a matrix 
+    This ensures that causality is not violated. This holds because all the observables are bilinears of fermions. Hence, they commute and they do not anticommute outside the lightcone. The fermionic propagator satisfies Dirac equation as a matrix 
     \begin{equation*}
         (i \gamma^\mu \partial_\mu - m) S(x-y) = 0~.
     \end{equation*}
-    \begin{proof}
-        Maybe in the future.
-    \end{proof}
-
     The probability amplitude to propagate freely for a particle from $y$ to $x$ is 
     \begin{equation*}
         \bra{0} \hat \psi_\alpha (x) \hat {\overline \psi_\beta} (y) \ket{0} = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2E_{\mathbf p}} (\gamma^\mu p_\mu + m)_{\alpha\beta} \exp(- i p (x-y)) ~,
