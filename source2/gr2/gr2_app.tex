@@ -1,0 +1,170 @@
+\appendix
+
+\chapter{Kretschmann scalar}
+
+    In this chapter, we will compute the Kretschmann scalar $K = R^{\mu\nu\alpha\beta} R_{\mu\nu\alpha\beta}$ with the help of a python code (See https://github.com/PhysicsZandi).
+
+\section{Metric and Christoffel symbols}
+
+    The metric is 
+    \begin{equation*}
+        \pyc{SC.printmet()} ~.
+    \end{equation*}
+
+    Its inverse is 
+    \begin{equation*}
+        \pyc{SC.printmetinv()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the Christoffel symbols are
+    \begin{equation*}
+        \pyc{SC.printchri()} ~.
+    \end{equation*}
+
+\section{Riemann tensor}
+
+    The non-vanishing components of the Riemann tensor are
+    \begin{equation*}
+        \pyc{SC.printriem()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the all upper-indices Riemann tensor is 
+    \begin{equation*}
+        \pyc{SC.printriemup()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the all lower-indices Riemann tensor is
+    \begin{equation*}
+        \pyc{SC.printriemdown()} ~.
+    \end{equation*}
+
+\section{Kretschmann scalar}
+    
+    The Kretschmann scalar is 
+    \begin{equation}\label{krescal}
+        \pyc{SC.printriemscal()} ~.
+    \end{equation}
+
+\chapter{Birkhoff's theorem}
+
+    In this chapter, we will study the Birkhoff's theorem. The signature is $-+++$.
+
+    \begin{theorem}[Birkhoff]\label{birk}
+        Let $g$ be a spherical symmetric metric that satisfies the vacuum Einstein's field equations. Then $g$ is static.
+    \end{theorem}
+
+\section{Part one of the proof}
+
+    First, we prove that we can diagonalise the metric.
+
+    \begin{proof}
+        The most general spherical symmetric metric can be written as 
+        \begin{equation*}
+            ds^2 = - A(t, r) dt^2 + B(t, r) dr^2 + 2 C(t, r) drdt + D(t,r) d\Omega^2 ~,
+        \end{equation*}
+        where $d\Omega^2 = d\theta^2 + \sin^2 \theta d\phi^2$ is the solid angle element. We still have the freedom to rescale the time and radial coordinates. 
+        Regarding the time coordinate, we make a suitable change of coordinate
+        \begin{equation*}
+            t = t(T,  R) ~, 
+        \end{equation*}
+        The differential of the transformation is 
+        \begin{equation*}
+            dt = \pdv{t}{T} dT + \pdv{t}{ R} d R ~, 
+        \end{equation*}
+        \begin{equation*}
+            dt^2 = \Big ( \pdv{t}{T} dT + \pdv{t}{ R} d R \Big)^2 = \Big ( \pdv{t}{ R} \Big)^2 d R^2 + \Big ( \pdv{t}{T} \Big)^2 dT^2 + 2 \pdv{t}{T} \pdv{t}{ R} dT d R  ~.
+        \end{equation*}
+        The metric becomes
+        \begin{equation*}
+        \begin{aligned}
+            ds^2 & = - A(t,  R) dt^2 + B(t,  R) d R^2 + 2 C(t,  R) d Rdt + D(t, R) d\Omega^2 \\ & = - A(t,  R) \Big ( \Big ( \pdv{t}{ R} \Big)^2 d R^2 + \Big ( \pdv{t}{T} \Big)^2 dT^2 + 2 \pdv{t}{T} \pdv{t}{ R} dT d R \Big ) + B(t,  R) d R^2 \\ & \qquad + 2 C(t,  R) d R \Big ( \pdv{t}{T} dT + \pdv{t}{ R} d R \Big ) + D(t, R) d\Omega^2 \\ & = - A (t,  R) \Big ( \pdv{t}{T} \Big)^2 dT^2 + \Big ( - A (t,  R) \Big( \pdv{t}{ R} \Big)^2 + B(t, R) + 2 C(t,  R) \pdv{t}{ R} \Big )d R^2 \\ & \qquad + \Big ( -2 A(t, R) \pdv{t}{T} \pdv{t}{ R} + 2 C(t, R) \pdv{t}{T} \Big ) dT d R + D(t, R) d \Omega^2 ~.
+        \end{aligned}
+        \end{equation*}
+        In order to have a diagonal metric, we must impose the conditions
+        \begin{equation*}
+            A'(T, R) = A (t,  R) \Big ( \pdv{t}{T} \Big)^2 ~,
+        \end{equation*}
+        \begin{equation*}
+            B'(T, R) = - A (t,  R) \Big( \pdv{t}{ R} \Big)^2 + B(t, R) + 2 C(t,  R) \pdv{t}{ R}  ~,
+        \end{equation*}
+        \begin{equation*}
+            0 = -2 A(t, R) \pdv{t}{T} \pdv{t}{ R} + 2 C(t, R) \pdv{t}{T} ~.
+        \end{equation*}
+        The third one can be rewritten as 
+        \begin{equation*}
+            \pdv{t}{ R} = \frac{C(t, R)}{A(t, R)} ~,
+        \end{equation*}
+        and the other two become 
+        \begin{equation*}
+            A'(T, R) = A (t,  R) \Big ( \pdv{t}{T} \Big)^2 ~,
+        \end{equation*}
+        \begin{equation*}
+            B'(T, R) = \frac{C^2(t, R)}{A(t, R)} + B(t, R) ~,
+        \end{equation*}
+        Hence, we have found a suitable  Rescaling of the time coordinate in such a way that the metric is diagonal
+        \begin{equation*}
+            ds^2 = - A'(T, R) dT^2 + B'(T,  R) d R^2 + D(T, R) d\Omega^2 ~.
+        \end{equation*}
+        Regarding the radius coordinate, we can simply impose
+        \begin{equation*}
+            D(T, R) = R^2 ~.
+        \end{equation*}
+        Finally, the metric is 
+        \begin{equation*}
+            ds^2 = - A'(T, R) dT^2 + B'(T, R) dR^2 + R^2 d\Omega^2 ~.
+        \end{equation*}
+    \end{proof}
+
+    \noindent From now on, we will restore $r$, $t$, $A$, $B$.
+
+\section{Computations}
+
+    The metric is 
+    \begin{equation*}
+        \pyc{ES.printmet()} ~.
+    \end{equation*}
+
+    Its inverse is 
+    \begin{equation*}
+        \pyc{ES.printmetinv()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the Christoffel symbols are
+    \begin{equation*}
+        \pyc{ES.printchri()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the Riemann tensor are
+    \begin{equation*}
+        \pyc{ES.printriem()} ~.
+    \end{equation*}
+
+    The non-vanishing components of the Ricci tensor are
+    \begin{equation*}
+        \pyc{ES.printric()} ~.
+    \end{equation*}
+
+\section{Part two of the proof}  
+
+    Now, we prove that $A$ and $B$ do not depend on time.
+
+    \begin{proof}
+        Using the $01$-th component of the Ricci tensor and the vacuum Einstein's field equations, we have 
+        \begin{equation*}
+            R_{10} = \frac{\dot B}{r B} = 0 ~, \quad \dot B = 0 ~, \quad B(t,r) = B(r) ~.
+        \end{equation*}
+        Making the time-derivative of the $22$-th component of the Ricci tensor and the vacuum Einstein's field equations, we have 
+        \begin{equation*}
+            \pdv{}{t} \dot R_{22} = - \pdv{}{t} \Big (\frac{r}{2 A B} \pdv{A}{r} \Big ) = 0 ~, \quad \pdv{}{t} \pdv{}{r} A = 0 ~, \quad A(t,r) = a(t) A'(r) ~.
+        \end{equation*}
+        Therefore, the metric becomes
+        \begin{equation*}
+            ds^2 = - A'(r) a(t) dt^2 + B(r) dr^2 + r^2 d\Omega^2 
+        \end{equation*}
+        and, with a rescaling of the time coordinate $a(t) dt^2 \rightarrow dt$, we finally obtain
+        \begin{equation*}
+            ds^2 = - A'(r) dt^2 + B(r) dr^2 + r^2 d\Omega^2  ~.
+        \end{equation*}
+        This concludes the proof.
+    \end{proof}
+    

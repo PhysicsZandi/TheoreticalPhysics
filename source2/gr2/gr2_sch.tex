@@ -1,0 +1,153 @@
+\part{Schwarzschild metric}
+
+\chapter{Singularity at the Schwarzschild radius}
+
+    For a spherically symmetric source of mass $M$ in the vacuum, the metric of the outside region (otherwise it would not have been in the vacuum) is the famous Schwarzschild metric 
+    \begin{equation}\label{schwa}
+        ds^2 = \Big ( 1 - \frac{2m}{r} \Big ) dt^2 - \Big ( 1 - \frac{2m}{r} \Big)^{-1} dr^2 - r^2 d\Omega^2 ~, 
+    \end{equation}
+    where $m = G_N M$ and $d\Omega^2 = d\theta^2 + \sin^2 \theta d\phi^2$ is the solid angle element. The Birkhoff's theorem (see~\ref{birk} in appendix B) ensures that the metric is static, i.e.~stationary $g_{\mu\nu,0} = 0$ and $g_{0i} = 0$. This happens even if the source is not static (for example it can pulsate, contract or expand) the metric outside the source is static. In other words, since gravitational waves are formed by a time-dependent quadrupole moment, spherical symmetry prevents a time-dependent quadrupole moment and, with this symmetry, there are no spherical gravitational waves. Furthermore, it is important to highlight that this solution is modulo an arbitrary transformation of the coordinates by the principle of general relativity, i.e.~for a transformation $x \rightarrow x'$, the gravitational field is the same $g_{\mu\nu} (x) \rightarrow g'_{\mu\nu} (x')$.
+
+\section{Singularities and coordinates}
+
+    The domain of the radial coordinate is $r \in [0, \infty)$. The metric presents two singularities in $r = 0$ and in $r = 2m$. In fact, 
+    \begin{equation*}
+        r = 0 : \quad g_{00} \rightarrow \infty ~, \quad g^{11} \rightarrow \infty ~,
+    \end{equation*}
+    \begin{equation*}
+        r = 2m : \quad g^{00} \rightarrow \infty ~, \quad g_{11} \rightarrow \infty ~.
+    \end{equation*}
+    However, for objects like the sun, we have that the radius of the source is much bigger than the Schwarzschild radius and there are no `approachable' singularities. Therefore, we consider point-like sources located at the origin of our coordinate system described by the same metric~\eqref{schwa}. 
+
+    By simple consideration, we can observe that the amount of proper time to reach $r = 2m$ is finite. Indeed, at constant $t, \theta, \phi$, we have 
+    \begin{equation*}
+        dl^2 = \Big ( 1 - \frac{2m}{r} \Big)^{-1} dr^2 ~,
+    \end{equation*}
+    which integrated gives 
+    \begin{equation*}
+        l = \int \frac{dr}{\sqrt{1 - 2 m / r}} ~.
+    \end{equation*}
+    Now, we need to evaluate this integral. In order to do so, we make a change of variable $x = \sqrt{1 - 2m / r}$ to obtain 
+    \begin{equation*}
+        l = 4 m \int \frac{d x}{(1-x^2)^2} = m \Big ( \py{indint("4 / (x**2 - 1)**2", "x")} \Big ) ~.
+    \end{equation*}
+    Using the hyperbolic identity $\tanh^{-1} (x) = \frac{1}{2} (\log(1+x) - \log(1-z))$, we find
+    \begin{equation*}
+        l = m \Big ( - \frac{4x}{2 x^2 - 2} + 2 \tanh^{-1} (x) \Big) = r \sqrt{1 - 2m / r} + 2 m \tanh^{-1} \sqrt{1 - 2m / r} ~.
+    \end{equation*}
+    For example going from $r = 2m$ to $r = 4m$, we employ
+    \begin{equation*}
+    \begin{aligned}
+        l & = \int_{2m}^{4m} \frac{dr}{\sqrt{1 - 2 m /r}} = \Big ( r \sqrt{1 - 2m / r} + 2 m \tanh^{-1} \sqrt{1 - 2m / r} \Big)_{2m}^{4m} \\ & = 4m \sqrt{1/2} + 2 m \tanh^{-1} \sqrt{1/2} - 0 \simeq 4.59 m ~.
+    \end{aligned}
+    \end{equation*}
+    Therefore, it is natural to wonder if a divergence of the metric necessarily implies a singularities. The answer is no. The reason why can be seen looking at the Minkowski metric: in polar coordinates it reads as 
+    \begin{equation*}
+        ds^2 = dt^2 - dr^2 - r^2 d\theta^2 - r^2 \sin^2 \theta d\phi^2
+    \end{equation*}
+    and it seems that there is a singularity at $r=0$ since $\eta^{22} = - 1 / r^2 \rightarrow - \infty$. However, if we use Cartesian coordinates through a change of coordinates 
+    \begin{equation*}
+        x = r \sin \theta \cos \phi ~, \quad y = r \sin \theta \sin \phi ~, \quad z = r \cos \theta ~,
+    \end{equation*}
+    we find
+    \begin{equation*}
+        ds^2 = dt^2 - dx^2 - dy^2 - dz^2 ~,
+    \end{equation*}
+    and there is no singularity at $(x,y,z) = (0,0,0)$ since $\eta^{11} = \eta^{22} = \eta^{33} = -1$. Another example is the Minkowski metric in Rindler coordinates 
+    \begin{equation*}
+        ds^2 = \alpha^2 \xi^2 d\eta^2 - d\xi^2 - dy^2 - dz^2 ~.
+    \end{equation*}
+    It seems that at $\xi = 0$, we have a singularity $\eta^{00} = 1 / \alpha^2 \xi^2 \rightarrow \infty$. However, with a change of coordinates   
+    \begin{equation*}
+        t = \xi \sinh(\alpha \eta) ~, \quad x = \xi \cosh (\alpha \eta) ~,
+    \end{equation*}
+    we find again the Cartesian coordinates that does not present singularities. Rindler coordinates represent non-inertial uniformly accelelerated observers. This discussion shows that some singularities are only an artifact of the coordinates (a wrong choice of them). Polar coordinates $(t,r,\theta,\phi)$ are not right to describe $r=0$ region and Rindler coordinates are not right to describe $\xi = 0$ region.
+
+\section{Singularities and Kretschmann scalar}
+
+    Since we are looking at the gravitational field, we need operate with the tensor that describes gravity: the Riemann tensor $R^{\mu}_{\phantom \mu \nu\alpha\beta}$, and not with $g_{\mu\nu}$. In particular, we need to find physical quantities that are not dependent on the choice of coordinates: scalars. In fact, tensors change whenever we have a change of coordinates but scalars do not. If a scalar diverges, it diverges in every coordinate system and it shows that in that point there is a true singularity. Our first guess would be the Ricci scalar $R = g_{\mu\nu} R^{\mu\nu}$ or a contraction of the Ricci tensor $R^{\mu\nu} R_{\mu\nu}$. They are identically vanishing in the vacuum by means of the Einstein's field equations $R_{\mu\nu} = 0$. It remains left the Kretschmann scalar, obtained by the fully contraction of the Riemann tensor 
+    \begin{equation*}
+        K = R^{\mu\nu\alpha\beta} R_{\mu\nu\alpha\beta} ~.
+    \end{equation*}
+    For the Schwarzschild metric, its value is (see~\eqref{krescal} in appendix A)
+    \begin{equation*}
+        K = 48 \frac{m^2}{r^6} ~.
+    \end{equation*}
+    In particular, it assumes a regular finite value for $r=2m$ but diverges for $r=0$
+    \begin{equation*}
+        K(r=2m) = \frac{3}{4 m^4} ~, \quad K(r=0) \rightarrow \infty ~.
+    \end{equation*}
+    This shows that $r=0$ is a true singularity and $r=2m$ is just an artifact of the coordinates.
+
+\section{Singularities and geodetics}
+
+    Consider a radially in-falling observer following a geodesic equation parametrised by an affine parameter $s$ 
+    \begin{equation*}
+        \cdv{u^\alpha}{s} = 0 ~, \quad u^\alpha = \dv{x^\alpha}{s}  ~.
+    \end{equation*}
+    Looking at the Lagrangian for the metric~\eqref{schwa}
+    \begin{equation*} 
+        2 L = g_{\mu\nu} u^\mu u^\nu = \Big ( 1 - \frac{2m}{r} \Big ) \dot t^2 - \Big ( 1 - \frac{2m}{r} \Big)^{-1} \dot r^2 - r^2 \dot \theta^2 - r^2 \sin^2 \theta \dot \phi^2 ~,
+    \end{equation*}
+    we observe that it does not depend on either $t$ nor $\phi$. This means that there are two integrals of motion: energy per unit of mass 
+    \begin{equation*}
+        u_0 = E = \pdv{L}{\dot t} = \Big ( 1 - \frac{2m}{r} \Big ) \dot t ~,
+    \end{equation*}
+    and angular momentum per unit of mass 
+    \begin{equation*}
+        u_3 = L = \pdv{L}{\dot \phi} = r^2 \sin^2 \theta \dot \phi ~.
+    \end{equation*}
+    Since we are studying an radially in-falling observer, we can impose $\theta = \pi/2$. We can use the normalisation condition for the $4$-velocity 
+    \begin{equation*}
+        1 = u_\mu u^\mu = g^{\mu\nu} u_\mu u_\nu = g^{00} u_0 u_0 + g^{11} u_1 u_1 + g^{33} u_3 u_3 = \Big(1 - \frac{2m}{r} \Big )^{-1} E^2 - \Big(1 - \frac{2m}{r} \Big )^{-1} \dot r^2 - \frac{1}{r^2} L^2 ~,
+    \end{equation*}
+    where we have used $u^1 = dr / ds$ and the inverse of the metric. Hence, 
+    \begin{equation*}
+        r^2 \Big(1 - \frac{2m}{r} \Big ) = E^2 r^2 - r^2 \dot r^2 - L^2 \Big(1 - \frac{2m}{r} \Big ) ~, \quad (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} ) = E^2 - \dot r^2 ~,
+    \end{equation*}
+    \begin{equation*}
+        \dot r^2 = E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} ) ~, \quad \dv{r}{s} = \pm \sqrt{E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} )} ~.
+    \end{equation*}
+    In order to take the in-falling solution, we consider the minus sign and we obtain 
+    \begin{equation*}
+        ds = - \frac{dr}{\sqrt{E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r}  )}} ~,
+    \end{equation*}
+    which integrated from a generic radius $R$ to the Schwarzschild radius $2m$ gives
+    \begin{equation}\label{proof1}
+        s = - \int_R^{2m} \frac{dr}{\sqrt{E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r}  )}} ~.
+    \end{equation}
+    Now, we suppose free-falling with $L = 0$ and initial conditions $r=R$ with $\dot r = 0$. Using the normalisation condition at the initial condition, the energy becomes 
+    \begin{equation*}
+        1 = \Big(1 - \frac{2m}{R} \Big )^{-1} E^2 - \Big(1 - \frac{2m}{R} \Big )^{-1} \underbrace{\dot r^2}_0 - \frac{1}{R^2} \underbrace{L^2}_0 = \Big(1 - \frac{2m}{R} \Big )^{-1} E^2 ~,
+    \end{equation*}
+    \begin{equation*}
+        E^2 = \Big(1 - \frac{2m}{R} \Big ) ~.
+    \end{equation*}
+    Hence,~\eqref{proof1} becomes 
+    \begin{equation*}
+        s = - \int \frac{dr}{\sqrt{(1 - \frac{2m}{R} \Big )- (1 - \frac{2m}{r} )}} = - \int \frac{dr}{\sqrt{ \frac{2m}{r} - \frac{2m}{R}}} = - \sqrt{\frac{R}{2m}} \int \frac{dr}{\sqrt{ \frac{R}{r} - 1}} ~.
+    \end{equation*}
+    In order to evaluate this integral, we make a change of coordinates $x = \sqrt{\frac{R}{r} - 1}$ to obtain 
+    \begin{equation*}
+        s = \sqrt{\frac{R}{2m}} 2 R \int \frac{dx}{(x^2 + 1)^2} = \sqrt{\frac{2R^3}{m}} \Big ( \py{indint("1 / (x**2 + 1)**2", "x")} \Big) ~.
+    \end{equation*}
+    For example going from $r = R = 4m$ to $r = 2m$, we employ
+    \begin{equation*}
+    \begin{aligned}
+        s & = - \int_{4m}^{2m} \frac{dr}{\sqrt{ \frac{2m}{r} - \frac{2m}{R}}} = \sqrt{\frac{2R^3}{m}} \Big ( \frac{r \sqrt{R / r - 1}}{2 R} + \frac{1}{2} \arctan \sqrt{\frac{R}{r} - 1} \Big)_{R = 4m}^{2m} \\ & = \sqrt{128 m^2} \Big ( \frac{r \sqrt{4m / r - 1}}{8 m} + \frac{1}{2} \arctan \sqrt{\frac{4m}{r} - 1} \Big)_{R = 4m}^{2m}  \\ & = \sqrt{128 m^2} \Big ( \frac{1}{4} + \frac{1}{2} \arctan 1 \Big) \simeq 7.27 m ~.
+    \end{aligned}
+    \end{equation*}    
+    A formal solution is given by the parametric formula
+    \begin{equation*}
+        \begin{cases}
+            s = \sqrt{\frac{R^3}{8m}} (\eta + \sin \eta) \\
+            r = \frac{R}{2} (1 + \cos \eta) \\
+        \end{cases} ~.
+    \end{equation*}
+    This shows that the proper time to reach $2m$ is finite even though we had a divergence in the integrand. This means that it is not mathematical to work with $r = 2m$. However, $s$ is a scalar and it is finite for all coordinate systems. 
+
+    We should be able to parametrise the geodesic equation as we wish. Therefore, consider the coordinate time $t$ 
+
+\section{Singularities and static observer}
+
+\chapter{Null coordinates}

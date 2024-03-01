@@ -12,4 +12,7 @@ For the first semester:
 7. [On quantum field theory 1: second quantisation of free theories](https://github.com/PhysicsZandi/TheoreticalPhysics/blob/main/source/qft1/qft1.pdf) (work in progress).
 
 For the second semester:
-For the third semester:
+1. [On general relativity 2](https://github.com/PhysicsZandi/TheoreticalPhysics/blob/main/source2/gr2/gr2.pdf) (work in progress),
+2. [On quantum field theory 2](https://github.com/PhysicsZandi/TheoreticalPhysics/blob/main/source2/qft2/qft2.pdf) (work in progress),
+3. [On the standard model](https://github.com/PhysicsZandi/TheoreticalPhysics/blob/main/source2/std/std.pdf) (work in progress),
+4. [On theoretical astroparticle physics](https://github.com/PhysicsZandi/TheoreticalPhysics/blob/main/source2/tap/tap.pdf) (work in progress).
