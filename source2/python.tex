@@ -291,6 +291,18 @@ def defint(integrand, x, min, max):
     integral = sp.integrate(integrand, (x, min, max)) 
     return sp.latex(integral) 
 
+def plot1(x, f, rangex, rangey, fig, leg, negx, negy):
+    rangexx = rangex
+    rangeyy = rangey
+    if negx == True:
+        rangexx = 0
+    if negy == True:
+        rangeyy = 0
+    x = sp.Symbol('x')
+    p = sp.plot((f, (x, -rangexx, rangex)), ylim=[-rangeyy, rangey], legend= leg, show=False, line_color='#00AFB3')
+    p.save(f'fig/fig{fig}.pgf')
+    print(r'\input{fig/fig'+ rf'{fig}' + r'.pgf}')
+
 \end{pycode} 
 
     
