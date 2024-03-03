@@ -10,14 +10,14 @@
 
 \section{Singularities and coordinates}
 
-    The domain of the radial coordinate is $r \in [0, \infty)$. The metric presents two singularities in $r = 0$ and in $r = 2m$. In fact, 
+    The domain of the radial coordinate is $r \in [0, \infty)$. However, by looking at the metric, we clearly see that there are two detached regions $r \in (0, 2m)$ and $r \in (2m, \infty)$, where the metric presents two singularities in $r = 0$ and in $r = 2m$. In fact, 
     \begin{equation*}
         r = 0 : \quad g_{00} \rightarrow \infty ~, \quad g^{11} \rightarrow \infty ~,
     \end{equation*}
     \begin{equation*}
         r = 2m : \quad g^{00} \rightarrow \infty ~, \quad g_{11} \rightarrow \infty ~.
     \end{equation*}
-    However, for objects like the sun, we have that the radius of the source is much bigger than the Schwarzschild radius and there are no `approachable' singularities. Therefore, we consider point-like sources located at the origin of our coordinate system described by the same metric~\eqref{schwa}. 
+    For objects like the sun, we have that the radius of the source is much bigger than the Schwarzschild radius and there are no `approachable' singularities. Therefore, we consider point-like sources located at the origin of our coordinate system described by the same metric~\eqref{schwa}. 
 
     By simple consideration, we can observe that the amount of proper time to reach $r = 2m$ is finite. Indeed, at constant $t, \theta, \phi$, we have 
     \begin{equation*}
@@ -65,7 +65,7 @@
 
 \section{Singularities and Kretschmann scalar}
 
-    Since we are looking at the gravitational field, we need operate with the tensor that describes gravity: the Riemann tensor $R^{\mu}_{\phantom \mu \nu\alpha\beta}$, and not with $g_{\mu\nu}$. In particular, we need to find physical quantities that are not dependent on the choice of coordinates: scalars. In fact, tensors change whenever we have a change of coordinates but scalars do not. If a scalar diverges, it diverges in every coordinate system and it shows that in that point there is a true singularity. Our first guess would be the Ricci scalar $R = g_{\mu\nu} R^{\mu\nu}$ or a contraction of the Ricci tensor $R^{\mu\nu} R_{\mu\nu}$. They are identically vanishing in the vacuum by means of the Einstein's field equations $R_{\mu\nu} = 0$. It remains left the Kretschmann scalar, obtained by the fully contraction of the Riemann tensor 
+    Since we are looking at the gravitational field, we need operate with the tensor that describes gravity: the Riemann tensor $R^{\mu}_{\phantom \mu \nu\alpha\beta}$, and not with $g_{\mu\nu}$. In particular, we need to find physical quantities that are not dependent on the choice of coordinates: scalars. In fact, tensors change whenever we have a change of coordinates, but scalars do not. If a scalar diverges, it diverges in every coordinate system, and it shows that in that point there is a true singularity. Our first guess would be the Ricci scalar $R = g_{\mu\nu} R^{\mu\nu}$ or a contraction of the Ricci tensor $R^{\mu\nu} R_{\mu\nu}$. They are identically vanishing in the vacuum by means of the Einstein's field equations $R_{\mu\nu} = 0$. It remains left the Kretschmann scalar, obtained by the fully contraction of the Riemann tensor 
     \begin{equation*}
         K = R^{\mu\nu\alpha\beta} R_{\mu\nu\alpha\beta} ~.
     \end{equation*}
@@ -79,6 +79,12 @@
     \end{equation*}
     This shows that $r=0$ is a true singularity and $r=2m$ is just an artifact of the coordinates.
 
+    Moreover, singularities can be studied by means of tidal forces. Consider the Einstein's lift experiment and study two events on it. Since the gravitational field is inhomogeneous, there will appear tidal forces that depend on the Riemann tensor. In the case of Schwarzschild metric, they are of order of 
+    \begin{equation*}
+        R^\mu_{\phantom \mu \nu \alpha \beta} \sim \frac{m}{r^3} ~.
+    \end{equation*}
+    Therefore, in $r = 2m$ there are regular distortion due to tidal forces, while in $r = 0$ there are divergent effects.
+
 \section{Singularities and geodetics}
 
     Consider a radially in-falling observer following a geodesic equation parametrised by an affine parameter $s$ 
@@ -90,9 +96,9 @@
         2 L = g_{\mu\nu} u^\mu u^\nu = \Big ( 1 - \frac{2m}{r} \Big ) \dot t^2 - \Big ( 1 - \frac{2m}{r} \Big)^{-1} \dot r^2 - r^2 \dot \theta^2 - r^2 \sin^2 \theta \dot \phi^2 ~,
     \end{equation*}
     we observe that it does not depend on either $t$ nor $\phi$. This means that there are two integrals of motion: energy per unit of mass 
-    \begin{equation*}
+    \begin{equation}\label{en}
         u_0 = E = \pdv{L}{\dot t} = \Big ( 1 - \frac{2m}{r} \Big ) \dot t ~,
-    \end{equation*}
+    \end{equation}
     and angular momentum per unit of mass 
     \begin{equation*}
         u_3 = L = \pdv{L}{\dot \phi} = r^2 \sin^2 \theta \dot \phi ~.
@@ -105,9 +111,9 @@
     \begin{equation*}
         r^2 \Big(1 - \frac{2m}{r} \Big ) = E^2 r^2 - r^2 \dot r^2 - L^2 \Big(1 - \frac{2m}{r} \Big ) ~, \quad (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} ) = E^2 - \dot r^2 ~,
     \end{equation*}
-    \begin{equation*}
+    \begin{equation}\label{rdot}
         \dot r^2 = E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} ) ~, \quad \dv{r}{s} = \pm \sqrt{E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r} )} ~.
-    \end{equation*}
+    \end{equation}
     In order to take the in-falling solution, we consider the minus sign and we obtain 
     \begin{equation*}
         ds = - \frac{dr}{\sqrt{E^2 - (1 + \frac{L^2}{r^2}) (1 - \frac{2m}{r}  )}} ~,
@@ -144,10 +150,142 @@
             r = \frac{R}{2} (1 + \cos \eta) \\
         \end{cases} ~.
     \end{equation*}
-    This shows that the proper time to reach $2m$ is finite even though we had a divergence in the integrand. This means that it is not mathematical to work with $r = 2m$. However, $s$ is a scalar and it is finite for all coordinate systems. 
+    This shows that the proper time to reach $2m$ is finite even though we had a divergence in the integrand. This means that it is not mathematical to work with $r = 2m$. However, $s$ is a scalar, and it is finite for all coordinate systems. 
 
-    We should be able to parametrise the geodesic equation as we wish. Therefore, consider the coordinate time $t$ 
+    We should be able to parametrise the geodesic equation as we wish. Therefore, consider the coordinate time $t$, using~\eqref{en} and~\eqref{rdot}
+    \begin{equation*}
+        \dot r = \dv{r}{s} = \dv{r}{t} \dv{t}{s} = \dv{r}{t} \frac{E}{1 - 2m / r} ~, \quad \dv{t}{r} = \frac{1}{\dot r} \frac{E}{1 - 2m / r} ~,
+    \end{equation*}
+    which integrated gives
+    \begin{equation*}
+        t = - E \int \frac{dr}{\sqrt{E^2 - (1 - 2m/r)(1 + L^2 / r^2)}} \frac{1}{1 - 2m / r} ~.
+    \end{equation*}
+    Now, we suppose free-falling with $L = 0$ and initial conditions $r=\infty$ with $\dot r = 0$, i.e.~with energy $E = 1$. Hence
+    \begin{equation*}
+        t = - \int \frac{dr}{\sqrt{2m/r}} \frac{1}{1 - 2m / r}
+    \end{equation*}
+    In order to evaluate this integral, we make a change of variable $u = \sqrt{2m / r}$ to obtain 
+    \begin{equation*}
+        t = 4m \int \frac{dx}{x^4 (1 - x^2)} = 4m \Big ( \py{indint(" 1 / (x**4 * (1 - x**2) ) ", "x")} \Big ) ~,
+    \end{equation*}
+    \begin{equation*}
+        t = 2m \Big ( \log \frac{\sqrt{2m / r} + 1}{\sqrt{2m / r} - 1} \Big ) - 4 m \frac{6m / r + 1 }{3 (2m / r)^{3/2}} = 2m \Big ( \log \frac{\sqrt{2m / r} + 1}{\sqrt{2m / r} - 1} \Big ) - \frac{4m (6 m r^{1/2} + r^{3/2})}{3 (2m)^{3/2}}  
+    \end{equation*}
+    We are interested in the limit $r \rightarrow 2m$ so that 
+    \begin{equation*}
+        t \sim - 2m \log (\frac{2m}{r} - 1) ~, \quad \frac{2m}{r} - 1 \sim \exp(- \frac{t}{2m}) ~,
+    \end{equation*}
+    which shows that for $r = 2m$ we have 
+    \begin{equation*}
+        \exp(- \frac{t}{2m}) \rightarrow 0 ~, \quad t \rightarrow \infty ~.
+    \end{equation*}
+
+    To summarise, an observer located at radial infinity would see an object approaching the Schwarzschild radius with an infinite time while its proper time is finite. What is the physical meaning of $t$?. It is a choice of time coordinate that makes staticity manifest and can be interpreted as the time measured by an observer at spatial infinity. It is also the right choice of coordinates to make spherical symmetry and staticity manifested, so that energy and angular momentum (first integrals of motion associated to these coordinates) are conserved and make the metric diagonal. Nevertheless, $t$ and $r$ are a mess when we approach and pass the Schwarzschild radius. In fact, watching at the metric~\eqref{schwa}, we can notice that outside $r>2m$ the signature is $+---$ but when we are inside we have $-+--$: $t$ and $r$ have switched roles, outside $t$ is a time and $r$ is spatial but inside $t$ is spatial and $t$ is a time. It is mathematically plausible but physically not. A time remains a time measured by a clock and space is space measured by a rod. We can fix $r$ and remain still, but we can never fix $t$. Causally connected events must be time-like $ds^2 \geq 0$, hence outside we can keep $r$ fixed and $t$ not because otherwise we would have negative intervals and, by similar reasoning, inside we cannot keep $r$ fixed but $t$ yes. To conclude, $t$ is not a time inside.
 
 \section{Singularities and static observer}
 
+    Consider a static observer at fixed $(r, \theta, \phi) = const$. The coordinate time $t$ is related to the proper time $s$ by means of the metric 
+    \begin{equation*}
+        ds^2 = \Big ( 1 - \frac{2m}{r}\Big) dt^2 ~.
+    \end{equation*}
+    Suppose we have two events $(t, r, \theta, \phi)$ and $(t + dt, r, \theta, \phi)$ separated by a time interval $dt$, e.g.~two photon signals emitted. Then, the separation of the signal seen at the spatial infinity is given by the book keeping time $dt$.
+
+    Suppose we are near the Schwarzschild radius $r = 2m$ and we want to find the acceleration needed to remain fixed there 
+    \begin{equation*}
+        0 \neq a^\mu = \cdv{u^\mu}{d} = \dv{u^\mu}{s} + \Gamma^\mu_{\alpha\beta} u^\alpha u^\beta ~.
+    \end{equation*}
+    Since $(r, \theta, \phi)$ are constant, the only non-vanishing component of the $4$-velocity is $u^\mu = dx^\mu / ds = (u^0, 0 ,0 ,0)$. Using the normalisation condition, we find 
+    \begin{equation*}
+        1 = g_{\mu\nu} u^\mu u^\nu = g_{00} u^0 u^0 = \Big (1 - \frac{2m}{r} \Big) (u^0)^2 ~, \quad u^0 = \frac{1}{\sqrt{1 - 2m / r}} ~,
+    \end{equation*}
+    \begin{equation*}
+        u^\mu = \Big ( \frac{1}{\sqrt{1 - 2m / r}} , 0 , 0, 0 \Big) ~.
+    \end{equation*}
+    Hence, by looking at the Christoffel symbols~\ref{chri} in appendix A, we find $a^0 = a^2 = a^3 = 0$ and 
+    \begin{equation*}
+        a^1 = \Gamma^1_{00} u^0 u^0 = \frac{m}{r^2} (1 - 2m / r) \frac{1}{(2m / r)} = \frac{m}{r^2} ~.
+    \end{equation*}
+    It seems that at $ r = 2m$, we need a finite acceleration in order to remain at fixed radius. This is not the case since our coordinates are a mess at $r = 2m$. We need to find a scalar quantity that is independent of coordinates. The modulo of the $4$-acceleration is 
+    \begin{equation*}
+        a^\mu a_\mu = g_{\mu\nu} a^\mu a^\nu = g_{11} a^1 a^1 = - \frac{1}{1 - 2m/r} \frac{m}{r^2} \frac{m}{r^2} = - \frac{m^2}{r^4 (1 - 2m/r)} ~,
+    \end{equation*}
+    which diverges for $r = 2m$. For another time, these coordinates have shown that they are not suitable to make computations about singularities. We need to change them. There are two families of coordinates 
+    \begin{enumerate}
+        \item Painlevé, i.e.~adapted to free-falling observers, 
+        \item Eddington-Kruskal-Frinkelstein, i.e.~adapted to propagation of light. 
+    \end{enumerate}
+
 \chapter{Null coordinates}
+
+\section{Minkowski null coordinates}
+
+    The Minkowski metric can be written in terms of Cartesian coordinates or in polar coordinates 
+    \begin{equation*}
+        ds^2 = dt^2 - dx^2 - dy^2 - dz^2 = dt^2 - dr^2 - r^2 d\Omega^2 ~.
+    \end{equation*}
+    Nevertheless, there is another useful choice of coordinates: null or light-cone coordinates. Consider trajectories tangent to light, radial null directed, i.e.~$(\theta, \phi) = const$ and $ds^2 = 0$. Hence 
+    \begin{equation*}
+        0 = dt^2 - dr^2 ~, \quad dt = \pm dr ~.
+    \end{equation*}
+    Now, we can distinguish the two cases: out-going ray of light for $t - r = const$ and in-going ray of light for $t + r = const$. Notice that in order to be constant, for out-going light, r increases when $t$ does, whereas for in-going light, r decreases when $t$ does. We can define two coordinates 
+    \begin{equation*}
+        u = t - r ~, \quad v= t + r ~,
+    \end{equation*}
+    where $u$ is called null retarded and $v$ null advanced, by analogy with Green functions. In Minkowski spacetime, they represent light cone respectively with inclination of $45°$ and $135°$ with respect to the horizontal $r$-axis.
+
+    Using $dt = du + dr$, the retarded null coordinates $(u, r, \theta, \phi)$ have a metric 
+    \begin{equation*}
+    \begin{aligned}
+        ds^2 &= dt^2 - dr^2 - r^2 d\Omega^2 = (du + dr)^2 - dr^2 - r^2 d\Omega^2 \\ & = du^2 +dr^2 + 2 du dr - dr^2 - r^2 d\Omega = du^2 + 2 du dr - r^2 d\Omega^2 ~.
+    \end{aligned}
+    \end{equation*}
+    Using $dt = dv - dr$, the advanced null coordinates $(v, r, \theta, \phi)$ have a metric 
+    \begin{equation*}
+    \begin{aligned}
+        ds^2 & = dt^2 - dr^2 - r^2 d\Omega^2 = (dv - dr)^2 - dr^2 - r^2 d\Omega^2 \\ & = dv^2 + dr^2 - 2 dv dr - dr^2 - r^2 d\Omega = dv^2 - 2 dv dr - r^2 d\Omega^2 ~.
+    \end{aligned}
+    \end{equation*}
+    Using $dt = (du + dv)/2$ and $dr = (dv - du)/2$, the double-null coordinates $(u, v, \theta, \phi)$ have a metric 
+    \begin{equation*}
+    \begin{aligned}
+        ds^2 & = dt^2 - dr^2 - r^2 d\Omega^2 = \frac{(du + dv)^2}{4} - \frac{(dv-du)^2}{4} - \frac{(v-u)^2}{4} d\Omega^2 \\ & = \frac{1}{4} (du^2 + dv^2 + 2 dv du - du^2 - du^2 + 2 dv du) - \frac{(v-u)^2}{4} d\Omega^2 \\ & = dudv - \frac{(v-u)^2}{4} d\Omega^2 ~.
+    \end{aligned}
+    \end{equation*}
+    Notice that in polar coordinates, the Minkowski metric is invariant under time reversal but with the first two coordinates not, since for $t \rightarrow -t$ we have $v = t + r  \rightarrow - t + r = - u$ and $u = t - r  \rightarrow - t - r = - v$. 
+
+    Recall that in $\mathbb R^3$ with metric 
+    \begin{equation*}
+        dl^2 = dx^2 +  dy^2 + dz^2 = dr^2 + r^2 d\Omega^2 ~,
+    \end{equation*}
+    we have
+    \begin{equation*}
+        z = const ~ \Rightarrow ~ dl^2 \vert_{z = const} = dx^2 + dy^2 ~,
+    \end{equation*}
+    which is a plane $xy$, or 
+    \begin{equation*}
+        r = const ~ \Rightarrow ~ dl^2 \vert_{r = const} = r^2 d\Omega^2 ~,
+    \end{equation*}
+    which is a sphere $\mathbb S^2$ of radius $r$. In Minkowski spacetime with metric 
+    \begin{equation*}
+        ds^2 = dt^2 - dx^2 - dy^2 - dz^2 = dt^2 - dr^2 - r^2 d\Omega^2 ~,
+    \end{equation*}
+    we have
+    \begin{equation*}
+        t = const ~ \Rightarrow ~ ds^2 \vert_{t = const} = - dx^2 - dy^2 - dz^2 ~,
+    \end{equation*}
+    which is $\mathbb R^3$ with space-like signature $---$, or 
+    \begin{equation*}
+        r = const ~ \Rightarrow ~ ds^2 \vert_{r = const} = dt^2 - r^2 d\Omega^2 ~,
+    \end{equation*}
+    which is the Cartesian product of the real axis and a sphere $\mathbb R \times \mathbb S^2$ with time-like signature $+--$.
+
+    In the null-coordinates case, we have 
+    \begin{equation*}
+        u = t - r = const ~, \quad dt = dr ~ \Rightarrow ~ ds^2 \vert_{u = const} = - r^2 d\Omega^2 ~,
+    \end{equation*}
+    or 
+    \begin{equation*}
+        v = t + r = const ~, \quad dt = - dr ~ \Rightarrow ~ ds^2 \vert_{v = const} = - r^2 d\Omega^2 ~.
+    \end{equation*}
+    They are both $2$-dimensional spheres $\mathbb S^2$. However, their radius is not constant, since for $u = const$ it increases and for $v = conts$ it decreases. Therefore, their constant hypersurfaces are spheres that respectively grow/expand or contract/implode at the speed of light.
+
