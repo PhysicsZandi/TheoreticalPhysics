@@ -1,0 +1,220 @@
+\part{S-matrix}
+
+\chapter{Cross section}
+
+\section{S-matrix}
+
+    Let $\ket{i, t_i}$ be a initial state at time $t_i$ and $\ket{f, t_f}$ be a final state at time $t_f$. In Schroedinger picture, the probability of this transition is $|\braket{f, t_f}{i, t_i}|^2$. Suppose that the scattering interaction happens at short spacetime scales, so that we can approximate $t_i \rightarrow - \infty$, $t_f \rightarrow + \infty$ and $\ket{i, t_i}, \ket{f, t_f}$ are free theory (asymptotic) states. In Heisenberg picture, the probability of this transition becomes
+    \begin{equation*}
+        \bra{f} \hat S \ket{i}_H =\braket{f, + \infty}{i, - \infty} ~,
+    \end{equation*}
+    where $S$ is the so-called S-matrix.
+
+\section{Cross section}
+
+    Consider a scattering experiment. Let $T$ be the time of experiment, $N_{in}$ and $N_{out}$ the number of incoming and outgoing particle, $\Phi$ be the incoming flux ($N_{in} |\mathbf v|  / V$, where $|\mathbf v| $ is the velocity of the beam). Then the classical cross section is 
+    \begin{equation*}
+        \sigma = \frac{N_{out}}{T \Phi} = \frac{N_{out}}{N_{in}} \frac{V}{|\mathbf v| T} ~.
+    \end{equation*}
+    In quantum mechanics, we can define the probability of interaction $P = \frac{N_{out}}{N_{in}}$ so that 
+    \begin{equation*}
+        \sigma = \frac{1}{T \Phi} P = \frac{V}{|\mathbf v| T} P ~,
+    \end{equation*}
+    or we can define the luminosity $L = T \Phi = \frac{|\mathbf v| T}{V} N_{in}$ so that
+    \begin{equation*}
+        N_{out} = L \sigma ~.
+    \end{equation*}
+    Furthermore, the differential cross section is given by    
+    \begin{equation}\label{cross1}
+        d \sigma = \frac{V}{|\mathbf v| T} dP ~.
+    \end{equation}
+    We can differentiate this quantity over a generic differential volume $df$ is the space of final states to get
+    \begin{equation*}
+        \frac{d\sigma}{df} = \frac{V}{|\mathbf v| T} \dv{P}{f} ~,
+    \end{equation*}
+    e.g.~energy $dE$ or solid angle $d\Omega$.
+
+    Consider a scattering experiment $2 \rightarrow n$, in which two incoming particles interacts and form $n$ outgoing particles $p_1 + p_2 \rightarrow \{p_j\}_{j=1}^{n}$. In a generic inertial frame, since we have two particles with different velocities that collide, the flux becomes
+    \begin{equation*}
+        \Phi = \frac{N_{in} |\mathbf v_1 - \mathbf v_2|}{V} ~.
+    \end{equation*}
+    Moreover, the probability of interaction is given by 
+    \begin{equation*}
+        dP = \frac{|\bra{f} \hat S \ket{i}|^2}{\braket{f}{f} \braket{i}{i}} d \Pi = |\bra{f} \hat S \ket{i}|^2 d\Pi ~,
+    \end{equation*}
+    where $d\Pi$ is a volume differential of the phase (momentum) space
+    \begin{equation*}
+        d \Pi = \prod_j \frac{V d^3 p_j}{(2\pi)^3} ~.
+    \end{equation*}
+    Hence,~\eqref{cross1} becomes 
+    \begin{equation}\label{proof1}
+        d \sigma = \frac{V}{|\mathbf v_1 - \mathbf v_2| T} \frac{|\bra{f} \hat S \ket{i}|^2}{\braket{f}{f} \braket{i}{i}} \prod_j \frac{V d^3 p_j}{(2\pi)^3} ~.
+    \end{equation}
+
+    Now, using the property 
+    \begin{equation*}
+        \delta^3 (0) = \int \frac{d^3 x}{(2\pi)^3} \exp(i p x) \Big \vert_{p=0} = \frac{1}{(2\pi)^3} \int d^3 x = \frac{V}{(2\pi)^3} ~,
+    \end{equation*}
+    we find
+    \begin{equation*}
+        \braket{p}{p} = (2\pi)^3 \delta^3 (0) = (2\pi)^3 2 E_p \frac{V}{(2\pi)^3} = 2 E_p V ~.
+    \end{equation*}
+    In particular, taking $\ket{i} = \ket{p_1, p_2}$ and $\ket{f} = \ket{\prod_j p_j}$, we obtain 
+    \begin{equation}\label{proof2}
+        \braket{i}{i} = 4 E_1 E_2 V^2 ~, \quad \braket{f}{f} = \prod_j 2 E_j V ~.
+    \end{equation}
+
+    We can perturbatively expand the S-matrix as $\hat S = \mathbb I + i \hat T$, where $\mathbb I$ is the term that describes the no-interaction experiment, whereas the interaction part is encapsulated into $\hat T$. From now om, we will study only We can extract a delta function to ensure momentum conservation
+    \begin{equation*}
+        \hat T = (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) \hat M ~,
+    \end{equation*}
+    where $\hat M$ is defined by this expression. Hence,
+    \begin{equation*}
+        |\bra{f} \hat T \ket{i} |^2 = (2\pi)^8 \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 |\bra{f} \hat M \ket{i} |^2 = (2\pi)^8 \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 |M|^2~,
+    \end{equation*}
+    where we have called $| \mathcal M |^2 = |\bra{f} \hat M \ket{i} |^2$. Since the square of a delta can be written as 
+    \begin{equation*}
+        \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 = \delta^4 (p_1 + p_2 - \small \sum_j p_j) \delta^4 (0)
+    \end{equation*}
+    and, using the property 
+    \begin{equation*}
+        \delta^4 (0) = \int \frac{d^4 x}{(2\pi)^4} \exp(i p x) \Big \vert_{p=0} = \frac{1}{(2\pi)^4} \int d^3 x \int dt = \frac{T V}{(2\pi)^4} ~,
+    \end{equation*}
+    we obtain
+    \begin{equation}\label{proof3}
+        |\bra{f} \hat T \ket{i} |^2 = (2\pi)^4 TV \delta^4 (p_1 + p_2 - \small \sum_j p_j) |\mathcal M |^2 ~.
+    \end{equation}
+
+    Putting everything together~\eqref{proof1},~\eqref{proof2} and~\eqref{proof3}, we find
+    \begin{align*}
+        d \sigma & = \frac{V}{|\mathbf v_1 - \mathbf v_2| T} (2\pi)^4 TV \delta^4 (p_1 + p_2 - \small \sum_j p_j) |\mathcal M |^2 \frac{1}{4 E_1 E_2 V^2} \frac{1}{\prod_j 2 E_j V} \prod_j \frac{V d^3 p_j}{(2\pi)^3} \\ & = \frac{1}{|\mathbf v_1 - \mathbf v_2| 4 E_1 E_2} |\mathcal M |^2 \prod_j \frac{d^3 p_j}{(2\pi)^3} \frac{1}{2 E_j} (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) ~.
+    \end{align*}
+    Therefore, the differential of the cross section is
+    \begin{equation}\label{cross2}
+        d \sigma = \frac{1}{|\mathbf v_1 - \mathbf v_2| 4 E_1 E_2} |\mathcal M |^2 d \Pi_N ~,
+    \end{equation}
+    where we have defined the Lorentz-invariant phase space element $d \Pi_N$ as 
+    \begin{equation}\label{cross3}
+        d \Pi_N = \prod_j \frac{d^3 p_j}{(2\pi)^3} \frac{1}{2 E_j} (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) ~.
+    \end{equation}
+
+\section{$2 \rightarrow 2$ scattering in the center of mass}
+
+    Consider a scattering experiment $2 \rightarrow 2$, in which two incoming particles interacts and form $2$ outgoing particles $p_1 + p_2 \rightarrow p_3 + p_4$. In the reference frame of the center of mass, 
+    \begin{equation}\label{proof4}
+        \mathbf p_1 + \mathbf p_2 = \mathbf p_3 + \mathbf p_4 = 0 ~.
+    \end{equation}
+    The Lorentz-invariant phase space~\eqref{cross3} becomes 
+    \begin{align}\label{proof5}
+        d \Pi_2 & = \frac{d^3 p_3}{(2\pi)^3} \frac{1}{2 E_3} \frac{d^3 p_4}{(2\pi)^3} \frac{1}{2 E_4} (2\pi)^4 \delta^4 (p_1 + p_2 - p_3 - p_4) \\ & = \frac{d^3 p_3}{(2\pi)^2} d^3 p_4 \frac{1}{4 E_3 E_4} \delta^3 (\mathbf p_1 + \mathbf p_2 - \mathbf p_3 - \mathbf p_4) \delta (E_1 + E_2 - E_3 - E_4) \\ & = \frac{d^3 p_3}{(2\pi)^2} \frac{1}{4 E_3 E_4} \delta (E_1 + E_2 - E_3 - E_4) \\ &  = d\Omega \frac{d |\mathbf p_3| |\mathbf p_3|^2}{(2\pi)^2} \frac{1}{4 E_3 E_4} \delta (E_1 + E_2 - E_3 - E_4) ~.
+    \end{align}
+    Now, we make a change of variable into $x = E_3 + E_4 - E_1 - E_2$ with Jacobian
+    \begin{equation*}
+        \dv{x}{|\mathbf p_3|} = \dv{}{|\mathbf p_3|} (E_3 + E_4 - E_1 - E_2) = \frac{|\mathbf p_3|}{E_3} + \frac{|\mathbf p_3|}{E_4} = \frac{|\mathbf p_3| (E_3 + E_4)}{E_3 E_4}  ~,
+    \end{equation*}
+    where we have used the fact that $|\mathbf p_3| = |\mathbf p_4|$ in~\eqref{proof4} and the energies $E_3 = \sqrt{|\mathbf p_3|^2 + m_3^2}$ and $E_4 = \sqrt{|\mathbf p_4|^2 + m_4^2} = \sqrt{|\mathbf p_3|^2 + m_4^2}$. Hence,~\eqref{proof5} becomes 
+    \begin{equation}\label{proof6}
+        d \Pi_2 = d\Omega \frac{d x}{(2\pi)^2} \frac{E_3 E_4 |\mathbf p_3|^2}{|\mathbf p_3| (E_3 + E_4)} \delta (x) = d\Omega \frac{1}{16 \pi^2} \frac{|\mathbf p_3|}{(E_3 + E_4)} ~.
+    \end{equation}
+    Furthermore, inverting $\mathbf p = \gamma m \mathbf v$ such that $\mathbf v = \mathbf p/\gamma m = \mathbf p / E$, 
+    we obtain
+    \begin{equation}\label{proof7}
+        \frac{1}{|\mathbf v_1 - \mathbf v_2|} = \frac{1}{| \mathbf p_1 / E_1 - \mathbf p_2 / E_2|} = \frac{E_1 E_2}{(E_1 + E_2) |\mathbf p_1|} ~, 
+    \end{equation}
+    where we have used the fact that $\mathbf p_1 = - \mathbf p_2$ in~\eqref{proof4}.
+
+    Putting everything together~\eqref{cross2},~\eqref{proof6} and~\eqref{proof7}, we find
+    \begin{align*}
+        d \sigma & = \frac{1}{4 E_1 E_2} |\mathcal M |^2 d\Omega \frac{1}{16 \pi^2} \frac{|\mathbf p_3|}{(E_3 + E_4)} \frac{E_1 E_2}{(E_1 + E_2) |\mathbf p_1|} \\ & = d\Omega \frac{1}{16 \pi^2 E_{tot}^2} \frac{|\mathbf p_f|}{|\mathbf p_i|} |\mathcal M |^2 ~,
+    \end{align*}
+    where we have used the energy conservation $E_{tot} = E_1 + E_2 = E_3 + E_4$, relabeled $|\mathbf p_i| = |\mathbf p_1| = |\mathbf p_2|$ and $|\mathbf p_f| = |\mathbf p_3| = |\mathbf p_4|$.
+    Therefore, the differential cross section is 
+    \begin{equation*}
+        \dv{\sigma}{\Omega} = \frac{1}{16 \pi^2 E_{tot}^2} \frac{|\mathbf p_f|}{|\mathbf p_i|} |\mathcal M |^2 ~.
+    \end{equation*}
+
+\section{Decay rates}
+
+    Consider a decay experiment. Let $T$ be the time of experiment, $N_{in}$ and $N_{out}$ the number of incoming and outgoing particle, $\Phi$ be the incoming flux ($N_{in} |\mathbf v|  / V$, where $|\mathbf v| $ is the velocity of the beam). Then the classical cross section is 
+    \begin{equation*}
+        \sigma = \frac{N_{out}}{T \Phi} = \frac{N_{out}}{N_{in}} \frac{V}{|\mathbf v| T} ~.
+    \end{equation*}
+    In quantum mechanics, we can define the probability of interaction $P = \frac{N_{out}}{N_{in}}$ so that 
+    \begin{equation*}
+        \sigma = \frac{1}{T \Phi} P = \frac{V}{|\mathbf v| T} P ~,
+    \end{equation*}
+    or we can define the luminosity $L = T \Phi = \frac{|\mathbf v| T}{V} N_{in}$ so that
+    \begin{equation*}
+        N_{out} = L \sigma ~.
+    \end{equation*}
+    Furthermore, the differential cross section is given by    
+    \begin{equation}\label{cross1}
+        d \sigma = \frac{V}{|\mathbf v| T} dP ~.
+    \end{equation}
+    We can differentiate this quantity over a generic differential volume $df$ is the space of final states to get
+    \begin{equation*}
+        \frac{d\sigma}{df} = \frac{V}{|\mathbf v| T} \dv{P}{f} ~,
+    \end{equation*}
+    e.g.~energy $dE$ or solid angle $d\Omega$.
+
+    Consider a scattering experiment $2 \rightarrow n$, in which two incoming particles interacts and form $n$ outgoing particles $p_1 + p_2 \rightarrow \{p_j\}_{j=1}^{n}$. In a generic inertial frame, since we have two particles with different velocities that collide, the flux becomes
+    \begin{equation*}
+        \Phi = \frac{N_{in} |\mathbf v_1 - \mathbf v_2|}{V} ~.
+    \end{equation*}
+    Moreover, the probability of interaction is given by 
+    \begin{equation*}
+        dP = \frac{|\bra{f} \hat S \ket{i}|^2}{\braket{f}{f} \braket{i}{i}} d \Pi = |\bra{f} \hat S \ket{i}|^2 d\Pi ~,
+    \end{equation*}
+    where $d\Pi$ is a volume differential of the phase (momentum) space
+    \begin{equation*}
+        d \Pi = \prod_j \frac{V d^3 p_j}{(2\pi)^3} ~.
+    \end{equation*}
+    Hence,~\eqref{cross1} becomes 
+    \begin{equation}\label{proof1}
+        d \sigma = \frac{V}{|\mathbf v_1 - \mathbf v_2| T} \frac{|\bra{f} \hat S \ket{i}|^2}{\braket{f}{f} \braket{i}{i}} \prod_j \frac{V d^3 p_j}{(2\pi)^3} ~.
+    \end{equation}
+
+    Now, using the property 
+    \begin{equation*}
+        \delta^3 (0) = \int \frac{d^3 x}{(2\pi)^3} \exp(i p x) \Big \vert_{p=0} = \frac{1}{(2\pi)^3} \int d^3 x = \frac{V}{(2\pi)^3} ~,
+    \end{equation*}
+    we find
+    \begin{equation*}
+        \braket{p}{p} = (2\pi)^3 \delta^3 (0) = (2\pi)^3 2 E_p \frac{V}{(2\pi)^3} = 2 E_p V ~.
+    \end{equation*}
+    In particular, taking $\ket{i} = \ket{p_1, p_2}$ and $\ket{f} = \ket{\prod_j p_j}$, we obtain 
+    \begin{equation}\label{proof2}
+        \braket{i}{i} = 4 E_1 E_2 V^2 ~, \quad \braket{f}{f} = \prod_j 2 E_j V ~.
+    \end{equation}
+
+    We can perturbatively expand the S-matrix as $\hat S = \mathbb I + i \hat T$, where $\mathbb I$ is the term that describes the no-interaction experiment, whereas the interaction part is encapsulated into $\hat T$. From now om, we will study only We can extract a delta function to ensure momentum conservation
+    \begin{equation*}
+        \hat T = (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) \hat M ~,
+    \end{equation*}
+    where $\hat M$ is defined by this expression. Hence,
+    \begin{equation*}
+        |\bra{f} \hat T \ket{i} |^2 = (2\pi)^8 \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 |\bra{f} \hat M \ket{i} |^2 = (2\pi)^8 \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 |M|^2~,
+    \end{equation*}
+    where we have called $| \mathcal M |^2 = |\bra{f} \hat M \ket{i} |^2$. Since the square of a delta can be written as 
+    \begin{equation*}
+        \Big (\delta^4 (p_1 + p_2 - \small \sum_j p_j) \Big )^2 = \delta^4 (p_1 + p_2 - \small \sum_j p_j) \delta^4 (0)
+    \end{equation*}
+    and, using the property 
+    \begin{equation*}
+        \delta^4 (0) = \int \frac{d^4 x}{(2\pi)^4} \exp(i p x) \Big \vert_{p=0} = \frac{1}{(2\pi)^4} \int d^3 x \int dt = \frac{T V}{(2\pi)^4} ~,
+    \end{equation*}
+    we obtain
+    \begin{equation}\label{proof3}
+        |\bra{f} \hat T \ket{i} |^2 = (2\pi)^4 TV \delta^4 (p_1 + p_2 - \small \sum_j p_j) |\mathcal M |^2 ~.
+    \end{equation}
+
+    Putting everything together~\eqref{proof1},~\eqref{proof2} and~\eqref{proof3}, we find
+    \begin{align*}
+        d \sigma & = \frac{V}{|\mathbf v_1 - \mathbf v_2| T} (2\pi)^4 TV \delta^4 (p_1 + p_2 - \small \sum_j p_j) |\mathcal M |^2 \frac{1}{4 E_1 E_2 V^2} \frac{1}{\prod_j 2 E_j V} \prod_j \frac{V d^3 p_j}{(2\pi)^3} \\ & = \frac{1}{|\mathbf v_1 - \mathbf v_2| 4 E_1 E_2} |\mathcal M |^2 (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) \prod_j \frac{d^3 p_j}{(2\pi)^3} \frac{1}{2 E_j} \\ & = \frac{1}{|\mathbf v_1 - \mathbf v_2| 4 E_1 E_2} |\mathcal M |^2 d \Pi_N ~,
+    \end{align*}
+    where we have defined the Lorentz-invariant phase space element $d \Pi_N$ as 
+    \begin{equation*}
+        d \Pi_N = (2\pi)^4 \delta^4 (p_1 + p_2 - \small \sum_j p_j) \prod_j \frac{d^3 p_j}{(2\pi)^3} \frac{1}{2 E_j} ~.
+    \end{equation*}
+
+    
